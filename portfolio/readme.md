@@ -1,0 +1,1 @@
+替换所有 "reveal.js/ 为 "//cdn.jsdelivr.net/reveal.js/2.5.0/

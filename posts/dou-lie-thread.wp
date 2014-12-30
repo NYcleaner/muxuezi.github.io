@@ -1,0 +1,17 @@
+<!--
+.. title: 豆列的多线程
+.. slug: dou-lie-thread
+.. date: 05/26/2014 09:12:24 AM UTC
+.. tags: Python
+.. link:
+.. description:
+.. type: text
+-->
+
+对豆列数据感兴趣，于是用thread\Queue练习了一下，里面的内容不少，目前46万，抓了2小时
+豆列有很多商家分享一件商品，排除重复，一共是140841件
+加入豆列超过200的只有4426件，不到4%，超过1000的只有273件，不到千分之2，超过1500的只有95件
+
+<!-- TEASER_END -->
+
+<script src="https://gist.github.com/muxuezi/8d7cd57710b156463d49.js"></script>

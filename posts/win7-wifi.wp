@@ -1,0 +1,24 @@
+<html><body><p>netsh wlan set hostednetwork mode=allow ssid=JoysBoy.Net key=joysboy.net
+@echo off
+
+choice /C 12 /M "开启wifi请输入1，关闭wifi请输入2
+
+if errorlevel 2 goto off
+
+if errorlevel 1 goto on
+
+:on
+
+netsh wlan start hostednetwork 
+
+goto end
+
+:off
+
+netsh wlan stop hostednetwork
+
+goto end
+
+:end
+
+echo 网络设置完毕</p></body></html>

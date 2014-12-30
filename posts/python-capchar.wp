@@ -1,0 +1,85 @@
+<html><body><p>目标：CMDST价格监测
+
+<!-- TEASER_END -->
+
+周期：动手半个月，构思一个月
+
+内容：3PL快递价格大区仓到3325个地区的1kg运价
+
+数据来源：物流企业（EMS、顺丰、宅急送、韵达、圆通、中通）官方网站价格数据，默认重量1公斤
+
+特殊处理：官方网站无报价地区，按照同省份最高价计算
+
+工具：PIL + selenium + ocropus（仅支持ubuntu x64环境）
+
+
+
+
+
+</p><h1>样本获取</h1>
+
+<div class="dp-highlighter nogutter">
+
+<ol class="dp-py" start="0">
+	<li class="alt"><span class="keyword">class</span> somcode(<span class="keyword">object</span>):</li>
+	<li class="alt">    <span class="keyword">def</span> <span class="magicmethods">__init__</span>(<span class="builtins">self</span>, url, fname, pieces):</li>
+	<li>        <span class="builtins">self</span>.url = url</li>
+	<li class="alt">        <span class="builtins">self</span>.fname = fname</li>
+	<li>        <span class="builtins">self</span>.pieces = pieces</li>
+	<li>    <span class="keyword">def</span> download(<span class="builtins">self</span>):</li>
+	<li class="alt">        <span class="builtins">map</span>(<span class="keyword">lambda</span> i:<span class="builtins">file</span>('./' + <span class="builtins">self</span>.fname + "/%04d.aspx" % <span class="commonlibs">random</span>.randrange(10000), "wb").<span class="builtins">write</span>(<span class="commonlibs">urllib</span>.urlopen(url).<span class="builtins">read</span>()), <span class="builtins">range</span>(<span class="builtins">self</span>.pieces))</li>
+</ol>
+
+</div>
+
+<h1>样本图形处理</h1>
+
+验证码链接一直在改变，使用时需要截屏获取验证码，如果用urllib.urlopen(url).read()，图形不一致。
+
+通过PIL预处理图片，可以提高识别效率
+
+from PIL import Image
+
+image_file = 'screenshot.png'
+
+png_file = 'captcha.png'
+
+img = Image.open(image_file)
+
+box = (leftx,lefty, leftx+width, lefty+height)
+
+img = img.crop(box)
+
+img0 = img.convert("L")
+
+img1 = img0.point(lambda i: 0 if i &lt; 120 else 255)
+
+img1.save(png_file)
+
+<h1>ocropus-gtedit的校对</h1>
+
+convert *.aspx a.png
+
+ocropus-gtedit html *.png
+
+ocropus-gtedit extract correction.html -p 000
+
+<h1>ocropus-rtrain的训练</h1>
+
+ocropus-rtrain 000/????/*.png -o 0
+
+利用LSTM，默认训练1百万次，一般7万可以很精确了，.没一千次训练生成.pyrnn.gz，CPU需求很高。
+
+<h1>输出结果</h1>
+
+<div class="dp-highlighter nogutter">
+
+<ol class="dp-py" start="0">
+	<li class="alt"><span class="keyword">import</span> <span class="commonlibs">os</span></li>
+	<li>f=<span class="commonlibs">os</span>.popen("ocropus-rpred -Q 4 -m zhongtong.pyrnn.gz captcha.png")</li>
+	<li class="alt">tt = f.<span class="builtins">read</span>()</li>
+</ol>
+
+</div>
+
+其实除了宅急送和顺丰，其他3PL均为一省一价。</body></html>

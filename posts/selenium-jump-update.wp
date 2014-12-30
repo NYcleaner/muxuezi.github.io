@@ -1,0 +1,20 @@
+<html><body><p>运行js代码实现滚动条效果
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight/1.8);")
+
+跳转iframe，beautifulsoup遇到iframe时需要用
+
+driver.switch_to_frame('frame_content')
+
+关闭
+
+driver.quit()
+
+
+
+一定要及时更新
+
+<a title="selenium-python" href="http://selenium-python.readthedocs.org/en/latest/index.html" target="_blank">selenium-python</a>
+
+<a title="Selenium Python" href="http://selenium.googlecode.com/svn/trunk/docs/api/py/index.html" target="_blank">selenuim2.0-py-doc</a>
+
+<a title="chromedriver" href="http://chromedriver.storage.googleapis.com/index.html" target="_blank">chromedriver64</a></p></body></html>

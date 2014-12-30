@@ -1,0 +1,2 @@
+<html><body><p>在目录下所有ltestats文件中找关键词nackcnt:
+find . -name '*ltestats*' -print | grep -R -i -n 'nackcnt'&gt;nackcnt</p></body></html>

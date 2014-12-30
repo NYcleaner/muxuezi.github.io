@@ -1,4 +1,4 @@
 muxuezi.github.io
 =================
 
-blog
+my blog powered by Nikola theme zen-ipython

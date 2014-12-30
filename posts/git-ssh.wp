@@ -1,0 +1,8 @@
+<html><body><pre>通过ssh生成密钥
+ssh-keygen -t rsa -C "<em>your_email@example.com</em>"</pre>
+
+<pre>通过xclip复制
+
+sudo apt-get install xclip
+
+xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre></body></html>

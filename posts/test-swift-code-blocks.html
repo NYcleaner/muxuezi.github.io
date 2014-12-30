@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Swift Code Blocks | 绿萝间</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/posts/test-swift-code-blocks.html">
+
+
+
+    
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 4}}
+    }
+});
+</script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <meta name="author" content="muxuezi">
+            <meta name="og:title" content="Test Swift Code Blocks">
+        <meta name="og:url" content="http://muxuezi.github.io/posts/test-swift-code-blocks.html">
+            <meta name="og:description" content="hljs.initHighlightingOnLoad();
+
+class DataImporter {
+    /*
+    DataImporter is a class to import data from an external file.
+    The class is assumed to take a non-trivial amount of time to initializ">
+        <meta name="og:site_name" content="绿萝间">
+        <meta name="og:type" content="article">
+
+    
+    
+
+</head>
+<body>
+    <section class="social">
+        <ul>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">Test Swift Code Blocks</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2014-08-18T12:27:03+08:00">2014-08-18 12:27</time>
+            
+                      |  
+        <a href="test-swift-code-blocks.ipynb" id="sourcelink">Source</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/swift.html" rel="tag">Swift</a></li>
+        </ul>
+        </div>
+
+        </div>
+        <div class="body">
+            <div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><link rel="stylesheet" href="../assets/css/xcode.css"></p>
+<script src="../assets/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<pre><code class="language-swift"><span class="class"><span class="keyword">class</span> <span class="title">DataImporter</span> {</span>
+    /*
+    DataImporter <span class="keyword">is</span> a <span class="class"><span class="keyword">class</span> <span class="title">to</span> <span class="title">import</span> <span class="title">data</span> <span class="title">from</span> <span class="title">an</span> <span class="title">external</span> <span class="title">file</span>.</span>
+    The <span class="class"><span class="keyword">class</span> <span class="title">is</span> <span class="title">assumed</span> <span class="title">to</span> <span class="title">take</span> <span class="title">a</span> <span class="title">non</span>-<span class="title">trivial</span> <span class="title">amount</span> <span class="title">of</span> <span class="title">time</span> <span class="title">to</span> <span class="title">initialize</span>.</span>
+    */
+    <span class="reserved">var</span> fileName = <span class="string">"data.txt"</span>
+    <span class="regexp">//</span> the DataImporter <span class="class"><span class="keyword">class</span> <span class="title">would</span> <span class="title">provide</span> <span class="title">data</span> <span class="title">importing</span> <span class="title">functionality</span> <span class="title">here</span></span>
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> {</span>
+    lazy <span class="reserved">var</span> importer = DataImporter()
+    <span class="reserved">var</span> data = [String]()
+    <span class="regexp">//</span> the DataManager <span class="class"><span class="keyword">class</span> <span class="title">would</span> <span class="title">provide</span> <span class="title">data</span> <span class="title">management</span> <span class="title">functionality</span> <span class="title">here</span></span>
+}
+
+<span class="reserved">let</span> manager = DataManager()
+manager.data.append(<span class="string">"Some data"</span>)
+manager.data.append(<span class="string">"Some more data"</span>)
+<span class="regexp">//</span> the DataImporter instance <span class="keyword">for</span> the importer property has <span class="keyword">not</span> yet been created
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In []:
+</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide Output :-)</i>
+</div>
+</div>
+</div>
+
+</div>
+        </div>
+                <ul class="pager">
+            <li class="previous">
+                <a href="python-parallel-system-tools-pp4e.html" rel="prev" title="Python Parallel System Tools PP4E">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="swift-chs.html" rel="next" title="Swift CHS">Next post</a>
+            </li>
+        </ul>
+
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/test-swift-code-blocks.html",
+        disqus_title="Test Swift Code Blocks",
+        disqus_identifier="cache/posts/test-swift-code-blocks.html",
+        disqus_config = function () {
+            this.language = "";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2014 <a href="mailto:muxuezi@gmail.com">muxuezi</a> -
+Powered by <a href="http://getnikola.com">Nikola</a>  &amp; <a href="http://www.damian.oquanta.info/posts/zen-themes-updated.html">Damián Avila</a><br>
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+            
+        </footer>
+
+        </div>
+    </section>
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-51330059-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more"><i class="icon-share-sign icon-2x"></i>    Share</a>
+<ul>
+<li>
+<a class="addthis_button_twitter"><i class="icon-twitter icon-2x"></i>    Twitter</a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"><i class="icon-google-plus-sign icon-2x"></i>    Google+</a>
+</li>
+<li>
+<a class="addthis_button_linkedin"><i class="icon-linkedin icon-2x"></i>    Linkedin</a>
+</li>
+<li>
+<a class="addthis_button_facebook"><i class="icon-facebook-sign icon-2x"></i>    Facebook</a>
+</li>
+</ul>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

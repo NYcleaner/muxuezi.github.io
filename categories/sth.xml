@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (sth.)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/sth.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 10 Dec 2014 10:56:27 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>念奴娇·追思焦裕禄</title><link>http://muxuezi.github.io/posts/jiaoyulu.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;习近平 一九九〇·七·十五
+中夜，读《人民呼唤焦裕禄》一文，是时霁月如银，文思萦系……&lt;/p&gt;
+&lt;p&gt;魂飞万里，&lt;/p&gt;
+&lt;p&gt;盼归来，&lt;/p&gt;
+&lt;p&gt;此水此山此地。&lt;/p&gt;
+&lt;p&gt;百姓谁不爱好官？&lt;/p&gt;
+&lt;p&gt;把泪焦桐成雨。①&lt;/p&gt;
+&lt;p&gt;生也沙丘，&lt;/p&gt;
+&lt;p&gt;死也沙丘，&lt;/p&gt;
+&lt;p&gt;父老生死系。②&lt;/p&gt;
+&lt;p&gt;暮雪朝霜，&lt;/p&gt;
+&lt;p&gt;毋改英雄意气！&lt;/p&gt;
+&lt;p&gt;依然月明如昔，&lt;/p&gt;
+&lt;p&gt;思君夜夜，&lt;/p&gt;
+&lt;p&gt;肝胆长如洗。&lt;/p&gt;
+&lt;p&gt;路漫漫其修远矣，&lt;/p&gt;
+&lt;p&gt;两袖清风来去。&lt;/p&gt;
+&lt;p&gt;为官一任，&lt;/p&gt;
+&lt;p&gt;造福一方，&lt;/p&gt;
+&lt;p&gt;遂了平生意。&lt;/p&gt;
+&lt;p&gt;绿我涓滴，&lt;/p&gt;
+&lt;p&gt;会它千倾澄碧。&lt;/p&gt;
+&lt;p&gt;注：①焦裕禄当年为了防风固沙，帮助农民摆脱贫困，提倡种植泡桐。如今，兰考泡桐如海，焦裕禄当年亲手栽下的幼桐已长成合抱大树，人们亲切地叫它“焦桐”。&lt;/p&gt;
+&lt;p&gt;②焦裕禄临终前说“我死后只有一个要求，要求党组织把我运回兰考，埋在沙丘上。活着我没有治好沙丘，死了也要看着你们把沙丘治好！”&lt;/p&gt;
+&lt;p&gt;（原载一九九〇年七月十六日《福州晚报》一版）&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/jiaoyulu.html</guid><pubDate>Wed, 19 Mar 2014 02:51:56 GMT</pubDate></item><item><title>移动4G卡</title><link>http://muxuezi.github.io/posts/tdlte-4g-card.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;移动4G卡TD-LTE目前营业厅免费换，真是企业良心啊。不用换号，保留原2G套餐，直接2G变4G，Perfect&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/tdlte-4g-card.html</guid><pubDate>Mon, 17 Mar 2014 06:25:27 GMT</pubDate></item><item><title>Wait lott2</title><link>http://muxuezi.github.io/posts/wait.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;
+    &lt;li&gt;三位组成的数列有等差数列 : 6个球一共有1,107,568种组合，这是小学就会的；6个球中有任意四个至少一个成等差数列的很少，占总数5%；但是任意三个至少一个成等差数列的很多，占总数63%&lt;/li&gt;
+    &lt;li&gt;新一期的号码分割更有可能出现在间隔中 : 如果按照从小到大排序，(1,2,3,4,5,6)是第一位，(28,29,30,31,32,33)是最后一位。目前出现的所有1377期中，相邻两个直接的间隔，就是位置之差。有这样的特点：最大间隔4586，最小间隔1。其中， 339个间隔超过1000，而且有碎片化的趋势，即新一期的号码分割更有可能出现在这些间隔中&lt;/li&gt;
+    &lt;li&gt;Combination(6,3)频率是（0，1，2）：6个号码的任意三位组成的数列，Combination(6,3)共20个。如果按照重复率统计的话。新一期6个号码任意三位组成的数列出现的重复率不超过2，即这20个三位数列的频率是（0，1，2），即在以往所有出现过的6个号码任意三位组成的数列中，新一期6个号码任意三位组成的数列将出现的频率是：0次（没出现过）、1次（出现过1次）、2次（出现过2次，这类一般只有一个）&lt;/li&gt;
+    &lt;li&gt;如果在这些超过1000的间隔里面，取出某个区间，重新筛选出无4阶等差、有3阶段等差、3阶段等差仅含（0，1，2），最后还有重复抽样的概率约束&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/wait.html</guid><pubDate>Mon, 17 Mar 2014 01:49:06 GMT</pubDate></item><item><title>菩萨蛮--韦庄</title><link>http://muxuezi.github.io/posts/weizhuang.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;人人尽说江南好
+游人只合江南老&lt;/p&gt;
+&lt;p&gt;春水碧于天&lt;/p&gt;
+&lt;p&gt;画船听雨眠&lt;/p&gt;
+&lt;p&gt;垆边人似月&lt;/p&gt;
+&lt;p&gt;皓腕凝霜雪&lt;/p&gt;
+&lt;p&gt;未老莫还乡&lt;/p&gt;
+&lt;p&gt;还乡须断肠&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/weizhuang.html</guid><pubDate>Mon, 17 Mar 2014 01:37:50 GMT</pubDate></item><item><title>诉衷情——陆游</title><link>http://muxuezi.github.io/posts/luyou.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;当年万里觅封侯，匹马戍梁州。
+关河梦断何处，尘暗旧貂裘。&lt;/p&gt;
+&lt;p&gt;胡未灭，鬓先秋，泪空流。&lt;/p&gt;
+&lt;p&gt;此身谁料，心在天山，身老沧洲！&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/luyou.html</guid><pubDate>Mon, 17 Mar 2014 01:36:26 GMT</pubDate></item><item><title>mail for Bolin</title><link>http://muxuezi.github.io/posts/mail-for-bolin.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;北京市海淀区东北旺西路8号中关村软件园28号楼环宇大厦
+TEA Team收&lt;/p&gt;
+&lt;p&gt;010-60959407&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/mail-for-bolin.html</guid><pubDate>Mon, 17 Mar 2014 01:25:11 GMT</pubDate></item><item><title>听Vernacular</title><link>http://muxuezi.github.io/posts/vernacular.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;div&gt;&lt;span style="font-size: 26px; font-weight: bold; line-height: 1.3846153846;"&gt;vernacular&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a title="添加该词条到生词本"&gt; &lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;英 &lt;strong&gt;[&lt;/strong&gt;&lt;strong lang="EN-US" xml:lang="EN-US"&gt;və'nækjələ(r)&lt;/strong&gt;&lt;strong&gt;]&lt;/strong&gt;
+
+&lt;div&gt;&lt;/div&gt;
+
+美 &lt;strong&gt;[&lt;/strong&gt;&lt;strong lang="EN-US" xml:lang="EN-US"&gt;vɚˈnækjəlɚ&lt;/strong&gt;&lt;strong&gt;]&lt;/strong&gt;
+
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div&gt;
+
+
+
+&lt;strong&gt;n.&lt;/strong&gt;&lt;label&gt;白话；&lt;/label&gt; &lt;label&gt;行话；&lt;/label&gt; &lt;label&gt;本国语；&lt;/label&gt; &lt;label&gt;动植物的俗名&lt;/label&gt;
+
+
+
+&lt;strong&gt;adj.&lt;/strong&gt;&lt;label&gt;本国语的；&lt;/label&gt; &lt;label&gt;白话的；&lt;/label&gt; &lt;label&gt;方言的；&lt;/label&gt; &lt;label&gt;本国的&lt;/label&gt;
+
+
+
+想起合肥话-&lt;a title="合肥话" href="http://zh.wikipedia.org/zh/%E5%90%88%E8%82%A5%E8%AF%9D" target="_blank"&gt;维基百科&lt;/a&gt;-&lt;a title="张爱玲" href="http://news.163.com/09/0504/03/58EJJ3QD000120GR.html" target="_blank"&gt;张爱玲合肥话&lt;/a&gt;-摪（怎样）搞啊？”“摪搞”
+
+
+
+讲给大姐听，她讲了《追风筝的人》作者&lt;a href="http://book.douban.com/series/19760"&gt;卡勒德·胡赛尼作品&lt;/a&gt;《群山回唱》里面我们每年在家都能听到的“
+
+
+
+以斯敏列”-以真主之名
+
+
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/vernacular.html</guid><pubDate>Thu, 27 Feb 2014 01:48:04 GMT</pubDate></item><item><title>快的滴滴</title><link>http://muxuezi.github.io/posts/didi-taxi.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;一定打的回家。快的打的减13元，滴滴打车首单减15元（其他12-20元不等）。如果你车费超过15元，你可以用滴滴打车先叫车，然后再用快的打车叫一遍车，师傅会把钱分成两份的&lt;/p&gt;
+&lt;h2&gt;免费的午餐总是让人心情愉快，背后大量的资金流动更是让人心旷神怡啊。&lt;/h2&gt;
+&lt;h2&gt;2月28日&lt;/h2&gt;
+&lt;p&gt;今天终于体验一把，滴滴首单免15，返10元，还好。听师傅讲过几天就没了，烧不起。不过昨晚看百度地图也有了，看来有人接盘了。师傅车上装wifi（电信，50元3.5G，乖乖，移动真坑爹啊，50元500M），网速嘎嘎的&lt;/p&gt;
+&lt;p&gt;缺点：乘客——要等。师傅——要抢，要反复联系。快的定位不准，滴滴可以。&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/didi-taxi.html</guid><pubDate>Thu, 20 Feb 2014 06:05:40 GMT</pubDate></item><item><title>Permission to be human</title><link>http://muxuezi.github.io/posts/permission-to-be-human.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a title="幸福课" href="http://v.163.com/movie/2006/1/3/T/M6HV755O6_M6HV8QB3T.html" target="_blank"&gt;幸福课&lt;/a&gt;
+——计划整理文字内容，便于查阅。&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/permission-to-be-human.html</guid><pubDate>Sat, 25 Jan 2014 04:49:31 GMT</pubDate></item><item><title>忆王孙  漫话省份音序</title><link>http://muxuezi.github.io/posts/31provns.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;安北福甘广广贵，海河河黑湖湖吉，江江辽内宁青山
+山陕上，四天西新云浙重&lt;/p&gt;
+&lt;p&gt;这几天在整发票，省份音序排列，找了个词牌凑字数。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;单调小令，又名《荳叶黄》、《阑干万里心》。三十一字，五平韵。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;例词：&lt;/p&gt;
+&lt;p&gt;李重元《忆王孙（萋萋芳草忆王孙） 春词》&lt;/p&gt;
+&lt;p&gt;中平中仄仄平平，中仄平平中仄平，中仄平平仄仄平。&lt;/p&gt;
+&lt;p&gt;萋萋芳草忆王孙，柳外楼高空断魂，杜宇声声不忍闻。&lt;/p&gt;
+&lt;p&gt;仄平平，中仄平平中仄平。&lt;/p&gt;
+&lt;p&gt;欲黄昏，雨打梨花深闭门。&lt;/p&gt;
+&lt;h2&gt;20140318附另外三首&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;&lt;div&gt;忆王孙·夏&lt;/div&gt;
+&lt;div&gt;风蒲猎猎小池塘，过雨荷花满院香。沈李浮瓜冰雪凉。竹方床，针线慵拈午梦长。&lt;/div&gt;
+
+&lt;div&gt;忆王孙·秋&lt;/div&gt;
+
+&lt;div&gt;飕飕风冷荻花秋，明月斜侵独倚楼。十二珠帘不上钩。黯凝眸，一点渔灯古渡头。&lt;/div&gt;
+
+&lt;div&gt;忆王孙·冬&lt;/div&gt;
+
+&lt;div&gt;彤云风扫雪初晴，天外孤鸿三两声。独拥寒衾不忍听。月笼明，窗外梅花瘦影横。&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>sth.</category><guid>http://muxuezi.github.io/posts/31provns.html</guid><pubDate>Fri, 17 Jan 2014 06:04:25 GMT</pubDate></item></channel></rss>
