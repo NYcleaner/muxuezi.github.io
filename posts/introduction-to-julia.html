@@ -147,8 +147,7 @@ Department ">
 <li>David P. Sanders</li>
 <li>Department of Physics, Faculty of Sciences</li>
 <li>National University of Mexico (UNAM)</li>
-<li>Twitter: <span class="citation">@DavidPSanders</span>
-</li>
+<li>Twitter: @DavidPSanders</li>
 <li>GitHub: dpsanders</li>
 </ul>
 </div>
@@ -318,7 +317,7 @@ In [3]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Functions use parentheses (round brackets, <code>()</code>) around the arguments being passed. <code>println</code> prints its arguments, followed by a new line. [<code>print</code> omits the new line.]</p>
+<p>Functions use parentheses (round brackets, <code>()</code>) around the arguments being passed. <code>println</code> prints its arguments, followed by a new line. [<code>print</code> omits the new line.] </p>
 </div>
 </div>
 </div>
@@ -904,15 +903,9 @@ BigInt (constructor with 10 methods)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<col width="5%">
-<tbody>
-<tr class="odd">
-<td align="left">
-<strong>Exercise</strong>: Calculate powers of 10 using standard integers and <code>BigInt</code>s</td>
-</tr>
-</tbody>
-</table>
+<hr>
+<p><strong>Exercise</strong>: Calculate powers of 10 using standard integers and <code>BigInt</code>s</p>
+<hr>
 </div>
 </div>
 </div>
@@ -2248,20 +2241,10 @@ Array{Int64,1}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<col width="5%">
-<tbody>
-<tr class="odd">
-<td align="left">
-<strong>Exercise</strong>: Try to create an array in this way with elements of different types. What happens?</td>
-</tr>
-<tr class="even">
-<td align="left">
-<strong>Exercise</strong>: What does the following syntax do?: <code>l = {3, 4, 7.5}</code>
-</td>
-</tr>
-</tbody>
-</table>
+<hr>
+<p><strong>Exercise</strong>: Try to create an array in this way with elements of different types. What happens?</p>
+<p><strong>Exercise</strong>: What does the following syntax do?:  <code>l = {3, 4, 7.5}</code></p>
+<hr>
 </div>
 </div>
 </div>
@@ -4916,7 +4899,8 @@ Base.LinAlg.BLAS.dot(n, X, incx, Y, incy)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Exercise</strong>: Implement the Babylonian method for calculating the square root of a positive number <span class="math">\(y\)</span>, via the iteration <span class="math">\[x_{n+1} = \textstyle \frac{1}{2} (x_n + \frac{y}{x_n})\]</span></p>
+<p><strong>Exercise</strong>: Implement the Babylonian method for calculating the square root of a positive number $y$, via the iteration 
+$$x_{n+1} = \textstyle \frac{1}{2} (x_n + \frac{y}{x_n})$$</p>
 </div>
 </div>
 </div>
@@ -5543,7 +5527,7 @@ In [108]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To create explicit matrices, Matlab-style notation is used. If we omit the commas, something different happens: we now obtain a <em>two-dimensional</em> <code>Array</code>, i.e. a matrix, of size <span class="math">\(1 \times n\)</span>. [Recall that in the standard notation for matrices, an <span class="math">\(m \times n\)</span> matrix has <span class="math">\(m\)</span> <em>rows</em> and <span class="math">\(n\)</span> <em>columns</em>.]</p>
+<p>To create explicit matrices, Matlab-style notation is used. If we omit the commas, something different happens: we now obtain a <em>two-dimensional</em> <code>Array</code>, i.e. a matrix, of size $1 \times n$. [Recall that in the standard notation for matrices, an $m \times n$ matrix has $m$ <em>rows</em> and $n$ <em>columns</em>.]</p>
 </div>
 </div>
 </div>
@@ -5998,7 +5982,7 @@ In [117]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However, a horizontal one-dimensional slice produces a <span class="math">\(1 \times n\)</span> matrix:</p>
+<p>However, a horizontal one-dimensional slice produces a $1 \times n$ matrix:</p>
 </div>
 </div>
 </div>
@@ -6832,7 +6816,7 @@ In [133]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Exercise</strong>: Use the <em>power method</em> to calculate the largest eigenvalue <span class="math">\(\lambda_1\)</span> of the matrix <span class="math">\(M = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}\)</span>. In this method, we start from an arbitrary non-zero vector <span class="math">\(\mathbf{w}\)</span>, and repeatedly apply <span class="math">\(M\)</span> to it, thus calculating powers of the matrix <span class="math">\(M\)</span> applied to <span class="math">\(\mathbf{w}\)</span>. The resulting vector converges to the eigenvector <span class="math">\(\mathbf{v}_1\)</span> corresponding to <span class="math">\(\lambda_1\)</span>.</p>
+<p><strong>Exercise</strong>: Use the <em>power method</em> to calculate the largest eigenvalue $\lambda_1$ of the matrix $M = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}$. In this method, we start from an arbitrary non-zero vector $\mathbf{w}$, and repeatedly apply $M$ to it, thus calculating powers of the matrix $M$ applied to $\mathbf{w}$. The resulting vector converges to the eigenvector $\mathbf{v}_1$ corresponding to $\lambda_1$.</p>
 </div>
 </div>
 </div>
@@ -7114,7 +7098,7 @@ In [138]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Julia has built-in linear algebra, not only using LAPACK, but now also generic routines that work for arbitrary element types, implemented completely in Julia.</p>
-<p>For example, given a matrix <span class="math">\(A\)</span>, the LU-decomposition of <span class="math">\(A\)</span> is equivalent to Gaussian elimination; it expresses <span class="math">\(A\)</span> as the product <span class="math">\(A = LU\)</span>, with <span class="math">\(L\)</span> a lower-triangular and <span class="math">\(U\)</span> an upper-triangular matrix.</p>
+<p>For example, given a matrix $A$, the LU-decomposition of $A$ is equivalent to Gaussian elimination; it expresses $A$ as the product $A = LU$, with $L$ a lower-triangular and $U$ an upper-triangular matrix.</p>
 <p>This is <em>implemented in pure Julia</em> for arbitrary element types. When the elements are standard floating-point numbers, it uses the corresponding fast LAPACK implementation.</p>
 </div>
 </div>
@@ -7695,8 +7679,9 @@ Base.edit(function[, types])
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A Julia script, similar to a Python script, is a sequence of Julia commands placed in a file, with the termination <code>.jl</code>.</p>
-<p>From the command line, a script <code>script.jl</code> can be run as</p>
-<pre><code>julia script.jl arg1 arg2 </code></pre>
+<p>From the command line, a script <code>script.jl</code> can be run as </p>
+<pre><code>julia script.jl arg1 arg2 
+</code></pre>
 <p>where <code>arg1</code> and <code>arg2</code> are command-line arguments.</p>
 <p>These command-line arguments to Julia scripts are placed in the variable <code>ARGS</code> as an array of strings.</p>
 </div>
@@ -8484,7 +8469,8 @@ Hello
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Linear algebra, FFT, random numbers, special functions. Packages for optimization, ODEs etc.</p>
+<p>Linear algebra, FFT, random numbers, special functions.
+Packages for optimization, ODEs etc.</p>
 </div>
 </div>
 </div>
@@ -8788,7 +8774,8 @@ while loading In[168], in expression starting on line 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that string concatenation uses the <code>*</code> operator in Julia, instead of the <code>+</code> operator as in Python. Repeating a string is thus done by raising to an integer power:</p>
+<p>Note that string concatenation uses the <code>*</code> operator in Julia, instead of the <code>+</code> operator as in Python.
+Repeating a string is thus done by raising to an integer power:</p>
 </div>
 </div>
 </div>
@@ -8892,7 +8879,7 @@ while loading In[170], in expression starting on line 4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However, we see that in Julia, summation is not defined for strings. What is it defined for?</p>
+<p>However, we see that in Julia, summation is not defined for strings. What is it defined for? </p>
 </div>
 </div>
 </div>
@@ -9715,7 +9702,8 @@ Any
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this way, the concept of "function" is replaced by a "patchwork" of different definitions for objects of different types, easily modifiable by the user. This is also exactly the way to define "operator overloading" for user-defined types.</p>
+<p>In this way, the concept of "function" is replaced by a "patchwork" of different definitions for objects of different types, easily modifiable by the user.
+This is also exactly the way to define "operator overloading" for user-defined types.</p>
 </div>
 </div>
 </div>
@@ -9744,7 +9732,8 @@ Any
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A user-defined "composite type" is a collection of data. Unlike in Python, types do not "own" methods (functions internal to the type).</p>
+<p>A user-defined "composite type" is a collection of data.
+Unlike in Python, types do not "own" methods (functions internal to the type).</p>
 <p>Rather, methods are defined separately, and are characterised by the types of <em>all</em> of their arguments; this is known as <em>multiple dispatch</em>. (<em>Dispatch</em> is the process of choosing which "version" of a given function to execute.)</p>
 </div>
 </div>
@@ -10252,7 +10241,8 @@ Vector2D(10.5,14.0)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Exercise</strong>: Define mathematical operations on <code>Vector2D</code>. Define a particle with position and velocity in 2D. Define function <code>move</code> that acts on a particle to move it over a time <span class="math">\(\delta t\)</span>.</p>
+<p><strong>Exercise</strong>: 
+Define mathematical operations on <code>Vector2D</code>. Define a particle with position and velocity in 2D. Define function <code>move</code> that acts on a particle to move it over a time $\delta t$.</p>
 </div>
 </div>
 </div>
@@ -10721,7 +10711,9 @@ while loading In[212], in expression starting on line 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>T</code> is a type parameter. The expression <code>T &lt;: Real</code> means that <code>T</code> must be a subtype of the abstract type <code>Real</code>. We can investigate the type hierarchy with the <code>super</code> function:</p>
+<p><code>T</code> is a type parameter.
+The expression <code>T &lt;: Real</code> means that <code>T</code> must be a subtype of the abstract type <code>Real</code>.
+We can investigate the type hierarchy with the <code>super</code> function:</p>
 </div>
 </div>
 </div>
@@ -12399,15 +12391,10 @@ In [249]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<col width="5%">
-<tbody>
-<tr class="odd">
-<td align="left">
-<strong>Exercise</strong>: Generate a random matrix of <span class="math">\(1000 \times 1000\)</span> gaussian random variates. Calculate its eigenvalues and plot them. Calculate the differences between consecutive eigenvalues and plot a histogram of them.</td>
-</tr>
-</tbody>
-</table>
+<hr>
+<p><strong>Exercise</strong>: Generate a random matrix of $1000 \times 1000$ gaussian random variates. 
+Calculate its eigenvalues and plot them. Calculate the differences between consecutive eigenvalues and plot a histogram of them.</p>
+<hr>
 </div>
 </div>
 </div>
@@ -13020,7 +13007,7 @@ while loading In[263], in expression starting on line 1
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 

@@ -59,13 +59,7 @@ MathJax.Hub.Config({
 
 
 
-这个系列共4个部分：中文版Part I Part II Part III Part IV，英文版Part I Part II Part III Part IV
-
-
-
-
-
-
+这个系列共4个部分：中文版Part I  Part II  Part III  Part IV，英文版Part I  Part II  Part III  Part IV
 
 ">
     <meta property="og:type" content="article">
@@ -144,7 +138,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a> <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a> <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a> <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
 <!-- TEASER_END -->
 </div>
 </div>
@@ -163,7 +157,8 @@ MathJax.Hub.Config({
 <li>
 <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">频率主义 vs 贝叶斯主义 III：置信与可信，频率主义与科学，不能混为一谈</a>，介绍了频率主义置信区间与贝叶斯主义可信范围的差异，指出在科学研究中频率主义只会回答错误的问题。</li>
 </ul>
-<p>这一篇文章，我打算撇开哪些争论，谈谈Python实现贝叶斯研究的工具。 现代贝叶斯主义的核心是<a href="http://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">马尔可夫链蒙特卡罗算法，MCMC</a>，样本后验分布(sample posterior distributions)的高效算法。</p>
+<p>这一篇文章，我打算撇开哪些争论，谈谈Python实现贝叶斯研究的工具。
+现代贝叶斯主义的核心是<a href="http://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">马尔可夫链蒙特卡罗算法，MCMC</a>，样本后验分布(sample posterior distributions)的高效算法。</p>
 <p>下面我就用Python的三个包来演示MCMC:</p>
 <ul>
 <li>
@@ -313,10 +308,10 @@ In [2]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由贝叶斯定义可得</p>
-<p><span class="math">\[
+<p>$$
 P(\theta~|~D) \propto P(D~|~\theta) P(\theta)
-\]</span></p>
-<p>其中，<span class="math">\(D\)</span>表示观察数据，<span class="math">\(\theta\)</span>表示模型</p>
+$$</p>
+<p>其中，$D$表示观察数据，$\theta$表示模型</p>
 </div>
 </div>
 </div>
@@ -325,19 +320,19 @@ P(\theta~|~D) \propto P(D~|~\theta) P(\theta)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>假设线性模型有斜率<span class="math">\(\beta\)</span>，y轴截距<span class="math">\(\alpha\)</span>：</p>
-<p><span class="math">\[
+<p>假设线性模型有斜率$\beta$，y轴截距$\alpha$：</p>
+<p>$$
 \hat{y}(x_i~|~\alpha,\beta) = \alpha + \beta x_i
-\]</span></p>
+$$</p>
 <p>假设y轴坐标具有正态分布误差， 那么模型下的任何数据点的概率为：</p>
-<p><span class="math">\[
+<p>$$
 P(x_i, y_i~|~\alpha, \beta, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[\frac{-[y_i - \hat{y}(x_i~|~\alpha, \beta)]^2}{2\sigma^2}\right]
-\]</span></p>
-<p>其中，<span class="math">\(\sigma\)</span>是未知测量误差，为冗余参数。</p>
-<p>所以<span class="math">\(i\)</span>的似然估计的乘积为：</p>
-<p><span class="math">\[
+$$</p>
+<p>其中，$\sigma$是未知测量误差，为冗余参数。</p>
+<p>所以$i$的似然估计的乘积为：</p>
+<p>$$
 P(\{x_i\}, \{y_i\}~|~\alpha, \beta, \sigma) \propto (2\pi\sigma^2)^{-N/2} \exp\left[- \frac{1}{2\sigma^2} \sum_{i-1}^N [y_i - \hat{y}(x_i~|~\alpha,\beta)]^2\right]
-\]</span></p>
+$$</p>
 </div>
 </div>
 </div>
@@ -357,7 +352,7 @@ P(\{x_i\}, \{y_i\}~|~\alpha, \beta, \sigma) \propto (2\pi\sigma^2)^{-N/2} \exp\l
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>这里我们比之前的更仔细地选择先验条件。我们可以简单的认为<span class="math">\(\alpha\)</span>，<span class="math">\(\beta\)</span>，和<span class="math">\(\sigma\)</span>都是flat priors(扁平先验)，但是我们必须记住<strong>扁平先验并非都无信息先验(uninformative priors)!</strong>Jeffreys先验可能是更好的选择，用对称的最大熵(symmetry and/or maximum entropy)来选择最大化的无信息先验(maximally noninformative priors)。虽然这种做法被频率论认为太主观，但是这么做是可以从信息理论中找到理论依据的。</p>
+<p>这里我们比之前的更仔细地选择先验条件。我们可以简单的认为$\alpha$，$\beta$，和$\sigma$都是flat priors(扁平先验)，但是我们必须记住<strong>扁平先验并非都无信息先验(uninformative priors)!</strong>Jeffreys先验可能是更好的选择，用对称的最大熵(symmetry and/or maximum entropy)来选择最大化的无信息先验(maximally noninformative priors)。虽然这种做法被频率论认为太主观，但是这么做是可以从信息理论中找到理论依据的。</p>
 <p>为什么flat prior可能产生坏的选择？看看斜率就明白了。让我们来演示一下斜率从0-10的直线变化情况；</p>
 </div>
 </div>
@@ -414,7 +409,7 @@ In [3]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这些线按0.1的斜率间隔进行分布，高斜率区域的线十分密集。因为是扁平先验，你肯定会认为这些斜率彼此无差异。由上面的密集区域显然可以看出，斜率的扁平先验满足那些很陡的斜率。斜率的扁平先验不是一个最小化的无信息先验(minimally informative prior)，可能是最终使你的结果有偏差(尽管有足够多的数据，结果可能几乎是0)。</p>
-<p>你可能想动手做出一个更好的方案(可能在直线与x轴的夹角<span class="math">\(\theta\)</span>上用扁平先验)，但是我们有更严谨的方案。这个问题在贝叶斯文献中已经有了答案；我找到的最佳方案来自Jaynes的论文<em>直线拟合：贝叶斯方法(Straight Line Fitting: A Bayesian Solution)</em> <a href="http://exordio.qfb.umich.mx/archivos%20pdf%20de%20trabajo%20umsnh/aphilosofia/bayesian%20importantes/leapz.pdf">(pdf)</a></p>
+<p>你可能想动手做出一个更好的方案(可能在直线与x轴的夹角$\theta$上用扁平先验)，但是我们有更严谨的方案。这个问题在贝叶斯文献中已经有了答案；我找到的最佳方案来自Jaynes的论文<em>直线拟合：贝叶斯方法(Straight Line Fitting: A Bayesian Solution)</em> <a href="http://exordio.qfb.umich.mx/archivos%20pdf%20de%20trabajo%20umsnh/aphilosofia/bayesian%20importantes/leapz.pdf">(pdf)</a></p>
 </div>
 </div>
 </div>
@@ -435,32 +430,32 @@ In [3]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>假设模型为</p>
-<p><span class="math">\[
+<p>$$
 y = \alpha + \beta x
-\]</span></p>
-<p>那么构建参数空间(parameter-space)，其概率元素为<span class="math">\(P(\alpha, \beta) ~d\alpha ~d\beta\)</span></p>
-<p>因为<span class="math">\(x\)</span>和<span class="math">\(y\)</span>是对称的，我们就可以进行参数交互</p>
-<p><span class="math">\[
+$$</p>
+<p>那么构建参数空间(parameter-space)，其概率元素为$P(\alpha, \beta) ~d\alpha ~d\beta$</p>
+<p>因为$x$和$y$是对称的，我们就可以进行参数交互</p>
+<p>$$
 x = \alpha^\prime + \beta^\prime y
-\]</span></p>
-<p>其概率元素为<span class="math">\(Q(\alpha^\prime, \beta^\prime)d\alpha^\prime d\beta^\prime\)</span>，由此可得</p>
-<p><span class="math">\[
+$$</p>
+<p>其概率元素为$Q(\alpha^\prime, \beta^\prime)d\alpha^\prime d\beta^\prime$，由此可得</p>
+<p>$$
 (\alpha^\prime,~\beta^\prime) = (- \beta^{-1}\alpha,~\beta^{-1}).
-\]</span></p>
+$$</p>
 <p>通过雅可比变换(the Jacobian of the transformation)，可得</p>
-<p><span class="math">\[
+<p>$$
 Q(\alpha^\prime, \beta^\prime) = \beta^3 P(\alpha, \beta).
-\]</span></p>
+$$</p>
 <p>为了保持对称性，需要保证变量的改变不会影响先验概率，因此有：</p>
-<p><span class="math">\[
+<p>$$
 \beta^3 P(\alpha, \beta) = P(- \beta^{-1}\alpha, \beta^{-1}).
-\]</span></p>
+$$</p>
 <p>此函数满足：</p>
-<p><span class="math">\[
+<p>$$
 P(\alpha, \beta) \propto (1 + \beta^2)^{-3/2}.
-\]</span></p>
-<p>即<span class="math">\(\alpha\)</span>服从均匀分布，<span class="math">\(\beta\)</span>服从参数为<span class="math">\(\sin\theta\)</span>的均匀分布，其中，<span class="math">\(\theta = \tan^{-1}\beta\)</span>。</p>
-<p>你可能会奇怪，斜率的分布服从参数为<span class="math">\(\sin\theta\)</span>的均匀分布，而非<span class="math">\(\theta\)</span>。<span class="math">\(\sin\theta\)</span>可以被认为是源自截距。如果把变量<span class="math">\(\alpha\)</span>改为<span class="math">\(\alpha_\perp = \alpha\cos\theta\)</span>，那么均匀分布就变为<span class="math">\((\alpha_\perp,~\theta)\)</span>。在用PyStan求解时我们会用这个。</p>
+$$</p>
+<p>即$\alpha$服从均匀分布，$\beta$服从参数为$\sin\theta$的均匀分布，其中，$\theta = \tan^{-1}\beta$。</p>
+<p>你可能会奇怪，斜率的分布服从参数为$\sin\theta$的均匀分布，而非$\theta$。$\sin\theta$可以被认为是源自截距。如果把变量$\alpha$改为$\alpha_\perp = \alpha\cos\theta$，那么均匀分布就变为$(\alpha_\perp,~\theta)$。在用PyStan求解时我们会用这个。</p>
 </div>
 </div>
 </div>
@@ -469,8 +464,7 @@ P(\alpha, \beta) \propto (1 + \beta^2)^{-3/2}.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="\(\sigma\)的先验">
-<span class="math">\(\sigma\)</span>的先验<a class="anchor-link" href="frequentism-and-bayesianism-chs-iv.html#%5C(%5Csigma%5C)%E7%9A%84%E5%85%88%E9%AA%8C">¶</a>
+<h4 id="$\sigma$的先验">$\sigma$的先验<a class="anchor-link" href="frequentism-and-bayesianism-chs-iv.html#%24%5Csigma%24%E7%9A%84%E5%85%88%E9%AA%8C">¶</a>
 </h4>
 </div>
 </div>
@@ -481,14 +475,14 @@ P(\alpha, \beta) \propto (1 + \beta^2)^{-3/2}.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>同理，我们希望<span class="math">\(\sigma\)</span>的先验与问题的规模变化无关(如，改变点的数据)。因此其概率必须满足</p>
-<p><span class="math">\[
+<p>同理，我们希望$\sigma$的先验与问题的规模变化无关(如，改变点的数据)。因此其概率必须满足</p>
+<p>$$
 P(\sigma)d\sigma = P(\sigma / c)d\sigma / c.
-\]</span></p>
+$$</p>
 <p>方程等价于</p>
-<p><span class="math">\[
+<p>$$
 P(\sigma) \propto 1 / \sigma.
-\]</span></p>
+$$</p>
 <p>这就是Harold Jeffreys提出的<a href="http://en.wikipedia.org/wiki/Jeffreys_prior">Jeffreys先验</a>。</p>
 </div>
 </div>
@@ -510,10 +504,11 @@ P(\sigma) \propto 1 / \sigma.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>把它们放到一起，我们用这些对称性参数推导出模型的最小无信息先验：</p>
-<p><span class="math">\[
+<p>$$
 P(\alpha, \beta, \sigma) \propto \frac{1}{\sigma}(1 + \beta^2)^{-3/2}
-\]</span></p>
-<p>综上所述，你可能用扁平先验做参数变换<span class="math">\((\alpha, \beta, \sigma) \to (\alpha_\perp, \theta, \log\sigma)\)</span>，来解决这个问题， 但我认为对称/最大熵(symmetry/maximum entropy)方法更简洁明了——而且让我们能看到三个Python包演示这个先验的内涵。</p>
+$$</p>
+<p>综上所述，你可能用扁平先验做参数变换$(\alpha, \beta, \sigma) \to (\alpha_\perp, \theta, \log\sigma)$，来解决这个问题，
+但我认为对称/最大熵(symmetry/maximum entropy)方法更简洁明了——而且让我们能看到三个Python包演示这个先验的内涵。</p>
 </div>
 </div>
 </div>
@@ -635,7 +630,8 @@ In [4]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://dan.iel.fm/emcee/current/">emcee</a>(就是Python历史上著名的MCMC Hammer)是天文学家<a href="http://dan.iel.fm/">Dan Foreman-Mackey</a>写的纯Python包。这个简洁的包实现了复杂的仿射无关哈密顿(Affine-invariant Hamiltonian)MCMC。因为是纯Python，所以包很容易安装：</p>
-<pre><code>[~]$ pip install emcee</code></pre>
+<pre><code>[~]$ pip install emcee
+</code></pre>
 <p>Emcee没有很多引用代码；只要传入Python函数就会返回与对数后验概率匹配的值和后验样本。下面用<code>emcee</code>演示一下：</p>
 </div>
 </div>
@@ -851,7 +847,7 @@ In [9]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>左图，我们演示了由冗余参数<span class="math">\(\sigma\)</span>边缘化后的跟踪结果。在右侧显示了2-<span class="math">\(\sigma\)</span>最佳拟合的不确定区域。这就是我们从MCMC得到的结果：边缘化的不确定轮廓提供了一个很好的拟合结果。</p>
+<p>左图，我们演示了由冗余参数$\sigma$边缘化后的跟踪结果。在右侧显示了2-$\sigma$最佳拟合的不确定区域。这就是我们从MCMC得到的结果：边缘化的不确定轮廓提供了一个很好的拟合结果。</p>
 </div>
 </div>
 </div>
@@ -871,7 +867,8 @@ In [9]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://pymc-devs.github.io/pymc/">PyMC</a>包比emcee有更多的特征，有效的支持许多主流先验分布。 PyMC默认使用经典的<a href="http://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm">Metropolis-Hastings</a>取样器，最早的MCMC算法。性能方面，使用了Fortran库，因此用pip安装就有点复杂。先安装Fortran编译器，<code>pip install pymc</code>可以了。如果没装Fortran编译器，可以通过<a href="https://conda.binstar.org/pymc">conda</a>安装。</p>
+<p><a href="http://pymc-devs.github.io/pymc/">PyMC</a>包比emcee有更多的特征，有效的支持许多主流先验分布。
+PyMC默认使用经典的<a href="http://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm">Metropolis-Hastings</a>取样器，最早的MCMC算法。性能方面，使用了Fortran库，因此用pip安装就有点复杂。先安装Fortran编译器，<code>pip install pymc</code>可以了。如果没装Fortran编译器，可以通过<a href="https://conda.binstar.org/pymc">conda</a>安装。</p>
 <p>据说<a href="https://github.com/pymc-devs/pymc">PyMC第三版</a>要移除Fortran依赖，安装就容易了。而且PyMC 3的API更简洁，性能更好。但是目前仍是alpha版本，所以现在用就版本：</p>
 </div>
 </div>
@@ -1464,7 +1461,7 @@ In [18]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如我所料，结果都差不多！这表明我们定义的模型在这三个包都一致。另外，我们看到用来产生分布的“真”值(25, 0.5)落在1-<span class="math">\(\sigma\)</span>的椭圆区域内。</p>
+<p>如我所料，结果都差不多！这表明我们定义的模型在这三个包都一致。另外，我们看到用来产生分布的“真”值(25, 0.5)落在1-$\sigma$的椭圆区域内。</p>
 </div>
 </div>
 </div>
@@ -1488,84 +1485,38 @@ In [18]:
 <table>
 <tr>
 <th></th>
-<th>
-复杂性
-</th>
-<th>
-执行时间(100,000样本，包括准备阶段)
-</th>
-<th>
-安装简易性
-</th>
-<th>
-使用友好程度
-</th>
-<th>
-特性丰富程度
-</th>
+<th>复杂性</th>
+<th>执行时间(100,000样本，包括准备阶段)</th>
+<th>安装简易性</th>
+<th>使用友好程度</th>
+<th>特性丰富程度</th>
 </tr>
 
 <tr>
-<th>
-emcee
-</th>
-<td bgcolor="#CCFFCC">
-轻量版
-</td>
-<td bgcolor="#CCFFCC">
-~6秒
-</td>
-<td bgcolor="#CCFFCC">
-纯Python；pip安装简单
-</td>
-<td bgcolor="#CCFFCC">
-直截了当 &amp; Pythonic
-</td>
-<td bgcolor="#FFCCCC">
-除了MCMC取样没太多功能
-</td>
+<th>emcee</th>
+<td bgcolor="#CCFFCC">轻量版</td>
+<td bgcolor="#CCFFCC">~6秒</td>
+<td bgcolor="#CCFFCC">纯Python；pip安装简单</td>
+<td bgcolor="#CCFFCC">直截了当 &amp; Pythonic</td>
+<td bgcolor="#FFCCCC">除了MCMC取样没太多功能</td>
 </tr>
 
 <tr>
-<th>
-pymc2
-</th>
-<td bgcolor="#FFFFCC">
-大量功能 &amp; 选项
-</td>
-<td bgcolor="#FFCCCC">
-~17秒
-</td>
-<td bgcolor="#EEFFCC">
-要求fortran编译器; 可通过conda编译
-</td>
-<td bgcolor="#FFFFCC">
-Pythonic，但有大量的pymc引用文件
-</td>
-<td bgcolor="#CCFFCC">
-大量的内建Python功能
-</td>
+<th>pymc2</th>
+<td bgcolor="#FFFFCC">大量功能 &amp; 选项</td>
+<td bgcolor="#FFCCCC">~17秒</td>
+<td bgcolor="#EEFFCC">要求fortran编译器; 可通过conda编译</td>
+<td bgcolor="#FFFFCC">Pythonic，但有大量的pymc引用文件</td>
+<td bgcolor="#CCFFCC">大量的内建Python功能</td>
 </tr>
 
 <tr>
-<th>
-pystan
-</th>
-<td bgcolor="#FFCCCC">
-很多包; 要求Stan语言编写
-</td>
-<td bgcolor="#FFFFCC">
-~20秒编译 + ~6秒计算
-</td>
-<td bgcolor="#FFCCCC">
-要求C编译器 + Stan安装; 没有编译好的文件
-</td>
-<td bgcolor="#FFCCCC">
-不是纯Python; 必须学习Stan建模语言
-</td>
-<td bgcolor="#EEFFCC">
-大量Stan功能
-</td>
+<th>pystan</th>
+<td bgcolor="#FFCCCC">很多包; 要求Stan语言编写</td>
+<td bgcolor="#FFFFCC">~20秒编译 + ~6秒计算</td>
+<td bgcolor="#FFCCCC">要求C编译器 + Stan安装; 没有编译好的文件</td>
+<td bgcolor="#FFCCCC">不是纯Python; 必须学习Stan建模语言</td>
+<td bgcolor="#EEFFCC">大量Stan功能</td>
 </tr>
 
 </table>
@@ -1583,12 +1534,15 @@ pystan
 <p><strong>pystan</strong>是最难用的，但那是因为不是真Python包。模型也不是Python的，是一种统计语言。这种语言很给力，但是有点难学。约20秒编译时间挺烦人，但我认为随着样本增大模型会更复杂，这点儿可以忽略。Stan是为这种工作设计的，模型都被编译成字节码，在做大case的时候是个不错的选择。</p>
 <p>这里就不花太多时间了；前面说过，这些包用了不同的取样算法所以时间是不可比的。每种取样算法都有优缺点，你可以去看看。</p>
 <p>希望我的比较是公正合理的。当然我不是这些包的大牛；只是简单读了一些文档，然后把教程的例子改改罢了。如果大牛碰巧读了这些，轻喷哈。再说两件事：</p>
-<ol style="list-style-type: decimal">
+<ol>
 <li>如果你用的更好，写点儿评论哈！</li>
 <li>提醒一下那些<em>想用这包解决问题的一般用户</em>：读读教程，因地制宜。</li>
 </ol>
 <p>感谢御览！</p>
-<p><small> 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">nbviewer</a>静态网页。 十分感谢David W. Hogg对本文提出的建议。 </small></p>
+<p><small>
+这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">nbviewer</a>静态网页。
+十分感谢David W. Hogg对本文提出的建议。
+</small></p>
 </div>
 </div>
 </div>
@@ -1625,7 +1579,7 @@ pystan
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 

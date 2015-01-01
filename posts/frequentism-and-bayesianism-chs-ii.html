@@ -59,13 +59,7 @@ MathJax.Hub.Config({
 
 
 
-这个系列共4个部分：中文版Part I Part II Part III Part IV，英文版Part I Part II Part III Part IV
-
-
-
-
-
-
+这个系列共4个部分：中文版Part I  Part II  Part III  Part IV，英文版Part I  Part II  Part III  Part IV
 
 
 ">
@@ -145,7 +139,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a> <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a> <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a> <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
 <!-- TEASER_END -->
 </div>
 </div>
@@ -157,7 +151,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">上一篇</a>我论述了频率主义和贝叶斯主义在科学计算方面的差异。其中，讨论了两者基础理论的差异，表明在简单问题的处理方面两者基本等价。</p>
 <p>尽管如此，在处理复杂问题时两者会有巨大分歧。通过我的实践表明，这种分歧主要出现在两个方面：</p>
-<ol style="list-style-type: decimal">
+<ol>
 <li>冗余参数(nuisance parameters)的处理</li>
 <li>频率论的置信区间(confidence intervals)和贝叶斯可信区间(credible intervals)的小差异(经常被忽略)。</li>
 </ol>
@@ -181,7 +175,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>冗余参数是与最终目标无关的任何变量，但是对确定一些相关的变量却不可或缺。例如，在上一篇博文的 <a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/#Varying-Photon-Counts:-The-Bayesian-Approach">第二个案例</a> 中，我们估计了光量子的均值<span class="math">\(\mu\)</span>和标准差<span class="math">\(\sigma\)</span>。而我们真正感兴趣的是<span class="math">\(\mu\)</span>，就是分布的均值。那么，<span class="math">\(\sigma\)</span>就是冗余参数，它与最终结果无关，但是它是确定目标<span class="math">\(\mu\)</span>的过河石头，不可或缺。</p>
+<p>冗余参数是与最终目标无关的任何变量，但是对确定一些相关的变量却不可或缺。例如，在上一篇博文的 <a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/#Varying-Photon-Counts:-The-Bayesian-Approach">第二个案例</a> 中，我们估计了光量子的均值$\mu$和标准差$\sigma$。而我们真正感兴趣的是$\mu$，就是分布的均值。那么，$\sigma$就是冗余参数，它与最终结果无关，但是它是确定目标$\mu$的过河石头，不可或缺。</p>
 <p>我打算用两个例子来论述冗余参数。下面我们看看频率主义和贝叶斯主义解决这些问题差异：</p>
 </div>
 </div>
@@ -231,10 +225,10 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>持频率方法论的人可能会如此解释：</p>
-<p>要想获得结果，我们得先间接的估计一下标记的位置，假设概率<span class="math">\(p\)</span>，可以表示为Alice的得分在掷过的球的结果中的比例。因为8个球里面Alice得5分，则<span class="math">\(p\)</span>的最大似然估计(maximum likelihood estimate)为：</p>
-<p><span class="math">\[\hat{p} = 5/8\]</span></p>
-<p>(结果服从二项分布的最大似然估计<a href="http://en.wikipedia.org/wiki/Binomial_distribution">binomial likelihood</a>)。假设Bob获胜的最大似然估计为<span class="math">\(P(B)\)</span>，则：</p>
-<p><span class="math">\[P(B) = (1 - \hat{p})^3\]</span></p>
+<p>要想获得结果，我们得先间接的估计一下标记的位置，假设概率$p$，可以表示为Alice的得分在掷过的球的结果中的比例。因为8个球里面Alice得5分，则$p$的最大似然估计(maximum likelihood estimate)为：</p>
+<p>$$\hat{p} = 5/8$$</p>
+<p>(结果服从二项分布的最大似然估计<a href="http://en.wikipedia.org/wiki/Binomial_distribution">binomial likelihood</a>)。假设Bob获胜的最大似然估计为$P(B)$，则：</p>
+<p>$$P(B) = (1 - \hat{p})^3$$</p>
 <p>也就是说，Bob要连续赢3次。我们可以算出结果：</p>
 </div>
 </div>
@@ -358,20 +352,16 @@ Bob获胜的赔率为: 18 to 1
 <p>我们再从贝叶斯的角度看看这个问题。有点小复杂，得先定义一些变量：</p>
 <p>具体定义如下：</p>
 <ul>
-<li>
-<span class="math">\(B\)</span> = Bob获胜</li>
-<li>
-<span class="math">\(D\)</span> = 样本数据，如<span class="math">\(D = (n_A, n_B) = (5, 3)\)</span>
-</li>
-<li>
-<span class="math">\(p\)</span> = 球落在Alice那边的概率</li>
+<li>$B$ = Bob获胜</li>
+<li>$D$ = 样本数据，如$D = (n_A, n_B) = (5, 3)$</li>
+<li>$p$ = 球落在Alice那边的概率</li>
 </ul>
-<p>我们要计算<span class="math">\(P(B~|~D)\)</span>，即在Alice与Bob比分<span class="math">\(5:3\)</span>的条件下，Bob获胜的概率。</p>
+<p>我们要计算$P(B~|~D)$，即在Alice与Bob比分$5:3$的条件下，Bob获胜的概率。</p>
 <p>通常，贝叶斯方法处理冗余参数的方法是<em>边缘概率法(marginalization)</em>，即获得冗余参数全部可能的联合概率分布(joint probability)。也就是说，我们得先计算联合概率分布</p>
-<p><span class="math">\[P(B,p~|~D)\]</span></p>
-<p>然后用下面的等式边缘化<span class="math">\(p\)</span>:</p>
-<p><span class="math">\[P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p\]</span></p>
-<p>这个等式源自条件概率(conditional probability)和总概率(total probability)定义，源自概率率公理的基本推论，不容置疑。频率主义者也认同这点，即使他们可能不同意我们把<span class="math">\(P(p)\)</span>解释成“我们认识的不确定性的度量”。</p>
+<p>$$P(B,p~|~D)$$</p>
+<p>然后用下面的等式边缘化$p$:</p>
+<p>$$P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p$$</p>
+<p>这个等式源自条件概率(conditional probability)和总概率(total probability)定义，源自概率率公理的基本推论，不容置疑。频率主义者也认同这点，即使他们可能不同意我们把$P(p)$解释成“我们认识的不确定性的度量”。</p>
 </div>
 </div>
 </div>
@@ -391,28 +381,24 @@ Bob获胜的赔率为: 18 to 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>要计算结果，我们就要把上面的<span class="math">\(P(B~|~D)\)</span>转换成可以计算的形式。</p>
-<p>我们用<a href="http://en.wikipedia.org/wiki/Conditional_probability#Definition">条件概率(conditional probability)</a>来展开<span class="math">\(P(B,p~|~D)\)</span>:</p>
-<p><span class="math">\[P(B~|~D) = \int P(B~|~p, D) P(p~|~D) dp\]</span></p>
-<p>然后再用 <a href="http://en.wikipedia.org/wiki/Bayes%27_theorem">贝叶斯定理(Bayes' rule)</a>改写<span class="math">\(P(p~|~D)\)</span>:</p>
-<p><span class="math">\[P(B~|~D) = \int P(B~|~p, D) \frac{P(D~|~p)P(p)}{P(D)} dp\]</span></p>
-<p>最后，用前面同样的概率恒等式，可以将<span class="math">\(P(D)\)</span>扩展成分式:</p>
-<p><span class="math">\[P(B~|~D) = \frac{\int P(B~|~p,D) P(D~|~p) P(p) dp}{\int P(D~|~p)P(p) dp}\]</span></p>
+<p>要计算结果，我们就要把上面的$P(B~|~D)$转换成可以计算的形式。</p>
+<p>我们用<a href="http://en.wikipedia.org/wiki/Conditional_probability#Definition">条件概率(conditional probability)</a>来展开$P(B,p~|~D)$:</p>
+<p>$$P(B~|~D) = \int P(B~|~p, D) P(p~|~D) dp$$</p>
+<p>然后再用 <a href="http://en.wikipedia.org/wiki/Bayes%27_theorem">贝叶斯定理(Bayes' rule)</a>改写$P(p~|~D)$:</p>
+<p>$$P(B~|~D) = \int P(B~|~p, D) \frac{P(D~|~p)P(p)}{P(D)} dp$$</p>
+<p>最后，用前面同样的概率恒等式，可以将$P(D)$扩展成分式:</p>
+<p>$$P(B~|~D) = \frac{\int P(B~|~p,D) P(D~|~p) P(p) dp}{\int P(D~|~p)P(p) dp}$$</p>
 <p>现在的公式就可以计算了，我解释一下：</p>
 <ul>
-<li>
-<span class="math">\(P(B~|~p,D)\)</span>: 就是上面使用的频率论的似然估计概率。也就是，已知标记位置为<span class="math">\(p\)</span>且在Alice与Bob比分<span class="math">\(5:3\)</span>的条件下，Bob获胜的概率？假如需要连续3次获胜，即 <span class="math">\(P(B~|~p,D) = (1 - p) ^ 3\)</span>.</li>
-<li>
-<span class="math">\(P(D~|~p)\)</span>: 这也容易算。已知Alice那侧概率<span class="math">\(p\)</span>, 8次中5次为Alice那侧的似然估计概率。答案来自著名的 <a href="http://en.wikipedia.org/wiki/Binomial_distribution">(二项分布)Binomial distribution</a>：<span class="math">\(P(D~|~p) \propto p^5 (1-p)^3\)</span>
-</li>
-<li>
-<span class="math">\(P(p)\)</span>: 对概率<span class="math">\(p\)</span>先验认知。此例中，我们假设<span class="math">\(p\)</span>最终要么是0，要么是1。就是说，<span class="math">\(P(p) \propto 1\)</span>，积分范围介于0和1之间。</li>
+<li>$P(B~|~p,D)$: 就是上面使用的频率论的似然估计概率。也就是，已知标记位置为$p$且在Alice与Bob比分$5:3$的条件下，Bob获胜的概率？假如需要连续3次获胜，即 $P(B~|~p,D) = (1 - p) ^ 3$.</li>
+<li>$P(D~|~p)$: 这也容易算。已知Alice那侧概率$p$, 8次中5次为Alice那侧的似然估计概率。答案来自著名的 <a href="http://en.wikipedia.org/wiki/Binomial_distribution">(二项分布)Binomial distribution</a>：$P(D~|~p) \propto p^5 (1-p)^3$</li>
+<li>$P(p)$: 对概率$p$先验认知。此例中，我们假设$p$最终要么是0，要么是1。就是说，$P(p) \propto 1$，积分范围介于0和1之间。</li>
 </ul>
 <p>把这些放在一起，如下所示：</p>
-<p><span class="math">\[P(B~|~D) = \frac{\int_0^1 (1 - p)^6 p^5 dp}{\int_0^1 (1 - p)^3 p^5 dp}\]</span></p>
+<p>$$P(B~|~D) = \frac{\int_0^1 (1 - p)^6 p^5 dp}{\int_0^1 (1 - p)^3 p^5 dp}$$</p>
 <p>其中，积分范围介于0和1之间。</p>
 <p>积分看着有点复杂，如果看出是<a href="http://en.wikipedia.org/wiki/Beta_function">贝塔函数(Beta Function)</a>就好办了：</p>
-<p><span class="math">\[\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}\]</span></p>
+<p>$$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$</p>
 <p>贝塔函数可以进一步表示成伽马函数(Gamma function)，如阶乘(factorials)，但是我们可以直接用Scipy的beta函数简化计算：</p>
 </div>
 </div>
@@ -655,8 +641,8 @@ MC Odds against Bob winning: 10 to 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本例比较了冗余参数<em>p</em>的不同处理方式。蒙特卡罗仿真给了一个真实可能的穷举方法(假设之前的假设都靠谱)，表明贝叶斯的结果是对的。而频率论方法用一个最大似然估计值，看来是错了。</p>
-<p>随着我的评论和跟帖不断扩散，我在Reddit和Hacker News上被网友撕成了碎片，我的声明一点<strong>并不是说频率主义是错的</strong>。结果的错误源自“简单”而非“频率率”。当然，频率论中有一堆方法处理冗余参数——如通过数据变换和训练来消除对<span class="math">\(p\)</span>的依赖——但是在此例中，如果不<span class="math">\(p\)</span>用贝叶斯边缘概率法，我没找到其他任何方法。</p>
-<p>另外，本例对经典的频率论来说可能不太公平。频率论者可能希望用假设检验或置信区间(null tests or confidence intervals)给出结果：也就是设计一个方法来构建边界，类似实验中正确的结果为百分之<span class="math">\(100\times(1 - p)\)</span>，对某个<span class="math">\(p\)</span>，如0.05(这里说的<span class="math">\(p\)</span>和我们前面的<span class="math">\(p\)</span>不一样)。</p>
+<p>随着我的评论和跟帖不断扩散，我在Reddit和Hacker News上被网友撕成了碎片，我的声明一点<strong>并不是说频率主义是错的</strong>。结果的错误源自“简单”而非“频率率”。当然，频率论中有一堆方法处理冗余参数——如通过数据变换和训练来消除对$p$的依赖——但是在此例中，如果不$p$用贝叶斯边缘概率法，我没找到其他任何方法。</p>
+<p>另外，本例对经典的频率论来说可能不太公平。频率论者可能希望用假设检验或置信区间(null tests or confidence intervals)给出结果：也就是设计一个方法来构建边界，类似实验中正确的结果为百分之$100\times(1 - p)$，对某个$p$，如0.05(这里说的$p$和我们前面的$p$不一样)。</p>
 <p>这两条频率论观点有一个共同之处：都需要一定程度的努力和/或专业知识；可能一个靠谱的频率论方法对一个统计学博士是显而易见的，但是对一个普通人来说未必那么简单。总之，我认为贝叶斯主义是解决这类问题的良方：通过几条贝叶斯公理做简单的代数运算，就可以直接获得正确的结果。</p>
 <p>下面我们研究一个复杂点的例子。</p>
 </div>
@@ -678,7 +664,7 @@ MC Odds against Bob winning: 10 to 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>冗余参数适合处理数据奇点。考虑下面的数据集合<span class="math">\(x\)</span>和<span class="math">\(y\)</span>，<span class="math">\(e\)</span>是<span class="math">\(y\)</span>的误差。</p>
+<p>冗余参数适合处理数据奇点。考虑下面的数据集合$x$和$y$，$e$是$y$的误差。</p>
 </div>
 </div>
 </div>
@@ -762,14 +748,14 @@ In [7]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们的任务是找数据的最佳拟合线。很明显，数据里面有一些奇点，但是让我们用一个不稳定(non-robust)最大似然估计方法开始。如前所述，下面的最大似然估计结果要么概率论要么贝叶斯(有均匀分布前提)：在这类问题里面，这些方法基本等价。</p>
-<p>我们先做一个简单的线性模型，有一个斜率和一个截距的参数矢量<span class="math">\(\theta\)</span>，定义如下：</p>
-<p><span class="math">\[\hat{y}(x~|~\theta) = \theta_0 + \theta_1 x\]</span></p>
+<p>我们先做一个简单的线性模型，有一个斜率和一个截距的参数矢量$\theta$，定义如下：</p>
+<p>$$\hat{y}(x~|~\theta) = \theta_0 + \theta_1 x$$</p>
 <p>用这个模型，我们可以计算正态似然估计：</p>
-<p><span class="math">\[p(x_i,y_i,e_i~|~\theta) \propto \exp\left[-\frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\right]\]</span></p>
+<p>$$p(x_i,y_i,e_i~|~\theta) \propto \exp\left[-\frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\right]$$</p>
 <p>总样本的似然估计是个体似然估计的乘积。两边取对数：</p>
-<p><span class="math">\[\log \mathcal{L}(D~|~\theta) = \mathrm{const} - \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\]</span></p>
-<p>如果看过上一节的内容，会很明白。最终的式子是数据模型的对数似然估计(log-likelihood)，可以找到<span class="math">\(\theta\)</span>的最大似然估计模型的最大值。同理，我们也可以最小化总样本的似然估计，记作<em>(损失)loss</em>：</p>
-<p><span class="math">\[\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\]</span></p>
+<p>$$\log \mathcal{L}(D~|~\theta) = \mathrm{const} - \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$</p>
+<p>如果看过上一节的内容，会很明白。最终的式子是数据模型的对数似然估计(log-likelihood)，可以找到$\theta$的最大似然估计模型的最大值。同理，我们也可以最小化总样本的似然估计，记作<em>(损失)loss</em>：</p>
+<p>$$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$</p>
 <p>这个表达式就是<em>平方损失(squared loss)</em>；我们简单的演示了平方损失源自正态对数似然估计。</p>
 </div>
 </div>
@@ -790,7 +776,7 @@ In [7]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>按照前面的逻辑，我们用频率论中求最大似然估计(或者最小损失)的方式来算<span class="math">\(\theta\)</span>。假设<span class="math">\(\theta\)</span>为扁平先验(flat prior)，贝叶斯的后验概率会产生相同结果。 (如果按照最大熵原则的最佳参数理论，此处均匀分布并非最佳选择；但我们忽略这些细节，因为对此例影响很小)。</p>
+<p>按照前面的逻辑，我们用频率论中求最大似然估计(或者最小损失)的方式来算$\theta$。假设$\theta$为扁平先验(flat prior)，贝叶斯的后验概率会产生相同结果。 (如果按照最大熵原则的最佳参数理论，此处均匀分布并非最佳选择；但我们忽略这些细节，因为对此例影响很小)。</p>
 <p>简单起见，我们用scipy的<code>optimize</code>包来获得最小损失(如果用矩阵方法，平方损失的计算会更困难，但是我们使数值最小化，就比较容易处理)。</p>
 </div>
 </div>
@@ -872,7 +858,7 @@ In [8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>损失函数的可能看起来有无限多种，但是相对靠谱的选择就是<a href="http://en.wikipedia.org/wiki/Huber_loss_function">Huber loss</a>。Huber损失引入一个临界值(critical value)使得损失曲线从平方变为线性。让我们画个图来比较一下Huber损失和标准损失的临界值<span class="math">\(c\)</span>:</p>
+<p>损失函数的可能看起来有无限多种，但是相对靠谱的选择就是<a href="http://en.wikipedia.org/wiki/Huber_loss_function">Huber loss</a>。Huber损失引入一个临界值(critical value)使得损失曲线从平方变为线性。让我们画个图来比较一下Huber损失和标准损失的临界值$c$:</p>
 </div>
 </div>
 </div>
@@ -990,7 +976,7 @@ In [10]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>直观的看，会觉得好像Huber损失拟合是我们要的结果。</p>
-<p>但一个贝叶斯主义者可能会说这种新的损失函数的动机有点可疑：如前所述，平方损失源自正态似然估计，但Huber损失看着有点<em>(随意)ad hoc</em>，这是哪儿来的? <span class="math">\(c\)</span>到底用多少合适呢？对奇点使用线性的损失函数的动机有没有一个合理的解释呢？或者只是简单的把奇点删掉？这么多对模型的影响有多大？</p>
+<p>但一个贝叶斯主义者可能会说这种新的损失函数的动机有点可疑：如前所述，平方损失源自正态似然估计，但Huber损失看着有点<em>(随意)ad hoc</em>，这是哪儿来的? $c$到底用多少合适呢？对奇点使用线性的损失函数的动机有没有一个合理的解释呢？或者只是简单的把奇点删掉？这么多对模型的影响有多大？</p>
 </div>
 </div>
 </div>
@@ -1011,12 +997,12 @@ In [10]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>贝叶斯方法处理奇点一般通过<em>调整模型(modifying the model)</em> ，这样奇点就被考虑到。很明显，线性函数对这个模型不是一个好结果。因此，让我们设计一个更复杂的模型来考虑奇点。一种方式就是把信号和噪声(background)混合在一起：</p>
-<p><span class="math">\[\begin{array}{ll}
+<p>$$\begin{array}{ll}
 p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{\sqrt{2\pi e_i^2}}\exp\left[\frac{-\left(\hat{y}(x_i~|~\theta) - y_i\right)^2}{2e_i^2}\right] \\
 &amp;+ \frac{1 - g_i}{\sqrt{2\pi \sigma_B^2}}\exp\left[\frac{-\left(\hat{y}(x_i~|~\theta) - y_i\right)^2}{2\sigma_B^2}\right]
-\end{array}\]</span></p>
-<p>我们要做的就是把模型加上冗余参数： <span class="math">\(\{g_i\}\)</span>是一组权重介于0到1之间，表明每个点<span class="math">\(i\)</span>拟合的程度。<span class="math">\(g_i=0\)</span>表示奇点，标准差<span class="math">\(\sigma_B\)</span>的正态分布用来计算似然估计。<span class="math">\(\sigma_B\)</span>也是一个冗余参数， 它的值可以是一组足够大的数，比如50。</p>
-<p>现在我们的模型足够复杂了：有22个参数，但是大多数可作为冗余参数，最终将被边缘化(marginalized-out)。恰似之前我们在台球游戏里面边缘化<span class="math">\(p\)</span>。让我们构建一个函数来实现似然估计。如上一节，我们使用<a href="http://dan.iel.fm/emcee/current/">emcee</a> 包来探索参数空间。</p>
+\end{array}$$</p>
+<p>我们要做的就是把模型加上冗余参数： $\{g_i\}$是一组权重介于0到1之间，表明每个点$i$拟合的程度。$g_i=0$表示奇点，标准差$\sigma_B$的正态分布用来计算似然估计。$\sigma_B$也是一个冗余参数， 它的值可以是一组足够大的数，比如50。</p>
+<p>现在我们的模型足够复杂了：有22个参数，但是大多数可作为冗余参数，最终将被边缘化(marginalized-out)。恰似之前我们在台球游戏里面边缘化$p$。让我们构建一个函数来实现似然估计。如上一节，我们使用<a href="http://dan.iel.fm/emcee/current/">emcee</a> 包来探索参数空间。</p>
 <p>为了算出结果，我们用函数开始定义先验概率，似然估计和后验概率：</p>
 </div>
 </div>
@@ -1185,8 +1171,8 @@ In [13]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>可见，斜率分布在<span class="math">\(\sim 0.45\)</span>附近，截距在<span class="math">\(\sim 31\)</span>附近。我们一会儿会把这个模型画出来，现在让我们看看还有没有其他信息。</p>
-<p>通过分析MCMC样本会发现，冗余参数的选择是完全对称的(completely symmetric)：就像我们可以把<span class="math">\(\{g_i\}\)</span>做冗余参数，也可以用截距和斜率做冗余参数。让我们试试看，检查一下<span class="math">\(g_1\)</span>和<span class="math">\(g_2\)</span>的后验结果，奇点标在前两个点上：</p>
+<p>可见，斜率分布在$\sim 0.45$附近，截距在$\sim 31$附近。我们一会儿会把这个模型画出来，现在让我们看看还有没有其他信息。</p>
+<p>通过分析MCMC样本会发现，冗余参数的选择是完全对称的(completely symmetric)：就像我们可以把$\{g_i\}$做冗余参数，也可以用截距和斜率做冗余参数。让我们试试看，检查一下$g_1$和$g_2$的后验结果，奇点标在前两个点上：</p>
 </div>
 </div>
 </div>
@@ -1251,7 +1237,7 @@ g2 mean: 0.41
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>这两个参数不是很相关，但是我们可以看到<span class="math">\((g_1, g_2) = (1, 0)\)</span>是比较明显的： <span class="math">\(g_1\)</span>的均值大于0.5，<span class="math">\(g_2\)</span>的均值小于0.5。如果我们选择中间值<span class="math">\(g=0.5\)</span>那么我们的算法会把<span class="math">\(g_2\)</span>当中奇点。</p>
+<p>这两个参数不是很相关，但是我们可以看到$(g_1, g_2) = (1, 0)$是比较明显的： $g_1$的均值大于0.5，$g_2$的均值小于0.5。如果我们选择中间值$g=0.5$那么我们的算法会把$g_2$当中奇点。</p>
 <p>让我们来确认一下，画出原始数据的边缘化测试模型，奇点用红圈标识。</p>
 </div>
 </div>
@@ -1356,8 +1342,10 @@ In [15]:
 <p>在线性回归的例子中，我们论述了一种用频率主义和贝叶斯主义解决数据奇点问题的可行方法。用稳定的频率论损失函数相对的短平快，但是其动机混乱而难以解释。用贝叶斯混合模型更费力且需要大量计算，但是能够算出完美的结果，使多个问题被一次解决：也就是，边缘化一种方式找出最佳拟合模型，边缘化另种方式找出数据奇点。</p>
 <p>哪个更好呢？频率主义和贝叶斯主义。</p>
 <p>答案依赖于你对两者的掌握程度，也有赖于问题的复杂度，以及可用的计算资源。我，和很多物理背景的人一样，倾向于贝叶斯方法，因为它们能够从任何基本原理派生出我想要的结果。贝叶斯主义，基于一些概率公理的代数计算，我们可以构建非常复杂的方法来解决一大堆问题。就如质-能转换可以用到任何场合，从抛物运动(projectile motion)到恒星结构(stellar structure)，贝叶斯原理和贝叶斯概率解释能用来解决几乎任何统计问题：从计算赌博赔率(gambling odds)到探索噪声数据中的外星信息(exoplanet transits in noisy photometric data)。在贝叶斯模式中，你不需要花大量时间来记忆和理解频率论技巧和术语(p值，假设检验，置信区间，断点等等)，就为了解决一个小问题。我认为这是一种误解：人们总觉得贝叶斯很难。相反，很多科学家觉得它更容易。</p>
-<p>简单和优美之外，我坚定贝叶斯主义立场的深层理由是必须比较科学研究中频率论置信区间(confidence intervals)和贝叶斯可信区域(credibility regions)。这篇已经够长了，我打算下一篇(http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/)来讨论。(有费马之嫌~~)</p>
-<p><small> 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">nbviewer</a>静态网页。 </small></p>
+<p>简单和优美之外，我坚定贝叶斯主义立场的深层理由是必须比较科学研究中频率论置信区间(confidence intervals)和贝叶斯可信区域(credibility regions)。这篇已经够长了，我打算下一篇(<a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/)%E6%9D%A5%E8%AE%A8%E8%AE%BA%E3%80%82(%E6%9C%89%E8%B4%B9%E9%A9%AC%E4%B9%8B%E5%AB%8C~~">http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/)来讨论。(有费马之嫌~~</a>)</p>
+<p><small>
+这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">nbviewer</a>静态网页。
+</small></p>
 </div>
 </div>
 </div>
@@ -1394,7 +1382,7 @@ In [15]:
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 

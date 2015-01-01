@@ -42,7 +42,7 @@ MathJax.Hub.Config({
     <meta property="og:url" content="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs.html">
     <meta property="og:description" content="频率主义和贝叶斯主义——一个实用的介绍
 此notebook最初出现在博客Pythonic Perambulations的文章。BSD licensed。
-这个系列共4个部分：中文版Part I Part II Part III Part IV，英文版Part I Part II Part III Part IV
+这个系列共4个部分：中文版Part I  Part II  Part III  Part IV，英文版Part I  Part II  Part III  Part IV
 
 
 
@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 
 
 
-科学工作者学习统计学的第一件事儿是要知道有两种不同的方法论：频率主义">
+科学工作者学习统计学的第一件事儿是要知道有两种不同的方法">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2014-08-14T17:32:05+08:00">
            <meta property="article:tag" content="CHS">
@@ -109,9 +109,9 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="频率主义和贝叶斯主义一个实用的介绍">频率主义和贝叶斯主义——一个实用的介绍</h2>
+<h2 id="-">频率主义和贝叶斯主义——一个实用的介绍</h2>
 <p><em>此notebook最初出现在博客<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">文章</a>。BSD licensed。</em></p>
-<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a> <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a> <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a> <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
 <!-- TEASER_END -->
 </div>
 </div>
@@ -123,17 +123,17 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>科学工作者学习统计学的第一件事儿是要知道有两种不同的方法论：频率主义和贝叶斯主义。尽管这点很重要，但很多科学工作者从来没有机会认识两者的差异，及其产生结果的不同。本文的目的是综合频率主义和贝叶斯主义的理论与实践内容，让科学工作者在数据分析之前做出更好的选择。</p>
 <p>开始我将通过理论来论述两者区别，之后用Python代码演示两者在应用中的差异。</p>
-<h3 id="频率主义-vs-贝叶斯主义-理论之争">频率主义 VS 贝叶斯主义： 理论之争</h3>
+<h3 id="-vs-">频率主义 VS 贝叶斯主义： 理论之争</h3>
 <p>频率主义与贝叶斯主义的本质之争是对概率定义的差异。</p>
 <p>频率主义认为概率是表示<strong>有限次的重复测量</strong> 。假设我多次测量某个星星的亮度(<a href="http://www.pveducation.org/pvcdrom/properties-of-sunlight/photon-flux">光量子通量</a>)(F) 时(假设星星通量不会变化)，由于测量误差每次得到不同的测量值。在多次测量的前提下，某个变量的<strong>频率</strong> 指的是测量变量的概率。频率主义认为<strong>概率本质上是与频率相关的事件</strong> 。因此，一个纯粹的频率主义者会认为，讨论星星<strong>真实</strong>亮度的概率是没啥意义的，因为真实亮度其实是固定值，也就是说讨论一个固定值的频率分布是瞎扯淡。</p>
-<p>贝叶斯理论认为，概率的概念应该被扩展为<strong>对一个命题信任的程度</strong> 。贝叶斯理论会说测量概率为<span class="math">\(P(F)\)</span>的星星亮度<span class="math">\(F\)</span>：虽然概率确实能够通过大量重复实验获取的频率测得，但是这并非频率的本质。概率是一个由个人经验决定测量结果的主观命题。贝叶斯理论认为<strong>概率本质上与我们对事件的掌握程度有关</strong> 。贝叶斯理论认为人们可以在一个固定的范围内讨论星星<strong>真实</strong>亮度的概率。概率也会调整我们对先验信息和／或已有数据的认识。(<a href="http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/">概率会改变常识</a>)</p>
+<p>贝叶斯理论认为，概率的概念应该被扩展为<strong>对一个命题信任的程度</strong> 。贝叶斯理论会说测量概率为$P(F)$的星星亮度$F$：虽然概率确实能够通过大量重复实验获取的频率测得，但是这并非频率的本质。概率是一个由个人经验决定测量结果的主观命题。贝叶斯理论认为<strong>概率本质上与我们对事件的掌握程度有关</strong> 。贝叶斯理论认为人们可以在一个固定的范围内讨论星星<strong>真实</strong>亮度的概率。概率也会调整我们对先验信息和／或已有数据的认识。(<a href="http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/">概率会改变常识</a>)</p>
 <p>奇怪的是理论争议不大，但是在实际的数据分析中会产生极大差异。下面我会给出一个实际案例的两种理论实现，用Python演示。</p>
-<h3 id="频率理论与贝叶斯理论的实际应用-光量子计量">频率理论与贝叶斯理论的实际应用: 光量子计量</h3>
-<p>让我们看一个简单问题，然后比较一下两种方法的差异。这儿得有点儿数学公式，不过我不会入得特别深哈。如果你想深入，你可以考虑一下练练<a href="http://www.amazon.com/dp/0691151687/">教材</a>4-5章的内容。</p>
-<h4 id="研究对象-简易光量子计量方法">研究对象: 简易光量子计量方法</h4>
-<p>想象一下我们拿着望远镜，观察遥远的星星传来的无尽星光。首先，让我们假设星星的真实亮度是固定值，不会随时间变化。用常量<span class="math">\(F_{\rm true}\)</span> 表示(我们还将忽略大气层的影响，以及其他系统性误差)。我们假设用望远镜进行了<span class="math">\(N\)</span>次测量，第<span class="math">\(i^{\rm th}\)</span> 次测量报道了观察到的亮度<span class="math">\(F_i\)</span> 和误差<span class="math">\(e_i\)</span>。</p>
-<p>问题是有了这些测量值<span class="math">\(D = \{F_i,e_i\}\)</span>，真实亮度<span class="math">\(F_{\rm true}\)</span>的最佳估计值是多少？</p>
-<p><small>(关于测量误差：如果假设测量误差是按正态分布。频率主义者的观点是<span class="math">\(e_i\)</span>是在大量重复<strong>实验</strong>条件下单次测量的标准差。而贝叶斯理论认为<span class="math">\(e_i\)</span>是按照我们以往的测量经验描述的(正态)概率分布的标准差。)</small></p>
+<h3 id="-">频率理论与贝叶斯理论的实际应用: 光量子计量</h3>
+<p>让我们看一个简单问题，然后比较一下两种方法的差异。这儿得有点儿数学公式，不过我不会入得特别深哈。如果你想深入，你可以考虑一下练练<a href="http://www.amazon.com/dp/0691151687/">教材</a>4-5章的内容。 </p>
+<h4 id="-">研究对象: 简易光量子计量方法</h4>
+<p>想象一下我们拿着望远镜，观察遥远的星星传来的无尽星光。首先，让我们假设星星的真实亮度是固定值，不会随时间变化。用常量$F_{\rm true}$ 表示(我们还将忽略大气层的影响，以及其他系统性误差)。我们假设用望远镜进行了$N$次测量，第$i^{\rm th}$ 次测量报道了观察到的亮度$F_i$ 和误差$e_i$。</p>
+<p>问题是有了这些测量值$D = \{F_i,e_i\}$，真实亮度$F_{\rm true}$的最佳估计值是多少？</p>
+<p><small>(关于测量误差：如果假设测量误差是按正态分布。频率主义者的观点是$e_i$是在大量重复<strong>实验</strong>条件下单次测量的标准差。而贝叶斯理论认为$e_i$是按照我们以往的测量经验描述的(正态)概率分布的标准差。)</small></p>
 <p>我们用Python随机生成一些数据来演示两种理论的差异。由于测量是按次计数的离散事件，我们可以使用泊松分布做演示：</p>
 </div>
 </div>
@@ -223,23 +223,23 @@ In [2]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>用标准平方根法则对<a href="http://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a>进行分析，可以看到每次测量值的误差都不同。上面的例子中我们是先知道真实值<span class="math">\(F_{\rm true}\)</span>的，但是实际问题是：<strong>只给测量值和误差，怎么找到真实值的最佳估计值？</strong></p>
+<p>用标准平方根法则对<a href="http://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a>进行分析，可以看到每次测量值的误差都不同。上面的例子中我们是先知道真实值$F_{\rm true}$的，但是实际问题是：<strong>只给测量值和误差，怎么找到真实值的最佳估计值？</strong> </p>
 <p>下面让我们来看看两种理论的不同解决方案。</p>
-<h4 id="简易光量子计量的频率主义方法">简易光量子计量的频率主义方法</h4>
-<p>我们用频率主义中经典的<strong>似然估计</strong>方法开始。对应某一次测量值<span class="math">\(D_i = (F_i, e_i)\)</span>，以前面假设的正态分布误差<span class="math">\(e_i\)</span>为标准差，该事件在真实值<span class="math">\(F_{\rm true}\)</span>已知的条件下发生的概率分布满足：</p>
-<p><span class="math">\[ P(D_i~|~F_{\rm true}) = \frac{1}{\sqrt{2\pi e_i^2}} \exp{\left[\frac{-(F_i - F_{\rm true})^2}{2 e_i^2}\right]} \]</span></p>
-<p>公式应该读作“在<span class="math">\(F_{\rm true}\)</span>条件下事件<span class="math">\(D_i\)</span>发生的概率...”，是个均值<span class="math">\(F_{\rm true}\)</span>、标准差为<span class="math">\(e_i\)</span>的正态分布。</p>
+<h4 id="-">简易光量子计量的频率主义方法</h4>
+<p>我们用频率主义中经典的<strong>似然估计</strong>方法开始。对应某一次测量值$D_i = (F_i, e_i)$，以前面假设的正态分布误差$e_i$为标准差，该事件在真实值$F_{\rm true}$已知的条件下发生的概率分布满足：</p>
+<p>$$ P(D_i~|~F_{\rm true}) = \frac{1}{\sqrt{2\pi e_i^2}} \exp{\left[\frac{-(F_i - F_{\rm true})^2}{2 e_i^2}\right]} $$</p>
+<p>公式应该读作“在$F_{\rm true}$条件下事件$D_i$发生的概率...”，是个均值$F_{\rm true}$、标准差为$e_i$的正态分布。</p>
 <p>我们通过计算每个观测值概率的乘积来构建<strong>似然函数</strong>。</p>
-<p><span class="math">\[\mathcal{L}(D~|~F_{\rm true}) = \prod_{i=1}^N P(D_i~|~F_{\rm true})\]</span></p>
-<p>其中，<span class="math">\(D = \{D_i\}\)</span>表示整个测量事件。因为似然估计值可能非常小，通常更方便的做法是取对数。</p>
-<p><span class="math">\[\log\mathcal{L} = -\frac{1}{2} \sum_{i=1}^N \left[ \log(2\pi  e_i^2) + \frac{(F_i - F_{\rm true})^2}{e_i^2} \right]\]</span></p>
-<p>我们这么做是为了确定<span class="math">\(F_{\rm true}\)</span>的极大似然估计值。由于问题很简单，所以最大值也容易算(比如通过微分求极值<span class="math">\(d\log\mathcal{L}/dF_{\rm true} = 0\)</span>)。下面是<span class="math">\(F_{\rm true}\)</span>的极大似然估计值：</p>
-<p><span class="math">\[ F_{\rm est} = \frac{\sum w_i F_i}{\sum w_i};~~w_i = 1/e_i^2 \]</span></p>
-<p>特殊情况：当所有的测量误差<span class="math">\(e_i\)</span>相等时，可以推出</p>
-<p><span class="math">\[ F_{\rm est} = \frac{1}{N}\sum_{i=1}^N F_i \]</span></p>
-<p>也就是说，当误差相等时，<span class="math">\(F_{\rm est}\)</span>等于观测值的期望，这与直觉一致。</p>
+<p>$$\mathcal{L}(D~|~F_{\rm true}) = \prod_{i=1}^N P(D_i~|~F_{\rm true})$$</p>
+<p>其中，$D = \{D_i\}$表示整个测量事件。因为似然估计值可能非常小，通常更方便的做法是取对数。 </p>
+<p>$$\log\mathcal{L} = -\frac{1}{2} \sum_{i=1}^N \left[ \log(2\pi  e_i^2) + \frac{(F_i - F_{\rm true})^2}{e_i^2} \right]$$</p>
+<p>我们这么做是为了确定$F_{\rm true}$的极大似然估计值。由于问题很简单，所以最大值也容易算(比如通过微分求极值$d\log\mathcal{L}/dF_{\rm true} = 0$)。下面是$F_{\rm true}$的极大似然估计值：</p>
+<p>$$ F_{\rm est} = \frac{\sum w_i F_i}{\sum w_i};~~w_i = 1/e_i^2 $$</p>
+<p>特殊情况：当所有的测量误差$e_i$相等时，可以推出</p>
+<p>$$ F_{\rm est} = \frac{1}{N}\sum_{i=1}^N F_i $$</p>
+<p>也就是说，当误差相等时，$F_{\rm est}$等于观测值的期望，这与直觉一致。</p>
 <p>我们可以进一步研究下这么估计的误差。按照频率主义方法，可以通过李雅普诺夫定理将最大似然函数的曲线进行正态近似；在这个简单的例子中也可以容易解决。正态近似的标准差是：</p>
-<p><span class="math">\[ \sigma_{\rm est} = \left(\sum_{i=1}^N w_i \right)^{-1/2} \]</span></p>
+<p>$$ \sigma_{\rm est} = \left(\sum_{i=1}^N w_i \right)^{-1/2} $$</p>
 <p>这个结果很容易计算；让我们估计一些我们的数据：</p>
 </div>
 </div>
@@ -297,35 +297,31 @@ In [3]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看出，以50次测量得到的观测值为输入，得出我们的估计误差在千分之4。</p>
-<h4 id="简易光量子计量的贝叶斯方法">简易光量子计量的贝叶斯方法</h4>
+<h4 id="-">简易光量子计量的贝叶斯方法</h4>
 <p>你可能认为，如果按照贝叶斯方法，通篇都得使用概率计算。我们真正想计算的其实是我们对参数的主观认识，在本例中就是：</p>
-<p><span class="math">\[ P(F_{\rm true}~|~D) \]</span></p>
-<p>可以看出这与频率主义<em>完成相反</em>，要对<span class="math">\(F_{\rm true}\)</span>这样的固定值建模求解，<em>概率做为模型参数没有任何意义</em>。然而，贝叶斯主义却完全可以接受。</p>
-<p>贝叶斯主义使用<a href="http://en.wikipedia.org/wiki/Bayes'_theorem">贝叶斯定理</a>这一基本概率论公式：</p>
-<p><span class="math">\[ P(F_{\rm true}~|~D) = \frac{P(D~|~F_{\rm true})~P(F_{\rm true})}{P(D)} \]</span></p>
-<p>虽然贝叶斯定理这一法则本身没有争议，贝叶斯主义的名字就从那儿来，但是贝叶斯主义对概率有争议的解释却是暗含在法则的<span class="math">\(P(F_{\rm true}~|~D)\)</span>之中。</p>
+<p>$$ P(F_{\rm true}~|~D) $$</p>
+<p>可以看出这与频率主义<em>完成相反</em>，要对$F_{\rm true}$这样的固定值建模求解，<em>概率做为模型参数没有任何意义</em>。然而，贝叶斯主义却完全可以接受。</p>
+<p>贝叶斯主义使用<a href="http://en.wikipedia.org/wiki/Bayes%5C'_theorem">贝叶斯定理</a>这一基本概率论公式：</p>
+<p>$$ P(F_{\rm true}~|~D) = \frac{P(D~|~F_{\rm true})~P(F_{\rm true})}{P(D)} $$</p>
+<p>虽然贝叶斯定理这一法则本身没有争议，贝叶斯主义的名字就从那儿来，但是贝叶斯主义对概率有争议的解释却是暗含在法则的$P(F_{\rm true}~|~D)$之中。</p>
 <p>让我们仔细看看公式中的术语：</p>
 <ul>
-<li>
-<span class="math">\(P(F_{\rm true}~|~D)\)</span>: <strong>后验概率</strong>，是在已获得的数据条件下模型参数的概率：这是我们想要计算的。</li>
-<li>
-<span class="math">\(P(D~|~F_{\rm true})\)</span>: <strong>相似度</strong>，与上面频率主义的似然估计<span class="math">\(\mathcal{L}(D~|~F_{\rm true})\)</span>成正比。</li>
-<li>
-<span class="math">\(P(F_{\rm true})\)</span>: <strong>先验概率</strong>，在观察数据<span class="math">\(D\)</span>之前我们对事件不确定性的认识。</li>
-<li>
-<span class="math">\(P(D)\)</span>: <strong>标准化常量</strong>，对实际数量进行简单标准化。</li>
+<li>$P(F_{\rm true}~|~D)$: <strong>后验概率</strong>，是在已获得的数据条件下模型参数的概率：这是我们想要计算的。</li>
+<li>$P(D~|~F_{\rm true})$: <strong>相似度</strong>，与上面频率主义的似然估计$\mathcal{L}(D~|~F_{\rm true})$成正比。</li>
+<li>$P(F_{\rm true})$: <strong>先验概率</strong>，在观察数据$D$之前我们对事件不确定性的认识。</li>
+<li>$P(D)$: <strong>标准化常量</strong>，对实际数量进行简单标准化。</li>
 </ul>
-<p>如果我们设置<span class="math">\(P(F_{\rm true}) \propto 1\)</span>(<em>扁平先验，flat prior</em>)，那么会发现</p>
-<p><span class="math">\[P(F_{\rm true}|D) \propto \mathcal{L}(D|F_{\rm true})\]</span></p>
+<p>如果我们设置$P(F_{\rm true}) \propto 1$(<em>扁平先验，flat prior</em>)，那么会发现</p>
+<p>$$P(F_{\rm true}|D) \propto \mathcal{L}(D|F_{\rm true})$$</p>
 <p>也就是说贝叶斯主义的概率是频率主义似然估计结果的最大值！因此，遑论两种理论的差异，我们会发现(至少是简单问题)两种估计是等价的。</p>
-<h4 id="什么叫先验概率">什么叫先验概率？</h4>
-<p>你会发现，我为了图省事儿，先验概率<span class="math">\(P(F_{\rm true})\)</span>没解释清楚。先验概率允许在计算中包含其他有用的信息，实际应用中用多种测量方法组合对某一事件进行评估是非常有用的（比如<a href="http://background.uchicago.edu/~whu/araa/node35.html">宇宙成因的参数估计</a>）。然而，确实先验概率的必要性也是贝叶斯分析的争议之一。</p>
+<h4 id="-">什么叫先验概率？</h4>
+<p>你会发现，我为了图省事儿，先验概率$P(F_{\rm true})$没解释清楚。先验概率允许在计算中包含其他有用的信息，实际应用中用多种测量方法组合对某一事件进行评估是非常有用的（比如<a href="http://background.uchicago.edu/~whu/araa/node35.html">宇宙成因的参数估计</a>）。然而，确实先验概率的必要性也是贝叶斯分析的争议之一。</p>
 <p>当先验事实不存在时，频率主义者会说先验概率不靠谱。尽管用一个<a href="http://www.stats.org.uk/priors/noninformative/"><strong>未知先验概率</strong></a>更简单，像前面提到那个先验概率常量，但是也会有一些<a href="http://normaldeviate.wordpress.com/2013/07/13/lost-causes-in-statistics-ii-noninformative-priors/comment-page-1/">意外的微妙之处</a>。很多实验表明，真正的未知先验概率是不存在的！频率主义者认为主观选择先验概率会偏离结果，不能进行统计数据分析。</p>
 <p>贝叶斯主义者认为频率主义解决不了问题，只想简单的避开。在确定（隐含的）先验概率这点上，频率主义经常被简单地看作贝叶斯主义理论的特殊情形：贝叶斯主义会要求最好让隐含变成明确，即使这种选择可能包含主观性。</p>
-<h4 id="光量子计量贝叶斯方法">光量子计量：贝叶斯方法</h4>
-<p>离开这些理论之争，让我们看看贝叶斯主义的实际计算结果。因为只考虑一个参数，可以将后验概率<span class="math">\(P(F_{\rm true}~|~D)\)</span>当作<span class="math">\(F_{\rm true}\)</span>的函数计算：这个分布反映了我们对<span class="math">\(F_{\rm true}\)</span>分观布主的认识。但是随着模型规模的增长，这种方法就变得难以把握。因此，贝叶斯主义计算方法常常依赖于抽样方法，如<a href="http://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">蒙特卡罗马尔可夫链(MCMC)</a>。</p>
+<h4 id="-">光量子计量：贝叶斯方法</h4>
+<p>离开这些理论之争，让我们看看贝叶斯主义的实际计算结果。因为只考虑一个参数，可以将后验概率$P(F_{\rm true}~|~D)$当作$F_{\rm true}$的函数计算：这个分布反映了我们对$F_{\rm true}$分观布主的认识。但是随着模型规模的增长，这种方法就变得难以把握。因此，贝叶斯主义计算方法常常依赖于抽样方法，如<a href="http://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">蒙特卡罗马尔可夫链(MCMC)</a>。</p>
 <p>这里不细究MCMC的理论知识，我用Dan Foreman-Mackey的Python <a href="http://dan.iel.fm/emcee/current/">emcee</a>包做一个简单的应用。目标是<em>产生一堆满足后验概率分布的点</em>，用这些点来确定我们问题的答案。</p>
-<p>要演示MCMC，我们用Python定义先验概率<span class="math">\(P(F_{\rm true})\)</span>，似然估计值<span class="math">\(P(D~|~F_{\rm true})\)</span>，以及后验概率<span class="math">\(P(F_{\rm true}~|~D)\)</span>。我们的模型是一维的，但是为了处理多维模型，我们要定义参数数组<span class="math">\(\theta\)</span>，在我们的例子中就是<span class="math">\(\theta = [F_{\rm true}]\)</span>：</p>
+<p>要演示MCMC，我们用Python定义先验概率$P(F_{\rm true})$，似然估计值$P(D~|~F_{\rm true})$，以及后验概率$P(F_{\rm true}~|~D)$。我们的模型是一维的，但是为了处理多维模型，我们要定义参数数组$\theta$，在我们的例子中就是$\theta = [F_{\rm true}]$：</p>
 </div>
 </div>
 </div>
@@ -524,14 +520,14 @@ In [7]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看出，在简单情况下，贝叶斯主义和频率主义两种方法的结果相同！</p>
-<h4 id="分析">分析</h4>
+<h4 id="-">分析</h4>
 <p>现在，你可能认为贝叶斯主义的复杂性没啥必要，这个例子已经充分证明了。其实，用一个<a href="http://en.wikipedia.org/wiki/Affine_geometry">仿射不变</a>MCMC综合样本发生器来模拟这样一个简单的一维正态分布，实在是杀鸡用牛刀，但是这么做的目的是要表明该方法同样适用于多维度的复杂后验概率情形，也能在复杂条件下提供似然估计不可能提供的优美的结果。</p>
 <p>另外，你还可能注意到一个小伎俩：最后，我们用来频率主义方法来描述后验概率样本！当我们计算样本期望和标准差的时候，我们使用了一个标准的频率主义方法来刻画后验概率分布。用纯贝叶斯理论分析这个问题的结果可能要包含后验概率本身(比如，它的类似样本)。也就是说，在纯贝叶斯主义的结果中，问题不是一个简单的数值和误差，而是后验概率分布和模型参数！</p>
-<h3 id="增加一个维度研究更复杂的模型">增加一个维度：研究更复杂的模型</h3>
+<h3 id="-">增加一个维度：研究更复杂的模型</h3>
 <p>让我们看一个更复杂的情况，再比较一下频率主义和贝叶斯主义的结果。前面我们假设星星是静止的，现在假设我们观察的天体是一个随机变量；就是说它会随着时间变化(就是类星体那种)。</p>
-<p>我们将用双参数正态分布来表示这个天体：<span class="math">\(\theta = [\mu, \sigma]\)</span>，其中，<span class="math">\(\mu\)</span>是期望值，<span class="math">\(\sigma\)</span>是<em>天体本征</em>变量的标准差。于是我们每次观察时真实亮度概率的模型：</p>
-<p><span class="math">\[ F_{\rm true} \sim \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[\frac{-(F - \mu)^2}{2\sigma^2}\right]\]</span></p>
-<p>现在，我们再考虑<span class="math">\(N\)</span>次观察里每次的误差。可以这么产生：</p>
+<p>我们将用双参数正态分布来表示这个天体：$\theta = [\mu, \sigma]$，其中，$\mu$是期望值，$\sigma$是<em>天体本征</em>变量的标准差。于是我们每次观察时真实亮度概率的模型：</p>
+<p>$$ F_{\rm true} \sim \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[\frac{-(F - \mu)^2}{2\sigma^2}\right]$$</p>
+<p>现在，我们再考虑$N$次观察里每次的误差。可以这么产生：</p>
 </div>
 </div>
 </div>
@@ -563,12 +559,12 @@ In [8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="可变条件下的光量子计量频率主义方法">可变条件下的光量子计量：频率主义方法</h4>
+<h4 id="-">可变条件下的光量子计量：频率主义方法</h4>
 <p>似然估计结果是本征分布与误差分布的卷积，可以得出</p>
-<p><span class="math">\[\mathcal{L}(D~|~\theta) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi(\sigma^2 + e_i^2)}}\exp\left[\frac{-(F_i - \mu)^2}{2(\sigma^2 + e_i^2)}\right]\]</span></p>
-<p>与前面类似，我们可以通过求微分解出似然估计的最大值，即<span class="math">\(\mu\)</span>的最佳估计：</p>
-<p><span class="math">\[\mu_{est} =  \frac{\sum w_i F_i}{\sum w_i};~~w_i = \frac{1}{\sigma^2 + e_i^2} \]</span></p>
-<p>这里有个问题：参数<span class="math">\(\mu\)</span>的值<em>依赖于</em><span class="math">\(\sigma\)</span>的值。两者具有相关性，因此我们不能直接使用频率主义的解析方法求解。</p>
+<p>$$\mathcal{L}(D~|~\theta) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi(\sigma^2 + e_i^2)}}\exp\left[\frac{-(F_i - \mu)^2}{2(\sigma^2 + e_i^2)}\right]$$</p>
+<p>与前面类似，我们可以通过求微分解出似然估计的最大值，即$\mu$的最佳估计：</p>
+<p>$$\mu_{est} =  \frac{\sum w_i F_i}{\sum w_i};~~w_i = \frac{1}{\sigma^2 + e_i^2} $$</p>
+<p>这里有个问题：参数$\mu$的值<em>依赖于</em>$\sigma$的值。两者具有相关性，因此我们不能直接使用频率主义的解析方法求解。</p>
 <p>然而，我们能用数值分析计算来解极大似然估计值。这里我们用Scipy里面的最优化工具<a href="http://docs.scipy.org/doc/scipy/reference/optimize.html">optimize</a>：</p>
 </div>
 </div>
@@ -639,8 +635,8 @@ Optimization terminated successfully.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Scipy给出了<span class="math">\(\mu\)</span>和<span class="math">\(\sigma\)</span>的极大似然估计值的最佳组合。但是问题才解决一半：我们需要确定答案的置信区间，也就是我们要计算<span class="math">\(\mu\)</span>和<span class="math">\(\sigma\)</span>的误差。</p>
-<p>在频率主义模式中有不同的方法来确定误差。如前所述，我们可以用正态近似去拟合最大似然估计和协方差矩阵(这里我们应该用数值分析而不是解析方法)。另外，我们可以计算统计量如<span class="math">\(\chi^2\)</span>和<span class="math">\(\chi^2_{\rm dof}\)</span>，然后使用<a href="http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test">卡方检验</a>来决定置信区间，还需要假设似然估计具有正态性。我们也可以使用随机抽样方法如<a href="http://en.wikipedia.org/wiki/Jackknife_(statistics)">Jackknife</a>或者<a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrap</a>，为了研究结果的确定程度，使输入数据的随机样本的似然估计最大化。</p>
+<p>Scipy给出了$\mu$和$\sigma$的极大似然估计值的最佳组合。但是问题才解决一半：我们需要确定答案的置信区间，也就是我们要计算$\mu$和$\sigma$的误差。</p>
+<p>在频率主义模式中有不同的方法来确定误差。如前所述，我们可以用正态近似去拟合最大似然估计和协方差矩阵(这里我们应该用数值分析而不是解析方法)。另外，我们可以计算统计量如$\chi^2$和$\chi^2_{\rm dof}$，然后使用<a href="http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test">卡方检验</a>来决定置信区间，还需要假设似然估计具有正态性。我们也可以使用随机抽样方法如<a href="http://en.wikipedia.org/wiki/Jackknife_(statistics)">Jackknife</a>或者<a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrap</a>，为了研究结果的确定程度，使输入数据的随机样本的似然估计最大化。</p>
 <p>这些方法都行，但是每种方法都有各自的假设前提和特点。我们用Python的<a href="http://astroML.org">astroML</a>包里面的basic bootstrap resampler:</p>
 </div>
 </div>
@@ -731,7 +727,7 @@ In [11]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我得说明bootstrap resampling的细究有<strong>大堆</strong>资料可供参考，这里粗略地说明一下这个方法的特点。最明显的地方就是误差需要是相关的、非正态的，但是这两个特点都不能通过简单的计算每个模型参数的均值和方差反映出来。然而，我相信这给频率主义提供的基本的解题思路。</p>
-<h4 id="可变条件下的光量子计量贝叶斯主义方法">可变条件下的光量子计量：贝叶斯主义方法</h4>
+<h4 id="-">可变条件下的光量子计量：贝叶斯主义方法</h4>
 <p>贝叶斯主义对这个问题的解决方法可之前那个问题基本雷同，我们可以把上面的代码简单改改就行。</p>
 </div>
 </div>
@@ -834,10 +830,10 @@ In [13]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>红点显示在真实值附近(在前述问题条件下)，等高线显示了1、2个标准差的置信区间情况(68%和95%置信水平)。</p>
-<p>这里要注意<span class="math">\(\sigma = 0\)</span>与两个标准差的情况一致：也就是说，依赖于你自己对确定性的临界值感觉，我们的数据不足以保证一个定点数据源概率的置信区间。</p>
+<p>这里要注意$\sigma = 0$与两个标准差的情况一致：也就是说，依赖于你自己对确定性的临界值感觉，我们的数据不足以保证一个定点数据源概率的置信区间。</p>
 <p>另外，后验概率确实是<em>非</em>正态的：可以通过垂直方向的对称性来看。也就意味着用频率主义的正态近似不会将真实的不确定性反映到结果中。对频率主义者来说这不是啥事儿(频率主义模式有方法会考虑到非正态性)，但是频率主义方法的<em>绝大多数</em>使用者都直接或间接地使用了正态分布的假设。贝叶斯方法一般不需要这个假设。</p>
-<p><small>(先验概率:有些观点在确定<span class="math">\(\sigma\)</span>的扁平先验时与本文的计算方式有轻微差异：它们认为，在处理像<span class="math">\(\sigma\)</span>这样的比例因子时，扁平先验不是必须的。<a href="http://en.wikipedia.org/wiki/Jeffreys_prior">Jeffreys 先验</a>的一些有趣的论述更容易接受。我认为Jeffreys不太适合，因为<span class="math">\(\sigma\)</span>不是一个真实的比例因子(比如，正态分布也会影响<span class="math">\(e_i\)</span>)。关于这个问题，我将参考其他专业人士的观点。我个人认为，这些小问题往往是贝叶斯主义与频率主义争论的焦点)。</small></p>
-<h3 id="结论">结论</h3>
+<p><small>(先验概率:有些观点在确定$\sigma$的扁平先验时与本文的计算方式有轻微差异：它们认为，在处理像$\sigma$这样的比例因子时，扁平先验不是必须的。<a href="http://en.wikipedia.org/wiki/Jeffreys_prior">Jeffreys 先验</a>的一些有趣的论述更容易接受。我认为Jeffreys不太适合，因为$\sigma$不是一个真实的比例因子(比如，正态分布也会影响$e_i$)。关于这个问题，我将参考其他专业人士的观点。我个人认为，这些小问题往往是贝叶斯主义与频率主义争论的焦点)。</small></p>
+<h3 id="-">结论</h3>
 <p>我希望我已经通过这篇文章展示了频率主义与贝叶斯主义根本的区别，导致两者本质上对同样问题有着不同的解释，然而彼此却经常可以产生相似甚至相同的结果。</p>
 <p>两者差异总结如下：</p>
 <ul>
@@ -884,7 +880,7 @@ In [13]:
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 

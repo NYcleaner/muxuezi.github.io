@@ -46,7 +46,8 @@ Lastest version at The Swift Programming Language 中文版.
 Enjoy：
 
 Swift Codeblocks Syntax Highlight on Coding.
-Swi">
+
+Sw">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2014-08-20T15:12:19+08:00">
            <meta property="article:tag" content="Swift">
@@ -104,8 +105,12 @@ Swi">
 <p><del>由于<a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/">The Swift Programming Language 中文版</a>不能swift语言高亮.</del></p>
 <p>Enjoy：</p>
 <ul>
-<li><p><a href="http://swift.coding.io/">Swift Codeblocks Syntax Highlight</a> on <a href="https://coding.net/u/tj2/p/swift/git">Coding</a>.</p></li>
-<li><p><a href="http://muxuezi.gitbooks.io/swift-codeblocks/">Swift Codeblocks Syntax Highlight</a> on <a href="https://github.com/muxuezi/swift-codeblocks/">Gitbhub</a>.</p></li>
+<li>
+<p><a href="http://swift.coding.io/">Swift Codeblocks Syntax Highlight</a> on <a href="https://coding.net/u/tj2/p/swift/git">Coding</a>.</p>
+</li>
+<li>
+<p><a href="http://muxuezi.gitbooks.io/swift-codeblocks/">Swift Codeblocks Syntax Highlight</a> on <a href="https://github.com/muxuezi/swift-codeblocks/">Gitbhub</a>.</p>
+</li>
 </ul>
 <!-- TEASER_END-->
 
@@ -118,11 +123,13 @@ Swi">
 <li>
 <a href="https://www.gitbook.io" title="Gitbook">Gitbook</a>还不行，如<a href="https://www.gitbook.io/book/muxuezi/swift-codeblocks">首页</a>不支持swift语法高亮。</li>
 </ul>
-<p>如果不论PDF、MOBI、EPUB格式输出，则 <span class="math">\[Coding \approx Github + Gitbook\]</span></p>
+<p>如果不论PDF、MOBI、EPUB格式输出，则
+$$Coding \approx Github + Gitbook$$</p>
 <p>一般html解决办法见<a href="https://highlightjs.org/usage/" title="highlightjs">highlightjs</a>，需要xcode.css、highlight.pack.js，并在head增加:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">"stylesheet"</span><span class="ot"> href=</span><span class="st">"../assert/css/xcode.css"</span><span class="kw">&gt;</span>
-<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">"../assert/js/highlight.pack.js"</span><span class="kw">&gt;&lt;/script&gt;</span>
-<span class="er">&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</span></code></pre>
+<pre><code class="language-html"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"../assert/css/xcode.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../assert/js/highlight.pack.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">hljs.initHighlightingOnLoad();</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -131,74 +138,75 @@ Swi">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<link rel="stylesheet" href="../assets/css/xcode.css">
+<p><link rel="stylesheet" href="../assets/css/xcode.css"></p>
 <script src="../assets/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <p>Test:</p>
-<pre class="swift"><code>extension OCBool: Equatable{
+<pre><code class="language-swift">extension OCBool: Equatable{
 }
 
-//支持等值判断运算符
-func ==( left: OCBool, right: OCBool )-&gt;Bool{
-    switch (left, right){
-    case (.ocTrue, .ocTrue):
-            return true
-    default:
-        return false
+<span class="comment">//支持等值判断运算符</span>
+<span class="keyword">func</span> ==( left: OCBool, right: OCBool )-&gt;Bool{
+    <span class="keyword">switch</span> (left, right){
+    <span class="keyword">case</span> (.ocTrue, .ocTrue):
+            <span class="keyword">return</span> <span class="constant">true</span>
+    <span class="keyword">default</span>:
+        <span class="keyword">return</span> <span class="constant">false</span>
     }
 }
-//支持位与运算符
-func &amp;( left:OCBool, right: OCBool)-&gt;OCBool{
+<span class="comment">//支持位与运算符</span>
+<span class="keyword">func</span> &amp;( left:OCBool, right: OCBool)-&gt;OCBool{
 
-    if left{
-        return right
+    <span class="keyword">if</span> left{
+        <span class="keyword">return</span> right
     }
-    else{
-        return false
+    <span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="constant">false</span>
     }
 }
-//支持位或运算符
-func |( left:OCBool, right: OCBool)-&gt;OCBool{
+<span class="comment">//支持位或运算符</span>
+<span class="keyword">func</span> |( left:OCBool, right: OCBool)-&gt;OCBool{
 
-    if left{
-        return true
+    <span class="keyword">if</span> left{
+        <span class="keyword">return</span> <span class="constant">true</span>
     }
-    else{
-        return right
+    <span class="keyword">else</span>{
+        <span class="keyword">return</span> right
     }
 }
 
-//支持位异或运算符
-func ^( left:OCBool, right: OCBool)-&gt;OCBool{
-    return OCBool( left != right )
+<span class="comment">//支持位异或运算符</span>
+<span class="keyword">func</span> ^( left:OCBool, right: OCBool)-&gt;OCBool{
+    <span class="keyword">return</span> OCBool( left != right )
 }
-//支持求反运算符
-@prefix func !( a:OCBool )-&gt; OCBool{
-    return a ^ true
+<span class="comment">//支持求反运算符</span>
+@prefix <span class="keyword">func</span> !( a:OCBool )-&gt; OCBool{
+    <span class="keyword">return</span> a ^ <span class="constant">true</span>
 }
-//支持组合求与运算符
-func &amp;= (inout left:OCBool, right:OCBool ){
+<span class="comment">//支持组合求与运算符</span>
+<span class="keyword">func</span> &amp;= (inout left:OCBool, right:OCBool ){
     left = left &amp; right
 }
 
 
-var isHasMoney:OCBool = true
-var isHasWife:OCBool = true
-var isHasHealty:OCBool = true
-var isHasLover:OCBool = true
+<span class="keyword">var</span> isHasMoney:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasWife:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasHealty:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasLover:OCBool = <span class="constant">true</span>
 
 isHasMoney != isHasHealty
 isHasHealty == isHasMoney
 isHasWife ^ isHasLover
 isHasWife = !isHasLover
 
-if (isHasMoney | isHasHealty) &amp; isHasHealty{
-    println( "坐看云起时")
-}else
+<span class="keyword">if</span> (isHasMoney | isHasHealty) &amp; isHasHealty{
+    <span class="built_in">println</span>( <span class="string">"坐看云起时"</span>)
+}<span class="keyword">else</span>
 {
-    println("千金散尽还复来")
-}</code></pre>
+    <span class="built_in">println</span>(<span class="string">"千金散尽还复来"</span>)
+}
+</code></pre>
 <p><a href="https://www.gitbook.io/book/muxuezi/swift-codeblocks/activity"><img src="https://www.gitbook.io/button/status/book/muxuezi/swift-codeblocks" alt="Build Status"></a></p>
 </div>
 </div>
@@ -236,7 +244,7 @@ if (isHasMoney | isHasHealty) &amp; isHasHealty{
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 

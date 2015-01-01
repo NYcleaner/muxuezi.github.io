@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 
 
 
-这个系列共4个部分：中文版Part I Part II Part III Part IV，英文版">
+这个系列共4个部分：中文版Part I  Part II  Part III  Part IV，">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2014-10-29T15:06:55+08:00">
            <meta property="article:tag" content="CHS">
@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a> <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a> <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a> <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a> <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
 <!-- TEASER_END -->
 </div>
 </div>
@@ -193,8 +193,8 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们用一个简单的例子来验证一下；此例同<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">第一节</a> 中计算正态分布均值。 之前我们简单的分析了(频率论) 最大似然估计和(贝叶斯) 最大后验估计(posteriori estimates)；这里我们拓展一下：看看频率论置信区间与贝叶斯可信范围的差异。</p>
-<p>问题是：你在观察一颗星星，你认为它的亮度是恒定的。为了简化，我们可以认为其亮度就是每秒到达我们望远镜的光量子数量。任何观察值都会有误差：虽然在此例中这些误差并不重要，但是我们假设观察值<span class="math">\(x_i\)</span>服从正态分布，且标准差已知为<span class="math">\(\sigma_x\)</span>。</p>
-<p>对一组观察值，亮度置信水平95%(即2$)的置信区间是多少？</p>
+<p>问题是：你在观察一颗星星，你认为它的亮度是恒定的。为了简化，我们可以认为其亮度就是每秒到达我们望远镜的光量子数量。任何观察值都会有误差：虽然在此例中这些误差并不重要，但是我们假设观察值$x_i$服从正态分布，且标准差已知为$\sigma_x$。</p>
+<p>对一组观察值，亮度置信水平95%(即2\sigma$)的置信区间是多少？</p>
 </div>
 </div>
 </div>
@@ -215,20 +215,20 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个问题是频率论方法的经典案例，分析如下：</p>
-<p>对任意<span class="math">\(N\)</span>个值的<span class="math">\(D = \{x_i\}_{i=1}^N\)</span>，分布的无偏估计均值<span class="math">\(\mu\)</span>是</p>
-<p><span class="math">\[
+<p>对任意$N$个值的$D = \{x_i\}_{i=1}^N$，分布的无偏估计均值$\mu$是 </p>
+<p>$$
 \bar{x} = \frac{1}{N}\sum_{i=1}^N x_i
-\]</span></p>
+$$</p>
 <p><strong>样本分布(sampling)</strong>描述了均值估计的频率；通过中心极限定理(central limit theorem)我们可以得出样本分布是正态分布：</p>
-<p><span class="math">\[
+<p>$$
 f(\bar{x}~||~\mu) \propto \exp\left[\frac{-(\bar{x} - \mu)^2}{2\sigma_\mu^2}\right]
-\]</span></p>
+$$</p>
 <p>这里我们使用<strong>均值标准误差(standard error of the mean)</strong>,</p>
-<p><span class="math">\[
+<p>$$
 \sigma_\mu = \sigma_x / \sqrt{N}
-\]</span></p>
-<p>中心极限定理告诉我们如果<span class="math">\(N\)</span>足够大，任何分布都可以得到合理的近似值；如果分布呈正态分布，<span class="math">\(N\)</span>就可以缩小到2。</p>
-<p>让我们赶紧来验证这条经验，看看5组<span class="math">\(10^6\)</span>个样本的均值情况：</p>
+$$</p>
+<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得到合理的近似值；如果分布呈正态分布，$N$就可以缩小到2。</p>
+<p>让我们赶紧来验证这条经验，看看5组$10^6$个样本的均值情况：</p>
 </div>
 </div>
 </div>
@@ -288,11 +288,11 @@ In [1]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如前所述，观察值的标准差等于<span class="math">\(\sigma_x N^{-1/2}\)</span>。</p>
+<p>如前所述，观察值的标准差等于$\sigma_x N^{-1/2}$。</p>
 <p>从样本的正态分布中，我们可以轻易得出95%置信水平下的置信区间(想想那条钟形线)：</p>
-<p><span class="math">\[
+<p>$$
 CI_{\mu} =  \left(\bar{x} - 2\sigma_\mu,~\bar{x} + 2\sigma_\mu\right)
-\]</span></p>
+$$</p>
 </div>
 </div>
 </div>
@@ -301,7 +301,7 @@ CI_{\mu} =  \left(\bar{x} - 2\sigma_\mu,~\bar{x} + 2\sigma_\mu\right)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我们再看看：如果现在三个观察值标准差(<span class="math">\(\sigma_x\)</span>)是10。那么均值的95%置信区间是多少？</p>
+<p>我们再看看：如果现在三个观察值标准差($\sigma_x$)是10。那么均值的95%置信区间是多少？</p>
 <p>我们假设真实值是100:</p>
 </div>
 </div>
@@ -415,7 +415,7 @@ In [3]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>注意我们假设<span class="math">\(\sigma_x\)</span>是已知的，这可以通过均值<span class="math">\(\mu\)</span>来估计，但这里简单起见。</p>
+<p>注意我们假设$\sigma_x$是已知的，这可以通过均值$\mu$来估计，但这里简单起见。</p>
 </div>
 </div>
 </div>
@@ -436,19 +436,19 @@ In [3]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用贝叶斯方法就得从贝叶斯定理开始：</p>
-<p><span class="math">\[
+<p>$$
 P(\mu~|~D) = \frac{P(D~|~\mu)P(\mu)}{P(D)}
-\]</span></p>
-<p>我们对<span class="math">\(\mu\)</span>用扁平先验(flat prior) (如，整个区间满足<span class="math">\(P(\mu) \propto 1\)</span>) ，然后用似然估计</p>
-<p><span class="math">\[
+$$</p>
+<p>我们对$\mu$用扁平先验(flat prior) (如，整个区间满足$P(\mu) \propto 1$) ，然后用似然估计</p>
+<p>$$
 P(D~|~\mu) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi\sigma_x^2}}\exp\left[\frac{(\mu - x_i)^2}{2\sigma_x^2}\right]
-\]</span></p>
+$$</p>
 <p>计算乘积然后进行变换，可以得出</p>
-<p><span class="math">\[
+<p>$$
 P(\mu~|~D) \propto \exp\left[\frac{-(\mu - \bar{x})^2}{2\sigma_\mu^2}\right]
-\]</span></p>
-<p>也可以看作是均值为<span class="math">\(\bar{x}\)</span>，标准差为<span class="math">\(\sigma_\mu\)</span>的正态分布。</p>
-<p>也就是说，<strong>此例中<span class="math">\(\mu\)</span>的贝叶斯后验结果等于频率论的样本分布均值<span class="math">\(\mu\)</span></strong>。</p>
+$$</p>
+<p>也可以看作是均值为$\bar{x}$，标准差为$\sigma_\mu$的正态分布。</p>
+<p>也就是说，<strong>此例中$\mu$的贝叶斯后验结果等于频率论的样本分布均值$\mu$</strong>。</p>
 </div>
 </div>
 </div>
@@ -458,9 +458,9 @@ P(\mu~|~D) \propto \exp\left[\frac{-(\mu - \bar{x})^2}{2\sigma_\mu^2}\right]
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>从后验结果可以计算出贝叶斯可信范围是95%可能的最短区间。看起来和频率论的置信区间很像：</p>
-<p><span class="math">\[
+<p>$$
 CR_{\mu} =  \left(\bar{x} - 2\sigma_\mu,~\bar{x} + 2\sigma_\mu\right)
-\]</span></p>
+$$</p>
 <p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
@@ -531,11 +531,11 @@ In [4]:
 <p>上面的论证过程就是频率论置信区间与贝叶斯可信范围令人混乱的地方。在很多简单问题中，它们完全相等。但是我们必须清楚一点：<strong>数量相等，但是含义不同</strong>。</p>
 <p>贝叶斯的概率反映我们相信的程度。所以当我们计算可信范围时，其实就是</p>
 <blockquote>
-<p>“对这个观察数据，真实值<span class="math">\(\mu\)</span>会落在可信范围<span class="math">\(CR_\mu\)</span>(固定的)内有95%的可能性”——贝叶斯主义</p>
+<p>“对这个观察数据，真实值$\mu$会落在可信范围$CR_\mu$(固定的)内有95%的可能性”——贝叶斯主义</p>
 </blockquote>
-<p>而频率论认为<span class="math">\(\mu\)</span>是一个固定值，而数据(以及所有数据派生的变量，包括置信区间的边界)是随机的。因此，频率论置信区间就是</p>
+<p>而频率论认为$\mu$是一个固定值，而数据(以及所有数据派生的变量，包括置信区间的边界)是随机的。因此，频率论置信区间就是</p>
 <blockquote>
-<p>“当我们从这些数据(而不是那些数据)中计算<span class="math">\(CI_\mu\)</span>时，有95%的可能性，真实值<span class="math">\(\mu\)</span>会落在<span class="math">\(CI_\mu\)</span>内”——频率主义</p>
+<p>“当我们从这些数据(而不是那些数据)中计算$CI_\mu$时，有95%的可能性，真实值$\mu$会落在$CI_\mu$内”——频率主义</p>
 </blockquote>
 <p>注意区别：贝叶斯方法是对具有固定边界的参数值的概率表述(a statement of probability about the parameter value given fixed bounds)，而频率论方法是对固定参数值的边界的概率表述(a probability about the bounds given a fixed parameter value.)。</p>
 <p>差别很小，但是我们下面会讲，这将造成极大差距。首先，让我们进一步用仿真方法来验证。</p>
@@ -559,11 +559,11 @@ In [4]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>确定贝叶斯可信范围，步骤如下：</p>
-<ol style="list-style-type: decimal">
-<li>先验样本均值<span class="math">\(\mu\)</span>是随机的</li>
-<li>每个<span class="math">\(\mu\)</span>有随机的数据集合</li>
+<ol>
+<li>先验样本均值$\mu$是随机的</li>
+<li>每个$\mu$有随机的数据集合</li>
 <li>选取符合观察值的数据点</li>
-<li>看看哪些<span class="math">\(\mu\)</span>的值落在我们的可信范围内</li>
+<li>看看哪些$\mu$的值落在我们的可信范围内</li>
 </ol>
 <p>代码如下：</p>
 </div>
@@ -683,8 +683,8 @@ Fraction of means in Credible Region: 0.949
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>跟想的一样，95%可能的<span class="math">\(\mu\)</span>的值落在我们的可信范围内。</p>
-<p>这里，关键是明白哪些变量是随机的，哪些是固定的。在贝叶斯方法中，我们<strong>从我们的数据里计算出一个单独的可信范围</strong>，然后我们把它当作是<strong><span class="math">\(\mu\)</span>的多个随机点画出的图像</strong>。</p>
+<p>跟想的一样，95%可能的$\mu$的值落在我们的可信范围内。</p>
+<p>这里，关键是明白哪些变量是随机的，哪些是固定的。在贝叶斯方法中，我们<strong>从我们的数据里计算出一个单独的可信范围</strong>，然后我们把它当作是<strong>$\mu$的多个随机点画出的图像</strong>。</p>
 </div>
 </div>
 </div>
@@ -705,11 +705,10 @@ Fraction of means in Credible Region: 0.949
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>确定频率论置信区间有点小复杂，步骤如下：</p>
-<ol style="list-style-type: decimal">
-<li>从唯一的真实值<span class="math">\(\mu\)</span>定义的分布中画出数据集合</li>
+<ol>
+<li>从唯一的真实值$\mu$定义的分布中画出数据集合</li>
 <li>对每组数据，计算一个新的置信区间</li>
-<li>看看哪些置信区间包含<span class="math">\(\mu\)</span>
-</li>
+<li>看看哪些置信区间包含$\mu$</li>
 </ol>
 <p>代码如下：</p>
 </div>
@@ -776,7 +775,7 @@ Fraction of Confidence Intervals containing the mean: 0.951
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟想的一样，95%置信区间包含μ的真实值。</p>
-<p>同理，关键是明白哪些变量是随机的，哪些是固定的。我们把<strong>唯一值<span class="math">\(\mu\)</span></strong>看作是<strong>多个随机样本中的不同置信区间构成的</strong>。</p>
+<p>同理，关键是明白哪些变量是随机的，哪些是固定的。我们把<strong>唯一值$\mu$</strong>看作是<strong>多个随机样本中的不同置信区间构成的</strong>。</p>
 </div>
 </div>
 </div>
@@ -798,14 +797,14 @@ Fraction of Confidence Intervals containing the mean: 0.951
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们应该再一次提醒自己两者的差异：</p>
 <ul>
-<li>贝叶斯方法固定了可信范围，保证$$95%的可能值落在可信范围内。</li>
-<li>频率论方法固定了参数<span class="math">\(\mu\)</span>， 保证95%置信区间包含<span class="math">\(\mu\)</span>。</li>
+<li>贝叶斯方法固定了可信范围，保证$\mu$95%的可能值落在可信范围内。</li>
+<li>频率论方法固定了参数$\mu$， 保证95%置信区间包含$\mu$。</li>
 </ul>
 <p>比较上面两者的结论，我们会发现两者源自概率定义的区别。</p>
 <ul>
-<li>贝叶斯主义认为参数 (如<span class="math">\(\mu\)</span>) 是随机变量，而频率主义认为是固定的。</li>
-<li>贝叶斯主义认为观察值(如<span class="math">\(D\)</span>)是固定的，而频率主义认为是随机变量。</li>
-<li>贝叶斯主义认为参数约束(parameter constraints，如<span class="math">\(CR_\mu\)</span>)是固定的，而频率主义认为(如<span class="math">\(CI_\mu\)</span>)是是随机变量。</li>
+<li>贝叶斯主义认为参数 (如$\mu$) 是随机变量，而频率主义认为是固定的。</li>
+<li>贝叶斯主义认为观察值(如$D$)是固定的，而频率主义认为是随机变量。</li>
+<li>贝叶斯主义认为参数约束(parameter constraints，如$CR_\mu$)是固定的，而频率主义认为(如$CI_\mu$)是是随机变量。</li>
 </ul>
 <p>很多简单问题都和上面的例子一样，置信水平和可信范围完全相等，所以这种差异一般不太重要。但是，科学计算不是简单问题；下面我们就看个复杂的例子，来感受一下这种差异。</p>
 </div>
@@ -829,19 +828,20 @@ Fraction of Confidence Intervals containing the mean: 0.951
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要找一个呈现两者差异的例子，我打算用E.T. Jaynes，一个20世纪的物理学家，做了大量统计工作。在他的书<em>Confidence Intervals vs. Bayesian Intervals</em> (<a href="http://bayes.wustl.edu/etj/articles/confidence.pdf">pdf</a>)中第15个例子，他用了一个截断分布。他是这么说的：</p>
 <blockquote>
-<p>一个设备，因为注入了一种防护性化学试剂(protective chemical inhibitor)，所以在<span class="math">\(\theta\)</span>时间内运行正常；但是在<span class="math">\(\theta\)</span>时间之后，化学试剂用光了，问题就出现了，而且失败次数呈指数分布。没有办法直接观察化学试剂消耗的情况；只能观察到失败的结果。从实际观察数据中，估计<span class="math">\(\theta\)</span>时间以确保运行安全......</p>
+<p>一个设备，因为注入了一种防护性化学试剂(protective chemical inhibitor)，所以在$\theta$时间内运行正常；但是在$\theta$时间之后，化学试剂用光了，问题就出现了，而且失败次数呈指数分布。没有办法直接观察化学试剂消耗的情况；只能观察到失败的结果。从实际观察数据中，估计$\theta$时间以确保运行安全......</p>
 </blockquote>
-<p>从下面的模型可以获得一个数据<span class="math">\(D\)</span>：</p>
-<p><span class="math">\[
+<p>从下面的模型可以获得一个数据$D$：</p>
+<p>$$
 p(x~|~\theta) = \left\{
 \begin{array}{lll}
 \exp(\theta - x) &amp;,&amp; x &gt; \theta\\
 0                &amp;,&amp; x &lt; \theta
 \end{array}
 \right\}
-\]</span></p>
-<p>这里<span class="math">\(p(x~|~\theta)\)</span>表示时间<span class="math">\(x\)</span>失败的概率，化学试剂可用时间<span class="math">\(\theta\)</span>。 观察数据<span class="math">\(D = \{x_i\}\)</span>，我们的目标是估计<span class="math">\(\theta\)</span>。</p>
-<p>我们先为<span class="math">\(\theta=10\)</span>画个图看看：</p>
+$$</p>
+<p>这里$p(x~|~\theta)$表示时间$x$失败的概率，化学试剂可用时间$\theta$。
+观察数据$D = \{x_i\}$，我们的目标是估计$\theta$。</p>
+<p>我们先为$\theta=10$画个图看看：</p>
 </div>
 </div>
 </div>
@@ -901,7 +901,7 @@ In [8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>现在我们的观察数据是<span class="math">\(D = \{10, 12, 15\}\)</span>，我们想从这些数据中推断<span class="math">\(\theta\)</span>。下面用四种方法来探索。</p>
+<p>现在我们的观察数据是$D = \{10, 12, 15\}$，我们想从这些数据中推断$\theta$。下面用四种方法来探索。</p>
 </div>
 </div>
 </div>
@@ -921,16 +921,16 @@ In [8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我认为：遇到问题，计算之前，先想想怎么下手，并猜一猜结果。我们现在开始。想想这个问题，从概率分布的截断可以得出一个简单的观察结果：<strong><span class="math">\(\theta\)</span>必须小于观察值的最小值</strong>。</p>
-<p>这是显而易见的：看到一个小于<span class="math">\(\theta\)</span>的观察值概率为0。因此，假如我们假设正确，那么一个<span class="math">\(\theta\)</span>大于任何观察值的模型是不可能出现的。贝叶斯主义和频率主义的基本假设都是模型正确，因此我们可以直接写出常识条件：</p>
-<p><span class="math">\[
+<p>我认为：遇到问题，计算之前，先想想怎么下手，并猜一猜结果。我们现在开始。想想这个问题，从概率分布的截断可以得出一个简单的观察结果：<strong>$\theta$必须小于观察值的最小值</strong>。</p>
+<p>这是显而易见的：看到一个小于$\theta$的观察值概率为0。因此，假如我们假设正确，那么一个$\theta$大于任何观察值的模型是不可能出现的。贝叶斯主义和频率主义的基本假设都是模型正确，因此我们可以直接写出常识条件：</p>
+<p>$$
 \theta &lt; \min(D)
-\]</span></p>
-<p>或者，特别地，<span class="math">\(D = \{10, 12, 15\}\)</span>,</p>
-<p><span class="math">\[
+$$</p>
+<p>或者，特别地，$D = \{10, 12, 15\}$,</p>
+<p>$$
 \theta &lt; 10
-\]</span></p>
-<p>这组数据中，<span class="math">\(\theta\)</span>的每一个合理约束都应该满足以上条件。带着这条规则，我们继续用贝叶斯主义和频率主义进行定量分析。</p>
+$$</p>
+<p>这组数据中，$\theta$的每一个合理约束都应该满足以上条件。带着这条规则，我们继续用贝叶斯主义和频率主义进行定量分析。</p>
 </div>
 </div>
 </div>
@@ -950,21 +950,21 @@ In [8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在频率论方法中，我们要计算<span class="math">\(\theta\)</span>的置信区间，可以通过观察值的计算均值开始</p>
-<p><span class="math">\[
+<p>在频率论方法中，我们要计算$\theta$的置信区间，可以通过观察值的计算均值开始</p>
+<p>$$
 \begin{array}{ll}
 E(x) &amp;= \int_0^\infty xp(x)dx\\
      &amp;= \theta + 1
      \end{array}
-\]</span></p>
-<p>因此，用样本均值作为<span class="math">\(E(x)\)</span>的点估计值， 就得到<span class="math">\(\theta\)</span>的无偏估计(unbiased estimator)</p>
-<p><span class="math">\[
+$$</p>
+<p>因此，用样本均值作为$E(x)$的点估计值， 就得到$\theta$的无偏估计(unbiased estimator)</p>
+<p>$$
 \hat{\theta} = \frac{1}{N} \sum_{i=1}^N x_i - 1
-\]</span></p>
-<p>指数分布的标准差为1，所以当<span class="math">\(N\)</span>组够大，我们就可以用均值的标准差来表示<span class="math">\(\hat{\theta}\)</span>的样本分布情况，将满足方差<span class="math">\(\sigma^2 = 1 / N\)</span>的正态分布。因此，我们可以写出95% (就是2<span class="math">\(\sigma\)</span>)的置信区间为</p>
-<p><span class="math">\[
+$$</p>
+<p>指数分布的标准差为1，所以当$N$组够大，我们就可以用均值的标准差来表示$\hat{\theta}$的样本分布情况，将满足方差$\sigma^2 = 1 / N$的正态分布。因此，我们可以写出95% (就是2$\sigma$)的置信区间为</p>
+<p>$$
 CI_{\rm large~N} = \left(\hat{\theta} - 2 N^{-1/2},~\hat{\theta} + 2 N^{-1/2}\right)
-\]</span></p>
+$$</p>
 <p>写成函数代码如下：</p>
 </div>
 </div>
@@ -1042,7 +1042,7 @@ approximate CI: (10.2, 12.5)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>这里有个问题。通过我们简单的常识，我们认为<span class="math">\(\theta\)</span>不可能大于10，但是上面的范围依然是95%置信区间。可能观察数据应该太少了： 上面的计算应该基于一个大的<span class="math">\(N\)</span> ，而我们用的是一个很小的<span class="math">\(N = 3\)</span>。我们用更多的计算来试试看：</p>
+<p>这里有个问题。通过我们简单的常识，我们认为$\theta$不可能大于10，但是上面的范围依然是95%置信区间。可能观察数据应该太少了： 上面的计算应该基于一个大的$N$ ，而我们用的是一个很小的$N = 3$。我们用更多的计算来试试看：</p>
 </div>
 </div>
 </div>
@@ -1063,8 +1063,8 @@ approximate CI: (10.2, 12.5)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用精确的样本分布计算置信区间需要费一番功夫：</p>
-<p>对较小的<span class="math">\(N\)</span>，正态分布近似是不能用的，我们必须用真实的样本分布计算置信区间，就是<span class="math">\(N\)</span>个变量的均值的分布取决于<span class="math">\(p(\theta)\)</span>。随机变量的和服从单个变量的分布的卷积(convolution)，因此我们可以看看<a href="http://en.wikipedia.org/wiki/Convolution_theorem">卷积理论(convolution theorem)</a>，再使用[特征方程(characteristic functions)](http://en.wikipedia.org/wiki/Characteristic_function_(probability_theory)，来找到取决于<span class="math">\(p(x~|~\theta)\)</span>的<span class="math">\(N\)</span>个变量的和样本分布：</p>
-<p><span class="math">\[
+<p>对较小的$N$，正态分布近似是不能用的，我们必须用真实的样本分布计算置信区间，就是$N$个变量的均值的分布取决于$p(\theta)$。随机变量的和服从单个变量的分布的卷积(convolution)，因此我们可以看看<a href="http://en.wikipedia.org/wiki/Convolution_theorem">卷积理论(convolution theorem)</a>，再使用<a href="http://en.wikipedia.org/wiki/Characteristic_function_(probability_theory">特征方程(characteristic functions)</a>，来找到取决于$p(x~|~\theta)$的$N$个变量的和样本分布：</p>
+<p>$$
 f(\theta~|~D) \propto
 \left\{
 \begin{array}{lll}
@@ -1073,7 +1073,7 @@ z^{N - 1}\exp(-z) &amp;,&amp; z &gt; 0\\
 \end{array}
 \right\}
 ;~ z = N(\hat{\theta} + 1 - \theta)
-\]</span></p>
+$$</p>
 </div>
 </div>
 </div>
@@ -1082,15 +1082,15 @@ z^{N - 1}\exp(-z) &amp;,&amp; z &gt; 0\\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>要计算95%置信区间，我们要算累计分别函数：求<span class="math">\(f(\theta~|~D)\)</span>从<span class="math">\(0\)</span>到<span class="math">\(\theta\)</span>的积分。如果我们使用<a href="http://en.wikipedia.org/wiki/Incomplete_gamma_function">不完全Gamma方程(incomplete gamma function)</a>会容易点：</p>
-<p><span class="math">\[
+<p>要计算95%置信区间，我们要算累计分别函数：求$f(\theta~|~D)$从$0$到$\theta$的积分。如果我们使用<a href="http://en.wikipedia.org/wiki/Incomplete_gamma_function">不完全Gamma方程(incomplete gamma function)</a>会容易点：</p>
+<p>$$
 \Gamma(a, x) = \int_x^\infty t^{a - 1}e^{-t} dt
-\]</span></p>
-<p>看起来和<span class="math">\(f(\theta)\)</span>非常的像。</p>
+$$</p>
+<p>看起来和$f(\theta)$非常的像。</p>
 <p>算出积分，我们就可以得出累计分布函数是：</p>
-<p><span class="math">\[
+<p>$$
 F(\theta~|~D) = \frac{1}{\Gamma(N)}\left[ \Gamma\left(N, \max[0, N(\hat{\theta} + 1 - \theta)]\right) - \Gamma\left(N,~N(\hat{\theta} + 1)\right)\right]
-\]</span></p>
+$$</p>
 </div>
 </div>
 </div>
@@ -1099,14 +1099,14 @@ F(\theta~|~D) = \frac{1}{\Gamma(N)}\left[ \Gamma\left(N, \max[0, N(\hat{\theta} 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>一个连续的95%置信区间<span class="math">\((\theta_1, \theta_2)\)</span>满足下列方程：</p>
-<p><span class="math">\[
+<p>一个连续的95%置信区间$(\theta_1, \theta_2)$满足下列方程：</p>
+<p>$$
 F(\theta_2~|~D) - F(\theta_1~|~D) = 0.95
-\]</span></p>
+$$</p>
 <p>实际上有无限多组解，我们要的是最短的区间。我们可以增加两边概率密度相等的约束：</p>
-<p><span class="math">\[
+<p>$$
 f(\theta_2~|~D) = f(\theta_1~|~D)
-\]</span></p>
+$$</p>
 <p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白怎么证明)。其实因为正态分布钟形曲线的对称性，如果要达到同样的95%置信水平(概率)，也就是同样的面积，则越往中间则面积越大，区间越小。那么对称的区间的长度一定比同面积的非对称区间的长度都短。</p>
 <p>解决这两个非线性方程的系统就可以得出置信区间。计算过程如下：</p>
 </div>
@@ -1214,7 +1214,7 @@ exact: (9.408, 9.584)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>确实，在较大的<span class="math">\(N\)</span>解出的精确区间与近似区间一致，这让我们确信我们的计算是正确的。</p>
+<p>确实，在较大的$N$解出的精确区间与近似区间一致，这让我们确信我们的计算是正确的。</p>
 <p>让我们回到之前3个点的数据集看看结果：</p>
 </div>
 </div>
@@ -1266,7 +1266,7 @@ exact CI:       (10.2, 12.2)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>精确的置信区间与近似置信区间稍有不同，但是反映了同样的问题：<strong>我们从常识推断<span class="math">\(\theta\)</span>不能大于10，而95%的置信区间完全处于大于10的区间内</strong>。这个置信区间看起来不太靠谱。</p>
+<p>精确的置信区间与近似置信区间稍有不同，但是反映了同样的问题：<strong>我们从常识推断$\theta$不能大于10，而95%的置信区间完全处于大于10的区间内</strong>。这个置信区间看起来不太靠谱。</p>
 <p>后面我们会仔细研究，现在我们看看贝叶斯的解决方法是不是更好。</p>
 </div>
 </div>
@@ -1288,34 +1288,35 @@ exact CI:       (10.2, 12.2)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先我们用贝叶斯定理：</p>
-<p><span class="math">\[
+<p>$$
 p(\theta~|~D) = \frac{p(D~|~\theta)p(\theta)}{P(D)}
-\]</span></p>
-<p>用一个常量的<span class="math">\(p(\theta)\)</span>，它的似然估计为</p>
-<p><span class="math">\[
+$$</p>
+<p>用一个常量的$p(\theta)$，它的似然估计为</p>
+<p>$$
 p(D~|~\theta) = \prod_{i=1}^N p(x~|~\theta)
-\]</span></p>
+$$</p>
 <p>可以得出</p>
-<p><span class="math">\[
+<p>$$
 p(\theta~|~D) \propto \left\{
 \begin{array}{lll}
 N\exp\left[N(\theta - \min(D))\right] &amp;,&amp; \theta &lt; \min(D)\\
 0                &amp;,&amp; \theta &gt; \min(D)
 \end{array}
 \right\}
-\]</span></p>
-<p>其中，<span class="math">\(\min(D)\)</span>是<span class="math">\(D\)</span>的最小值， 之所以出现是因为<span class="math">\(p(x~|~\theta)\)</span>的截断。 因为<span class="math">\(p(\theta~|~D)\)</span>会指数增长到截断位置(cutoff)，所以最短的95%置信区间<span class="math">\((\theta_1, \theta_2)\)</span>就是</p>
-<p><span class="math">\[
+$$</p>
+<p>其中，$\min(D)$是$D$的最小值， 之所以出现是因为$p(x~|~\theta)$的截断。
+因为$p(\theta~|~D)$会指数增长到截断位置(cutoff)，所以最短的95%置信区间$(\theta_1, \theta_2)$就是</p>
+<p>$$
 \theta_2 = \min(D)
-\]</span></p>
-<p>而<span class="math">\(\theta_1\)</span>就是下面方程的解</p>
-<p><span class="math">\[
+$$</p>
+<p>而$\theta_1$就是下面方程的解</p>
+<p>$$
 \int_{\theta_1}^{\theta_2} N\exp[N(\theta - \theta_2)]d\theta = f
-\]</span></p>
+$$</p>
 <p>算积分可以求解方程</p>
-<p><span class="math">\[
+<p>$$
 \theta_1 = \theta_2 + \frac{\log(1 - f)}{N}
-\]</span></p>
+$$</p>
 <p>解法如下所示：</p>
 </div>
 </div>
@@ -1423,7 +1424,7 @@ Bayesian:             95% CR = (9.0, 10.0)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>为了消除对数学的担忧，我想重复之前做过的事情，说明<em>前面的置信区间其实是正确的</em>。我们将用前面提到的方法，假设这个<em>真实</em>的<span class="math">\(\theta\)</span>和具有同样分布的样本数据：</p>
+<p>为了消除对数学的担忧，我想重复之前做过的事情，说明<em>前面的置信区间其实是正确的</em>。我们将用前面提到的方法，假设这个<em>真实</em>的$\theta$和具有同样分布的样本数据：</p>
 </div>
 </div>
 </div>
@@ -1588,7 +1589,7 @@ Fraction of thetas in Credible Region: 0.954
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>看，确实如此，~95%的<span class="math">\(\theta\)</span>的数值落在我们通过单个数据样本计算的可信范围内。</p>
+<p>看，确实如此，~95%的$\theta$的数值落在我们通过单个数据样本计算的可信范围内。</p>
 </div>
 </div>
 </div>
@@ -1612,20 +1613,20 @@ Fraction of thetas in Credible Region: 0.954
 <p>问题的关键是：<strong>频率论置信区间给出正确答案的同时，通常是在回答错误的问题</strong>。错误的问题就是频率论的<em>基础</em>——概率定义。</p>
 <p>回想上面我对置信区间和可信范围的论述。贝叶斯主义说：</p>
 <blockquote>
-<p>"从观察到的数据来看，<span class="math">\(\theta\)</span>的真实值有95%的可能性落在可信范围内" - 贝叶斯主义</p>
+<p>"从观察到的数据来看，$\theta$的真实值有95%的可能性落在可信范围内" - 贝叶斯主义</p>
 </blockquote>
 <p>而频率主义说：</p>
 <blockquote>
-<p>"当我用这组数据计算置信区间时，<span class="math">\(\theta\)</span>有95%的可能在区间内" - 频率主义</p>
+<p>"当我用这组数据计算置信区间时，$\theta$有95%的可能在区间内" - 频率主义</p>
 </blockquote>
-<p>想想看，假如你发现设备宕机了3次，你想估计<span class="math">\(\theta\)</span>。我认为"这种数据"不是你的目标：你应该关心的是你可以从<strong>这三次观察</strong>中发现什么问题，而非观察的整个假设空间(not the entire hypothetical space of observations like them)。如前所述，如果你步频率论后尘去考虑"这种数据"，你就置身获得答案的绝境，从你观察到的特殊情况中得不到任何价值。</p>
+<p>想想看，假如你发现设备宕机了3次，你想估计$\theta$。我认为"这种数据"不是你的目标：你应该关心的是你可以从<strong>这三次观察</strong>中发现什么问题，而非观察的整个假设空间(not the entire hypothetical space of observations like them)。如前所述，如果你步频率论后尘去考虑"这种数据"，你就置身获得答案的绝境，从你观察到的特殊情况中得不到任何价值。</p>
 <p>假如你想改变知道<em>从你观察到的数据中</em>，频率论置信区间可以告诉你什么。这就是答案：</p>
 <blockquote>
-<p>"<em>从观察到的数据来看</em>，<span class="math">\(\theta\)</span>的真实值要么在置信区间里，要么不在里面" - 频率主义</p>
+<p>"<em>从观察到的数据来看</em>，$\theta$的真实值要么在置信区间里，要么不在里面" - 频率主义</p>
 </blockquote>
 <p>这就是对你观察到的<strong>这些数据</strong>置信区间想说的，也能说的内容。当然，这看起来有点啰嗦，那么精简一点的说法就是:</p>
 <blockquote>
-<p>"<em>从观察到的数据来看</em>，我无法确定<span class="math">\(\theta\)</span>值的范围" - 频率主义</p>
+<p>"<em>从观察到的数据来看</em>，我无法确定$\theta$值的范围" - 频率主义</p>
 </blockquote>
 <p>如果你想从你观察到的数据中得到答案，频率主义是不靠谱的。</p>
 </div>
@@ -1647,7 +1648,7 @@ Fraction of thetas in Credible Region: 0.954
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>这么说可能有点苛刻，但是我想说这不是信口雌黄；这是关于频率主义的哲学立场和置信区间的定义的一个不争的事实。如果你想从观察到的数据中获得靠谱的结论(如置信区间和相关系数<span class="math">\(p\)</span>值)，频率主义是相当不靠谱的。</p>
+<p>这么说可能有点苛刻，但是我想说这不是信口雌黄；这是关于频率主义的哲学立场和置信区间的定义的一个不争的事实。如果你想从观察到的数据中获得靠谱的结论(如置信区间和相关系数$p$值)，频率主义是相当不靠谱的。</p>
 <p>不幸的是，整天在用频率论方法的很多人都没有意识到这些。我从天文学的案例中指明了这些，但是我并非要让大家难堪(他们很容易知道现在你要找什么)。很多科学家把置信区间当作贝叶斯可信范围，<strong>但这明显是错的</strong>。统计学外行可能会原谅对这一观点的忽略，但是专业的统计学家们也经常错误地解释置信区间。</p>
 <p>我认为这个错误如此普遍的理由，是因为在很多小问题(如前所述)中，置信区间与可信范围恰好一致。这时，频率主义正确地回答了你的问题，<strong>但是仅仅因为贝叶斯主义也给出了相同的结果</strong>。(如果贝叶斯的结果不一样，频率论就错了。)</p>
 <p>我绝非第一个这么说的人。物理学家<a href="http://en.wikipedia.org/wiki/Edwin_Thompson_Jaynes">E.T. Jaynes</a>是公认的贝叶斯捍卫者； 我的一个灵感来自他1976的论文<em>Confidence Intervals vs. Bayesian Intervals</em> (<a href="http://bayes.wustl.edu/etj/articles/confidence.pdf">pdf</a>)。最近，持同样观点的，还有统计学家与博主<a href="http://wmbriggs.com/">W.M. Briggs</a> 在arX发表的博文<a href="http://arxiv.org/abs/1201.2590"><em>再也别给非统计学人士讲频率主义了(It's Time To Stop Teaching Frequentism to Non-Statisticians)</em></a>。还有<a href="http://en.wikipedia.org/wiki/Leonard_Jimmie_Savage">Savage</a>， <a href="http://en.wikipedia.org/wiki/Jerome_Cornfield">Cornfield</a>，以及20世纪的贝叶斯实践者们大量的著作言论。</p>
@@ -1673,7 +1674,10 @@ Fraction of thetas in Credible Region: 0.954
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本文的寓意就是频率主义不能与科学混为一谈。<em>在科学工作中，你要质疑对频率论的置信区间和p值的使用</em>。在科学研究时，置信区间和相关系数p值，为错误的问题提供了正确的答案。尤其是当你发现有人说95%置信区间就是对目标参数95%的确定时，<strong>不要相信他们的解释和结论</strong>。如果你是论文审稿人,<strong>直接拒绝</strong>。他们的数据不能支撑其结论。</p>
 <p>如果你坚持到这里，我非常感谢你！我希望这些解释成功地阐述了频率主义与贝叶斯主义的哲学假设对实际的数据分析和解释的差异。如果本文让一个研究者不再用频率论置信区间做科学研究，那么我就认为我成功l。</p>
-<p><small> 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">nbviewer</a>静态网页。 十分感谢David W. Hogg对本文提出的建议。 </small></p>
+<p><small>
+这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">nbviewer</a>静态网页。
+十分感谢David W. Hogg对本文提出的建议。
+</small></p>
 </div>
 </div>
 </div>
@@ -1710,7 +1714,7 @@ Fraction of thetas in Credible Region: 0.954
 
     </div>
                     <footer id="footer" role="contentinfo">
-            <p>Contents © 2014         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
             
         </footer>
 
