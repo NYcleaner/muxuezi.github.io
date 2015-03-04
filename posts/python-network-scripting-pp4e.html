@@ -120,7 +120,6 @@ Plumbing the">
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -131,7 +130,6 @@ Plumbing the">
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -145,6 +143,7 @@ protocols, like FTP, web pages, and email, ultimately occur over sockets. Socket
 also sometimes called communications endpoints because they are the portals through
 which programs send and receive bytes during a conversation.</p>
 <p>socket的英文原义是“孔”或“插座”，通常也称作"套接字"，用于描述IP地址和端口，是一个通信链的句柄。在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。</p>
+
 </div>
 </div>
 </div>
@@ -159,6 +158,7 @@ form of a general Inter-Process Communication (IPC) mechanism. We saw this socke
 usage mode briefly in Chapter 5. Unlike some IPC devices, sockets are bidirectional
 data streams: programs may both send and receive data through them.</p>
 <p>也可IPC，双向数据</p>
+
 </div>
 </div>
 </div>
@@ -174,6 +174,7 @@ how to transfer bytes, but it doesn’t care what those bytes mean. For the purp
 this text, we will generally ignore how bytes sent to sockets are physically transferred.
 To understand sockets fully, though, we need to know a bit about how computers are
 named.</p>
+
 </div>
 </div>
 </div>
@@ -187,7 +188,6 @@ named.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -197,6 +197,7 @@ named.</p>
 <li>Machine identifiers = Machine names(IP address) + Port numbers(0..1023) </li>
 <li>domain name server = {domain name : IP address}</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -210,7 +211,6 @@ named.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -226,6 +226,7 @@ conversations.</li>
 <li>Port numbers are reserved numeric identifiers for the underlying sockets over which
 messages are exchanged.</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -239,7 +240,6 @@ messages are exchanged.</li>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -417,7 +417,6 @@ higher-level protocols.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -431,6 +430,7 @@ We usually call the perpetually running listener program a server and the connec
 program a client. Let’s use the familiar web browsing model as an example. As shown
 in Table 12-1, the HTTP protocol used by the Web allows clients and servers to talk
 over sockets on port 80:</p>
+
 </div>
 </div>
 </div>
@@ -454,6 +454,7 @@ like Firefox, Internet Explorer, or Chrome, but any script can open a client-sid
 connection on port 80 to fetch web pages from the server. The server’s machine
 name can also be simply “localhost” if it’s the same as the client’s.</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -467,7 +468,6 @@ name can also be simply “localhost” if it’s the same as the client’s.</l
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -480,6 +480,7 @@ messages (e.g., “send me a file”) on one port, and transfers file data over 
 clients open socket connections to the server machine’s control port, send requests,
 and send or receive file data over a socket connected to a data port on the server machine. FTP also defines standard message structures passed between client and server.
 The control message used to request a file, for instance, must follow a standard format.</p>
+
 </div>
 </div>
 </div>
@@ -493,7 +494,6 @@ The control message used to request a file, for instance, must follow a standard
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -502,6 +502,7 @@ The control message used to request a file, for instance, must follow a standard
 <p>In fact, each supported protocol is represented in Python’s standard library by either a
 module package of the same name as the protocol or by a module file with a name of
 the form xxxlib.py</p>
+
 </div>
 </div>
 </div>
@@ -515,7 +516,6 @@ the form xxxlib.py</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -526,6 +526,7 @@ selves transfer only byte strings, we can also transfer Python objects through t
 using Python’s pickle module. Because this module converts Python objects such as
 lists, dictionaries, and class instances to and from byte strings, it provides the extra step
 needed to ship higher-level objects through sockets when required.</p>
+
 </div>
 </div>
 </div>
@@ -543,6 +544,7 @@ more advanced tools. For instance, it has calls for the following and more:</p>
 <li>Making socket calls nonblocking ( sockobj.setblocking )</li>
 <li>Setting socket timeouts ( sockobj.settimeout )</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -556,7 +558,6 @@ more advanced tools. For instance, it has calls for the following and more:</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -567,30 +568,16 @@ a client, and send an echo reply; this is a simple one-shot listen/reply
 conversation per client, but it goes into an infinite loop to listen for
 more clients as long as this server script runs; the client may run on
 a remote machine, or on same computer if it uses 'localhost' for server</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [8]:
-</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                                               <span class="c"># '' = all available interfaces on host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                                        <span class="c"># listen on a non-reserved port number</span>
-<span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c">#make a TCP socket object</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>                 <span class="c">#bind it to server port number</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                         <span class="c">#listen, allow 5 pending connects</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="n">connections</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span> <span class="c">#wait for next client connect</span>
-    <span class="k">print</span> <span class="s">'Server connected by'</span><span class="p">,</span> <span class="n">address</span>       <span class="c">#connection is a new socket</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>            <span class="c"># read next line on client socket</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>                                <span class="c"># send a reply line to the client</span>
-        <span class="n">connections</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">'Echo =&gt;'</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>   <span class="c"># until eof when socket closed</span>
-    <span class="n">connections</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -612,36 +599,16 @@ on one machine; to test over the Internet, run a server on a remote
 machine, and set serverHost or argv[1] to machine's domain name or IP addr;
 Python sockets are a portable BSD socket interface, with object methods
 for the standard socket calls available in the system's C library;</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [17]:
-</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">serverHost</span> <span class="o">=</span> <span class="s">'localhost'</span> <span class="c"># portable socket interface plus constants </span>
-                                      <span class="c"># server name, or: 'starship.python.net'</span>
-<span class="n">serverPort</span> <span class="o">=</span> <span class="mi">50007</span>        <span class="c"># non-reserved port used by the server</span>
-<span class="n">message</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="s">'Hello network world'</span><span class="p">]</span> <span class="c"># default text to send to server</span>
-                                                        <span class="c"># requires bytes: b'' or str,encode()</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">serverHost</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>              <span class="c"># server from cmd line arg 1</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>                      <span class="c"># text from cmd line args 2..n</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> 
-        
-<span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c"># make a TCP/IP socket object</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">serverHost</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">))</span> <span class="c"># connect to server machine + port</span>
-
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">message</span><span class="p">:</span>
-    <span class="n">sockobj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>                   <span class="c"># send line to server over socket</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>       <span class="c"># receive line from server: up to 1k</span>
-    <span class="k">print</span> <span class="s">'Client received:'</span><span class="p">,</span> <span class="n">data</span>     <span class="c"># bytes are quoted, was `x`, repr(x)</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -661,7 +628,6 @@ In [17]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -674,17 +640,16 @@ the standard communication device for the Internet. More specifically, AF_INET
 means the IP address protocol, and SOCK_STREAM means the TCP transfer protocol.
 The AF_INET / SOCK_STREAM combination is the default because it is so common, but
 it’s typical to make this explicit.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [24]:
-</div>
+<div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -711,17 +676,16 @@ if you try to open a socket on a port already in use, Python will raise an excep
 Also notice the nested parentheses in this call—for the AF_INET address protocol
 socket here, we pass the host/port socket address to bind as a two-item tuple object
 (pass a string for AF_UNIX ). Te</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [25]:
-</div>
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sockobj</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -742,17 +706,16 @@ queued by the operating system before new requests are denied (which happens
 only if a server isn’t fast enough to process requests before the queues fill up). A
 value of 5 is usually enough for most socket-based programs; the value must be at
 least 1.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [31]:
-</div>
+<div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sockobj</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -771,17 +734,16 @@ In [31]:
 running on remote machines (or the same machine) and falls into an infinite loop—
 while True (or the equivalent while 1 for older Pythons and ex-C programmers)—
 waiting for them to arrive:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">connection</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -803,6 +765,7 @@ with a client happens on connection , the new socket. This call actually returns
 two-item tuple— address is the connecting client’s Internet address. We can call
 accept more than one time, to service multiple client connections; that’s why each
 call returns a new, distinct socket for talking to a particular client.</p>
+
 </div>
 </div>
 </div>
@@ -813,17 +776,16 @@ call returns a new, distinct socket for talking to a particular client.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Once we have a client connection, we fall into another loop to receive data from the
 client in blocks of up to 1,024 bytes at a time, and echo each block back to the client:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [33]:
-</div>
+<div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -841,17 +803,16 @@ In [33]:
 <p>Reads at most 1,024 more bytes of the next message sent from a client (i.e., coming
 across the network or IPC connection), and returns it to the script as a byte string.
 We get back an empty byte string when the client has finished—end-of-file is triggered when the client closes its end of the socket.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [35]:
-</div>
+<div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">connection</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">'Echo=&gt;'</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -871,6 +832,7 @@ string 'Echo=&gt;' to it first. The client program can then recv what we send he
 the next reply line. Technically this call sends as much data as possible, and returns
 the number of bytes actually sent. To be fully robust, some programs may need to
 resend unsent portions or use connection.sendall to force all bytes to be sent.</p>
+
 </div>
 </div>
 </div>
@@ -884,7 +846,6 @@ resend unsent portions or use connection.sendall to force all bytes to be sent.<
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -894,17 +855,16 @@ resend unsent portions or use connection.sendall to force all bytes to be sent.<
 send and receive nearly arbitrary Python objects with the standard library pickle object
 serialization module. Its dumps and loads calls convert Python objects to and from byte
 strings, ready for direct socket transfer:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [36]:
-</div>
+<div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pickle</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -916,12 +876,10 @@ In [36]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [38]:
-</div>
+<div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="mi">99</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>       <span class="c"># on sending end... convert to byte strings</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -933,55 +891,10 @@ In [38]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [41]:
-</div>
+<div class="prompt input_prompt">In [41]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span>                                              <span class="c"># string passed to send, returned by recv</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">
-    Out[41]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-'(lp0\nI99\naI100\na.'
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In [42]:
-</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                         <span class="c"># on receiving end... convert back to object</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -998,14 +911,49 @@ In [42]:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">
-    Out[42]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-[99, 100]
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>'(lp0\nI99\naI100\na.'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [42]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output if click :-)</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[99, 100]</pre>
 </div>
 
 </div>
@@ -1023,17 +971,16 @@ In [42]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For simpler types that correspond to those in the C language, the struct module provides the byte-string conversion we need as well:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [43]:
-</div>
+<div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">struct</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1045,12 +992,10 @@ In [43]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [44]:
-</div>
+<div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">'&gt;ii'</span><span class="p">,</span> <span class="mi">99</span> <span class="p">,</span><span class="mi">100</span><span class="p">)</span>      <span class="c"># convert simpler types for transmission</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1062,55 +1007,10 @@ In [44]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [45]:
-</div>
+<div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">
-    Out[45]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-'\x00\x00\x00c\x00\x00\x00d'
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In [48]:
-</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">'&gt;ii'</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1127,14 +1027,49 @@ In [48]:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">
-    Out[48]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-(99, 100)
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>'\x00\x00\x00c\x00\x00\x00d'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [48]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output if click :-)</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[48]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(99, 100)</pre>
 </div>
 
 </div>
@@ -1156,15 +1091,12 @@ In [48]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [50]:
-</div>
+<div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sockobj</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">serverHost</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1189,6 +1121,7 @@ the client; that comes in handy for debugging servers without having to connect
 to the Net. And again, the client’s port number must match the server’s exactly.
 Note the nested parentheses again—just as in server bind calls, we really pass the
 server’s host/port address to connect in a tuple object.</p>
+
 </div>
 </div>
 </div>
@@ -1200,17 +1133,16 @@ server’s host/port address to connect in a tuple object.</p>
 <p>Once the client establishes a connection to the server, it falls into a loop, sending a
 message one line at a time and printing whatever the server sends back after each line
 is sent:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sockobj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1233,6 +1165,7 @@ struct if desired. When lines to be sent are given as command-line arguments
 instead, they must be converted from str to bytes ; the client arranges this by en-
 coding in a generator expression (a call map(str.encode, sys.argv[2:]) would have
 the same effect).</p>
+
 </div>
 </div>
 </div>
@@ -1246,7 +1179,6 @@ the same effect).</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1255,6 +1187,7 @@ the same effect).</p>
 <p>The server keeps
 running and responds to requests made each time you run the client script in the other
 window.</p>
+
 </div>
 </div>
 </div>
@@ -1268,7 +1201,6 @@ window.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1283,17 +1215,16 @@ computer multiple times again. This time, the client runs on a different machine
 the server, so we pass in the server’s domain or IP name as a client command-line
 argument. The server still uses a machine name of "" because it always listens on what-
 ever machine it runs on.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [51]:
-</div>
+<div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="o">!</span>ping learning-python.com
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1312,8 +1243,7 @@ In [51]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-PING learning-python.com (97.74.215.115) 56(84) bytes of data.
+<pre>PING learning-python.com (97.74.215.115) 56(84) bytes of data.
 64 bytes from p3nlh266.shr.prod.phx3.secureserver.net (97.74.215.115): icmp_seq=1 ttl=38 time=210 ms
 64 bytes from p3nlh266.shr.prod.phx3.secureserver.net (97.74.215.115): icmp_seq=2 ttl=38 time=212 ms
 64 bytes from p3nlh266.shr.prod.phx3.secureserver.net (97.74.215.115): icmp_seq=3 ttl=38 time=214 ms
@@ -1323,7 +1253,6 @@ PING learning-python.com (97.74.215.115) 56(84) bytes of data.
 --- learning-python.com ping statistics ---
 6 packets transmitted, 5 received, 16% packet loss, time 5004ms
 rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
-
 
 </pre>
 </div>
@@ -1346,7 +1275,6 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1357,6 +1285,7 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 <li>the socket module generally raises exceptions if you ask for something invalid.</li>
 <li>be sure to kill the server process before restarting it again, or else the port number will still be in use, and you’ll get another exception.</li>
 </ol>
+
 </div>
 </div>
 </div>
@@ -1370,16 +1299,12 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [52]:
-</div>
+<div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">PP4E.launchmodes</span> <span class="kn">import</span> <span class="n">QuietPortableLauncher</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1391,14 +1316,10 @@ In [52]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [53]:
-</div>
+<div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">numclients</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">cmdline</span><span class="p">):</span>
-    <span class="n">QuietPortableLauncher</span><span class="p">(</span><span class="n">cmdline</span><span class="p">,</span> <span class="n">cmdline</span><span class="p">)()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1410,15 +1331,10 @@ In [53]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [54]:
-</div>
+<div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># start('echo-server.py')                     # spawn server locally if not yet started</span>
-<span class="n">args</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>               <span class="c"># pass server name if running remotely</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numclients</span><span class="p">):</span>
-    <span class="n">start</span><span class="p">(</span><span class="s">'echo-client.py </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">args</span><span class="p">)</span>  <span class="c"># spawn 8? clients to test the server</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1438,7 +1354,6 @@ In [54]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1450,17 +1365,16 @@ protocols (0 to 1023). There’s nothing preventing a client from opening a sock
 one of these special ports, however. For instance, the following client-side code con-
 nects to programs listening on the standard email, FTP, and HTTP web server ports
 on three different server machines:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [56]:
-</div>
+<div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1480,15 +1394,12 @@ In [56]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [57]:
-</div>
+<div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1500,12 +1411,10 @@ In [57]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [58]:
-</div>
+<div class="prompt input_prompt">In [58]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s">'pop.secureserver.net'</span><span class="p">,</span> <span class="mi">110</span><span class="p">))</span> 
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1517,12 +1426,10 @@ In [58]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [59]:
-</div>
+<div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1541,9 +1448,7 @@ In [59]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-+OK &lt;28789.1401261144@p3plpop05-10.prod.phx3.secureserver.net&gt;
-
+<pre>+OK &lt;28789.1401261144@p3plpop05-10.prod.phx3.secureserver.net&gt;
 
 </pre>
 </div>
@@ -1558,12 +1463,10 @@ In [59]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [60]:
-</div>
+<div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1583,15 +1486,12 @@ In [60]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [63]:
-</div>
+<div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1603,12 +1503,10 @@ In [63]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [64]:
-</div>
+<div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s">'learning-python.com'</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1620,12 +1518,10 @@ In [64]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [65]:
-</div>
+<div class="prompt input_prompt">In [65]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1644,10 +1540,8 @@ In [65]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+<pre>220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
 220-You
-
 </pre>
 </div>
 </div>
@@ -1661,12 +1555,10 @@ In [65]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [60]:
-</div>
+<div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1686,15 +1578,12 @@ In [60]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [78]:
-</div>
+<div class="prompt input_prompt">In [78]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1706,12 +1595,10 @@ In [78]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [79]:
-</div>
+<div class="prompt input_prompt">In [79]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s">'www.python.net'</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1723,55 +1610,10 @@ In [79]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [80]:
-</div>
+<div class="prompt input_prompt">In [80]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">'GET /</span><span class="se">\r\n</span><span class="s">'</span><span class="p">)</span> <span class="c"># fetch root page reply</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">
-    Out[80]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-7
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In [81]:
-</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1788,14 +1630,11 @@ In [81]:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">
-    Out[81]:</div>
+<div class="prompt output_prompt">Out[80]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-'&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"\r\n    "http://'
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
 </div>
 
 </div>
@@ -1809,12 +1648,10 @@ In [81]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [82]:
-</div>
+<div class="prompt input_prompt">In [81]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1831,14 +1668,11 @@ In [82]:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">
-    Out[82]:</div>
+<div class="prompt output_prompt">Out[81]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-'www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;\r\n&lt;html xmlns="http://www.'
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>'&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"\r\n    "http://'</pre>
 </div>
 
 </div>
@@ -1852,12 +1686,48 @@ In [82]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [84]:
-</div>
+<div class="prompt input_prompt">In [82]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output if click :-)</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[82]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;\r\n&lt;html xmlns="http://www.'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [84]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1874,6 +1744,7 @@ In [84]:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Python’s poplib , ftplib , and http.client and urllib.request modules provide
 higher-level interfaces for talking to servers on these ports.</p>
+
 </div>
 </div>
 </div>
@@ -1887,7 +1758,6 @@ higher-level interfaces for talking to servers on these ports.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1896,17 +1766,16 @@ higher-level interfaces for talking to servers on these ports.</p>
 <p>Speaking of reserved ports, it’s all right to open client-side connections on reserved
 ports as in the prior section, but you can’t install your own server-side scripts for these
 ports unless you have special permission.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [86]:
-</div>
+<div class="prompt input_prompt">In [86]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1918,12 +1787,10 @@ In [86]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [88]:
-</div>
+<div class="prompt input_prompt">In [88]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">''</span><span class="p">,</span><span class="mi">80</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1941,7 +1808,7 @@ In [88]:
 
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
+<div class="output_subarea output_text output_error">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">error</span>                                     Traceback (most recent call last)
@@ -1976,7 +1843,6 @@ In [88]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1989,6 +1855,7 @@ thread, or by manually switching (multiplexing) between clients in an event loop
 isn’t a socket issue per se, and we already learned how to start processes and threads
 in Chapter 5. But since these schemes are so typical of socket server programming, let’s
 explore all three ways to handle client requests in parallel here.</p>
+
 </div>
 </div>
 </div>
@@ -2002,7 +1869,6 @@ explore all three ways to handle client requests in parallel here.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2012,57 +1878,16 @@ explore all three ways to handle client requests in parallel here.</p>
 and send an echo reply; forks a process to handle each client connection;
 child processes share parent's socket descriptors; fork is less portable
 than threads--not yet on Windows, unless Cygwin or similar installed</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [92]:
-</div>
+<div class="prompt input_prompt">In [92]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                                               <span class="c"># '' = all available interfaces on host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                                        <span class="c"># listen on a non-reserved port number</span>
-
-<span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c">#make a TCP socket object</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>                 <span class="c">#bind it to server port number</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                         <span class="c">#listen, allow 5 pending connects</span>
-
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-
-<span class="n">activeChildren</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">def</span> <span class="nf">reapChildren</span><span class="p">():</span>                                        <span class="c"># reap any dead child processes</span>
-    <span class="k">while</span> <span class="n">activeChildren</span><span class="p">:</span>                                 <span class="c"># else may fill up system table</span>
-        <span class="n">pid</span><span class="p">,</span> <span class="n">stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">WNOHANG</span><span class="p">)</span> <span class="c"># don't hang if no child exited</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">pid</span><span class="p">:</span> <span class="k">break</span>
-        <span class="n">activeChildren</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
-
-<span class="c"># child process: reply, exit simulate a blocking activity</span>
-<span class="c"># read, write a client socket till eof when socket closed        </span>
-<span class="k">def</span> <span class="nf">handleClient</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>            <span class="c"># read next line on client socket</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>                                <span class="c"># send a reply line to the client</span>
-        <span class="n">reply</span> <span class="o">=</span> <span class="s">'Echo=&gt;</span><span class="si">%s</span><span class="s"> at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">now</span><span class="p">())</span>
-        <span class="n">connections</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>       <span class="c"># until eof when socket closed</span>
-    <span class="n">connections</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">dispatcher</span><span class="p">():</span>                                               <span class="c"># listen until process killed </span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                                                    <span class="c"># wait for next connection,</span>
-        <span class="n">connection</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>      <span class="c"># pass to process for service</span>
-        <span class="k">print</span> <span class="s">'Server connected by'</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
-        <span class="n">reapChildren</span><span class="p">()</span>                                          <span class="c"># clean up exited children now</span>
-        <span class="n">childPid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>                                    <span class="c"># copy this process</span>
-        <span class="k">if</span> <span class="n">childPid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                                        <span class="c"># if in child process: handle</span>
-            <span class="n">handleClient</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>                                                          <span class="c"># else: go accept next connect</span>
-            <span class="n">activeChildren</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">childPid</span><span class="p">)</span>             <span class="c"># add to active child pid list</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2074,12 +1899,10 @@ In [92]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [96]:
-</div>
+<div class="prompt input_prompt">In [96]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">dispatcher</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2099,16 +1922,12 @@ In [96]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="o">!</span>netstat -pant <span class="p">|</span> grep <span class="m">50007</span> #show <span class="m">50007</span> port
-<span class="o">!</span><span class="nb">kill</span> -9 pid                             # <span class="nb">kill </span>python server
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2133,6 +1952,7 @@ useful).</li>
 <li>Each client waits until the server replies, which happens five seconds after their
 initial requests.</li>
 </ol>
+
 </div>
 </div>
 </div>
@@ -2145,6 +1965,7 @@ initial requests.</li>
 connect at once—the server would be stuck in the action we’re simulating with
 time.sleep , and not get back to the main loop to accept new client requests. With
 process forks per request, clients can be serviced in parallel.</p>
+
 </div>
 </div>
 </div>
@@ -2158,7 +1979,6 @@ process forks per request, clients can be serviced in parallel.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2166,6 +1986,7 @@ process forks per request, clients can be serviced in parallel.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>ps -af full process listing command shows that all the dead child pro-
 cesses stay in the system process table (show as <defunct> )</defunct></p>
+
 </div>
 </div>
 </div>
@@ -2179,6 +2000,7 @@ up each time the server gets a new client connection request, by calling the Pyt
 os.waitpid function. A few zombies may accumulate if the server is heavily loaded, but
 they will remain only until the next client connection is received (you get only as many
 zombies as processes served in parallel since the last accept )</p>
+
 </div>
 </div>
 </div>
@@ -2191,6 +2013,7 @@ zombies as processes served in parallel since the last accept )</p>
 running program into a zombie. Here, for example, a child spawned to handle a new
 request changes to <defunct> on exit. Its connection cleans up lingering zombies, and
 its own process entry will be removed completely when the next request is received.</defunct></p>
+
 </div>
 </div>
 </div>
@@ -2204,7 +2027,6 @@ its own process entry will be removed completely when the next request is receiv
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2217,22 +2039,16 @@ action as the SIGCHLD signal handler, zombies will be removed automatically and 
 mediately by the operating system as child processes exit; the parent need not issue
 wait calls to clean up after them. Because of that, this scheme is a simpler alternative
 to manually reaping zombies on platforms where it is supported.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [1]:
-</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Demo Python's signal module; pass signal number as a command-line arg, and use</span>
-<span class="c"># a "kill -N pid" shell command to send this process a signal; on my Linux machine,</span>
-<span class="c"># SIGUSR1=10, SIGUSR2=12, SIGCHLD=17, and SIGCHLD handler stays in effect even if</span>
-<span class="c"># not restored: all other handlers are restored by Python after caught, but SIGCHLD</span>
-<span class="c"># behavior is left to the platform's implementation; signal works on Windows too,</span>
-<span class="c"># but defines only a few signal types; signals are not very portable in general</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2244,23 +2060,10 @@ In [1]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [4]:
-</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">time</span>
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">onSignal</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">stackframe</span><span class="p">):</span>              <span class="c"># Python signal handler</span>
-    <span class="k">print</span> <span class="s">'Got signal'</span><span class="p">,</span> <span class="n">signum</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
-    <span class="c"># most handlers stay in effect but sigchld handler is not</span>
-    <span class="k">if</span> <span class="n">signum</span> <span class="o">==</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGCHLD</span><span class="p">:</span>                <span class="c">#signal.signal(signal.SIGCHLD, onSignal)</span>
-        <span class="k">print</span> <span class="s">'sigchld caught'</span>
-
-<span class="n">signum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">onSignal</span><span class="p">)</span>                 <span class="c"># install signal handler</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span> <span class="n">signal</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>                         <span class="c"># sleep waiting for signals</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2280,48 +2083,16 @@ kill -signal-number process-id shell command line; this is the shell’s equival
 Python’s os.kill function available on Unix-like platforms only. Process IDs are listed
 in the PID column of ps command results. Here is this script in action catching signal
 numbers 10 (reserved for general use) and 9 (the unavoidable terminate signal).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [5]:
-</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                                               <span class="c"># '' = all available interfaces on host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                                        <span class="c"># listen on a non-reserved port number</span>
-
-<span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c">#make a TCP socket object</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>                 <span class="c">#bind it to server port number</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                         <span class="c">#listen, allow 5 pending connects</span>
-<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGCHLD</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_IGN</span><span class="p">)</span> <span class="c">#avoid child zombie processes</span>
-
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-
-<span class="c"># child process: reply, exit simulate a blocking activity</span>
-<span class="c"># read, write a client socket till eof when socket closed        </span>
-<span class="k">def</span> <span class="nf">handleClient</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>            <span class="c"># read next line on client socket</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>                                <span class="c"># send a reply line to the client</span>
-        <span class="n">reply</span> <span class="o">=</span> <span class="s">'Echo=&gt;</span><span class="si">%s</span><span class="s"> at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">now</span><span class="p">())</span>
-        <span class="n">connections</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>       <span class="c"># until eof when socket closed</span>
-    <span class="n">connections</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">dispatcher</span><span class="p">():</span>                                               <span class="c"># listen until process killed </span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                                                    <span class="c"># wait for next connection,</span>
-        <span class="n">connection</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>      <span class="c"># pass to process for service</span>
-        <span class="k">print</span> <span class="s">'Server connected by'</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
-        <span class="n">childPid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>                                    <span class="c"># copy this process</span>
-        <span class="k">if</span> <span class="n">childPid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                                        <span class="c"># if in child process: handle</span>
-            <span class="n">handleClient</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2340,6 +2111,7 @@ In [5]:
 <li>Much simpler; we don’t need to manually track or reap child processes.</li>
 <li>More accurate; it leaves no zombies temporarily between client requests.</li>
 </ol>
+
 </div>
 </div>
 </div>
@@ -2351,6 +2123,7 @@ In [5]:
 <p>this technique is not universally supported across
 all flavors of Unix. If you care about portability, manually reaping children as we did
 in Example 12-4 may still be desirable.</p>
+
 </div>
 </div>
 </div>
@@ -2364,7 +2137,6 @@ in Example 12-4 may still be desirable.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2372,6 +2144,7 @@ in Example 12-4 may still be desirable.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Though it's crash on Win,open sockets are not correctly
 pickled when passed as arguments into the new process, it's ok on linux.</p>
+
 </div>
 </div>
 </div>
@@ -2385,7 +2158,6 @@ pickled when passed as arguments into the new process, it's ok on linux.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2397,21 +2169,16 @@ socket descriptors. Unlike processes, though, threads are usually less expensive
 and work on both Unix-like machines and Windows under standard Python today.
 Furthermore, many (though not all) see threads as simpler to program—child threads
 die silently on exit, without leaving behind zombies to haunt the server.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Server side: open a socket on a port, listen for a message from a client,</span>
-<span class="c"># and send an echo reply; echoes lines until eof when client closes socket;</span>
-<span class="c"># spawns a thread to handle each client connection; threads share global</span>
-<span class="c"># memory space with main thread; this is more portable than fork: threads</span>
-<span class="c"># work on standard Windows systems, but process forks do not</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2423,39 +2190,10 @@ In []:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">_thread</span> <span class="kn">as</span> <span class="nn">thread</span>           <span class="c"># or use threading.Thread().start()</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>                     <span class="c"># get socket constructor and constants</span>
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                              <span class="c"># server machine, '' means local host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                           <span class="c"># listen on a non-reserved port number</span>
-
-<span class="n">sockobj</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>           <span class="c"># make a TCP socket object</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>                   <span class="c"># bind it to server port number</span>
-<span class="n">sockobj</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                <span class="c"># allow up to 5 pending connects</span>
-
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>               <span class="c"># current time on the server</span>
-
-<span class="k">def</span> <span class="nf">handleClient</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>                    <span class="c"># in spawned thread: reply</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                <span class="c"># simulate a blocking activity</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                                  <span class="c"># read, write a client socket</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>
-        <span class="n">reply</span> <span class="o">=</span> <span class="s">'Echo=&gt;</span><span class="si">%s</span><span class="s"> at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
-        <span class="n">connection</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-    <span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">dispatcher</span><span class="p">():</span>                                <span class="c"># listen until process killed</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                                  <span class="c"># wait for next connection,</span>
-        <span class="n">connection</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>   <span class="c"># pass to thread for service</span>
-        <span class="k">print</span> <span class="s">'Server connected by'</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
-        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">handleClient</span><span class="p">,</span> <span class="p">(</span><span class="n">connection</span><span class="p">,))</span>
-
-<span class="n">dispatcher</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2475,6 +2213,7 @@ the process fork version, we don’t call anything like os . _exit in the client
 tion (and we shouldn’t—it may kill all threads in the process, including the main loop
 watching for new connections!). Because of this, the thread version is not only more
 portable, but also simpler.</p>
+
 </div>
 </div>
 </div>
@@ -2488,7 +2227,6 @@ portable, but also simpler.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2496,46 +2234,16 @@ portable, but also simpler.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>socketserver module defines classes that implement all flavors of forking and threading
 servers that you are likely to be interested in.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">Server side: open a socket on a port, listen for a message from a client, and </span>
-<span class="sd">send an echo reply; this version uses the standard library module socketserver to</span>
-<span class="sd">do its work; socketserver provides TCPServer, ThreadingTCPServer, ForkingTCPServer,</span>
-<span class="sd">UDP variants of these, and more, and routes each client connect request to a new </span>
-<span class="sd">instance of a passed-in request handler object's handle method; socketserver also</span>
-<span class="sd">supports Unix domain sockets, but only on Unixen; see the Python library manual.</span>
-<span class="sd">"""</span>
-
-<span class="kn">import</span> <span class="nn">SocketServer</span> <span class="kn">as</span> <span class="nn">socketserver</span><span class="o">,</span> <span class="nn">time</span>               <span class="c"># get socket server, handler objects</span>
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                             <span class="c"># server machine, '' means local host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                          <span class="c"># listen on a non-reserved port number</span>
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-
-<span class="k">class</span> <span class="nc">MyClientHandler</span><span class="p">(</span><span class="n">socketserver</span><span class="o">.</span><span class="n">BaseRequestHandler</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                           <span class="c"># on each client connect</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_address</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>       <span class="c"># show this client's address</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                           <span class="c"># simulate a blocking activity</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                             <span class="c"># self.request is client socket</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>      <span class="c"># read, write a client socket</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>
-            <span class="n">reply</span> <span class="o">=</span> <span class="s">'Echo=&gt;</span><span class="si">%s</span><span class="s"> at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c"># make a threaded server, listen/handle clients forever</span>
-<span class="n">myaddr</span> <span class="o">=</span> <span class="p">(</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">)</span>
-<span class="n">server</span> <span class="o">=</span> <span class="n">socketserver</span><span class="o">.</span><span class="n">ThreadingTCPServer</span><span class="p">(</span><span class="n">myaddr</span><span class="p">,</span> <span class="n">MyClientHandler</span><span class="p">)</span>
-<span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2555,7 +2263,6 @@ In []:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2569,6 +2276,7 @@ in parallel, but only because the operating system switches focus between tasks 
 that you don’t usually notice. This process of switching between tasks is sometimes
 called time-slicing when done by an operating system; it is more generally known as
 multiplexing.</p>
+
 </div>
 </div>
 </div>
@@ -2581,6 +2289,7 @@ multiplexing.</p>
 loop run in a single process and thread decides which clients should get a bit of attention
 each time through. Client requests and the main dispatcher loop are each given a small
 slice of the server’s attention if they are ready to converse.</p>
+
 </div>
 </div>
 </div>
@@ -2593,6 +2302,7 @@ slice of the server’s attention if they are ready to converse.</p>
 block (pause) the server when applied to objects returned by select . Because of that,
 a single-loop server that uses select need not get stuck communicating with one client
 or waiting for new ones while other clients are starved for the server’s attention.</p>
+
 </div>
 </div>
 </div>
@@ -2606,6 +2316,7 @@ when transactions with clients are relatively short-lived. However, it also requ
 these transactions be quick; if they are not, it still runs the risk of becoming bogged
 down waiting for a dialog with a particular client to end, unless augmented with threads
 or forks for long-running transactions.</p>
+
 </div>
 </div>
 </div>
@@ -2622,6 +2333,7 @@ There is a clearer distinction between serial and parallel servers</p>
 <li>{“synchronous”: “serial, process one transaction at a time”,  “asynchronous” : “parallel” }</li>
 <li>forking, threading, and select loops are three alternative ways to implement parallel, asynchronous servers.</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -2635,7 +2347,6 @@ There is a clearer distinction between serial and parallel servers</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2643,72 +2354,16 @@ There is a clearer distinction between serial and parallel servers</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>can handle multiple clients without ever starting new
 processes or threads</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># P822</span>
-<span class="sd">"""</span>
-<span class="sd">Server: handle multiple clients in parallel with select. use the select</span>
-<span class="sd">module to manually multiplex among a set of sockets: main sockets which</span>
-<span class="sd">accept new client connections, and input sockets connected to accepted</span>
-<span class="sd">clients; select can take an optional 4th arg--0 to poll, n.m to wait n.m</span>
-<span class="sd">seconds, or omitted to wait till any socket is ready for processing.</span>
-<span class="sd">"""</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">select</span> <span class="kn">import</span> <span class="n">select</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="n">socket</span><span class="p">,</span> <span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span>
-
-
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-
-<span class="n">myHost</span> <span class="o">=</span> <span class="s">''</span>                             <span class="c"># server machine, '' means local host</span>
-<span class="n">myPort</span> <span class="o">=</span> <span class="mi">50007</span>                          <span class="c"># listen on a non-reserved port number</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>                  <span class="c"># allow host/port as cmdline args too</span>
-    <span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">numPortSocks</span> <span class="o">=</span> <span class="mi">2</span>                        <span class="c"># number of ports for client connects</span>
-
-<span class="c"># make main sockets for accepting new client requests</span>
-<span class="n">mainsocks</span><span class="p">,</span> <span class="n">readsocks</span><span class="p">,</span> <span class="n">writesocks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numPortSocks</span><span class="p">):</span>
-    <span class="n">portsock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>   <span class="c"># make a TCP/IP socket object</span>
-    <span class="n">portsock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">myHost</span><span class="p">,</span> <span class="n">myPort</span><span class="p">))</span>           <span class="c"># bind it to server port number</span>
-    <span class="n">portsock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                              <span class="c"># listen, allow 5 pending connects</span>
-    <span class="n">mainsocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">portsock</span><span class="p">)</span>                <span class="c"># add to main list to identify</span>
-    <span class="n">readsocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">portsock</span><span class="p">)</span>                <span class="c"># add to select inputs list</span>
-    <span class="n">myPort</span> <span class="o">+=</span> <span class="mi">1</span>                               <span class="c"># bind on consecutive ports</span>
-
-<span class="c"># event loop: listen and multiplex until server process killed</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'select-server loop starting'</span><span class="p">)</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="c"># print(readsocks)</span>
-    <span class="n">readables</span><span class="p">,</span> <span class="n">writeables</span><span class="p">,</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">readsocks</span><span class="p">,</span> <span class="n">writesocks</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">for</span> <span class="n">sockobj</span> <span class="ow">in</span> <span class="n">readables</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">sockobj</span> <span class="ow">in</span> <span class="n">mainsocks</span><span class="p">:</span>                     <span class="c"># for ready input sockets</span>
-            <span class="c"># port socket: accept new client</span>
-            <span class="n">newsock</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>      <span class="c"># accept should not block</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">'Connect:'</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">newsock</span><span class="p">))</span>  <span class="c"># newsock is a new socket</span>
-            <span class="n">readsocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsock</span><span class="p">)</span>                <span class="c"># add to select list, wait</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c"># client socket: read next line</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">sockobj</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                <span class="c"># recv should not block</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\t</span><span class="s">got'</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s">'on'</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">sockobj</span><span class="p">))</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>                             <span class="c"># if closed by the clients</span>
-                <span class="n">sockobj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                      <span class="c"># close here and remv from</span>
-                <span class="n">readsocks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sockobj</span><span class="p">)</span>            <span class="c"># del list else reselected</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c"># this may block: should really select for writes too</span>
-                <span class="n">reply</span> <span class="o">=</span> <span class="s">'Echo=&gt;</span><span class="si">%s</span><span class="s"> at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
-                <span class="n">sockobj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2731,6 +2386,7 @@ return immediately, or omitted to mean wait until at least one object is ready (
 done in our server script). The call returns a triple of ready objects—subsets of the
 first three arguments—any or all of which may be empty if the timeout expired
 before sources became ready.</p>
+
 </div>
 </div>
 </div>
@@ -2749,6 +2405,7 @@ for this type of server in general, asyncore is best when transactions are short
 what it describes as “I/O bound” instead of “CPU bound” programs, the latter of
 which still require threads or forks. See the Python library manual for details and
 a usage example.</p>
+
 </div>
 </div>
 </div>
@@ -2762,7 +2419,6 @@ a usage example.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2782,6 +2438,7 @@ scripts to use to accomplish application tasks. Twisted’s internal event engin
 similar in spirit to our select -based server and the asyncore module, but it is re-
 garded as much more advanced. Twisted is a third-party system, not a standard
 library tool; see its website and documentation for more details.</p>
+
 </div>
 </div>
 </div>
@@ -2795,7 +2452,6 @@ library tool; see its website and documentation for more details.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2825,6 +2481,7 @@ long-running processing above and beyond the socket calls used to pass data.</li
 </li>
 <li>Twisted</li>
 </ol>
+
 </div>
 </div>
 </div>
@@ -2838,7 +2495,6 @@ long-running processing above and beyond the socket calls used to pass data.</li
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2847,6 +2503,7 @@ long-running processing above and beyond the socket calls used to pass data.</li
 <p>allow a script to use standard stream tools such as the print and input built-in
 functions and sys module file calls (e.g., sys.stdout.write ), and connect them to sock-
 ets only when needed.</p>
+
 </div>
 </div>
 </div>
@@ -2864,6 +2521,7 @@ default Unicode encodings for the transferred text</p>
 <p>Although text can always
 be encoded and decoded with manual calls after binary mode socket transfers, make
 file shifts the burden of text encodings from your code to the file wrapper object.</p>
+
 </div>
 </div>
 </div>
@@ -2877,7 +2535,6 @@ file shifts the burden of text encodings from your code to the file wrapper obje
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2886,29 +2543,16 @@ file shifts the burden of text encodings from your code to the file wrapper obje
 <p>even when line buffering is requested, socket wrapper file writes (and
 by association, prints) are buffered until the program exits, manual flushes are reques-
 ted, or the buffer becomes full.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># socket-unbuff-server.py</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>           <span class="c"># read three messages over a raw socket</span>
-<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">()</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">''</span><span class="p">,</span> <span class="mi">60000</span><span class="p">))</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'accepting...'</span><span class="p">)</span>
-<span class="n">conn</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>       <span class="c"># blocks till client connect</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'receiving...'</span><span class="p">)</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>      <span class="c"># blocks till data received</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>                 <span class="c"># gets all print lines at once unless flushed</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2920,36 +2564,10 @@ In []:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># socket-unbuff-client.py</span>
-<span class="c"># send three msgs over wrapped and raw socket</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">()</span>                        <span class="c"># default=AF_INET, SOCK_STREAM (tcp/ip)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s">'localhost'</span><span class="p">,</span> <span class="mi">60000</span><span class="p">))</span>
-<span class="c"># default=full buff, 0=error, 1 not linebuff!</span>
-<span class="nb">file</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">makefile</span><span class="p">(</span><span class="s">'w'</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'sending data1'</span><span class="p">)</span>
-<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'spam</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>               <span class="c"># must follow with flush() to truly send now</span>
-<span class="c"># file.flush()               # uncomment flush lines to see the difference</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'sending data2'</span><span class="p">)</span>
-<span class="c"># adding more file prints does not flush buffer either</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'eggs'</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="c"># file.flush()               # output appears at server recv only upon</span>
-<span class="c"># flush or exit</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'sending data3'</span><span class="p">)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">'ham</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>         <span class="c"># low-level byte string interface sends immediately</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>               <span class="c"># received first if don't flush other two!</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2969,7 +2587,6 @@ In []:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2977,24 +2594,16 @@ In []:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Buffered streams and deadlock are general issues that go beyond
 socket wrapper files.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># pipe-unbuff-writer.py</span>
-<span class="c"># output line buffered (unbuffered) if stdout is a terminal, buffered by default for</span>
-<span class="c"># other devices: use -u or sys.stdout.flush() to avoid delayed output on pipe/socket</span>
-<span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">())</span>                 <span class="c"># print transfers per stream buffering</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'spam</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>            <span class="c"># ditto for direct stream file access</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                         <span class="c"># unles sys.stdout reset to other file</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3006,17 +2615,10 @@ In []:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># no output for 10 seconds unless Python -u flag used or sys.stdout.flush()</span>
-<span class="c"># but writer's output appears here every 2 seconds when either option is used</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s">'python -u pipe-unbuff-writer.py'</span><span class="p">):</span>    <span class="c"># iterator reads lines</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>                                     <span class="c"># blocks without -u!</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3036,7 +2638,6 @@ In []:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3054,6 +2655,7 @@ with the open call support stronger independence of client and server, too, but 
 sockets, they are usually limited to the local machine, and are not supported on all
 platforms.</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -3067,7 +2669,6 @@ platforms.</li>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3080,101 +2681,16 @@ server to client over a socket; uses a simple control-info protocol rather
 than separate sockets for control and data (as in ftp), dispatches each
 client request to a handler thread, and loops to transfer the entire file
 by blocks; see ftplib examples for a higher-level transport scheme</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [6]:
-</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">#############################################################################</span>
-<span class="sd">implement client and server-side logic to transfer an arbitrary file from</span>
-<span class="sd">server to client over a socket; uses a simple control-info protocol rather</span>
-<span class="sd">than separate sockets for control and data (as in ftp), dispatches each</span>
-<span class="sd">client request to a handler thread, and loops to transfer the entire file</span>
-<span class="sd">by blocks; see ftplib examples for a higher-level transport scheme;</span>
-<span class="sd">#############################################################################</span>
-<span class="sd">"""</span>
-
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">thread</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">blksz</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">defaultHost</span> <span class="o">=</span> <span class="s">'localhost'</span>
-<span class="n">defaultPort</span> <span class="o">=</span> <span class="mi">50001</span>
-
-<span class="n">helptext</span> <span class="o">=</span> <span class="s">"""</span>
-<span class="s">Usage...</span>
-<span class="s">server=&gt; getfile.py  -mode server            [-port nnn] [-host hhh|localhost]</span>
-<span class="s">client=&gt; getfile.py [-mode client] -file fff [-port nnn] [-host hhh|localhost]</span>
-<span class="s">"""</span>
-
-<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">parsecommandline</span><span class="p">():</span>
-    <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>                        <span class="c"># put in dictionary for easy lookup</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>              <span class="c"># skip program name at front of args</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>            <span class="c"># example: dict['-mode'] = 'server'</span>
-        <span class="nb">dict</span><span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-    <span class="k">return</span> <span class="nb">dict</span>
-
-<span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="n">filename</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>      <span class="c"># send remote name with dir: bytes</span>
-    <span class="n">dropdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>       <span class="c"># filename at end of dir path</span>
-    <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dropdir</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span>                 <span class="c"># create local file in cwd</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">blksz</span><span class="p">)</span>                <span class="c"># get up to 1K at a time</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>                     <span class="c"># till closed on server side</span>
-        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                       <span class="c"># store data in local file</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Client got'</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
-
-<span class="k">def</span> <span class="nf">serverthread</span><span class="p">(</span><span class="n">clientsock</span><span class="p">):</span>
-    <span class="n">sockfile</span> <span class="o">=</span> <span class="n">clientsock</span><span class="o">.</span><span class="n">makefile</span><span class="p">(</span><span class="s">'r'</span><span class="p">)</span>        <span class="c"># wrap socket in dup file obj</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">sockfile</span><span class="o">.</span><span class="n">readline</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>        <span class="c"># get filename up to end-line</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">blksz</span><span class="p">)</span>           <span class="c"># read/send 1K at a time</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">bytes</span><span class="p">:</span> <span class="k">break</span>                <span class="c"># until file totally sent</span>
-            <span class="n">sent</span> <span class="o">=</span> <span class="n">clientsock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
-            <span class="k">assert</span> <span class="n">sent</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">'Error downloading file on server:'</span><span class="p">,</span> <span class="n">filename</span>
-    <span class="n">clientsock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">server</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
-    <span class="n">serversock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>     <span class="c"># listen on TCP/IP socket</span>
-    <span class="n">serversock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>                 <span class="c"># serve clients in threads</span>
-    <span class="n">serversock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">clientsock</span><span class="p">,</span> <span class="n">clientaddr</span> <span class="o">=</span> <span class="n">serversock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">'Server connected by'</span><span class="p">,</span> <span class="n">clientaddr</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
-        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">serverthread</span><span class="p">,</span> <span class="p">(</span><span class="n">clientsock</span><span class="p">,))</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'-host'</span><span class="p">,</span> <span class="n">defaultHost</span><span class="p">)</span>         <span class="c"># use args or defaults</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'-port'</span><span class="p">,</span> <span class="n">defaultPort</span><span class="p">))</span>    <span class="c"># is a string in argv</span>
-    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'-mode'</span><span class="p">)</span> <span class="o">==</span> <span class="s">'server'</span><span class="p">:</span>             <span class="c"># None if no -mode: client</span>
-        <span class="k">if</span> <span class="n">host</span> <span class="o">==</span> <span class="s">'localhost'</span><span class="p">:</span> <span class="n">host</span> <span class="o">=</span> <span class="s">''</span>         <span class="c"># else fails remotely</span>
-        <span class="n">server</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'-file'</span><span class="p">):</span>                       <span class="c"># client mode needs -file</span>
-        <span class="n">client</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="s">'-file'</span><span class="p">])</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="n">helptext</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">parsecommandline</span><span class="p">()</span>
-    <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3200,6 +2716,7 @@ of-line character, and including the file’s directory path in the server. At t
 spawned thread extracts the requested file’s name by reading the client socket, and
 opens and transfers the requested file back to the client, one chunk of bytes at a time.</li>
 </ol>
+
 </div>
 </div>
 </div>
@@ -3213,7 +2730,6 @@ opens and transfers the requested file back to the client, one chunk of bytes at
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3225,6 +2741,7 @@ name that has read access to the requested file. If you care about keeping some 
 server-side files private, you should add logic to suppress downloads of restricted files.
 I’ll leave this as a suggested exercise here, but we will implement such filename checks
 in a different getfile download tool later in this book.</p>
+
 </div>
 </div>
 </div>
@@ -3238,7 +2755,6 @@ in a different getfile download tool later in this book.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3251,6 +2767,7 @@ and so on. Once download parameters have been input, the user interface could ei
 import and call the getfile.client function with appropriate option arguments, or
 build and run the implied getfile.py command line using tools such as os.system ,
 os.popen , subprocess , and so on.</p>
+
 </div>
 </div>
 </div>
@@ -3264,45 +2781,12 @@ os.popen , subprocess , and so on.</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">launch getfile script client from simple tkinter GUI;</span>
-<span class="sd">could also use os.fork+exec, os.spawnv (see Launcher);</span>
-<span class="sd">windows: replace 'python' with 'start' if not on path;</span>
-<span class="sd">"""</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tkinter.messagebox</span> <span class="kn">import</span> <span class="n">showinfo</span>
-<span class="k">def</span> <span class="nf">onReturnKey</span><span class="p">():</span>
-    <span class="n">cmdline</span> <span class="o">=</span> <span class="p">(</span><span class="s">'python getfile.py -mode client -file </span><span class="si">%s</span><span class="s"> -port </span><span class="si">%s</span><span class="s"> -host </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span>
-                      <span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s">'File'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
-                       <span class="n">content</span><span class="p">[</span><span class="s">'Port'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
-                       <span class="n">content</span><span class="p">[</span><span class="s">'Server'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmdline</span><span class="p">)</span>
-    <span class="n">showinfo</span><span class="p">(</span><span class="s">'getfilegui-1'</span><span class="p">,</span> <span class="s">'Download complete'</span><span class="p">)</span>
-
-<span class="n">box</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Server'</span><span class="p">,</span> <span class="s">'Port'</span><span class="p">,</span> <span class="s">'File'</span><span class="p">]</span>
-<span class="n">content</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
-    <span class="n">row</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">Label</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">LEFT</span><span class="p">)</span>
-    <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    <span class="n">entry</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">content</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
-
-<span class="n">box</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'getfilegui-1'</span><span class="p">)</span>
-<span class="n">box</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">'&lt;Return&gt;'</span><span class="p">,</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">onReturnKey</span><span class="p">()))</span>
-<span class="n">mainloop</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3322,47 +2806,12 @@ In []:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">same, but with grids and import+call, not packs and cmdline;</span>
-<span class="sd">direct function calls are usually faster than running files;</span>
-<span class="sd">"""</span>
-
-<span class="kn">import</span> <span class="nn">getfile</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tkinter.messagebox</span> <span class="kn">import</span> <span class="n">showinfo</span>
-
-<span class="k">def</span> <span class="nf">onSubmit</span><span class="p">():</span>
-    <span class="n">getfile</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s">'Server'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
-                   <span class="nb">int</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s">'Port'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span>
-                   <span class="n">content</span><span class="p">[</span><span class="s">'File'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-    <span class="n">showinfo</span><span class="p">(</span><span class="s">'getfilegui-2'</span><span class="p">,</span> <span class="s">'Download complete'</span><span class="p">)</span>
-
-<span class="n">box</span>    <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Server'</span><span class="p">,</span> <span class="s">'Port'</span><span class="p">,</span> <span class="s">'File'</span><span class="p">]</span>
-<span class="n">rownum</span>  <span class="o">=</span> <span class="mi">0</span>
-<span class="n">content</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-    <span class="n">Label</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">rownum</span><span class="p">)</span>
-    <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
-    <span class="n">entry</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">rownum</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">E</span><span class="o">+</span><span class="n">W</span><span class="p">)</span>
-    <span class="n">content</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
-    <span class="n">rownum</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="n">box</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c"># make expandable</span>
-<span class="n">box</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">'Submit'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">onSubmit</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">rownum</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">box</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'getfilegui-2'</span><span class="p">)</span>
-<span class="n">box</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">'&lt;Return&gt;'</span><span class="p">,</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">onSubmit</span><span class="p">()))</span>
-<span class="n">mainloop</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3382,7 +2831,6 @@ In []:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3392,67 +2840,16 @@ In []:
 seem a bit tedious, whether you use packing or grids. In fact, it became so tedious to
 me that I decided to write a general-purpose form-layout class, shown in Exam-
 ple 12-20, which handles most of the GUI layout grunt work.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">##################################################################</span>
-<span class="sd">a reusable form class, used by getfilegui (and others)</span>
-<span class="sd">##################################################################</span>
-<span class="sd">"""</span>
-
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">entrysize</span> <span class="o">=</span> <span class="mi">40</span>
-
-<span class="k">class</span> <span class="nc">Form</span><span class="p">:</span>                                           <span class="c"># add non-modal form box</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>          <span class="c"># pass field labels list</span>
-        <span class="n">labelsize</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
-        <span class="n">box</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>                           <span class="c"># box has rows, buttons</span>
-        <span class="n">box</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>                  <span class="c"># rows has row frames</span>
-        <span class="n">rows</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="n">GROOVE</span><span class="p">)</span>        <span class="c"># go=button or return key</span>
-        <span class="n">rows</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">TOP</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>       <span class="c"># runs onSubmit method</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-            <span class="n">row</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-            <span class="n">row</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
-            <span class="n">Label</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">labelsize</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">LEFT</span><span class="p">)</span>
-            <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">entrysize</span><span class="p">)</span>
-            <span class="n">entry</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
-        <span class="n">Button</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Cancel'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">onCancel</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span>
-        <span class="n">Button</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Submit'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">onSubmit</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span>
-        <span class="n">box</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">'&lt;Return&gt;'</span><span class="p">,</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">onSubmit</span><span class="p">()))</span>
-
-    <span class="k">def</span> <span class="nf">onSubmit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                      <span class="c"># override this</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>                             <span class="c"># user inputs in</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">'</span><span class="se">\t</span><span class="s">=&gt;</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>    <span class="c"># self.content[k]</span>
-
-    <span class="k">def</span> <span class="nf">onCancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                      <span class="c"># override if need</span>
-        <span class="n">Tk</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>                                          <span class="c"># default is exit</span>
-
-<span class="k">class</span> <span class="nc">DynamicForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter field names: '</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">Form</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">onSubmit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">'Field values...'</span><span class="p">)</span>
-        <span class="n">Form</span><span class="o">.</span><span class="n">onSubmit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">onCancel</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">sys</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">Form</span><span class="p">([</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'Job'</span><span class="p">])</span>     <span class="c"># precoded fields, stay after submit</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">DynamicForm</span><span class="p">()</span>                    <span class="c"># input fields, go away after submit</span>
-    <span class="n">mainloop</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3464,46 +2861,10 @@ In []:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In []:
-</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="sd">"""</span>
-<span class="sd">launch getfile client with a reusable GUI form class;</span>
-<span class="sd">os.chdir to target local dir if input (getfile stores in cwd);</span>
-<span class="sd">to do: use threads, show download status and getfile prints;</span>
-<span class="sd">"""</span>
-
-<span class="kn">from</span> <span class="nn">form</span> <span class="kn">import</span> <span class="n">Form</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Tk</span><span class="p">,</span> <span class="n">mainloop</span>
-<span class="kn">from</span> <span class="nn">tkinter.messagebox</span> <span class="kn">import</span> <span class="n">showinfo</span>
-<span class="kn">import</span> <span class="nn">getfile</span><span class="o">,</span> <span class="nn">os</span>
-
-<span class="k">class</span> <span class="nc">GetfileForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oneshot</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-        <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'getfilegui'</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Server Name'</span><span class="p">,</span> <span class="s">'Port Number'</span><span class="p">,</span> <span class="s">'File Name'</span><span class="p">,</span> <span class="s">'Local Dir?'</span><span class="p">]</span>
-        <span class="n">Form</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oneshot</span> <span class="o">=</span> <span class="n">oneshot</span>
-
-    <span class="k">def</span> <span class="nf">onSubmit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">Form</span><span class="o">.</span><span class="n">onSubmit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">localdir</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s">'Local Dir?'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">portnumber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s">'Port Number'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">servername</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s">'Server Name'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">filename</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s">'File Name'</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">localdir</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">localdir</span><span class="p">)</span>
-        <span class="n">portnumber</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">portnumber</span><span class="p">)</span>
-        <span class="n">getfile</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="n">servername</span><span class="p">,</span> <span class="n">portnumber</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="n">showinfo</span><span class="p">(</span><span class="s">'getfilegui'</span><span class="p">,</span> <span class="s">'Download complete'</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">oneshot</span><span class="p">:</span> <span class="n">Tk</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c"># else stay in last localdir</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">GetfileForm</span><span class="p">()</span>
-    <span class="n">mainloop</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -3523,6 +2884,7 @@ in progress (even screen redraws aren’t handled—try covering and uncovering 
 window and you’ll see what I mean). We could make this better by running the down-
 load in a thread, but since we’ll see how to do that in the next chapter when we explore
 the FTP protocol, you should consider this problem a preview.</p>
+
 </div>
 </div>
 </div>
@@ -3540,6 +2902,7 @@ server to transfer files over FTP, the way we do with getfile . In fact, the use
 scripts in this chapter could be easily changed to fetch the desired file with Python’s
 FTP tools, instead of the getfile module. But instead of spilling all the beans here, I’ll
 just say, “Read on.”</p>
+
 </div>
 </div>
 </div>
@@ -3553,7 +2916,6 @@ just say, “Read on.”</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -3577,6 +2939,7 @@ and Linux, as well as BSD Unix, Jython (for Java), and IronPython (for .Net and 
 Unfortunately, there is not enough space to cover this or any other serial port option
 in any sort of detail in this text. As always, see your favorite web search engine for up-
 to-date details on this front.</p>
+
 </div>
 </div>
 </div>

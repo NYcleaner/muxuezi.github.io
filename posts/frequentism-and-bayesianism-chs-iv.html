@@ -49,8 +49,8 @@ MathJax.Hub.Config({
 
 
 
-
 这个notebook出自Pythonic Perambulations的博文。The content is BSD licensed.
+
 
 
 
@@ -123,13 +123,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>这个notebook出自<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">博文</a>。The content is BSD licensed.</em></p>
+
 </div>
 </div>
 </div>
@@ -169,6 +169,7 @@ MathJax.Hub.Config({
 <a href="https://pystan.readthedocs.org/en/latest/">pystan</a>: The Python Interface to Stan</li>
 </ul>
 <p>我不会太关心它们的性能，也不会比较各自的API。这篇文章也不是教程；这三个包都有很完整的文档和教程。我要做的是比较一下三者的用法。用一个相对简单的例子，演示三个包的解法，希望对你有所帮助。</p>
+
 </div>
 </div>
 </div>
@@ -182,13 +183,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>为了解决问题，我们做一个三参数模型来找数据的线性拟合解。参数是斜率，截距和相关性(scatter about the line)；这个相关性可以当作冗余参数</p>
+
 </div>
 </div>
 </div>
@@ -202,35 +203,22 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>先来定义一些数据</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [1]:
-</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">theta_true</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">theta_true</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_true</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xdata</span>
-
-<span class="c"># add scatter to points</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">ydata</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -242,14 +230,10 @@ In [1]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [2]:
-</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s">'ok'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -288,6 +272,7 @@ In [2]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>数据明显具有相关性，我们假设我们不知道误差。让我们构建一条直线来拟合。</p>
+
 </div>
 </div>
 </div>
@@ -301,17 +286,16 @@ In [2]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由贝叶斯定义可得</p>
-<p>$$
+$$
 P(\theta~|~D) \propto P(D~|~\theta) P(\theta)
-$$</p>
-<p>其中，$D$表示观察数据，$\theta$表示模型</p>
+$$<p>其中，$D$表示观察数据，$\theta$表示模型</p>
+
 </div>
 </div>
 </div>
@@ -321,18 +305,16 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>假设线性模型有斜率$\beta$，y轴截距$\alpha$：</p>
-<p>$$
+$$
 \hat{y}(x_i~|~\alpha,\beta) = \alpha + \beta x_i
-$$</p>
-<p>假设y轴坐标具有正态分布误差， 那么模型下的任何数据点的概率为：</p>
-<p>$$
+$$<p>假设y轴坐标具有正态分布误差， 那么模型下的任何数据点的概率为：</p>
+$$
 P(x_i, y_i~|~\alpha, \beta, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[\frac{-[y_i - \hat{y}(x_i~|~\alpha, \beta)]^2}{2\sigma^2}\right]
-$$</p>
-<p>其中，$\sigma$是未知测量误差，为冗余参数。</p>
+$$<p>其中，$\sigma$是未知测量误差，为冗余参数。</p>
 <p>所以$i$的似然估计的乘积为：</p>
-<p>$$
+$$
 P(\{x_i\}, \{y_i\}~|~\alpha, \beta, \sigma) \propto (2\pi\sigma^2)^{-N/2} \exp\left[- \frac{1}{2\sigma^2} \sum_{i-1}^N [y_i - \hat{y}(x_i~|~\alpha,\beta)]^2\right]
-$$</p>
+$$
 </div>
 </div>
 </div>
@@ -346,7 +328,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -354,23 +335,16 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这里我们比之前的更仔细地选择先验条件。我们可以简单的认为$\alpha$，$\beta$，和$\sigma$都是flat priors(扁平先验)，但是我们必须记住<strong>扁平先验并非都无信息先验(uninformative priors)!</strong>Jeffreys先验可能是更好的选择，用对称的最大熵(symmetry and/or maximum entropy)来选择最大化的无信息先验(maximally noninformative priors)。虽然这种做法被频率论认为太主观，但是这么做是可以从信息理论中找到理论依据的。</p>
 <p>为什么flat prior可能产生坏的选择？看看斜率就明白了。让我们来演示一下斜率从0-10的直线变化情况；</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [3]:
-</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s">'equal'</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">slope</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="s">'-k'</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s">'equal'</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -410,6 +384,7 @@ In [3]:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这些线按0.1的斜率间隔进行分布，高斜率区域的线十分密集。因为是扁平先验，你肯定会认为这些斜率彼此无差异。由上面的密集区域显然可以看出，斜率的扁平先验满足那些很陡的斜率。斜率的扁平先验不是一个最小化的无信息先验(minimally informative prior)，可能是最终使你的结果有偏差(尽管有足够多的数据，结果可能几乎是0)。</p>
 <p>你可能想动手做出一个更好的方案(可能在直线与x轴的夹角$\theta$上用扁平先验)，但是我们有更严谨的方案。这个问题在贝叶斯文献中已经有了答案；我找到的最佳方案来自Jaynes的论文<em>直线拟合：贝叶斯方法(Straight Line Fitting: A Bayesian Solution)</em> <a href="http://exordio.qfb.umich.mx/archivos%20pdf%20de%20trabajo%20umsnh/aphilosofia/bayesian%20importantes/leapz.pdf">(pdf)</a></p>
+
 </div>
 </div>
 </div>
@@ -423,39 +398,33 @@ In [3]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>假设模型为</p>
-<p>$$
+$$
 y = \alpha + \beta x
-$$</p>
-<p>那么构建参数空间(parameter-space)，其概率元素为$P(\alpha, \beta) ~d\alpha ~d\beta$</p>
+$$<p>那么构建参数空间(parameter-space)，其概率元素为$P(\alpha, \beta) ~d\alpha ~d\beta$</p>
 <p>因为$x$和$y$是对称的，我们就可以进行参数交互</p>
-<p>$$
+$$
 x = \alpha^\prime + \beta^\prime y
-$$</p>
-<p>其概率元素为$Q(\alpha^\prime, \beta^\prime)d\alpha^\prime d\beta^\prime$，由此可得</p>
-<p>$$
+$$<p>其概率元素为$Q(\alpha^\prime, \beta^\prime)d\alpha^\prime d\beta^\prime$，由此可得</p>
+$$
 (\alpha^\prime,~\beta^\prime) = (- \beta^{-1}\alpha,~\beta^{-1}).
-$$</p>
-<p>通过雅可比变换(the Jacobian of the transformation)，可得</p>
-<p>$$
+$$<p>通过雅可比变换(the Jacobian of the transformation)，可得</p>
+$$
 Q(\alpha^\prime, \beta^\prime) = \beta^3 P(\alpha, \beta).
-$$</p>
-<p>为了保持对称性，需要保证变量的改变不会影响先验概率，因此有：</p>
-<p>$$
+$$<p>为了保持对称性，需要保证变量的改变不会影响先验概率，因此有：</p>
+$$
 \beta^3 P(\alpha, \beta) = P(- \beta^{-1}\alpha, \beta^{-1}).
-$$</p>
-<p>此函数满足：</p>
-<p>$$
+$$<p>此函数满足：</p>
+$$
 P(\alpha, \beta) \propto (1 + \beta^2)^{-3/2}.
-$$</p>
-<p>即$\alpha$服从均匀分布，$\beta$服从参数为$\sin\theta$的均匀分布，其中，$\theta = \tan^{-1}\beta$。</p>
+$$<p>即$\alpha$服从均匀分布，$\beta$服从参数为$\sin\theta$的均匀分布，其中，$\theta = \tan^{-1}\beta$。</p>
 <p>你可能会奇怪，斜率的分布服从参数为$\sin\theta$的均匀分布，而非$\theta$。$\sin\theta$可以被认为是源自截距。如果把变量$\alpha$改为$\alpha_\perp = \alpha\cos\theta$，那么均匀分布就变为$(\alpha_\perp,~\theta)$。在用PyStan求解时我们会用这个。</p>
+
 </div>
 </div>
 </div>
@@ -469,21 +438,19 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>同理，我们希望$\sigma$的先验与问题的规模变化无关(如，改变点的数据)。因此其概率必须满足</p>
-<p>$$
+$$
 P(\sigma)d\sigma = P(\sigma / c)d\sigma / c.
-$$</p>
-<p>方程等价于</p>
-<p>$$
+$$<p>方程等价于</p>
+$$
 P(\sigma) \propto 1 / \sigma.
-$$</p>
-<p>这就是Harold Jeffreys提出的<a href="http://en.wikipedia.org/wiki/Jeffreys_prior">Jeffreys先验</a>。</p>
+$$<p>这就是Harold Jeffreys提出的<a href="http://en.wikipedia.org/wiki/Jeffreys_prior">Jeffreys先验</a>。</p>
+
 </div>
 </div>
 </div>
@@ -497,18 +464,17 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>把它们放到一起，我们用这些对称性参数推导出模型的最小无信息先验：</p>
-<p>$$
+$$
 P(\alpha, \beta, \sigma) \propto \frac{1}{\sigma}(1 + \beta^2)^{-3/2}
-$$</p>
-<p>综上所述，你可能用扁平先验做参数变换$(\alpha, \beta, \sigma) \to (\alpha_\perp, \theta, \log\sigma)$，来解决这个问题，
+$$<p>综上所述，你可能用扁平先验做参数变换$(\alpha, \beta, \sigma) \to (\alpha_\perp, \theta, \log\sigma)$，来解决这个问题，
 但我认为对称/最大熵(symmetry/maximum entropy)方法更简洁明了——而且让我们能看到三个Python包演示这个先验的内涵。</p>
+
 </div>
 </div>
 </div>
@@ -522,79 +488,22 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在有了数据，似然估计和先验，让我们用Python的emcee，PyMC和PyStan来演示。首先，让我们做一些辅助工作来可视化数据：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [4]:
-</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Create some convenience routines for plotting</span>
-
-<span class="k">def</span> <span class="nf">compute_sigma_level</span><span class="p">(</span><span class="n">trace1</span><span class="p">,</span> <span class="n">trace2</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="sd">"""From a set of traces, bin by number of standard deviations"""</span>
-    <span class="n">L</span><span class="p">,</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">ybins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">trace1</span><span class="p">,</span> <span class="n">trace2</span><span class="p">,</span> <span class="n">nbins</span><span class="p">)</span>
-    <span class="n">L</span><span class="p">[</span><span class="n">L</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1E-16</span>
-    <span class="n">logL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
-
-    <span class="n">shape</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-
-    <span class="c"># obtain the indices to sort and unsort the flattened array</span>
-    <span class="n">i_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">L</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">i_unsort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">i_sort</span><span class="p">)</span>
-
-    <span class="n">L_cumsum</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">i_sort</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-    <span class="n">L_cumsum</span> <span class="o">/=</span> <span class="n">L_cumsum</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="n">xbins</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">xbins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">xbins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ybins</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">ybins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">ybins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">L_cumsum</span><span class="p">[</span><span class="n">i_unsort</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">plot_MCMC_trace</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">trace</span><span class="p">,</span> <span class="n">scatter</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">"""Plot traces and contours"""</span>
-    <span class="n">xbins</span><span class="p">,</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">compute_sigma_level</span><span class="p">(</span><span class="n">trace</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trace</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xbins</span><span class="p">,</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">sigma</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.683</span><span class="p">,</span> <span class="mf">0.955</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">scatter</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trace</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">',k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">r'$\alpha$'</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">r'$\beta$'</span><span class="p">)</span>
-    
-    
-<span class="k">def</span> <span class="nf">plot_MCMC_model</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
-    <span class="sd">"""Plot the linear model and 2sigma contours"""</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s">'ok'</span><span class="p">)</span>
-
-    <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">trace</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">yfit</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">beta</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span>
-    <span class="n">mu</span> <span class="o">=</span> <span class="n">yfit</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">sig</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">yfit</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="s">'-k'</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">sig</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sig</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'lightgray'</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">plot_MCMC_results</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">trace</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">'k'</span><span class="p">):</span>
-    <span class="sd">"""Plot both the trace and the model together"""</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-    <span class="n">plot_MCMC_trace</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">trace</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
-    <span class="n">plot_MCMC_model</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">trace</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -610,6 +519,7 @@ In [4]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面，就让我们来解决MCMC。</p>
+
 </div>
 </div>
 </div>
@@ -623,28 +533,25 @@ In [4]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://dan.iel.fm/emcee/current/">emcee</a>(就是Python历史上著名的MCMC Hammer)是天文学家<a href="http://dan.iel.fm/">Dan Foreman-Mackey</a>写的纯Python包。这个简洁的包实现了复杂的仿射无关哈密顿(Affine-invariant Hamiltonian)MCMC。因为是纯Python，所以包很容易安装：</p>
-<pre><code>[~]$ pip install emcee
-</code></pre>
+
+<pre><code>[~]$ pip install emcee</code></pre>
 <p>Emcee没有很多引用代码；只要传入Python函数就会返回与对数后验概率匹配的值和后验样本。下面用<code>emcee</code>演示一下：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [5]:
-</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">emcee</span>
-<span class="k">print</span><span class="p">(</span><span class="n">emcee</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -663,9 +570,7 @@ In [5]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2.1.0
-
+<pre>2.1.0
 </pre>
 </div>
 </div>
@@ -679,32 +584,10 @@ In [5]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [6]:
-</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Define our posterior using Python functions</span>
-<span class="c"># for clarity, I've separated-out the prior and likelihood</span>
-<span class="c"># but this is not necessary. Note that emcee requires log-posterior</span>
-
-<span class="c"># 用Python函数定义后验，我把先验和似然估计分开写了，其实没必要，主要是显得更简洁。</span>
-<span class="c"># 注意emcee需要对数后验证</span>
-
-<span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
-    <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">theta</span>
-    <span class="k">if</span> <span class="n">sigma</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>  <span class="c"># log(0)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">theta</span>
-    <span class="n">y_model</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">x</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_model</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">log_posterior</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_likelihood</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -716,26 +599,10 @@ In [6]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [7]:
-</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Here we'll set up the computation. emcee combines multiple "walkers",</span>
-<span class="c"># each of which is its own MCMC chain. The number of trace results will</span>
-<span class="c"># be nwalkers * nsteps</span>
-
-<span class="c"># 设置计算参数。emcee组合了多个"walkers"，每个都有自己的MCMC链。</span>
-<span class="c"># 跟踪结果的数量为nwalkers * nsteps</span>
-
-<span class="n">ndim</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c"># number of parameters in the model</span>
-<span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c"># number of MCMC walkers</span>
-<span class="n">nburn</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c"># "burn-in" period to let chains stabilize</span>
-<span class="n">nsteps</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c"># number of MCMC steps to take</span>
-
-<span class="c"># set theta near the maximum likelihood, with </span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">starting_guesses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -747,20 +614,10 @@ In [7]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [8]:
-</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Here's the function call where all the work happens:</span>
-<span class="c"># we'll time it using IPython's %time magic</span>
-
-<span class="c"># 这就是所有调用内容。</span>
-<span class="c"># 这里用IPythn的%time方法计时。</span>
-
-<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">log_posterior</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">])</span>
-<span class="o">%</span><span class="k">time</span> <span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">starting_guesses</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"done"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -779,11 +636,9 @@ In [8]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-CPU times: user 4.38 s, sys: 1.09 ms, total: 4.38 s
+<pre>CPU times: user 4.38 s, sys: 1.09 ms, total: 4.38 s
 Wall time: 4.38 s
 done
-
 </pre>
 </div>
 </div>
@@ -797,19 +652,10 @@ done
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [9]:
-</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># sampler.chain is of shape (nwalkers, nsteps, ndim)</span>
-<span class="c"># we'll throw-out the burn-in points and reshape:</span>
-
-<span class="c"># sampler.chain返回数组维度为(nwalkers, nsteps, ndim)</span>
-
-<span class="n">sampler</span><span class="o">.</span><span class="n">chain</span>
-<span class="n">emcee_trace</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="n">nburn</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">plot_MCMC_results</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">emcee_trace</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -848,6 +694,7 @@ In [9]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>左图，我们演示了由冗余参数$\sigma$边缘化后的跟踪结果。在右侧显示了2-$\sigma$最佳拟合的不确定区域。这就是我们从MCMC得到的结果：边缘化的不确定轮廓提供了一个很好的拟合结果。</p>
+
 </div>
 </div>
 </div>
@@ -861,7 +708,6 @@ In [9]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -870,18 +716,16 @@ In [9]:
 <p><a href="http://pymc-devs.github.io/pymc/">PyMC</a>包比emcee有更多的特征，有效的支持许多主流先验分布。
 PyMC默认使用经典的<a href="http://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm">Metropolis-Hastings</a>取样器，最早的MCMC算法。性能方面，使用了Fortran库，因此用pip安装就有点复杂。先安装Fortran编译器，<code>pip install pymc</code>可以了。如果没装Fortran编译器，可以通过<a href="https://conda.binstar.org/pymc">conda</a>安装。</p>
 <p>据说<a href="https://github.com/pymc-devs/pymc">PyMC第三版</a>要移除Fortran依赖，安装就容易了。而且PyMC 3的API更简洁，性能更好。但是目前仍是alpha版本，所以现在用就版本：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [10]:
-</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pymc</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pymc</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -900,9 +744,7 @@ In [10]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2.3.3
-
+<pre>2.3.3
 </pre>
 </div>
 </div>
@@ -916,32 +758,10 @@ In [10]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [11]:
-</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># Define the variables needed for the routine, with their prior distributions</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s">'alpha'</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="nd">@pymc.stochastic</span><span class="p">(</span><span class="n">observed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">beta</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">value</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="nd">@pymc.stochastic</span><span class="p">(</span><span class="n">observed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
-
-<span class="c"># Define the form of the model and likelihood</span>
-<span class="nd">@pymc.deterministic</span>
-<span class="k">def</span> <span class="nf">y_model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xdata</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">x</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">y_model</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">ydata</span><span class="p">)</span>
-
-<span class="c"># package the full model in a dictionary</span>
-<span class="n">model1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span>
-              <span class="n">y_model</span><span class="o">=</span><span class="n">y_model</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -953,14 +773,10 @@ In [11]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [12]:
-</div>
+<div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># run the basic MCMC: we'll do 100000 iterations to match emcee above</span>
-<span class="n">S</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">MCMC</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
-<span class="n">S</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -979,9 +795,7 @@ In [12]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
- [-----------------100%-----------------] 100000 of 100000 complete in 55.8 sec
-</pre>
+<pre> [-----------------100%-----------------] 100000 of 100000 complete in 55.8 sec</pre>
 </div>
 </div>
 
@@ -994,17 +808,10 @@ In [12]:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [13]:
-</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># extract the traces and plot the results</span>
-<span class="n">pymc_trace</span> <span class="o">=</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s">'alpha'</span><span class="p">)[:],</span>
-              <span class="n">S</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s">'beta'</span><span class="p">)[:],</span>
-              <span class="n">S</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s">'sigma'</span><span class="p">)[:]]</span>
-
-<span class="n">plot_MCMC_results</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">pymc_trace</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1043,6 +850,7 @@ In [13]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>结果和emcee很相似。</p>
+
 </div>
 </div>
 </div>
@@ -1056,7 +864,6 @@ In [13]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1066,18 +873,16 @@ In [13]:
 <p>因为PyStan依赖Stan包，安装很困难。为了用Python封装版需要安装全部的Stan库。如果你有C/C++编译环境，直接<code>pip install pystan</code>就可以搞定。</p>
 <p>好像Stan也提供已经编译版本，支持conda。因此，如果你没有C/C++编译环境，安装可能比较麻烦。</p>
 <p>我用的PyStan 2.5版本：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [14]:
-</div>
+<div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pystan</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pystan</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1096,9 +901,7 @@ In [14]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2.5.0.0
-
+<pre>2.5.0.0
 </pre>
 </div>
 </div>
@@ -1116,78 +919,16 @@ In [14]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>还有一点诡异的是：PyStan在IPython notebook上运行容易崩溃，直接执行Python文件就没事。不明觉厉，但是<a href="https://github.com/stan-dev/pystan/issues/3">这里</a>可能是解法。所以，安全起见，我直接在命令行运行Python文件，结果写在盘里：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [15]:
-</div>
+<div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">pystan_example</span><span class="o">.</span><span class="n">py</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pystan</span>
-
-<span class="c">#---------------------------------------------</span>
-<span class="c"># Generate data (same as used in the notebook)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">theta_true</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">theta_true</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_true</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xdata</span>
-
-<span class="c"># add scatter to points</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">ydata</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="c">#----------------------------------------------</span>
-<span class="c"># Create the Stan model</span>
-<span class="c">#  this is done by defining a string of Stan code.</span>
-
-<span class="n">fit_code</span> <span class="o">=</span> <span class="s">"""</span>
-<span class="s">data {</span>
-<span class="s">    int&lt;lower=0&gt; N; // number of points</span>
-<span class="s">    real x[N]; // x values</span>
-<span class="s">    real y[N]; // y values</span>
-<span class="s">}</span>
-
-<span class="s">parameters {</span>
-<span class="s">    real alpha_perp;</span>
-<span class="s">    real&lt;lower=-pi()/2, upper=pi()/2&gt; theta;</span>
-<span class="s">    real log_sigma;</span>
-<span class="s">}</span>
-
-<span class="s">transformed parameters {</span>
-<span class="s">    real alpha;</span>
-<span class="s">    real beta;</span>
-<span class="s">    real sigma;</span>
-<span class="s">    real ymodel[N];</span>
-<span class="s">    </span>
-<span class="s">    alpha &lt;- alpha_perp / cos(theta);</span>
-<span class="s">    beta &lt;- sin(theta);</span>
-<span class="s">    sigma &lt;- exp(log_sigma);</span>
-<span class="s">    for (j in 1:N)</span>
-<span class="s">    ymodel[j] &lt;- alpha + beta * x[j];</span>
-<span class="s">}</span>
-
-<span class="s">model {</span>
-<span class="s">    y ~ normal(ymodel, sigma);</span>
-<span class="s">}</span>
-<span class="s">"""</span>
-
-<span class="c"># perform the fit</span>
-<span class="n">fit_data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'N'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="s">'x'</span><span class="p">:</span> <span class="n">xdata</span><span class="p">,</span> <span class="s">'y'</span><span class="p">:</span> <span class="n">ydata</span><span class="p">}</span>
-<span class="n">fit</span> <span class="o">=</span> <span class="n">pystan</span><span class="o">.</span><span class="n">stan</span><span class="p">(</span><span class="n">model_code</span><span class="o">=</span><span class="n">fit_code</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fit_data</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">chains</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c"># extract the traces</span>
-<span class="n">traces</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
-<span class="n">pystan_trace</span> <span class="o">=</span> <span class="p">[</span><span class="n">traces</span><span class="p">[</span><span class="s">'alpha'</span><span class="p">],</span> <span class="n">traces</span><span class="p">[</span><span class="s">'beta'</span><span class="p">],</span> <span class="n">traces</span><span class="p">[</span><span class="s">'sigma'</span><span class="p">]]</span>
-
-<span class="c"># save the traces with numpy</span>
-<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"pystan_trace.npy"</span><span class="p">,</span> <span class="n">pystan_trace</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1206,9 +947,7 @@ In [15]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Writing pystan_example.py
-
+<pre>Writing pystan_example.py
 </pre>
 </div>
 </div>
@@ -1222,13 +961,10 @@ Writing pystan_example.py
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [16]:
-</div>
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># run the code we've created on the command-line</span>
-<span class="o">!</span>python pystan_example.py
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1247,8 +983,7 @@ In [16]:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model_c1dba2ed7f485b674d7ce5eb738ffe05 NOW.
+<pre>INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model_c1dba2ed7f485b674d7ce5eb738ffe05 NOW.
 Iteration:     1 / 25000 [  0%]  (Warmup) (Chain 3)
 Iteration:     1 / 25000 [  0%]  (Warmup) (Chain 2)
 Iteration:     1 / 25000 [  0%]  (Warmup) (Chain 1)
@@ -1317,7 +1052,6 @@ Iteration: 25000 / 25000 [100%]  (Sampling) (Chain 0)
 #                0.687802 seconds (Sampling)
 #                1.30381 seconds (Total)
 
-
 </pre>
 </div>
 </div>
@@ -1335,19 +1069,16 @@ Iteration: 25000 / 25000 [100%]  (Sampling) (Chain 0)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看到，运行100,000样本约6秒。另外，在我的电脑上，模型运行前有约20秒准备时间。</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [17]:
-</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="c"># load the results from file; plot as above</span>
-<span class="n">pystan_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pystan_trace.npy'</span><span class="p">)</span>
-<span class="n">plot_MCMC_results</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">pystan_trace</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1386,6 +1117,7 @@ In [17]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可见，结果和上面都差不多。</p>
+
 </div>
 </div>
 </div>
@@ -1399,31 +1131,22 @@ In [17]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们画图来比较一下三个结果：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">
-In [18]:
-</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plot_MCMC_trace</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">emcee_trace</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span>
-                <span class="n">colors</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plot_MCMC_trace</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">pymc_trace</span><span class="p">,</span>
-                <span class="n">colors</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plot_MCMC_trace</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">pystan_trace</span><span class="p">,</span>
-                <span class="n">colors</span><span class="o">=</span><span class="s">'green'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[::</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s">'emcee'</span><span class="p">,</span> <span class="s">'pymc'</span><span class="p">,</span> <span class="s">'pystan'</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1462,6 +1185,7 @@ In [18]:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如我所料，结果都差不多！这表明我们定义的模型在这三个包都一致。另外，我们看到用来产生分布的“真”值(25, 0.5)落在1-$\sigma$的椭圆区域内。</p>
+
 </div>
 </div>
 </div>
@@ -1475,7 +1199,6 @@ In [18]:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1543,6 +1266,7 @@ In [18]:
 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes4.ipynb">nbviewer</a>静态网页。
 十分感谢David W. Hogg对本文提出的建议。
 </small></p>
+
 </div>
 </div>
 </div>
