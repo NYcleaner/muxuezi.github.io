@@ -126,11 +126,10 @@ Sw">
 <p>如果不论PDF、MOBI、EPUB格式输出，则
 $$Coding \approx Github + Gitbook$$</p>
 <p>一般html解决办法见<a href="https://highlightjs.org/usage/" title="highlightjs">highlightjs</a>，需要xcode.css、highlight.pack.js，并在head增加:</p>
-<div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"../assert/css/xcode.css"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../assert/js/highlight.pack.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span><span class="nx">hljs</span><span class="p">.</span><span class="nx">initHighlightingOnLoad</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span>
-</pre></div>
-
+<pre><code class="language-html"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"../assert/css/xcode.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../assert/js/highlight.pack.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">hljs.initHighlightingOnLoad();</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -144,72 +143,71 @@ $$Coding \approx Github + Gitbook$$</p>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <p>Test:</p>
-<div class="highlight"><pre><span class="kd">extension</span> <span class="nc">OCBool</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">{</span>
-<span class="p">}</span>
+<pre><code class="language-swift">extension OCBool: Equatable{
+}
 
-<span class="c1">//支持等值判断运算符</span>
-<span class="kd">func</span> <span class="p">==(</span> <span class="kr">left</span><span class="p">:</span> <span class="n">OCBool</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span> <span class="n">OCBool</span> <span class="p">)-&gt;</span><span class="nb">Bool</span><span class="p">{</span>
-    <span class="k">switch</span> <span class="p">(</span><span class="kr">left</span><span class="p">,</span> <span class="kr">right</span><span class="p">){</span>
-    <span class="k">case</span> <span class="p">(.</span><span class="n">ocTrue</span><span class="p">,</span> <span class="p">.</span><span class="n">ocTrue</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">true</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">false</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">//支持位与运算符</span>
-<span class="kd">func</span> <span class="o">&amp;</span><span class="p">(</span> <span class="kr">left</span><span class="p">:</span><span class="n">OCBool</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span> <span class="n">OCBool</span><span class="p">)-&gt;</span><span class="n">OCBool</span><span class="p">{</span>
+<span class="comment">//支持等值判断运算符</span>
+<span class="keyword">func</span> ==( left: OCBool, right: OCBool )-&gt;Bool{
+    <span class="keyword">switch</span> (left, right){
+    <span class="keyword">case</span> (.ocTrue, .ocTrue):
+            <span class="keyword">return</span> <span class="constant">true</span>
+    <span class="keyword">default</span>:
+        <span class="keyword">return</span> <span class="constant">false</span>
+    }
+}
+<span class="comment">//支持位与运算符</span>
+<span class="keyword">func</span> &amp;( left:OCBool, right: OCBool)-&gt;OCBool{
 
-    <span class="k">if</span> <span class="kr">left</span><span class="p">{</span>
-        <span class="k">return</span> <span class="kr">right</span>
-    <span class="p">}</span>
-    <span class="k">else</span><span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">//支持位或运算符</span>
-<span class="kd">func</span> <span class="o">|</span><span class="p">(</span> <span class="kr">left</span><span class="p">:</span><span class="n">OCBool</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span> <span class="n">OCBool</span><span class="p">)-&gt;</span><span class="n">OCBool</span><span class="p">{</span>
+    <span class="keyword">if</span> left{
+        <span class="keyword">return</span> right
+    }
+    <span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="constant">false</span>
+    }
+}
+<span class="comment">//支持位或运算符</span>
+<span class="keyword">func</span> |( left:OCBool, right: OCBool)-&gt;OCBool{
 
-    <span class="k">if</span> <span class="kr">left</span><span class="p">{</span>
-        <span class="k">return</span> <span class="kc">true</span>
-    <span class="p">}</span>
-    <span class="k">else</span><span class="p">{</span>
-        <span class="k">return</span> <span class="kr">right</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="keyword">if</span> left{
+        <span class="keyword">return</span> <span class="constant">true</span>
+    }
+    <span class="keyword">else</span>{
+        <span class="keyword">return</span> right
+    }
+}
 
-<span class="c1">//支持位异或运算符</span>
-<span class="kd">func</span> <span class="o">^</span><span class="p">(</span> <span class="kr">left</span><span class="p">:</span><span class="n">OCBool</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span> <span class="n">OCBool</span><span class="p">)-&gt;</span><span class="n">OCBool</span><span class="p">{</span>
-    <span class="k">return</span> <span class="n">OCBool</span><span class="p">(</span> <span class="kr">left</span> <span class="o">!=</span> <span class="kr">right</span> <span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">//支持求反运算符</span>
-<span class="p">@</span><span class="kr">prefix</span> <span class="kd">func</span> <span class="o">!</span><span class="p">(</span> <span class="n">a</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">)-&gt;</span> <span class="n">OCBool</span><span class="p">{</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">^</span> <span class="kc">true</span>
-<span class="p">}</span>
-<span class="c1">//支持组合求与运算符</span>
-<span class="kd">func</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="kr">inout</span> <span class="kr">left</span><span class="p">:</span><span class="n">OCBool</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">){</span>
-    <span class="kr">left</span> <span class="p">=</span> <span class="kr">left</span> <span class="o">&amp;</span> <span class="kr">right</span>
-<span class="p">}</span>
+<span class="comment">//支持位异或运算符</span>
+<span class="keyword">func</span> ^( left:OCBool, right: OCBool)-&gt;OCBool{
+    <span class="keyword">return</span> OCBool( left != right )
+}
+<span class="comment">//支持求反运算符</span>
+@prefix <span class="keyword">func</span> !( a:OCBool )-&gt; OCBool{
+    <span class="keyword">return</span> a ^ <span class="constant">true</span>
+}
+<span class="comment">//支持组合求与运算符</span>
+<span class="keyword">func</span> &amp;= (inout left:OCBool, right:OCBool ){
+    left = left &amp; right
+}
 
 
-<span class="kd">var</span> <span class="nv">isHasMoney</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="kd">var</span> <span class="nv">isHasWife</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="kd">var</span> <span class="nv">isHasHealty</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="kd">var</span> <span class="nv">isHasLover</span><span class="p">:</span><span class="n">OCBool</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="keyword">var</span> isHasMoney:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasWife:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasHealty:OCBool = <span class="constant">true</span>
+<span class="keyword">var</span> isHasLover:OCBool = <span class="constant">true</span>
 
-<span class="n">isHasMoney</span> <span class="o">!=</span> <span class="n">isHasHealty</span>
-<span class="n">isHasHealty</span> <span class="p">==</span> <span class="n">isHasMoney</span>
-<span class="n">isHasWife</span> <span class="o">^</span> <span class="n">isHasLover</span>
-<span class="n">isHasWife</span> <span class="p">=</span> <span class="o">!</span><span class="n">isHasLover</span>
+isHasMoney != isHasHealty
+isHasHealty == isHasMoney
+isHasWife ^ isHasLover
+isHasWife = !isHasLover
 
-<span class="k">if</span> <span class="p">(</span><span class="n">isHasMoney</span> <span class="o">|</span> <span class="n">isHasHealty</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">isHasHealty</span><span class="p">{</span>
-    <span class="bp">println</span><span class="p">(</span> <span class="s">"坐看云起时"</span><span class="p">)</span>
-<span class="p">}</span><span class="k">else</span>
-<span class="p">{</span>
-    <span class="bp">println</span><span class="p">(</span><span class="s">"千金散尽还复来"</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
+<span class="keyword">if</span> (isHasMoney | isHasHealty) &amp; isHasHealty{
+    <span class="built_in">println</span>( <span class="string">"坐看云起时"</span>)
+}<span class="keyword">else</span>
+{
+    <span class="built_in">println</span>(<span class="string">"千金散尽还复来"</span>)
+}
+</code></pre>
 <p><a href="https://www.gitbook.io/book/muxuezi/swift-codeblocks/activity"><img src="https://www.gitbook.io/button/status/book/muxuezi/swift-codeblocks" alt="Build Status"></a></p>
-
 </div>
 </div>
 </div>

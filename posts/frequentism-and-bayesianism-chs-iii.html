@@ -49,8 +49,8 @@ MathJax.Hub.Config({
 
 
 
-这个notebook出自Pythonic Perambulations的博文 . The content is BSD licensed.
 
+这个notebook出自Pythonic Perambulations的博文 . The content is BSD licensed.
 
 
 
@@ -121,13 +121,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>这个notebook出自<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">博文</a> . The content is BSD licensed.</em></p>
-
 </div>
 </div>
 </div>
@@ -152,7 +152,6 @@ MathJax.Hub.Config({
 <p>也就是说，如果你不明白问题，那么答案也不会靠谱。</p>
 <p>我觉得这个故事在科学统计工作中是个恰当的比喻。当估计未知参数时，频率论方法倾向于<strong>置信区间(confidence interval)</strong> (CI)，而贝叶斯理论则用<strong>可信范围(credible region)</strong> (CR)。尽管听起来没啥区别，但是在处理一些基本问题时，两者的差异变得至关重要。</p>
 <p>就像道格拉斯·亚当斯宇宙中可怜的生命希望得到启示(enlightenment)，科学家们常常想运用频率主义获得正确结果，但这么做却忽略了科学的事实，那就是<strong>频率主义通常在回答错误的问题</strong>。这绝不是简单的纸上谈兵：只要我明白了观察数据，就可以从中获得正确的答案。</p>
-
 </div>
 </div>
 </div>
@@ -166,6 +165,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -173,7 +173,6 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">第一节</a>中，我们讨论了频率主义与贝叶斯主义基本理论的差异：频率论认为概率是<strong>重复事件(假设)发生的频率</strong>；贝叶斯认为概率是<strong>数值的可信程度</strong>。更一般的结论是，频率论认为<strong>模型参数是固定的，而数据是随机的</strong>，而贝叶斯认为<strong>模型参数是随机的，而数据是固定的</strong>。</p>
 <p>基础理论的差异影响两种方法选择模型参数数据边界的方式。因为差异很小，我就用一个简单的例子来论述一下频率论置信区间与贝叶斯可信范围的差异。</p>
-
 </div>
 </div>
 </div>
@@ -187,6 +186,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -195,7 +195,6 @@ MathJax.Hub.Config({
 <p>让我们用一个简单的例子来验证一下；此例同<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">第一节</a> 中计算正态分布均值。 之前我们简单的分析了(频率论) 最大似然估计和(贝叶斯) 最大后验估计(posteriori estimates)；这里我们拓展一下：看看频率论置信区间与贝叶斯可信范围的差异。</p>
 <p>问题是：你在观察一颗星星，你认为它的亮度是恒定的。为了简化，我们可以认为其亮度就是每秒到达我们望远镜的光量子数量。任何观察值都会有误差：虽然在此例中这些误差并不重要，但是我们假设观察值$x_i$服从正态分布，且标准差已知为$\sigma_x$。</p>
 <p>对一组观察值，亮度置信水平95%(即2\sigma$)的置信区间是多少？</p>
-
 </div>
 </div>
 </div>
@@ -209,24 +208,27 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个问题是频率论方法的经典案例，分析如下：</p>
-<p>对任意$N$个值的$D = \{x_i\}_{i=1}^N$，分布的无偏估计均值$\mu$是</p>
-$$
+<p>对任意$N$个值的$D = \{x_i\}_{i=1}^N$，分布的无偏估计均值$\mu$是 </p>
+<p>$$
 \bar{x} = \frac{1}{N}\sum_{i=1}^N x_i
-$$<p><strong>样本分布(sampling)</strong>描述了均值估计的频率；通过中心极限定理(central limit theorem)我们可以得出样本分布是正态分布：</p>
-$$
+$$</p>
+<p><strong>样本分布(sampling)</strong>描述了均值估计的频率；通过中心极限定理(central limit theorem)我们可以得出样本分布是正态分布：</p>
+<p>$$
 f(\bar{x}~||~\mu) \propto \exp\left[\frac{-(\bar{x} - \mu)^2}{2\sigma_\mu^2}\right]
-$$<p>这里我们使用<strong>均值标准误差(standard error of the mean)</strong>,</p>
-$$
+$$</p>
+<p>这里我们使用<strong>均值标准误差(standard error of the mean)</strong>,</p>
+<p>$$
 \sigma_\mu = \sigma_x / \sqrt{N}
-$$<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得到合理的近似值；如果分布呈正态分布，$N$就可以缩小到2。</p>
+$$</p>
+<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得到合理的近似值；如果分布呈正态分布，$N$就可以缩小到2。</p>
 <p>让我们赶紧来验证这条经验，看看5组$10^6$个样本的均值情况：</p>
-
 </div>
 </div>
 </div>
@@ -235,7 +237,18 @@ $$<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">Nsamp</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">Nsamp</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">mu_samp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sig_samp</span> <span class="o">=</span> <span class="n">sigma_x</span> <span class="o">*</span> <span class="n">N</span> <span class="o">**</span> <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:.3f} should equal {1:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mu_samp</span><span class="p">),</span> <span class="n">sig_samp</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -254,7 +267,9 @@ $$<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.894 should equal 0.894
+<pre>
+0.894 should equal 0.894
+
 </pre>
 </div>
 </div>
@@ -273,9 +288,9 @@ $$<p>中心极限定理告诉我们如果$N$足够大，任何分布都可以得
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如前所述，观察值的标准差等于$\sigma_x N^{-1/2}$。</p>
 <p>从样本的正态分布中，我们可以轻易得出95%置信水平下的置信区间(想想那条钟形线)：</p>
-$$
+<p>$$
 CI_{\mu} =  \left(\bar{x} - 2\sigma_\mu,~\bar{x} + 2\sigma_\mu\right)
-$$
+$$</p>
 </div>
 </div>
 </div>
@@ -286,7 +301,6 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们再看看：如果现在三个观察值标准差($\sigma_x$)是10。那么均值的95%置信区间是多少？</p>
 <p>我们假设真实值是100:</p>
-
 </div>
 </div>
 </div>
@@ -295,7 +309,12 @@ $$
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">true_B</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">true_B</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -314,7 +333,9 @@ $$
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 116.24345364   93.88243586   94.71828248]
+<pre>
+[ 116.24345364   93.88243586   94.71828248]
+
 </pre>
 </div>
 </div>
@@ -332,7 +353,6 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们创建一个函数来算置信区间：</p>
-
 </div>
 </div>
 </div>
@@ -341,7 +361,17 @@ $$
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfinv</span>
+
+<span class="k">def</span> <span class="nf">freq_CI_mu</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">"""Compute the confidence interval on the mean"""</span>
+    <span class="c"># we'll compute Nsigma from the desired percentage</span>
+    <span class="n">Nsigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfinv</span><span class="p">(</span><span class="n">frac</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">sigma_mu</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">D</span><span class="o">.</span><span class="n">size</span> <span class="o">**</span> <span class="o">-</span><span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">Nsigma</span> <span class="o">*</span> <span class="n">sigma_mu</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">Nsigma</span> <span class="o">*</span> <span class="n">sigma_mu</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"95% Confidence Interval: [{0:.0f}, {1:.0f}]"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">freq_CI_mu</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -360,7 +390,9 @@ $$
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>95% Confidence Interval: [90, 113]
+<pre>
+95% Confidence Interval: [90, 113]
+
 </pre>
 </div>
 </div>
@@ -378,7 +410,6 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意我们假设$\sigma_x$是已知的，这可以通过均值$\mu$来估计，但这里简单起见。</p>
-
 </div>
 </div>
 </div>
@@ -392,23 +423,26 @@ $$
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用贝叶斯方法就得从贝叶斯定理开始：</p>
-$$
+<p>$$
 P(\mu~|~D) = \frac{P(D~|~\mu)P(\mu)}{P(D)}
-$$<p>我们对$\mu$用扁平先验(flat prior) (如，整个区间满足$P(\mu) \propto 1$) ，然后用似然估计</p>
-$$
+$$</p>
+<p>我们对$\mu$用扁平先验(flat prior) (如，整个区间满足$P(\mu) \propto 1$) ，然后用似然估计</p>
+<p>$$
 P(D~|~\mu) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi\sigma_x^2}}\exp\left[\frac{(\mu - x_i)^2}{2\sigma_x^2}\right]
-$$<p>计算乘积然后进行变换，可以得出</p>
-$$
+$$</p>
+<p>计算乘积然后进行变换，可以得出</p>
+<p>$$
 P(\mu~|~D) \propto \exp\left[\frac{-(\mu - \bar{x})^2}{2\sigma_\mu^2}\right]
-$$<p>也可以看作是均值为$\bar{x}$，标准差为$\sigma_\mu$的正态分布。</p>
+$$</p>
+<p>也可以看作是均值为$\bar{x}$，标准差为$\sigma_\mu$的正态分布。</p>
 <p>也就是说，<strong>此例中$\mu$的贝叶斯后验结果等于频率论的样本分布均值$\mu$</strong>。</p>
-
 </div>
 </div>
 </div>
@@ -418,10 +452,10 @@ $$<p>也可以看作是均值为$\bar{x}$，标准差为$\sigma_\mu$的正态分
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>从后验结果可以计算出贝叶斯可信范围是95%可能的最短区间。看起来和频率论的置信区间很像：</p>
-$$
+<p>$$
 CR_{\mu} =  \left(\bar{x} - 2\sigma_\mu,~\bar{x} + 2\sigma_\mu\right)
-$$<p>我们设计一个函数来解叶斯可信范围：</p>
-
+$$</p>
+<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
@@ -430,7 +464,14 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">bayes_CR_mu</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">"""Compute the credible region on the mean"""</span>
+    <span class="n">Nsigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfinv</span><span class="p">(</span><span class="n">frac</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">sigma_mu</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">D</span><span class="o">.</span><span class="n">size</span> <span class="o">**</span> <span class="o">-</span><span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">Nsigma</span> <span class="o">*</span> <span class="n">sigma_mu</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">Nsigma</span> <span class="o">*</span> <span class="n">sigma_mu</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"95% Credible Region: [{0:.0f}, {1:.0f}]"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">bayes_CR_mu</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -449,7 +490,9 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>95% Credible Region: [90, 113]
+<pre>
+95% Credible Region: [90, 113]
+
 </pre>
 </div>
 </div>
@@ -471,6 +514,7 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -487,7 +531,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </blockquote>
 <p>注意区别：贝叶斯方法是对具有固定边界的参数值的概率表述(a statement of probability about the parameter value given fixed bounds)，而频率论方法是对固定参数值的边界的概率表述(a probability about the bounds given a fixed parameter value.)。</p>
 <p>差别很小，但是我们下面会讲，这将造成极大差距。首先，让我们进一步用仿真方法来验证。</p>
-
 </div>
 </div>
 </div>
@@ -501,6 +544,7 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -514,7 +558,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <li>看看哪些$\mu$的值落在我们的可信范围内</li>
 </ol>
 <p>代码如下：</p>
-
 </div>
 </div>
 </div>
@@ -523,7 +566,32 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># first define some quantities that we need </span>
+<span class="n">Nsamples</span> <span class="o">=</span> <span class="mf">2E7</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c"># if someone changes N, this could easily cause a memory error</span>
+<span class="k">if</span> <span class="n">N</span> <span class="o">*</span> <span class="n">Nsamples</span> <span class="o">&gt;</span> <span class="mf">1E8</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">"Are you sure you want this many samples?"</span><span class="p">)</span>
+    
+<span class="c"># eps tells us how close to D we need to be to consider</span>
+<span class="c"># it a matching sample. The value encodes the tradeoff</span>
+<span class="c"># between bias and variance of our simulation</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c"># Generate some mean values from the (flat) prior in a reasonable range</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">80</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">Nsamples</span><span class="p">)</span>
+
+<span class="c"># Generate data for each of these mean values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">Nsamples</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c"># find data which matches our "observed" data</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">D</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"number of suitable samples: {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -542,7 +610,9 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>number of suitable samples: 528
+<pre>
+number of suitable samples: 528
+
 </pre>
 </div>
 </div>
@@ -559,7 +629,11 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># Now we ask how many of these mu values fall in our credible region</span>
+<span class="n">mu_good</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">CR</span> <span class="o">=</span> <span class="n">bayes_CR_mu</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">within_CR</span> <span class="o">=</span> <span class="p">(</span><span class="n">CR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mu_good</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mu_good</span> <span class="o">&lt;</span> <span class="n">CR</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span> <span class="s">"Fraction of means in Credible Region: {0:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">within_CR</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">within_CR</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -578,7 +652,9 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fraction of means in Credible Region: 0.949
+<pre>
+Fraction of means in Credible Region: 0.949
+
 </pre>
 </div>
 </div>
@@ -597,7 +673,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟想的一样，95%可能的$\mu$的值落在我们的可信范围内。</p>
 <p>这里，关键是明白哪些变量是随机的，哪些是固定的。在贝叶斯方法中，我们<strong>从我们的数据里计算出一个单独的可信范围</strong>，然后我们把它当作是<strong>$\mu$的多个随机点画出的图像</strong>。</p>
-
 </div>
 </div>
 </div>
@@ -611,6 +686,7 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -623,7 +699,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <li>看看哪些置信区间包含$\mu$</li>
 </ol>
 <p>代码如下：</p>
-
 </div>
 </div>
 </div>
@@ -632,7 +707,22 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># define some quantities we need</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">Nsamples</span> <span class="o">=</span> <span class="mf">1E4</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c"># Draw datasets from the true distribution</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="p">(</span><span class="n">Nsamples</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="c"># Compute a confidence interval from each dataset</span>
+<span class="n">CIs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">freq_CI_mu</span><span class="p">(</span><span class="n">Di</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">Di</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+
+<span class="c"># find which confidence intervals contain the mean</span>
+<span class="n">contains_mu</span> <span class="o">=</span> <span class="p">(</span><span class="n">CIs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mu</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mu</span> <span class="o">&lt;</span> <span class="n">CIs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span> <span class="s">"Fraction of Confidence Intervals containing the mean: {0:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contains_mu</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">contains_mu</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -651,7 +741,9 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fraction of Confidence Intervals containing the mean: 0.951
+<pre>
+Fraction of Confidence Intervals containing the mean: 0.951
+
 </pre>
 </div>
 </div>
@@ -670,7 +762,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟想的一样，95%置信区间包含μ的真实值。</p>
 <p>同理，关键是明白哪些变量是随机的，哪些是固定的。我们把<strong>唯一值$\mu$</strong>看作是<strong>多个随机样本中的不同置信区间构成的</strong>。</p>
-
 </div>
 </div>
 </div>
@@ -684,6 +775,7 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -701,7 +793,6 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <li>贝叶斯主义认为参数约束(parameter constraints，如$CR_\mu$)是固定的，而频率主义认为(如$CI_\mu$)是是随机变量。</li>
 </ul>
 <p>很多简单问题都和上面的例子一样，置信水平和可信范围完全相等，所以这种差异一般不太重要。但是，科学计算不是简单问题；下面我们就看个复杂的例子，来感受一下这种差异。</p>
-
 </div>
 </div>
 </div>
@@ -715,6 +806,7 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -725,14 +817,17 @@ $$<p>我们设计一个函数来解叶斯可信范围：</p>
 <p>一个设备，因为注入了一种防护性化学试剂(protective chemical inhibitor)，所以在$\theta$时间内运行正常；但是在$\theta$时间之后，化学试剂用光了，问题就出现了，而且失败次数呈指数分布。没有办法直接观察化学试剂消耗的情况；只能观察到失败的结果。从实际观察数据中，估计$\theta$时间以确保运行安全......</p>
 </blockquote>
 <p>从下面的模型可以获得一个数据$D$：</p>
-$$
+<p>$$
 p(x~|~\theta) = \left\{
 \begin{array}{lll}
 \exp(\theta - x) &amp;,&amp; x &gt; \theta\\
-0                &amp;,&amp; x 这里$p(x~|~\theta)$表示时间$x$失败的概率，化学试剂可用时间$\theta$。
-观察数据$D = \{x_i\}$，我们的目标是估计$\theta$。
+0                &amp;,&amp; x &lt; \theta
+\end{array}
+\right\}
+$$</p>
+<p>这里$p(x~|~\theta)$表示时间$x$失败的概率，化学试剂可用时间$\theta$。
+观察数据$D = \{x_i\}$，我们的目标是估计$\theta$。</p>
 <p>我们先为$\theta=10$画个图看看：</p>
-
 </div>
 </div>
 </div>
@@ -741,7 +836,18 @@ p(x~|~\theta) = \left\{
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'p(x)'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -780,7 +886,6 @@ p(x~|~\theta) = \left\{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在我们的观察数据是$D = \{10, 12, 15\}$，我们想从这些数据中推断$\theta$。下面用四种方法来探索。</p>
-
 </div>
 </div>
 </div>
@@ -794,6 +899,7 @@ p(x~|~\theta) = \left\{
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -801,11 +907,14 @@ p(x~|~\theta) = \left\{
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我认为：遇到问题，计算之前，先想想怎么下手，并猜一猜结果。我们现在开始。想想这个问题，从概率分布的截断可以得出一个简单的观察结果：<strong>$\theta$必须小于观察值的最小值</strong>。</p>
 <p>这是显而易见的：看到一个小于$\theta$的观察值概率为0。因此，假如我们假设正确，那么一个$\theta$大于任何观察值的模型是不可能出现的。贝叶斯主义和频率主义的基本假设都是模型正确，因此我们可以直接写出常识条件：</p>
-$$
-\theta 或者，特别地，$D = \{10, 12, 15\}$,
-$$
-\theta 这组数据中，$\theta$的每一个合理约束都应该满足以上条件。带着这条规则，我们继续用贝叶斯主义和频率主义进行定量分析。
-
+<p>$$
+\theta &lt; \min(D)
+$$</p>
+<p>或者，特别地，$D = \{10, 12, 15\}$,</p>
+<p>$$
+\theta &lt; 10
+$$</p>
+<p>这组数据中，$\theta$的每一个合理约束都应该满足以上条件。带着这条规则，我们继续用贝叶斯主义和频率主义进行定量分析。</p>
 </div>
 </div>
 </div>
@@ -819,25 +928,28 @@ $$
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在频率论方法中，我们要计算$\theta$的置信区间，可以通过观察值的计算均值开始</p>
-$$
+<p>$$
 \begin{array}{ll}
 E(x) &amp;= \int_0^\infty xp(x)dx\\
      &amp;= \theta + 1
      \end{array}
-$$<p>因此，用样本均值作为$E(x)$的点估计值， 就得到$\theta$的无偏估计(unbiased estimator)</p>
-$$
+$$</p>
+<p>因此，用样本均值作为$E(x)$的点估计值， 就得到$\theta$的无偏估计(unbiased estimator)</p>
+<p>$$
 \hat{\theta} = \frac{1}{N} \sum_{i=1}^N x_i - 1
-$$<p>指数分布的标准差为1，所以当$N$组够大，我们就可以用均值的标准差来表示$\hat{\theta}$的样本分布情况，将满足方差$\sigma^2 = 1 / N$的正态分布。因此，我们可以写出95% (就是2$\sigma$)的置信区间为</p>
-$$
+$$</p>
+<p>指数分布的标准差为1，所以当$N$组够大，我们就可以用均值的标准差来表示$\hat{\theta}$的样本分布情况，将满足方差$\sigma^2 = 1 / N$的正态分布。因此，我们可以写出95% (就是2$\sigma$)的置信区间为</p>
+<p>$$
 CI_{\rm large~N} = \left(\hat{\theta} - 2 N^{-1/2},~\hat{\theta} + 2 N^{-1/2}\right)
-$$<p>写成函数代码如下：</p>
-
+$$</p>
+<p>写成函数代码如下：</p>
 </div>
 </div>
 </div>
@@ -846,7 +958,17 @@ $$<p>写成函数代码如下：</p>
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfinv</span>
+
+<span class="k">def</span> <span class="nf">approx_CI</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">"""Approximate truncated exponential confidence interval"""</span>
+    <span class="c"># use erfinv to convert percentage to number of sigma</span>
+    <span class="n">Nsigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfinv</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">theta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">theta_hat</span> <span class="o">-</span> <span class="n">Nsigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">),</span>
+            <span class="n">theta_hat</span> <span class="o">+</span> <span class="n">Nsigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -861,7 +983,8 @@ $$<p>写成函数代码如下：</p>
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"approximate CI: ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">approx_CI</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -880,7 +1003,9 @@ $$<p>写成函数代码如下：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>approximate CI: (10.2, 12.5)
+<pre>
+approximate CI: (10.2, 12.5)
+
 </pre>
 </div>
 </div>
@@ -898,7 +1023,6 @@ $$<p>写成函数代码如下：</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这里有个问题。通过我们简单的常识，我们认为$\theta$不可能大于10，但是上面的范围依然是95%置信区间。可能观察数据应该太少了： 上面的计算应该基于一个大的$N$ ，而我们用的是一个很小的$N = 3$。我们用更多的计算来试试看：</p>
-
 </div>
 </div>
 </div>
@@ -912,6 +1036,7 @@ $$<p>写成函数代码如下：</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -919,12 +1044,17 @@ $$<p>写成函数代码如下：</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用精确的样本分布计算置信区间需要费一番功夫：</p>
 <p>对较小的$N$，正态分布近似是不能用的，我们必须用真实的样本分布计算置信区间，就是$N$个变量的均值的分布取决于$p(\theta)$。随机变量的和服从单个变量的分布的卷积(convolution)，因此我们可以看看<a href="http://en.wikipedia.org/wiki/Convolution_theorem">卷积理论(convolution theorem)</a>，再使用<a href="http://en.wikipedia.org/wiki/Characteristic_function_(probability_theory">特征方程(characteristic functions)</a>，来找到取决于$p(x~|~\theta)$的$N$个变量的和样本分布：</p>
-$$
+<p>$$
 f(\theta~|~D) \propto
 \left\{
 \begin{array}{lll}
 z^{N - 1}\exp(-z) &amp;,&amp; z &gt; 0\\
-0 &amp;,&amp; z 
+0 &amp;,&amp; z &lt; 0
+\end{array}
+\right\}
+;~ z = N(\hat{\theta} + 1 - \theta)
+$$</p>
+</div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -933,13 +1063,14 @@ z^{N - 1}\exp(-z) &amp;,&amp; z &gt; 0\\
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要计算95%置信区间，我们要算累计分别函数：求$f(\theta~|~D)$从$0$到$\theta$的积分。如果我们使用<a href="http://en.wikipedia.org/wiki/Incomplete_gamma_function">不完全Gamma方程(incomplete gamma function)</a>会容易点：</p>
-$$
+<p>$$
 \Gamma(a, x) = \int_x^\infty t^{a - 1}e^{-t} dt
-$$<p>看起来和$f(\theta)$非常的像。</p>
+$$</p>
+<p>看起来和$f(\theta)$非常的像。</p>
 <p>算出积分，我们就可以得出累计分布函数是：</p>
-$$
+<p>$$
 F(\theta~|~D) = \frac{1}{\Gamma(N)}\left[ \Gamma\left(N, \max[0, N(\hat{\theta} + 1 - \theta)]\right) - \Gamma\left(N,~N(\hat{\theta} + 1)\right)\right]
-$$
+$$</p>
 </div>
 </div>
 </div>
@@ -949,14 +1080,15 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一个连续的95%置信区间$(\theta_1, \theta_2)$满足下列方程：</p>
-$$
+<p>$$
 F(\theta_2~|~D) - F(\theta_1~|~D) = 0.95
-$$<p>实际上有无限多组解，我们要的是最短的区间。我们可以增加两边概率密度相等的约束：</p>
-$$
+$$</p>
+<p>实际上有无限多组解，我们要的是最短的区间。我们可以增加两边概率密度相等的约束：</p>
+<p>$$
 f(\theta_2~|~D) = f(\theta_1~|~D)
-$$<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白怎么证明)。其实因为正态分布钟形曲线的对称性，如果要达到同样的95%置信水平(概率)，也就是同样的面积，则越往中间则面积越大，区间越小。那么对称的区间的长度一定比同面积的非对称区间的长度都短。</p>
+$$</p>
+<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白怎么证明)。其实因为正态分布钟形曲线的对称性，如果要达到同样的95%置信水平(概率)，也就是同样的面积，则越往中间则面积越大，区间越小。那么对称的区间的长度一定比同面积的非对称区间的长度都短。</p>
 <p>解决这两个非线性方程的系统就可以得出置信区间。计算过程如下：</p>
-
 </div>
 </div>
 </div>
@@ -965,7 +1097,34 @@ $$<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">gammaincc</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+
+
+<span class="k">def</span> <span class="nf">exact_CI</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">"""Exact truncated exponential confidence interval"""</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">theta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">theta_hat</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">**</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">N</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">gammaincc</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta_hat</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="p">)))</span> <span class="o">-</span> <span class="n">gammaincc</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta_hat</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">eqns</span><span class="p">(</span><span class="n">CI</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+        <span class="sd">"""Equations which should be equal to zero"""</span>
+        <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span> <span class="o">=</span> <span class="n">CI</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">theta2</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="p">(</span><span class="n">theta1</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">-</span> <span class="n">frac</span><span class="p">,</span>
+                <span class="n">f</span><span class="p">(</span><span class="n">theta2</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">theta1</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+    
+    <span class="n">guess</span> <span class="o">=</span> <span class="n">approx_CI</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mf">0.68</span><span class="p">)</span> <span class="c"># use 1-sigma interval as a guess</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">eqns</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">D</span><span class="p">,))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"warning: CI result did not converge!"</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -981,7 +1140,6 @@ $$<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>为了保证合理性(sanity check)，确保精确的与近似的置信区间在大量数据下是一致的：</p>
-
 </div>
 </div>
 </div>
@@ -990,7 +1148,10 @@ $$<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Dlarge</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"approx: ({0:.3f}, {1:.3f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">approx_CI</span><span class="p">(</span><span class="n">Dlarge</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">"exact: ({0:.3f}, {1:.3f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">exact_CI</span><span class="p">(</span><span class="n">Dlarge</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1009,8 +1170,10 @@ $$<p>(Jaynes认为这一条确保区间是最短的，但是我(作者)不明白
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>approx: (9.409, 9.584)
+<pre>
+approx: (9.409, 9.584)
 exact: (9.408, 9.584)
+
 </pre>
 </div>
 </div>
@@ -1029,7 +1192,6 @@ exact: (9.408, 9.584)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>确实，在较大的$N$解出的精确区间与近似区间一致，这让我们确信我们的计算是正确的。</p>
 <p>让我们回到之前3个点的数据集看看结果：</p>
-
 </div>
 </div>
 </div>
@@ -1038,7 +1200,8 @@ exact: (9.408, 9.584)
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">"approximate CI: ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">approx_CI</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"exact CI:       ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">exact_CI</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1057,8 +1220,10 @@ exact: (9.408, 9.584)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>approximate CI: (10.2, 12.5)
+<pre>
+approximate CI: (10.2, 12.5)
 exact CI:       (10.2, 12.2)
+
 </pre>
 </div>
 </div>
@@ -1077,7 +1242,6 @@ exact CI:       (10.2, 12.2)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>精确的置信区间与近似置信区间稍有不同，但是反映了同样的问题：<strong>我们从常识推断$\theta$不能大于10，而95%的置信区间完全处于大于10的区间内</strong>。这个置信区间看起来不太靠谱。</p>
 <p>后面我们会仔细研究，现在我们看看贝叶斯的解决方法是不是更好。</p>
-
 </div>
 </div>
 </div>
@@ -1091,36 +1255,43 @@ exact CI:       (10.2, 12.2)
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先我们用贝叶斯定理：</p>
-$$
+<p>$$
 p(\theta~|~D) = \frac{p(D~|~\theta)p(\theta)}{P(D)}
-$$<p>用一个常量的$p(\theta)$，它的似然估计为</p>
-$$
+$$</p>
+<p>用一个常量的$p(\theta)$，它的似然估计为</p>
+<p>$$
 p(D~|~\theta) = \prod_{i=1}^N p(x~|~\theta)
-$$<p>可以得出</p>
-$$
+$$</p>
+<p>可以得出</p>
+<p>$$
 p(\theta~|~D) \propto \left\{
 \begin{array}{lll}
-N\exp\left[N(\theta - \min(D))\right] &amp;,&amp; \theta  \min(D)
+N\exp\left[N(\theta - \min(D))\right] &amp;,&amp; \theta &lt; \min(D)\\
+0                &amp;,&amp; \theta &gt; \min(D)
 \end{array}
 \right\}
-$$<p>其中，$\min(D)$是$D$的最小值， 之所以出现是因为$p(x~|~\theta)$的截断。
+$$</p>
+<p>其中，$\min(D)$是$D$的最小值， 之所以出现是因为$p(x~|~\theta)$的截断。
 因为$p(\theta~|~D)$会指数增长到截断位置(cutoff)，所以最短的95%置信区间$(\theta_1, \theta_2)$就是</p>
-$$
+<p>$$
 \theta_2 = \min(D)
-$$<p>而$\theta_1$就是下面方程的解</p>
-$$
+$$</p>
+<p>而$\theta_1$就是下面方程的解</p>
+<p>$$
 \int_{\theta_1}^{\theta_2} N\exp[N(\theta - \theta_2)]d\theta = f
-$$<p>算积分可以求解方程</p>
-$$
+$$</p>
+<p>算积分可以求解方程</p>
+<p>$$
 \theta_1 = \theta_2 + \frac{\log(1 - f)}{N}
-$$<p>解法如下所示：</p>
-
+$$</p>
+<p>解法如下所示：</p>
 </div>
 </div>
 </div>
@@ -1129,7 +1300,13 @@ $$<p>解法如下所示：</p>
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">bayes_CR</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">"""Bayesian Credibility Region"""</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">theta2</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">theta1</span> <span class="o">=</span> <span class="n">theta2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">frac</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+    <span class="k">return</span> <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1145,7 +1322,6 @@ $$<p>解法如下所示：</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>贝叶斯方法就搞定了，下面我们来比较一下四种方法：</p>
-
 </div>
 </div>
 </div>
@@ -1154,7 +1330,10 @@ $$<p>解法如下所示：</p>
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">"common sense:         theta &lt; {0:.1f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"frequentism (approx): 95% CI = ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">approx_CI</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"frequentism (exact):  95% CI = ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">exact_CI</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Bayesian:             95% CR = ({0:.1f}, {1:.1f})"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">bayes_CR</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1173,10 +1352,12 @@ $$<p>解法如下所示：</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>common sense:         theta &lt; 10.0
+<pre>
+common sense:         theta &lt; 10.0
 frequentism (approx): 95% CI = (10.2, 12.5)
 frequentism (exact):  95% CI = (10.2, 12.2)
 Bayesian:             95% CR = (9.0, 10.0)
+
 </pre>
 </div>
 </div>
@@ -1194,7 +1375,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们会发现贝叶斯方法与常识是一致的，而频率论不靠谱。问题就是<strong>频率主义一直回答错误的问题</strong>。下面我会详谈，首先我们通过仿真来验证CI和CR的正确性。</p>
-
 </div>
 </div>
 </div>
@@ -1208,13 +1388,13 @@ Bayesian:             95% CR = (9.0, 10.0)
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>为了消除对数学的担忧，我想重复之前做过的事情，说明<em>前面的置信区间其实是正确的</em>。我们将用前面提到的方法，假设这个<em>真实</em>的$\theta$和具有同样分布的样本数据：</p>
-
 </div>
 </div>
 </div>
@@ -1223,7 +1403,19 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
+
+<span class="n">Nsamples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">expon</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">((</span><span class="n">Nsamples</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">CIs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">exact_CI</span><span class="p">(</span><span class="n">Di</span><span class="p">)</span> <span class="k">for</span> <span class="n">Di</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+
+<span class="c"># find which confidence intervals contain the mean</span>
+<span class="n">contains_theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">CIs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">theta</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="n">CIs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span> <span class="s">"Fraction of Confidence Intervals containing theta: {0:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contains_theta</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">contains_theta</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1242,7 +1434,9 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fraction of Confidence Intervals containing theta: 0.953
+<pre>
+Fraction of Confidence Intervals containing theta: 0.953
+
 </pre>
 </div>
 </div>
@@ -1261,7 +1455,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>按照频率主义的观点，计算出来的置信区间的95%可能是包含真实值的。我们计算置信区间的程序实际是正确的：数据其实是在另外的5%里面。但是：<strong>我们从数据本身出发，发现我们真处于让CI失败的5%数据中</strong>。标准的频率论置信区间理论忽略了这样的事实，那就是在处理任何问题时，常识都应该让你停止对置信区间的盲目依赖。</p>
 <p>让我们检查一下贝叶斯可信区域的测试结果：</p>
-
 </div>
 </div>
 </div>
@@ -1270,7 +1463,17 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">1E7</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">expon</span><span class="p">()</span><span class="o">.</span><span class="n">rvs</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">i_good</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">D</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Number of good samples: {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_good</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1289,7 +1492,9 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of good samples: 65
+<pre>
+Number of good samples: 65
+
 </pre>
 </div>
 </div>
@@ -1306,7 +1511,11 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">theta_good</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="n">i_good</span><span class="p">]</span>
+<span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span> <span class="o">=</span> <span class="n">bayes_CR</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="n">within_CR</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta1</span> <span class="o">&lt;</span> <span class="n">theta_good</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">theta_good</span> <span class="o">&lt;</span> <span class="n">theta2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Fraction of thetas in Credible Region: {0:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">within_CR</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">within_CR</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1325,7 +1534,9 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fraction of thetas in Credible Region: 0.954
+<pre>
+Fraction of thetas in Credible Region: 0.954
+
 </pre>
 </div>
 </div>
@@ -1343,7 +1554,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>看，确实如此，~95%的$\theta$的数值落在我们通过单个数据样本计算的可信范围内。</p>
-
 </div>
 </div>
 </div>
@@ -1357,6 +1567,7 @@ Bayesian:             95% CR = (9.0, 10.0)
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1382,7 +1593,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 <p>"<em>从观察到的数据来看</em>，我无法确定$\theta$值的范围" - 频率主义</p>
 </blockquote>
 <p>如果你想从你观察到的数据中得到答案，频率主义是不靠谱的。</p>
-
 </div>
 </div>
 </div>
@@ -1396,6 +1606,7 @@ Bayesian:             95% CR = (9.0, 10.0)
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1406,7 +1617,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 <p>我认为这个错误如此普遍的理由，是因为在很多小问题(如前所述)中，置信区间与可信范围恰好一致。这时，频率主义正确地回答了你的问题，<strong>但是仅仅因为贝叶斯主义也给出了相同的结果</strong>。(如果贝叶斯的结果不一样，频率论就错了。)</p>
 <p>我绝非第一个这么说的人。物理学家<a href="http://en.wikipedia.org/wiki/Edwin_Thompson_Jaynes">E.T. Jaynes</a>是公认的贝叶斯捍卫者； 我的一个灵感来自他1976的论文<em>Confidence Intervals vs. Bayesian Intervals</em> (<a href="http://bayes.wustl.edu/etj/articles/confidence.pdf">pdf</a>)。最近，持同样观点的，还有统计学家与博主<a href="http://wmbriggs.com/">W.M. Briggs</a> 在arX发表的博文<a href="http://arxiv.org/abs/1201.2590"><em>再也别给非统计学人士讲频率主义了(It's Time To Stop Teaching Frequentism to Non-Statisticians)</em></a>。还有<a href="http://en.wikipedia.org/wiki/Leonard_Jimmie_Savage">Savage</a>， <a href="http://en.wikipedia.org/wiki/Jerome_Cornfield">Cornfield</a>，以及20世纪的贝叶斯实践者们大量的著作言论。</p>
 <p>那么，你还想用置信区间吗？可能在多个数据获取可以实现的情况下(如分析赌博赔率)，频率主义是有意义的。但是在大多数科学应用中，当你关心的是目前获取的数据可以告诉我们什么时，<strong>频率主义只会回答错误的问题</strong>。</p>
-
 </div>
 </div>
 </div>
@@ -1420,6 +1630,7 @@ Bayesian:             95% CR = (9.0, 10.0)
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1431,8 +1642,6 @@ Bayesian:             95% CR = (9.0, 10.0)
 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes3.ipynb">nbviewer</a>静态网页。
 十分感谢David W. Hogg对本文提出的建议。
 </small></p>
-
-</div>
 </div>
 </div>
 </div>

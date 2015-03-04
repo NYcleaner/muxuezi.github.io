@@ -60,7 +60,9 @@ Forking Processes¶
 
 
 
+
 1.fork¶
+
 
 
 
@@ -69,7 +71,6 @@ Forking Processes¶
 In [1]:
 
 
- 
 ">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2014-08-15T10:14:35+08:00">
@@ -141,6 +142,7 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -151,12 +153,13 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -171,7 +174,9 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">"hello from child"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c"># else goes back to parent loop</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -186,7 +191,18 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c">#generates a copy of the calling program, </span>
+        <span class="c"># it returns a different value in each copy: </span>
+        <span class="c"># zero in the child process and </span>
+        <span class="c"># the process ID of the new child in the parent.</span>
+        <span class="n">newpid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span> 
+        <span class="k">if</span> <span class="n">newpid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">child</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"hello from parent"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">newpid</span>
+        <span class="k">if</span> <span class="nb">raw_input</span><span class="p">()</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span> <span class="k">break</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -201,7 +217,7 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -220,7 +236,8 @@ threads, pipes, signals, sockets, and other launching techniques.</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>hello from parent 8118 8360
+<pre>
+hello from parent 8118 8360
 
 hello from parent 8118 8366
 hello from child 8360
@@ -229,6 +246,7 @@ hello from parent 8118 8373
 hello from child 8366
 q
 hello from child 8373
+
 </pre>
 </div>
 </div>
@@ -250,12 +268,13 @@ hello from child 8373
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">time</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -270,7 +289,10 @@ hello from child 8373
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">"[</span><span class="si">%s</span><span class="s">] =&gt; </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -285,7 +307,14 @@ hello from child 8373
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"Process </span><span class="si">%d</span><span class="s"> spawned"</span> <span class="o">%</span> <span class="n">pid</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"Main process exiting."</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -304,7 +333,8 @@ hello from child 8373
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Process 9008 spawned
+<pre>
+Process 9008 spawned
 Process 9009 spawned
 Process 9010 spawned
 Process 9011 spawned
@@ -316,6 +346,7 @@ Main process exiting.
 [8981] =&gt; 0
 [8982] =&gt; 0
 [8979] =&gt; 1[8978] =&gt; 1[8980] =&gt; 1[8981] =&gt; 1[8982] =&gt; 1
+
 
 
 
@@ -341,12 +372,13 @@ Main process exiting.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -361,7 +393,16 @@ Main process exiting.
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parm</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">parm</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">execlp</span><span class="p">(</span><span class="s">'python'</span><span class="p">,</span><span class="s">'python'</span><span class="p">,</span><span class="s">'child.py'</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">parm</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="bp">False</span><span class="p">,</span> <span class="s">'error starting program'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"Child is"</span><span class="p">,</span> <span class="n">pid</span>
+        <span class="k">if</span> <span class="nb">raw_input</span><span class="p">()</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span> <span class="k">break</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -380,7 +421,8 @@ Main process exiting.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Child is 9654
+<pre>
+Child is 9654
 
 Child is 9655
 
@@ -388,6 +430,7 @@ Child is 9656
 
 Child is 9657
 q
+
 </pre>
 </div>
 </div>
@@ -409,6 +452,7 @@ q
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -419,6 +463,7 @@ q
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -429,12 +474,13 @@ q
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -449,7 +495,8 @@ q
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">tid</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">'Hello from thread'</span><span class="p">,</span> <span class="n">tid</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -464,7 +511,12 @@ q
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,))</span>
+        <span class="k">if</span> <span class="nb">raw_input</span><span class="p">()</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span> <span class="k">break</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -479,7 +531,7 @@ q
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -499,11 +551,13 @@ q
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+
 Hello from thread 1
 
 Hello from thread 2
 q
 Hello from thread 3
+
 </pre>
 </div>
 </div>
@@ -525,12 +579,13 @@ Hello from thread 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -545,7 +600,8 @@ Hello from thread 3
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span><span class="o">**</span><span class="mi">32</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -560,7 +616,11 @@ Hello from thread 3
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Power</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">**</span><span class="mi">32</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -575,7 +635,7 @@ Hello from thread 3
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">action</span><span class="p">,(</span><span class="mi">2</span><span class="p">,))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -595,8 +655,10 @@ Hello from thread 3
 <div class="prompt output_prompt">Out[51]:</div>
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>140621501368064</pre>
+<div class="output_text output_subarea output_pyout">
+<pre>
+140621501368064
+</pre>
 </div>
 
 </div>
@@ -613,7 +675,7 @@ Hello from thread 3
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">action</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">())</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -632,7 +694,9 @@ Hello from thread 3
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4294967296
+<pre>
+4294967296
+
 </pre>
 </div>
 </div>
@@ -641,8 +705,10 @@ Hello from thread 3
 <div class="prompt output_prompt">Out[52]:</div>
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>140621501368064</pre>
+<div class="output_text output_subarea output_pyout">
+<pre>
+140621501368064
+</pre>
 </div>
 
 </div>
@@ -659,7 +725,7 @@ Hello from thread 3
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">obj</span> <span class="o">=</span> <span class="n">Power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -674,7 +740,7 @@ Hello from thread 3
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">action</span><span class="p">,())</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -694,8 +760,10 @@ Hello from thread 3
 <div class="prompt output_prompt">Out[57]:</div>
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>140621501368064</pre>
+<div class="output_text output_subarea output_pyout">
+<pre>
+140621501368064
+</pre>
 </div>
 
 </div>
@@ -717,12 +785,13 @@ Hello from thread 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span><span class="o">,</span><span class="nn">time</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -737,7 +806,10 @@ Hello from thread 3
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">'[</span><span class="si">%s</span><span class="s">] =&gt; </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -752,7 +824,8 @@ Hello from thread 3
 <div class="prompt input_prompt">In [48]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">counter</span><span class="p">,(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -767,7 +840,8 @@ Hello from thread 3
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'Main threading exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -786,7 +860,8 @@ Hello from thread 3
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[2] =&gt; 0
+<pre>
+[2] =&gt; 0
 [4] =&gt; 0
 [1] =&gt; 0
 [0] =&gt; 0
@@ -802,6 +877,7 @@ Hello from thread 3
 [0] =&gt; 2
 [3] =&gt; 2
 Main threading exit.
+
 </pre>
 </div>
 </div>
@@ -823,12 +899,13 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span><span class="o">,</span><span class="nn">time</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -843,7 +920,12 @@ Main threading exit.
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">mutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">'[</span><span class="si">%s</span><span class="s">] =&gt; </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">mutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -858,7 +940,9 @@ Main threading exit.
 <div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">mutex</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">counter</span><span class="p">,(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -873,7 +957,8 @@ Main threading exit.
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'Main threading exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -892,7 +977,8 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0] =&gt; 0
+<pre>
+[0] =&gt; 0
 [1] =&gt; 0
 [2] =&gt; 0
 [3] =&gt; 0
@@ -908,6 +994,7 @@ Main threading exit.
 [3] =&gt; 2
 [4] =&gt; 2
 Main threading exit.
+
 </pre>
 </div>
 </div>
@@ -929,12 +1016,14 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># uses mutexes to know when threads are done in parent/main thread,</span>
+<span class="c"># instead of time.sleep; lock stdout to avoid comingled prints;</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -949,7 +1038,7 @@ Main threading exit.
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -964,7 +1053,7 @@ Main threading exit.
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">stdoutmutex</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -979,7 +1068,8 @@ Main threading exit.
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># exitmutex = [thread.allocate_lock() for i in range(5)]</span>
+<span class="n">exitmutex</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -994,7 +1084,14 @@ Main threading exit.
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">stdoutmutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">'[</span><span class="si">%s</span><span class="s">] =&gt; </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myId</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">stdoutmutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="c">#     exitmutex[myId].acquire() # signal main thread</span>
+    <span class="n">exitmutex</span><span class="p">[</span><span class="n">myId</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1009,7 +1106,8 @@ Main threading exit.
 <div class="prompt input_prompt">In [41]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">counter</span><span class="p">,(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1024,7 +1122,10 @@ Main threading exit.
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">for</span> <span class="n">mutex</span> <span class="ow">in</span> <span class="n">exitmutex</span><span class="p">:</span>
+<span class="c">#     while not mutex.locked():pass</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span><span class="k">pass</span>
+<span class="k">print</span> <span class="s">'Main threading exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1043,7 +1144,8 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0] =&gt; 0
+<pre>
+[0] =&gt; 0
 [1] =&gt; 0
 [2] =&gt; 0
 [3] =&gt; 0
@@ -1059,6 +1161,7 @@ Main threading exit.
 [4] =&gt; 2
 [3] =&gt; 2
 Main threading exit.
+
 </pre>
 </div>
 </div>
@@ -1080,6 +1183,7 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1090,12 +1194,13 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1110,7 +1215,16 @@ Main threading exit.
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">mythread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>          <span class="c"># subclass Thread object</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">myId</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">myId</span> <span class="o">=</span> <span class="n">myId</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">):</span>
+            <span class="n">stdoutmutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s">'[</span><span class="si">%s</span><span class="s">] =&gt; </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">myId</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">stdoutmutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1125,7 +1239,7 @@ Main threading exit.
 <div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">stdoutmutex</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span> <span class="c"># same as thread.allocate_lock( )</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1140,7 +1254,14 @@ Main threading exit.
 <div class="prompt input_prompt">In [68]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">mythread</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">'Main threading exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1159,7 +1280,8 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0] =&gt; 0
+<pre>
+[0] =&gt; 0
 [0] =&gt; 1
 [0] =&gt; 2
 [1] =&gt; 0
@@ -1175,6 +1297,7 @@ Main threading exit.
 [4] =&gt; 1
 [4] =&gt; 2
 Main threading exit.
+
 </pre>
 </div>
 </div>
@@ -1196,12 +1319,21 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [94]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
+<span class="c"># subclass with state</span>
+<span class="k">class</span> <span class="nc">mythread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">**</span><span class="mi">32</span>
+<span class="n">mythread</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">(</span> <span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1220,8 +1352,10 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4294967296
+<pre>
 4294967296
+4294967296
+
 </pre>
 </div>
 </div>
@@ -1238,7 +1372,8 @@ Main threading exit.
 <div class="prompt input_prompt">In [95]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span><span class="o">**</span><span class="mi">32</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1253,7 +1388,9 @@ Main threading exit.
 <div class="prompt input_prompt">In [96]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># pass action in</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">action</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">(</span> <span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1268,7 +1405,12 @@ Main threading exit.
 <div class="prompt input_prompt">In [98]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># same but no lambda wrapper for state</span>
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">action</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">(</span> <span class="p">)</span>
+
+<span class="c"># basic thread module</span>
+<span class="kn">import</span> <span class="nn">thread</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1288,8 +1430,10 @@ Main threading exit.
 <div class="prompt output_prompt">Out[98]:</div>
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>140349501798144</pre>
+<div class="output_text output_subarea output_pyout">
+<pre>
+140349501798144
+</pre>
 </div>
 
 </div>
@@ -1306,7 +1450,14 @@ Main threading exit.
 <div class="prompt input_prompt">In [99]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># a non-thread class with state, OOP</span>
+<span class="k">class</span> <span class="nc">Power</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">**</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c"># thread runs bound method</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1325,8 +1476,10 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4294967296
+<pre>
 4294967296
+4294967296
+
 </pre>
 </div>
 </div>
@@ -1343,7 +1496,15 @@ Main threading exit.
 <div class="prompt input_prompt">In [101]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># nested scope to retain state</span>
+<span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">power</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">power</span>
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">action</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c"># thread runs returned function</span>
+<span class="c"># both with basic thread module</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="p">())</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">action</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">())</span> <span class="c"># thread runs a callable object</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1363,8 +1524,10 @@ Main threading exit.
 <div class="prompt output_prompt">Out[101]:</div>
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>140349510190848</pre>
+<div class="output_text output_subarea output_pyout">
+<pre>
+140349510190848
+</pre>
 </div>
 
 </div>
@@ -1386,12 +1549,26 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [128]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">adder</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c">#     time.sleep(0.5)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">adder</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">())</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span> <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">count</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1410,7 +1587,9 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>200
+<pre>
+200
+
 </pre>
 </div>
 </div>
@@ -1427,7 +1606,23 @@ Main threading exit.
 <div class="prompt input_prompt">In [130]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c">#prints 200 each time, because shared resource access synchronized</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">adder</span><span class="p">(</span><span class="n">addlock</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="k">with</span> <span class="n">addlock</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c">#     time.sleep(0.5)</span>
+    <span class="k">with</span> <span class="n">addlock</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">addlock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">adder</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">addlock</span><span class="p">,))</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span> <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">count</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1446,7 +1641,9 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>200
+<pre>
+200
+
 </pre>
 </div>
 </div>
@@ -1468,12 +1665,13 @@ Main threading exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [131]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c">#producer and consumer threads communicating with a shared queue</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1488,7 +1686,9 @@ Main threading exit.
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">numconsumers</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># how many consumers to start</span>
+<span class="n">numproducers</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c"># how many producers to start</span>
+<span class="n">nummessages</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c"># messages per producer to put</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1503,7 +1703,33 @@ Main threading exit.
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span><span class="o">,</span> <span class="nn">Queue</span><span class="o">,</span> <span class="nn">time</span>
+<span class="n">safeprint</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>  <span class="c"># else print may overlap</span>
+<span class="n">dataQueue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>        <span class="c"># shared global. infinite size</span>
+
+<span class="k">def</span> <span class="nf">producer</span><span class="p">(</span><span class="n">idnum</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">msgnum</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nummessages</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">idnum</span><span class="p">)</span>
+        <span class="n">dataQueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'[producer id=</span><span class="si">%d</span><span class="s">, count=</span><span class="si">%d</span><span class="s">]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">msgnum</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">(</span><span class="n">idnum</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">dataQueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>           
+            <span class="n">safeprint</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span> <span class="p">)</span>
+            <span class="k">print</span> <span class="s">'consumer'</span><span class="p">,</span> <span class="n">idnum</span><span class="p">,</span> <span class="s">'got =&gt;'</span><span class="p">,</span> <span class="n">data</span>
+            <span class="n">safeprint</span><span class="o">.</span><span class="n">release</span><span class="p">(</span> <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numconsumers</span><span class="p">):</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">consumer</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numproducers</span><span class="p">):</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">producer</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(((</span><span class="n">numproducers</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nummessages</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Main thread exit.'</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1522,7 +1748,8 @@ Main threading exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>consumer 0 got =&gt; [producer id=0, count=0]
+<pre>
+consumer 0 got =&gt; [producer id=0, count=0]
 consumer 1 got =&gt; [producer id=0, count=1]
 consumer 0 got =&gt; [producer id=0, count=2]
 consumer 1 got =&gt; [producer id=0, count=3]
@@ -1539,6 +1766,7 @@ consumer 0 got =&gt; [producer id=2, count=3]
 consumer 0 got =&gt; [producer id=3, count=2]
 consumer 0 got =&gt; [producer id=3, count=3]
 Main thread exit.
+
 </pre>
 </div>
 </div>
@@ -1555,7 +1783,38 @@ Main thread exit.
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c">#same as queuetest.py, by queue object pass in as argument, not global</span>
+<span class="n">numconsumers</span> <span class="o">=</span> <span class="mi">2</span>                  <span class="c"># how many consumers to start</span>
+<span class="n">numproducers</span> <span class="o">=</span> <span class="mi">4</span>                  <span class="c"># how many producers to start</span>
+<span class="n">nummessages</span>  <span class="o">=</span> <span class="mi">4</span>                  <span class="c"># messages per producer to put</span>
+
+<span class="kn">import</span> <span class="nn">thread</span><span class="o">,</span> <span class="nn">Queue</span><span class="o">,</span> <span class="nn">time</span>
+<span class="n">safeprint</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>    <span class="c"># else prints may overlap</span>
+<span class="n">dataQueue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>             <span class="c"># shared global, infinite size</span>
+
+<span class="k">def</span> <span class="nf">producer</span><span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">dataqueue</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">msgnum</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nummessages</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">idnum</span><span class="p">)</span>
+        <span class="n">dataqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'[producer id=</span><span class="si">%d</span><span class="s">, count=</span><span class="si">%d</span><span class="s">]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">msgnum</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">dataqueue</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">dataqueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">safeprint</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">'consumer'</span><span class="p">,</span> <span class="n">idnum</span><span class="p">,</span> <span class="s">'got =&gt;'</span><span class="p">,</span> <span class="n">data</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numconsumers</span><span class="p">):</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">consumer</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dataQueue</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numproducers</span><span class="p">):</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">producer</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dataQueue</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(((</span><span class="n">numproducers</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nummessages</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'Main thread exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1574,7 +1833,8 @@ Main thread exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>consumer 1 got =&gt; [producer id=0, count=0]
+<pre>
+consumer 1 got =&gt; [producer id=0, count=0]
 consumer 0 got =&gt; [producer id=0, count=1]
 consumer 1 got =&gt; [producer id=0, count=2]
 consumer 0 got =&gt; [producer id=0, count=3]
@@ -1591,6 +1851,7 @@ consumer 1 got =&gt; [producer id=2, count=3]
 consumer 1 got =&gt; [producer id=3, count=2]
 consumer 1 got =&gt; [producer id=3, count=3]
 Main thread exit.
+
 </pre>
 </div>
 </div>
@@ -1607,7 +1868,45 @@ Main thread exit.
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c">#same as queuetest2.py, but uses threading, not _threads</span>
+<span class="n">numconsumers</span> <span class="o">=</span> <span class="mi">2</span>                  <span class="c"># how many consumers to start</span>
+<span class="n">numproducers</span> <span class="o">=</span> <span class="mi">4</span>                  <span class="c"># how many producers to start</span>
+<span class="n">nummessages</span>  <span class="o">=</span> <span class="mi">4</span>                  <span class="c"># messages per producer to put</span>
+
+<span class="kn">import</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">Queue</span><span class="o">,</span> <span class="nn">time</span>
+<span class="n">safeprint</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>          <span class="c"># else prints may overlap</span>
+<span class="n">dataQueue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>             <span class="c"># shared global, infinite size</span>
+
+<span class="k">def</span> <span class="nf">producer</span><span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">dataqueue</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">msgnum</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nummessages</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">idnum</span><span class="p">)</span>
+        <span class="n">dataqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'[producer id=</span><span class="si">%d</span><span class="s">, count=</span><span class="si">%d</span><span class="s">]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">msgnum</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">(</span><span class="n">idnum</span><span class="p">,</span> <span class="n">dataqueue</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">dataqueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">safeprint</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">'consumer'</span><span class="p">,</span> <span class="n">idnum</span><span class="p">,</span> <span class="s">'got =&gt;'</span><span class="p">,</span> <span class="n">data</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numconsumers</span><span class="p">):</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dataQueue</span><span class="p">))</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c"># else cannot exit!</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">waitfor</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numproducers</span><span class="p">):</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">producer</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dataQueue</span><span class="p">))</span>
+        <span class="n">waitfor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">waitfor</span><span class="p">:</span> <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>    <span class="c"># or time.sleep() long enough here</span>
+    <span class="k">print</span> <span class="s">'Main thread exit.'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1626,7 +1925,8 @@ Main thread exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>consumer 0 got =&gt; [producer id=3, count=3]
+<pre>
+consumer 0 got =&gt; [producer id=3, count=3]
 consumer 1 got =&gt; [producer id=0, count=0]
 consumer 0 got =&gt; [producer id=0, count=1]
 consumer 0 got =&gt; [producer id=0, count=2]
@@ -1643,6 +1943,7 @@ consumer 0 got =&gt; [producer id=3, count=1]
 consumer 0 got =&gt; [producer id=2, count=3]
 consumer 0 got =&gt; [producer id=3, count=2]
 Main thread exit.
+
 </pre>
 </div>
 </div>
@@ -1664,6 +1965,7 @@ Main thread exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1674,12 +1976,13 @@ Main thread exit.
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1694,7 +1997,7 @@ Main thread exit.
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">exitstat</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1709,7 +2012,12 @@ Main thread exit.
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">exitstat</span>
+    <span class="n">exitstat</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">print</span> <span class="s">'Hello from child'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">exitstat</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="n">exitstat</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'never reached'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1724,7 +2032,15 @@ Main thread exit.
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">newpid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">newpid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">child</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s">'Parent got'</span><span class="p">,</span> <span class="n">pid</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="p">(</span><span class="n">status</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">raw_input</span><span class="p">()</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span> <span class="k">break</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1739,7 +2055,7 @@ Main thread exit.
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1758,7 +2074,8 @@ Main thread exit.
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Parent got 4367 256 1
+<pre>
+Parent got 4367 256 1
 Hello from child 4367 1
 
 Parent got 4373 256 1
@@ -1773,6 +2090,7 @@ Hello from child 4385 1
 Parent got 4391 256 1
 Hello from child 4391 1
 q
+
 </pre>
 </div>
 </div>
@@ -1794,12 +2112,13 @@ q
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">thread</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1814,7 +2133,7 @@ q
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">exitstat</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1829,7 +2148,18 @@ q
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">exitstat</span>
+    <span class="n">exitstat</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">threadid</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'Hello from child'</span><span class="p">,</span> <span class="n">threadid</span><span class="p">,</span> <span class="n">exitstat</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'never reached'</span>
+<span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="p">())</span>
+        <span class="k">if</span> <span class="nb">raw_input</span><span class="p">()</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span> <span class="k">break</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span> <span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1849,11 +2179,13 @@ q
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+
 Hello from child 140613521495808 1
 
 Hello from child 140613521495808 2
 q
 Hello from child 140613521495808 3
+
 </pre>
 </div>
 </div>
@@ -1870,7 +2202,15 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># As we’ve learned, a thread normally exits silently when the function it runs returns,</span>
+<span class="c"># and the function return value is ignored. Optionally, the _thread.exit function can be</span>
+<span class="c"># called to terminate the calling thread explicitly and silently. This call works almost</span>
+<span class="c"># exactly like sys.exit (but takes no return status argument), and it works by raising a</span>
+<span class="c"># SystemExit exception in the calling thread. Because of that, a thread can also prema-</span>
+<span class="c"># turely end by calling sys.exit or by directly raising SystemExit . Be sure not to call</span>
+<span class="c"># os._exit within a thread function, though—doing so can have odd results (the last time</span>
+<span class="c"># I tried, it hung the entire process on my Linux system and killed every thread in the</span>
+<span class="c"># process on Windows!).</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1885,7 +2225,18 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># keep in mind that threads and processes have default lifespan models,</span>
+<span class="c"># which we explored earlier. By way of review, when child threads are still running, the</span>
+<span class="c"># two thread modules’ behavior differs—programs on most platforms exit when the pa-</span>
+<span class="c"># rent thread does under _thread , but not normally under threading unless children are</span>
+<span class="c"># made daemons. When using processes, children normally outlive their parent. This</span>
+<span class="c"># different process behavior makes sense if you remember that threads are in-process</span>
+<span class="c"># function calls, but processes are more independent and autonomous.</span>
+<span class="c"># When used well, exit status can be used to implement error detection and simple com-</span>
+<span class="c"># munication protocols in systems composed of command-line scripts. But having said</span>
+<span class="c"># that, I should underscore that most scripts do simply fall off the end of the source to</span>
+<span class="c"># exit, and most thread functions simply return; explicit exit calls are generally employed</span>
+<span class="c"># for exceptional conditions and in limited contexts only.</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1905,6 +2256,7 @@ Hello from child 140613521495808 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1915,6 +2267,7 @@ Hello from child 140613521495808 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1925,12 +2278,13 @@ Hello from child 140613521495808 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1945,7 +2299,13 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">pipeout</span><span class="p">):</span>
+    <span class="n">zzz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">zzz</span><span class="p">)</span>                                    <span class="c">#make parent wait</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">'Spam </span><span class="si">%03d</span><span class="s">'</span> <span class="o">%</span> <span class="n">zzz</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="c">#pipes are binary bytes</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pipeout</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>                       <span class="c">#send to parent</span>
+        <span class="n">zzz</span> <span class="o">=</span> <span class="p">(</span><span class="n">zzz</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span>                                <span class="c">#goto 0 after 4</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1960,7 +2320,15 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="n">pipein</span><span class="p">,</span><span class="n">pipeout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">child</span><span class="p">(</span><span class="n">pipeout</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">pipein</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+            <span class="c"># blocks until data sent</span>
+            <span class="k">print</span> <span class="s">'Parent </span><span class="si">%d</span><span class="s"> got [</span><span class="si">%s</span><span class="s">] at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">line</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1975,7 +2343,7 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1995,12 +2363,33 @@ Hello from child 140613521495808 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># same as pipe1.py, but wrap pipe input in stdio file object</span>
+<span class="c"># to read by line, and close unused pipe fds in both processes</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+<span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">pipeout</span><span class="p">):</span>
+    <span class="n">zzz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">zzz</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">'Spam </span><span class="si">%03d</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">zzz</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pipeout</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="n">zzz</span> <span class="o">=</span> <span class="p">(</span><span class="n">zzz</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span>
+<span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="n">pipein</span><span class="p">,</span> <span class="n">pipeout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">pipein</span><span class="p">)</span>
+        <span class="n">child</span><span class="p">(</span><span class="n">pipeout</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">pipeout</span><span class="p">)</span>
+        <span class="n">pipein</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fdopen</span><span class="p">(</span><span class="n">pipein</span><span class="p">)</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">pipein</span><span class="o">.</span><span class="n">readline</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Parent </span><span class="si">%d</span><span class="s"> got [</span><span class="si">%s</span><span class="s">] at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">line</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2015,7 +2404,7 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2035,12 +2424,13 @@ Hello from child 140613521495808 3
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">threading</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2055,7 +2445,13 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">pipeout</span><span class="p">):</span>
+    <span class="n">zzz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">zzz</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">"Spam </span><span class="si">%03d</span><span class="s">"</span> <span class="o">%</span> <span class="n">zzz</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pipeout</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="n">zzz</span> <span class="o">=</span> <span class="p">(</span><span class="n">zzz</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2070,7 +2466,10 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="n">pipein</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">pipein</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">'Parent </span><span class="si">%d</span><span class="s"> got [</span><span class="si">%s</span><span class="s">] at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">line</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2085,7 +2484,7 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">pipein</span> <span class="p">,</span><span class="n">pipeout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2100,7 +2499,7 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">child</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">pipeout</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2115,7 +2514,7 @@ Hello from child 140613521495808 3
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">parent</span><span class="p">(</span><span class="n">pipein</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2134,7 +2533,8 @@ Hello from child 140613521495808 3
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Parent 3257 got [Spam 003Spam 004Spam 000Spam 001] at 1400549465.95
+<pre>
+Parent 3257 got [Spam 003Spam 004Spam 000Spam 001] at 1400549465.95
 Parent 3257 got [Spam 002Spam 003Spam 004Spam 000] at 1400549465.95
 Parent 3257 got [Spam 001Spam 002Spam 003] at 1400549465.95
 Parent 3257 got [Spam 004] at 1400549468.75
@@ -2142,13 +2542,14 @@ Parent 3257 got [Spam 000] at 1400549468.76
 Parent 3257 got [Spam 001] at 1400549469.76
 Parent 3257 got [Spam 002] at 1400549471.76
 Parent 3257 got [Spam 003] at 1400549474.76
+
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_error">
+<div class="output_subarea output_text output_pyerr">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">KeyboardInterrupt</span>                         Traceback (most recent call last)
@@ -2182,12 +2583,15 @@ Parent 3257 got [Spam 003] at 1400549474.76
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># spawn a child process/program, connect my stdin/stdout to child process's</span>
+<span class="c"># stdout/stdin--my reads and writes map to output and input streams of the</span>
+<span class="c"># spawned program; much like tying together streams with subprocess module;</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2202,7 +2606,7 @@ Parent 3257 got [Spam 003] at 1400549474.76
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2217,7 +2621,40 @@ Parent 3257 got [Spam 003] at 1400549474.76
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">spawn</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>                       <span class="c"># pass progname, cmdline args</span>
+    <span class="n">stdinFd</span>  <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>             <span class="c"># get descriptors for streams</span>
+    <span class="n">stdoutFd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>            <span class="c"># normally stdin=0, stdout=1</span>
+
+    <span class="n">parentStdin</span><span class="p">,</span> <span class="n">childStdout</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>     <span class="c"># make two IPC pipe channels</span>
+    <span class="n">childStdin</span><span class="p">,</span>  <span class="n">parentStdout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>     <span class="c"># pipe returns (inputfd, outoutfd)</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>                           <span class="c"># make a copy of this process</span>
+    <span class="k">if</span> <span class="n">pid</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">childStdout</span><span class="p">)</span>                 <span class="c"># in parent process after fork:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">childStdin</span><span class="p">)</span>                  <span class="c"># close child ends in parent</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">parentStdin</span><span class="p">,</span>  <span class="n">stdinFd</span><span class="p">)</span>        <span class="c"># my sys.stdin copy  = pipe1[0]</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">parentStdout</span><span class="p">,</span> <span class="n">stdoutFd</span><span class="p">)</span>       <span class="c"># my sys.stdout copy = pipe2[1]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">parentStdin</span><span class="p">)</span>                 <span class="c"># in child process after fork:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">parentStdout</span><span class="p">)</span>                <span class="c"># close parent ends in child</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">childStdin</span><span class="p">,</span>  <span class="n">stdinFd</span><span class="p">)</span>         <span class="c"># my sys.stdin copy  = pipe2[0]</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">childStdout</span><span class="p">,</span> <span class="n">stdoutFd</span><span class="p">)</span>        <span class="c"># my sys.stdout copy = pipe1[1]</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">prog</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">execvp</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>                 <span class="c"># new program in this process</span>
+        <span class="k">assert</span> <span class="bp">False</span><span class="p">,</span> <span class="s">'execvp failed!'</span>        <span class="c"># os.exec call never returns here</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">mypid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="n">spawn</span><span class="p">(</span><span class="s">'python'</span><span class="p">,</span> <span class="s">'-u'</span><span class="p">,</span> <span class="s">'pipes-testchild.py'</span><span class="p">,</span> <span class="s">'spam'</span><span class="p">)</span>     <span class="c"># fork child program</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'Hello 1 from parent'</span><span class="p">,</span> <span class="n">mypid</span><span class="p">)</span>               <span class="c"># to child's stdin</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>                                <span class="c"># subvert stdio buffering</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>                                   <span class="c"># from child's stdout</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Parent got: "</span><span class="si">%s</span><span class="s">"</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">reply</span><span class="p">)</span>    <span class="c"># stderr not tied to pipe!</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'Hello 2 from parent'</span><span class="p">,</span> <span class="n">mypid</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Parent got: "</span><span class="si">%s</span><span class="s">"</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">reply</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2235,7 +2672,7 @@ Parent 3257 got [Spam 003] at 1400549474.76
 
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_error">
+<div class="output_subarea output_text output_pyerr">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">UnsupportedOperation</span>                      Traceback (most recent call last)
@@ -2276,7 +2713,17 @@ Parent 3257 got [Spam 003] at 1400549474.76
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="n">mypid</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<span class="n">parentpid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Child </span><span class="si">%d</span><span class="s"> of </span><span class="si">%d</span><span class="s"> got arg: "</span><span class="si">%s</span><span class="s">"</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">mypid</span><span class="p">,</span> <span class="n">parentpid</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>              <span class="c"># make parent process wait by sleeping here</span>
+    <span class="n">recv</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">()</span>             <span class="c"># stdin tied to pipe: comes from parent's stdout</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">send</span> <span class="o">=</span> <span class="s">'Child </span><span class="si">%d</span><span class="s"> got: [</span><span class="si">%s</span><span class="s">]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">mypid</span><span class="p">,</span> <span class="n">recv</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">send</span>                <span class="c"># stdout tied to pipe: goes to parent's stdin</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>         <span class="c"># make sure it's sent now or else process blocks</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2295,7 +2742,9 @@ Parent 3257 got [Spam 003] at 1400549474.76
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>Child 3257 of 2729 got arg: "-f"
+<pre>
+Child 3257 of 2729 got arg: "-f"
+
 </pre>
 </div>
 </div>
@@ -2303,10 +2752,12 @@ Parent 3257 got [Spam 003] at 1400549474.76
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ss
+<pre>
+ss
 Child 3257 got: [ss]
 rt
 Child 3257 got: [rt]
+
 </pre>
 </div>
 </div>
@@ -2328,12 +2779,15 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># Deadlock in general, though, is a bigger problem than we have space to address fully</span>
+<span class="c"># here. On the other hand, if you know enough that you want to do IPC in Python, you’re</span>
+<span class="c"># probably already a veteran of the deadlock wars.</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2353,12 +2807,15 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># named pipes; os.mkfifo is not available on Windows (without Cygwin); </span>
+<span class="c"># there is no reason to fork here, since fifo file pipes are external </span>
+<span class="c"># to processes--shared fds in parent/child processes are irrelevent;</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2373,7 +2830,23 @@ Child 3257 got: [rt]
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="n">fifoname</span> <span class="o">=</span> <span class="s">'/tmp/pipefifo'</span>                       <span class="c"># must open same name</span>
+
+<span class="k">def</span> <span class="nf">child</span><span class="p">():</span>
+    <span class="n">pipeout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fifoname</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_WRONLY</span><span class="p">)</span>     <span class="c"># open fifo pipe file as fd</span>
+    <span class="n">zzz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">zzz</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">'Spam </span><span class="si">%03d</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">zzz</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>     <span class="c"># binary as opened here</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pipeout</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="n">zzz</span> <span class="o">=</span> <span class="p">(</span><span class="n">zzz</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">parent</span><span class="p">():</span>
+    <span class="n">pipein</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fifoname</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>                 <span class="c"># open fifo as text file object</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">pipein</span><span class="o">.</span><span class="n">readline</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>            <span class="c"># blocks until data sent</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Parent </span><span class="si">%d</span><span class="s"> got "</span><span class="si">%s</span><span class="s">" at </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">line</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2388,7 +2861,13 @@ Child 3257 got: [rt]
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fifoname</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkfifo</span><span class="p">(</span><span class="n">fifoname</span><span class="p">)</span>                      <span class="c"># create a named pipe file</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">parent</span><span class="p">()</span>                                 <span class="c"># run as parent if no args</span>
+    <span class="k">else</span><span class="p">:</span>                                        <span class="c"># else run as child process</span>
+        <span class="n">child</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2408,12 +2887,18 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># sockets for cross-task communication: start threads to communicate over sockets;</span>
+<span class="c"># independent programs can too, because sockets are system-wide, much like fifos;</span>
+<span class="c"># see the GUI and Internet parts of the book for more realistic socket use cases;</span>
+<span class="c"># some socket servers may also need to talk to clients in threads or processes;</span>
+<span class="c"># sockets pass byte strings, but can be pickled objects or encoded Unicode text;</span>
+<span class="c"># caveat: prints in threads may need to be synchronized if their output overlaps;</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2428,7 +2913,28 @@ Child 3257 got: [rt]
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="n">socket</span><span class="p">,</span> <span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span>     <span class="c"># portable socket api</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="mi">50008</span>                 <span class="c"># port number identifies socket on machine</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s">'localhost'</span>           <span class="c"># server and client run on same local machine here</span>
+
+<span class="k">def</span> <span class="nf">server</span><span class="p">():</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>         <span class="c"># ip addresses tcp connection</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">''</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>                       <span class="c"># bind to port on this machine</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                              <span class="c"># allow up to 5 pending clients</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>              <span class="c"># wait for client to connect</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                  <span class="c"># read bytes data from this client</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="s">'server got: [</span><span class="si">%s</span><span class="s">]'</span> <span class="o">%</span> <span class="n">data</span>       <span class="c"># conn is a new connected socket</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>               <span class="c"># send bytes reply back to client</span>
+
+<span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>                  <span class="c"># connect to a socket port</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>                    <span class="c"># send bytes data to listener</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                     <span class="c"># receive bytes data from listener</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                <span class="c"># up to 1024 bytes in message</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'client got: [</span><span class="si">%s</span><span class="s">]'</span> <span class="o">%</span> <span class="n">reply</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2443,7 +2949,13 @@ Child 3257 got: [rt]
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+    <span class="n">sthread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">server</span><span class="p">)</span>
+    <span class="n">sthread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="bp">True</span>                       <span class="c"># don't wait for server thread</span>
+    <span class="n">sthread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>                             <span class="c"># do wait for children to exit</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> 
+         <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s">'client</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2462,7 +2974,9 @@ Child 3257 got: [rt]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>client got: [server got: [client4]]
+<pre>
+client got: [server got: [client4]]
+
 </pre>
 </div>
 </div>
@@ -2484,12 +2998,27 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># # catch signals in Python; pass signal number N as a command-line arg,</span>
+<span class="c"># # use a "kill -N pid" shell command to send this process a signal;  most</span>
+<span class="c"># # signal handlers restored by Python after caught (see network scripting</span>
+<span class="c"># # chapter for SIGCHLD details); on Windows, signal module is available,</span>
+<span class="c"># # but it defines only a few signal types there, and os.kill is missing;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">time</span>
+<span class="k">def</span> <span class="nf">now</span><span class="p">():</span> <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>        <span class="c"># current time string</span>
+
+<span class="k">def</span> <span class="nf">onSignal</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">stackframe</span><span class="p">):</span>                <span class="c"># python signal handler</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Got signal'</span><span class="p">,</span> <span class="n">signum</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>     <span class="c"># most handlers stay in effect</span>
+
+<span class="n">signum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">onSignal</span><span class="p">)</span>                  <span class="c"># install signal handler</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span> <span class="n">signal</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>                       <span class="c"># wait for signals (or: pass)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2504,7 +3033,21 @@ Child 3257 got: [rt]
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># set and catch alarm timeout signals in Python; time.sleep doesn't play</span>
+<span class="c"># well with alarm (or signal in general in my Linux PC), so we call</span>
+<span class="c"># signal.pause here to do nothing until a signal is received;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">time</span>
+<span class="k">def</span> <span class="nf">now</span><span class="p">():</span> <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">onSignal</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">stackframe</span><span class="p">):</span>                 <span class="c"># python signal handler</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Got alarm'</span><span class="p">,</span> <span class="n">signum</span><span class="p">,</span> <span class="s">'at'</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>       <span class="c"># most handlers stay in effect</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Setting at'</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGALRM</span><span class="p">,</span> <span class="n">onSignal</span><span class="p">)</span>       <span class="c"># install signal handler</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">alarm</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                               <span class="c"># do signal in 5 seconds</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>                                <span class="c"># wait for signals</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2523,7 +3066,8 @@ Child 3257 got: [rt]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>('Setting at', 'Tue May 20 15:58:01 2014')
+<pre>
+('Setting at', 'Tue May 20 15:58:01 2014')
 ('Got alarm', 14, 'at', 'Tue May 20 15:58:06 2014')
 ('Setting at', 'Tue May 20 15:58:06 2014')
 ('Got alarm', 14, 'at', 'Tue May 20 15:58:11 2014')
@@ -2548,13 +3092,14 @@ Child 3257 got: [rt]
 ('Setting at', 'Tue May 20 15:58:56 2014')
 ('Got alarm', 14, 'at', 'Tue May 20 15:59:01 2014')
 ('Setting at', 'Tue May 20 15:59:01 2014')
+
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_error">
+<div class="output_subarea output_text output_pyerr">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">KeyboardInterrupt</span>                         Traceback (most recent call last)
@@ -2584,6 +3129,7 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2594,12 +3140,40 @@ Child 3257 got: [rt]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">multiprocess basics: Process works like threading.Thread, but </span>
+<span class="sd">runs function call in parallel in a process instead of a thread;</span>
+<span class="sd">locks can be used to synchronize, e.g. prints on some platforms;</span>
+<span class="sd">starts new interpreter on windows, forks a new process on unix;</span>
+<span class="sd">"""</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Lock</span>
+
+<span class="k">def</span> <span class="nf">whoami</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s">'</span><span class="si">%s</span><span class="s">: name:</span><span class="si">%s</span><span class="s">, pid:</span><span class="si">%s</span><span class="s">'</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">__name__</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+    <span class="n">whoami</span><span class="p">(</span><span class="s">'function call'</span><span class="p">,</span> <span class="n">lock</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">whoami</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s">'spawned child'</span><span class="p">,</span> <span class="n">lock</span><span class="p">))</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">whoami</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">((</span><span class="s">'run process </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">),</span> <span class="n">lock</span><span class="p">))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Main process exit.'</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2618,13 +3192,15 @@ Child 3257 got: [rt]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>('Got alarm', 14, 'at', 'Tue May 20 15:59:06 2014')
+<pre>
+('Got alarm', 14, 'at', 'Tue May 20 15:59:06 2014')
 function call: name:__main__, pid:3257
 spawned child: name:__main__, pid:5196
 Main process exit.
 run process 0: name:__main__, pid:5204
 run process 1: name:__main__, pid:5205
 run process 2: name:__main__, pid:5206
+
 </pre>
 </div>
 </div>
@@ -2646,6 +3222,7 @@ run process 2: name:__main__, pid:5206
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2656,12 +3233,40 @@ run process 2: name:__main__, pid:5206
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># Use multiprocess anonymous pipes to communicate. Returns 2 connection</span>
+<span class="c"># object representing ends of the pipe: objects are sent on one end and</span>
+<span class="c"># received on the other, though pipes are bidirectional by default</span>
+
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Pipe</span>
+
+<span class="k">def</span> <span class="nf">sender</span><span class="p">(</span><span class="n">pipe</span><span class="p">):</span>
+    <span class="n">pipe</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="s">'spam'</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="s">'eggs'</span><span class="p">])</span>
+    <span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">talker</span><span class="p">(</span><span class="n">pipe</span><span class="p">):</span>
+    <span class="n">pipe</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'bob'</span><span class="p">,</span> <span class="n">spam</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'talk got:'</span><span class="p">,</span> <span class="n">reply</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">parentEnd</span><span class="p">,</span> <span class="n">childEnd</span> <span class="o">=</span> <span class="n">Pipe</span><span class="p">()</span>
+    <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">childEnd</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'parent got:'</span><span class="p">,</span> <span class="n">parentEnd</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="n">parentEnd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">parentEnd</span><span class="p">,</span> <span class="n">childEnd</span> <span class="o">=</span> <span class="n">Pipe</span><span class="p">()</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">talker</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">parentEnd</span><span class="p">,))</span>
+    <span class="n">child</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'parent got:'</span><span class="p">,</span> <span class="n">parentEnd</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="n">parentEnd</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s">'spam'</span><span class="p">])</span>
+    <span class="n">child</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'parent exit'</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2681,12 +3286,39 @@ run process 2: name:__main__, pid:5206
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Use multiprocess shared memory objects to communicate.</span>
+<span class="sd">Passed objects are shared, but globals are not on Windows.</span>
+<span class="sd">Last test here reflects common use case: distributing work.</span>
+<span class="sd">"""</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Value</span><span class="p">,</span> <span class="n">Array</span>
+
+<span class="n">procs</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c"># per-process globals, not shared </span>
+
+<span class="k">def</span> <span class="nf">showdata</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    print data values in this process</span>
+<span class="sd">    """</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s">'</span><span class="si">%-12s</span><span class="s">: pid:</span><span class="si">%4s</span><span class="s">, global:</span><span class="si">%s</span><span class="s">, value:</span><span class="si">%s</span><span class="s">, array:</span><span class="si">%s</span><span class="s">'</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">count</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">arr</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">updater</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    communicate via shared memory</span>
+<span class="sd">    """</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>                         <span class="c"># global count not shared</span>
+    <span class="n">val</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>                     <span class="c"># passed in objects are</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2706,6 +3338,8 @@ run process 2: name:__main__, pid:5206
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+
+
 </pre>
 </div>
 </div>
@@ -2722,7 +3356,64 @@ run process 2: name:__main__, pid:5206
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">scalar</span> <span class="o">=</span> <span class="n">Value</span><span class="p">(</span><span class="s">'i'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>             <span class="c"># shared memory: process/thread safe</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="s">'d'</span><span class="p">,</span> <span class="n">procs</span><span class="p">)</span>         <span class="c"># type codes from ctypes: int, double</span>
+
+    <span class="c"># show start value in parent process</span>
+    <span class="n">showdata</span><span class="p">(</span><span class="s">'parent start'</span><span class="p">,</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+
+    <span class="c"># spawn child, pass in shared memory</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">showdata</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s">'child '</span><span class="p">,</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">))</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="c"># pass in shared memory updated in parent, wait for each to finish</span>
+    <span class="c"># each child sees updates in parent so far for args (but not global)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">loop1 (updates in parent, serial children)...'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">procs</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">scalar</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">showdata</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">((</span><span class="s">'process </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">),</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="c"># same as prior, but allow children to run in parallel</span>
+    <span class="c"># all see the last iteration's result because all share objects</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">loop2 (updates in parent, parallel children)...'</span><span class="p">)</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">procs</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">scalar</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">showdata</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">((</span><span class="s">'process </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">),</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">ps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="c"># shared memory updated in spawned children, wait for each </span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">loop3 (updates in serial children)...'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">procs</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">updater</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="n">showdata</span><span class="p">(</span><span class="s">'parent temp'</span><span class="p">,</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+    
+    <span class="c"># same, but allow children to update in parallel</span>
+
+    <span class="n">ps</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">loop4 (updates in parallel children)...'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">procs</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">updater</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">ps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="c"># global count=6 in parent only  </span>
+    <span class="c"># show final results here</span>
+    <span class="c"># scalar=12:  +6 parent, +6 in 6 children</span>
+    <span class="n">showdata</span><span class="p">(</span><span class="s">'parent end'</span><span class="p">,</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span> <span class="c"># array[i]=8: +2 parent, +6 in 6 children</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2741,7 +3432,8 @@ run process 2: name:__main__, pid:5206
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>parent start: pid:3257, global:0, value:0, array:[0.0, 0.0, 0.0]
+<pre>
+parent start: pid:3257, global:0, value:0, array:[0.0, 0.0, 0.0]
 
 loop1 (updates in parent, serial children)...
 child       : pid:5361, global:0, value:0, array:[0.0, 0.0, 0.0]
@@ -2759,6 +3451,7 @@ parent temp : pid:3257, global:6, value:9, array:[5.0, 5.0, 5.0]
 
 loop4 (updates in parallel children)...
 parent end  : pid:3257, global:6, value:12, array:[8.0, 8.0, 8.0]
+
 </pre>
 </div>
 </div>
@@ -2780,12 +3473,50 @@ parent end  : pid:3257, global:6, value:12, array:[8.0, 8.0, 8.0]
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">Queue</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Queue</span> <span class="k">as</span> <span class="n">queue</span>
+<span class="k">class</span> <span class="nc">Counter</span><span class="p">(</span><span class="n">Process</span><span class="p">):</span>
+    <span class="sd">"""docstring for Counter"""</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">' @'</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">Queue</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post</span>  <span class="o">=</span> <span class="n">Queue</span>
+        <span class="n">Process</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="s">'-'</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'start'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">queue</span><span class="p">()</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">post</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">post</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">post</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">q</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">expected</span><span class="p">:</span>                             <span class="c"># parent consumes data on queue</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>                         <span class="c"># this is essentially like a GUI,</span>
+        <span class="k">try</span><span class="p">:</span>                                    <span class="c"># though GUIs often use threads</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">post</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">'no data...'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">'posted:'</span><span class="p">,</span> <span class="n">data</span>
+            <span class="n">expected</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">();</span> <span class="n">q</span><span class="o">.</span><span class="n">join</span><span class="p">();</span> <span class="n">r</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>                <span class="c"># must get before join putter</span>
+    <span class="k">print</span> <span class="s">'finish'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">r</span><span class="o">.</span><span class="n">exitcode</span>   <span class="c"># exitcode is child exit status</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2804,7 +3535,8 @@ parent end  : pid:3257, global:6, value:12, array:[8.0, 8.0, 8.0]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>start 3257
+<pre>
+start 3257
 no data...
 no data...
 no data...
@@ -2838,6 +3570,7 @@ posted: @ @ @ 5847 3
 posted: 5848
 posted: 5849
 finish 3257 0
+
 </pre>
 </div>
 </div>
@@ -2859,12 +3592,23 @@ finish 3257 0
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="s">"Use multiprocessing to start independent programs, os.fork or not"</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+
+<span class="k">def</span> <span class="nf">runp</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">execlp</span><span class="p">(</span><span class="s">'python'</span><span class="p">,</span> <span class="s">'python'</span><span class="p">,</span> <span class="s">'child.py'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">runp</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'parent exit'</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2883,7 +3627,9 @@ finish 3257 0
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>parent exit
+<pre>
+parent exit
+
 </pre>
 </div>
 </div>
@@ -2905,12 +3651,27 @@ finish 3257 0
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+
+<span class="k">def</span> <span class="nf">powers</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">x</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">workers</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">workers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">powers</span><span class="p">,[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">results</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">workers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">powers</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="k">print</span> <span class="n">results</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -2929,10 +3690,12 @@ finish 3257 0
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+<pre>
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 [4, 4]
 [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 [256, 512]
+
 </pre>
 </div>
 </div>

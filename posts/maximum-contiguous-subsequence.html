@@ -49,9 +49,9 @@ MathJax.Hub.Config({
 
 
 
+
 Kadane's Algorithm is an O(n) algorithm for finding the maximum contiguous subsequence in a one-dimensional sequence.
 Kadane算法是用于寻找一维数组最大连续子集，复杂度O(n)。
-
 
 
 begin
@@ -116,6 +116,7 @@ begin
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -124,7 +125,6 @@ begin
 <p><strong>Kadane's Algorithm</strong> is an <em>O</em>(<em>n</em>) algorithm for finding the maximum contiguous <a href="../index.php/Subsequence" title="Subsequence">subsequence</a> in a one-dimensional <a href="../index.php/Sequence" title="Sequence">sequence</a>.</p>
 <p><strong>Kadane算法</strong>是用于寻找一维<a href="../index.php/Sequence" title="Sequence">数组</a>最大连续<a href="../index.php/Subsequence" title="Subsequence">子集</a>，复杂度<em>O</em>(<em>n</em>)。</p>
 <!-- TEASER_END -->
-
 
 <pre><code>begin
     (maxSum, maxStartIndex, maxEndIndex) := (-INFINITY, 0, 0)
@@ -143,8 +143,8 @@ begin
     endfor
 
     return (maxSum, maxStartIndex, maxEndIndex)
-end</code></pre>
-
+end
+</code></pre>
 </div>
 </div>
 </div>
@@ -153,7 +153,18 @@ end</code></pre>
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">max_subarray</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">maxSum</span><span class="p">,</span> <span class="n">maxStartIndex</span><span class="p">,</span> <span class="n">maxEndIndex</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">currentMaxSum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">currentStartIndex</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">currentEndIndex</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+        <span class="n">currentMaxSum</span> <span class="o">=</span> <span class="n">currentMaxSum</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">currentEndIndex</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">currentMaxSum</span> <span class="o">&gt;</span> <span class="n">maxSum</span><span class="p">:</span>
+            <span class="n">maxSum</span><span class="p">,</span> <span class="n">maxStartIndex</span><span class="p">,</span> <span class="n">maxEndIndex</span> <span class="o">=</span> <span class="n">currentMaxSum</span><span class="p">,</span> <span class="n">currentStartIndex</span><span class="p">,</span> <span class="n">currentEndIndex</span>
+        <span class="k">if</span> <span class="n">currentMaxSum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">currentMaxSum</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">currentStartIndex</span> <span class="o">=</span> <span class="n">currentEndIndex</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">maxSum</span><span class="p">,</span> <span class="n">maxStartIndex</span><span class="p">,</span> <span class="n">maxEndIndex</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">maxStartIndex</span><span class="p">:</span><span class="n">maxEndIndex</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -168,7 +179,8 @@ end</code></pre>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">u'最大连续子集：</span><span class="se">\n</span><span class="s">和为{}，起止下标{}，{}。</span><span class="se">\n</span><span class="s">子集为{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">max_subarray</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -187,9 +199,11 @@ end</code></pre>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>最大连续子集：
+<pre>
+最大连续子集：
 和为6，起止下标3，6。
 子集为[4, -1, 2, 1]
+
 </pre>
 </div>
 </div>
@@ -206,7 +220,8 @@ end</code></pre>
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s">'&lt;iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+max_subarray(A)%3A%0D%0A++++maxSum,+maxStartIndex,+maxEndIndex+%3D+A%5B0%5D,+0,+0%0D%0A++++currentMaxSum+%3D+0%0D%0A++++currentStartIndex+%3D+0%0D%0A++++for+currentEndIndex,+item+in+enumerate(A)%3A%0D%0A++++++++currentMaxSum+%3D+currentMaxSum+%2B+A%5BcurrentEndIndex%5D%0D%0A++++++++if+currentMaxSum+</span><span class="si">%3E</span><span class="s">+maxSum%3A%0D%0A++++++++++++maxSum,+maxStartIndex,+maxEndIndex+%3D+currentMaxSum,+currentStartIndex,+currentEndIndex%0D%0A++++++++if+currentMaxSum+%3C+0%3A%0D%0A++++++++++++currentMaxSum+%3D+0%0D%0A++++++++++++currentStartIndex+%3D+currentEndIndex+%2B+1%0D%0A++++return+(maxSum,+maxStartIndex,+maxEndIndex,+A%5BmaxStartIndex%3AmaxEndIndex%2B1%5D)%0D%0A++++%0D%0Ax+%3D+%5B-2,+1,+-3,+4,+-1,+2,+1,+-5,+4%5D%0D%0A%0D%0Amax_subarray(x)&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;showOnlyOutputs=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=52&amp;codeDivWidth=350&amp;codeDivHeight=400"&gt; &lt;/iframe&gt;'</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -225,7 +240,7 @@ end</code></pre>
 <div class="output_area">
 <div class="prompt output_prompt">Out[1]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
+<div class="output_html rendered_html output_subarea output_pyout">
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+max_subarray(A)%3A%0D%0A++++maxSum,+maxStartIndex,+maxEndIndex+%3D+A%5B0%5D,+0,+0%0D%0A++++currentMaxSum+%3D+0%0D%0A++++currentStartIndex+%3D+0%0D%0A++++for+currentEndIndex,+item+in+enumerate(A)%3A%0D%0A++++++++currentMaxSum+%3D+currentMaxSum+%2B+A%5BcurrentEndIndex%5D%0D%0A++++++++if+currentMaxSum+%3E+maxSum%3A%0D%0A++++++++++++maxSum,+maxStartIndex,+maxEndIndex+%3D+currentMaxSum,+currentStartIndex,+currentEndIndex%0D%0A++++++++if+currentMaxSum+%3C+0%3A%0D%0A++++++++++++currentMaxSum+%3D+0%0D%0A++++++++++++currentStartIndex+%3D+currentEndIndex+%2B+1%0D%0A++++return+(maxSum,+maxStartIndex,+maxEndIndex,+A%5BmaxStartIndex%3AmaxEndIndex%2B1%5D)%0D%0A++++%0D%0Ax+%3D+%5B-2,+1,+-3,+4,+-1,+2,+1,+-5,+4%5D%0D%0A%0D%0Amax_subarray(x)&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;showOnlyOutputs=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=52&amp;codeDivWidth=350&amp;codeDivHeight=400"> </iframe>
 </div>
 
@@ -243,7 +258,7 @@ end</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">

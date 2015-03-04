@@ -49,8 +49,8 @@ MathJax.Hub.Config({
 
 
 
-这个notebook出自Pythonic Perambulations的博文 . The content is BSD licensed.
 
+这个notebook出自Pythonic Perambulations的博文 . The content is BSD licensed.
 
 
 
@@ -124,13 +124,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>这个notebook出自<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">博文</a> . The content is BSD licensed.</em></p>
-
 </div>
 </div>
 </div>
@@ -156,7 +156,6 @@ MathJax.Hub.Config({
 <li>频率论的置信区间(confidence intervals)和贝叶斯可信区间(credible intervals)的小差异(经常被忽略)。</li>
 </ol>
 <p>第二点有点复杂，我打算后面再讲，这篇内容先讲第一点：冗余参数的差异。尽管我会尽力保持公正，但你还是会觉得我偏向贝叶斯方法。不过，这些都只是解决第二点之前的热身赛，因为那会引起更多口水战(get downright polemical)。</p>
-
 </div>
 </div>
 </div>
@@ -170,6 +169,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -177,7 +177,6 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>冗余参数是与最终目标无关的任何变量，但是对确定一些相关的变量却不可或缺。例如，在上一篇博文的 <a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/#Varying-Photon-Counts:-The-Bayesian-Approach">第二个案例</a> 中，我们估计了光量子的均值$\mu$和标准差$\sigma$。而我们真正感兴趣的是$\mu$，就是分布的均值。那么，$\sigma$就是冗余参数，它与最终结果无关，但是它是确定目标$\mu$的过河石头，不可或缺。</p>
 <p>我打算用两个例子来论述冗余参数。下面我们看看频率主义和贝叶斯主义解决这些问题差异：</p>
-
 </div>
 </div>
 </div>
@@ -191,6 +190,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -205,7 +205,6 @@ MathJax.Hub.Config({
 <p>在某次游戏中，当Alice赢5分时Bob才赢3分，那么Bob最后获胜的概率多大？</p>
 </blockquote>
 <p>乍一看8个球里面Alice赢了5个球，标记位置可能更偏向她。那么，后面的球也更可能偏向她。而且她只要得一个球赢了，比Bob多3个机会；看来她是赢定了。但是<strong>定量分析</strong>Bob赢的概率是多少呢？</p>
-
 </div>
 </div>
 </div>
@@ -219,6 +218,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -226,9 +226,10 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>持频率方法论的人可能会如此解释：</p>
 <p>要想获得结果，我们得先间接的估计一下标记的位置，假设概率$p$，可以表示为Alice的得分在掷过的球的结果中的比例。因为8个球里面Alice得5分，则$p$的最大似然估计(maximum likelihood estimate)为：</p>
-$$\hat{p} = 5/8$$<p>(结果服从二项分布的最大似然估计<a href="http://en.wikipedia.org/wiki/Binomial_distribution">binomial likelihood</a>)。假设Bob获胜的最大似然估计为$P(B)$，则：</p>
-$$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以算出结果：</p>
-
+<p>$$\hat{p} = 5/8$$</p>
+<p>(结果服从二项分布的最大似然估计<a href="http://en.wikipedia.org/wiki/Binomial_distribution">binomial likelihood</a>)。假设Bob获胜的最大似然估计为$P(B)$，则：</p>
+<p>$$P(B) = (1 - \hat{p})^3$$</p>
+<p>也就是说，Bob要连续赢3次。我们可以算出结果：</p>
 </div>
 </div>
 </div>
@@ -237,7 +238,9 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">p_hat</span> <span class="o">=</span> <span class="mf">5.</span> <span class="o">/</span> <span class="mf">8.</span>
+<span class="n">freq_prob</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_hat</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="s">u"Bob获胜的频率论概率为: {0:.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">freq_prob</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -256,7 +259,9 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Bob获胜的频率论概率为: 0.05
+<pre>
+Bob获胜的频率论概率为: 0.05
+
 </pre>
 </div>
 </div>
@@ -274,7 +279,6 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们改为赔率(odds)的方式显示：</p>
-
 </div>
 </div>
 </div>
@@ -283,7 +287,7 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">u"Bob获胜的赔率为: {0:.0f} to 1"</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">freq_prob</span><span class="p">)</span> <span class="o">/</span> <span class="n">freq_prob</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -302,7 +306,9 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Bob获胜的赔率为: 18 to 1
+<pre>
+Bob获胜的赔率为: 18 to 1
+
 </pre>
 </div>
 </div>
@@ -320,7 +326,6 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可见，Bob每赢一次，Alice要赢18次。让我们再试试贝叶斯方法。</p>
-
 </div>
 </div>
 </div>
@@ -334,6 +339,7 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -348,9 +354,10 @@ $$P(B) = (1 - \hat{p})^3$$<p>也就是说，Bob要连续赢3次。我们可以�
 </ul>
 <p>我们要计算$P(B~|~D)$，即在Alice与Bob比分$5:3$的条件下，Bob获胜的概率。</p>
 <p>通常，贝叶斯方法处理冗余参数的方法是<em>边缘概率法(marginalization)</em>，即获得冗余参数全部可能的联合概率分布(joint probability)。也就是说，我们得先计算联合概率分布</p>
-$$P(B,p~|~D)$$<p>然后用下面的等式边缘化$p$:</p>
-$$P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p$$<p>这个等式源自条件概率(conditional probability)和总概率(total probability)定义，源自概率率公理的基本推论，不容置疑。频率主义者也认同这点，即使他们可能不同意我们把$P(p)$解释成“我们认识的不确定性的度量”。</p>
-
+<p>$$P(B,p~|~D)$$</p>
+<p>然后用下面的等式边缘化$p$:</p>
+<p>$$P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p$$</p>
+<p>这个等式源自条件概率(conditional probability)和总概率(total probability)定义，源自概率率公理的基本推论，不容置疑。频率主义者也认同这点，即使他们可能不同意我们把$P(p)$解释成“我们认识的不确定性的度量”。</p>
 </div>
 </div>
 </div>
@@ -364,6 +371,7 @@ $$P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p$$<p>这个等式
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -371,19 +379,23 @@ $$P(B~|~D) \equiv \int_{-\infty}^\infty P(B,p~|~D) {\mathrm d}p$$<p>这个等式
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要计算结果，我们就要把上面的$P(B~|~D)$转换成可以计算的形式。</p>
 <p>我们用<a href="http://en.wikipedia.org/wiki/Conditional_probability#Definition">条件概率(conditional probability)</a>来展开$P(B,p~|~D)$:</p>
-$$P(B~|~D) = \int P(B~|~p, D) P(p~|~D) dp$$<p>然后再用 <a href="http://en.wikipedia.org/wiki/Bayes%27_theorem">贝叶斯定理(Bayes' rule)</a>改写$P(p~|~D)$:</p>
-$$P(B~|~D) = \int P(B~|~p, D) \frac{P(D~|~p)P(p)}{P(D)} dp$$<p>最后，用前面同样的概率恒等式，可以将$P(D)$扩展成分式:</p>
-$$P(B~|~D) = \frac{\int P(B~|~p,D) P(D~|~p) P(p) dp}{\int P(D~|~p)P(p) dp}$$<p>现在的公式就可以计算了，我解释一下：</p>
+<p>$$P(B~|~D) = \int P(B~|~p, D) P(p~|~D) dp$$</p>
+<p>然后再用 <a href="http://en.wikipedia.org/wiki/Bayes%27_theorem">贝叶斯定理(Bayes' rule)</a>改写$P(p~|~D)$:</p>
+<p>$$P(B~|~D) = \int P(B~|~p, D) \frac{P(D~|~p)P(p)}{P(D)} dp$$</p>
+<p>最后，用前面同样的概率恒等式，可以将$P(D)$扩展成分式:</p>
+<p>$$P(B~|~D) = \frac{\int P(B~|~p,D) P(D~|~p) P(p) dp}{\int P(D~|~p)P(p) dp}$$</p>
+<p>现在的公式就可以计算了，我解释一下：</p>
 <ul>
 <li>$P(B~|~p,D)$: 就是上面使用的频率论的似然估计概率。也就是，已知标记位置为$p$且在Alice与Bob比分$5:3$的条件下，Bob获胜的概率？假如需要连续3次获胜，即 $P(B~|~p,D) = (1 - p) ^ 3$.</li>
 <li>$P(D~|~p)$: 这也容易算。已知Alice那侧概率$p$, 8次中5次为Alice那侧的似然估计概率。答案来自著名的 <a href="http://en.wikipedia.org/wiki/Binomial_distribution">(二项分布)Binomial distribution</a>：$P(D~|~p) \propto p^5 (1-p)^3$</li>
 <li>$P(p)$: 对概率$p$先验认知。此例中，我们假设$p$最终要么是0，要么是1。就是说，$P(p) \propto 1$，积分范围介于0和1之间。</li>
 </ul>
 <p>把这些放在一起，如下所示：</p>
-$$P(B~|~D) = \frac{\int_0^1 (1 - p)^6 p^5 dp}{\int_0^1 (1 - p)^3 p^5 dp}$$<p>其中，积分范围介于0和1之间。</p>
+<p>$$P(B~|~D) = \frac{\int_0^1 (1 - p)^6 p^5 dp}{\int_0^1 (1 - p)^3 p^5 dp}$$</p>
+<p>其中，积分范围介于0和1之间。</p>
 <p>积分看着有点复杂，如果看出是<a href="http://en.wikipedia.org/wiki/Beta_function">贝塔函数(Beta Function)</a>就好办了：</p>
-$$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一步表示成伽马函数(Gamma function)，如阶乘(factorials)，但是我们可以直接用Scipy的beta函数简化计算：</p>
-
+<p>$$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$</p>
+<p>贝塔函数可以进一步表示成伽马函数(Gamma function)，如阶乘(factorials)，但是我们可以直接用Scipy的beta函数简化计算：</p>
 </div>
 </div>
 </div>
@@ -392,7 +404,10 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">beta</span>
+<span class="n">bayes_prob</span> <span class="o">=</span> <span class="n">beta</span><span class="p">(</span><span class="mi">6</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"P(B|D) = {0:.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bayes_prob</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -411,7 +426,9 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>P(B|D) = 0.09
+<pre>
+P(B|D) = 0.09
+
 </pre>
 </div>
 </div>
@@ -429,7 +446,6 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们改为赔率的方式显示：</p>
-
 </div>
 </div>
 </div>
@@ -438,7 +454,7 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">"Bob获胜的贝叶斯赔率为: {0:.0f} to 1"</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">bayes_prob</span><span class="p">)</span> <span class="o">/</span> <span class="n">bayes_prob</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -457,7 +473,9 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Bob获胜的贝叶斯赔率为: 10 to 1
+<pre>
+Bob获胜的贝叶斯赔率为: 10 to 1
+
 </pre>
 </div>
 </div>
@@ -475,7 +493,6 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看出贝叶斯的结果是10比1，而频率论方法是18比1。究竟哪个是对的呢？</p>
-
 </div>
 </div>
 </div>
@@ -489,13 +506,13 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由于本例内容太简单，实际上很容易通过蒙特卡罗方法仿真来获得结果。通过穷举获得所有的可能：随机产生大量的结果，然后计算Bob最后获胜的比例。本例很多相关的随机变量都是均匀分布的，可以通过 <code>numpy</code> 包就可以搞定：</p>
-
 </div>
 </div>
 </div>
@@ -504,7 +521,54 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># play 100000 games with randomly-drawn p, between 0 and 1</span>
+<span class="c"># 玩1000万次游戏，p介于0到1之间</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+
+<span class="c"># each game needs at most 11 rolls for one player to reach 6 wins</span>
+<span class="c"># 每次游戏最多需要投掷11次保证一个玩家赢6次，</span>
+<span class="c"># 最坏的情况是第10次5比5，那么第11次一定见分晓，</span>
+<span class="c"># 就像乒乓球比赛中的11球6胜</span>
+<span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">11</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span>
+
+<span class="c"># count the cumulative wins for Alice and Bob at each roll</span>
+<span class="c"># 分别计算Alice和Bob赢的次数。</span>
+<span class="n">Alice_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">rolls</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Bob_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">rolls</span> <span class="o">&gt;=</span> <span class="n">p</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># sanity check: total number of wins should equal number of rolls</span>
+<span class="c"># 合理性检验：总获胜次数应该等于投掷数</span>
+<span class="n">total_wins</span> <span class="o">=</span> <span class="n">Alice_count</span> <span class="o">+</span> <span class="n">Bob_count</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">total_wins</span><span class="o">.</span><span class="n">T</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"(Sanity check passed)"</span><span class="p">)</span>
+
+<span class="c"># determine number of games which meet our criterion of (A wins, B wins)=(5, 3)</span>
+<span class="c"># this means Bob's win count at eight rolls must equal 3</span>
+<span class="c"># 确定符合初始条件是(5, 3)的游戏次数</span>
+<span class="c"># 也就是说Bob在8次后获胜3次</span>
+<span class="n">good_games</span> <span class="o">=</span> <span class="n">Bob_count</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Number of suitable games: {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">good_games</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+
+<span class="c"># truncate our results to consider only these games</span>
+<span class="c"># 只考虑满足初始条件的游戏</span>
+<span class="c"># Alice_count = Alice_count[:, good_games]</span>
+<span class="n">Bob_count</span> <span class="o">=</span> <span class="n">Bob_count</span><span class="p">[:,</span> <span class="n">good_games</span><span class="p">]</span>
+
+<span class="c"># determine which of these games Bob won.</span>
+<span class="c"># to win, he must reach six wins after 11 rolls.</span>
+<span class="c"># 确定最终Bob获胜的的游戏次数</span>
+<span class="c"># 也就是11次后获胜6次</span>
+<span class="n">bob_won</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Bob_count</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Number of these games Bob won: {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bob_won</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+
+<span class="c"># compute the probability</span>
+<span class="c"># 计算Bob获胜概率</span>
+<span class="n">mc_prob</span> <span class="o">=</span> <span class="n">bob_won</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">good_games</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Monte Carlo Probability of Bob winning: {0:.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc_prob</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"MC Odds against Bob winning: {0:.0f} to 1"</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">mc_prob</span><span class="p">)</span> <span class="o">/</span> <span class="n">mc_prob</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -523,11 +587,13 @@ $$\beta(n, m) = \int_0^1 (1 - p)^{n - 1} p^{m - 1}$$<p>贝塔函数可以进一�
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(Sanity check passed)
+<pre>
+(Sanity check passed)
 Number of suitable games: 111467
 Number of these games Bob won: 10079
 Monte Carlo Probability of Bob winning: 0.09
 MC Odds against Bob winning: 10 to 1
+
 </pre>
 </div>
 </div>
@@ -545,7 +611,6 @@ MC Odds against Bob winning: 10 to 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>蒙特卡罗仿真和贝叶斯的结果都是10比1。表面上看，简单频率论方法挂了。</p>
-
 </div>
 </div>
 </div>
@@ -559,6 +624,7 @@ MC Odds against Bob winning: 10 to 1
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -569,7 +635,6 @@ MC Odds against Bob winning: 10 to 1
 <p>另外，本例对经典的频率论来说可能不太公平。频率论者可能希望用假设检验或置信区间(null tests or confidence intervals)给出结果：也就是设计一个方法来构建边界，类似实验中正确的结果为百分之$100\times(1 - p)$，对某个$p$，如0.05(这里说的$p$和我们前面的$p$不一样)。</p>
 <p>这两条频率论观点有一个共同之处：都需要一定程度的努力和/或专业知识；可能一个靠谱的频率论方法对一个统计学博士是显而易见的，但是对一个普通人来说未必那么简单。总之，我认为贝叶斯主义是解决这类问题的良方：通过几条贝叶斯公理做简单的代数运算，就可以直接获得正确的结果。</p>
 <p>下面我们研究一个复杂点的例子。</p>
-
 </div>
 </div>
 </div>
@@ -583,13 +648,13 @@ MC Odds against Bob winning: 10 to 1
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>冗余参数适合处理数据奇点。考虑下面的数据集合$x$和$y$，$e$是$y$的误差。</p>
-
 </div>
 </div>
 </div>
@@ -598,7 +663,12 @@ MC Odds against Bob winning: 10 to 1
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span>
+              <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">88</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span>
+              <span class="mi">53</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span>
+               <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -614,7 +684,6 @@ MC Odds against Bob winning: 10 to 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们画个图：</p>
-
 </div>
 </div>
 </div>
@@ -623,7 +692,10 @@ MC Odds against Bob winning: 10 to 1
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.k'</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s">'gray'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -663,11 +735,14 @@ MC Odds against Bob winning: 10 to 1
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们的任务是找数据的最佳拟合线。很明显，数据里面有一些奇点，但是让我们用一个不稳定(non-robust)最大似然估计方法开始。如前所述，下面的最大似然估计结果要么概率论要么贝叶斯(有均匀分布前提)：在这类问题里面，这些方法基本等价。</p>
 <p>我们先做一个简单的线性模型，有一个斜率和一个截距的参数矢量$\theta$，定义如下：</p>
-$$\hat{y}(x~|~\theta) = \theta_0 + \theta_1 x$$<p>用这个模型，我们可以计算正态似然估计：</p>
-$$p(x_i,y_i,e_i~|~\theta) \propto \exp\left[-\frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\right]$$<p>总样本的似然估计是个体似然估计的乘积。两边取对数：</p>
-$$\log \mathcal{L}(D~|~\theta) = \mathrm{const} - \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$<p>如果看过上一节的内容，会很明白。最终的式子是数据模型的对数似然估计(log-likelihood)，可以找到$\theta$的最大似然估计模型的最大值。同理，我们也可以最小化总样本的似然估计，记作<em>(损失)loss</em>：</p>
-$$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$<p>这个表达式就是<em>平方损失(squared loss)</em>；我们简单的演示了平方损失源自正态对数似然估计。</p>
-
+<p>$$\hat{y}(x~|~\theta) = \theta_0 + \theta_1 x$$</p>
+<p>用这个模型，我们可以计算正态似然估计：</p>
+<p>$$p(x_i,y_i,e_i~|~\theta) \propto \exp\left[-\frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2\right]$$</p>
+<p>总样本的似然估计是个体似然估计的乘积。两边取对数：</p>
+<p>$$\log \mathcal{L}(D~|~\theta) = \mathrm{const} - \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$</p>
+<p>如果看过上一节的内容，会很明白。最终的式子是数据模型的对数似然估计(log-likelihood)，可以找到$\theta$的最大似然估计模型的最大值。同理，我们也可以最小化总样本的似然估计，记作<em>(损失)loss</em>：</p>
+<p>$$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right)^2$$</p>
+<p>这个表达式就是<em>平方损失(squared loss)</em>；我们简单的演示了平方损失源自正态对数似然估计。</p>
 </div>
 </div>
 </div>
@@ -681,6 +756,7 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -688,7 +764,6 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>按照前面的逻辑，我们用频率论中求最大似然估计(或者最小损失)的方式来算$\theta$。假设$\theta$为扁平先验(flat prior)，贝叶斯的后验概率会产生相同结果。 (如果按照最大熵原则的最佳参数理论，此处均匀分布并非最佳选择；但我们忽略这些细节，因为对此例影响很小)。</p>
 <p>简单起见，我们用scipy的<code>optimize</code>包来获得最小损失(如果用矩阵方法，平方损失的计算会更困难，但是我们使数值最小化，就比较容易处理)。</p>
-
 </div>
 </div>
 </div>
@@ -697,7 +772,18 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+
+<span class="k">def</span> <span class="nf">squared_loss</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="n">e</span><span class="p">):</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">dy</span> <span class="o">/</span> <span class="n">e</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">theta1</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">squared_loss</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">disp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.k'</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="s">'-k'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Maximum Likelihood fit: Squared Loss'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -737,7 +823,6 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由平方损失函数的本性，奇点对拟合线的影响不成比例。如果有一个奇点离拟合线有10个标准差的距离，那么它对损失函数的贡献比25个只有2个标准差远的奇点们重要。</p>
 <p>很明显，平方损失过度依赖奇点，对我们的拟合任何造成很大影响。频率论模式解决这个问题的手段就是通过调整平方损失函数，使它更稳定。</p>
-
 </div>
 </div>
 </div>
@@ -751,13 +836,13 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>损失函数的可能看起来有无限多种，但是相对靠谱的选择就是<a href="http://en.wikipedia.org/wiki/Huber_loss_function">Huber loss</a>。Huber损失引入一个临界值(critical value)使得损失曲线从平方变为线性。让我们画个图来比较一下Huber损失和标准损失的临界值$c$:</p>
-
 </div>
 </div>
 </div>
@@ -766,7 +851,18 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">huber_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">t</span> <span class="o">**</span> <span class="mi">2</span>
+            <span class="o">+</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="n">c</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">c</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">t</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"squared loss"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">huber_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">"Huber loss, c={0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'standard deviations'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'best'</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -805,7 +901,6 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Huber损失对模型中拟合很好的点作用是等同于标准损失的，但是会降低奇点的影响。如一个20标准差的点标准损失200，但是c=3时的Huber损失只有55。我们来看看Huber损失的最佳拟合结果与标准损失做个对比(灰色线表示)。</p>
-
 </div>
 </div>
 </div>
@@ -814,7 +909,15 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">total_huber_loss</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">huber_loss</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">theta2</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">total_huber_loss</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">disp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.k'</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'lightgray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Maximum Likelihood fit: Huber loss'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -854,7 +957,6 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>直观的看，会觉得好像Huber损失拟合是我们要的结果。</p>
 <p>但一个贝叶斯主义者可能会说这种新的损失函数的动机有点可疑：如前所述，平方损失源自正态似然估计，但Huber损失看着有点<em>(随意)ad hoc</em>，这是哪儿来的? $c$到底用多少合适呢？对奇点使用线性的损失函数的动机有没有一个合理的解释呢？或者只是简单的把奇点删掉？这么多对模型的影响有多大？</p>
-
 </div>
 </div>
 </div>
@@ -868,19 +970,20 @@ $$\mathrm{loss} = \sum_i \frac{1}{2e_i^2}\left(y_i - \hat{y}(x_i~|~\theta)\right
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>贝叶斯方法处理奇点一般通过<em>调整模型(modifying the model)</em> ，这样奇点就被考虑到。很明显，线性函数对这个模型不是一个好结果。因此，让我们设计一个更复杂的模型来考虑奇点。一种方式就是把信号和噪声(background)混合在一起：</p>
-$$\begin{array}{ll}
+<p>$$\begin{array}{ll}
 p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{\sqrt{2\pi e_i^2}}\exp\left[\frac{-\left(\hat{y}(x_i~|~\theta) - y_i\right)^2}{2e_i^2}\right] \\
 &amp;+ \frac{1 - g_i}{\sqrt{2\pi \sigma_B^2}}\exp\left[\frac{-\left(\hat{y}(x_i~|~\theta) - y_i\right)^2}{2\sigma_B^2}\right]
-\end{array}$$<p>我们要做的就是把模型加上冗余参数： $\{g_i\}$是一组权重介于0到1之间，表明每个点$i$拟合的程度。$g_i=0$表示奇点，标准差$\sigma_B$的正态分布用来计算似然估计。$\sigma_B$也是一个冗余参数， 它的值可以是一组足够大的数，比如50。</p>
+\end{array}$$</p>
+<p>我们要做的就是把模型加上冗余参数： $\{g_i\}$是一组权重介于0到1之间，表明每个点$i$拟合的程度。$g_i=0$表示奇点，标准差$\sigma_B$的正态分布用来计算似然估计。$\sigma_B$也是一个冗余参数， 它的值可以是一组足够大的数，比如50。</p>
 <p>现在我们的模型足够复杂了：有22个参数，但是大多数可作为冗余参数，最终将被边缘化(marginalized-out)。恰似之前我们在台球游戏里面边缘化$p$。让我们构建一个函数来实现似然估计。如上一节，我们使用<a href="http://dan.iel.fm/emcee/current/">emcee</a> 包来探索参数空间。</p>
 <p>为了算出结果，我们用函数开始定义先验概率，似然估计和后验概率：</p>
-
 </div>
 </div>
 </div>
@@ -889,7 +992,29 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># theta will be an array of length 2 + N, where N is the number of points</span>
+<span class="c"># theta[0] is the intercept, theta[1] is the slope,</span>
+<span class="c"># and theta[2 + i] is the weight g_i</span>
+<span class="c"># theta是长度2 + N的数组，其中N是点的数量</span>
+<span class="c"># theta[0]是截距，theta[1]是斜率</span>
+<span class="c"># theta[2 + i]是权重g_i</span>
+
+<span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="c">#g_i needs to be between 0 and 1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>  <span class="c"># recall log(0) = -inf</span>
+
+<span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">sigma_B</span><span class="p">):</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c"># g&lt;0 or g&gt;1 leads to NaNs in logarithm</span>
+    <span class="n">logL1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">dy</span> <span class="o">/</span> <span class="n">e</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">logL2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">g</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma_B</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">dy</span> <span class="o">/</span> <span class="n">sigma_B</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logaddexp</span><span class="p">(</span><span class="n">logL1</span><span class="p">,</span> <span class="n">logL2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">log_posterior</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">sigma_B</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_likelihood</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">sigma_B</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -905,7 +1030,6 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在我们运行MCMC样本来探索参数空间：</p>
-
 </div>
 </div>
 </div>
@@ -914,7 +1038,25 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="c"># Note that this step will take a few minutes to run!</span>
+
+<span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c"># number of parameters in the model</span>
+<span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c"># number of MCMC walkers</span>
+<span class="n">nburn</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c"># "burn-in" period to let chains stabilize</span>
+<span class="n">nsteps</span> <span class="o">=</span> <span class="mi">15000</span>  <span class="c"># number of MCMC steps to take</span>
+
+<span class="c"># set theta near the maximum likelihood, with </span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">starting_guesses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>
+<span class="n">starting_guesses</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">theta1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">starting_guesses</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">emcee</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">log_posterior</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">starting_guesses</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span>  <span class="c"># shape = (nwalkers, nsteps, ndim)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="n">nburn</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -933,8 +1075,10 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>-c:18: RuntimeWarning: divide by zero encountered in log
+<pre>
+-c:18: RuntimeWarning: divide by zero encountered in log
 -c:19: RuntimeWarning: divide by zero encountered in log
+
 </pre>
 </div>
 </div>
@@ -953,7 +1097,6 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一旦有了这些样本，我们就可以获得马尔可夫链(Markov chains)的一个很好的属性。因为这些样本的分布模型是后验的，所以我们可以通过忽略它们来整合出(如，边缘化)冗余参数。</p>
 <p>我们通过样本的前两列来看斜率和截距的(边缘化)分布：</p>
-
 </div>
 </div>
 </div>
@@ -962,7 +1105,9 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sample</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">',k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'intercept'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'slope'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1002,7 +1147,6 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可见，斜率分布在$\sim 0.45$附近，截距在$\sim 31$附近。我们一会儿会把这个模型画出来，现在让我们看看还有没有其他信息。</p>
 <p>通过分析MCMC样本会发现，冗余参数的选择是完全对称的(completely symmetric)：就像我们可以把$\{g_i\}$做冗余参数，也可以用截距和斜率做冗余参数。让我们试试看，检查一下$g_1$和$g_2$的后验结果，奇点标在前两个点上：</p>
-
 </div>
 </div>
 </div>
@@ -1011,7 +1155,12 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">sample</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="s">',k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'$g_1$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'$g_2$'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"g1 mean: {0:.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"g2 mean: {0:.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1030,8 +1179,10 @@ p(\{x_i\}, \{y_i\},\{e_i\}~|~\theta,\{g_i\},\sigma,\sigma_b) = &amp; \frac{g_i}{
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>g1 mean: 0.64
+<pre>
+g1 mean: 0.64
 g2 mean: 0.41
+
 </pre>
 </div>
 </div>
@@ -1060,7 +1211,6 @@ g2 mean: 0.41
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这两个参数不是很相关，但是我们可以看到$(g_1, g_2) = (1, 0)$是比较明显的： $g_1$的均值大于0.5，$g_2$的均值小于0.5。如果我们选择中间值$g=0.5$那么我们的算法会把$g_2$当中奇点。</p>
 <p>让我们来确认一下，画出原始数据的边缘化测试模型，奇点用红圈标识。</p>
-
 </div>
 </div>
 </div>
@@ -1069,7 +1219,16 @@ g2 mean: 0.41
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class="highlight"><pre><span class="n">theta3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.k'</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'lightgray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'lightgray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">theta3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">outliers</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">outliers</span><span class="p">],</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s">'none'</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Maximum Likelihood fit: Bayesian Marginalization'</span><span class="p">);</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1108,7 +1267,6 @@ g2 mean: 0.41
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>看！上面黑线显示的结果更符合我们的直觉。而且，自动被识别的奇点也是我们可以手工识别出来的。为了比较，我把之前的方法用灰线标识：简单的最大似然估计和Huber损失的频率论方法。</p>
-
 </div>
 </div>
 </div>
@@ -1122,6 +1280,7 @@ g2 mean: 0.41
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1129,7 +1288,6 @@ g2 mean: 0.41
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>今天，我们讨论线性回归(linear regression)中的奇点发现问题。一个经典的正态最大似然估计方法不能解决，但是在频率论中我们能够调整损失函数来纠正，在贝叶斯理论中通过引入一堆冗余参数的混合模型来调整。</p>
 <p>两种方法都有优缺点：频率论方法相对直接而且计算高效，但基于难以解释的损失函数。贝叶斯方法容易建立并能产生好的结果，但是要求一堆主观前提。在写代码和计算时间上耗费更多。</p>
-
 </div>
 </div>
 </div>
@@ -1143,6 +1301,7 @@ g2 mean: 0.41
 </div>
 </div>
 </div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1157,7 +1316,6 @@ g2 mean: 0.41
 <p><small>
 这篇博客是IPython notebook写的。可以<a href="http://jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">下载</a>，或者看<a href="http://nbviewer.ipython.org/url/jakevdp.github.io/downloads/notebooks/FreqBayes2.ipynb">nbviewer</a>静态网页。
 </small></p>
-
 </div>
 </div>
 </div>
