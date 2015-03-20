@@ -1,12 +1,3 @@
-# The Swift Programming Language EN
-
-2014-10-16 09:14   |   [Source](the-swift-programming-language-en.md)
-
-Tags :  
-  * [Swift](../categories/swift.html)
-
-One page Swift, updated at 2014-10-16 on [developer.apple](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
-
   1. Welcome to Swift 
     1. About Swift
     2. A Swift Tour
@@ -65,22 +56,6 @@ Swift is a fantastic way to write iOS and OS X apps, and will continue to evolve
 
 # A Swift Tour
 
-On This Page
-
-  1. Simple Values 
-
-  2. Control Flow 
-
-  3. Functions and Closures 
-
-  4. Objects and Classes 
-
-  5. Enumerations and Structures 
-
-  6. Protocols and Extensions 
-
-  7. Generics 
-
 Tradition suggests that the first program in a new language should print the words “Hello, world!” on the screen. In Swift, this can be done in a single line: 
 
   1. `println("Hello, world!")`
@@ -91,7 +66,7 @@ This tour gives you enough information to start writing code in Swift by showing
 
 Note
 
-For the best experience, open this chapter as a playground in Xcode. Playgrounds allow you to edit the code listings and see the result immediately.
+For the best experience, open this chapter as a playground in Xcode. Playgrounds allow you to edit the code listings and see the result immediately. 
 
 **[Download Playground](./GuidedTour.playground.zip)**
 
@@ -170,7 +145,7 @@ Use `if` and `switch` to make conditionals, and use `for`-`in`, `for`, `while`, 
   7. ` teamScore += 1`
   8. ` }`
   9. `}`
-  10. `teamScore`
+  10. `println(teamScore)`
 
 Note 
 
@@ -178,10 +153,10 @@ In the code above, `teamScore` is written on a line by itself. This is a simple 
 
 In an `if` statement, the conditional must be a Boolean expression—this means that code such as `if score { ... }` is an error, not an implicit comparison to zero. 
 
-You can use `if` and `let` together to work with values that might be missing. These values are represented as optionals. An optional value either contains a value or contains `nil` to indicate that the value is missing. Write a question mark (`?`) after the type of a value to mark the value as optional. 
+You can use `if` and `let` together to work with values that might be missing. These values are represented as optionals. An optional value either contains a value or contains `nil` to indicate that a value is missing. Write a question mark (`?`) after the type of a value to mark the value as optional. 
 
   1. `var optionalString: String? = "Hello"`
-  2. `optionalString == nil`
+  2. `println(optionalString == nil)`
   3. ` `
   4. `var optionalName: String? = "John Appleseed"`
   5. `var greeting = "Hello!"`
@@ -232,7 +207,7 @@ You use `for`-`in` to iterate over items in a dictionary by providing a pair of 
   11. ` }`
   12. ` }`
   13. `}`
-  14. `largest`
+  14. `println(largest)`
 
 Experiment 
 
@@ -244,13 +219,13 @@ Use `while` to repeat a block of code until a condition changes. The condition o
   2. `while n < 100 {`
   3. ` n = n * 2`
   4. `}`
-  5. `n`
+  5. `println(n)`
   6. ` `
   7. `var m = 2`
   8. `do {`
   9. ` m = m * 2`
   10. `} while m < 100`
-  11. `m`
+  11. `println(m)`
 
 You can keep an index in a loop—either by using `..<` to make a range of indexes or by writing an explicit initialization, condition, and increment. These two loops do the same thing: 
 
@@ -258,13 +233,13 @@ You can keep an index in a loop—either by using `..<` to make a range of index
   2. `for i in 0..<4 {`
   3. ` firstForLoop += i`
   4. `}`
-  5. `firstForLoop`
+  5. `println(firstForLoop)`
   6. ` `
   7. `var secondForLoop = 0`
   8. `for var i = 0; i < 4; ++i {`
   9. ` secondForLoop += i`
   10. `}`
-  11. `secondForLoop`
+  11. `println(secondForLoop)`
 
 Use `..<` to make a range that omits its upper value, and use `...` to make a range that includes both values. 
 
@@ -300,8 +275,8 @@ Use a tuple to make a compound value—for example, to return multiple values fr
   15. ` return (min, max, sum)`
   16. `}`
   17. `let statistics = calculateStatistics([5, 3, 100, 3, 9])`
-  18. `statistics.sum`
-  19. `statistics.2`
+  18. `println(statistics.sum)`
+  19. `println(statistics.2)`
 
 Functions can also take a variable number of arguments, collecting them into an array. 
 
@@ -373,12 +348,12 @@ Rewrite the closure to return zero for all odd numbers.
 You have several options for writing closures more concisely. When a closure’s type is already known, such as the callback for a delegate, you can omit the type of its parameters, its return type, or both. Single statement closures implicitly return the value of their only statement. 
 
   1. `let mappedNumbers = numbers.map({ number in 3 * number })`
-  2. `mappedNumbers`
+  2. `println(mappedNumbers)`
 
 You can refer to parameters by number instead of by name—this approach is especially useful in very short closures. A closure passed as the last argument to a function can appear immediately after the parentheses. 
 
   1. `let sortedNumbers = sorted(numbers) { $0 > $1 }`
-  2. `sortedNumbers`
+  2. `println(sortedNumbers)`
 
 ## Objects and Classes
 
@@ -474,9 +449,9 @@ In addition to simple properties that are stored, properties can have a getter a
   21. ` }`
   22. `}`
   23. `var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")`
-  24. `triangle.perimeter`
+  24. `println(triangle.perimeter)`
   25. `triangle.perimeter = 9.9`
-  26. `triangle.sideLength`
+  26. `println(triangle.sideLength)`
 
 In the setter for `perimeter`, the new value has the implicit name `newValue`. You can provide an explicit name in parentheses after `set`. 
 
@@ -507,10 +482,10 @@ If you don’t need to compute the property but still need to provide code that 
   15. ` }`
   16. `}`
   17. `var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")`
-  18. `triangleAndSquare.square.sideLength`
-  19. `triangleAndSquare.triangle.sideLength`
+  18. `println(triangleAndSquare.square.sideLength)`
+  19. `println(triangleAndSquare.triangle.sideLength)`
   20. `triangleAndSquare.square = Square(sideLength: 50, name: "larger square")`
-  21. `triangleAndSquare.triangle.sideLength`
+  21. `println(triangleAndSquare.triangle.sideLength)`
 
 Methods on classes have one important difference from functions. Parameter names in functions are used only within the function, but parameters names in methods are also used when you call the method (except for the first parameter). By default, a method has the same name for its parameters when you call it and within the method itself. You can specify a second name, which is used inside the method. 
 
@@ -681,7 +656,7 @@ Use `extension` to add functionality to an existing type, such as new methods an
   6. ` self += 42`
   7. ` }`
   8. `}`
-  9. `7.simpleDescription`
+  9. `println(7.simpleDescription)`
 
 Experiment 
 
@@ -690,8 +665,8 @@ Write an extension for the `Double` type that adds an `absoluteValue` property.
 You can use a protocol name just like any other named type—for example, to create a collection of objects that have different types but that all conform to a single protocol. When you work with values whose type is a protocol type, methods outside the protocol definition are not available. 
 
   1. `let protocolValue: ExampleProtocol = a`
-  2. `protocolValue.simpleDescription`
-  3. `// protocolValue.anotherProperty // Uncomment to see the error`
+  2. `println(protocolValue.simpleDescription)`
+  3. `// println(protocolValue.anotherProperty) // Uncomment to see the error`
 
 Even though the variable `protocolValue` has a runtime type of `SimpleClass`, the compiler treats it as the given type of `ExampleProtocol`. This means that you can’t accidentally access methods or properties that the class implements in addition to its protocol conformance. 
 
@@ -739,34 +714,6 @@ Modify the `anyCommonElements` function to make a function that returns an array
 In the simple cases, you can omit `where` and simply write the protocol or class name after a colon. Writing `<T: Equatable>` is the same as writing `<T where T: Equatable>`. 
 
 # The Basics
-
-On This Page
-
-  1. Constants and Variables 
-
-  2. Comments 
-
-  3. Semicolons 
-
-  4. Integers 
-
-  5. Floating-Point Numbers 
-
-  6. Type Safety and Type Inference 
-
-  7. Numeric Literals 
-
-  8. Numeric Type Conversion 
-
-  9. Type Aliases 
-
-  10. Booleans 
-
-  11. Tuples 
-
-  12. Optionals 
-
-  13. Assertions 
 
 Swift is a new programming language for iOS and OS X app development. Nonetheless, many parts of Swift will be familiar from your experience of developing in C and Objective-C. 
 
@@ -955,13 +902,13 @@ _Floating-point numbers_ are numbers with a fractional component, such as `3.141
 
 Floating-point types can represent a much wider range of values than integer types, and can store numbers that are much larger or smaller than can be stored in an `Int`. Swift provides two signed floating-point number types: 
 
-  1. `Double` represents a 64-bit floating-point number. Use it when floating-point values must be very large or particularly precise. 
+  1. `Double` represents a 64-bit floating-point number. 
 
-  2. `Float` represents a 32-bit floating-point number. Use it when floating-point values do not require 64-bit precision. 
+  2. `Float` represents a 32-bit floating-point number. 
 
 Note 
 
-`Double` has a precision of at least 15 decimal digits, whereas the precision of `Float` can be as little as 6 decimal digits. The appropriate floating-point type to use depends on the nature and range of values you need to work with in your code. 
+`Double` has a precision of at least 15 decimal digits, whereas the precision of `Float` can be as little as 6 decimal digits. The appropriate floating-point type to use depends on the nature and range of values you need to work with in your code. In situations where either type would be appropriate, `Double` is preferred. 
 
 ## Type Safety and Type Inference
 
@@ -1373,26 +1320,6 @@ Note
 Assertions cause your app to terminate and are not a substitute for designing your code in such a way that invalid conditions are unlikely to arise. Nonetheless, in situations where invalid conditions are possible, an assertion is an effective way to ensure that such conditions are highlighted and noticed during development, before your app is published. 
 
 # Basic Operators
-
-On This Page
-
-  1. Terminology 
-
-  2. Assignment Operator 
-
-  3. Arithmetic Operators 
-
-  4. Compound Assignment Operators 
-
-  5. Comparison Operators 
-
-  6. Ternary Conditional Operator 
-
-  7. Nil Coalescing Operator 
-
-  8. Range Operators 
-
-  9. Logical Operators 
 
 An _operator_ is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds two numbers together (as in `let i = 1 + 2`). More complex examples include the logical AND operator `&&` (as in `if enteredDoorCode && passedRetinaScan`) and the increment operator `++i`, which is a shortcut to increase the value of `i` by `1`. 
 
@@ -1812,30 +1739,6 @@ The parentheses make it clear that the first two values are considered as part o
 
 # Strings and Characters
 
-On This Page
-
-  1. String Literals 
-
-  2. Initializing an Empty String 
-
-  3. String Mutability 
-
-  4. Strings Are Value Types 
-
-  5. Working with Characters 
-
-  6. Concatenating Strings and Characters 
-
-  7. String Interpolation 
-
-  8. Unicode 
-
-  9. Counting Characters 
-
-  10. Comparing Strings 
-
-  11. Unicode Representations of Strings 
-
 A _string_ is an ordered collection of characters, such as `"hello, world"` or `"albatross"`. Swift strings are represented by the `String` type, which in turn represents a collection of values of `Character` type. 
 
 Swift’s `String` and `Character` types provide a fast, Unicode-compliant way to work with text in your code. The syntax for string creation and manipulation is lightweight and readable, with a string literal syntax that is similar to C. String concatenation is as simple as adding together two strings with the `+` operator, and string mutability is managed by choosing between a constant or a variable, just like any other value in Swift. 
@@ -2223,14 +2126,6 @@ As an alternative to querying their `value` properties, each `UnicodeScalar` val
 
 # Collection Types
 
-On This Page
-
-  1. Mutability of Collections 
-
-  2. Arrays 
-
-  3. Dictionaries 
-
 Swift provides two _collection types_, known as arrays and dictionaries, for storing collections of values. Arrays store ordered lists of values of the same type. Dictionaries store unordered collections of values of the same type, which can be referenced and looked up through a unique identifier (also known as a key). 
 
 Arrays and dictionaries in Swift are always clear about the types of values and keys that they can store. This means that you cannot insert a value of the wrong type into an array or dictionary by mistake. It also means you can be confident about the types of values you will retrieve from an array or dictionary. Swift’s use of explicitly typed collections ensures that your code is always clear about the types of values it can work with and enables you to catch any type mismatches early in your code’s development. 
@@ -2484,9 +2379,9 @@ You can also use subscript syntax to change the value associated with a particul
   1. `airports["LHR"] = "London Heathrow"`
   2. `// the value for "LHR" has been changed to "London Heathrow"`
 
-As an alternative to subscripting, use a dictionary’s `updateValue(forKey:)` method to set or update the value for a particular key. Like the subscript examples above, the `updateValue(forKey:)` method sets a value for a key if none exists, or updates the value if that key already exists. Unlike a subscript, however, the `updateValue(forKey:)` method returns the _old_ value after performing an update. This enables you to check whether or not an update took place. 
+As an alternative to subscripting, use a dictionary’s `updateValue(_:forKey:)` method to set or update the value for a particular key. Like the subscript examples above, the `updateValue(_:forKey:)` method sets a value for a key if none exists, or updates the value if that key already exists. Unlike a subscript, however, the `updateValue(_:forKey:)` method returns the _old_ value after performing an update. This enables you to check whether or not an update took place. 
 
-The `updateValue(forKey:)` method returns an optional value of the dictionary’s value type. For a dictionary that stores `String` values, for example, the method returns a value of type `String?`, or “optional `String`”. This optional value contains the old value for that key if one existed before the update, or `nil` if no value existed: 
+The `updateValue(_:forKey:)` method returns an optional value of the dictionary’s value type. For a dictionary that stores `String` values, for example, the method returns a value of type `String?`, or “optional `String`”. This optional value contains the old value for that key if one existed before the update, or `nil` if no value existed: 
 
   1. `if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {`
   2. ` println("The old value for DUB was \\(oldValue).")`
@@ -2525,8 +2420,8 @@ You can iterate over the key-value pairs in a dictionary with a `for`-`in` loop.
   1. `for (airportCode, airportName) in airports {`
   2. ` println("\\(airportCode): \\(airportName)")`
   3. `}`
-  4. `// LHR: London Heathrow`
-  5. `// YYZ: Toronto Pearson`
+  4. `// YYZ: Toronto Pearson`
+  5. `// LHR: London Heathrow`
 
 For more about the `for`-`in` loop, see For Loops. 
 
@@ -2535,22 +2430,22 @@ You can also retrieve an iterable collection of a dictionary’s keys or values 
   1. `for airportCode in airports.keys {`
   2. ` println("Airport code: \\(airportCode)")`
   3. `}`
-  4. `// Airport code: LHR`
-  5. `// Airport code: YYZ`
+  4. `// Airport code: YYZ`
+  5. `// Airport code: LHR`
   6. ` `
   7. `for airportName in airports.values {`
   8. ` println("Airport name: \\(airportName)")`
   9. `}`
-  10. `// Airport name: London Heathrow`
-  11. `// Airport name: Toronto Pearson`
+  10. `// Airport name: Toronto Pearson`
+  11. `// Airport name: London Heathrow`
 
 If you need to use a dictionary’s keys or values with an API that takes an `Array` instance, initialize a new array with the `keys` or `values` property: 
 
   1. `let airportCodes = [String](airports.keys)`
-  2. `// airportCodes is ["LHR", "YYZ"]`
+  2. `// airportCodes is ["YYZ", "LHR"]`
   3. ` `
   4. `let airportNames = [String](airports.values)`
-  5. `// airportNames is ["London Heathrow", "Toronto Pearson"]`
+  5. `// airportNames is ["Toronto Pearson", "London Heathrow"]`
 
 Note 
 
@@ -2586,33 +2481,23 @@ For more information about conforming to protocols, see Protocols.
 
 # Control Flow
 
-On This Page
-
-  1. For Loops 
-
-  2. While Loops 
-
-  3. Conditional Statements 
-
-  4. Control Transfer Statements 
-
 Swift provides all the familiar control flow statements from C-like languages. These include `for` and `while` loops to perform a task multiple times; `if` and `switch` statements to execute different branches of code based on certain conditions; and statements such as `break` and `continue` to transfer the flow of execution to another point in your code. 
 
 In addition to the traditional `for` loop found in C, Swift adds a `for`-`in` loop that makes it easy to iterate over arrays, dictionaries, ranges, strings, and other sequences. 
 
-Swift’s `switch` statement is also considerably more powerful than its counterpart in C. The cases of a `switch` statement do not “fall through” to the next case in Swift, avoiding common C errors caused by missing `break` statements. Cases can match many different patterns, including range matches, tuples, and casts to a specific type. Matched values in a `switch` case can be bound to temporary constants or variables for use within the case’s body, and complex matching conditions can be expressed with a `where` clause for each case. 
+Swift’s `switch` statement is also considerably more powerful than its counterpart in C. The cases of a `switch` statement do not “fall through” to the next case in Swift, avoiding common C errors caused by missing `break` statements. Cases can match many different patterns, including interval matches, tuples, and casts to a specific type. Matched values in a `switch` case can be bound to temporary constants or variables for use within the case’s body, and complex matching conditions can be expressed with a `where` clause for each case. 
 
 ## For Loops
 
 Swift provides two kinds of loop that perform a set of statements a certain number of times: 
 
-  1. The `for`-`in` loop performs a set of statements for each item in a range, sequence, collection, or progression. 
+  1. The `for`-`in` loop performs a set of statements for each item in a sequence. 
 
   2. The `for` loop performs a set of statements until a specific condition is met, typically by incrementing a counter each time the loop ends. 
 
 ### For-In
 
-You use the `for`-`in` loop to iterate over collections of items, such as ranges of numbers, items in an array, or characters in a string. 
+You use the `for`-`in` loop to iterate over a sequence, such as ranges of numbers, items in an array, or characters in a string. 
 
 This example prints the first few entries in the five-times-table: 
 
@@ -2625,11 +2510,11 @@ This example prints the first few entries in the five-times-table:
   7. `// 4 times 5 is 20`
   8. `// 5 times 5 is 25`
 
-The collection of items being iterated is a closed range of numbers from `1` to `5` inclusive, as indicated by the use of the closed range operator (`...`). The value of `index` is set to the first number in the range (`1`), and the statements inside the loop are executed. In this case, the loop contains only one statement, which prints an entry from the five-times-table for the current value of `index`. After the statement is executed, the value of `index` is updated to contain the second value in the range (`2`), and the `println` function is called again. This process continues until the end of the range is reached. 
+The sequence being iterated is a range of numbers from `1` to `5`, inclusive, as indicated by the use of the closed range operator (`...`). The value of `index` is set to the first number in the range (`1`), and the statements inside the loop are executed. In this case, the loop contains only one statement, which prints an entry from the five-times-table for the current value of `index`. After the statement is executed, the value of `index` is updated to contain the second value in the range (`2`), and the `println` function is called again. This process continues until the end of the range is reached. 
 
 In the example above, `index` is a constant whose value is automatically set at the start of each iteration of the loop. As such, it does not have to be declared before it is used. It is implicitly declared simply by its inclusion in the loop declaration, without the need for a `let` declaration keyword. 
 
-If you don’t need each value from the range, you can ignore the values by using an underscore in place of a variable name: 
+If you don’t need each value from a sequence, you can ignore the values by using an underscore in place of a variable name: 
 
   1. `let base = 3`
   2. `let power = 10`
@@ -2983,9 +2868,9 @@ Note
 
 To opt in to fallthrough behavior for a particular `switch` case, use the `fallthrough` keyword, as described in Fallthrough. 
 
-### Range Matching
+### Interval Matching
 
-Values in `switch` cases can be checked for their inclusion in a range. This example uses number ranges to provide a natural-language count for numbers of any size: 
+Values in `switch` cases can be checked for their inclusion in an interval. This example uses number intervals to provide a natural-language count for numbers of any size: 
 
   1. `let count = 3_000_000_000_000`
   2. `let countedThings = "stars in the Milky Way"`
@@ -3009,9 +2894,13 @@ Values in `switch` cases can be checked for their inclusion in a range. This exa
   20. `println("There are \\(naturalCount) \\(countedThings).")`
   21. `// prints "There are millions and millions of stars in the Milky Way."`
 
+Note 
+
+Both the closed range operator (`...`) and half-open range operator (`..<`) functions are overloaded to return either an `IntervalType` or `Range`. An interval can determine whether it contains a particular element, such as when matching a `switch` statement `case`. A range is a collection of consecutive values, which can be iterated on in a `for-in` statement. 
+
 ### Tuples
 
-You can use tuples to test multiple values in the same `switch` statement. Each element of the tuple can be tested against a different value or range of values. Alternatively, use the underscore (`_`) identifier to match any possible value. 
+You can use tuples to test multiple values in the same `switch` statement. Each element of the tuple can be tested against a different value or interval of values. Alternatively, use the underscore (`_`) identifier to match any possible value. 
 
 The example below takes an (x, y) point, expressed as a simple tuple of type `(Int, Int)`, and categorizes it on the graph that follows the example: 
 
@@ -3273,18 +3162,6 @@ If the `break` statement above did not use the `gameLoop` label, it would break 
 Note also that it is not strictly necessary to use the `gameLoop` label when calling `continue gameLoop` to jump to the next iteration of the loop. There is only one loop in the game, and so there is no ambiguity as to which loop the `continue` statement will affect. However, there is no harm in using the `gameLoop` label with the `continue` statement. Doing so is consistent with the label’s use alongside the `break` statement, and helps make the game’s logic clearer to read and understand. 
 
 # Functions
-
-On This Page
-
-  1. Defining and Calling Functions 
-
-  2. Function Parameters and Return Values 
-
-  3. Function Parameter Names 
-
-  4. Function Types 
-
-  5. Nested Functions 
 
 _Functions_ are self-contained chunks of code that perform a specific task. You give a function a name that identifies what it does, and this name is used to “call” the function to perform its task when needed. 
 
@@ -3820,16 +3697,6 @@ You can rewrite the `chooseStepFunction` example above to use and return nested 
 
 # Closures
 
-On This Page
-
-  1. Closure Expressions 
-
-  2. Trailing Closures 
-
-  3. Capturing Values 
-
-  4. Closures Are Reference Types 
-
 _Closures_ are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages. 
 
 Closures can capture and store references to any constants and variables from the context in which they are defined. This is known as _closing_ over those constants and variables, hence the name “closures”. Swift handles all of the memory management of capturing for you. 
@@ -4034,47 +3901,47 @@ A closure can _capture_ constants and variables from the surrounding context in 
 
 In Swift, the simplest form of a closure that can capture values is a nested function, written within the body of another function. A nested function can capture any of its outer function’s arguments and can also capture any constants and variables defined within the outer function. 
 
-Here’s an example of a function called `makeIncrementor`, which contains a nested function called `incrementor`. The nested `incrementor` function captures two values, `runningTotal` and `amount`, from its surrounding context. After capturing these values, `incrementor` is returned by `makeIncrementor` as a closure that increments `runningTotal` by `amount` each time it is called. 
+Here’s an example of a function called `makeIncrementer`, which contains a nested function called `incrementer`. The nested `incrementer` function captures two values, `runningTotal` and `amount`, from its surrounding context. After capturing these values, `incrementer` is returned by `makeIncrementer` as a closure that increments `runningTotal` by `amount` each time it is called. 
 
-  1. `func makeIncrementor(forIncrement amount: Int) -> () -> Int {`
+  1. `func makeIncrementer(forIncrement amount: Int) -> () -> Int {`
   2. ` var runningTotal = 0`
-  3. ` func incrementor() -> Int {`
+  3. ` func incrementer() -> Int {`
   4. ` runningTotal += amount`
   5. ` return runningTotal`
   6. ` }`
-  7. ` return incrementor`
+  7. ` return incrementer`
   8. `}`
 
-The return type of `makeIncrementor` is `() -> Int`. This means that it returns a _function_, rather than a simple value. The function it returns has no parameters, and returns an `Int` value each time it is called. To learn how functions can return other functions, see Function Types as Return Types. 
+The return type of `makeIncrementer` is `() -> Int`. This means that it returns a _function_, rather than a simple value. The function it returns has no parameters, and returns an `Int` value each time it is called. To learn how functions can return other functions, see Function Types as Return Types. 
 
-The `makeIncrementor` function defines an integer variable called `runningTotal`, to store the current running total of the incrementor that will be returned. This variable is initialized with a value of `0`. 
+The `makeIncrementer` function defines an integer variable called `runningTotal`, to store the current running total of the incrementer that will be returned. This variable is initialized with a value of `0`. 
 
-The `makeIncrementor` function has a single `Int` parameter with an external name of `forIncrement`, and a local name of `amount`. The argument value passed to this parameter specifies how much `runningTotal` should be incremented by each time the returned incrementor function is called. 
+The `makeIncrementer` function has a single `Int` parameter with an external name of `forIncrement`, and a local name of `amount`. The argument value passed to this parameter specifies how much `runningTotal` should be incremented by each time the returned incrementer function is called. 
 
-`makeIncrementor` defines a nested function called `incrementor`, which performs the actual incrementing. This function simply adds `amount` to `runningTotal`, and returns the result. 
+`makeIncrementer` defines a nested function called `incrementer`, which performs the actual incrementing. This function simply adds `amount` to `runningTotal`, and returns the result. 
 
-When considered in isolation, the nested `incrementor` function might seem unusual: 
+When considered in isolation, the nested `incrementer` function might seem unusual: 
 
-  1. `func incrementor() -> Int {`
+  1. `func incrementer() -> Int {`
   2. ` runningTotal += amount`
   3. ` return runningTotal`
   4. `}`
 
-The `incrementor` function doesn’t have any parameters, and yet it refers to `runningTotal` and `amount` from within its function body. It does this by capturing the _existing_ values of `runningTotal` and `amount` from its surrounding function and using them within its own function body. 
+The `incrementer` function doesn’t have any parameters, and yet it refers to `runningTotal` and `amount` from within its function body. It does this by capturing the _existing_ values of `runningTotal` and `amount` from its surrounding function and using them within its own function body. 
 
-Because it does not modify `amount`, `incrementor` actually captures and stores a _copy_ of the value stored in `amount`. This value is stored along with the new `incrementor` function. 
+Because it does not modify `amount`, `incrementer` actually captures and stores a _copy_ of the value stored in `amount`. This value is stored along with the new `incrementer` function. 
 
-However, because it modifies the `runningTotal` variable each time it is called, `incrementor` captures a _reference_ to the current `runningTotal` variable, and not just a copy of its initial value. Capturing a reference ensures that `runningTotal` does not disappear when the call to `makeIncrementor` ends, and ensures that `runningTotal` will continue to be available the next time that the incrementor function is called. 
+However, because it modifies the `runningTotal` variable each time it is called, `incrementer` captures a _reference_ to the current `runningTotal` variable, and not just a copy of its initial value. Capturing a reference ensures that `runningTotal` does not disappear when the call to `makeIncrementer` ends, and ensures that `runningTotal` will continue to be available the next time that the incrementer function is called. 
 
 Note 
 
-Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate `amount` or `runningTotal` to say that they can be used within the nested `incrementor` function. Swift also handles all memory management involved in disposing of `runningTotal` when it is no longer needed by the incrementor function. 
+Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate `amount` or `runningTotal` to say that they can be used within the nested `incrementer` function. Swift also handles all memory management involved in disposing of `runningTotal` when it is no longer needed by the incrementer function. 
 
-Here’s an example of `makeIncrementor` in action: 
+Here’s an example of `makeIncrementer` in action: 
 
-  1. `let incrementByTen = makeIncrementor(forIncrement: 10)`
+  1. `let incrementByTen = makeIncrementer(forIncrement: 10)`
 
-This example sets a constant called `incrementByTen` to refer to an incrementor function that adds `10` to its `runningTotal` variable each time it is called. Calling the function multiple times shows this behavior in action: 
+This example sets a constant called `incrementByTen` to refer to an incrementer function that adds `10` to its `runningTotal` variable each time it is called. Calling the function multiple times shows this behavior in action: 
 
   1. `incrementByTen()`
   2. `// returns a value of 10`
@@ -4083,13 +3950,13 @@ This example sets a constant called `incrementByTen` to refer to an incrementor 
   5. `incrementByTen()`
   6. `// returns a value of 30`
 
-If you create a second incrementor, it will have its own stored reference to a new, separate `runningTotal` variable: 
+If you create a second incrementer, it will have its own stored reference to a new, separate `runningTotal` variable: 
 
-  1. `let incrementBySeven = makeIncrementor(forIncrement: 7)`
+  1. `let incrementBySeven = makeIncrementer(forIncrement: 7)`
   2. `incrementBySeven()`
   3. `// returns a value of 7`
 
-Calling the original incrementor (`incrementByTen`) again continues to increment its own `runningTotal` variable, and does not affect the variable captured by `incrementBySeven`: 
+Calling the original incrementer (`incrementByTen`) again continues to increment its own `runningTotal` variable, and does not affect the variable captured by `incrementBySeven`: 
 
   1. `incrementByTen()`
   2. `// returns a value of 40`
@@ -4111,16 +3978,6 @@ This also means that if you assign a closure to two different constants or varia
   3. `// returns a value of 50`
 
 # Enumerations
-
-On This Page
-
-  1. Enumeration Syntax 
-
-  2. Matching Enumeration Values with a Switch Statement 
-
-  3. Associated Values 
-
-  4. Raw Values 
 
 An _enumeration_ defines a common type for a group of related values and enables you to work with those values in a type-safe way within your code. 
 
@@ -4258,7 +4115,7 @@ The different barcode types can be checked using a switch statement, as before. 
   6. `}`
   7. `// prints "QR code: ABCDEFGHIJKLMNOP."`
 
-If all of the associated values for a enumeration member are extracted as constants, or if all are extracted as variables, you can place a single `var` or `let` annotation before the member name, for brevity: 
+If all of the associated values for an enumeration member are extracted as constants, or if all are extracted as variables, you can place a single `var` or `let` annotation before the member name, for brevity: 
 
   1. `switch productBarcode {`
   2. `case let .UPCA(numberSystem, manufacturer, product, check):`
@@ -4332,18 +4189,6 @@ If you try to find a planet with a position of `9`, the optional `Planet` value 
 This example uses optional binding to try to access a planet with a raw value of `9`. The statement `if let somePlanet = Planet(rawValue: 9)` creates an optional `Planet`, and sets `somePlanet` to the value of that optional `Planet` if it can be retrieved. In this case, it is not possible to retrieve a planet with a position of `9`, and so the `else` branch is executed instead. 
 
 # Classes and Structures
-
-On This Page
-
-  1. Comparing Classes and Structures 
-
-  2. Structures and Enumerations Are Value Types 
-
-  3. Classes Are Reference Types 
-
-  4. Choosing Between Classes and Structures 
-
-  5. Assignment and Copy Behavior for Strings, Arrays, and Dictionaries 
 
 _Classes_ and _structures_ are general-purpose, flexible constructs that become the building blocks of your program’s code. You define properties and methods to add functionality to your classes and structures by using exactly the same syntax as for constants, variables, and functions. 
 
@@ -4604,18 +4449,6 @@ Note
 The description above refers to the “copying” of strings, arrays, and dictionaries. The behavior you see in your code will always be as if a copy took place. However, Swift only performs an _actual_ copy behind the scenes when it is absolutely necessary to do so. Swift manages all value copying to ensure optimal performance, and you should not avoid assignment to try to preempt this optimization. 
 
 # Properties
-
-On This Page
-
-  1. Stored Properties 
-
-  2. Computed Properties 
-
-  3. Property Observers 
-
-  4. Global and Local Variables 
-
-  5. Type Properties 
 
 _Properties_ associate values with a particular class, structure, or enumeration. Stored properties store constant and variable values as part of an instance, whereas computed properties calculate (rather than store) a value. Computed properties are provided by classes, structures, and enumerations. Stored properties are provided only by classes and structures. 
 
@@ -4997,12 +4830,6 @@ If you try to set the `currentLevel` of the _right_ channel to `11`, you can see
 
 # Methods
 
-On This Page
-
-  1. Instance Methods 
-
-  2. Type Methods 
-
 _Methods_ are functions that are associated with a particular type. Classes, structures, and enumerations can all define instance methods, which encapsulate specific tasks and functionality for working with an instance of a given type. Classes, structures, and enumerations can also define type methods, which are associated with the type itself. Type methods are similar to class methods in Objective-C. 
 
 The fact that structures and enumerations can define methods in Swift is a major difference from C and Objective-C. In Objective-C, classes are the only types that can define methods. In Swift, you can choose whether to define a class, structure, or enumeration, and still have the flexibility to define methods on the type you create. 
@@ -5080,7 +4907,7 @@ This default behavior effectively treats the method as if you had written a hash
   2. ` count += amount * numberOfTimes`
   3. `}`
 
-The default behavior described above mean that method definitions in Swift are written with the same grammatical style as Objective-C, and are called in a natural, expressive way. 
+The default behavior described above means that method definitions in Swift are written with the same grammatical style as Objective-C, and are called in a natural, expressive way. 
 
 ### Modifying External Parameter Name Behavior for Methods
 
@@ -5269,14 +5096,6 @@ If you create a second player, whom you try to move to a level that is not yet u
 
 # Subscripts
 
-On This Page
-
-  1. Subscript Syntax 
-
-  2. Subscript Usage 
-
-  3. Subscript Options 
-
 Classes, structures, and enumerations can define _subscripts_, which are shortcuts for accessing the member elements of a collection, list, or sequence. You use subscripts to set and retrieve values by index without needing separate methods for setting and retrieval. For example, you access elements in an `Array` instance as `someArray[index]` and elements in a `Dictionary` instance as `someDictionary[key]`. 
 
 You can define multiple subscripts for a single type, and the appropriate subscript overload to use is selected based on the type of index value you pass to the subscript. Subscripts are not limited to a single dimension, and you can define subscripts with multiple input parameters to suit your custom type’s needs. 
@@ -5401,16 +5220,6 @@ An assertion is triggered if you try to access a subscript that is outside of th
   2. `// this triggers an assert, because [2, 2] is outside of the matrix bounds`
 
 # Inheritance
-
-On This Page
-
-  1. Defining a Base Class 
-
-  2. Subclassing 
-
-  3. Overriding 
-
-  4. Preventing Overrides 
 
 A class can _inherit_ methods, properties, and other characteristics from another class. When one class inherits from another, the inheriting class is known as a _subclass_, and the class it inherits from is known as its _superclass_. Inheritance is a fundamental behavior that differentiates classes from other types in Swift. 
 
@@ -5590,7 +5399,7 @@ The following example defines a new class called `AutomaticCar`, which is a subc
   6. ` }`
   7. `}`
 
-Whenever you set the `currentSpeed` property of an `AutomaticCar` instance, the property’s `didSet` observer sets the instance’s `gear` property to an appropriate choice of gear for the new speed. Specifically, the property observer chooses a gear that is the new `currentSpeed` value divided by `10`, rounded down to the nearest integer, plus `1`. A speed of `10.0` produces a gear of `1`, and a speed of `35.0` produces a gear of `4`: 
+Whenever you set the `currentSpeed` property of an `AutomaticCar` instance, the property’s `didSet` observer sets the instance’s `gear` property to an appropriate choice of gear for the new speed. Specifically, the property observer chooses a gear that is the new `currentSpeed` value divided by `10`, rounded down to the nearest integer, plus `1`. A speed of `35.0` produces a gear of `4`: 
 
   1. `let automatic = AutomaticCar()`
   2. `automatic.currentSpeed = 35.0`
@@ -5606,24 +5415,6 @@ Any attempt to override a final method, property, or subscript in a subclass is 
 You can mark an entire class as final by writing the `final` modifier before the `class` keyword in its class definition (`final class`). Any attempt to subclass a final class is reported as a compile-time error. 
 
 # Initialization
-
-On This Page
-
-  1. Setting Initial Values for Stored Properties 
-
-  2. Customizing Initialization 
-
-  3. Default Initializers 
-
-  4. Initializer Delegation for Value Types 
-
-  5. Class Inheritance and Initialization 
-
-  6. Failable Initializers 
-
-  7. Required Initializers 
-
-  8. Setting a Default Property Value with a Closure or Function 
 
 _Initialization_ is the process of preparing an instance of a class, structure, or enumeration for use. This process involves setting an initial value for each stored property on that instance and performing any other setup or initialization that is required before the new instance is ready for use. 
 
@@ -5825,7 +5616,7 @@ Because all properties of the `ShoppingListItem` class have default values, and 
 
 ### Memberwise Initializers for Structure Types
 
-Structure types automatically receive a _memberwise initializer_ if they do not define any of their own custom initializers. This is true even if the structure’s stored properties do not have default values. 
+Structure types automatically receive a _memberwise initializer_ if they do not define any of their own custom initializers. Unlike a default initializer, the structure receives a memberwise initializer even if it has stored properties that do not have default values. 
 
 The memberwise initializer is a shorthand way to initialize the member properties of new structure instances. Initial values for the properties of the new instance can be passed to the memberwise initializer by name. 
 
@@ -5878,7 +5669,7 @@ You can initialize the `Rect` structure below in one of three ways—by using it
   13. ` }`
   14. `}`
 
-The first `Rect` initializer, `init()`, is functionally the same as the default initializer that the structure would have received if it did not have its own custom initializers. This initializer has an empty body, represented by an empty pair of curly braces `{}`, and does not perfom any initialization. Calling this initializer returns a `Rect` instance whose `origin` and `size` properties are both initialized with the default values of `Point(x: 0.0, y: 0.0)` and `Size(width: 0.0, height: 0.0)` from their property definitions: 
+The first `Rect` initializer, `init()`, is functionally the same as the default initializer that the structure would have received if it did not have its own custom initializers. This initializer has an empty body, represented by an empty pair of curly braces `{}`, and does not perform any initialization. Calling this initializer returns a `Rect` instance whose `origin` and `size` properties are both initialized with the default values of `Point(x: 0.0, y: 0.0)` and `Size(width: 0.0, height: 0.0)` from their property definitions: 
 
   1. `let basicRect = Rect()`
   2. `// basicRect's origin is (0.0, 0.0) and its size is (0.0, 0.0)`
@@ -6444,7 +6235,7 @@ Note
 
 You can override a failable initializer with a nonfailable initializer but not the other way around. 
 
-The example below defines a class called `Document`. This class models a document that can be be initialized with a `name` property that is either a non-empty string value or `nil`, but cannot be an empty string: 
+The example below defines a class called `Document`. This class models a document that can be initialized with a `name` property that is either a non-empty string value or `nil`, but cannot be an empty string: 
 
   1. `class Document {`
   2. ` var name: String?`
@@ -6562,13 +6353,7 @@ Whenever a new `Checkerboard` instance is created, the closure is executed, and 
 
 # Deinitialization
 
-On This Page
-
-  1. How Deinitialization Works 
-
-  2. Deinitializers in Action 
-
-A _deinitializer_ is called immediately before a class instance is deallocated. You write deinitializers with the `deinit` keyword, similar to how intializers are written with the `init` keyword. Deinitializers are only available on class types. 
+A _deinitializer_ is called immediately before a class instance is deallocated. You write deinitializers with the `deinit` keyword, similar to how initializers are written with the `init` keyword. Deinitializers are only available on class types. 
 
 ## How Deinitialization Works
 
@@ -6652,20 +6437,6 @@ Here, the player has won 2,000 coins. The player’s purse now contains 2,100 co
 The player has now left the game. This is indicated by setting the optional `playerOne` variable to `nil`, meaning “no `Player` instance.” At the point that this happens, the `playerOne` variable’s reference to the `Player` instance is broken. No other properties or variables are still referring to the `Player` instance, and so it is deallocated in order to free up its memory. Just before this happens, its deinitializer is called automatically, and its coins are returned to the bank. 
 
 # Automatic Reference Counting
-
-On This Page
-
-  1. How ARC Works 
-
-  2. ARC in Action 
-
-  3. Strong Reference Cycles Between Class Instances 
-
-  4. Resolving Strong Reference Cycles Between Class Instances 
-
-  5. Strong Reference Cycles for Closures 
-
-  6. Resolving Strong Reference Cycles for Closures 
 
 Swift uses _Automatic Reference Counting_ (ARC) to track and manage your app’s memory usage. In most cases, this means that memory management “just works” in Swift, and you do not need to think about memory management yourself. ARC automatically frees up the memory used by class instances when those instances are no longer needed. 
 
@@ -7151,22 +6922,6 @@ This time, the capture of `self` by the closure is an unowned reference, and doe
 
 # Optional Chaining
 
-On This Page
-
-  1. Optional Chaining as an Alternative to Forced Unwrapping 
-
-  2. Defining Model Classes for Optional Chaining 
-
-  3. Accessing Properties Through Optional Chaining 
-
-  4. Calling Methods Through Optional Chaining 
-
-  5. Accessing Subscripts Through Optional Chaining 
-
-  6. Linking Multiple Levels of Chaining 
-
-  7. Chaining on Methods with Optional Return Values 
-
 _Optional chaining_ is a process for querying and calling properties, methods, and subscripts on an optional that might currently be `nil`. If the optional contains a value, the property, method, or subscript call succeeds; if the optional is `nil`, the property, method, or subscript call returns `nil`. Multiple queries can be chained together, and the entire chain fails gracefully if any link in the chain is `nil`. 
 
 Note 
@@ -7481,16 +7236,6 @@ In the example above, you place the optional chaining question mark _after_ the 
 
 # Type Casting
 
-On This Page
-
-  1. Defining a Class Hierarchy for Type Casting 
-
-  2. Checking Type 
-
-  3. Downcasting 
-
-  4. Type Casting for Any and AnyObject 
-
 _Type casting_ is a way to check the type of an instance, and/or to treat that instance as if it is a different superclass or subclass from somewhere else in its own class hierarchy. 
 
 Type casting in Swift is implemented with the `is` and `as` operators. These two operators provide a simple and expressive way to check the type of a value or cast a value to a different type. 
@@ -7593,7 +7338,7 @@ In this example, each item in the array might be a `Movie`, or it might be a `So
   12. `// Song: 'The One And Only', by Chesney Hawkes`
   13. `// Song: 'Never Gonna Give You Up', by Rick Astley`
 
-The example starts by trying to downcast the current `item` as a `Movie`. Because `item` is a `MediaItem` instance, it’s possible that it _might_ be a `Movie`; equally, it’s also possible that it might be a `Song`, or even just a base `MediaItem`. Because of this uncertainty, the `as?` form of the type cast operator returns an _optional_ value when attempting to downcast to a subclass type. The result of `item as Movie` is of type `Movie?`, or “optional `Movie`”. 
+The example starts by trying to downcast the current `item` as a `Movie`. Because `item` is a `MediaItem` instance, it’s possible that it _might_ be a `Movie`; equally, it’s also possible that it might be a `Song`, or even just a base `MediaItem`. Because of this uncertainty, the `as?` form of the type cast operator returns an _optional_ value when attempting to downcast to a subclass type. The result of `item as? Movie` is of type `Movie?`, or “optional `Movie`”. 
 
 Downcasting to `Movie` fails when applied to the `Song` instances in the library array. To cope with this, the example above uses optional binding to check whether the optional `Movie` actually contains a value (that is, to find out whether the downcast succeeded.) This optional binding is written “`if let movie = item as? Movie`”, which can be read as: 
 
@@ -7709,12 +7454,6 @@ The cases of a `switch` statement use the forced version of the type cast operat
 
 # Nested Types
 
-On This Page
-
-  1. Nested Types in Action 
-
-  2. Referring to Nested Types 
-
 Enumerations are often created to support a specific class or structure’s functionality. Similarly, it can be convenient to define utility classes and structures purely for use within the context of a more complex type. To accomplish this, Swift enables you to define _nested types_, whereby you nest supporting enumerations, classes, and structures within the definition of the type they support. 
 
 To nest a type within another type, write its definition within the outer braces of the type it supports. Types can be nested to as many levels as are required. 
@@ -7795,20 +7534,6 @@ To use a nested type outside of its definition context, prefix its name with the
 For the example above, this enables the names of `Suit`, `Rank`, and `Values` to be kept deliberately short, because their names are naturally qualified by the context in which they are defined. 
 
 # Extensions
-
-On This Page
-
-  1. Extension Syntax 
-
-  2. Computed Properties 
-
-  3. Initializers 
-
-  4. Methods 
-
-  5. Subscripts 
-
-  6. Nested Types 
 
 _Extensions_ add new functionality to an existing class, structure, or enumeration type. This includes the ability to extend types for which you do not have access to the original source code (known as _retroactive modeling_). Extensions are similar to categories in Objective-C. (Unlike Objective-C categories, Swift extensions do not have names.) 
 
@@ -7941,7 +7666,7 @@ Extensions can add new instance methods and type methods to existing types. The 
 
   1. `extension Int {`
   2. ` func repetitions(task: () -> ()) {`
-  3. ` for i in 0..<self {`
+  3. ` for _ in 0..<self {`
   4. ` task()`
   5. ` }`
   6. ` }`
@@ -8067,36 +7792,6 @@ Note
 
 # Protocols
 
-On This Page
-
-  1. Protocol Syntax 
-
-  2. Property Requirements 
-
-  3. Method Requirements 
-
-  4. Mutating Method Requirements 
-
-  5. Initializer Requirements 
-
-  6. Protocols as Types 
-
-  7. Delegation 
-
-  8. Adding Protocol Conformance with an Extension 
-
-  9. Collections of Protocol Types 
-
-  10. Protocol Inheritance 
-
-  11. Class-Only Protocols 
-
-  12. Protocol Composition 
-
-  13. Checking for Protocol Conformance 
-
-  14. Optional Protocol Requirements 
-
 A _protocol_ defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol doesn’t actually provide an implementation for any of these requirements—it only describes what an implementation will look like. The protocol can then be _adopted_ by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to _conform_ to that protocol. 
 
 Protocols can require that conforming types have specific instance properties, instance methods, type methods, operators, and subscripts. 
@@ -8180,11 +7875,7 @@ This class implements the `fullName` property requirement as a computed read-onl
 
 ## Method Requirements
 
-Protocols can require specific instance methods and type methods to be implemented by conforming types. These methods are written as part of the protocol’s definition in exactly the same way as for normal instance and type methods, but without curly braces or a method body. Variadic parameters are allowed, subject to the same rules as for normal methods. 
-
-Note 
-
-Protocols use the same syntax as normal methods, but are not allowed to specify default values for method parameters. 
+Protocols can require specific instance methods and type methods to be implemented by conforming types. These methods are written as part of the protocol’s definition in exactly the same way as for normal instance and type methods, but without curly braces or a method body. Variadic parameters are allowed, subject to the same rules as for normal methods. Default values, however, cannot be specified for method parameters within a protocol’s definition. 
 
 As with type property requirements, you always prefix type method requirements with the `class` keyword when they are defined in a protocol. This is true even though type method requirements are prefixed with the `static` keyword when implemented by a structure or enumeration: 
 
@@ -8649,15 +8340,9 @@ You can use the `is` and `as` operators described in Type Casting to check for p
 
 This example defines a protocol called `HasArea`, with a single property requirement of a gettable `Double` property called `area`: 
 
-  1. `@objc protocol HasArea {`
+  1. `protocol HasArea {`
   2. ` var area: Double { get }`
   3. `}`
-
-Note 
-
-You can check for protocol conformance only if your protocol is marked with the `@objc` attribute, as seen for the `HasArea` protocol above. This attribute indicates that the protocol should be exposed to Objective-C code and is described in _Using Swift with Cocoa and Objective-C_. Even if you are not interoperating with Objective-C, you need to mark your protocols with the `@objc` attribute if you want to be able to check for protocol conformance. 
-
-Note also that `@objc` protocols can be adopted only by classes, and not by structures or enumerations. If you mark your protocol as `@objc` in order to check for conformance, you will be able to apply that protocol only to class types. 
 
 Here are two classes, `Circle` and `Country`, both of which conform to the `HasArea` protocol: 
 
@@ -8716,15 +8401,9 @@ An optional protocol requirement can be called with optional chaining, to accoun
 
 You check for an implementation of an optional requirement by writing a question mark after the name of the requirement when it is called, such as `someOptionalMethod?(someArgument)`. Optional property requirements, and optional method requirements that return a value, will always return an optional value of the appropriate type when they are accessed or called, to reflect the fact that the optional requirement may not have been implemented. 
 
-Note 
-
-Optional protocol requirements can only be specified if your protocol is marked with the `@objc` attribute. Even if you are not interoperating with Objective-C, you need to mark your protocols with the `@objc` attribute if you want to specify optional requirements. 
-
-Note also that `@objc` protocols can be adopted only by classes, and not by structures or enumerations. If you mark your protocol as `@objc` in order to specify optional requirements, you will only be able to apply that protocol to class types. 
-
 The following example defines an integer-counting class called `Counter`, which uses an external data source to provide its increment amount. This data source is defined by the `CounterDataSource` protocol, which has two optional requirements: 
 
-  1. `@objc protocol CounterDataSource {`
+  1. `protocol CounterDataSource {`
   2. ` optional func incrementForCount(count: Int) -> Int`
   3. ` optional var fixedIncrement: Int { get }`
   4. `}`
@@ -8737,7 +8416,7 @@ Strictly speaking, you can write a custom class that conforms to `CounterDataSou
 
 The `Counter` class, defined below, has an optional `dataSource` property of type `CounterDataSource?`: 
 
-  1. `@objc class Counter {`
+  1. `class Counter {`
   2. ` var count = 0`
   3. ` var dataSource: CounterDataSource?`
   4. ` func increment() {`
@@ -8813,26 +8492,6 @@ You can use an instance of `TowardsZeroSource` with the existing `Counter` insta
   11. `// 0`
 
 # Generics
-
-On This Page
-
-  1. The Problem That Generics Solve 
-
-  2. Generic Functions 
-
-  3. Type Parameters 
-
-  4. Naming Type Parameters 
-
-  5. Generic Types 
-
-  6. Extending a Generic Type 
-
-  7. Type Constraints 
-
-  8. Associated Types 
-
-  9. Where Clauses 
 
 _Generic code_ enables you to write flexible, reusable functions and types that can work with any type, subject to requirements that you define. You can write code that avoids duplication and expresses its intent in a clear, abstracted manner. 
 
@@ -9304,30 +8963,6 @@ The example above creates a `Stack` instance to store `String` values, and pushe
 
 # Access Control
 
-On This Page
-
-  1. Modules and Source Files 
-
-  2. Access Levels 
-
-  3. Access Control Syntax 
-
-  4. Custom Types 
-
-  5. Subclassing 
-
-  6. Constants, Variables, Properties, and Subscripts 
-
-  7. Initializers 
-
-  8. Protocols 
-
-  9. Extensions 
-
-  10. Generics 
-
-  11. Type Aliases 
-
 _Access control_ restricts access to parts of your code from code in other source files and modules. This feature enables you to hide the implementation details of your code, and to specify a preferred interface through which that code can be accessed and used. 
 
 You can assign specific access levels to individual types (classes, structures, and enumerations), as well as to properties, methods, initializers, and subscripts belonging to those types. Protocols can be restricted to a certain context, as can global constants, variables, and functions. 
@@ -9633,18 +9268,6 @@ Note
 This rule also applies to type aliases for associated types used to satisfy protocol conformances. 
 
 # Advanced Operators
-
-On This Page
-
-  1. Bitwise Operators 
-
-  2. Overflow Operators 
-
-  3. Precedence and Associativity 
-
-  4. Operator Functions 
-
-  5. Custom Operators 
 
 In addition to the operators described in Basic Operators, Swift provides several advanced operators that perform more complex value manipulation. These include all of the bitwise and bit shifting operators you will be familiar with from C and Objective-C. 
 
@@ -10111,18 +9734,6 @@ getter-setter-block  → `{­`setter-clause­getter-clause­`}­`
 
 # Lexical Structure
 
-On This Page
-
-  1. Whitespace and Comments 
-
-  2. Identifiers 
-
-  3. Keywords and Punctuation 
-
-  4. Literals 
-
-  5. Operators 
-
 The _lexical structure_ of Swift describes what sequence of characters form valid tokens of the language. These valid tokens form the lowest-level building blocks of the language and are used to describe the rest of the language in subsequent chapters. A token consists of an identifier, keyword, punctuation, literal, or operator. 
 
 In most cases, tokens are generated from the characters of a Swift source file by considering the longest possible substring from the input text, within the constraints of the grammar that are specified below. This behavior is referred to as _longest match_ or _maximal munch_. 
@@ -10224,9 +9835,13 @@ When specifying the type annotation for a literal value, the annotation’s type
 
 Grammar of a literal 
 
-literal  →  integer-literal­ floating-point-literal­ string-literal­
+literal  →  numeric-literal­ string-literal­ boolean-literal­ nil-literal­
 
-literal  →  `true­` `false­` `nil­`
+numeric-literal  →  `-­`opt­integer-literal­ `-­`opt­floating-point-literal­
+
+boolean-literal  →  `true­` `false­`
+
+nil-literal  → `nil­`
 
 ### Integer Literals
 
@@ -10294,7 +9909,7 @@ Decimal floating-point literals consist of a sequence of decimal digits followed
 
 Hexadecimal floating-point literals consist of a `0x` prefix, followed by an optional hexadecimal fraction, followed by a hexadecimal exponent. The hexadecimal fraction consists of a decimal point followed by a sequence of hexadecimal digits. The exponent consists of an upper- or lowercase `p` prefix followed by a sequence of decimal digits that indicates what power of 2 the value preceding the `p` is multiplied by. For example, `0xFp2` represents 15 × 22, which evaluates to `60`. Similarly, `0xFp-2` represents 15 × 2-2, which evaluates to `3.75`. 
 
-Unlike with integer literals, negative floating-point numbers are expressed by applying the unary minus operator (`-`) to a floating-point literal, as in `-42.0`. The result is an expression, not a floating-point literal. 
+Negative floating-point literals are expressed by prepending a minus sign (`-`) to a floating-point literal, as in `-42.5`. 
 
 Underscores (`_`) are allowed between digits for readability, but are ignored and therefore don’t affect the value of the literal. Floating-point literals can begin with leading zeros (`0`), but are likewise ignored and don’t affect the base or value of the literal. 
 
@@ -10469,32 +10084,6 @@ postfix-operator  → operator­
 
 # Types
 
-On This Page
-
-  1. Type Annotation 
-
-  2. Type Identifier 
-
-  3. Tuple Type 
-
-  4. Function Type 
-
-  5. Array Type 
-
-  6. Dictionary Type 
-
-  7. Optional Type 
-
-  8. Implicitly Unwrapped Optional Type 
-
-  9. Protocol Composition Type 
-
-  10. Metatype Type 
-
-  11. Type Inheritance Clause 
-
-  12. Type Inference 
-
 In Swift, there are two kinds of types: named types and compound types. A _named type_ is a type that can be given a particular name when it is defined. Named types include classes, structures, enumerations, and protocols. For example, instances of a user-defined class named `MyClass` have the type `MyClass`. In addition to user-defined named types, the Swift standard library defines many commonly used named types, including those that represent arrays, dictionaries, and optional values. 
 
 Data types that are normally considered basic or primitive in other languages—such as types that represent numbers, characters, and strings—are actually named types, defined and implemented in the Swift standard library using structures. Because they are named types, you can extend their behavior to suit the needs of your program, using an extension declaration, discussed in Extensions and Extension Declaration. 
@@ -10573,7 +10162,7 @@ Because the _parameter type_ and the _return type_ can be a tuple type, function
 
 You can apply the `autoclosure` attribute to a function type that has a parameter type of `()` and that returns the type of an expression (see Type Attributes). An autoclosure function captures an implicit closure over the specified expression, instead of the expression itself. The following example uses the `autoclosure` attribute in defining a very simple assert function: 
 
-  1. `func simpleAssert(condition: @autoclosureautoclosure () -> Bool, message: String) {`
+  1. `func simpleAssert(condition: @autoclosure () -> Bool, message: String) {`
   2. ` if !condition() {`
   3. ` println(message)`
   4. ` }`
@@ -10600,8 +10189,8 @@ The Swift language provides the following syntactic sugar for the Swift standard
 
 In other words, the following two declarations are equivalent: 
 
-  1. `let someArray: [String] = ["Alex", "Brian", "Dave"]`
-  2. `let someArray: Array<String> = ["Alex", "Brian", "Dave"]`
+  1. `let someArray: Array<String> = ["Alex", "Brian", "Dave"]`
+  2. `let someArray: [String] = ["Alex", "Brian", "Dave"]`
 
 In both cases, the constant `someArray` is declared as an array of strings. The elements of an array can be accessed through subscripting by specifying a valid index value in square brackets: `someArray[0]` refers to the element at index 0, `"Alex"`. 
 
@@ -10671,7 +10260,7 @@ optional-type  → type­`?­`
 The Swift language defines the postfix `!` as syntactic sugar for the named type `ImplicitlyUnwrappedOptional<T>`, which is defined in the Swift standard library. In other words, the following two declarations are equivalent: 
 
   1. `var implicitlyUnwrappedString: String!`
-  2. `var implicitlyUnwrappedString: ImplicitlyUnwrappedOptional<String>`
+  2. `var implicitlyUnwrappedString: String!`
 
 In both cases, the variable `implicitlyUnwrappedString` is declared to have the type of an implicitly unwrapped optional string. Note that no whitespace may appear between the type and the `!`. 
 
@@ -10773,16 +10362,6 @@ In Swift, type information can also flow in the opposite direction—from the ro
 Type inference in Swift operates at the level of a single expression or statement. This means that all of the information needed to infer an omitted type or part of a type in an expression must be accessible from type-checking the expression or one of its subexpressions. 
 
 # Expressions
-
-On This Page
-
-  1. Prefix Expressions 
-
-  2. Binary Expressions 
-
-  3. Primary Expressions 
-
-  4. Postfix Expressions 
 
 In Swift, there are four kinds of expressions: prefix expressions, binary expressions, primary expressions, and postfix expressions. Evaluating an expression returns a value, causes a side effect, or both. 
 
@@ -10964,7 +10543,7 @@ binary-expressions  → binary-expressions­opt­
 
 ### Assignment Operator
 
-The _assigment operator_ sets a new value for a given expression. It has the following form: 
+The _assignment operator_ sets a new value for a given expression. It has the following form: 
 
   1.     _expression_ = _value_
 
@@ -11047,35 +10626,69 @@ A _literal expression_ consists of either an ordinary literal (such as a string 
 
 Literal 
 
+| 
+
 Type 
 
-Value 
+| 
 
+Value   
+  
+---|---|---  
+  
 `__FILE__`
 
-String 
+| 
 
-The name of the file in which it appears. 
+`String`
 
+| 
+
+The name of the file in which it appears.   
+  
 `__LINE__`
 
-Int 
+| 
 
-The line number on which it appears. 
+`Int`
 
+| 
+
+The line number on which it appears.   
+  
 `__COLUMN__`
 
-Int 
+| 
 
-The column number in which it begins. 
+`Int`
 
+| 
+
+The column number in which it begins.   
+  
 `__FUNCTION__`
 
-String 
+| 
 
-The name of the declaration in which it appears. 
+`String`
 
+| 
+
+The name of the declaration in which it appears.   
+  
 Inside a function, the value of `__FUNCTION__` is the name of that function, inside a method it is the name of that method, inside a property getter or setter it is the name of that property, inside special members like `init` or `subscript` it is the name of that keyword, and at the top level of a file it is the name of the current module. 
+
+When used as the default value of a function or method, the special literal’s value is determined when the default value expression is evaluated at the call site. 
+
+  1. `func logFunctionName(string: String = __FUNCTION__) {`
+  2. ` println(string)`
+  3. `}`
+  4. `func myFunction() {`
+  5. ` logFunctionName() // Prints "myFunction()".`
+  6. `}`
+  7. ` `
+  8. `myFunction()`
+  9. `namedArgs(1, withJay: 2)`
 
 An _array literal_ is an ordered collection of values. It has the following form: 
 
@@ -11288,7 +10901,7 @@ expression-element  →  expression­ identifier­`:­`expression­
 A _wildcard expression_ is used to explicitly ignore a value during an assignment. For example, in the following assignment 10 is assigned to `x` and 20 is ignored: 
 
   1. `(x, _) = (10, 20)`
-  2. `// x is 10, 20 is ignored`
+  2. `// x is 10, and 20 is ignored`
 
 Grammar of a wildcard expression 
 
@@ -11374,7 +10987,7 @@ You use the initializer expression in a function call expression to initialize a
 You also use an initializer expression to delegate to the initializer of a superclass. 
 
   1. `class SomeSubClass: SomeSuperClass {`
-  2. ` init() {`
+  2. ` override init() {`
   3. ` // subclass initialization goes here`
   4. ` super.init()`
   5. ` }`
@@ -11447,8 +11060,8 @@ The _expression_ can’t be the name of a type. The entire `dynamicType` express
   9. ` }`
   10. `}`
   11. `let someInstance: SomeBaseClass = SomeSubClass()`
-  12. `// someInstance is of type SomeBaseClass at compile time, but`
-  13. `// someInstance is of type SomeSubClass at runtime`
+  12. `// someInstance has a static type of SomeBaseClass at compile time, and`
+  13. `// it has a dynamc type of SomeSubClass at runtime`
   14. `someInstance.dynamicType.printClassName()`
   15. `// prints "SomeSubClass"`
 
@@ -11486,7 +11099,7 @@ The unwrapped value of a forced-value expression can be modified, either by muta
   4. ` `
   5. `var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]`
   6. `someDictionary["a"]![0] = 100`
-  7. `// someDictionary is now ["a": [100, 2, 3], "b": [10, 20]]`
+  7. `// someDictionary is now [b: [10, 20], a: [100, 2, 3]]`
 
 Grammar of a forced-value expression 
 
@@ -11502,47 +11115,38 @@ On its own, the postfix `?` operator simply returns the value of its argument as
 
 Postfix expressions that contain an optional-chaining expression are evaluated in a special way. If the optional-chaining expression is `nil`, all of the other operations in the postfix expression are ignored and the entire postfix expression evaluates to `nil`. If the optional-chaining expression is not `nil`, the value of the optional-chaining expression is unwrapped and used to evaluate the rest of the postfix expression. In either case, the value of the postfix expression is still of an optional type. 
 
-If a postfix expression that contains an optional-chaining expression is nested inside other postfix expressions, only the outermost expression returns an optional type. In the example below, when `c` is not `nil`, its value is unwrapped and used to evaluate both `.property` and `.performAction()`, and the entire expression `c?.property.performAction()` has a value of an optional type. 
+If a postfix expression that contains an optional-chaining expression is nested inside other postfix expressions, only the outermost expression returns an optional type. In the example below, when `c` is not `nil`, its value is unwrapped and used to evaluate `.property`, the value of which is used to evaluate `.performAction()`. The entire expression `c?.property.performAction()` has a value of an optional type. 
 
   1. `var c: SomeClass?`
   2. `var result: Bool? = c?.property.performAction()`
 
 The following example shows the behavior of the example above without using optional chaining. 
 
-  1. `if let unwrappedC = c {`
-  2. ` result = unwrappedC.property.performAction()`
-  3. `}`
+  1. `var result: Bool? = nil`
+  2. `if let unwrappedC = c {`
+  3. ` result = unwrappedC.property.performAction()`
+  4. `}`
 
 The unwrapped value of an optional-chaining expression can be modified, either by mutating the value itself, or by assigning to one of the value’s members. If the value of the optional-chaining expression is `nil`, the expression on the right hand side of the assignment operator is not evaluated. For example: 
 
   1. `func someFunctionWithSideEffects() -> Int {`
-  2. ` return 42`
+  2. ` return 42 // No actual side effects.`
   3. `}`
   4. `var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]`
   5. ` `
   6. `someDictionary["not here"]?[0] = someFunctionWithSideEffects()`
   7. `// someFunctionWithSideEffects is not evaluated`
-  8. `// someDictionary is still ["a": [1, 2, 3], "b": [10, 20]]`
+  8. `// someDictionary is still [b: [10, 20], a: [1, 2, 3]]`
   9. ` `
   10. `someDictionary["a"]?[0] = someFunctionWithSideEffects()`
-  11. `// someFunctionWithSideEffects is evaluated`
-  12. `// someDictionary is now ["a": [100, 2, 3], "b": [10, 20]]`
+  11. `// someFunctionWithSideEffects is evaluated and returns 42`
+  12. `// someDictionary is now [b: [10, 20], a: [42, 2, 3]]`
 
 Grammar of an optional-chaining expression 
 
 optional-chaining-expression  → postfix-expression­`?­`
 
 # Statements
-
-On This Page
-
-  1. Loop Statements 
-
-  2. Branch Statements 
-
-  3. Labeled Statement 
-
-  4. Control Transfer Statements 
 
 In Swift, there are two kinds of statements: simple statements and control flow statements. Simple statements are the most common and consist of either an expression or a declaration. Control flow statements are used to control the flow of execution in a program. There are three types of control flow statements in Swift: loop statements, branch statements, and control transfer statements. 
 
@@ -11754,7 +11358,7 @@ Grammar of an if statement
 
 if-statement  → `if­`code-block­else-clause­opt­
 
-if-condition  →  expression­ declaration­
+if-condition  →  expression­ value-binding-pattern­
 
 else-clause  →  `else­`code-block­ `else­`if-statement­
 
@@ -11935,42 +11539,6 @@ Grammar of a return statement
 return-statement  → `return­`expression­opt­
 
 # Declarations
-
-On This Page
-
-  1. Top-Level Code 
-
-  2. Code Blocks 
-
-  3. Import Declaration 
-
-  4. Constant Declaration 
-
-  5. Variable Declaration 
-
-  6. Type Alias Declaration 
-
-  7. Function Declaration 
-
-  8. Enumeration Declaration 
-
-  9. Structure Declaration 
-
-  10. Class Declaration 
-
-  11. Protocol Declaration 
-
-  12. Initializer Declaration 
-
-  13. Deinitializer Declaration 
-
-  14. Extension Declaration 
-
-  15. Subscript Declaration 
-
-  16. Operator Declaration 
-
-  17. Declaration Modifiers 
 
 A _declaration_ introduces a new name or construct into your program. For example, you use declarations to introduce functions and methods, variables and constants, and to define new, named enumeration, structure, class, and protocol types. You can also use a declaration to extend the behavior of an existing named type and to import symbols into your program that are declared elsewhere. 
 
@@ -12322,7 +11890,12 @@ A parameter named with an underscore (`_`) is explicitly ignored and can’t be 
 
 A parameter with a base type name followed immediately by three dots (`...`) is understood as a variadic parameter. A function can have at most one variadic parameter, which must be its last parameter. A variadic parameter is treated as an array that contains elements of the base type name. For instance, the variadic parameter `Int...` is treated as `[Int]`. For an example that uses a variadic parameter, see Variadic Parameters. 
 
-A parameter with an equals sign (`=`) and an expression after its type is understood to have a default value of the given expression. If the parameter is omitted when calling the function, the default value is used instead. If the parameter is not omitted, it must have its name in the function call. For example, `f()` and `f(x: 7)` are both valid calls to a function with a single default parameter named `x`, but `f(7)` is invalid because it provides a value without a name. 
+A parameter with an equals sign (`=`) and an expression after its type is understood to have a default value of the given expression. The given expression is evaluated when the function is called. If the parameter is omitted when calling the function, the default value is used instead. If the parameter is not omitted, it must have its name in the function call. 
+
+  1. `func f(x: Int = 42) -> Int { return x }`
+  2. `f() // Valid, uses default value`
+  3. `f(x: 7) // Valid, name and value provided`
+  4. `f(7) // Invalid, value provided without its name`
 
 ### Special Kinds of Methods
 
@@ -12336,7 +11909,7 @@ Methods associated with a type rather than an instance of a type must be marked 
 
 You can rewrite a function that takes multiple parameters as an equivalent function that takes a single parameter and returns a function. The returned function takes the next parameter and returns another function. This continues until there are no remaining parameters, at which point the last function returns the return value of the original multiparameter function. The rewritten function is known as a _curried function_. For example, you can rewrite the `addTwoInts` function as the equivalent `addTwoIntsCurried` function: 
 
-  1. `addTwoInts(a: Int, b: Int) -> Int {`
+  1. `func addTwoInts(a: Int, b: Int) -> Int {`
   2. ` return a \+ b`
   3. `}`
   4. `func addTwoIntsCurried(a: Int) -> (Int -> Int) {`
@@ -12511,7 +12084,9 @@ raw-value-style-enum-case-list  →  raw-value-style-enum-case­ raw-value-style
 
 raw-value-style-enum-case  → raw-value-assignment­opt­
 
-raw-value-assignment  → `=­`literal­
+raw-value-assignment  → `=­`raw-value-literal­
+
+raw-value-literal  →  numeric-literal­ string-literal­ boolean-literal­
 
 ## Structure Declaration
 
@@ -12621,7 +12196,7 @@ To restrict the adoption of a protocol to class types only, mark the protocol wi
   2. ` /* Protocol members go here */`
   3. `}`
 
-Any protocol that inherits from a protocol that’s marked with the `class` requirement can likewise be adoped only by class types. 
+Any protocol that inherits from a protocol that’s marked with the `class` requirement can likewise be adopted only by class types. 
 
 Note 
 
@@ -12695,7 +12270,7 @@ protocol-initializer-declaration  → generic-parameter-clause­opt­parameter-c
 
 ### Protocol Subscript Declaration
 
-Protocols declare that conforming types must implement a subscript by including a protocol subscript declaration in the body of the protocol declaration. Protocol property declarations have a special form of a subscript declaration: 
+Protocols declare that conforming types must implement a subscript by including a protocol subscript declaration in the body of the protocol declaration. Protocol subscript declarations have a special form of a subscript declaration: 
 
   1.     subscript (_parameters_) -> _return type_ { get set }
 
@@ -12957,96 +12532,9 @@ infix-operator-declaration  → `infix­``operator­`operator­`{­`infix-operat
 
 infix-operator-attributes  → associativity-clause­opt­
 
-precedence-clause  → `precedence­`precedence-level­
-
-precedence-level  → A decimal integer between 0 and 255, inclusive
-
-associativity-clause  → `associativity­`associativity­
-
-associativity  →  `left­` `right­` `none­`
-
-## Declaration Modifiers
-
-_Declaration modifiers_ are keywords or context-sensitive keywords that modify the behavior or meaning of a declaration. You specify a declaration modifier by writing the appropriate keyword or context-sensitive keyword between a declaration’s attributes (if any) and the keyword that introduces the declaration. 
-
-`dynamic`
-    
-
-Apply this modifier to any member of a class that can be represented by Objective-C. When you mark a member declaration with the `dynamic` modifier, access to that member is always dynamically dispatched using the Objective-C runtime. Access to that member is never inlined or devirtualized by the compiler. 
-
-Because declarations marked with the `dynamic` modifier are dispatched using the Objective-C runtime, they’re implicitly marked with the `objc` attribute. 
-
-`final`
-    
-
-Apply this modifier to a class or to a property, method, or subscript member of a class. It’s applied to a class to indicate that the class can’t be subclassed. It’s applied to a property, method, or subscript of a class to indicate that that class member can’t be overridden in any subclass. 
-
-`lazy`
-    
-
-Apply this modifier to a stored variable property of a class or structure to indicate that the property’s initial value is calculated and stored at most once, when the property is first accessed. For an example of how to use the `lazy` modifier, see Lazy Stored Properties. 
-
-`optional`
-    
-
-Apply this modifier to a protocol’s property, method, or subscript members to indicate that a conforming type isn’t required to implement those members. 
-
-You can apply the `optional` modifier only to protocols that are marked with the `objc` attribute. As a result, only class types can adopt and conform to a protocol that contains optional member requirements. For more information about how to use the `optional` modifier and for guidance about how to access optional protocol members—for example, when you’re not sure whether a conforming type implements them—see Optional Protocol Requirements. 
-
-`required`
-    
-
-Apply this modifier to a designated or convenience initializer of a class to indicate that every subclass must implement that initializer. The subclass’s implementation of that initializer must also be marked with the `required` modifier. 
-
-`weak`
-    
-
-The `weak` modifier is applied to a variable or a stored variable property to indicate that the variable or property has a weak reference to the object stored as its value. The type of the variable or property must be an optional class type. Use the `weak` modifier to avoid strong reference cycles. For an example and more information about the `weak` modifier, see Weak References. 
-
-### Access Control Levels
-
-Swift provides three levels of access control: public, internal, and private. You can mark a declaration with one of the access-level modifiers below to specify the declaration’s access level. Access control is discussed in detail in Access Control. 
-
-`public`
-    
-
-Apply this modifier to a declaration to indicate the declaration can be accessed by code in the same module as the declaration. Declarations marked with the `public` access-level modifier can also be accessed by code in a module that imports the module that contains that declaration. 
-
-`internal`
-    
-
-Apply this modifier to a declaration to indicate the declaration can be accessed only by code in the same module as the declaration. By default, most declarations are implicitly marked with the `internal` access-level modifier. 
-
-`private`
-    
-
-Apply this modifier to a declaration to indicate the declaration can be accessed only by code in the same source file as the declaration. 
-
-Each access-level modifier above optionally accepts a single argument, which consists of the keyword `set` enclosed in parentheses (for instance, `private(set)`). Use this form of an access-level modifier when you want to specify an access level for the setter of a variable or subscript that’s less than or equal to the access level of the variable or subscript itself, as discussed in Getters and Setters. 
-
-Grammar of a declaration modifier 
-
-declaration-modifier  →  `class­` `convenience­` `dynamic­` `final­` `infix­` `lazy­` `mutating­` `nonmutating­` `optional­` `override­` `postfix­` `prefix­` `required­` `static­` `unowned­` `unowned­``(­``safe­``)­` `unowned­``(­``unsafe­``)­` `weak­`
-
-declaration-modifier  → access-level-modifier­
-
-declaration-modifiers  → declaration-modifiers­opt­
-
-access-level-modifier  →  `internal­` `internal­``(­``set­``)­`
-
-access-level-modifier  →  `private­` `private­``(­``set­``)­`
-
-access-level-modifier  →  `public­` `public­``(­``set­``)­`
-
-access-level-modifiers  → access-level-modifiers­opt­
+precedence-clause  → `precedence­`
 
 # Attributes
-
-On This Page
-
-  1. Declaration Attributes 
-
-  2. Type Attributes 
 
 _Attributes_ provide more information about a declaration or type. There are two kinds of attributes in Swift, those that apply to declarations and those that apply to types. 
 
@@ -13132,7 +12620,7 @@ You can override a function or method that is not marked with the `noreturn` att
 
 Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the `NSApplicationMain` function and passing this class’s name as the name of the delegate class. 
 
-If you do not use this attribute, supply a `main.swift` file with a `main` function that calls the `NSApplicationMain` function. For example, if your app uses a custom subclass of `NSApplication` as its principle class, call the `NSApplicationMain` function instead of using this attribute. 
+If you do not use this attribute, supply a `main.swift` file with a `main` function that calls the `NSApplicationMain` function. For example, if your app uses a custom subclass of `NSApplication` as its principal class, call the `NSApplicationMain` function instead of using this attribute. 
 
 `NSCopying`
     
@@ -13169,7 +12657,7 @@ The `objc` attribute optionally accepts a single attribute argument, which consi
 
 Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the `UIApplicationMain` function and passing this class’s name as the name of the delegate class. 
 
-If you do not use this attribute, supply a `main.swift` file with a `main` function that calls the `UIApplicationMain` function. For example, if your app uses a custom subclass of `UIApplication` as its principle class, call the `UIApplicationMain` function instead of using this attribute. 
+If you do not use this attribute, supply a `main.swift` file with a `main` function that calls the `UIApplicationMain` function. For example, if your app uses a custom subclass of `UIApplication` as its principal class, call the `UIApplicationMain` function instead of using this attribute. 
 
 ### Declaration Attributes Used by Interface Builder
 
@@ -13214,22 +12702,6 @@ balanced-token  → Any identifier, keyword, literal, or operator
 balanced-token  → Any punctuation except `(­`, `)­`, `[­`, `]­`, `{­`, or `}­`
 
 # Patterns
-
-On This Page
-
-  1. Wildcard Pattern 
-
-  2. Identifier Pattern 
-
-  3. Value-Binding Pattern 
-
-  4. Tuple Pattern 
-
-  5. Enumeration Case Pattern 
-
-  6. Type-Casting Patterns 
-
-  7. Expression Pattern 
 
 A _pattern_ represents the structure of a single value or a composite value. For example, the structure of a tuple `(1, 2)` is a comma-separated list of two elements. Because patterns represent the structure of a value rather than any one particular value, you can match them with a variety of values. For instance, the pattern `(x, y)` matches the tuple `(1, 2)` and any other two-element tuple. In addition to matching a pattern with a value, you can extract part or all of a composite value and bind each part to a constant or variable name. 
 
@@ -13396,12 +12868,6 @@ expression-pattern  → expression­
 
 # Generic Parameters and Arguments
 
-On This Page
-
-  1. Generic Parameter Clause 
-
-  2. Generic Argument Clause 
-
 This chapter describes parameters and arguments for generic types, functions, and initializers. When you declare a generic type, function, or initializer, you specify the type parameters that the generic type, function, or initializer can work with. These type parameters act as placeholders that are replaced by actual concrete type arguments when an instance of a generic type is created or a generic function or initializer is called. 
 
 For an overview of generics in Swift, see Generics. 
@@ -13422,7 +12888,7 @@ A generic parameter consists of a _type parameter_ followed by an optional _cons
 
 The _constraint_ specifies that a type parameter inherits from a specific class or conforms to a protocol or protocol composition. For instance, in the generic function below, the generic parameter `T: Comparable` indicates that any type argument substituted for the type parameter `T` must conform to the `Comparable` protocol. 
 
-  1. `func simpleMin<T: Comparable>(x: T, y: T) -> T {`
+  1. `func simpleMax<T: Comparable>(x: T, y: T) -> T {`
   2. ` if x < y {`
   3. ` return y`
   4. ` }`
@@ -13431,8 +12897,8 @@ The _constraint_ specifies that a type parameter inherits from a specific class 
 
 Because `Int` and `Double`, for example, both conform to the `Comparable` protocol, this function accepts arguments of either type. In contrast with generic types, you don’t specify a generic argument clause when you use a generic function or initializer. The type arguments are instead inferred from the type of the arguments passed to the function or initializer. 
 
-  1. `simpleMin(17, 42) // T is inferred to be Int`
-  2. `simpleMin(3.14159, 2.71828) // T is inferred to be Double`
+  1. `simpleMax(17, 42) // T is inferred to be Int`
+  2. `simpleMax(3.14159, 2.71828) // T is inferred to be Double`
 
 ### Where Clauses
 
@@ -13502,24 +12968,6 @@ generic-argument  → type­
 
 # Summary of the Grammar
 
-On This Page
-
-  1. Statements 
-
-  2. Generic Parameters and Arguments 
-
-  3. Declarations 
-
-  4. Patterns 
-
-  5. Attributes 
-
-  6. Expressions 
-
-  7. Lexical Structure 
-
-  8. Types 
-
 ## Statements
 
 Grammar of a statement 
@@ -13580,7 +13028,7 @@ Grammar of an if statement
 
 if-statement  → `if­`if-condition­code-block­else-clause­opt­
 
-if-condition  →  expression­ declaration­
+if-condition  →  expression­ value-binding-pattern­
 
 else-clause  →  `else­`code-block­ `else­`if-statement­
 
@@ -13852,7 +13300,9 @@ raw-value-style-enum-case-list  →  raw-value-style-enum-case­ raw-value-style
 
 raw-value-style-enum-case  → enum-case-name­raw-value-assignment­opt­
 
-raw-value-assignment  → `=­`literal­
+raw-value-assignment  → `=­`raw-value-literal­
+
+raw-value-literal  →  numeric-literal­ string-literal­ boolean-literal­
 
 Grammar of a structure declaration 
 
@@ -14244,293 +13694,7 @@ dynamic-type-expression  → postfix-expression­`.­``dynamicType­`
 
 Grammar of a subscript expression 
 
-subscript-expression  → postfix-expression­`[­`expression-list­`]­`
-
-Grammar of a forced-value expression 
-
-forced-value-expression  → postfix-expression­`!­`
-
-Grammar of an optional-chaining expression 
-
-optional-chaining-expression  → postfix-expression­`?­`
-
-## Lexical Structure
-
-Grammar of an identifier 
-
-identifier  → identifier-head­identifier-characters­opt­
-
-identifier  → ``­`identifier-head­identifier-characters­opt­``­`
-
-identifier  → implicit-parameter-name­
-
-identifier-list  →  identifier­ identifier­`,­`identifier-list­
-
-identifier-head  → Upper- or lowercase letter A through Z
-
-identifier-head  → `_­`
-
-identifier-head  → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, or U+00B7–U+00BA
-
-identifier-head  → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, or U+00F8–U+00FF
-
-identifier-head  → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, or U+180F–U+1DBF
-
-identifier-head  → U+1E00–U+1FFF
-
-identifier-head  → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, or U+2060–U+206F
-
-identifier-head  → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, or U+2776–U+2793
-
-identifier-head  → U+2C00–U+2DFF or U+2E80–U+2FFF
-
-identifier-head  → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, or U+3040–U+D7FF
-
-identifier-head  → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, or U+FE30–U+FE44
-
-identifier-head  → U+FE47–U+FFFD
-
-identifier-head  → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, or U+40000–U+4FFFD
-
-identifier-head  → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, or U+80000–U+8FFFD
-
-identifier-head  → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, or U+C0000–U+CFFFD
-
-identifier-head  → U+D0000–U+DFFFD or U+E0000–U+EFFFD
-
-identifier-character  → Digit 0 through 9
-
-identifier-character  → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, or U+FE20–U+FE2F
-
-identifier-character  → identifier-head­
-
-identifier-characters  → identifier-character­identifier-characters­opt­
-
-implicit-parameter-name  → `$­`decimal-digits­
-
-Grammar of a literal 
-
-literal  →  integer-literal­ floating-point-literal­ string-literal­
-
-literal  →  `true­` `false­` `nil­`
-
-Grammar of an integer literal 
-
-integer-literal  → binary-literal­
-
-integer-literal  → octal-literal­
-
-integer-literal  → decimal-literal­
-
-integer-literal  → hexadecimal-literal­
-
-binary-literal  → `0b­`binary-digit­binary-literal-characters­opt­
-
-binary-digit  → Digit 0 or 1
-
-binary-literal-character  →  binary-digit­ `_­`
-
-binary-literal-characters  → binary-literal-character­binary-literal-characters­opt­
-
-octal-literal  → `0o­`octal-digit­octal-literal-characters­opt­
-
-octal-digit  → Digit 0 through 7
-
-octal-literal-character  →  octal-digit­ `_­`
-
-octal-literal-characters  → octal-literal-character­octal-literal-characters­opt­
-
-decimal-literal  → decimal-digit­decimal-literal-characters­opt­
-
-decimal-digit  → Digit 0 through 9
-
-decimal-digits  → decimal-digit­decimal-digits­opt­
-
-decimal-literal-character  →  decimal-digit­ `_­`
-
-decimal-literal-characters  → decimal-literal-character­decimal-literal-characters­opt­
-
-hexadecimal-literal  → `0x­`hexadecimal-digit­hexadecimal-literal-characters­opt­
-
-hexadecimal-digit  → Digit 0 through 9, a through f, or A through F
-
-hexadecimal-literal-character  →  hexadecimal-digit­ `_­`
-
-hexadecimal-literal-characters  → hexadecimal-literal-character­hexadecimal-literal-characters­opt­
-
-Grammar of a floating-point literal 
-
-floating-point-literal  → decimal-literal­decimal-fraction­opt­decimal-exponent­opt­
-
-floating-point-literal  → hexadecimal-literal­hexadecimal-fraction­opt­hexadecimal-exponent­
-
-decimal-fraction  → `.­`decimal-literal­
-
-decimal-exponent  → floating-point-e­sign­opt­decimal-literal­
-
-hexadecimal-fraction  → `.­`hexadecimal-digit­hexadecimal-literal-characters­opt­
-
-hexadecimal-exponent  → floating-point-p­sign­opt­decimal-literal­
-
-floating-point-e  →  `e­` `E­`
-
-floating-point-p  →  `p­` `P­`
-
-sign  →  `+­` `-­`
-
-Grammar of a string literal 
-
-string-literal  → `"­`quoted-text­opt­`"­`
-
-quoted-text  → quoted-text-item­quoted-text­opt­
-
-quoted-text-item  → escaped-character­
-
-quoted-text-item  → `\\(­`expression­`)­`
-
-quoted-text-item  → Any Unicode extended grapheme cluster except `"­`, `\­`, U+000A, or U+000D
-
-escaped-character  →  `\0­` `\\\­` `\t­` `\n­` `\r­` `\"­` `\'­`
-
-escaped-character  → `\u­``{­`unicode-scalar-digits­`}­`
-
-unicode-scalar-digits  → Between one and eight hexadecimal digits
-
-Grammar of operators 
-
-operator  → operator-head­operator-characters­opt­
-
-operator  → dot-operator-head­dot-operator-characters­opt­
-
-operator-head  →  `/­` `=­` `-­` `+­` `!­` `*­` `%­` `<­` `>­` `&­` `|­` `^­` `~­` `?­`
-
-operator-head  → U+00A1–U+00A7
-
-operator-head  → U+00A9 or U+00AB
-
-operator-head  → U+00AC or U+00AE
-
-operator-head  → U+00B0–U+00B1, U+00B6, U+00BB, U+00BF, U+00D7, or U+00F7
-
-operator-head  → U+2016–U+2017 or U+2020–U+2027
-
-operator-head  → U+2030–U+203E
-
-operator-head  → U+2041–U+2053
-
-operator-head  → U+2055–U+205E
-
-operator-head  → U+2190–U+23FF
-
-operator-head  → U+2500–U+2775
-
-operator-head  → U+2794–U+2BFF
-
-operator-head  → U+2E00–U+2E7F
-
-operator-head  → U+3001–U+3003
-
-operator-head  → U+3008–U+3030
-
-operator-character  → operator-head­
-
-operator-character  → U+0300–U+036F
-
-operator-character  → U+1DC0–U+1DFF
-
-operator-character  → U+20D0–U+20FF
-
-operator-character  → U+FE00–U+FE0F
-
-operator-character  → U+FE20–U+FE2F
-
-operator-character  → U+E0100–U+E01EF
-
-operator-characters  → operator-character­operator-characters­opt­
-
-dot-operator-head  → `..­`
-
-dot-operator-character  →  `.­` operator-character­
-
-dot-operator-characters  → dot-operator-character­dot-operator-characters­opt­
-
-binary-operator  → operator­
-
-prefix-operator  → operator­
-
-postfix-operator  → operator­
-
-## Types
-
-Grammar of a type 
-
-type  →  array-type­ dictionary-type­ function-type­ type-identifier­ tuple-type­ optional-type­ implicitly-unwrapped-optional-type­ protocol-composition-type­ metatype-type­
-
-Grammar of a type annotation 
-
-type-annotation  → `:­`attributes­opt­type­
-
-Grammar of a type identifier 
-
-type-identifier  →  type-name­generic-argument-clause­opt­ type-name­generic-argument-clause­opt­`.­`type-identifier­
-
-type-name  → identifier­
-
-Grammar of a tuple type 
-
-tuple-type  → `(­`tuple-type-body­opt­`)­`
-
-tuple-type-body  → tuple-type-element-list­`...­`opt­
-
-tuple-type-element-list  →  tuple-type-element­ tuple-type-element­`,­`tuple-type-element-list­
-
-tuple-type-element  →  attributes­opt­`inout­`opt­type­ `inout­`opt­element-name­type-annotation­
-
-element-name  → identifier­
-
-Grammar of a function type 
-
-function-type  → type­`->­`type­
-
-Grammar of an array type 
-
-array-type  → `[­`type­`]­`
-
-Grammar of a dictionary type 
-
-dictionary-type  → `[­`type­`:­`type­`]­`
-
-Grammar of an optional type 
-
-optional-type  → type­`?­`
-
-Grammar of an implicitly unwrapped optional type 
-
-implicitly-unwrapped-optional-type  → type­`!­`
-
-Grammar of a protocol composition type 
-
-protocol-composition-type  → `protocol­``<­`protocol-identifier-list­opt­`>­`
-
-protocol-identifier-list  →  protocol-identifier­ protocol-identifier­`,­`protocol-identifier-list­
-
-protocol-identifier  → type-identifier­
-
-Grammar of a metatype type 
-
-metatype-type  →  type­`.­``Type­` type­`.­``Protocol­`
-
-Grammar of a type inheritance clause 
-
-type-inheritance-clause  → `:­`class-requirement­`,­`type-inheritance-list­
-
-type-inheritance-clause  → `:­`class-requirement­
-
-type-inheritance-clause  → `:­`type-inheritance-list­
-
-type-inheritance-list  →  type-identifier­ type-identifier­`,­`type-inheritance-list­
-
-class-requirement  → `class­`
+subscript-expression  → postfix-expression­`[­`
 
 # Document Revision History
 
@@ -14538,27 +13702,39 @@ This table describes the changes to _The Swift Programming Language_.
 
 Date 
 
-Notes 
+| 
 
-2014-10-10 
+Notes   
+  
+---|---  
+  
+2014-10-16 
+
+| 
 
   1. Added a full guide to Failable Initializers. 
 
   2. Added a description of Failable Initializer Requirements for protocols. 
 
-  3. Constants and variables of type `Any` can now contain function instances. Updated the example for Any to show how to check for and cast to a function type within a `switch` statement. 
-
+  3. Constants and variables of type `Any` can now contain function instances. Updated the example for Any to show how to check for and cast to a function type within a `switch` statement.   
+  
 2014-09-15 
 
-  1. Enumerations with raw values now have a `rawValue` property rather than a `toRaw()` method and a failable initializer with a `rawValue` parameter rather than a `fromRaw()` method. For more information, see Raw Values and Enumerations with Cases of a Raw-Value Type. 
+| 
 
+  1. Enumerations with raw values now have a `rawValue` property rather than a `toRaw()` method and a failable initializer with a `rawValue` parameter rather than a `fromRaw()` method. For more information, see Raw Values and Enumerations with Cases of a Raw-Value Type.   
+  
 2014-09-09 
+
+| 
 
   1. Added a new reference section about Failable Initializers, which can trigger initialization failure. 
 
-  2. Custom operators can now contain the `?` character. Updated the Operators reference to describe the revised rules. Removed a duplicate description of the valid set of operator characters from Custom Operators. 
-
+  2. Custom operators can now contain the `?` character. Updated the Operators reference to describe the revised rules. Removed a duplicate description of the valid set of operator characters from Custom Operators.   
+  
 2014-08-18 
+
+| 
 
   1. Added a new section about Initializer Requirements in protocols. 
 
@@ -14568,9 +13744,11 @@ Notes
 
   4. Updated the Concatenating Strings and Characters section to reflect the fact that `String` and `Character` values can no longer be combined with the addition operator (`+`) or addition assignment operator (`+=`). These operators are now used only with `String` values. Use the `String` type’s `append` method to append a single `Character` value onto the end of a string. 
 
-  5. Added information about the `availability` attribute to the Declaration Attributes section. 
-
+  5. Added information about the `availability` attribute to the Declaration Attributes section.   
+  
 2014-08-04 
+
+| 
 
   1. Optionals no longer implicitly evaluate to `true` when they have a value and `false` when they do not, to avoid confusion when working with optional `Bool` values. Instead, make an explicit check against `nil` with the `==` or `!=` operators to find out if an optional contains a value. 
 
@@ -14606,9 +13784,11 @@ Notes
 
   17. Added information about how type inference works with Literals. 
 
-  18. Added more information about Curried Functions. 
-
+  18. Added more information about Curried Functions.   
+  
 2014-07-21 
+
+| 
 
   1. Added a new chapter about Access Control. 
 
@@ -14636,9 +13816,11 @@ Notes
 
   13. Clarified the full list of characters that can be used when defining Custom Operators. 
 
-  14. `nil` and the Booleans `true` and `false` are now Literals. 
-
+  14. `nil` and the Booleans `true` and `false` are now Literals.   
+  
 2014-07-07 
+
+| 
 
   1. Swift’s `Array` type now has full value semantics. Updated the information about Mutability of Collections and Arrays to reflect the new approach. Also clarified the Assignment and Copy Behavior for Strings, Arrays, and Dictionaries. 
 
@@ -14654,8 +13836,10 @@ Notes
 
   7. Updated to `..<` rather than `..` for the Half-Open Range Operator. 
 
-  8. Added an example of Extending a Generic Type. 
-
+  8. Added an example of Extending a Generic Type.   
+  
 2014-06-02 
+
+| 
 
   1. New document that describes Swift, Apple’s new programming language for building iOS and OS X apps. 
