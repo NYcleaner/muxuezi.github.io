@@ -40,18 +40,7 @@ MathJax.Hub.Config({
         <meta property="og:site_name" content="绿萝间">
     <meta property="og:title" content="Python Data Structures">
     <meta property="og:url" content="http://muxuezi.github.io/posts/python-data-structures.html">
-    <meta property="og:description" content="Problem Solving with Algorithms and Data Structures¶
-
-
-
-
-
-
-
-
-
-By Brad Miller and David Ranum, Luther College
-List of algorithms
+    <meta property="og:description" content="Problem Solving with Algorithms and Data Structures  ¶
 
 
 
@@ -65,7 +54,30 @@ from IPython.display import HTML
 
 
 
-  Hide output if cli">
+  Hide output if click :-)
+
+
+
+
+
+
+
+
+
+
+
+Table 1: Common Functions for Big-O
+
+
+
+
+
+f(n)
+Name
+
+
+
+1">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2014-11-06T13:08:39+08:00">
            <meta property="article:tag" content="Python">
@@ -120,24 +132,13 @@ from IPython.display import HTML
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Solving-with-Algorithms-and-Data-Structures">
-<a href="http://interactivepython.org/runestone/static/pythonds/index.html">Problem Solving with Algorithms and Data Structures</a><a class="anchor-link" href="python-data-structures.html#Problem-Solving-with-Algorithms-and-Data-Structures">¶</a>
+<h2 id="Problem-Solving-with-Algorithms-and-Data-Structures--">
+<a href="http://interactivepython.org/runestone/static/pythonds/index.html">Problem Solving with Algorithms and Data Structures</a>  <a class="anchor-link" href="python-data-structures.html#Problem-Solving-with-Algorithms-and-Data-Structures--">¶</a>
 </h2>
 </div>
 </div>
 </div>
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>By Brad Miller and David Ranum, Luther College</p>
-<p><em><a href="http://en.wikipedia.org/wiki/List_of_algorithms">List of algorithms</a></em></p>
-<!-- TEASER_END -->
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
@@ -1102,7 +1103,7 @@ A B + C * D E - F G + * -
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-&lt;map at 0x7f1ed4ad0630&gt;
+&lt;map at 0x7f83a45b56d8&gt;
 </pre>
 </div>
 
@@ -1344,16 +1345,16 @@ Susan
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-Average Wait  42.25 secs   1 tasks remaining.
-Average Wait 200.00 secs   3 tasks remaining.
-Average Wait 161.36 secs   0 tasks remaining.
-Average Wait 309.85 secs   2 tasks remaining.
-Average Wait  88.96 secs   0 tasks remaining.
-Average Wait 287.91 secs   3 tasks remaining.
-Average Wait 109.39 secs   1 tasks remaining.
-Average Wait  96.73 secs   1 tasks remaining.
-Average Wait  84.85 secs   5 tasks remaining.
-Average Wait 123.33 secs   0 tasks remaining.
+Average Wait  31.79 secs   0 tasks remaining.
+Average Wait  63.80 secs   0 tasks remaining.
+Average Wait  29.67 secs   0 tasks remaining.
+Average Wait 161.00 secs   0 tasks remaining.
+Average Wait 903.00 secs  11 tasks remaining.
+Average Wait 338.50 secs   2 tasks remaining.
+Average Wait  82.90 secs   0 tasks remaining.
+Average Wait 164.33 secs   1 tasks remaining.
+Average Wait  98.30 secs   1 tasks remaining.
+Average Wait  50.20 secs   1 tasks remaining.
 
 </pre>
 </div>
@@ -4013,6 +4014,23 @@ Merging  [17, 20, 26, 31, 44, 54, 55, 77, 93]
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>A sequential search is $O(n)$ for ordered and unordered lists.</li>
+<li>A binary search of an ordered list is $O(logn)$ in the worst case.</li>
+<li>Hash tables can provide constant time searching.</li>
+<li>A bubble sort, a selection sort, and an insertion sort are $O(n^2)$ algorithms.</li>
+<li>A shell sort improves on the insertion sort by sorting incremental sublists. It falls between $O(n)$ and $O(n^2)$.</li>
+<li>A merge sort is $O(nlogn)$, but requires additional space for the merging process.</li>
+<li>A quick sort is $O(nlogn)$, but may degrade to $O(n^2)$ if the split points are not near the middle of the list. It does not require additional space.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Trees-and-Tree-Algorithms">Trees and Tree Algorithms<a class="anchor-link" href="python-data-structures.html#Trees-and-Tree-Algorithms">¶</a>
 </h3>
 </div>
@@ -4327,9 +4345,9 @@ right subtree =  ['c', ['f', [], []], []]
 <pre>
 a
 None
-&lt;__main__.BinaryTree object at 0x7f1ed44fbc88&gt;
+&lt;__main__.BinaryTree object at 0x7f83a44e9c88&gt;
 b
-&lt;__main__.BinaryTree object at 0x7f1ed44fba90&gt;
+&lt;__main__.BinaryTree object at 0x7f83a44e5898&gt;
 c
 hello
 
@@ -5455,624 +5473,6 @@ at
 </table>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Graph-Abstract-Data-Type">The Graph Abstract Data Type<a class="anchor-link" href="python-data-structures.html#The-Graph-Abstract-Data-Type">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Graph() creates a new, empty graph.</li>
-<li>addVertex(vert) adds an instance of Vertex to the graph.</li>
-<li>addEdge(fromVert, toVert) Adds a new, directed edge to the graph that connects two vertices.</li>
-<li>addEdge(fromVert, toVert, weight) Adds a new, weighted, directed edge to the graph that connects two vertices.</li>
-<li>getVertex(vertKey) finds the vertex in the graph named vertKey.</li>
-<li>getVertices() returns the list of all vertices in the graph.</li>
-<li>in returns True for a statement of the form vertex in graph, if the given vertex is in the graph, False otherwise.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Graph-Implementation">Graph Implementation<a class="anchor-link" href="python-data-structures.html#Graph-Implementation">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [66]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Vertex</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connectedTo</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="k">def</span> <span class="nf">addNeighbor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connectedTo</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span>
-
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s">' connectedTo: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectedTo</span><span class="p">])</span>
-
-    <span class="k">def</span> <span class="nf">getConnections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectedTo</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">getId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
-
-    <span class="k">def</span> <span class="nf">getWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nbr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectedTo</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [67]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">numVertices</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">addVertex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">numVertices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numVertices</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">newVertex</span> <span class="o">=</span> <span class="n">Vertex</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">newVertex</span>
-        <span class="k">return</span> <span class="n">newVertex</span>
-
-    <span class="k">def</span> <span class="nf">getVertex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
-
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span>
-
-    <span class="k">def</span> <span class="nf">addEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">f</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">:</span>
-            <span class="n">nv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">:</span>
-            <span class="n">nv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">addNeighbor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">cost</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">getVertices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertList</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [68]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-    <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">vertList</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"( </span><span class="si">%s</span><span class="s"> , </span><span class="si">%s</span><span class="s"> )"</span> <span class="o">%</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">getId</span><span class="p">(),</span> <span class="n">w</span><span class="o">.</span><span class="n">getId</span><span class="p">()))</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-( 0 , 5 )
-( 0 , 1 )
-( 1 , 2 )
-( 2 , 3 )
-( 3 , 5 )
-( 3 , 4 )
-( 4 , 0 )
-( 5 , 2 )
-( 5 , 4 )
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Word-Ladder-Problem">The Word Ladder Problem<a class="anchor-link" href="python-data-structures.html#The-Word-Ladder-Problem">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [69]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">Graph</span>
-
-<span class="k">def</span> <span class="nf">buildGraph</span><span class="p">(</span><span class="n">wordFile</span><span class="p">):</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
-    <span class="n">wfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">wordFile</span><span class="p">,</span><span class="s">'r'</span><span class="p">)</span>
-    <span class="c"># create buckets of words that differ by one letter</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">wfile</span><span class="p">:</span>
-        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)):</span>
-            <span class="n">bucket</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s">'_'</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-            <span class="k">if</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
-                <span class="n">d</span><span class="p">[</span><span class="n">bucket</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">d</span><span class="p">[</span><span class="n">bucket</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="p">]</span>
-    <span class="c"># add vertices and edges for words in the same bucket</span>
-    <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">word1</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">bucket</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">word2</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">bucket</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">word1</span> <span class="o">!=</span> <span class="n">word2</span><span class="p">:</span>
-                    <span class="n">g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span><span class="n">word2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">g</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Implementing-Breadth-First-Search">Implementing Breadth First Search<a class="anchor-link" href="python-data-structures.html#Implementing-Breadth-First-Search">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>The new, unexplored vertex nbr, is colored gray.</li>
-<li>The predecessor of nbr is set to the current node currentVert</li>
-<li>The distance to nbr is set to the distance to currentVert + 1</li>
-<li>nbr is added to the end of a queue. Adding nbr to the end of the queue effectively schedules this node for further exploration, but not until all the other vertices on the adjacency list of currentVert have been explored.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [70]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Vertex</span>
-<span class="kn">from</span> <span class="nn">pythonds.basic</span> <span class="kn">import</span> <span class="n">Queue</span>
-
-<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">start</span><span class="p">):</span>
-  <span class="n">start</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="n">start</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-  <span class="n">vertQueue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
-  <span class="n">vertQueue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">vertQueue</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="n">currentVert</span> <span class="o">=</span> <span class="n">vertQueue</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">nbr</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">):</span>
-        <span class="n">nbr</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'gray'</span><span class="p">)</span>
-        <span class="n">nbr</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="n">currentVert</span><span class="o">.</span><span class="n">getDistance</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">nbr</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="n">currentVert</span><span class="p">)</span>
-        <span class="n">vertQueue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">nbr</span><span class="p">)</span>
-    <span class="n">currentVert</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'black'</span><span class="p">)</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Knight’s-Tour-Problem">The Knight’s Tour Problem<a class="anchor-link" href="python-data-structures.html#The-Knight%E2%80%99s-Tour-Problem">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [72]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">Graph</span>
-
-<span class="k">def</span> <span class="nf">knightGraph</span><span class="p">(</span><span class="n">bdSize</span><span class="p">):</span>
-    <span class="n">ktGraph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bdSize</span><span class="p">):</span>
-       <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bdSize</span><span class="p">):</span>
-           <span class="n">nodeId</span> <span class="o">=</span> <span class="n">posToNodeId</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">bdSize</span><span class="p">)</span>
-           <span class="n">newPositions</span> <span class="o">=</span> <span class="n">genLegalMoves</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">bdSize</span><span class="p">)</span>
-           <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">newPositions</span><span class="p">:</span>
-               <span class="n">nid</span> <span class="o">=</span> <span class="n">posToNodeId</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">bdSize</span><span class="p">)</span>
-               <span class="n">ktGraph</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="n">nodeId</span><span class="p">,</span><span class="n">nid</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ktGraph</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [73]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">genLegalMoves</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">bdSize</span><span class="p">):</span>
-    <span class="n">newMoves</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">moveOffsets</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-                   <span class="p">(</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">),(</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span> <span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">moveOffsets</span><span class="p">:</span>
-        <span class="n">newX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">newY</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">legalCoord</span><span class="p">(</span><span class="n">newX</span><span class="p">,</span><span class="n">bdSize</span><span class="p">)</span> <span class="ow">and</span> \
-                        <span class="n">legalCoord</span><span class="p">(</span><span class="n">newY</span><span class="p">,</span><span class="n">bdSize</span><span class="p">):</span>
-            <span class="n">newMoves</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">newMoves</span>
-
-<span class="k">def</span> <span class="nf">legalCoord</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bdSize</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">bdSize</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [74]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Vertex</span>
-<span class="k">def</span> <span class="nf">knightTour</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">limit</span><span class="p">):</span>
-        <span class="n">u</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'gray'</span><span class="p">)</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span>
-            <span class="n">nbrList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">getConnections</span><span class="p">())</span>
-            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">done</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbrList</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">nbrList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">:</span>
-                    <span class="n">done</span> <span class="o">=</span> <span class="n">knightTour</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">nbrList</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">limit</span><span class="p">)</span>
-                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>  <span class="c"># prepare to backtrack</span>
-                <span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-                <span class="n">u</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'white'</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">done</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">return</span> <span class="n">done</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [75]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">orderByAvail</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">resList</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">:</span>
-            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">:</span>
-                    <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">resList</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
-    <span class="n">resList</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">resList</span><span class="p">]</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="General-Depth-First-Search">General Depth First Search<a class="anchor-link" href="python-data-structures.html#General-Depth-First-Search">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [76]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">Graph</span>
-<span class="k">class</span> <span class="nc">DFSGraph</span><span class="p">(</span><span class="n">Graph</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">aVertex</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="n">aVertex</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'white'</span><span class="p">)</span>
-            <span class="n">aVertex</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">aVertex</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">aVertex</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dfsvisit</span><span class="p">(</span><span class="n">aVertex</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">dfsvisit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">startVertex</span><span class="p">):</span>
-        <span class="n">startVertex</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'gray'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">startVertex</span><span class="o">.</span><span class="n">setDiscovery</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">nextVertex</span> <span class="ow">in</span> <span class="n">startVertex</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">nextVertex</span><span class="o">.</span><span class="n">getColor</span><span class="p">()</span> <span class="o">==</span> <span class="s">'white'</span><span class="p">:</span>
-                <span class="n">nextVertex</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="n">startVertex</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dfsvisit</span><span class="p">(</span><span class="n">nextVertex</span><span class="p">)</span>
-        <span class="n">startVertex</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="s">'black'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">startVertex</span><span class="o">.</span><span class="n">setFinish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The dfsvisit method starts with a single vertex called startVertex and explores all of the neighboring white vertices as deeply as possible. If you look carefully at the code for dfsvisit and compare it to breadth first search, what you should notice is that the dfsvisit algorithm is almost identical to bfs except that on the last line of the inner for loop, dfsvisit calls itself recursively to continue the search at a deeper level, whereas bfs adds the node to a queue for later exploration. It is interesting to note that where bfs uses a queue, dfsvisit uses a stack. You don’t see a stack in the code, but it is implicit in the recursive call to dfsvisit.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Topological-Sorting">Topological Sorting<a class="anchor-link" href="python-data-structures.html#Topological-Sorting">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A topological sort takes a directed acyclic graph and produces a linear ordering of all its vertices such that if the graph $G$ contains an edge $(v,w)$ then the vertex $v$ comes before the vertex $w$ in the ordering. Directed acyclic graphs are used in many applications to indicate the precedence of events. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The topological sort is a simple but useful adaptation of a depth first search. The algorithm for the topological sort is as follows:</p>
-<ol>
-<li>Call dfs(g) for some graph g. The main reason we want to call depth first search is to compute the finish times for each of the vertices.</li>
-<li>Store the vertices in a list in decreasing order of finish time.</li>
-<li>Return the ordered list as the result of the topological sort.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Strongly-Connected-Components">Strongly Connected Components<a class="anchor-link" href="python-data-structures.html#Strongly-Connected-Components">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>One graph algorithm that can help find clusters of highly interconnected vertices in a graph is called the <strong>strongly connected components algorithm (SCC)</strong>. </p>
-<p>We formally define a strongly connected component, $C$, of a graph $G$, as the largest subset of vertices $C⊂V$ such that for every pair of vertices $v,w∈C$ we have a path from $v$ to $w$ and a path from $w$ to $v$. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The algorithm to compute the strongly connected components for a graph.</p>
-<ol>
-<li>Call dfs for the graph G to compute the finish times for each vertex.</li>
-<li>Compute $G^T$.</li>
-<li>Call dfs for the graph $G^T$ but in the main loop of DFS explore each vertex in decreasing order of finish time.</li>
-<li>Each tree in the forest computed in step 3 is a strongly connected component. Output the vertex ids for each vertex in each tree in the forest to identify the component.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Shortest-Path-Problems---Dijkstra’s-Algorithm">Shortest Path Problems - Dijkstra’s Algorithm<a class="anchor-link" href="python-data-structures.html#Shortest-Path-Problems---Dijkstra%E2%80%99s-Algorithm">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [77]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">PriorityQueue</span><span class="p">,</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Vertex</span>
-<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">aGraph</span><span class="p">,</span><span class="n">start</span><span class="p">):</span>
-    <span class="n">pq</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
-    <span class="n">start</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">pq</span><span class="o">.</span><span class="n">buildHeap</span><span class="p">([(</span><span class="n">v</span><span class="o">.</span><span class="n">getDistance</span><span class="p">(),</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">aGraph</span><span class="p">])</span>
-    <span class="k">while</span> <span class="ow">not</span> <span class="n">pq</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-        <span class="n">currentVert</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">delMin</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">nextVert</span> <span class="ow">in</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-            <span class="n">newDist</span> <span class="o">=</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getDistance</span><span class="p">()</span> \
-                    <span class="o">+</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(</span><span class="n">nextVert</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">newDist</span> <span class="o">&lt;</span> <span class="n">nextVert</span><span class="o">.</span><span class="n">getDistance</span><span class="p">():</span>
-                <span class="n">nextVert</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span> <span class="n">newDist</span> <span class="p">)</span>
-                <span class="n">nextVert</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="n">currentVert</span><span class="p">)</span>
-                <span class="n">pq</span><span class="o">.</span><span class="n">decreaseKey</span><span class="p">(</span><span class="n">nextVert</span><span class="p">,</span><span class="n">newDist</span><span class="p">)</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Prim’s-Spanning-Tree-Algorithm">Prim’s Spanning Tree Algorithm<a class="anchor-link" href="python-data-structures.html#Prim%E2%80%99s-Spanning-Tree-Algorithm">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [78]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pythonds.graphs</span> <span class="kn">import</span> <span class="n">PriorityQueue</span><span class="p">,</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Vertex</span>
-
-<span class="k">def</span> <span class="nf">prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">start</span><span class="p">):</span>
-    <span class="n">pq</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">)</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">start</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">pq</span><span class="o">.</span><span class="n">buildHeap</span><span class="p">([(</span><span class="n">v</span><span class="o">.</span><span class="n">getDistance</span><span class="p">(),</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">])</span>
-    <span class="k">while</span> <span class="ow">not</span> <span class="n">pq</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-        <span class="n">currentVert</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">delMin</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">nextVert</span> <span class="ow">in</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getConnections</span><span class="p">():</span>
-          <span class="n">newCost</span> <span class="o">=</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(</span><span class="n">nextVert</span><span class="p">)</span> \
-                  <span class="o">+</span> <span class="n">currentVert</span><span class="o">.</span><span class="n">getDistance</span><span class="p">()</span>
-          <span class="k">if</span> <span class="n">nextVert</span> <span class="ow">in</span> <span class="n">pq</span> <span class="ow">and</span> <span class="n">newCost</span><span class="o">&lt;</span><span class="n">nextVert</span><span class="o">.</span><span class="n">getDistance</span><span class="p">():</span>
-              <span class="n">nextVert</span><span class="o">.</span><span class="n">setPred</span><span class="p">(</span><span class="n">currentVert</span><span class="p">)</span>
-              <span class="n">nextVert</span><span class="o">.</span><span class="n">setDistance</span><span class="p">(</span><span class="n">newCost</span><span class="p">)</span>
-              <span class="n">pq</span><span class="o">.</span><span class="n">decreaseKey</span><span class="p">(</span><span class="n">nextVert</span><span class="p">,</span><span class="n">newCost</span><span class="p">)</span>
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
 </div>
 </div>
         </div>
