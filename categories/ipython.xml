@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Fri, 20 Mar 2015 12:58:33 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>China trillion dollars wasted investment</title><link>http://muxuezi.github.io/posts/China-trillion-dollars-wasted-investment.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 20 May 2015 13:18:42 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>kivy ch2 paint app</title><link>http://muxuezi.github.io/posts/kivy-ch2-paint-app.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="2-画图app"&gt;2 画图app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch2-paint-app.html#2-%E7%94%BB%E5%9B%BEapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在第一章做时钟app时，我们用了Kivy的标准部件：布局，文本框和按钮。通过这些高层次的抽象，我们能够灵活的修改部件的外观—，可以使用一整套成熟的组件，而不仅仅是单个原始图形。这种方式并非放之四海而皆准，马上你就会看到，Kivy还提供了低层的抽象工具：画点和线。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch2-paint-app.html"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Kivy</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/kivy-ch2-paint-app.html</guid><pubDate>Wed, 20 May 2015 05:03:13 GMT</pubDate></item><item><title>kivy ch1 clock app</title><link>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="时钟app"&gt;时钟app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html#%E6%97%B6%E9%92%9Fapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;一个仿iOS和Android内置时钟应用的app。分两部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;个没有交互的数字时钟，简述Kivy的事件驱动(event-driven)方法，引入计时器的功能，持续更新。&lt;/li&gt;
+&lt;li&gt;交互的秒表功能，设计流畅的自适应布局。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Kivy</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</guid><pubDate>Wed, 20 May 2015 05:01:56 GMT</pubDate></item><item><title>China trillion dollars wasted investment</title><link>http://muxuezi.github.io/posts/China-trillion-dollars-wasted-investment.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -5296,12 +5332,4 @@ at
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/portfolio/Why%20Julia.slides.html"&gt;Why Jula (slides show)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/introduction-to-julia.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Julia</category><category>ipython</category><guid>http://muxuezi.github.io/posts/introduction-to-julia.html</guid><pubDate>Tue, 07 Oct 2014 00:19:15 GMT</pubDate></item><item><title>关于本站ipython动态显示</title><link>http://muxuezi.github.io/posts/ipython-toggle-show.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;必须安装&lt;a href="http://ipython.org/install.html#"&gt;ipython2.2&lt;/a&gt;&lt;/strong&gt;，ipython2.1不行，关键是toggle.tpl里面引用的basic.tpl在ipython2.2里面。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/ipython-toggle-show.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>HTML/CSS</category><category>ipython</category><guid>http://muxuezi.github.io/posts/ipython-toggle-show.html</guid><pubDate>Fri, 12 Sep 2014 06:57:53 GMT</pubDate></item><item><title>Python Parallel System Tools PP4E</title><link>http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Parallel System Tools in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, include forks,
-threads, pipes, signals, sockets, and other launching techniques.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html"&gt;Read more…&lt;/a&gt; (25 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html</guid><pubDate>Fri, 15 Aug 2014 02:14:35 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/introduction-to-julia.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Julia</category><category>ipython</category><guid>http://muxuezi.github.io/posts/introduction-to-julia.html</guid><pubDate>Tue, 07 Oct 2014 00:19:15 GMT</pubDate></item></channel></rss>
