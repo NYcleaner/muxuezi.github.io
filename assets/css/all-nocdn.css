@@ -2218,29 +2218,29 @@ a:focus {
 .page-content > .content .h1,
 .page-content > .content h2,
 .page-content > .content .h2 {
-  line-height: 25px;
+  line-height: 1.9em;
 }
 .page-content > .content h3,
 .page-content > .content .h3 {
-  line-height: 20px;
+  line-height: 1.7em;
 }
 .page-content > .content h1,
 .page-content > .content .h1 {
-  font-size: 23px;
+  font-size: 1.9em;
 }
 .page-content > .content h2,
 .page-content > .content .h2 {
-  font-size: 20px;
+  font-size: 1.7em;
 }
 .page-content > .content h3,
 .page-content > .content .h3 {
-  font-size: 17px;
+  font-size: 1.5em;
 }
 .page-content > .content h4 {
-  font-size: 14px;
+  font-size: 1.3em;
 }
 .page-content > .content h5 {
-  font-size: 11px;
+  font-size: 1.1em;
 }
 .page-content > .content h6 {
   font-size: 7px;
