@@ -63,6 +63,39 @@ MathJax.Hub.Config({
     <section class="page-content">
         <div class="content" rel="main">
         <div class="post">
+            <h1 class="title"><a href="posts/pic-matplotlib-images-in-terminal.html">图像显示问题Python/Matplotlib Images in terminal</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2014-03-17T09:43:08+08:00">2014-03-17 09:43</time>
+                </div>
+                <div class="stats">
+                                <a href="posts/pic-matplotlib-images-in-terminal.html#disqus_thread" data-disqus-identifier="cache/posts/pic-matplotlib-images-in-terminal.html">Comments</a>
+
+
+                </div>
+                        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
+        </ul>
+        </div>
+
+            </div>
+            <div class="body">
+                <div>
+<p></p>
+<p>How To Generate Python/Matplotlib Images Without Having A Window Appear
+在debian终端直接生产png文件，然后在其他环境打开。</p>
+<p>The easiest way to do this is use a non-interactive backend such as Agg (for PNGs), PDF, SVG or PS. In your figure-generating script, just call the matplotlib.use() directive before importing pylab or pyplot:</p>
+<p>import matplotlib</p>
+<p>matplotlib.use('Agg')  #必须在pyplot之前使用</p>
+<p>import matplotlib.pyplot as plt</p>
+<p>plt.plot([1,2,3])</p>
+<p>plt.savefig('myfig')</p>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/matplotlib-gbk.html">Matplotlib显示中文</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -228,43 +261,6 @@ CTRL-C是强制中断程序的执行,</p>
 <p>wait ok</p>
 <p>只需USB线对Kindle 3修砖的小白教程</p>
 <p>http://bbs.xiaomi.cn/forum.php?mod=viewthread&amp;tid=8159110</p>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/apt-spy-sources.html">apt-spy寻找速度较快的更新源</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2014-03-17T09:39:31+08:00">2014-03-17 09:39</time>
-                </div>
-                <div class="stats">
-                                <a href="posts/apt-spy-sources.html#disqus_thread" data-disqus-identifier="cache/posts/apt-spy-sources.html">Comments</a>
-
-
-                </div>
-                        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
-        </ul>
-        </div>
-
-            </div>
-            <div class="body">
-                <div>
-<p></p>
-<p>apt-get install apt-spy
-apt-spy update</p>
-<h2>下载最新的更新源列表</h2>
-<p>apt-spy -d testing -a asia -t 5</p>
-<h2>对选定的源列表进行连接速度的测试</h2>
-<p>apt-spy会测试连接得到速度最快的更新源，记录在/etc/apt/sources.list.d/apt-spy.list中。之后apt- get update时会自动连接apt-spy.list中的更新源更新软件列表。apt-spy的使用参考5)。</p>
-<h2>-------------ubuntu14.04 trusty(163#网易电信网通双线接入网速杆杆的#)-----------------</h2>
-<p>deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty main multiverse restricted universe</p>
-<p>deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-security main multiverse restricted universe</p>
-<p>deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-updates main multiverse restricted universe</p>
-<p>deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-proposed universe restricted multiverse main</p>
-<p>deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-backports main multiverse restricted universe</p>
 </div>
             </div>
         </div>
