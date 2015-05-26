@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 23 May 2015 11:55:09 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>kivy ch3 sound recorder for android</title><link>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Tue, 26 May 2015 16:42:02 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>kivy ch4 chat app</title><link>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Kivy网络编程"&gt;Kivy网络编程&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html#Kivy%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;前面我们尝试过单一平台Android的Kivy开发，通过原生的底层API来实现。下面我们探索另外一种天生具有跨平台能力的工具来做app——网络。在这一章，我们做一个聊天app，类似于QQ，但是简单版。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Kivy</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</guid><pubDate>Tue, 26 May 2015 08:37:55 GMT</pubDate></item><item><title>kivy ch3 sound recorder for android</title><link>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -5318,10 +5334,4 @@ at
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;em&gt;这个系列共4个部分：中文版&lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs"&gt;Part I&lt;/a&gt;  &lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii"&gt;Part II&lt;/a&gt;  &lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii"&gt;Part III&lt;/a&gt;  &lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv"&gt;Part IV&lt;/a&gt;，英文版&lt;a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/"&gt;Part I&lt;/a&gt;  &lt;a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/"&gt;Part II&lt;/a&gt;  &lt;a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/"&gt;Part III&lt;/a&gt;  &lt;a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/"&gt;Part IV&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii.html</guid><pubDate>Tue, 28 Oct 2014 02:03:58 GMT</pubDate></item><item><title>Set of Julia in Python</title><link>http://muxuezi.github.io/posts/set-of-julia-in-python.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/portfolio/fractals.slides.html"&gt;演示分形几何（fractal geometry）&lt;/a&gt;对比Python和Julia的性能&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/set-of-julia-in-python.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Julia</category><category>ipython</category><guid>http://muxuezi.github.io/posts/set-of-julia-in-python.html</guid><pubDate>Tue, 07 Oct 2014 00:49:28 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii.html</guid><pubDate>Tue, 28 Oct 2014 02:03:58 GMT</pubDate></item></channel></rss>

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 23 May 2015 11:55:05 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>kivy ch3 sound recorder for android</title><link>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Tue, 26 May 2015 16:42:00 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>kivy ch4 chat app</title><link>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Kivy网络编程"&gt;Kivy网络编程&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html#Kivy%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;前面我们尝试过单一平台Android的Kivy开发，通过原生的底层API来实现。下面我们探索另外一种天生具有跨平台能力的工具来做app——网络。在这一章，我们做一个聊天app，类似于QQ，但是简单版。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Kivy</category><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</guid><pubDate>Tue, 26 May 2015 08:37:55 GMT</pubDate></item><item><title>kivy ch3 sound recorder for android</title><link>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -5293,10 +5309,4 @@ at
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Parallel System Tools in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, include forks,
 threads, pipes, signals, sockets, and other launching techniques.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html"&gt;Read more…&lt;/a&gt; (25 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html</guid><pubDate>Fri, 15 Aug 2014 02:14:35 GMT</pubDate></item><item><title>Python Network Scripting PP4E</title><link>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Network Scripting in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</guid><pubDate>Fri, 15 Aug 2014 02:09:45 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html"&gt;Read more…&lt;/a&gt; (25 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>ipython</category><guid>http://muxuezi.github.io/posts/python-parallel-system-tools-pp4e.html</guid><pubDate>Fri, 15 Aug 2014 02:14:35 GMT</pubDate></item></channel></rss>
