@@ -184,9 +184,9 @@ Twisted目前仍然不能很好的不支持Python3，所以这里得使用Python
 </blockquote>
 <p>Twisted是一个事件驱动的底层的服务器框架，不像<strong>Node.js</strong>（实际上，Node.js的设计受到Twisted的影响）。与Kivy很类似，事件驱动的架构意味着我们不需要把代码构建一个无限循环，相反我们只要为app绑定大量的事件监听器就行。许多底层的网络处理，都可以通过Twisted方便的实现。</p>
 <blockquote>
-<p>和其他Python包一样，用pip就可以安装Twisted：
-<strong>pip install -U twisted</strong>
-有两点要注意：</p>
+<p>和其他Python包一样，用pip就可以安装Twisted：</p>
+<p><strong>pip install -U twisted</strong></p>
+<p>有两点要注意：</p>
 <ul>
 <li>安装的时候得取得管理员权限（sudo）</li>
 <li>如果没装pip，easy_install也可以，Python2.7.9和Python3.4版本已经自带pip了</li>
@@ -1407,6 +1407,7 @@ color][/b]</code>。</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在bug修复了，用户可以安全的发从BBCode消息了。</p>
+<p><img src="kbpic/3.17chatlast.png" alt="chatlast"></p>
 <blockquote>
 <p>其实这类bug在互联网产品中很常见。类似于跨站脚本（cross-site
 scripting，XSS），可以造成比修改字体更恐怖的结果。
