@@ -571,11 +571,12 @@ Page (PHP)</strong>，一种适合做简单的网站的简单编程语言。其�
 <li>每2秒重复一次</li>
 </ol>
 <p>用JavaScript实现如下：</p>
-<pre><code class="language-javascript"><span class="function"><span class="keyword">function</span> <span class="title">reload_desktop</span><span class="params">()</span> {</span>
-    @@<span class="number">0</span>@@(<span class="string">'&lt;img&gt;'</span>, {src: <span class="string">'/desktop.jpeg?'</span> + 
-        Date.now()}).appendTo(<span class="string">'body'</span>)
+<pre><code>function reload_desktop() {
+    $('img').remove()
+    $('&lt;img&gt;', {src: '/desktop.jpeg?' + 
+        Date.now()}).appendTo('body')
 }
-setInterval(reload_desktop, <span class="number">2000</span>)
+setInterval(reload_desktop, 2000)
 </code></pre>
 <p>代码解释如下：</p>
 <ul>
@@ -615,9 +616,12 @@ setInterval(reload_desktop, <span class="number">2000</span>)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们要把<code>&lt;img&gt;</code>截图上的点击传给服务器。对<code>&lt;body&gt;</code>元素使用<code>.bind()</code>方法可以实现。因为我们不断的增删元素，图片上绑定的内容在更新后会丢失，而重新绑定也没必要。</p>
-<pre><code class="language-javascript">    <span class="function"><span class="keyword">function</span> <span class="title">send_click</span><span class="params">(event)</span> {</span>
-        <span class="keyword">var</span> fac = <span class="keyword">this</span>.naturalWidth / <span class="keyword">this</span>.width
-        @@<span class="number">0</span>@@(<span class="string">'body'</span>).on(<span class="string">'click'</span>, <span class="string">'img'</span>, send_click)
+<pre><code>function send_click(event) {
+    var fac = this.naturalWidth / this.width
+    $.get('/click', {x: 0|fac * event.clientX,
+               y: 0|fac * event.clientY})
+}
+$('body').on('click', 'img', send_click)
 </code></pre>
 <p>这里我们计算了点击的真实位置：通过图片缩放比例对坐标位置进行调整。</p>
 <p>$$x,y_{server} = \frac {width_{natural}}{width_{scaled}} \times x,y_{client}$$</p>
