@@ -246,7 +246,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在Flask里面，路由是以修饰器方式实现的，如<code>@app.route('/')</code>，在URL比较少的时候这么做很方便。</p>
 <p>'/'路由是服务器域名，对应一个IP地址。运行<code>server.py</code>后，在浏览器打开<code>http://127.0.0.1:7080</code>，看到<code>Hello, Flask</code>说明服务器ok了。</p>
-<p><img src="kbpic/4.1flaskserver.png" alt="flaskserver"></p>
+<p><img src="kbpic/5.1flaskserver.png" alt="flaskserver"></p>
 <p>这里，<code>app.run()</code>里面的参数<code>0.0.0.0</code>不是一个有效的IP地址，不能通过正常访问。服务器绑定这个IP表示我们的app会监听所有IPV4接口——也就是说，从任何一个可用的IP发出的请求都会得到相应。</p>
 <p>这和默认设置（localhost，127.0.0.1）不同。localhost的IP只允许监听同一个机器传来的请求。因此，这个IP适合调试和测试用。但是，当我们发布产品后，<code>0.0.0.0</code>就是面向世界，开张圣听。不过，注意这不会自动绕过路由器；它可以在你的局域网工作，但是在公网工作可能需要其他配置。</p>
 <p>还有，记得设置防火墙策略，因为它需要满足应用层设置的优先级。</p>
@@ -336,7 +336,7 @@ MathJax.Hub.Config({
 </blockquote>
 <p><code>buf.seek(0)</code>是为了倒回（<em>rewind</em>）<code>StringIO</code>实例；否则，程序就到了数据的最后，不会给<code>send_file()</code>发送任何数据了。</p>
 <p>现在就可以测试效果了，打开<code>http://127.0.0.1:7080/desktop.jpeg</code>就会看到当前屏幕的截图了。</p>
-<p><img src="kbpic/4.2screenshot.png" alt="screenshot"></p>
+<p><img src="kbpic/5.2screenshot.png" alt="screenshot"></p>
 </div>
 </div>
 </div>
@@ -593,7 +593,7 @@ setInterval(reload_desktop, 2000)
 </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
 </code></pre>
 <p>应用的截图如下所示：</p>
-<p><img src="kbpic/4.3remotedesk.png" alt="remotedesk"></p>
+<p><img src="kbpic/5.3remotedesk.png" alt="remotedesk"></p>
 <p>加载的时候你会发现图片在闪烁，因为在完全加载之前就立刻显示<code>desktop.jpeg</code>。还有一个问题就是下载频率是固定的，我们随意设定为两秒。由于网速的原因，用户可能还没看到图片加载完成就又改变了。</p>
 <p>这里只是原型，在Kivy设计的时候我们会纠正这个问题。</p>
 </div>
@@ -687,7 +687,6 @@ $('body').on('click', 'img', send_click)
             <span class="method">size_hint:</span> (<span class="number">0.4</span>, <span class="number">1</span>)
 </code></pre>
 <p>只要一个输入文本框<strong>Server IP</strong>。其实你也可以用服务器名称，但是这需要配置，直接IP省事儿。</p>
-<p><img src="kbpic/4.3remotedesk.png" alt="remotedesk"></p>
 <p>虽然用IP地址不是很直观，但是我们暂时没更好的选择。要做一个自动发现的网络服务来避免IP地址，用着更舒服，但是也更复杂（需要一大堆技术来实现）。</p>
 <blockquote>
 <p>这里，需要掌握基本的网络技能，比如把设备连接到路由器。这些都超出本文的范围，简单说下：</p>
@@ -862,7 +861,7 @@ $('body').on('click', 'img', send_click)
 <p>在第一章的时钟app里面，我们讨论过<code>Clock</code>对象的更新问题，当时是用<code>schedule_interval()</code>，类似于JavaScript的<code>setInterval()</code>，这里我们想要持续状态，类似于JavaScript的<code>setTimeout()</code>功能。</p>
 </blockquote>
 <p>现在屏幕更新就实现了，截图如下所示：
-<img src="kbpic/4.4desktopserver.png" alt="desktopserver"></p>
+<img src="kbpic/5.4desktopserver.png" alt="desktopserver"></p>
 </div>
 </div>
 </div>
@@ -1012,6 +1011,9 @@ $('body').on('click', 'img', send_click)
                 <ul class="pager">
             <li class="previous">
                 <a href="slott-2015061-2015-05-28-report.html" rel="prev" title="双色球2015061期(2015-05-28)数据分析报告">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="dlott-15061-2015-05-30-report.html" rel="next" title="大乐透15061期(2015-05-30)数据分析报告">Next post</a>
             </li>
         </ul>
 

@@ -367,7 +367,7 @@ Twisted目前仍然不能很好的不支持Python3，所以这里得使用Python
 <p>这个命令的结果不会直接看到。服务器开始运行，等待客户请求。但是，我们还没客户端程序。那怎么测试呢？</p>
 <p>这种先有服务器还是先有客户端的经典问题有很多方法可以解决——向服务器发信息，然后显示服务器反馈的信息。</p>
 <p>处理字符串协议服务器的一个标准化工具就是Telnet，一般都是命令行，没有图像界面。很多操作系统都带有Telnet。在Windows系统中，打开“控制面板|程序和功能|启动或关闭Windows功能”就可以找到Telnet。</p>
-<p><img src="kbpic/3.11Telnet.png" alt="Telnet"></p>
+<p><img src="kbpic/4.1Telnet.png" alt="Telnet"></p>
 <p>Telnet有两个参数：服务器地址和端口。为了连接到Telnet，你需要先启动<code>server.py</code>，然后再打开命令行输入：</p>
 <pre><code class="language-sh"><span class="title">telnet</span> <span class="number">127.0.0.1</span> <span class="number">9096</span>
 </code></pre>
@@ -377,7 +377,7 @@ Twisted目前仍然不能很好的不支持Python3，所以这里得使用Python
 User A:Hello, world!
 </code></pre>
 <p>没有出现任何反馈，因为我们没有让服务器向原作者反馈信息。因此，我们需要打开另外一个命令行，然后以一个新的用户登录。就可以看到<code>User A</code>发送的信息了。如下图所示：</p>
-<p><img src="kbpic/3.12servertest.png" alt="servertest"></p>
+<p><img src="kbpic/4.2servertest.png" alt="servertest"></p>
 <blockquote>
 <p>如果你没法儿正常测试Telnet也甭灰心，这不影响咱们app的顺利完成。
 如果用Windows的话，给一点小建议：最好给电脑装个Mac OS或Linux，双系统更适合研发工作，推荐使用虚拟机，切换方便。</p>
@@ -405,10 +405,10 @@ User A:Hello, world!
 <p>现在我们用一个新概念来设计UI，叫屏幕管理器。用来设计我们的app合适。一共是两个UI状态：</p>
 <ul>
 <li>登录界面：包括服务器地址、用户名、登录按钮
-<img src="kbpic/3.13uilogin.png" alt="uilogin">
+<img src="kbpic/4.3uilogin.png" alt="uilogin">
 </li>
 <li>聊天界面：包括信息显示、信息输入、发送信息按钮和端口服务器按钮
-<img src="kbpic/3.14uichat.png" alt="uilogin">
+<img src="kbpic/4.4uichat.png" alt="uilogin">
 </li>
 </ul>
 <p>从理论上说，我们的app界面就是这样。这种UI分离的设计方法涉及到，对不同UI状态里可见的与隐藏的控件的管理。这样可以快速的组合一堆部件，而不要写任何代码。</p>
@@ -572,7 +572,7 @@ User A:Hello, world!
     padding: [<span class="number">10</span>, <span class="number">0.5</span> * (<span class="keyword">self</span><span class="variable">.height</span> – <span class="keyword">self</span><span class="variable">.line_height</span>)]
 </code></pre>
 <p><code>padding</code>属性设置了左右的边距都是10，上面和下面的边距是文本框高度与一行文本高度之差的一半。下面就是效果图，可前面app的界面类似：</p>
-<p><img src="kbpic/3.15loginscreen.png" alt="loginscreen"></p>
+<p><img src="kbpic/4.5loginscreen.png" alt="loginscreen"></p>
 <p>现在我们可以写代码来连接服务器了，不过之前我们先把聊天主界面做出来。这样我们就可以直接在上面测试了。</p>
 </div>
 </div>
@@ -688,7 +688,7 @@ User A:Hello, world!
     color: C('#</span><span class="number">101010</span><span class="xml">')</span>
 </code></pre>
 <p>效果图如下：
-<img src="kbpic/3.16Chatroomscreen.png" alt="Chatroomscreen"></p>
+<img src="kbpic/4.6Chatroomscreen.png" alt="Chatroomscreen"></p>
 <p>这里Disconnect按钮就是断开网络连接。这是下一章的内容，到时候你会发现，用Python实现简单网络程序的难度，与用Kivy建立简单的UI没啥区别。</p>
 </div>
 </div>
@@ -1407,7 +1407,7 @@ color][/b]</code>。</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在bug修复了，用户可以安全的发从BBCode消息了。</p>
-<p><img src="kbpic/3.17chatlast.png" alt="chatlast"></p>
+<p><img src="kbpic/4.7chatlast.png" alt="chatlast"></p>
 <blockquote>
 <p>其实这类bug在互联网产品中很常见。类似于跨站脚本（cross-site
 scripting，XSS），可以造成比修改字体更恐怖的结果。
