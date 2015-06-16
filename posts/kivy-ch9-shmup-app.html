@@ -40,7 +40,7 @@ MathJax.Hub.Config({
         <meta property="og:site_name" content="绿萝间">
     <meta property="og:title" content="kivy ch9 shmup app">
     <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html">
-    <meta property="og:description" content='图集结构¶
+    <meta property="og:description" content="射击app¶
 
 
 
@@ -50,15 +50,21 @@ MathJax.Hub.Config({
 
 
 
-.atlas是JSON格式的文件，用来描述纹理映射的位置。
-{
-    "game-0.png": {
-        "player": [2, 170, 78, 84],
-        "bullet": [82, 184, 24, 16]
-    }
-}
+前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。
 
-纹理的名称就是其源文件的文件名，没有后缀，foo.png就是foo。后面的数值对应的是[x, y, wi'>
+
+
+
+
+
+
+
+
+
+做一个在屏幕上同时移动不同内容的游戏，需要大量的渲染来实现，在移动端（或多平台支持）也是如此。这一章我们就来做这些事情，上一章的知识和源代码已经带我们入了门。
+教学大纲如下：
+
+用Kivy的纹理图集（Texture atla">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2015-06-16T15:14:39+08:00">
            <meta property="article:tag" content="CHS">
@@ -112,6 +118,105 @@ MathJax.Hub.Config({
         </div>
         <div class="body">
             <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="射击app">射击app<a class="anchor-link" href="kivy-ch9-shmup-app.html#%E5%B0%84%E5%87%BBapp">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。</p>
+<!-- TEASER_END-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="kbpic/9.1%20shmup.png" alt="shmup"></p>
+<p>做一个在屏幕上同时移动不同内容的游戏，需要大量的渲染来实现，在移动端（或多平台支持）也是如此。这一章我们就来做这些事情，上一章的知识和源代码已经带我们入了门。</p>
+<p>教学大纲如下：</p>
+<ul>
+<li>用Kivy的纹理图集（Texture atlases）完成本来需要用底层代码实现的纹理坐标值的设置工作</li>
+<li>继续用GLSL开发一个质点原型，然后用这个原型做不同的游戏角色</li>
+<li>实现二维射击游戏的——一个控件，鼠标和触摸屏，基本冲突发现子弹</li>
+</ul>
+<p>后面会涉及到大量细节，如果看不明白就运行一下文末的源代码。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-">项目的限制</h3>
+<p>我们做的app比较简单，功能有限，至少有以下限制：</p>
+<ul>
+<li>为了简化，忽略了奖惩机制，2048里面也是这样</li>
+<li>这个游戏只有一个敌人角色，简单模式</li>
+<li>许多优化被忽略了，可以少写一些代码</li>
+</ul>
+<p>如果感兴趣可以自己做。下面我们来看一下Kivy的纹理处理相关内容，后面会用到。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-">纹理图集简介</h3>
+<p>纹理图集（也叫sprite sheets）是一种应用开发中把图象组合成更大纹理的方法。与只是把一堆单个图象载入应用相比，这么做有些好处：</p>
+<ul>
+<li>应用打开更快，读一个大文件比读许多小文件要快。如果你有几百个这样的图片，用这种方法性能提升会很明显——网页上更是如此：图片太多会严重占用HTTP请求资源，在移动设备上这点更加明显</li>
+<li>一次性渲染也会很更快。用纹理映射可以只改变需要变化的纹理坐标，而不需要引起其他内容的变化</li>
+<li>当有一个大的模型时，像GLSL类的渲染，用纹理图集方法更适合。另外，纹理的坐标值更容易获取，也不需要二次绑定纹理</li>
+</ul>
+<blockquote>
+<p>在HTML和CSS里面常用类似的方法，叫CSS图片合并（CSS sprites）。原理是一样的。网页app通常是获取网络资源，如果大量图片存在会占用HTTP请求数，用CSS图片合并可以很好的降低HTTP请求占用。</p>
+</blockquote>
+<p>这一章，我们要介绍以下内容：</p>
+<ul>
+<li>用Kivy的CLI工具创建纹理映射</li>
+<li>文件格式化和<code>.atlas</code>文件结构</li>
+<li>Kivy应用纹理图集的用法</li>
+</ul>
+<p>如果你已经掌握了相关内容，可以直接跳到<em>GLSL使用纹理图集</em>一节。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="-">创建一个图集</h4>
+<p>和网页开发不同，那里没有标准工具处理这个任务，Kivy框架用一个命令行工具处理图集映射。</p>
+<pre><code class="language-bash">python –m kivy.atlas &lt;atlas_name&gt; &lt;texture_size&gt; &lt;images…&gt;
+</code></pre>
+<p>在Mac系统上，把<code>python</code>替换成<code>kivy</code>，因为安装的时候<code>Kivy.app</code>会调用Python解释器。</p>
+<p>这样会创建至少两个文件，由所有的图像是否满足一个设定大小的纹理来决定。本章假设<code>texture_size</code>的值足够包含所有图像。</p>
+<p>所有输出文件都是<code>atlas_name</code>开头的参数：</p>
+<ul>
+<li>图集的索引称作<code>&lt;atlas_name&gt;.atlas</code>
+</li>
+<li>纹理有一个后缀<code>&lt;atlas_name&gt;-0.png</code>（这个文件总是存在的），<code>&lt;atlas_name&gt;-1.png</code>等等</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
