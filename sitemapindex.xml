@@ -14,7 +14,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/chs.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/da.xml</loc>
@@ -30,7 +30,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/ipython.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/javascript.xml</loc>
@@ -42,7 +42,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/kivy.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/linux.xml</loc>
@@ -50,7 +50,11 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/lottery.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://muxuezi.github.io/categories/machine-learning.xml</loc>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/prolog.xml</loc>
@@ -58,7 +62,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/python.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/ruby.xml</loc>
@@ -82,10 +86,10 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/rss.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/sitemap.xml</loc>
-  <lastmod>2015-06-16</lastmod>
+  <lastmod>2015-06-17</lastmod>
  </sitemap>
 </sitemapindex>
