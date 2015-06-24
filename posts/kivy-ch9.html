@@ -3,44 +3,18 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>"\n", | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch9.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="../assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="muxuezi">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content='"\n",'>
-    <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch9.html">
-    <meta property="og:description" content="射击app
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>kivy-ch9 | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch9.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch9">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch9.html">
+<meta property="og:description" content="射击app
 前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。
 
 
@@ -49,17 +23,16 @@ MathJax.Hub.Config({
 教学大纲如下：
 
 用Kivy的纹理图集（Texture atlases）完成本来需要用底层代码实现">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-16T00:00:00+08:00">
-
-    
-    
-
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:47+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -67,25 +40,31 @@ MathJax.Hub.Config({
             <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">"\n",</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">kivy-ch9</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2015-06-16T00:00:00+08:00">2015-06-16 00:00</time>
+                <time class="timeago" datetime="2015-06-24T13:43:47+08:00">2015-06-24 13:43</time>
             
                       |  
         <a href="kivy-ch9.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
 
             </div>
-            
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+</div>
+
         </div>
         <div class="body">
             <div>
@@ -139,10 +118,8 @@ MathJax.Hub.Config({
 <p>在Mac系统上，把<code>python</code>替换成<code>kivy</code>，因为安装的时候<code>Kivy.app</code>会调用Python解释器。</p>
 <p>这样会创建至少两个文件，由所有的图像是否满足一个设定大小的纹理来决定。本章假设<code>texture_size</code>的值足够包含所有图像。</p>
 <p>所有输出文件都是<code>atlas_name</code>开头的参数：</p>
-<ul>
-<li>
-</li>
-</ul>
+<ul><li>
+</li></ul>
 </div>
 </div>
 </div>
@@ -155,22 +132,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre> 
-</pre></div>
-
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -185,7 +147,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -200,7 +162,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -215,7 +177,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -230,7 +192,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -245,7 +207,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -260,7 +222,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -275,7 +237,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -290,7 +252,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -305,7 +267,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -320,7 +282,22 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -337,20 +314,23 @@ MathJax.Hub.Config({
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
-                <a href="slott-2015068-2015-06-14-report.html" rel="prev" title="双色球2015068期(2015-06-14)数据分析报告">Previous post</a>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+        at the top of the post if you want to play with it ;-)</b></p>
+        <p class="gittip"> Btw, do you like the content? Great! Then help me to achieve a
+        "Sustainable Crowdfunding"!</p>
+        <script data-gittip-username="damianavila" src="//gttp.co/v1.js"></script><ul class="pager">
+<li class="previous">
+                <a href="3-feature-extraction-and-preprocessing.html" rel="prev" title="3-feature-extraction-and-preprocessing">Previous post</a>
             </li>
             <li class="next">
-                <a href="dlott-15068-2015-06-15-report.html" rel="next" title="大乐透15068期(2015-06-15)数据分析报告">Next post</a>
+                <a href="frequentism-and-bayesianism-chs.html" rel="next" title="frequentism-and-bayesianism-chs">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch9.html",
-        disqus_title="\"\\n\",",
+        disqus_title="kivy-ch9",
         disqus_identifier="cache/posts/kivy-ch9.html",
         disqus_config = function () {
             this.language = "en";
@@ -360,38 +340,19 @@ MathJax.Hub.Config({
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

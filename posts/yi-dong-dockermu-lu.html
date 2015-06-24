@@ -3,66 +3,31 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>移动Docker目录 | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="../assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="muxuezi">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="移动Docker目录">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html">
-    <meta property="og:description" content="最近在用Docker，实在太帅了，一次配置，四处运行。
-默认images安装在/var/lib/docker，占用太多/var空间。迁移之
-
-
-bash
-export NEW_DOCKER=/home/tj2/docker
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>yi-dong-dockermu-lu | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="yi-dong-dockermu-lu">
+<meta property="og:url" content="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html">
+<meta property="og:description" content="export NEW_DOCKER=/home/tj2/docker
 docker ps -q | xargs docker kill
 stop docker
 cd /var/lib/docker/devicemapper/mnt
-umount ">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2014-11-28T16:47:59+08:00">
-           <meta property="article:tag" content="Docker">
-           <meta property="article:tag" content="Linux">
-
-    
-    
-
+umount ./*
+mv /var/lib/docker $NEW_DOCKER
+ln -s $NEW_DOCKER /var/lib/docker
+start do">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T00:00:00+08:00">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -70,66 +35,60 @@ umount ">
             <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">移动Docker目录</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">yi-dong-dockermu-lu</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2014-11-28T16:47:59+08:00">2014-11-28 16:47</time>
+                <time class="timeago" datetime="2015-06-24T00:00:00+08:00">2015-06-24 00:00</time>
             
                       |  
         <a href="yi-dong-dockermu-lu.md" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
 
             </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/docker.html" rel="tag">Docker</a></li>
-           <li><a class="tag p-category" href="../categories/linux.html" rel="tag">Linux</a></li>
-        </ul>
-        </div>
-
+            
         </div>
         <div class="body">
             <div>
-<p>最近在用Docker，实在太帅了，一次配置，四处运行。
-默认images安装在/var/lib/docker，占用太多/var空间。<a href="https://github.com/docker/docker/issues/3127">迁移之</a></p>
 <!-- TEASER_END-->
 
-<p><code>bash
-export NEW_DOCKER=/home/tj2/docker
-docker ps -q | xargs docker kill
+<pre class="code literal-block"><span class="nb">export </span><span class="nv">NEW_DOCKER</span><span class="o">=</span>/home/tj2/docker
+docker ps -q <span class="p">|</span> xargs docker <span class="nb">kill</span>
 stop docker
-cd /var/lib/docker/devicemapper/mnt
+<span class="nb">cd</span> /var/lib/docker/devicemapper/mnt
 umount ./*
-mv /var/lib/docker $NEW_DOCKER
-ln -s $NEW_DOCKER /var/lib/docker
-start docker</code></p>
+mv /var/lib/docker <span class="nv">$NEW_DOCKER</span>
+ln -s <span class="nv">$NEW_DOCKER</span> /var/lib/docker
+start docker
+</pre>
+
+
 <p>On Ubuntu that option is to be set in the /etc/default/docker file</p>
-<p><code>DOCKER_OPTS="-g /somewhere/else/docker/"</code></p>
+<pre class="code literal-block">DOCKER_OPTS="-g /somewhere/else/docker/"
+</pre>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
-                <a href="slott-2014138-2014-11-27-report.html" rel="prev" title="双色球2014138期(2014-11-27)数据分析报告">Previous post</a>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+        at the top of the post if you want to play with it ;-)</b></p>
+        <p class="gittip"> Btw, do you like the content? Great! Then help me to achieve a
+        "Sustainable Crowdfunding"!</p>
+        <script data-gittip-username="damianavila" src="//gttp.co/v1.js"></script><ul class="pager">
+<li class="previous">
+                <a href="the-swift-programming-language-en.html" rel="prev" title="the-swift-programming-language-en">Previous post</a>
             </li>
             <li class="next">
-                <a href="dlott-14140-2014-11-29-report.html" rel="next" title="大乐透14140期(2014-11-29)数据分析报告">Next post</a>
+                <a href="slott-2015072-2015-06-23-report.html" rel="next" title="双色球2015072期(2015-06-23)数据分析报告">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html",
-        disqus_title="\u79fb\u52a8Docker\u76ee\u5f55",
+        disqus_title="yi-dong-dockermu-lu",
         disqus_identifier="cache/posts/yi-dong-dockermu-lu.html",
         disqus_config = function () {
             this.language = "en";
@@ -139,38 +98,18 @@ start docker</code></p>
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
+        
     </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

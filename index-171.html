@@ -3,51 +3,23 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="description" content="{{Coding pages share some thoughts with the world.}}">
-    <meta name="viewport" content="width=device-width">
-    <title>绿萝间 (old posts, page 171) | 绿萝间</title>
-
-                <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/index-171.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <style>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Tao Junjie blog">
+<meta name="viewport" content="width=device-width">
+<title>绿萝间 (old posts, page 171) | 绿萝间</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/index-171.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
     div.input_prompt {
       display: none;
     }
     </style>
-
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -55,312 +27,572 @@ MathJax.Hub.Config({
             <li><a href="stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
         <div class="post">
-            <h1 class="title"><a href="posts/dlott-15045-2015-04-22-report.html">大乐透15045期(2015-04-22)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/3-feature-extraction-and-preprocessing.html">3-feature-extraction-and-preprocessing</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-23T08:00:00+08:00">2015-04-23 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:42+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/dlott-15045-2015-04-22-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15045-2015-04-22-report.html">Comments</a>
+                                <a href="posts/3-feature-extraction-and-preprocessing.html#disqus_thread" data-disqus-identifier="cache/posts/3-feature-extraction-and-preprocessing.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15045-2015-04-22-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="特征提取与处理">特征提取与处理<a class="anchor-link" href="posts/3-feature-extraction-and-preprocessing.html#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%A4%84%E7%90%86">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上一章案例中的解释变量都是数值，比如匹萨的直接。而很多机器学习问题需要研究的对象可能是分类变量、文字甚至图像。本章，我们介绍提取这些变量特征的方法。这些技术是数据处理的前提——序列化，更是机器学习的基础，影响到本书的所有章节。</p>
+<p class="more"><a href="posts/3-feature-extraction-and-preprocessing.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/slott-2015045-2015-04-21-report.html">双色球2015045期(2015-04-21)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/2-linear-regression.html">2-linear-regression</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-22T08:00:00+08:00">2015-04-22 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:36+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/slott-2015045-2015-04-21-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015045-2015-04-21-report.html">Comments</a>
+                                <a href="posts/2-linear-regression.html#disqus_thread" data-disqus-identifier="cache/posts/2-linear-regression.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015045-2015-04-21-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="线性回归">线性回归<a class="anchor-link" href="posts/2-linear-regression.html#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小化的参数值。在研究一个大数据集问题之前，我们先从一个小问题开始学习建立模型和学习算法。</p>
+<p class="more"><a href="posts/2-linear-regression.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/dlott-15044-2015-04-20-report.html">大乐透15044期(2015-04-20)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/kivy-ch4-chat-app.html">kivy-ch4-chat-app</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-21T08:00:00+08:00">2015-04-21 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:30+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/dlott-15044-2015-04-20-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15044-2015-04-20-report.html">Comments</a>
+                                <a href="posts/kivy-ch4-chat-app.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-ch4-chat-app.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15044-2015-04-20-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kivy网络编程">Kivy网络编程<a class="anchor-link" href="posts/kivy-ch4-chat-app.html#Kivy%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>前面我们尝试过单一平台Android的Kivy开发，通过原生的底层API来实现。下面我们探索另外一种天生具有跨平台能力的工具来做app——网络。在这一章，我们做一个聊天app，类似于QQ，但是简单版。</p>
+<p class="more"><a href="posts/kivy-ch4-chat-app.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/slott-2015044-2015-04-19-report.html">双色球2015044期(2015-04-19)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/kivy-ch6-2048-app.html">kivy-ch6-2048-app</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-20T08:00:00+08:00">2015-04-20 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:25+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/slott-2015044-2015-04-19-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015044-2015-04-19-report.html">Comments</a>
+                                <a href="posts/kivy-ch6-2048-app.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-ch6-2048-app.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015044-2015-04-19-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2048-app">2048 app<a class="anchor-link" href="posts/kivy-ch6-2048-app.html#2048-app">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>后面的章节，我们将逐步加深难度来介绍Kivy在游戏领域的开发过程，包括状态的管理，角色控制，音效和图象快速渐变的实现等。</p>
+<p>这里提到的内容都是当今游戏开发中不可或缺的，因此有很多软件可以基于同样的算法和性能来实现这些功能，就像视频游戏一样。</p>
+<p>但是，不积跬步，无以至千里。我们要踏出的第一步就是实现老少皆宜的<strong>2048</strong>游戏。</p>
+<p class="more"><a href="posts/kivy-ch6-2048-app.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/dlott-15043-2015-04-18-report.html">大乐透15043期(2015-04-18)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/kivy-perface.html">kivy-perface</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-19T08:00:00+08:00">2015-04-19 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:19+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/dlott-15043-2015-04-18-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15043-2015-04-18-report.html">Comments</a>
+                                <a href="posts/kivy-perface.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-perface.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15043-2015-04-18-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kivy指南">Kivy指南<a class="anchor-link" href="posts/kivy-perface.html#Kivy%E6%8C%87%E5%8D%97">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>作者：<a href="https://github.com/mvasilkov">Mark Vasilkov</a></p>
+<p>中文译者：<a href="https://github.com/muxuezi">Tao Junjie</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="前言">前言<a class="anchor-link" href="posts/kivy-perface.html#%E5%89%8D%E8%A8%80">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>移动应用开发几年前就是热点了，现在是个软件用户就想要移动版。桌面操作系统也受到影响，跨平台的软件成为新常态。甚至通常局限于微软桌面操作系统的游戏开发者也开始找一些Mac和Linux平台上的工作了（比如Steam，目前有Mac游戏近4000个，SteamOS+Linux游戏2000多个）。</p>
+<p>这对新手和个人开发者是大利好：跨平台的支持可以增加用户，销售量自然会更好。</p>
+<p>但是，写可移植的软件是非常耗费资源的过程，对小公司和个人开发者的影响比大公司更甚。</p>
+<p>尤其是许多平台都有不同语言的SDK：iOS用Objective-C和Swift，Android用Java，MS用.Net，更多是C#来开发软件。</p>
+<p>使用这些工具可以通过系统功能来制作相应的原生应用，但是跨平台的代码重用变得十分困难。就算你精通所有语言和相关的操作，代码的移植仍然是一件复杂的事情。</p>
+<p class="more"><a href="posts/kivy-perface.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/slott-2015043-2015-04-16-report.html">双色球2015043期(2015-04-16)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/test-swift-code-blocks.html">test-swift-code-blocks</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-17T08:00:00+08:00">2015-04-17 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:14+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/slott-2015043-2015-04-16-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015043-2015-04-16-report.html">Comments</a>
+                                <a href="posts/test-swift-code-blocks.html#disqus_thread" data-disqus-identifier="cache/posts/test-swift-code-blocks.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/other.html" rel="tag">Other</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015043-2015-04-16-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><link rel="stylesheet" href="assets/css/xcode.css"></p>
+<script src="assets/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><pre><code class="language-swift"><span class="class"><span class="keyword">class</span> <span class="title">DataImporter</span> {</span>
+    /*
+    DataImporter <span class="keyword">is</span> a <span class="class"><span class="keyword">class</span> <span class="title">to</span> <span class="title">import</span> <span class="title">data</span> <span class="title">from</span> <span class="title">an</span> <span class="title">external</span> <span class="title">file</span>.</span>
+    The <span class="class"><span class="keyword">class</span> <span class="title">is</span> <span class="title">assumed</span> <span class="title">to</span> <span class="title">take</span> <span class="title">a</span> <span class="title">non</span>-<span class="title">trivial</span> <span class="title">amount</span> <span class="title">of</span> <span class="title">time</span> <span class="title">to</span> <span class="title">initialize</span>.</span>
+    */
+    <span class="reserved">var</span> fileName = <span class="string">"data.txt"</span>
+    <span class="regexp">//</span> the DataImporter <span class="class"><span class="keyword">class</span> <span class="title">would</span> <span class="title">provide</span> <span class="title">data</span> <span class="title">importing</span> <span class="title">functionality</span> <span class="title">here</span></span>
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> {</span>
+    lazy <span class="reserved">var</span> importer = DataImporter()
+    <span class="reserved">var</span> data = [String]()
+    <span class="regexp">//</span> the DataManager <span class="class"><span class="keyword">class</span> <span class="title">would</span> <span class="title">provide</span> <span class="title">data</span> <span class="title">management</span> <span class="title">functionality</span> <span class="title">here</span></span>
+}
+
+<span class="reserved">let</span> manager = DataManager()
+manager.data.append(<span class="string">"Some data"</span>)
+manager.data.append(<span class="string">"Some more data"</span>)
+<span class="regexp">//</span> the DataImporter instance <span class="keyword">for</span> the importer property has <span class="keyword">not</span> yet been created
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Click me to hide the output, if the is one ;-)</i>
+</div>
+</div>
+</div>
+
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/dlott-15042-2015-04-15-report.html">大乐透15042期(2015-04-15)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/kivy-ch8-shaders-app.html">kivy-ch8-shaders-app</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-16T08:00:00+08:00">2015-04-16 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:08+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/dlott-15042-2015-04-15-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15042-2015-04-15-report.html">Comments</a>
+                                <a href="posts/kivy-ch8-shaders-app.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-ch8-shaders-app.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15042-2015-04-15-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="着色器app">着色器app<a class="anchor-link" href="posts/kivy-ch8-shaders-app.html#%E7%9D%80%E8%89%B2%E5%99%A8app">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>恭喜你Hold到现在！最后两章我们准备讨论一些OpenGL的底层细节，与Kivy完全不同的内容，比如<strong>OpenGL着色器语言（OpenGL Shading Language，GLSL）</strong>。这个语言可以让我们轻松写出高性能的代码。</p>
+<p>我们将通过一个屏幕保护程序来介绍OpenGL的特性，然后做一个射击游戏（shoot-em-up game，shmup）app。本章的代码是准备工作，和其他项目都是一章不同，射击游戏在下一章做。</p>
+<p class="more"><a href="posts/kivy-ch8-shaders-app.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/slott-2015042-2015-04-14-report.html">双色球2015042期(2015-04-14)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/frequentism-and-bayesianism-chs-iii.html">frequentism-and-bayesianism-chs-iii</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-15T08:00:00+08:00">2015-04-15 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:43:03+08:00">2015-06-24 13:43</time>
+</div>
                 <div class="stats">
-                                <a href="posts/slott-2015042-2015-04-14-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015042-2015-04-14-report.html">Comments</a>
+                                <a href="posts/frequentism-and-bayesianism-chs-iii.html#disqus_thread" data-disqus-identifier="cache/posts/frequentism-and-bayesianism-chs-iii.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/frequentism.html" rel="tag">Frequentism</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015042-2015-04-14-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="频率主义-vs-贝叶斯主义-III：置信(Confidence)与可信(Credibility)，频率主义与科学，不能混为一谈">频率主义 vs 贝叶斯主义 III：置信(Confidence)与可信(Credibility)，频率主义与科学，不能混为一谈<a class="anchor-link" href="posts/frequentism-and-bayesianism-chs-iii.html#%E9%A2%91%E7%8E%87%E4%B8%BB%E4%B9%89-vs-%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%BB%E4%B9%89-III%EF%BC%9A%E7%BD%AE%E4%BF%A1(Confidence)%E4%B8%8E%E5%8F%AF%E4%BF%A1(Credibility)%EF%BC%8C%E9%A2%91%E7%8E%87%E4%B8%BB%E4%B9%89%E4%B8%8E%E7%A7%91%E5%AD%A6%EF%BC%8C%E4%B8%8D%E8%83%BD%E6%B7%B7%E4%B8%BA%E4%B8%80%E8%B0%88">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>这个notebook出自<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">博文</a> . The content is BSD licensed.</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p class="more"><a href="posts/frequentism-and-bayesianism-chs-iii.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/dlott-15041-2015-04-13-report.html">大乐透15041期(2015-04-13)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/frequentism-and-bayesianism-chs-iv.html">frequentism-and-bayesianism-chs-iv</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-14T08:00:00+08:00">2015-04-14 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:42:57+08:00">2015-06-24 13:42</time>
+</div>
                 <div class="stats">
-                                <a href="posts/dlott-15041-2015-04-13-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15041-2015-04-13-report.html">Comments</a>
+                                <a href="posts/frequentism-and-bayesianism-chs-iv.html#disqus_thread" data-disqus-identifier="cache/posts/frequentism-and-bayesianism-chs-iv.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/frequentism.html" rel="tag">Frequentism</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15041-2015-04-13-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="频率主义与贝叶斯主义-IV：Python的贝叶斯工具">频率主义与贝叶斯主义 IV：Python的贝叶斯工具<a class="anchor-link" href="posts/frequentism-and-bayesianism-chs-iv.html#%E9%A2%91%E7%8E%87%E4%B8%BB%E4%B9%89%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%BB%E4%B9%89-IV%EF%BC%9APython%E7%9A%84%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%B7%A5%E5%85%B7">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>这个notebook出自<a href="http://jakevdp.github.io">Pythonic Perambulations</a>的<a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">博文</a>。The content is BSD licensed.</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>这个系列共4个部分：中文版<a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs">Part I</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii">Part II</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iii">Part III</a>  <a href="http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-iv">Part IV</a>，英文版<a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Part I</a>  <a href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Part II</a>  <a href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Part III</a>  <a href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Part IV</a></em></p>
+<p class="more"><a href="posts/frequentism-and-bayesianism-chs-iv.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/slott-2015041-2015-04-12-report.html">双色球2015041期(2015-04-12)数据分析报告</a></h1>
+            <h1 class="title"><a href="posts/maximum-contiguous-subsequence.html">maximum-contiguous-subsequence</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2015-04-13T08:00:00+08:00">2015-04-13 08:00</time>
-                </div>
+                    <time class="timeago" datetime="2015-06-24T13:42:52+08:00">2015-06-24 13:42</time>
+</div>
                 <div class="stats">
-                                <a href="posts/slott-2015041-2015-04-12-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015041-2015-04-12-report.html">Comments</a>
+                                <a href="posts/maximum-contiguous-subsequence.html#disqus_thread" data-disqus-identifier="cache/posts/maximum-contiguous-subsequence.html">Comments</a>
 
 
                 </div>
                         <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
-           <li><a class="tag p-category" href="categories/lottery.html" rel="tag">Lottery</a></li>
+           <li><a class="tag p-category" href="categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="categories/other.html" rel="tag">Other</a></li>
+           <li><a class="tag p-category" href="categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
             </div>
             <div class="body">
                 <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015041-2015-04-12-report.html">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kadane's-Algorithm">
+<a href="http://www.algorithmist.com/index.php/Kadane's_Algorithm">Kadane's Algorithm</a><a class="anchor-link" href="posts/maximum-contiguous-subsequence.html#Kadane's-Algorithm">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Kadane's Algorithm</strong> is an <em>O</em>(<em>n</em>) algorithm for finding the maximum contiguous <a href="index.php/Subsequence" title="Subsequence">subsequence</a> in a one-dimensional <a href="index.php/Sequence" title="Sequence">sequence</a>.</p>
+<p><strong>Kadane算法</strong>是用于寻找一维<a href="index.php/Sequence" title="Sequence">数组</a>最大连续<a href="index.php/Subsequence" title="Subsequence">子集</a>，复杂度<em>O</em>(<em>n</em>)。</p>
+<p class="more"><a href="posts/maximum-contiguous-subsequence.html">Read more…</a></p>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
-            <nav class="postindexpager">
-        <ul class="pager">
-            <li class="previous">
+            <nav class="postindexpager"><ul class="pager">
+<li class="previous">
                 <a href="index-172.html" rel="prev">Newer posts</a>
             </li>
             <li class="next">
                 <a href="index-170.html" rel="next">Older posts</a>
             </li>
-        </ul>
-        </nav>
-
-                   <script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
-
-
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+        </ul></nav><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="assets/js/mathjax.js"></script><footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

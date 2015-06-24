@@ -3,44 +3,18 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Python Network Scripting PP4E | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="../assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="muxuezi">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="Python Network Scripting PP4E">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
-    <meta property="og:description" content="Network Scripting in Programming Python, 4th Edition, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>python-network-scripting-pp4e | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="python-network-scripting-pp4e">
+<meta property="og:url" content="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
+<meta property="og:description" content="Network Scripting in Programming Python, 4th Edition, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.
 
 
 
@@ -51,19 +25,16 @@ MathJax.Hub.Config({
 
 
 Plumbing the">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2014-08-15T10:09:45+08:00">
-           <meta property="article:tag" content="ipython">
-           <meta property="article:tag" content="Python">
-
-    
-    
-
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:44:27+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Other">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -71,31 +42,30 @@ Plumbing the">
             <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">Python Network Scripting PP4E</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">python-network-scripting-pp4e</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2014-08-15T10:09:45+08:00">2014-08-15 10:09</time>
+                <time class="timeago" datetime="2015-06-24T13:44:27+08:00">2015-06-24 13:44</time>
             
                       |  
         <a href="python-network-scripting-pp4e.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
 
             </div>
                     <div itemprop="keywords" class="tags">
         <ul>
         Tags : 
+           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="../categories/other.html" rel="tag">Other</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -249,16 +219,15 @@ messages are exchanged.</li>
 port numbers in the range of 0 to 1023 are reserved and preassigned to the standard
 higher-level protocols.</p>
 <table border="1" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%;
- mso-cellspacing:0in;mso-padding-alt:0in 0in 0in 0in">
- <tbody>
+ mso-cellspacing:0in;mso-padding-alt:0in 0in 0in 0in"><tbody>
 <tr>
-  <td colspan="4" style="border:none;padding:.75pt .75pt .75pt .75pt">
+<td colspan="4" style="border:none;padding:.75pt .75pt .75pt .75pt">
   <h6 align="center" style="text-align:center"><a name="_Toc6690727">Table 12-1.
   Port Numbers Reserved for Common Protocols</a></h6>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p align="center" style="text-align:center"><b><span style="font-size:10.0pt">Protocol<p></p></span></b></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -274,8 +243,8 @@ higher-level protocols.</p>
   Module<p></p></span></b></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">HTTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -288,8 +257,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>http.client , http.server</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">NNTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -302,8 +271,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>nntplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">FTP data default<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -316,8 +285,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>ftplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">FTP control<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -330,8 +299,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>ftplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">SMTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -344,8 +313,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>smtplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">POP3<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -358,8 +327,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>poplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">IMAP4<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -372,8 +341,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>imaplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">Finger<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -386,8 +355,8 @@ higher-level protocols.</p>
   <p><span style="font-size:10.0pt">n/a<p></p></span></p>
   </td>
  </tr>
- <tr>
-  <td style="padding:.75pt .75pt .75pt .75pt">
+<tr>
+<td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">Telnet<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -400,10 +369,7 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>telnetlib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-
-
-</tbody>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -592,7 +558,7 @@ a remote machine, or on same computer if it uses 'localhost' for server</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -641,7 +607,7 @@ for the standard socket calls available in the system's C library;</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -682,7 +648,7 @@ it’s typical to make this explicit.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -717,7 +683,7 @@ socket here, we pass the host/port socket address to bind as a two-item tuple ob
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -746,7 +712,7 @@ least 1.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -773,7 +739,7 @@ waiting for them to arrive:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -813,7 +779,7 @@ client in blocks of up to 1,024 bytes at a time, and echo each block back to the
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -839,7 +805,7 @@ We get back an empty byte string when the client has finished—end-of-file is t
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -890,7 +856,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -905,7 +871,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -920,7 +886,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -960,7 +926,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1009,7 +975,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1024,7 +990,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1039,7 +1005,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1079,7 +1045,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1130,7 +1096,7 @@ strings, ready for direct socket transfer:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1174,7 +1140,7 @@ is sent:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1255,7 +1221,7 @@ ever machine it runs on.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1339,7 +1305,7 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1356,7 +1322,7 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1374,7 +1340,7 @@ rtt min/avg/max/mdev = 209.249/212.888/217.931/3.055 ms
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1414,7 +1380,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1440,7 +1406,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1455,7 +1421,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1470,7 +1436,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1509,7 +1475,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1535,7 +1501,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1550,7 +1516,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1565,7 +1531,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1604,7 +1570,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1630,7 +1596,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1645,7 +1611,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1660,7 +1626,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1700,7 +1666,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1740,7 +1706,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1780,7 +1746,7 @@ on three different server machines:</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1827,7 +1793,7 @@ ports unless you have special permission.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1842,7 +1808,7 @@ ports unless you have special permission.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1979,7 +1945,7 @@ than threads--not yet on Windows, unless Cygwin or similar installed</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1994,7 +1960,7 @@ than threads--not yet on Windows, unless Cygwin or similar installed</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2021,7 +1987,7 @@ than threads--not yet on Windows, unless Cygwin or similar installed</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2143,7 +2109,7 @@ to manually reaping zombies on platforms where it is supported.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2169,7 +2135,7 @@ to manually reaping zombies on platforms where it is supported.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2228,7 +2194,7 @@ numbers 10 (reserved for general use) and 9 (the unavoidable terminate signal).<
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2316,7 +2282,7 @@ die silently on exit, without leaving behind zombies to haunt the server.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2358,7 +2324,7 @@ die silently on exit, without leaving behind zombies to haunt the server.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2436,7 +2402,7 @@ servers that you are likely to be interested in.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2607,7 +2573,7 @@ processes or threads</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2805,7 +2771,7 @@ ted, or the buffer becomes full.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2844,7 +2810,7 @@ ted, or the buffer becomes full.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2887,7 +2853,7 @@ socket wrapper files.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2907,7 +2873,7 @@ socket wrapper files.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3063,7 +3029,7 @@ by blocks; see ftplib examples for a higher-level transport scheme</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3189,7 +3155,7 @@ os.popen , subprocess , and so on.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3247,7 +3213,7 @@ os.popen , subprocess , and so on.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3335,7 +3301,7 @@ ple 12-20, which handles most of the GUI layout grunt work.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3384,7 +3350,7 @@ ple 12-20, which handles most of the GUI layout grunt work.</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -3459,20 +3425,23 @@ to-date details on this front.</p>
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
-                <a href="slott-2014093-2014-08-14-report.html" rel="prev" title="双色球2014093期(2014-08-14)数据分析报告">Previous post</a>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+        at the top of the post if you want to play with it ;-)</b></p>
+        <p class="gittip"> Btw, do you like the content? Great! Then help me to achieve a
+        "Sustainable Crowdfunding"!</p>
+        <script data-gittip-username="damianavila" src="//gttp.co/v1.js"></script><ul class="pager">
+<li class="previous">
+                <a href="introduction-to-julia.html" rel="prev" title="introduction-to-julia">Previous post</a>
             </li>
             <li class="next">
-                <a href="python-parallel-system-tools-pp4e.html" rel="next" title="Python Parallel System Tools PP4E">Next post</a>
+                <a href="kivy-ch5-remote-desktop-app.html" rel="next" title="kivy-ch5-remote-desktop-app">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html",
-        disqus_title="Python Network Scripting PP4E",
+        disqus_title="python-network-scripting-pp4e",
         disqus_identifier="cache/posts/python-network-scripting-pp4e.html",
         disqus_config = function () {
             this.language = "en";
@@ -3482,38 +3451,19 @@ to-date details on this front.</p>
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

@@ -3038,7 +3038,7 @@ function extendJQuery($){
         }, 50);
     };
 	
-	var jQueryUrl = 'http://ajax.useso.com/ajax/libs/jquery/1.8.2/jquery.min.js';
+	var jQueryUrl = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
 	if( !w.jQuery ){
 		loadScript(jQueryUrl, init);
 	} else {

@@ -3,44 +3,18 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>2 Linear Regression | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="../assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="muxuezi">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="2 Linear Regression">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
-    <meta property="og:description" content="线性回归¶
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>2-linear-regression | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="2-linear-regression">
+<meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
+<meta property="og:description" content="线性回归¶
 
 
 
@@ -51,21 +25,16 @@ MathJax.Hub.Config({
 
 
 本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-22T17:36:14+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="ipython">
-           <meta property="article:tag" content="Machine Learningtitle">
-           <meta property="article:tag" content="Python">
-
-    
-    
-
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:36+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -73,22 +42,19 @@ MathJax.Hub.Config({
             <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">2 Linear Regression</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">2-linear-regression</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2015-06-22T17:36:14+08:00">2015-06-22 17:36</time>
+                <time class="timeago" datetime="2015-06-24T13:43:36+08:00">2015-06-24 13:43</time>
             
                       |  
         <a href="2-linear-regression.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
 
             </div>
                     <div itemprop="keywords" class="tags">
@@ -96,10 +62,10 @@ MathJax.Hub.Config({
         Tags : 
            <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learningtitle.html" rel="tag">Machine Learningtitle</a></li>
+           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -144,13 +110,11 @@ MathJax.Hub.Config({
 <p>上一章我们介绍过在监督学习问题中用训练数据来估计模型参数。训练数据由解释变量的历史观测值和对应的响应变量构成。模型可以预测不在训练数据中的解释变量对应的响应变量的值。回归问题的目标是预测出响应变量的连续值。本章我们将学习一些线性回归模型，后面会介绍训练数据，建模和学习算法，以及对每个方法的效果评估。首先，我们从简单的一元线性回归问题开始。</p>
 <p>假设你想计算匹萨的价格。虽然看看菜单就知道了，不过也可以用机器学习方法建一个线性回归模型，通过分析匹萨的直径与价格的数据的线性关系，来预测任意直径匹萨的价格。我们先用scikit-learn写出回归模型，然后我们介绍模型的用法，以及将模型应用到具体问题中。假设我们查到了部分匹萨的直径与价格的数据，这就构成了训练数据，如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -195,7 +159,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -223,7 +187,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -274,7 +238,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -333,7 +297,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -411,7 +375,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -473,7 +437,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -524,7 +488,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -597,7 +561,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -644,7 +608,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -696,7 +660,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -744,7 +708,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -807,14 +771,12 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用学习算法对训练集进行估计，得出了模型的参数。如何评价模型在现实中的表现呢？现在让我们假设有另一组数据，作为测试集进行评估。</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
 <th>预测值（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -885,7 +847,7 @@ MathJax.Hub.Config({
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -967,14 +929,12 @@ Y_n\\
 $$</p>
 <p>其中，$Y$是训练集的响应变量列向量，$\beta$是模型参数列向量。$X$称为设计矩阵，是$m \times n$维训练集的解释变量矩阵。$m$是训练集样本数量，$n$是解释变量个数。增加辅料的匹萨价格预测模型训练集如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1010,14 +970,12 @@ $$</p>
 </table>
 <p>我们同时要升级测试集数据：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1072,7 +1030,7 @@ $$</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1122,7 +1080,7 @@ $$</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1181,7 +1139,7 @@ $$</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1242,13 +1200,11 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上例中，我们假设解释变量和响应变量的关系是线性的。真实情况未必如此。下面我们用多项式回归，一种特殊的多元线性回归方法，增加了指数项（$x$的次数大于1）。现实世界中的曲线关系都是通过增加多项式实现的，其实现方式和多元线性回归类似。本例还用一个解释变量，匹萨直径。让我们用下面的数据对两种模型做个比较：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1278,13 +1234,11 @@ R-squared: 0.77
 </tbody>
 </table>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1350,7 +1304,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1441,7 +1395,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1528,7 +1482,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1657,7 +1611,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1675,9 +1629,8 @@ R-squared: 0.77
 <div class="output_html rendered_html output_subarea output_pyout">
 <div>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
+<thead><tr style="text-align: right;">
+<th></th>
       <th>fixed acidity</th>
       <th>volatile acidity</th>
       <th>citric acid</th>
@@ -1690,11 +1643,10 @@ R-squared: 0.77
       <th>sulphates</th>
       <th>alcohol</th>
       <th>quality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
       <td>7.4</td>
       <td>0.70</td>
       <td>0.00</td>
@@ -1708,8 +1660,8 @@ R-squared: 0.77
       <td>9.4</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>1</th>
+<tr>
+<th>1</th>
       <td>7.8</td>
       <td>0.88</td>
       <td>0.00</td>
@@ -1723,8 +1675,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>2</th>
+<tr>
+<th>2</th>
       <td>7.8</td>
       <td>0.76</td>
       <td>0.04</td>
@@ -1738,8 +1690,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>3</th>
+<tr>
+<th>3</th>
       <td>11.2</td>
       <td>0.28</td>
       <td>0.56</td>
@@ -1753,8 +1705,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>6</td>
     </tr>
-    <tr>
-      <th>4</th>
+<tr>
+<th>4</th>
       <td>7.4</td>
       <td>0.70</td>
       <td>0.00</td>
@@ -1768,7 +1720,7 @@ R-squared: 0.77
       <td>9.4</td>
       <td>5</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 </div>
 </div>
@@ -1791,7 +1743,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1809,9 +1761,8 @@ R-squared: 0.77
 <div class="output_html rendered_html output_subarea output_pyout">
 <div>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
+<thead><tr style="text-align: right;">
+<th></th>
       <th>fixed acidity</th>
       <th>volatile acidity</th>
       <th>citric acid</th>
@@ -1824,11 +1775,10 @@ R-squared: 0.77
       <th>sulphates</th>
       <th>alcohol</th>
       <th>quality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>count</th>
       <td>1599.000000</td>
       <td>1599.000000</td>
       <td>1599.000000</td>
@@ -1842,8 +1792,8 @@ R-squared: 0.77
       <td>1599.000000</td>
       <td>1599.000000</td>
     </tr>
-    <tr>
-      <th>mean</th>
+<tr>
+<th>mean</th>
       <td>8.319637</td>
       <td>0.527821</td>
       <td>0.270976</td>
@@ -1857,8 +1807,8 @@ R-squared: 0.77
       <td>10.422983</td>
       <td>5.636023</td>
     </tr>
-    <tr>
-      <th>std</th>
+<tr>
+<th>std</th>
       <td>1.741096</td>
       <td>0.179060</td>
       <td>0.194801</td>
@@ -1872,8 +1822,8 @@ R-squared: 0.77
       <td>1.065668</td>
       <td>0.807569</td>
     </tr>
-    <tr>
-      <th>min</th>
+<tr>
+<th>min</th>
       <td>4.600000</td>
       <td>0.120000</td>
       <td>0.000000</td>
@@ -1887,8 +1837,8 @@ R-squared: 0.77
       <td>8.400000</td>
       <td>3.000000</td>
     </tr>
-    <tr>
-      <th>25%</th>
+<tr>
+<th>25%</th>
       <td>7.100000</td>
       <td>0.390000</td>
       <td>0.090000</td>
@@ -1902,8 +1852,8 @@ R-squared: 0.77
       <td>9.500000</td>
       <td>5.000000</td>
     </tr>
-    <tr>
-      <th>50%</th>
+<tr>
+<th>50%</th>
       <td>7.900000</td>
       <td>0.520000</td>
       <td>0.260000</td>
@@ -1917,8 +1867,8 @@ R-squared: 0.77
       <td>10.200000</td>
       <td>6.000000</td>
     </tr>
-    <tr>
-      <th>75%</th>
+<tr>
+<th>75%</th>
       <td>9.200000</td>
       <td>0.640000</td>
       <td>0.420000</td>
@@ -1932,8 +1882,8 @@ R-squared: 0.77
       <td>11.100000</td>
       <td>6.000000</td>
     </tr>
-    <tr>
-      <th>max</th>
+<tr>
+<th>max</th>
       <td>15.900000</td>
       <td>1.580000</td>
       <td>1.000000</td>
@@ -1947,7 +1897,7 @@ R-squared: 0.77
       <td>14.900000</td>
       <td>8.000000</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 </div>
 </div>
@@ -1983,7 +1933,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2034,7 +1984,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2112,7 +2062,7 @@ R-squared: 0.77
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2163,7 +2113,7 @@ R-squared: 0.382777530798
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2215,7 +2165,7 @@ R-squared: 0.382777530798
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2299,7 +2249,7 @@ R-squared: 0.382777530798
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2328,7 +2278,7 @@ R-squared: 0.382777530798
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2357,7 +2307,7 @@ R-squared: 0.382777530798
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -2411,20 +2361,23 @@ R-squared: 0.382777530798
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
-                <a href="slott-2015071-2015-06-21-report.html" rel="prev" title="双色球2015071期(2015-06-21)数据分析报告">Previous post</a>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+        at the top of the post if you want to play with it ;-)</b></p>
+        <p class="gittip"> Btw, do you like the content? Great! Then help me to achieve a
+        "Sustainable Crowdfunding"!</p>
+        <script data-gittip-username="damianavila" src="//gttp.co/v1.js"></script><ul class="pager">
+<li class="previous">
+                <a href="kivy-ch4-chat-app.html" rel="prev" title="kivy-ch4-chat-app">Previous post</a>
             </li>
             <li class="next">
-                <a href="dlott-15071-2015-06-22-report.html" rel="next" title="大乐透15071期(2015-06-22)数据分析报告">Next post</a>
+                <a href="3-feature-extraction-and-preprocessing.html" rel="next" title="3-feature-extraction-and-preprocessing">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/2-linear-regression.html",
-        disqus_title="2 Linear Regression",
+        disqus_title="2-linear-regression",
         disqus_identifier="cache/posts/2-linear-regression.html",
         disqus_config = function () {
             this.language = "en";
@@ -2434,38 +2387,19 @@ R-squared: 0.382777530798
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

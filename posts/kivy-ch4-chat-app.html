@@ -3,44 +3,18 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>kivy ch4 chat app | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html">
-
-
-
-    
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<script type="text/javascript" src="../assets/js/mathjax.js"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="muxuezi">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="kivy ch4 chat app">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html">
-    <meta property="og:description" content="Kivy网络编程¶
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>kivy-ch4-chat-app | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch4-chat-app">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html">
+<meta property="og:description" content="Kivy网络编程¶
 
 
 
@@ -62,21 +36,16 @@ MathJax.Hub.Config({
 
 当然这个应用不能替代QQ，不过支持类似QQ群聊天功能，方便临时性的会议建群聊天。
 为了简化，我们不实现认证授权功能，这是为彼此都很熟悉的用户设">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-05-26T16:37:55+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="ipython">
-           <meta property="article:tag" content="Kivy">
-           <meta property="article:tag" content="Python">
-
-    
-    
-
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:30+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
@@ -84,22 +53,19 @@ MathJax.Hub.Config({
             <li><a href="../stories/about-me.html" title="About me"><i class="icon-user"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
-            <li><a href="https://plus.google.com/u/0/+MatthewTao" title="My Google+"><i class="icon-google-plus"></i></a></li>
 
-        </ul>
-    </section>
-
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">kivy ch4 chat app</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">kivy-ch4-chat-app</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2015-05-26T16:37:55+08:00">2015-05-26 16:37</time>
+                <time class="timeago" datetime="2015-06-24T13:43:30+08:00">2015-06-24 13:43</time>
             
                       |  
         <a href="kivy-ch4-chat-app.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
 
             </div>
                     <div itemprop="keywords" class="tags">
@@ -110,7 +76,7 @@ MathJax.Hub.Config({
            <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -241,7 +207,7 @@ Twisted目前仍然不能很好的不支持Python3，所以这里得使用Python
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -306,7 +272,7 @@ Twisted目前仍然不能很好的不支持Python3，所以这里得使用Python
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -472,12 +438,10 @@ User A:Hello, world!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>Transition class name</th>
 <th>Visual effect</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td><code>NoTransition</code></td>
@@ -744,7 +708,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -774,7 +738,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -807,7 +771,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -860,7 +824,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -909,7 +873,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -939,7 +903,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1024,7 +988,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1051,7 +1015,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1079,7 +1043,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1104,7 +1068,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1133,7 +1097,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1211,7 +1175,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1239,7 +1203,7 @@ User A:Hello, world!
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1266,7 +1230,7 @@ color][/b]</code>。</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1293,7 +1257,7 @@ color][/b]</code>。</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1344,7 +1308,7 @@ color][/b]</code>。</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1369,7 +1333,7 @@ color][/b]</code>。</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1395,7 +1359,7 @@ color][/b]</code>。</p>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  Hide output if click :-)</i>
+  Click me to hide the output, if the is one ;-)</i>
 </div>
 </div>
 </div>
@@ -1463,20 +1427,23 @@ scripting，XSS），可以造成比修改字体更恐怖的结果。
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
-                <a href="dlott-15059-2015-05-25-report.html" rel="prev" title="大乐透15059期(2015-05-25)数据分析报告">Previous post</a>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+        at the top of the post if you want to play with it ;-)</b></p>
+        <p class="gittip"> Btw, do you like the content? Great! Then help me to achieve a
+        "Sustainable Crowdfunding"!</p>
+        <script data-gittip-username="damianavila" src="//gttp.co/v1.js"></script><ul class="pager">
+<li class="previous">
+                <a href="kivy-ch6-2048-app.html" rel="prev" title="kivy-ch6-2048-app">Previous post</a>
             </li>
             <li class="next">
-                <a href="slott-2015060-2015-05-26-report.html" rel="next" title="双色球2015060期(2015-05-26)数据分析报告">Next post</a>
+                <a href="2-linear-regression.html" rel="next" title="2-linear-regression">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html",
-        disqus_title="kivy ch4 chat app",
+        disqus_title="kivy-ch4-chat-app",
         disqus_identifier="cache/posts/kivy-ch4-chat-app.html",
         disqus_config = function () {
             this.language = "en";
@@ -1486,38 +1453,19 @@ scripting，XSS），可以造成比修改字体更恐怖的结果。
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">muxuezi</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> and <a href="http://www.damian.oquanta.info/" rel="nofollow">Damian Avila</a>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"></a></p>
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
-
-        </div>
-    </section>
-
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51330059-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
