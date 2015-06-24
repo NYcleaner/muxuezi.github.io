@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>{{Coding pages share some thoughts with the world.}}</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 22 Jun 2015 09:54:25 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>2 Linear Regression</title><link>http://muxuezi.github.io/posts/2-linear-regression.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>{{Coding pages share some thoughts with the world.}}</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 24 Jun 2015 02:52:00 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>3 Feature Extraction And Preprocessing</title><link>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="特征提取与处理"&gt;特征提取与处理&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%A4%84%E7%90%86"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上一章案例中的解释变量都是数值，比如匹萨的直接。而很多机器学习问题需要研究的对象可能是分类变量、文字甚至图像。本章，我们介绍提取这些变量特征的方法。这些技术是数据处理的前提——序列化，更是机器学习的基础，影响到本书的所有章节。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</guid><pubDate>Wed, 24 Jun 2015 02:34:16 GMT</pubDate></item><item><title>双色球2015072期(2015-06-23)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015072-2015-06-23-report.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015072-2015-06-23-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015072-2015-06-23-report.html</guid><pubDate>Wed, 24 Jun 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15071期(2015-06-22)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15071-2015-06-22-report.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15071-2015-06-22-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15071-2015-06-22-report.html</guid><pubDate>Tue, 23 Jun 2015 00:00:00 GMT</pubDate></item><item><title>2 Linear Regression</title><link>http://muxuezi.github.io/posts/2-linear-regression.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -36,61 +54,4 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;本章我们简要介绍下机器学习（Machine Learning）的基本概念。主要介绍机器学习算法的应用，监督学习和无监督学习（supervised-unsupervised learning）的应用场景，训练和测试数据的用法，学习效果评估方式。最后，我们介绍scikit-learn及其安装方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</guid><pubDate>Wed, 17 Jun 2015 12:17:32 GMT</pubDate></item><item><title>双色球2015069期(2015-06-16)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015069-2015-06-16-report.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015069-2015-06-16-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015069-2015-06-16-report.html</guid><pubDate>Wed, 17 Jun 2015 00:00:00 GMT</pubDate></item><item><title>kivy perface</title><link>http://muxuezi.github.io/posts/kivy-perface.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Kivy指南"&gt;Kivy指南&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-perface.html#Kivy%E6%8C%87%E5%8D%97"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;作者：&lt;a href="https://github.com/mvasilkov"&gt;Mark Vasilkov&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;中文译者：&lt;a href="https://github.com/muxuezi"&gt;Tao Junjie&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="前言"&gt;前言&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-perface.html#%E5%89%8D%E8%A8%80"&gt;¶&lt;/a&gt;&lt;/h3&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;移动应用开发几年前就是热点了，现在是个软件用户就想要移动版。桌面操作系统也受到影响，跨平台的软件成为新常态。甚至通常局限于微软桌面操作系统的游戏开发者也开始找一些Mac和Linux平台上的工作了（比如Steam，目前有Mac游戏近4000个，SteamOS+Linux游戏2000多个）。&lt;/p&gt;
-&lt;p&gt;这对新手和个人开发者是大利好：跨平台的支持可以增加用户，销售量自然会更好。&lt;/p&gt;
-&lt;p&gt;但是，写可移植的软件是非常耗费资源的过程，对小公司和个人开发者的影响比大公司更甚。&lt;/p&gt;
-&lt;p&gt;尤其是许多平台都有不同语言的SDK：iOS用Objective-C和Swift，Android用Java，MS用.Net，更多是C#来开发软件。&lt;/p&gt;
-&lt;p&gt;使用这些工具可以通过系统功能来制作相应的原生应用，但是跨平台的代码重用变得十分困难。就算你精通所有语言和相关的操作，代码的移植仍然是一件复杂的事情。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-perface.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-perface.html</guid><pubDate>Tue, 16 Jun 2015 07:15:08 GMT</pubDate></item><item><title>kivy ch9 shmup app</title><link>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="射击app"&gt;射击app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html#%E5%B0%84%E5%87%BBapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</guid><pubDate>Tue, 16 Jun 2015 07:14:39 GMT</pubDate></item><item><title>大乐透15068期(2015-06-15)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15068-2015-06-15-report.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15068-2015-06-15-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15068-2015-06-15-report.html</guid><pubDate>Tue, 16 Jun 2015 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015069-2015-06-16-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015069-2015-06-16-report.html</guid><pubDate>Wed, 17 Jun 2015 00:00:00 GMT</pubDate></item></channel></rss>

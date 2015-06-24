@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 22 Jun 2015 09:54:31 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>2 Linear Regression</title><link>http://muxuezi.github.io/posts/2-linear-regression.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 24 Jun 2015 02:52:09 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>3 Feature Extraction And Preprocessing</title><link>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="特征提取与处理"&gt;特征提取与处理&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%A4%84%E7%90%86"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上一章案例中的解释变量都是数值，比如匹萨的直接。而很多机器学习问题需要研究的对象可能是分类变量、文字甚至图像。本章，我们介绍提取这些变量特征的方法。这些技术是数据处理的前提——序列化，更是机器学习的基础，影响到本书的所有章节。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</guid><pubDate>Wed, 24 Jun 2015 02:34:16 GMT</pubDate></item><item><title>2 Linear Regression</title><link>http://muxuezi.github.io/posts/2-linear-regression.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -170,21 +186,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;前面我们尝试过单一平台Android的Kivy开发，通过原生的底层API来实现。下面我们探索另外一种天生具有跨平台能力的工具来做app——网络。在这一章，我们做一个聊天app，类似于QQ，但是简单版。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</guid><pubDate>Tue, 26 May 2015 08:37:55 GMT</pubDate></item><item><title>kivy ch3 sound recorder for android</title><link>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</link><dc:creator>muxuezi</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Android录音app"&gt;Android录音app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html#Android%E5%BD%95%E9%9F%B3app"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;在上一章，我们简要介绍过Kivy要实现跨平台应用，可能在不同的平台需要选择不同的代码，为一些用户增强体验效果，实现具体平台的任务。&lt;/p&gt;
-&lt;p&gt;有时，这些都很简单；比如，如果Kivy发现目标系统支持它，多点触控就会启动——不需要写任何代码，但是要考虑一些点击事件原来的功能可能会与多点触控产生冲突。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html</guid><pubDate>Sat, 23 May 2015 03:50:15 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch4-chat-app.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch4-chat-app.html</guid><pubDate>Tue, 26 May 2015 08:37:55 GMT</pubDate></item></channel></rss>
