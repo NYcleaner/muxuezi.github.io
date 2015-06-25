@@ -1,3 +1,0 @@
-title=HelloApp
-author=Mark Vasilkov
-orientation=landscape

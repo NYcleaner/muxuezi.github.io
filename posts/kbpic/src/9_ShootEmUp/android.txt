@@ -1,3 +1,0 @@
-title=ShootEmUp
-author=Mark Vasilkov
-orientation=landscape

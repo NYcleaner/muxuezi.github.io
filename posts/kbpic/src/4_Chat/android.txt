@@ -1,3 +1,0 @@
-title=Chat app
-author=Mark Vasilkov
-orientation=portrait

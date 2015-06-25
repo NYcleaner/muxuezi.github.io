@@ -1,3 +1,0 @@
-title=Remote Desktop app
-author=Mark Vasilkov
-orientation=landscape

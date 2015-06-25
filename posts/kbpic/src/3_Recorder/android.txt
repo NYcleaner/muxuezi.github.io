@@ -1,3 +1,0 @@
-title=Sound recorder
-author=Mark Vasilkov
-orientation=portrait

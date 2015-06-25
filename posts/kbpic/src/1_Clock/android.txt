@@ -1,3 +1,0 @@
-title=Clock app
-author=Mark Vasilkov
-orientation=portrait

@@ -1,3 +1,0 @@
-title=Stars
-author=Mark Vasilkov
-orientation=landscape
