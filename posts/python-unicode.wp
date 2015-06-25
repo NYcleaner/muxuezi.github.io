@@ -1,0 +1,31 @@
+<html><body><p>unicode一直是头疼事儿，今天清理一下。
+</p><ol>
+	<li>ipython notebook默认编码 'Ascii'</li>
+	<li>输入open(f,'r')，如果有中文，需要转换才能使用</li>
+	<li>网络数据如果要写入文件open(f,'w')，需要encode转为utf8</li>
+</ol>
+
+只要是中文使用出现出入"Ascii ....Unicode"，就转换下：
+
+addressto = addressto.decode("utf-8")
+
+
+
+彻底改变编码：
+
+<ol>
+	<li>python3，都是utf-8</li>
+	<li>通过sys改变编码，可以在cmd里面用，notebook不支持</li>
+</ol>
+
+<div class="dp-highlighter nogutter">
+
+<ol class="dp-py" start="0">
+	<li class="alt"><span class="comment"># -*- coding: utf-8 -*-</span></li>
+	<li><span class="keyword">import</span> <span class="commonlibs">sys</span></li>
+	<li class="alt"><span class="builtins">reload</span>(<span class="commonlibs">sys</span>)</li>
+	<li><span class="commonlibs">sys</span>.setdefaultencoding('utf-8')</li>
+	<li class="alt"><span class="comment"># print sys.getdefaultencoding()</span></li>
+</ol>
+
+</div></body></html>

@@ -1,0 +1,24 @@
+<html><body><p>pandas细节比较多，<a title="pandas" href="http://pandas.pydata.org/index.html" target="_blank">更新也快</a>，绝对可以替代所有sql
+</p><h1>0.13中ExcelWriter支持使用with写入多sheet，更人性化</h1>
+
+with ExcelWriter('path_to_file.xlsx') as writer:
+
+df1.to_excel(writer, sheet_name='Sheet1')
+
+df2.to_excel(writer, sheet_name='Sheet2')
+
+<h2>0.12中，需要用writer.save()保持才能输出</h2>
+
+<h2>0.13ExcelWriter支持Excel writer engines</h2>
+
+XlsxWriter —— .xlsx
+
+openpyxl —— .xlsm files
+
+xlwt —— .xls files
+
+<h1>通过map实现多条件筛选</h1>
+
+criterion = rdctemp[u'省名称'].map(lambda x: x.startswith(prov.decode('utf8')[:2]))
+
+rdctemp.loc[criterion,dstname] = price</body></html>

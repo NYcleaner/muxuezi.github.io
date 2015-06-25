@@ -1,0 +1,12 @@
+<html><body><p>import urllib2
+name = u'张宏科'
+
+school = u'北京交通大学'
+
+transfer = lambda temp : urllib2.quote(temp.encode('utf-8'))
+
+url = 'https://duckduckgo.com/?q=%s+%s&amp;t=lm' % (transfer(name),transfer(school))
+
+
+
+</p><pre style="color: #000000;">https://duckduckgo.com/?q=%E5%BC%A0%E5%AE%8F%E7%A7%91+%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6&amp;t=lm</pre></body></html>

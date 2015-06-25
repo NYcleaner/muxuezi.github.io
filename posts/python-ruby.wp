@@ -1,0 +1,64 @@
+
+<!-- TEASER_END -->
+
+<html><body><p>1.blocks
+
+&gt;&gt; properties = ['object oriented' , 'duck typed' , 'productive' , 'fun' ]
+
+=&gt; ["object oriented" , "duck typed" , "productive" , "fun" ]
+
+&gt;&gt; properties.each {|property| puts "Ruby is #{property}." }
+
+Ruby is object oriented.
+
+Ruby is duck typed.
+
+Ruby is productive.
+
+Ruby is fun.
+
+=&gt; ["object oriented" , "duck typed" , "productive" , "fun" ]
+
+
+
+In [9]: map(lambda p:"Python is %s" % p, properties)
+
+Out[9]:
+
+['Python is object oriented',
+
+'Python is duck typed',
+
+'Python is productive',
+
+'Python is fun']
+
+
+
+2. print
+
+
+
+irb(main):008:0&gt; x = 1
+
+=&gt; 1
+
+irb(main):009:0&gt; puts 'hello, #{x}'
+
+hello, #{x}
+
+=&gt; nil
+
+irb(main):010:0&gt; puts "hello, #{x}"
+
+hello, 1
+
+=&gt; nil
+
+
+
+In [10]: x = 1
+
+In [11]: print 'hello,%d' % x
+
+hello,1</p></body></html>

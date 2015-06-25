@@ -1,0 +1,110 @@
+<html><body><p>以前在Webos、kindle上面用过chroot，可以运行Debian、Ubuntu，现在总结一下Android的chroot Debian（Ubuntu方法类似）方法
+
+<!-- TEASER_END -->
+
+环境：在ubuntu下
+
+
+
+# 背景 春节期间，老弟给了一部手机酷派7290，参数如下：
+
+</p><ul>
+	<li>网络模式：GSM，WCDMA</li>
+	<li>网络类型：双卡双模</li>
+	<li>主屏尺寸：4.5英寸 800x480像素</li>
+	<li>CPU型号：联发科 MT6577</li>
+	<li>CPU频率：1024MHz 双核</li>
+	<li>电池容量：1800mAh 可拆卸式电池</li>
+	<li>后置摄像头像素：500万像素</li>
+	<li>操作系统：Android OS 4.0</li>
+	<li>RAM容量：512MB</li>
+	<li>ROM容量：4GB</li>
+	<li>SIM卡类型：SIM卡</li>
+	<li>存储卡：MicroSD卡</li>
+</ul>
+
+# 步骤
+
+
+
+1. 制作Debian arm版本
+
+<pre>#安装编译工具
+
+apt-get install debootstrap
+
+apt-get install qemu-arm-static #ubuntu32
+
+(apt-get install qemu-user-static) #mint64</pre>
+
+<pre>#生成img文件1.5G
+
+dd if=/dev/zero of=debian.img bs=1M count=1536
+
+mkdir build</pre>
+
+<pre>#将img格式化为ext2
+
+losetup -f debian.img
+
+mkfs.ext2 /dev/loop0</pre>
+
+<pre>#挂载img到文件build内，debootstrap建立debian
+
+mount /dev/loop0 build/ 
+
+debootstrap --arch armhf --foreign sid build/ http://ftp.cn.debian.org/debian</pre>
+
+<pre>#通过chroot进入debian，用qemu编译为arm版本
+
+cp /usr/bin/qemu-arm-static build/usr/bin/
+
+chroot build/
+
+/debootstrap/debootstrap --second-stage</pre>
+
+<pre>#添加源为sid（也可以是wheezy）
+
+apt-get clean
+
+echo "deb http://ftp.us.debian.org/debian sid main" &gt; /etc/apt/sources.list</pre>
+
+<pre>#退出debian，清理qemu
+
+exit
+
+rm build/usr/bin/qemu-arm-static
+
+umount build/
+
+losetup -d /dev/loop0</pre>
+
+参考<a title="webos debian" href="http://www.webos-internals.org/wiki/Debian" target="_blank">http://www.webos-internals.org/wiki/Debian</a>
+
+
+
+2. Andorid Shell
+
+<ul>
+	<li>把debian.img复制到手机内存卡上 /mnt/sdcard</li>
+	<li> Andorid手机上安装BTEP(<a title="BTEP" href="https://play.google.com/store/apps/details?id=com.magicandroidapps.bettertermpro&amp;hl=en" target="_blank">Better Terminal Emulator Pro</a>)</li>
+	<li>两个shell复制到debian.img同文件夹内startbt.sh和bt.sh</li>
+</ul>
+
+3. 脚本运行Chroot
+
+<ul>
+	<li><span style="line-height: 1.5;">启动BTEP，在preference开启root权限</span></li>
+	<li><span style="line-height: 1.5;">运行一次sh </span><span style="line-height: 1.5;"> /mnt/sdcard/</span><span style="line-height: 1.5;">startbt.sh，每次重启手机后运行一次即可</span></li>
+	<li>再运行sh  /mnt/sdcard/bt.sh，每次进入debian都运行一次，BTEP在android shell下可以init commend运行sh  /mnt/sdcard/bt.sh，一开BTEP就进debian</li>
+</ul>
+
+4. apt-get 升级安装软件
+
+<ul>
+	<li><span style="line-height: 1.5;">更新升级apt-get update &amp;&amp; apt-get upgrade</span></li>
+	<li>支持python-pandas 0.13.1 最新版</li>
+	<li>debian的任何命令、软件都可以用</li>
+</ul>
+
+# 结束</body></html>

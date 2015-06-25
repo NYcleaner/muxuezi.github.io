@@ -1,0 +1,6 @@
+<html><body><p>To remedy the situation, here is a short script that you can invoke and that will kill all your running tmux sessions.
+1	tmux ls | awk '{print $1}' | sed 's/://g' | xargs -I{} tmux kill-session -t {}
+
+You can put it into a nice little alias
+
+1	alias kts='tx ls | awk '{print $1}' | sed 's/://g' | xargs -I{} tmux kill-session -t {}'</p></body></html>

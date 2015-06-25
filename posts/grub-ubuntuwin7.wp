@@ -1,0 +1,21 @@
+<html><body><p>Ubuntu与Win7双系统，在重装Win7后会出现Ubuntu的Linux不能启动的情况，这是因为grub引导被覆盖了。
+   要修复grub需要一张Ubuntu的LiveCD（安装光盘），用LiveCD启动电脑，进入试用Ubuntu，进入之后打开终端，做如下几步：
+   1、输入sudo -i取得权限；
+   2、找到安装ubuntu的挂载点，我的 / 在sda9，/boot 在sda8里面，如果不清楚可以用命令 fdisk -l 来查看；
+   3、挂载分区分别输入命令：
+        mount /dev/sda9 /mnt                (mount跟sda9之后分别有一个空格）
+        mount /dev/sda8 /mnt/boot        (如果没有/boot分区可以省略这一步）
+   4、安装grub输入命令：
+        grub-install --root-directory=/mnt /dev/sda
+        (--跟/dev/sda之前分别有一个空格，sda指的是第一硬盘，如果想安装在第二硬盘里面就用sdb）
+         注：如果grub.cfg己丢失，或grub.cfg出现错误，需要重建的继续执行下面操作：
+               mount –bind /proc /mnt/proc
+               mount –bind /dev /mnt/dev
+               mount –bind /sys /mnt/sys
+               chroot /mnt update-grub
+               umount /mnt/sys
+               umount /mnt/dev
+               umount /mnt/proc
+               exit
+   5、重启电脑，进入熟悉的ubuntu
+   6、打开终端输入命令 sudo update-grub </p></body></html>

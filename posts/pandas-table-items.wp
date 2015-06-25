@@ -1,0 +1,12 @@
+<html><body><div class="dp-highlighter">
+<div class="bar">通过bookall.groupby(obj)获取所有group</div>
+
+<div class="bar">然后对每个group的属性进行合并bookunit.<span class="builtins" style="color: #ff1493;">append</span>('&amp;&amp;'.join([<span class="builtins" style="color: #ff1493;">str</span>(x) <span class="keyword" style="font-weight: bold; color: blue;">for</span> x <span class="keyword" style="font-weight: bold; color: blue;">in</span> bookall.ix[v, i].<span class="builtins" style="color: #ff1493;">values</span>]))</div>
+
+<!-- TEASER_END -->
+
+
+
+
+
+<script src="https://gist.github.com/muxuezi/5f42c4d27cade0162744.js"></script></div></body></html>

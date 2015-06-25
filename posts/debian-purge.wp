@@ -1,0 +1,22 @@
+<html><body><p>dpkg --get-selections|grep linux
+sudo apt-get remove linux-image-2.6.24-16-generic
+
+sudo aptitude purge ~ilinux-image-.*(!`uname -r`)
+
+aptitude-可以删除依赖包
+
+sudo update-grub
+
+sudo apt-get autoclean
+
+
+
+deborphan。sudo apt-get install deborphan
+
+运行deborphan --show-section --show-priority --show-size 或者简洁一点：$ deborphan -sPz，查看有没有多余的库。删除无用的库文件：sudo apt-get remove --purge `deborphan` ( 清除系统多余的 library )
+
+dpkg -r package
+
+apt-get install -f
+
+apt-get update</p></body></html>
