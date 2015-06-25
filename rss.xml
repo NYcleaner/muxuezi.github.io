@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 25 Jun 2015 01:23:23 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>yi-dong-dockermu-lu</title><link>http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>the-swift-programming-language-en</title><link>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;h2&gt;About Swift&lt;/h2&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 25 Jun 2015 02:23:00 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>yi-dong-dockermu-lu</title><link>http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/yi-dong-dockermu-lu.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>the-swift-programming-language-en</title><link>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;h2&gt;About Swift&lt;/h2&gt;
 &lt;p&gt;Swift is a new programming language for iOS and OS X apps that builds on the best of C and Objective-C, without the constraints of C compatibility. Swift adopts safe programming patterns and adds modern features to make programming easier, more flexible, and more fun. Swift’s clean slate, backed by the mature and much-loved Cocoa and Cocoa Touch frameworks, is an opportunity to reimagine how software development works. &lt;/p&gt;
 &lt;p&gt;Swift has been years in the making. Apple laid the foundation for Swift by advancing our existing compiler, debugger, and framework infrastructure. We simplified memory management with Automatic Reference Counting (ARC). Our framework stack, built on the solid base of Foundation and Cocoa, has been modernized and standardized throughout. Objective-C itself has evolved to support blocks, collection literals, and modules, enabling framework adoption of modern language technologies without disruption. Thanks to this groundwork, we can now introduce a new language for the future of Apple software development. &lt;/p&gt;
 &lt;p&gt;Swift feels familiar to Objective-C developers. It adopts the readability of Objective-C’s named parameters and the power of Objective-C’s dynamic object model. It provides seamless access to existing Cocoa frameworks and mix-and-match interoperability with Objective-C code. Building from this common ground, Swift introduces many new features and unifies the procedural and object-oriented portions of the language. &lt;/p&gt;
@@ -11289,15 +11289,90 @@
 &lt;p&gt;| &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;New document that describes Swift, Apple’s new programming language for building iOS and OS X apps. &lt;/li&gt;
-&lt;/ol&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>name-and-dream</title><link>http://muxuezi.github.io/posts/name-and-dream.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/name-and-dream.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/name-and-dream.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>android</title><link>http://muxuezi.github.io/posts/kbpic/src/9_ShootEmUp/android.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;title=ShootEmUp
-author=Mark Vasilkov
-orientation=landscape&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/9_ShootEmUp/android.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>android</title><link>http://muxuezi.github.io/posts/kbpic/src/8_Starfield/android.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;title=Stars
-author=Mark Vasilkov
-orientation=landscape&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/8_Starfield/android.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>android</title><link>http://muxuezi.github.io/posts/kbpic/src/7_KivyBird/android.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;title=Kivy Bird
-author=Mark Vasilkov
-orientation=landscape&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/7_KivyBird/android.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>android</title><link>http://muxuezi.github.io/posts/kbpic/src/6_2048/android.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;title=2048
-author=Mark Vasilkov
-orientation=portrait&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/6_2048/android.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>requirements</title><link>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/requirements.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;Flask&amp;gt;=0.10.1
-Pillow&amp;gt;=2.5.3&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/requirements.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>android</title><link>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/android.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;title=Remote Desktop app
-author=Mark Vasilkov
-orientation=landscape&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/android.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>requirements</title><link>http://muxuezi.github.io/posts/kbpic/src/4_Chat/requirements.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;Twisted&amp;gt;=14.0.0&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/kbpic/src/4_Chat/requirements.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item></channel></rss>
+&lt;/ol&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>name-and-dream</title><link>http://muxuezi.github.io/posts/name-and-dream.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/name-and-dream.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/name-and-dream.html</guid><pubDate>Wed, 24 Jun 2015 16:00:00 GMT</pubDate></item><item><title>1-the-fundamentals-of-machine-learning</title><link>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="机器学习基础"&gt;机器学习基础&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章我们简要介绍下机器学习（Machine Learning）的基本概念。主要介绍机器学习算法的应用，监督学习和无监督学习（supervised-unsupervised learning）的应用场景，训练和测试数据的用法，学习效果评估方式。最后，我们介绍scikit-learn及其安装方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</guid><pubDate>Wed, 24 Jun 2015 05:45:05 GMT</pubDate></item><item><title>kivy-ch1-clock-app</title><link>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="时钟app"&gt;时钟app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html#%E6%97%B6%E9%92%9Fapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;一个仿iOS和Android内置时钟应用的app。分两部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;个没有交互的数字时钟，简述Kivy的事件驱动(event-driven)方法，引入计时器的功能，持续更新。&lt;/li&gt;
+&lt;li&gt;交互的秒表功能，设计流畅的自适应布局。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</guid><pubDate>Wed, 24 Jun 2015 05:45:00 GMT</pubDate></item><item><title>ms-office-with-pywin32com</title><link>http://muxuezi.github.io/posts/ms-office-with-pywin32com.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Python调用COM的API实现Microsoft Office(PPT, Excel, Word)办公自动化&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/ms-office-with-pywin32com.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/ms-office-with-pywin32com.html</guid><pubDate>Wed, 24 Jun 2015 05:44:54 GMT</pubDate></item><item><title>kivy-ch9-shmup-app</title><link>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="射击app"&gt;射击app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html#%E5%B0%84%E5%87%BBapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:43 GMT</pubDate></item><item><title>python-data-structures</title><link>http://muxuezi.github.io/posts/python-data-structures.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本文介绍Python数据结构与算法，原文在&lt;a href="http://interactivepython.org/runestone/static/pythonds/index.html"&gt;Problem Solving with Algorithms and Data Structures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-data-structures.html"&gt;Read more…&lt;/a&gt; (36 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-data-structures.html</guid><pubDate>Wed, 24 Jun 2015 05:44:38 GMT</pubDate></item><item><title>kivy-ch5-remote-desktop-app</title><link>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="远程桌面app"&gt;远程桌面app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2app"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章做一个远程桌面app，依然和网络相关。我们用“真正的”应用层协议进行通信，解决一个复杂的问题。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:32 GMT</pubDate></item><item><title>python-network-scripting-pp4e</title><link>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Network Scripting in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</guid><pubDate>Wed, 24 Jun 2015 05:44:27 GMT</pubDate></item></channel></rss>
