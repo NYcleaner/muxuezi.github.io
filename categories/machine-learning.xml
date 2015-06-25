@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Machine Learning)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/machine-learning.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 25 Jun 2015 07:39:50 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>1-the-fundamentals-of-machine-learning</title><link>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="机器学习基础"&gt;机器学习基础&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章我们简要介绍下机器学习（Machine Learning）的基本概念。主要介绍机器学习算法的应用，监督学习和无监督学习（supervised-unsupervised learning）的应用场景，训练和测试数据的用法，学习效果评估方式。最后，我们介绍scikit-learn及其安装方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</guid><pubDate>Wed, 24 Jun 2015 05:45:05 GMT</pubDate></item><item><title>3-feature-extraction-and-preprocessing</title><link>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="特征提取与处理"&gt;特征提取与处理&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%A4%84%E7%90%86"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上一章案例中的解释变量都是数值，比如匹萨的直接。而很多机器学习问题需要研究的对象可能是分类变量、文字甚至图像。本章，我们介绍提取这些变量特征的方法。这些技术是数据处理的前提——序列化，更是机器学习的基础，影响到本书的所有章节。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</guid><pubDate>Wed, 24 Jun 2015 05:43:42 GMT</pubDate></item><item><title>2-linear-regression</title><link>http://muxuezi.github.io/posts/2-linear-regression.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="线性回归"&gt;线性回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/2-linear-regression.html#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小化的参数值。在研究一个大数据集问题之前，我们先从一个小问题开始学习建立模型和学习算法。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/2-linear-regression.html"&gt;Read more…&lt;/a&gt; (12 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/2-linear-regression.html</guid><pubDate>Wed, 24 Jun 2015 05:43:36 GMT</pubDate></item></channel></rss>
