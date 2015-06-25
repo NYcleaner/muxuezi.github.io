@@ -1,0 +1,4 @@
+<html><body><p>sudo add-apt-repository ppa:mystic-mirage/komodo-edit
+sudo apt-get update
+
+sudo apt-get install komodo-edit</p></body></html>

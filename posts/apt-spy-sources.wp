@@ -1,0 +1,24 @@
+<html><body><p>apt-get install apt-spy
+apt-spy update
+
+#下载最新的更新源列表
+
+apt-spy -d testing -a asia -t 5
+
+#对选定的源列表进行连接速度的测试
+
+apt-spy会测试连接得到速度最快的更新源，记录在/etc/apt/sources.list.d/apt-spy.list中。之后apt- get update时会自动连接apt-spy.list中的更新源更新软件列表。apt-spy的使用参考5)。
+
+
+
+#-------------ubuntu14.04 trusty(163#网易电信网通双线接入网速杆杆的#)-----------------#
+
+deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty main multiverse restricted universe
+
+deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-security main multiverse restricted universe
+
+deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-updates main multiverse restricted universe
+
+deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-proposed universe restricted multiverse main
+
+deb <a href="http://jump.bdimg.com/safecheck/index?url=x+Z5mMbGPAteBfGoS4pBb6AnX8vad7Uc62NmXHQfNOd1c93Kd44ZaVMeiRzQylojoLLKCQh+pr5V+HytT7d3oaAwQnSt+fbSSqfYTpGQJka9OnT+BwdFoZuQye2MG4bWMDxm7iZ2BjQ=" target="_blank">http://mirrors.163.com/ubuntu/</a> trusty-backports main multiverse restricted universe</p></body></html>

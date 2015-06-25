@@ -1,0 +1,20 @@
+<html><body><p>1.下载： 用安装包自己编译 k3flasher，再sudo chmod +x k3flasher，需要可执行权限，这步非常重要啊！
+2. 在windows下安装好ATK后，从c:Program FilesfreescaleAdvancedToolKit-STDimage目录下把mx35to2_mmc.bin拷到k3flasher同一个目录。
+
+3. Ubuntu下使用方法很简单：
+
+sudo ./k3flasher mx35to2_mmc.bin program kernel kernel3.3.bin
+
+sudo ./k3flasher mx35to2_mmc.bin program rootfs rootfs3.3.bin
+
+
+
+各种纠结，终于解决了
+
+wait ok
+
+
+
+只需USB线对Kindle 3修砖的小白教程
+
+http://bbs.xiaomi.cn/forum.php?mod=viewthread&amp;tid=8159110</p></body></html>

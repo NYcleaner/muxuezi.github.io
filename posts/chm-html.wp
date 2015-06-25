@@ -1,0 +1,4 @@
+<html><body><p>将.CHM文件反向转换成 .html 格式文件的方法：
+可以利用Windows自带的hh.exe文件来进行文件格式转换，语法为：
+
+hh -decompile 目标文件夹 源CHM文件名。</p></body></html>

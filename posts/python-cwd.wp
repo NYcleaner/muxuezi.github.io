@@ -1,0 +1,14 @@
+<html><body><p>在python的一些程序执行时，CWD很重要：除非程序执行所需文件的名字都包含绝对目录路径，否则那些文件通常都被假设位于CWD里面。
+记住，没有完整路径名的文件名映射到CWD，与PYTHONPATH设置无关。
+
+1）一个程序是从CWD启动，而不是从包含它的目录启动；
+
+2）import从包含程序的目录开始搜索，不是CWD。
+
+
+
+当你在命令行输入这段命令：python dir1dir2file.py，CWD是输入命令的目录，可能是C:Documents and SettingsAdministrator，但不一定是file.py所在目录。另外，python会自动把file.py所在的目录绝对路径dir1dir2放在模块搜索路径最前面，这样不管在哪儿运行程序，file.py都可以导入dir1dir2内的所有文件。dir1dir2将成为模块搜索路径的第一路径。
+
+
+
+实现from PP4E.System.more import more，需要之前在sys.path中加入（append）包含PP4E的目录。</p></body></html>

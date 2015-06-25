@@ -1,0 +1,24 @@
+<html><body><p>http://blog.163.com/fuhaocn@126/blog/static/366650802011112010920932/
+1：ubuntu-9.04-desktop-i386.iso  
+
+2：grub.exe；grldr；menu.lst; initrd.lz；vmlinuz； 备注：ubuntu-9.04-desktop-i386.iso 是ubuntu系统ISO安装文件; initrd.lz，vmlinuz，两个文件可以到ubuntu-9.04-beta-desktop-i386.iso 里面的 casper 文件夹里面找到，然后解压到C：盘根目录下，也就是C：下； 
+
+grub.exe，grldr 可以到网上下载，也可以在本文附件里下载, 将它们同样也放入C根目录下； menu.lst，要自己创建到C：下， 内容如下，复制进去，然后保存！
+
+title Install Ubuntu 9.04  
+
+root (hd0,0)  
+
+kernel /vmlinuz boot=casper iso-scan/filename=/ubuntu-9.04-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8
+
+initrd /initrd.lz  
+
+boot  
+
+3：把ubuntu-9.04-desktop-i386.iso里.disk文件夹里的文件解压到C：下；注意了，一定要去C盘看下.disk文件夹下的文件是不是还在.disk文件夹里，要是的话，就把它们提到C：下； 
+
+4：去掉该文件的隐含系统只读属性 windows 下，开始－&gt;运行－&gt;cmd , 后输入 attrib -r -h -s c:boot.ini 或者直接右键点击boot.ini文件，把只读去掉 在WINXP下修改boot.ini，在boot.ini文件最后一行后回车，加入C:grldr="Install Ubuntu 9.04 desktop"
+
+5：重启电脑，然后选择Ubuntu启动项就可以了，然后就是进入到Ubuntu9.04桌面了，桌面上有个安装，打开它，然后有7步设置，搞到挂载的时候，我是遇到了无法挂载的情况， 我是这样解决的：同时按下Ctrl+Alt+F2,然后在：后输入  sudo umount -l /isodevice  输好后，然后回车，再同时按下 Ctrl+Alt+F7，回到安装界面，然后我就一路装下去了！然后就是设置用户名和密码，确认分区信息，完成后就开始安装了!
+
+这时可能出现的问题：安装ubuntn时出现：正在配置apt。一直82%不动。 解决办法：安装的时候不要配置网络，安装完成之后再配置网络，安装中拔掉网线。 我这里安装时间不到10分钟，重启再次进入Ubuntu 9.04，更新完软件包，也就是20多分钟，然后就OK了！  问题1：无法挂载的情况，我是这样解决的：同时按下Ctrl+Alt+F2,然后在：后输入 sudo umount -l /isodevice 输好后，然后回车，再同时按下 Ctrl+Alt+F7，回到安装界面，然后我就一路装下去了！然后就是设置用户名和密码，确认分区信息，完成后就开始安装了！我这里安装时间不到10分钟，重启再次进入Ubuntu 9.04，更新完软件包，也就是20多分钟，然后就OK了！  问题2：重启后不出现WINDOWS启动菜单 在端口里输入了 sudo gedit /boot/grub/menu.lst 然后输入密码，就打开了 menu.lst 文件， 然后在文件内容的最后加入如下内容：  title Windows xp root (hd0,0) makeactive chainloader +1  然后保存文件，重启！OK，启动菜单出来啦，双系统又并存啊！！</p></body></html>
