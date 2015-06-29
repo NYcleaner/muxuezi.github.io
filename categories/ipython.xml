@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 29 Jun 2015 12:32:54 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>6-clustering-with-k-means</title><link>http://muxuezi.github.io/posts/6-clustering-with-k-means.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 29 Jun 2015 12:53:33 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>4-from-linear-regression-to-logistic-regression</title><link>http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="从线性回归到逻辑回归"&gt;从线性回归到逻辑回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html#%E4%BB%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%88%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在第2章，线性回归里面，我们介绍了一元线性回归，多元线性回归和多项式回归。这些模型都是广义线性回归模型的具体形式，广义线性回归是一种灵活的框架，比普通线性回归要求更少的假设。这一章，我们讨论广义线性回归模型的具体形式的另一种形式，逻辑回归（logistic regression）。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html"&gt;Read more…&lt;/a&gt; (9 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html</guid><pubDate>Mon, 29 Jun 2015 12:49:07 GMT</pubDate></item><item><title>6-clustering-with-k-means</title><link>http://muxuezi.github.io/posts/6-clustering-with-k-means.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -117,29 +133,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Network Scripting in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</guid><pubDate>Wed, 24 Jun 2015 05:44:27 GMT</pubDate></item><item><title>introduction-to-julia</title><link>http://muxuezi.github.io/posts/introduction-to-julia.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Introduction-to-Julia-(slides-show)"&gt;&lt;a href="http://muxuezi.github.io/portfolio/Introduction%20to%20Julia.slides.html"&gt;Introduction to Julia (slides show)&lt;/a&gt;&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/introduction-to-julia.html#Introduction-to-Julia-(slides-show)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Let's start with a quick overview of the basic syntax, emphasising differences with Python.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/portfolio/Why%20Julia.slides.html"&gt;Why Jula (slides show)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/introduction-to-julia.html"&gt;Read more…&lt;/a&gt; (37 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/introduction-to-julia.html</guid><pubDate>Wed, 24 Jun 2015 05:44:21 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</guid><pubDate>Wed, 24 Jun 2015 05:44:27 GMT</pubDate></item></channel></rss>
