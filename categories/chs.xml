@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (CHS)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/chs.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 29 Jun 2015 12:53:33 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>4-from-linear-regression-to-logistic-regression</title><link>http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (CHS)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/chs.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 02 Jul 2015 01:42:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>7-dimensionality-reduction-with-pca</title><link>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用PCA降维"&gt;用PCA降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html#%E7%94%A8PCA%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章我们将介绍一种降维方法，PCA（Principal Component Analysis，主成分分析）。降维致力于解决三类问题。第一，降维可以缓解维度灾难问题。第二，降维可以在压缩数据的同时让信息损失最小化。第三，理解几百个维度的数据结构很困难，两三个维度的数据通过可视化更容易理解。下面，我们用PCA将一个高维数据降成二维，方便可视化，之后，我们建一个脸部识别系统。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</guid><pubDate>Thu, 02 Jul 2015 01:38:42 GMT</pubDate></item><item><title>4-from-linear-regression-to-logistic-regression</title><link>http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -127,10 +143,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;本章做一个远程桌面app，依然和网络相关。我们用“真正的”应用层协议进行通信，解决一个复杂的问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:32 GMT</pubDate></item><item><title>python-network-scripting-pp4e</title><link>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Network Scripting in &lt;a href="http://www.rmi.net/~lutz/about-pp4e.html"&gt;Programming Python, 4th Edition&lt;/a&gt;, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html"&gt;Read more…&lt;/a&gt; (39 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-network-scripting-pp4e.html</guid><pubDate>Wed, 24 Jun 2015 05:44:27 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:32 GMT</pubDate></item></channel></rss>
