@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 08 Jul 2015 00:47:45 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>9-from-the-perceptron-to-support-vector-machines.ipynb</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machinesipynb.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; 
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px"&gt;
-  hide output&lt;/i&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machinesipynb.html</guid><pubDate>Wed, 08 Jul 2015 00:44:29 GMT</pubDate></item><item><title>8-the-perceptron.ipynb</title><link>http://muxuezi.github.io/posts/8-the-perceptronipynb.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; 
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px"&gt;
-  hide output&lt;/i&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/8-the-perceptronipynb.html</guid><pubDate>Wed, 08 Jul 2015 00:43:56 GMT</pubDate></item><item><title>双色球2015078期(2015-07-07)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html</guid><pubDate>Wed, 08 Jul 2015 00:00:00 GMT</pubDate></item><item><title>name-and-dream</title><link>http://muxuezi.github.io/posts/name-and-dream.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/name-and-dream.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/name-and-dream.html</guid><pubDate>Tue, 07 Jul 2015 16:00:00 GMT</pubDate></item><item><title>"\n",</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 08 Jul 2015 01:18:24 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>9-from-the-perceptron-to-support-vector-machines</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -46,7 +17,7 @@
 &lt;p&gt;上一章我们介绍了感知器。作为一种二元分类器，感知器不能有效的解决线性不可分问题。其实在&lt;em&gt;第二章，线性回归&lt;/em&gt;里面已经遇到过类似的问题，当时需要解决一个解释变量与响应变量存在非线性关系的问题。为了提高模型的准确率，我们引入了一种特殊的多元线性回归模型，多项式回归。通过对特征进行合理的组合，我们建立了高维特征空间的解释变量与响应变量的线性关系模型。&lt;/p&gt;
 &lt;p&gt;随着特征空间的维度的不断增多，在用线性模型近似非线性函数时，上述方法似乎依然可行，但是有两个问题不可避免。首先是计算问题，计算映射的特征，操纵高维的向量需要更强大的计算能力。然后是与算法归纳有关的问题，特征空间的维度的不断增多会导致维度灾难。从高维的特征变量中学习，要避免拟合过度，就需要呈指数级增长的训练数据。&lt;/p&gt;
 &lt;p&gt;这一章，我们将介绍一种强大的分类和回归模型，称为支持向量机（support vector machine，SVM）。首先，我们将学习高维空间的特征映射。然后，我们将介绍，在处理被映射到高维空间的数据时，支持向量机是如何缓解那些计算与综合问题的。有许多书整本整本的介绍SVM，相关的优化算法需要比前面章节里介绍其他算法更多的数学知识。我们不再用前面那些章节的小例子来演示算法，而是通过直观的案例来介绍scikit-learn如何有效的使用SVM去解决问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</guid><pubDate>Tue, 07 Jul 2015 16:00:00 GMT</pubDate></item><item><title>"\n",</title><link>http://muxuezi.github.io/posts/8-the-perceptron.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</guid><pubDate>Wed, 08 Jul 2015 01:15:04 GMT</pubDate></item><item><title>8-the-perceptron</title><link>http://muxuezi.github.io/posts/8-the-perceptron.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -62,7 +33,8 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;前面，我们介绍了广义线性模型，用联接方程描述解释变量、超参数和响应变量的线性关系。这一章，我们将介绍另一种线性模型，称为感知器（perceptron）。感知器是一种研究单个训练样本的二元分类器，训练较大的数据集很有用。而且，感知器和它的不足激发了我们后面两种将介绍的模型。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/8-the-perceptron.html"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/8-the-perceptron.html</guid><pubDate>Tue, 07 Jul 2015 16:00:00 GMT</pubDate></item><item><title>"\n",</title><link>http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/8-the-perceptron.html"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/8-the-perceptron.html</guid><pubDate>Wed, 08 Jul 2015 01:13:39 GMT</pubDate></item><item><title>双色球2015078期(2015-07-07)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015078-2015-07-07-report.html</guid><pubDate>Wed, 08 Jul 2015 00:00:00 GMT</pubDate></item><item><title>name-and-dream</title><link>http://muxuezi.github.io/posts/name-and-dream.html</link><dc:creator>tj2</dc:creator><description>&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/name-and-dream.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;</description><guid>http://muxuezi.github.io/posts/name-and-dream.html</guid><pubDate>Tue, 07 Jul 2015 16:00:00 GMT</pubDate></item><item><title>"\n",</title><link>http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -81,4 +53,21 @@
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html</guid><pubDate>Tue, 07 Jul 2015 16:00:00 GMT</pubDate></item><item><title>大乐透15077期(2015-07-06)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15077-2015-07-06-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15077-2015-07-06-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15077-2015-07-06-report.html</guid><pubDate>Tue, 07 Jul 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015077期(2015-07-05)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015077-2015-07-05-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015077-2015-07-05-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015077-2015-07-05-report.html</guid><pubDate>Mon, 06 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15076期(2015-07-04)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15076-2015-07-04-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15076-2015-07-04-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15076-2015-07-04-report.html</guid><pubDate>Sun, 05 Jul 2015 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15076-2015-07-04-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15076-2015-07-04-report.html</guid><pubDate>Sun, 05 Jul 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015076期(2015-07-02)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015076-2015-07-02-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015076-2015-07-02-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015076-2015-07-02-report.html</guid><pubDate>Fri, 03 Jul 2015 00:00:00 GMT</pubDate></item><item><title>7-dimensionality-reduction-with-pca</title><link>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用PCA降维"&gt;用PCA降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html#%E7%94%A8PCA%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本章我们将介绍一种降维方法，PCA（Principal Component Analysis，主成分分析）。降维致力于解决三类问题。第一，降维可以缓解维度灾难问题。第二，降维可以在压缩数据的同时让信息损失最小化。第三，理解几百个维度的数据结构很困难，两三个维度的数据通过可视化更容易理解。下面，我们用PCA将一个高维数据降成二维，方便可视化，之后，我们建一个脸部识别系统。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</guid><pubDate>Thu, 02 Jul 2015 01:38:42 GMT</pubDate></item></channel></rss>
