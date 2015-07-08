@@ -888,7 +888,7 @@ array([[-0.40200434],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">walk</span><span class="p">,</span> <span class="n">path</span>
@@ -923,10 +923,10 @@ array([[-0.40200434],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">for</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">dir_names</span><span class="p">,</span> <span class="n">file_names</span> <span class="ow">in</span> <span class="n">walk</span><span class="p">(</span><span class="s">r'mlslpic/att-faces/'</span><span class="p">):</span>
+<div class="highlight"><pre><span class="k">for</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">dir_names</span><span class="p">,</span> <span class="n">file_names</span> <span class="ow">in</span> <span class="n">walk</span><span class="p">(</span><span class="s">'mlslpic/att-faces/'</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">fn</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s">'pgm'</span><span class="p">:</span>
             <span class="n">image_filename</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
@@ -954,7 +954,7 @@ array([[-0.40200434],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -979,7 +979,7 @@ array([[-0.40200434],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="n">X_train_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -1026,16 +1026,16 @@ PCA降维后训练集数据是：(300, 150)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>最后，我们用交叉验证和测试集评估分类器的性能。分类器的平均综合评价指标（F1 score）是0.84，但是需要花费更多的时间训练，在更多训练实例的应用中可能会更慢。</p>
+<p>最后，我们用交叉验证和测试集评估分类器的性能。分类器的平均综合评价指标（F1 score）是0.88，但是需要花费更多的时间训练，在更多训练实例的应用中可能会更慢。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">'交叉验证准备率是：{}</span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">),</span> <span class="n">accuracies</span><span class="p">))</span>
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">'交叉验证准确率是：{}</span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">),</span> <span class="n">accuracies</span><span class="p">))</span>
 <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_reduced</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
@@ -1058,51 +1058,51 @@ PCA降维后训练集数据是：(300, 150)
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-交叉验证准备率是：0.84796550199
-[ 0.89473684  0.80392157  0.8452381 ]
+交叉验证准确率是：0.823104855161
+[ 0.84210526  0.79        0.8372093 ]
              precision    recall  f1-score   support
 
-mlslpic/att-faces/s1       1.00      0.75      0.86         4
+mlslpic/att-faces/s1       1.00      1.00      1.00         1
 mlslpic/att-faces/s10       1.00      1.00      1.00         2
-mlslpic/att-faces/s12       1.00      1.00      1.00         4
-mlslpic/att-faces/s13       1.00      1.00      1.00         2
-mlslpic/att-faces/s14       1.00      1.00      1.00         2
-mlslpic/att-faces/s15       1.00      1.00      1.00         1
-mlslpic/att-faces/s16       1.00      1.00      1.00         2
-mlslpic/att-faces/s17       0.33      1.00      0.50         1
+mlslpic/att-faces/s11       1.00      0.83      0.91         6
+mlslpic/att-faces/s12       1.00      1.00      1.00         2
+mlslpic/att-faces/s13       1.00      1.00      1.00         3
+mlslpic/att-faces/s14       0.33      1.00      0.50         2
+mlslpic/att-faces/s15       1.00      1.00      1.00         4
+mlslpic/att-faces/s17       1.00      1.00      1.00         2
 mlslpic/att-faces/s18       1.00      1.00      1.00         2
-mlslpic/att-faces/s19       1.00      0.50      0.67         2
-mlslpic/att-faces/s2       0.50      1.00      0.67         1
-mlslpic/att-faces/s20       1.00      1.00      1.00         1
-mlslpic/att-faces/s21       1.00      1.00      1.00         1
-mlslpic/att-faces/s22       1.00      0.83      0.91         6
-mlslpic/att-faces/s23       1.00      1.00      1.00         2
-mlslpic/att-faces/s24       1.00      1.00      1.00         6
-mlslpic/att-faces/s25       1.00      1.00      1.00         3
-mlslpic/att-faces/s26       0.67      1.00      0.80         2
+mlslpic/att-faces/s19       1.00      1.00      1.00         2
+mlslpic/att-faces/s2       0.00      0.00      0.00         0
+mlslpic/att-faces/s20       1.00      1.00      1.00         2
+mlslpic/att-faces/s21       1.00      1.00      1.00         3
+mlslpic/att-faces/s22       1.00      1.00      1.00         3
+mlslpic/att-faces/s23       1.00      1.00      1.00         1
+mlslpic/att-faces/s24       1.00      1.00      1.00         3
+mlslpic/att-faces/s25       1.00      1.00      1.00         4
+mlslpic/att-faces/s26       1.00      1.00      1.00         4
 mlslpic/att-faces/s27       1.00      1.00      1.00         3
-mlslpic/att-faces/s28       1.00      0.50      0.67         2
-mlslpic/att-faces/s29       1.00      1.00      1.00         1
-mlslpic/att-faces/s3       1.00      1.00      1.00         1
-mlslpic/att-faces/s30       1.00      0.50      0.67         2
-mlslpic/att-faces/s31       0.50      1.00      0.67         2
+mlslpic/att-faces/s28       0.00      0.00      0.00         1
+mlslpic/att-faces/s29       1.00      0.50      0.67         2
+mlslpic/att-faces/s3       1.00      1.00      1.00         3
+mlslpic/att-faces/s30       1.00      1.00      1.00         3
+mlslpic/att-faces/s31       0.75      1.00      0.86         3
 mlslpic/att-faces/s32       1.00      0.75      0.86         4
-mlslpic/att-faces/s33       1.00      0.60      0.75         5
-mlslpic/att-faces/s34       0.40      1.00      0.57         2
-mlslpic/att-faces/s35       1.00      1.00      1.00         3
-mlslpic/att-faces/s36       1.00      1.00      1.00         2
-mlslpic/att-faces/s37       1.00      1.00      1.00         3
-mlslpic/att-faces/s38       1.00      1.00      1.00         3
-mlslpic/att-faces/s39       1.00      1.00      1.00         3
-mlslpic/att-faces/s4       1.00      0.60      0.75         5
-mlslpic/att-faces/s40       1.00      0.67      0.80         3
-mlslpic/att-faces/s5       0.67      1.00      0.80         2
-mlslpic/att-faces/s6       1.00      1.00      1.00         3
-mlslpic/att-faces/s7       1.00      1.00      1.00         3
-mlslpic/att-faces/s8       0.67      1.00      0.80         2
-mlslpic/att-faces/s9       1.00      1.00      1.00         2
+mlslpic/att-faces/s33       0.00      0.00      0.00         1
+mlslpic/att-faces/s34       0.75      1.00      0.86         3
+mlslpic/att-faces/s35       1.00      1.00      1.00         2
+mlslpic/att-faces/s36       0.50      1.00      0.67         1
+mlslpic/att-faces/s37       1.00      0.17      0.29         6
+mlslpic/att-faces/s38       1.00      1.00      1.00         2
+mlslpic/att-faces/s39       1.00      1.00      1.00         2
+mlslpic/att-faces/s4       1.00      1.00      1.00         1
+mlslpic/att-faces/s40       0.00      0.00      0.00         1
+mlslpic/att-faces/s5       0.80      0.80      0.80         5
+mlslpic/att-faces/s6       1.00      1.00      1.00         2
+mlslpic/att-faces/s7       1.00      1.00      1.00         2
+mlslpic/att-faces/s8       1.00      1.00      1.00         4
+mlslpic/att-faces/s9       1.00      1.00      1.00         3
 
-avg / total       0.95      0.89      0.90       100
+avg / total       0.93      0.88      0.88       100
 
 
 </pre>
