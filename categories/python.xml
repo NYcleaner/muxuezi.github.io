@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 02 Jul 2015 01:42:05 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>7-dimensionality-reduction-with-pca</title><link>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 08 Jul 2015 00:47:49 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>9-from-the-perceptron-to-support-vector-machines.ipynb</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machinesipynb.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px"&gt;
+  hide output&lt;/i&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machinesipynb.html</guid><pubDate>Wed, 08 Jul 2015 00:44:29 GMT</pubDate></item><item><title>8-the-perceptron.ipynb</title><link>http://muxuezi.github.io/posts/8-the-perceptronipynb.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px"&gt;
+  hide output&lt;/i&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/8-the-perceptronipynb.html</guid><pubDate>Wed, 08 Jul 2015 00:43:56 GMT</pubDate></item><item><title>7-dimensionality-reduction-with-pca</title><link>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -121,26 +149,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:43 GMT</pubDate></item><item><title>python-data-structures</title><link>http://muxuezi.github.io/posts/python-data-structures.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;本文介绍Python数据结构与算法，原文在&lt;a href="http://interactivepython.org/runestone/static/pythonds/index.html"&gt;Problem Solving with Algorithms and Data Structures&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/python-data-structures.html"&gt;Read more…&lt;/a&gt; (36 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/python-data-structures.html</guid><pubDate>Wed, 24 Jun 2015 05:44:38 GMT</pubDate></item><item><title>kivy-ch5-remote-desktop-app</title><link>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="远程桌面app"&gt;远程桌面app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2app"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;本章做一个远程桌面app，依然和网络相关。我们用“真正的”应用层协议进行通信，解决一个复杂的问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch5-remote-desktop-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:43 GMT</pubDate></item></channel></rss>

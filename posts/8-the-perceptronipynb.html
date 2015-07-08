@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>8-the-perceptron.ipynb | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/8-the-perceptronipynb.html">
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><script type="text/javascript">
+MathJax.Hub.Config({
+    tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+             },
+         displayAlign: 'center', // Change this to 'center' to center equations.
+         "HTML-CSS": {
+             styles: {'.MathJax_Display': {"margin": 0}}
+     }
+});
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="8-the-perceptron.ipynb">
+<meta property="og:url" content="http://muxuezi.github.io/posts/8-the-perceptronipynb.html">
+<meta property="og:description" content="In [ ]:
+
+
+ 
+
+
+
+  hide output">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-08T08:43:56+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">8-the-perceptron.ipynb</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2015-07-08T08:43:56+08:00">2015-07-08 08:43</time>
+            
+                      |  
+        <a href="8-the-perceptronipynb.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+</div>
+
+        </div>
+        <div class="body">
+            <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+</div>
+        </div>
+                <ul class="pager">
+<li class="previous">
+                <a href="slott-2015078-2015-07-07-report.html" rel="prev" title="双色球2015078期(2015-07-07)数据分析报告">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="9-from-the-perceptron-to-support-vector-machinesipynb.html" rel="next" title="9-from-the-perceptron-to-support-vector-machines.ipynb">Next post</a>
+            </li>
+        </ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/8-the-perceptronipynb.html",
+        disqus_title="8-the-perceptron.ipynb",
+        disqus_identifier="cache/posts/8-the-perceptronipynb.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
