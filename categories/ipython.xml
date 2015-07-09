@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 08 Jul 2015 06:12:10 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>9-from-the-perceptron-to-support-vector-machines</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (ipython)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/ipython.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 09 Jul 2015 07:22:56 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>0-perface</title><link>http://muxuezi.github.io/posts/0-perface.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="前言"&gt;前言&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/0-perface.html#%E5%89%8D%E8%A8%80"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;这几年机器学习这种从经验学习的软件技术重现光明。在计算机诞生的早期，机器学习的概念已经出现，各种理论天马行空，限于计算成本而未能普及。随着计算设备的普及，日常生活中越来越多的机器学习应用，可以说它的成功开始变得习以为常。新应用如雨后春笋一般出现，很多都从机器学习中获得动力。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/0-perface.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/0-perface.html</guid><pubDate>Thu, 09 Jul 2015 07:20:14 GMT</pubDate></item><item><title>10-from-the-perceptron-to-artificial-neural-networks</title><link>http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="从感知器到人工神经网络"&gt;从感知器到人工神经网络&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html#%E4%BB%8E%E6%84%9F%E7%9F%A5%E5%99%A8%E5%88%B0%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在&lt;em&gt;第8章，感知器&lt;/em&gt;里，我们介绍了感知器，一种线性模型用来做二元分类。感知器不是一个通用函数近似器；它的决策边界必须是一个超平面。上一章里面介绍的支持向量机，用核函数修正了感知器的不足，将特征向量有效的映射到更高维的空间使得样本成为线性可分的数据集。本章，我们将介绍人工神经网络（artificial neural networks，ANN），一种用于强大的非线性回归和分类模型，用新的策略来克服感知器的缺点。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html"&gt;Read more…&lt;/a&gt; (9 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><guid>http://muxuezi.github.io/posts/10-from-the-perceptron-to-artificial-neural-networks.html</guid><pubDate>Thu, 09 Jul 2015 07:19:44 GMT</pubDate></item><item><title>9-from-the-perceptron-to-support-vector-machines</title><link>http://muxuezi.github.io/posts/9-from-the-perceptron-to-support-vector-machines.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -133,26 +165,4 @@
 &lt;li&gt;个没有交互的数字时钟，简述Kivy的事件驱动(event-driven)方法，引入计时器的功能，持续更新。&lt;/li&gt;
 &lt;li&gt;交互的秒表功能，设计流畅的自适应布局。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</guid><pubDate>Wed, 24 Jun 2015 05:45:00 GMT</pubDate></item><item><title>ms-office-with-pywin32com</title><link>http://muxuezi.github.io/posts/ms-office-with-pywin32com.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Python调用COM的API实现Microsoft Office(PPT, Excel, Word)办公自动化&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/ms-office-with-pywin32com.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Other</category><category>Python</category><guid>http://muxuezi.github.io/posts/ms-office-with-pywin32com.html</guid><pubDate>Wed, 24 Jun 2015 05:44:54 GMT</pubDate></item><item><title>kivy-ch9-shmup-app</title><link>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="射击app"&gt;射击app&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html#%E5%B0%84%E5%87%BBapp"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;前面提到过，在这一章我们来做射击（shoot-em-up，简写shmup）app，一个快节奏的射击游戏，比魂斗罗简单许多。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html"&gt;Read more…&lt;/a&gt; (10 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html</guid><pubDate>Wed, 24 Jun 2015 05:44:43 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kivy-ch1-clock-app.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Kivy</category><category>Python</category><guid>http://muxuezi.github.io/posts/kivy-ch1-clock-app.html</guid><pubDate>Wed, 24 Jun 2015 05:45:00 GMT</pubDate></item></channel></rss>
