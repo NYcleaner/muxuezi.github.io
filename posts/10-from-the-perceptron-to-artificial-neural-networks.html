@@ -106,7 +106,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果把感知器比喻成一个神经元，那么人工神经网络，即神经网，就是一个大脑。人脑就是由十几亿的神经元和上千亿的突触组成，人工神经网络是一种感知器或其他人工神经的有向图。这个图的边带有权重，这些权重是模型需要学习的参数。</p>
-<p>有许多著作整本书描述人工神经网络；本章主要是对它的结构和训练方法进行介绍。目前scikit-learn的版本是0.16.1，有一些神经网络的模型已经被开发出来，但是并没有合并到正式版。在scikit-learn 0.15.1里面有神经网络模型，读者可以fork下来使用。已经有一些神经网络模型的库，比如<a href="https://github.com/pybrain/pybrain">PyBrain</a>，<a href="https://github.com/lisa-lab/pylearn2">Pylearn2</a>和<a href="https://github.com/aigamedev/scikit-neuralnetwork">scikit-neuralnetwork</a>等。</p>
+<p>有许多著作整本书描述人工神经网络；本章主要是对它的结构和训练方法进行介绍。目前scikit-learn的版本是0.16.1，在2014年Google Summer的项目中，多层感知器已经被作者实现，并提交在scikit-learn 0.15.1版本中，只是还没有被合并到scikit-learn。在未来的scikit-learn新版本中可能会原封不动的合并多层感知器的实现。也有一些神经网络模型的Python库，比如<a href="https://github.com/pybrain/pybrain">PyBrain</a>，<a href="https://github.com/lisa-lab/pylearn2">Pylearn2</a>和<a href="https://github.com/aigamedev/scikit-neuralnetwork">scikit-neuralnetwork</a>等。</p>
 </div>
 </div>
 </div>
@@ -383,10 +383,11 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>让我们训练一个多层感知器来近似XOR函数。在2014年Google Summer的项目中，多层感知器已经被作者实现，并提交在scikit-learn 0.15.1版本中，只是还没有被合并到scikit-learn。在未来的scikit-learn新版本中可能会原封不动的合并多层感知器的实现。目前，scikit-learn的0.16.1版本还没有合并，作者在其github上提供了单独的MLP模块<a href="https://github.com/IssamLaradji/NeuralNetworks">NeuralNetworks</a>，我们在0.16.1版本基础上稍作修改，即可完成本书的例子。</p>
+<p>让我们训练一个多层感知器来近似XOR函数。目前，scikit-learn的0.16.1版本还没有合并，作者在其github上提供了单独的MLP模块<a href="https://github.com/IssamLaradji/NeuralNetworks">NeuralNetworks</a>，我们在0.16.1版本基础上稍作修改，即可完成本书的例子。</p>
 <blockquote>
-<p>请fork作者的NeuralNetworks，将multilayer<em>perceptron文件夹里的<code>.py</code>文件复制到<code>sklearn/neural_network</code>文件夹里，然后将`<em>_init</em></em>.py`修改为如下代码即可：</p>
-<pre><code class="language-python"><span class="keyword">from</span> .rbm <span class="keyword">import</span> BernoulliRBM
+<p>请fork作者的NeuralNetworks，将<code>multilayer_perceptron</code>文件夹里的<code>.py</code>文件复制到<code>sklearn/neural_network</code>文件夹里，然后将对<code>__init__.py</code>文件做如下修改即可：</p>
+<pre><code class="language-python"><span class="comment"># __init__.py</span>
+<span class="keyword">from</span> .rbm <span class="keyword">import</span> BernoulliRBM
 
 <span class="keyword">from</span> .multilayer_perceptron <span class="keyword">import</span> MultilayerPerceptronClassifier
 <span class="keyword">from</span> .multilayer_perceptron <span class="keyword">import</span> MultilayerPerceptronRegressor
