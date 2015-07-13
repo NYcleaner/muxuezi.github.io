@@ -383,56 +383,40 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>让我们训练一个多层感知器来近似XOR函数。在2014年Google Summer的项目中，多层感知器已经被实现了，只是还没有被合并到scikit-learn。在未来的scikit-learn新版本中可能会原封不动的合并多层感知器的实现。目前，我们还是用0.15.1的版本来完成本书的例子。</p>
+<p>让我们训练一个多层感知器来近似XOR函数。在2014年Google Summer的项目中，多层感知器已经被作者实现，并提交在scikit-learn 0.15.1版本中，只是还没有被合并到scikit-learn。在未来的scikit-learn新版本中可能会原封不动的合并多层感知器的实现。目前，scikit-learn的0.16.1版本还没有合并，作者在其github上提供了单独的MLP模块<a href="https://github.com/IssamLaradji/NeuralNetworks">NeuralNetworks</a>，我们在0.16.1版本基础上稍作修改，即可完成本书的例子。</p>
+<blockquote>
+<p>请fork作者的NeuralNetworks，将multilayer<em>perceptron文件夹里的<code>.py</code>文件复制到<code>sklearn/neural_network</code>文件夹里，然后将`<em>_init</em></em>.py`修改为如下代码即可：</p>
+<pre><code class="language-python"><span class="keyword">from</span> .rbm <span class="keyword">import</span> BernoulliRBM
+
+<span class="keyword">from</span> .multilayer_perceptron <span class="keyword">import</span> MultilayerPerceptronClassifier
+<span class="keyword">from</span> .multilayer_perceptron <span class="keyword">import</span> MultilayerPerceptronRegressor
+
+__all__ = [<span class="string">"BernoulliRBM"</span>,
+           <span class="string">"MultilayerPerceptronClassifier"</span>,
+           <span class="string">"MultilayerPerceptronRegressor"</span>]
+</code></pre>
+<p>另外，在Linux和Mac OS系统里，复制<code>.py</code>文件的权限记得改成<code>chmod 644</code></p>
+</blockquote>
 <p>首先，我们建议一个简单的二分分类数据集表示XOR，然后用交叉检验分割成训练集和测试集：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MultilayerPerceptronClassifier</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
   hide output</i>
 </div>
-</div>
-</div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">ImportError</span>                               Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-5-8c2138eddaad&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">      1</span> <span class="ansigreen">from</span> sklearn<span class="ansiblue">.</span>cross_validation <span class="ansigreen">import</span> train_test_split<span class="ansiblue"></span>
-<span class="ansigreen">----&gt; 2</span><span class="ansired"> </span><span class="ansigreen">from</span> sklearn<span class="ansiblue">.</span>neural_network <span class="ansigreen">import</span> MultilayerPerceptronClassifier<span class="ansiblue"></span>
-<span class="ansigreen">      3</span> y <span class="ansiblue">=</span> <span class="ansiblue">[</span><span class="ansicyan">0</span><span class="ansiblue">,</span> <span class="ansicyan">1</span><span class="ansiblue">,</span> <span class="ansicyan">1</span><span class="ansiblue">,</span> <span class="ansicyan">0</span><span class="ansiblue">]</span> <span class="ansiblue">*</span> <span class="ansicyan">1000</span><span class="ansiblue"></span>
-<span class="ansigreen">      4</span> X <span class="ansiblue">=</span> <span class="ansiblue">[</span><span class="ansiblue">[</span><span class="ansicyan">0</span><span class="ansiblue">,</span> <span class="ansicyan">0</span><span class="ansiblue">]</span><span class="ansiblue">,</span> <span class="ansiblue">[</span><span class="ansicyan">0</span><span class="ansiblue">,</span> <span class="ansicyan">1</span><span class="ansiblue">]</span><span class="ansiblue">,</span> <span class="ansiblue">[</span><span class="ansicyan">1</span><span class="ansiblue">,</span> <span class="ansicyan">0</span><span class="ansiblue">]</span><span class="ansiblue">,</span> <span class="ansiblue">[</span><span class="ansicyan">1</span><span class="ansiblue">,</span> <span class="ansicyan">1</span><span class="ansiblue">]</span><span class="ansiblue">]</span> <span class="ansiblue">*</span> <span class="ansicyan">1000</span><span class="ansiblue"></span>
-<span class="ansigreen">      5</span> X_train<span class="ansiblue">,</span> X_test<span class="ansiblue">,</span> y_train<span class="ansiblue">,</span> y_test <span class="ansiblue">=</span> train_test_split<span class="ansiblue">(</span>X<span class="ansiblue">,</span> y<span class="ansiblue">,</span> random_state<span class="ansiblue">=</span><span class="ansicyan">3</span><span class="ansiblue">)</span><span class="ansiblue"></span>
-
-<span class="ansired">ImportError</span>: cannot import name MultilayerPerceptronClassifier</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 </div>
 
@@ -450,10 +434,10 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">clf</span> <span class="o">=</span> <span class="n">MultilayerPerceptronClassifier</span><span class="p">(</span><span class="n">n_hidden</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<div class="highlight"><pre><span class="n">clf</span> <span class="o">=</span> <span class="n">MultilayerPerceptronClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
                                     <span class="n">activation</span><span class="o">=</span><span class="s">'logistic'</span><span class="p">,</span>
                                     <span class="n">algorithm</span><span class="o">=</span><span class="s">'sgd'</span><span class="p">,</span>
                                     <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -463,6 +447,35 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
   hide output</i>
 </div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+MultilayerPerceptronClassifier(activation='logistic', algorithm='sgd',
+                alpha=1e-05, batch_size=200, hidden_layer_sizes=[2],
+                learning_rate='constant', learning_rate_init=0.5,
+                max_iter=200, power_t=0.5, random_state=3, shuffle=False,
+                tol=1e-05, verbose=False, warm_start=False)
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 </div>
 
@@ -478,12 +491,12 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">'层数：</span><span class="si">%s</span><span class="s">，输出单元数量：</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">n_layers_</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">n_outputs_</span><span class="p">))</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'准确率：'</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'准确率：</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">[:</span><span class="mi">10</span><span class="p">]):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'真实值：</span><span class="si">%s</span><span class="s">，预测值：</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">))</span>
 </pre></div>
@@ -494,13 +507,18 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>层数：3，输出单元数量：1
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+层数：3，输出单元数量：1
 准确率：1.0
 真实值：1，预测值：1
 真实值：1，预测值：1
@@ -512,9 +530,17 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 真实值：1，预测值：1
 真实值：0，预测值：0
 真实值：1，预测值：1
-</code></pre>
+
+</pre>
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -538,7 +564,7 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
@@ -566,7 +592,7 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
@@ -593,14 +619,14 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight"><pre><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
                     <span class="p">(</span><span class="s">'ss'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-                    <span class="p">(</span><span class="s">'mlp'</span><span class="p">,</span> <span class="n">MultilayerPerceptronClassifier</span><span class="p">(</span><span class="n">n_hidden</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+                    <span class="p">(</span><span class="s">'mlp'</span><span class="p">,</span> <span class="n">MultilayerPerceptronClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
                     <span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'准确率： </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -609,16 +635,29 @@ $$f(x) = \frac 1 {1+e^{-x}}$$</p>
 </div>
 </div>
 
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+准确率： [ 0.8654485   0.87646077  0.87248322]
+
+</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Accuracies [ 0.95681063 0.96494157 0.93791946]
-</code></pre>
+
 </div>
 </div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
