@@ -3,13 +3,20 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>python-network-scripting-pp4e | 绿萝间</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>python-network-scripting-pp4e | 绿萝间</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
+
+
+
+    
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -21,11 +28,18 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
-<meta property="og:site_name" content="绿萝间">
-<meta property="og:title" content="python-network-scripting-pp4e">
-<meta property="og:url" content="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
-<meta property="og:description" content="Network Scripting in Programming Python, 4th Edition, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <meta name="author" content="tj2">
+        <meta name="og:title" content="python-network-scripting-pp4e">
+    <meta name="og:url" content="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html">
+    <meta name="og:description" content="Network Scripting in Programming Python, 4th Edition, This chapter introduces Internet fundamentals and explores sockets, the underlying communications mechanism of the Internet.
 
 
 
@@ -36,23 +50,27 @@ MathJax.Hub.Config({
 
 
 Plumbing the">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-06-24T13:44:27+08:00">
-<meta property="article:tag" content="CHS">
-<meta property="article:tag" content="ipython">
-<meta property="article:tag" content="Other">
-<meta property="article:tag" content="Python">
+    <meta name="og:site_name" content="绿萝间">
+    <meta name="og:type" content="article">
+
+    
+    
+
 </head>
 <body>
-    <section class="social"><ul>
-<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social">
+        <ul>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul></section><section class="page-content"><div class="content" rel="main">
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
     <div class="post">
         <h1 class="p-name entry-title" itemprop="headline name">python-network-scripting-pp4e</h1>
 
@@ -70,11 +88,11 @@ Plumbing the">
         <ul>
         Tags : 
            <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
            <li><a class="tag p-category" href="../categories/other.html" rel="tag">Other</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
         </ul>
-</div>
+        </div>
 
         </div>
         <div class="body">
@@ -228,15 +246,16 @@ messages are exchanged.</li>
 port numbers in the range of 0 to 1023 are reserved and preassigned to the standard
 higher-level protocols.</p>
 <table border="1" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%;
- mso-cellspacing:0in;mso-padding-alt:0in 0in 0in 0in"><tbody>
+ mso-cellspacing:0in;mso-padding-alt:0in 0in 0in 0in">
+ <tbody>
 <tr>
-<td colspan="4" style="border:none;padding:.75pt .75pt .75pt .75pt">
+  <td colspan="4" style="border:none;padding:.75pt .75pt .75pt .75pt">
   <h6 align="center" style="text-align:center"><a name="_Toc6690727">Table 12-1.
   Port Numbers Reserved for Common Protocols</a></h6>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p align="center" style="text-align:center"><b><span style="font-size:10.0pt">Protocol<p></p></span></b></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -252,8 +271,8 @@ higher-level protocols.</p>
   Module<p></p></span></b></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">HTTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -266,8 +285,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>http.client , http.server</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">NNTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -280,8 +299,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>nntplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">FTP data default<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -294,8 +313,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>ftplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">FTP control<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -308,8 +327,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>ftplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">SMTP<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -322,8 +341,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>smtplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">POP3<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -336,8 +355,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>poplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">IMAP4<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -350,8 +369,8 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>imaplib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">Finger<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -364,8 +383,8 @@ higher-level protocols.</p>
   <p><span style="font-size:10.0pt">n/a<p></p></span></p>
   </td>
  </tr>
-<tr>
-<td style="padding:.75pt .75pt .75pt .75pt">
+ <tr>
+  <td style="padding:.75pt .75pt .75pt .75pt">
   <p><span style="font-size:10.0pt">Telnet<p></p></span></p>
   </td>
   <td style="padding:.75pt .75pt .75pt .75pt">
@@ -378,7 +397,10 @@ higher-level protocols.</p>
   <p><tt><span style='font-size:10.0pt;font-family:"Courier New"'>telnetlib</span></tt><span style="font-size:10.0pt"><p></p></span></p>
   </td>
  </tr>
-</tbody></table>
+
+
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -3434,43 +3456,47 @@ to-date details on this front.</p>
 </div>
 </div>
         </div>
-                <ul class="pager hidden-print">
-<li class="previous">
+                <ul class="pager">
+            <li class="previous">
                 <a href="introduction-to-julia.html" rel="prev" title="introduction-to-julia">Previous post</a>
             </li>
             <li class="next">
                 <a href="kivy-ch5-remote-desktop-app.html" rel="next" title="kivy-ch5-remote-desktop-app">Next post</a>
             </li>
         </ul>
-<div id="disqus_thread"></div>
+
+                            <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/python-network-scripting-pp4e.html",
         disqus_title="python-network-scripting-pp4e",
         disqus_identifier="cache/posts/python-network-scripting-pp4e.html",
         disqus_config = function () {
-            this.language = "en";
+            this.language = "";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-                <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
-</div>
-                    <footer id="footer" role="contentinfo"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        
+    </div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-</div>
-    </section><script>
+
+        </div>
+    </section>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -3479,7 +3505,34 @@ to-date details on this front.</p>
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+</script>
+
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
