@@ -929,6 +929,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/binarizing-label-features.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/binarizing-label-featuresipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
@@ -957,7 +961,15 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/creating-binary-features-through-thresholdingipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/creating-sample-data-for-toy-analysis.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -981,7 +993,15 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/decomposition-to-classify-with-dictionarylearning.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/decomposition-to-classify-with-dictionarylearningipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/defining-the-gaussian-process-object-directly.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -4445,6 +4465,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/getting-sample-data-from-external-sources.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/getting-sample-data-from-external-sourcesipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
@@ -4473,6 +4497,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/imputing-missing-values-through-various-strategies.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/imputing-missing-values-through-various-strategiesipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
@@ -4499,6 +4527,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/static/index.html</loc>
   <lastmod>2015-06-05</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reductionipynb.html</loc>
@@ -4641,6 +4673,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelinesipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
@@ -4693,6 +4729,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/reducing-dimensionality-with-pcaipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
@@ -4703,6 +4743,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/ruby-on-rails-with-ruby2-0.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normalipynb.html</loc>
@@ -8161,7 +8205,15 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/using-factor-analytics-for-decompositionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -8169,11 +8221,23 @@
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-stepsipynb.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regressionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -8203,6 +8267,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/windows-open-cmd.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/working-with-categorical-variables.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/working-with-categorical-variablesipynb.html</loc>

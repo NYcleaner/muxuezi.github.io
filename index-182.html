@@ -81,49 +81,25 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章包括以下主题：</p>
 <ol>
-<li><a href="posts/1-premodel-workflow/getting-sample-data-from-external-sources.html">从外部源获取样本数据</a></li>
-<li><a href="posts/1-premodel-workflow/creating-sample-data-for-toy-analysis.html">创建试验样本数据</a></li>
-<li><a href="posts/1-premodel-workflow/scaling-data-to-the-standard-normal.html">把数据调整为标准正态分布</a></li>
-<li><a href="posts/1-premodel-workflow/creating-binary-features-through-thresholding.html">用阈值创建二元特征</a></li>
-<li><a href="posts/1-premodel-workflow/working-with-categorical-variables.html">分类变量处理</a></li>
-<li><a href="posts/1-premodel-workflow/binarizing-label-features.html">标签特征二元化</a></li>
-<li><a href="posts/1-premodel-workflow/imputing-missing-values-through-various-strategies.html">处理缺失值</a></li>
-<li><a href="posts/1-premodel-workflow/using-pipelines-for-multiple-preprocessing-steps.html">用管线命令处理多个步骤</a></li>
-<li><a href="posts/1-premodel-workflow/reducing-dimensionality-with-pca.html">用主成分分析降维</a></li>
-<li><a href="posts/1-premodel-workflow/using-factor-analytics-for-decomposition.html">用因子分析降维</a></li>
-<li><a href="posts/1-premodel-workflow/kernel-pca-for-nonlinear-dimensionality-reduction.html">用核PCA实现非线性降维</a></li>
-<li><a href="posts/1-premodel-workflow/using-truncated-svd-to-reduce-dimensionality.html">用截断奇异值分解降维</a></li>
-<li><a href="posts/1-premodel-workflow/decomposition-to-classify-with-dictionarylearning.html">用字典学习分解法分类</a></li>
-<li><a href="posts/1-premodel-workflow/putting-it-all-together-with-pipelines.html">用管线命令连接多个转换方法</a></li>
-<li><a href="posts/1-premodel-workflow/using-gaussian-processes-for-regression.html">用正态随机过程处理回归</a></li>
-<li><a href="posts/1-premodel-workflow/defining-the-gaussian-process-object-directly.html">直接定义一个正态随机过程对象</a></li>
-<li><a href="posts/1-premodel-workflow/using-stochastic-gradient-descent-for-regression.html">用随机梯度下降处理回归</a></li>
+<li><a href="posts/getting-sample-data-from-external-sources.html">从外部源获取样本数据</a></li>
+<li><a href="posts/creating-sample-data-for-toy-analysis.html">创建试验样本数据</a></li>
+<li><a href="posts/scaling-data-to-the-standard-normal.html">把数据调整为标准正态分布</a></li>
+<li><a href="posts/creating-binary-features-through-thresholding.html">用阈值创建二元特征</a></li>
+<li><a href="posts/working-with-categorical-variables.html">分类变量处理</a></li>
+<li><a href="posts/binarizing-label-features.html">标签特征二元化</a></li>
+<li><a href="posts/imputing-missing-values-through-various-strategies.html">处理缺失值</a></li>
+<li><a href="posts/using-pipelines-for-multiple-preprocessing-steps.html">用管线命令处理多个步骤</a></li>
+<li><a href="posts/reducing-dimensionality-with-pca.html">用主成分分析降维</a></li>
+<li><a href="posts/using-factor-analytics-for-decomposition.html">用因子分析降维</a></li>
+<li><a href="posts/kernel-pca-for-nonlinear-dimensionality-reduction.html">用核PCA实现非线性降维</a></li>
+<li><a href="posts/using-truncated-svd-to-reduce-dimensionality.html">用截断奇异值分解降维</a></li>
+<li><a href="posts/decomposition-to-classify-with-dictionarylearning.html">用字典学习分解法分类</a></li>
+<li><a href="posts/putting-it-all-together-with-pipelines.html">用管线命令连接多个转换方法</a></li>
+<li><a href="posts/using-gaussian-processes-for-regression.html">用正态随机过程处理回归</a></li>
+<li><a href="posts/defining-the-gaussian-process-object-directly.html">直接定义一个正态随机过程对象</a></li>
+<li><a href="posts/using-stochastic-gradient-descent-for-regression.html">用随机梯度下降处理回归</a></li>
 </ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="简介">简介<a class="anchor-link" href="posts/1-premodel-workflow.html#%E7%AE%80%E4%BB%8B">¶</a>
-</h3>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>本章介绍数据获取（setting data），数据整理（preparing data）和建模前的降维（premodel dimensionality reduction）工作。这些内容并非机器学习（machine learning，ML）最核心的部分，但是它们往往决定模型的成败。</p>
-<p>本章主要分三部分。首先，我们介绍如何创建模拟数据（fake data），这看着微不足道，但是创建模拟数据并用模型进行拟合是模型测试的重要步骤。更重要的是，当我们从零开始一行一行代码实现一个算法时，我们想知道算法功能是否达到预期，这时手上可能没有数据，我们可以创建模拟数据来测试。之后，我们将介绍一些数据预处理变换的方法，包括缺失数据填补（data imputation），分类变量编码（categorical variable encoding）。最后，我们介绍一些降维方法，如主成分分析，因子分析，以及正态随机过程等。</p>
-<p>本章，尤其是前半部分与后面的章节衔接紧密。后面使用scikit-learn时，数据都源自本章内容。前两节介绍数据获取；紧接着介绍数据清洗。</p>
-<blockquote>
-<p>本书使用scikit-learn 0.15，NumPy 1.9和pandas 0.13，兼容Python2.7和Python3.4。还会用到其他的Python库，建议参考对应的官方安装指令。</p>
-</blockquote>
+<p class="more"><a href="posts/1-premodel-workflow.html">Read more…</a></p>
 </div>
 </div>
 </div>
