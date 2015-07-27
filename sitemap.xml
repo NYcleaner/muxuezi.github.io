@@ -46,7 +46,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/index.html</loc>
-  <lastmod>2015-07-23</lastmod>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/ipython.html</loc>
@@ -74,6 +74,10 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/python.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/categories/scikit-learn-cookbook.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -454,6 +458,14 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-181.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/index-182.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/index-183.html</loc>
   <lastmod>2015-07-27</lastmod>
  </url>
  <url>
@@ -841,6 +853,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/1-premodel-workflow.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/1-the-fundamentals-of-machine-learning.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -913,6 +929,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/binarizing-label-featuresipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/c-pointer-right-left-rule.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -937,6 +957,14 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/creating-binary-features-through-thresholdingipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/creating-sample-data-for-toy-analysisipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/ctrl-z-ctrl-c.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -951,6 +979,14 @@
  <url>
   <loc>http://muxuezi.github.io/posts/debian-udisk.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/decomposition-to-classify-with-dictionarylearningipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/defining-the-gaussian-process-object-directlyipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/del-excel-newline.html</loc>
@@ -4409,6 +4445,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/getting-sample-data-from-external-sourcesipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/git-error.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -4433,6 +4473,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/imputing-missing-values-through-various-strategiesipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/introduction-to-julia.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -4455,6 +4499,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/kbpic/src/5_RemoteDesktop/static/index.html</loc>
   <lastmod>2015-06-05</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reductionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/kindle3-ubuntu.html</loc>
@@ -4593,6 +4641,10 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelinesipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/pyperclip-clipboard-content.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
@@ -4641,12 +4693,20 @@
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/reducing-dimensionality-with-pcaipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/regex.html</loc>
   <lastmod>2015-07-23</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/ruby-on-rails-with-ruby2-0.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normalipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/selenium-jump-update.html</loc>
@@ -8086,7 +8146,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</loc>
-  <lastmod>2015-07-24</lastmod>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/tmux.html</loc>
@@ -8099,6 +8159,26 @@
  <url>
   <loc>http://muxuezi.github.io/posts/urllib2-quote-gbk.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-factor-analytics-for-decompositionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-gaussian-processes-for-regressionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-stepsipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regressionipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionalityipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/vernacular.html</loc>
@@ -8123,6 +8203,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/windows-open-cmd.html</loc>
   <lastmod>2015-07-23</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/working-with-categorical-variablesipynb.html</loc>
+  <lastmod>2015-07-27</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/xz-upzip.html</loc>
