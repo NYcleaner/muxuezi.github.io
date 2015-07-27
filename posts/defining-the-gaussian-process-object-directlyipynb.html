@@ -25,14 +25,36 @@ MathJax.Hub.Config({
 <meta property="og:site_name" content="绿萝间">
 <meta property="og:title" content="defining-the-gaussian-process-object-directly.ipynb">
 <meta property="og:url" content="http://muxuezi.github.io/posts/defining-the-gaussian-process-object-directlyipynb.html">
-<meta property="og:description" content="In [ ]:
-
-
- 
+<meta property="og:description" content="直接定义一个正态随机过程对象¶
 
 
 
-  hide output">
+
+
+
+
+
+
+前面我们只触及了正态随机过程的表面。在本主题中，我们将介绍直接创建一个具有指定相关函数的正态随机过程。
+
+
+
+
+
+
+
+
+Getting ready¶
+
+
+
+
+
+
+
+
+
+gaussian_process模块可以直接连接不同的相关函数与回归方程。这样就可以不创建GaussianProcess对象，直接通过函数创建需要的对象。如果你更熟悉面向对象的编程方">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-07-27T13:44:12+08:00">
 <meta property="article:tag" content="CHS">
@@ -77,12 +99,76 @@ MathJax.Hub.Config({
 
         </div>
         <div class="body">
-            <div class="cell border-box-sizing code_cell rendered">
+            <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="直接定义一个正态随机过程对象">直接定义一个正态随机过程对象<a class="anchor-link" href="defining-the-gaussian-process-object-directlyipynb.html#%E7%9B%B4%E6%8E%A5%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E5%AF%B9%E8%B1%A1">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>前面我们只触及了正态随机过程的表面。在本主题中，我们将介绍直接创建一个具有指定相关函数的正态随机过程。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-ready">Getting ready<a class="anchor-link" href="defining-the-gaussian-process-object-directlyipynb.html#Getting-ready">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>gaussian_process</code>模块可以直接连接不同的相关函数与回归方程。这样就可以不创建<code>GaussianProcess</code>对象，直接通过函数创建需要的对象。如果你更熟悉面向对象的编程方法，这里只算是模块级的一个类方法而已。</p>
+<p>在本主题中，我们将使用大部分函数，并把他们的结果用几个例子显示出来。如果你想真正掌握这些相关函数的特点，不要仅仅停留在这些例子上。这里不再介绍新的数学理论，让我们直接演示如何做。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-do-it...">How to do it...<a class="anchor-link" href="defining-the-gaussian-process-object-directlyipynb.html#How-to-do-it...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先，我们导入要回归的数据：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">regression_models</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -91,6 +177,169 @@ MathJax.Hub.Config({
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>第一个相关函数是常系数相关函数。它有若干常数构成：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="n">regression_models</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([[ 1.],
+       [ 1.],
+       [ 1.],
+       [ 1.],
+       [ 1.]])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>还有线性相关函数与平方指数相关函数，它们也是<code>GaussianProcess</code>类的默认值：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="n">regression_models</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([[ 1.        , -1.29786999]])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="n">regression_models</span><span class="o">.</span><span class="n">quadratic</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([[ 1.        , -1.29786999,  1.68446652]])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-it-works...">How it works...<a class="anchor-link" href="defining-the-gaussian-process-object-directlyipynb.html#How-it-works...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这样我们就可以得到回归函数了，可以直接用<code>GaussianProcess</code>对象来处理它们。默认值是常系数相关函数，但我们也可以把轻松的把线性模型和平方指数模型传递进去。</p>
+</div>
+</div>
+</div>
 </div>
         </div>
                 <ul class="pager">
@@ -106,7 +355,7 @@ MathJax.Hub.Config({
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/defining-the-gaussian-process-object-directlyipynb.html",
         disqus_title="defining-the-gaussian-process-object-directly.ipynb",
-        disqus_identifier="cache/posts/defining-the-gaussian-process-object-directlyipynb.html",
+        disqus_identifier="cache/posts/defining-the-gaussian-process-object-directly.html",
         disqus_config = function () {
             this.language = "en";
         };

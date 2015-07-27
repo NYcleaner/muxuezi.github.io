@@ -25,14 +25,37 @@ MathJax.Hub.Config({
 <meta property="og:site_name" content="绿萝间">
 <meta property="og:title" content="creating-binary-features-through-thresholding.ipynb">
 <meta property="og:url" content="http://muxuezi.github.io/posts/creating-binary-features-through-thresholdingipynb.html">
-<meta property="og:description" content="In [ ]:
-
-
- 
+<meta property="og:description" content="用阈值创建二元特征¶
 
 
 
-  hide output">
+
+
+
+
+
+
+在前一个主题，我们介绍了数据转换成标准正态分布的方法。现在，我们看看另一种完全不同的转换方法。
+当不需要呈标准化分布的数据时，我们可以不处理它们直接使用；但是，如果有足够理由，直接使用也许是聪明的做法。通常，尤其是处理连续数据时，可以通过建立二元特征来分割数据。
+
+
+
+
+
+
+
+
+Getting ready¶
+
+
+
+
+
+
+
+
+
+通常建立二元特征是非常有用的方法">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-07-27T13:44:35+08:00">
 <meta property="article:tag" content="CHS">
@@ -77,12 +100,57 @@ MathJax.Hub.Config({
 
         </div>
         <div class="body">
-            <div class="cell border-box-sizing code_cell rendered">
+            <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用阈值创建二元特征">用阈值创建二元特征<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#%E7%94%A8%E9%98%88%E5%80%BC%E5%88%9B%E5%BB%BA%E4%BA%8C%E5%85%83%E7%89%B9%E5%BE%81">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在前一个主题，我们介绍了数据转换成标准正态分布的方法。现在，我们看看另一种完全不同的转换方法。</p>
+<p>当不需要呈标准化分布的数据时，我们可以不处理它们直接使用；但是，如果有足够理由，直接使用也许是聪明的做法。通常，尤其是处理连续数据时，可以通过建立二元特征来分割数据。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-ready">Getting ready<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#Getting-ready">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>通常建立二元特征是非常有用的方法，不过要格外小心。我们还是用<code>boston</code>数据集来学习如何创建二元特征。</p>
+<p>首先，加载<code>boston</code>数据集：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre> 
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">boston</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_boston</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -91,6 +159,317 @@ MathJax.Hub.Config({
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-do-it...">How to do it...<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#How-to-do-it...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>与标准化处理类似，scikit-learn有两种方法二元特征：</p>
+<ul>
+<li>
+<code>preprocessing.binarize</code>（一个函数）</li>
+<li>
+<code>preprocessing.Binarizer</code>（一个类）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>boston</code>数据集的因变量是房子的价格中位数（单位：千美元）。这个数据集适合测试回归和其他连续型预测算法，但是假如现在我们想预测一座房子的价格是否高于总体均值。要解决这个问题，我们需要创建一个均值的阈值。如果一个值比均值大，则为<code>1</code>；否则，则为<code>0</code>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">new_target</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">new_target</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([ 1.,  0.,  1.,  1.,  1.])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>很容易，让我们检查一下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([1, 0, 1, 1, 1])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>既然Numpy已经很简单了，为什么还要用scikit-learn的函数呢？管道命令，将在<em>用管道命令联接多个预处理步骤</em>一节中介绍，会解释这个问题；要用管道命令就要用<code>Binarizer</code>类：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="nb">bin</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">Binarizer</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">new_target</span> <span class="o">=</span> <span class="nb">bin</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">new_target</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([ 1.,  0.,  1.,  1.,  1.])
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-it-works...">How it works...<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#How-it-works...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>方法看着非常简单；其实scikit-learn在底层创建一个检测层，如果被监测的值比阈值大就返回<code>Ture</code>。然后把满足条件的值更新为<code>1</code>，不满足条件的更新为<code>0</code>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="There's-more...">There's more...<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#There's-more...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>让我们再介绍一些稀疏矩阵和<code>fit</code>方法的知识。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="稀疏矩阵">稀疏矩阵<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>稀疏矩阵的<code>0</code>是不被存储的；这样可以节省很多空间。这就为<code>binarizer</code>造成了问题，需要指定阈值参数<code>threshold</code>不小于<code>0</code>来解决，如果<code>threshold</code>小于<code>0</code>就会出现错误：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo</span>
+<span class="n">spar</span> <span class="o">=</span> <span class="n">coo</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">preprocessing</span><span class="o">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">spar</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">ValueError</span>                                Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-31-c9b5156c63ab&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> <span class="ansigreen">from</span> scipy<span class="ansiyellow">.</span>sparse <span class="ansigreen">import</span> coo<span class="ansiyellow"></span>
+<span class="ansigreen">      2</span> spar <span class="ansiyellow">=</span> coo<span class="ansiyellow">.</span>coo_matrix<span class="ansiyellow">(</span>np<span class="ansiyellow">.</span>random<span class="ansiyellow">.</span>binomial<span class="ansiyellow">(</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">.25</span><span class="ansiyellow">,</span> <span class="ansicyan">100</span><span class="ansiyellow">)</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 3</span><span class="ansiyellow"> </span>preprocessing<span class="ansiyellow">.</span>binarize<span class="ansiyellow">(</span>spar<span class="ansiyellow">,</span> threshold<span class="ansiyellow">=</span><span class="ansiyellow">-</span><span class="ansicyan">1</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansigreen">d:\programfiles\Miniconda3\lib\site-packages\sklearn\preprocessing\data.py</span> in <span class="ansicyan">binarize</span><span class="ansiblue">(X, threshold, copy)</span>
+<span class="ansigreen">    718</span>     <span class="ansigreen">if</span> sparse<span class="ansiyellow">.</span>issparse<span class="ansiyellow">(</span>X<span class="ansiyellow">)</span><span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">    719</span>         <span class="ansigreen">if</span> threshold <span class="ansiyellow">&lt;</span> <span class="ansicyan">0</span><span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">--&gt; 720</span><span class="ansiyellow">             raise ValueError('Cannot binarize a sparse matrix with threshold '
+</span><span class="ansigreen">    721</span>                              '&lt; 0')
+<span class="ansigreen">    722</span>         cond <span class="ansiyellow">=</span> X<span class="ansiyellow">.</span>data <span class="ansiyellow">&gt;</span> threshold<span class="ansiyellow"></span>
+
+<span class="ansired">ValueError</span>: Cannot binarize a sparse matrix with threshold &lt; 0</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="fit方法">
+<code>fit</code>方法<a class="anchor-link" href="creating-binary-features-through-thresholdingipynb.html#fit%E6%96%B9%E6%B3%95">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>binarizer</code>类里面有<code>fit</code>方法，但是它只是通用接口，并没有实际的拟合操作，仅返回对象。</p>
+</div>
+</div>
+</div>
 </div>
         </div>
                 <ul class="pager">
@@ -106,7 +485,7 @@ MathJax.Hub.Config({
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/creating-binary-features-through-thresholdingipynb.html",
         disqus_title="creating-binary-features-through-thresholding.ipynb",
-        disqus_identifier="cache/posts/creating-binary-features-through-thresholdingipynb.html",
+        disqus_identifier="cache/posts/creating-binary-features-through-thresholding.html",
         disqus_config = function () {
             this.language = "en";
         };
