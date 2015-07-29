@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><language>en</language><lastBuildDate>Mon, 27 Jul 2015 19:11:21 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>working-with-categorical-variables</title><link>http://muxuezi.github.io/posts/working-with-categorical-variables.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><language>en</language><lastBuildDate>Wed, 29 Jul 2015 08:10:07 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015087期(2015-07-28)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</guid><pubDate>Wed, 29 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15086期(2015-07-27)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html</guid><pubDate>Tue, 28 Jul 2015 00:00:00 GMT</pubDate></item><item><title>working-with-categorical-variables</title><link>http://muxuezi.github.io/posts/working-with-categorical-variables.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -131,36 +133,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;现在是时候升一级了！主成分分析（Principal component analysis，PCA）是本书介绍的第一个高级技术。到目前为止都是些简单的统计学知识，而PCA将统计学和线性代数组合起来实现降维，堪称简单模型的杀手锏。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</guid><pubDate>Mon, 27 Jul 2015 06:58:33 GMT</pubDate></item><item><title>putting-it-all-together-with-pipelines</title><link>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用管线命令连接多个转换方法"&gt;用管线命令连接多个转换方法&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;下面，让我们用管线命令连接多个转换方法，来演示一个复杂点儿的例子。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html</guid><pubDate>Mon, 27 Jul 2015 06:58:28 GMT</pubDate></item><item><title>kernel-pca-for-nonlinear-dimensionality-reduction</title><link>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用核PCA实现非线性降维"&gt;用核PCA实现非线性降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html#%E7%94%A8%E6%A0%B8PCA%E5%AE%9E%E7%8E%B0%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;由于大多数统计方法最开始都是线性的，所以，想解决非线性问题，就需要做一些调整。PCA也是一种线性变换。本主题将首先介绍它的非线性形式，然后介绍如何降维。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html</guid><pubDate>Mon, 27 Jul 2015 06:58:22 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</guid><pubDate>Mon, 27 Jul 2015 06:58:33 GMT</pubDate></item></channel></rss>
