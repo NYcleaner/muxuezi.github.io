@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><language>en</language><lastBuildDate>Wed, 29 Jul 2015 08:10:07 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015087期(2015-07-28)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Tao Junjie blog</description><language>en</language><lastBuildDate>Fri, 31 Jul 2015 08:10:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015088期(2015-07-30)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html</guid><pubDate>Fri, 31 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15087期(2015-07-29)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html</guid><pubDate>Thu, 30 Jul 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015087期(2015-07-28)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</guid><pubDate>Wed, 29 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15086期(2015-07-27)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html</guid><pubDate>Tue, 28 Jul 2015 00:00:00 GMT</pubDate></item><item><title>working-with-categorical-variables</title><link>http://muxuezi.github.io/posts/working-with-categorical-variables.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
@@ -101,36 +103,4 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;因子分析（factor analysis）是另一种降维方法。与PCA不同的是，因子分析有假设而PCA没有假设。因子分析的基本假设是有一些隐藏特征与数据集的特征相关。&lt;/p&gt;
 &lt;p&gt;这个主题将浓缩（boil down）样本数据集的显性特征，尝试像理解因变量一样地理解自变量之间的隐藏特征。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</guid><pubDate>Mon, 27 Jul 2015 06:58:45 GMT</pubDate></item><item><title>scaling-data-to-the-standard-normal</title><link>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="把数据调整为标准正态分布"&gt;把数据调整为标准正态分布&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html#%E6%8A%8A%E6%95%B0%E6%8D%AE%E8%B0%83%E6%95%B4%E4%B8%BA%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;经常需要将数据标准化调整（scaling）为标准正态分布（standard normal）。标准正态分布算得上是统计学中最重要的分布了。如果你学过统计，Z值表（z-scores）应该不陌生。实际上，Z值表的作用就是把服从某种分布的特征转换成标准正态分布的Z值。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html</guid><pubDate>Mon, 27 Jul 2015 06:58:39 GMT</pubDate></item><item><title>reducing-dimensionality-with-pca</title><link>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用主成分分析降维"&gt;用主成分分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html#%E7%94%A8%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;现在是时候升一级了！主成分分析（Principal component analysis，PCA）是本书介绍的第一个高级技术。到目前为止都是些简单的统计学知识，而PCA将统计学和线性代数组合起来实现降维，堪称简单模型的杀手锏。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</guid><pubDate>Mon, 27 Jul 2015 06:58:33 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>Machine Learning</category><category>Python</category><category>ipython</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</guid><pubDate>Mon, 27 Jul 2015 06:58:45 GMT</pubDate></item></channel></rss>
