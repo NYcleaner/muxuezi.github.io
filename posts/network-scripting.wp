@@ -1,0 +1,14 @@
+<!--
+.. title: Python Network Scripting
+.. slug: network-scripting
+.. date: 05/30/2014 12:30:55 AM UTC
+.. tags: Python
+.. link:
+.. description:
+.. type: text
+-->
+
+Include socket, protocol, fork, thread, SocketServer, select, Twisted.
+
+This is [Python Network Scripting] [1] reference link.
+[1]: http://nbviewer.ipython.org/github/muxuezi/pp4p/blob/master/pyNetworkScripting.ipynb  "Python Network Scripting"

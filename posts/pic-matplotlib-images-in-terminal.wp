@@ -1,0 +1,16 @@
+<html><body><p>How To Generate Python/Matplotlib Images Without Having A Window Appear
+在debian终端直接生产png文件，然后在其他环境打开。
+
+The easiest way to do this is use a non-interactive backend such as Agg (for PNGs), PDF, SVG or PS. In your figure-generating script, just call the matplotlib.use() directive before importing pylab or pyplot:
+
+
+
+import matplotlib
+
+matplotlib.use('Agg')  #必须在pyplot之前使用
+
+import matplotlib.pyplot as plt
+
+plt.plot([1,2,3])
+
+plt.savefig('myfig')</p></body></html>

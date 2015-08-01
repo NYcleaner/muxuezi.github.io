@@ -1,0 +1,24 @@
+<html><body><p>交大10年，不能没有晨光BT，如今已经叫PT了。以前ubuntu外网不需要设置，直接安装gw6c即可，记得去年突然失效，后来在linuxmint下可以直接运行。一度以为ubuntu out了，百思不得其解。今日偶得一帖，迁移至gogoc，问题解决，具体如下：
+ubuntu 13.10下，新建6to4隧道
+
+目前gw6c已经变成gogoc，需要编辑/etc/gogoc/gogoc.config
+
+<code>vi /etc/gogoc/gogoc.conf</code>
+
+将server=anonymous.freenet6.net
+
+设置为：
+
+server=tb.ipv6.apol.com.tw
+
+<code>sudo gogoc</code>
+
+<code>ps -ef | grep gogoc</code>
+
+<code>ifconfig</code>
+
+可以看到tun，说明成功了，<a title="cgpt" href="http://pt.zhixing.bjtu.edu.cn/user/login" target="_blank">CGPT</a>
+
+
+
+<a title="ubuntu_ipv6" href="http://city4tom.blog.163.com/blog/static/4875058120103212479998/" target="_blank">感谢</a></p></body></html>

@@ -1,0 +1,12 @@
+<html><body><p>sudo sed -i 's/raring/saucy/' /etc/apt/sources.list
+sudo sed -i 's/olivia/petra/' /etc/apt/sources.list
+
+sudo sed -i 's/raring/saucy/' /etc/apt/sources.list.d/official-package-repositories.list
+
+sudo sed -i 's/olivia/petra/' /etc/apt/sources.list.d/official-package-repositories.list
+
+sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
+
+sudo apt-get upgrade
+
+%%timeit about 2 hours</p></body></html>

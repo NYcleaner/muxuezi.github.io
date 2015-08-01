@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>kivy-perface | 绿萝间</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-perface.html">
+
+
+
+    
+<script type="text/javascript">
+MathJax.Hub.Config({
+    tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+             },
+         displayAlign: 'center', // Change this to 'center' to center equations.
+         "HTML-CSS": {
+             styles: {'.MathJax_Display': {"margin": 0}}
+     }
+});
+</script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <meta name="author" content="tj2">
+        <meta property="og:site_name" content="绿萝间">
+    <meta property="og:title" content="kivy-perface">
+    <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-perface.html">
+    <meta property="og:description" content="Kivy指南¶
+
+
+
+
+
+
+
+
+
+作者：Mark Vasilkov
+中文译者：Tao Junjie
+
+
+
+
+
+
+
+
+前言¶
+
+
+
+
+
+
+
+
+
+移动应用开发几年前就是热点了，现在是个软件用户就想要移动版。桌面操作系统也受到影响，跨平台的软件成为新常态。甚至通常局限于微软桌面操作系统的游戏开发者也开始找一些Mac和Linux平台上的工作了（比如Steam，目前有Mac游戏近4000个，SteamOS+">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2015-06-24T13:43:19+08:00">
+           <meta property="article:tag" content="CHS">
+           <meta property="article:tag" content="Kivy">
+           <meta property="article:tag" content="Python">
+           <meta property="article:tag" content="ipython">
+
+    
+    
+
+</head>
+<body>
+    <section class="social">
+        <ul>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">kivy-perface</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2015-06-24T13:43:19+08:00">2015-06-24 13:43</time>
+            
+                      |  
+        <a href="kivy-perface.ipynb" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+        </ul>
+        </div>
+
+        </div>
+        <div class="body">
+            <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kivy指南">Kivy指南<a class="anchor-link" href="kivy-perface.html#Kivy%E6%8C%87%E5%8D%97">¶</a>
+</h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>作者：<a href="https://github.com/mvasilkov">Mark Vasilkov</a></p>
+<p>中文译者：<a href="https://github.com/muxuezi">Tao Junjie</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="前言">前言<a class="anchor-link" href="kivy-perface.html#%E5%89%8D%E8%A8%80">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>移动应用开发几年前就是热点了，现在是个软件用户就想要移动版。桌面操作系统也受到影响，跨平台的软件成为新常态。甚至通常局限于微软桌面操作系统的游戏开发者也开始找一些Mac和Linux平台上的工作了（比如Steam，目前有Mac游戏近4000个，SteamOS+Linux游戏2000多个）。</p>
+<p>这对新手和个人开发者是大利好：跨平台的支持可以增加用户，销售量自然会更好。</p>
+<p>但是，写可移植的软件是非常耗费资源的过程，对小公司和个人开发者的影响比大公司更甚。</p>
+<p>尤其是许多平台都有不同语言的SDK：iOS用Objective-C和Swift，Android用Java，MS用.Net，更多是C#来开发软件。</p>
+<p>使用这些工具可以通过系统功能来制作相应的原生应用，但是跨平台的代码重用变得十分困难。就算你精通所有语言和相关的操作，代码的移植仍然是一件复杂的事情。</p>
+<!-- TEASER_END-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="一次编写，到处运行">一次编写，到处运行<a class="anchor-link" href="kivy-perface.html#%E4%B8%80%E6%AC%A1%E7%BC%96%E5%86%99%EF%BC%8C%E5%88%B0%E5%A4%84%E8%BF%90%E8%A1%8C">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此，统一多平台支持开发工具呼之欲出。无独有偶，1995年的Sun公司就为解决类似问题发明了Java。其口号为“Write once, run anywhere”（一次编写，到处运行，WORA），虽然Java已经20年了，很多人都在各种纪念。但是其啰嗦的代码仍然没能实现当年的豪言壮语，一些程序员的改编版本更能表达人们的感受——“write once, run away”（一次编写，到处跑偏），有一些放弃Java转向了更好的程序语言，比如Python。</p>
+<p>本书主题Kivy是一个图形用户界面（graphical user interface，GUI）工具用来轻松创建跨平台的Python应用。其主要特征如下：</p>
+<ul>
+<li>
+<strong>兼容性</strong>：Kivy支持多平台，包括Windows，MacOS，Linux，Android和iOS，均出自一个工具</li>
+<li>
+<strong>原生界面</strong>：Kivy填补了不同输入方式间的缝隙，允许你用相同的代码处理不同的输入方式，包括鼠标和触摸屏</li>
+<li>
+<strong>快速图形硬件加速</strong>：OpenGL渲染让Kivy可以胜任图形需求高的应用，如视频游戏，还可以通过平滑变换改善用户体验</li>
+<li>
+<strong>使用Python开发</strong>：Kivy的app是用Python写的，轻松简单，可移植性良好，Python的标准库和<a href="https://pypi.python.org/pypi">PyPI</a>第三方丰富模块都可以使用</li>
+</ul>
+<p>Kivy可以看作许多模块的超集：许多知名的模块如Pygame，SDL，GStreamer都是Kivy的组成部分。但是，Kivy的API更加高级、统一，方便使用。</p>
+<p>Kivy是开源的，其源代码在<a href="https://github.com/kivy/kivy">GitHub上</a>。你可以fork一下，帮忙打补丁，也可以增加新特性。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="本书内容简介">本书内容简介<a class="anchor-link" href="kivy-perface.html#%E6%9C%AC%E4%B9%A6%E5%86%85%E5%AE%B9%E7%AE%80%E4%BB%8B">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本书分9章。</p>
+<ul>
+<li>
+<a href="kivy-ch1-clock-app.html"><em>第1章，时钟app</em></a>对Kivy应用开发做简要介绍。包括Kivy语言、布局、部件和计时器。本章会做一个时钟app，与手机上的时钟应用类似</li>
+<li>
+<a href="kivy-ch2-paint-app.html"><em>第2章，画图app</em></a>对Kivy框架的部件和功能进一步挖掘。通过制作画图app学习自定义部件，在画布上画任意形状，处理多点触控事件等</li>
+<li>
+<a href="kivy-ch3-sound-recorder-for-android.html"><em>第3章，Android录音app</em></a>是用Kivy开发一个Android应用。通过Pyjnius模块实现Python与Java的交互，调用Android的API来实现Kivy用户界面</li>
+<li>
+<a href="kivy-ch4-chat-app.html"><em>第4章，聊天app</em></a>介绍Kivy的网络应用开发，用Python写一个简单通信协议，利用Twisted框架建立服务器-客户端模型，实现一个Kivy聊天app</li>
+<li>
+<a href="kivy-ch5-remote-desktop-app.html"><em>第5章，远程桌面app</em></a>用另一种方式写服务器-客户端应用。这章通过HTTP协议来构建模型。首先建立命令行模式的HTTP服务器，然后再用Kivy实现远程桌面app</li>
+<li>
+<a href="kivy-ch6-2048-app.html"><em>第6章，2048 app</em></a>是实现一个2048游戏。我们将演示Kivy更复杂的功能，用Kivy属性实现数据绑定和触摸手势处理来创建自定义部件</li>
+<li>
+<a href="kivy-ch7-flappy-bird-app.html"><em>第7章，飞翔的小鸟app</em></a>是另一个Kivy游戏，实现著名的Flappy Bird游戏。我们会学习纹理坐标的使用，声音效果和碰撞检测等知识</li>
+<li>
+<a href="kivy-ch8-shaders-app.html"><em>第8章，着色器app</em></a>介绍Kivy应用中如何GLSL着色器。这一章首先介绍OpenGL原始类型的概念，如索引和顶点，然后写出可以直接在GPU上运行代码，最后实现一个满天星屏保app</li>
+<li>
+<a href="kivy-ch9-shmup-app.html"><em>第9章，射击app</em></a>延续上一章的内容，用GLSL着色器做游戏。首先实现一个可重用的粒子系统，然后通过粒子系统构建游戏角色。前面介绍过的许多内容在这个游戏中都会得到体现，如碰撞检测，触摸屏控制，声音效果等</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="环境设置">环境设置<a class="anchor-link" href="kivy-perface.html#%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下面简要介绍Kivy的安装方法，包括Mac，Linux和Windows系统。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python">Python<a class="anchor-link" href="kivy-perface.html#Python">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kivy同时支持Python2和Python3，不过本书的一些章节用到<a href="https://twistedmatrix.com/trac/">Twisted</a>，目前还没有官方支持Python3。所有建议使用Python2.7。</p>
+<blockquote>
+<p>许多平台不需要单独安装Python：比如Mac OS上自带Python2，Windows上和Kivy打包在一起，Linux（尤其是Ubuntu）支持<code>apt-get</code>安装。</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="安装并运行Kivy">安装并运行Kivy<a class="anchor-link" href="kivy-perface.html#%E5%AE%89%E8%A3%85%E5%B9%B6%E8%BF%90%E8%A1%8CKivy">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kviy的最新稳定版本可以在<a href="http://kivy.org/">官方网站</a>找到。如下图所示：</p>
+<p><img src="kbpic/0.1%20kivydownload.png" alt="kivydownload"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下载安装包后，具体平台安装方法可以看图中第三列指令，简要介绍如下：</p>
+<ul>
+<li>Mac：<ol>
+<li>打开命令行窗口</li>
+<li>执行<code>kivy</code>
+</li>
+<li>Python提示符出现后输入<code>import kivy</code>
+</li>
+<li>如果安装顺利会出现<code>[INFO] Kivy v1.9.0</code>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>Linux：<ol>
+<li>打开命令行窗口</li>
+<li>执行<code>python</code>
+</li>
+<li>Python提示符出现后输入<code>import kivy</code>
+</li>
+<li>如果安装顺利会出现<code>[INFO] Kivy v1.9.0</code>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>Windows：<ol>
+<li>双击<strong>kivy.bat</strong>文件</li>
+<li>执行<code>python</code>
+</li>
+<li>Python提示符出现后输入<code>import kivy</code>
+</li>
+<li>如果安装顺利会出现<code>[INFO] Kivy v1.9.0</code>    </li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>运行Kivy应用很简单：</p>
+<ul>
+<li>Mac上用<code>kivy main.py</code>
+</li>
+<li>Linux上用<code>python main.py</code>
+</li>
+<li>Windows上用<code>kivy.bat main.py</code>（或者把<strong>main.py</strong>拖到<strong>kivy.bat</strong>上运行）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hello,-Kivy">Hello, Kivy<a class="anchor-link" href="kivy-perface.html#Hello,-Kivy">¶</a>
+</h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下面我们演示一个Kivy app的<code>hello world</code>版。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="代码">代码<a class="anchor-link" href="kivy-perface.html#%E4%BB%A3%E7%A0%81">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>程序的入口是<code>main.py</code>，代码如下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">HelloApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">HelloApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  hide output</i>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="布局">布局<a class="anchor-link" href="kivy-perface.html#%E5%B8%83%E5%B1%80">¶</a>
+</h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>布局文件是应用类名的去掉<code>App</code>的小写部分加<code>.kv</code>，也就是<code>hello.kv</code>，代码如下所示：</p>
+<pre><code class="language-yaml"><span class="keyword">Label</span>:
+    text: <span class="attribute">'Hello</span>, Kivy'
+</code></pre>
+<p>这里只用了一个Kivy标签部件<code>Label</code>，属性是<code>text</code>。布局文件用一种简洁、声明式的语言定义复杂的布局，后面会介绍。</p>
+<p>运行程序，看到的界面如下所示：</p>
+<p><img src="kbpic/0.2%20hellokivy.png" alt="kivydownload"></p>
+<p>下面就让我们开始Kivy之旅吧！Enjoy</p>
+</div>
+</div>
+</div>
+</div>
+        </div>
+                <ul class="pager">
+            <li class="previous">
+                <a href="kivy-ch8-shaders-app.html" rel="prev" title="kivy-ch8-shaders-app">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="kivy-ch6-2048-app.html" rel="next" title="kivy-ch6-2048-app">Next post</a>
+            </li>
+        </ul>
+
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/kivy-perface.html",
+        disqus_title="kivy-perface",
+        disqus_identifier="cache/posts/kivy-perface.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        
+    </div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+            
+        </footer>
+
+        </div>
+    </section>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

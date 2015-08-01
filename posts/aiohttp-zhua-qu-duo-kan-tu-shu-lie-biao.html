@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>aiohttp-抓取多看图书列表 | 绿萝间</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/posts/aiohttp-zhua-qu-duo-kan-tu-shu-lie-biao.html">
+
+
+
+    
+<script type="text/javascript">
+MathJax.Hub.Config({
+    tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+             },
+         displayAlign: 'center', // Change this to 'center' to center equations.
+         "HTML-CSS": {
+             styles: {'.MathJax_Display': {"margin": 0}}
+     }
+});
+</script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <meta name="author" content="tj2">
+        <meta property="og:site_name" content="绿萝间">
+    <meta property="og:title" content="aiohttp-抓取多看图书列表">
+    <meta property="og:url" content="http://muxuezi.github.io/posts/aiohttp-zhua-qu-duo-kan-tu-shu-lie-biao.html">
+    <meta property="og:description" content="多看大赦三天(0901-0903), 看看热闹, 试用aiohttp抓列表.支持多看, 支持正版.
+
+
+输出结果为: 图书名 id号
+时间统计
+
+全部图书 28089
+    real    6m38.412s
+    user    6m19.044s
+    sys 0m2.171s
+计算机类图书 530
+    real    0m7.703s
+    user    0m7.310s
+  ">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2014-09-03T16:22:38+08:00">
+           <meta property="article:tag" content="Python">
+
+    
+    
+
+</head>
+<body>
+    <section class="social">
+        <ul>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">aiohttp-抓取多看图书列表</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2014-09-03T16:22:38+08:00">2014-09-03 16:22</time>
+            
+                      |  
+        <a href="aiohttp-zhua-qu-duo-kan-tu-shu-lie-biao.md" id="sourcelink">Source</a>
+          |  
+        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+        </div>
+
+        </div>
+        <div class="body">
+            <div>
+<p><a href="http://www.duokan.com/list/1-1">多看</a>大赦三天(0901-0903), 看看热闹, 试用<a href="https://github.com/KeepSafe/aiohttp">aiohttp</a>抓列表.支持多看, 支持正版.</p>
+<!-- TEASER_END-->
+
+<p>输出结果为: 图书名 id号</p>
+<h4>时间统计</h4>
+<ol>
+<li>
+<a href="http://pan.baidu.com/s/1ntDj2Jn">全部图书 28089</a>
+    <code>real    6m38.412s
+    user    6m19.044s
+    sys 0m2.171s</code>
+</li>
+<li>
+<a href="http://pan.baidu.com/s/1o6BL7zs">计算机类图书 530</a>
+    <code>real    0m7.703s
+    user    0m7.310s
+    sys 0m0.080s</code>
+</li>
+</ol>
+<h4>Code</h4>
+<script src="https://gist.github.com/muxuezi/2b8b51076291d483f93c.js"></script>
+
+<p>在如下链接中填如对应图书id即可打开图书:</p>
+<pre class="code literal-block">http://www.duokan.com/reader/www/app.html?id=...
+</pre>
+
+
+<p>Reference from <a href="http://compiletoi.net/fast-scraping-in-python-with-asyncio.html">Fast scraping in python with asyncio (Georges Dubus)</a></p>
+</div>
+        </div>
+                <ul class="pager">
+            <li class="previous">
+                <a href="slott-2014101-2014-09-02-report.html" rel="prev" title="双色球2014101期(2014-09-02)数据分析报告">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="dlott-14103-2014-09-03-report.html" rel="next" title="大乐透14103期(2014-09-03)数据分析报告">Next post</a>
+            </li>
+        </ul>
+
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/aiohttp-zhua-qu-duo-kan-tu-shu-lie-biao.html",
+        disqus_title="aiohttp-\u6293\u53d6\u591a\u770b\u56fe\u4e66\u5217\u8868",
+        disqus_identifier="cache/posts/aiohttp-zhua-qu-duo-kan-tu-shu-lie-biao.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        
+    </div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+            
+        </footer>
+
+        </div>
+    </section>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

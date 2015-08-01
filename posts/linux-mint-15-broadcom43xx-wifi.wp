@@ -1,0 +1,60 @@
+<html><body><p>sudo apt-get install b43-fwcutter firmware-b43-installer
+
+
+http://ydwcn.iteye.com/blog/1126278
+
+1、查看网卡类型：lspci -vnn | grep 14e4，确定是Broadcom43xx网卡类型
+
+2、查看ubuntu内核版本：uname -a，我的版本是Linux ubuntu 2.6.35-22-generic
+
+3、安装b43-fwcutter： Install b43-fwcutter
+
+写道
+
+wget http://bu3sch.de/b43/fwcutter/b43-fwcutter-013.tar.bz2
+
+tar xjf b43-fwcutter-013.tar.bz2
+
+cd b43-fwcutter-013
+
+make
+
+cd ..
+
+注意：这一步要记住b43-fwcutter安装路径，下面会用到。
+
+4、根据内核版本选择安装驱动版本：
+
+注意：下面的安装路径一定要在/lib/firmware/下执行：
+
+a、如果你的版本你是linux-2.6.24，执行：
+
+export FIRMWARE_INSTALL_DIR="/lib/firmware"
+
+wget http://downloads.openwrt.org/sources/broadcom-wl-4.80.53.0.tar.bz2
+
+tar xjf broadcom-wl-4.80.53.0.tar.bz2
+
+cd broadcom-wl-4.80.53.0/kmod
+
+sudo ../../b43-fwcutter-013/b43-fwcutter -w "$FIRMWARE_INSTALL_DIR" wl_apsta.o
+
+b、如果你的版本是linux-2.6.25 或是更高，执行：（我的版本就是选择这里）
+
+export FIRMWARE_INSTALL_DIR="/lib/firmware"
+
+wget http://mirror2.openwrt.org/sources/broadcom-wl-4.150.10.5.tar.bz2
+
+tar xjf broadcom-wl-4.150.10.5.tar.bz2
+
+cd broadcom-wl-4.150.10.5/driver
+
+****** b43-fwcutter -w /tmp FILE extract and write firmware to /tmp. ******
+
+sudo ../../b43-fwcutter-013/b43-fwcutter -w "$FIRMWARE_INSTALL_DIR" wl_apsta_mimo.o
+
+如果到这里，执行成功，会看到解析出好多*.fw文件，没有报警信息，这就大功告成了！
+
+注意：../../b43-fwcutter-013，这个地方一定要选择自己安装b43-fwcutter的路径。
+
+好辛苦啊，整了好几天啊，希望这个对初学ubuntu的朋友们有帮助。</p></body></html>

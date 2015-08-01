@@ -1,0 +1,12 @@
+<html><body><p>用urllib.request.urlopen(url) 打开有中文的网址的时候会报错
+解决方法：
+
+import urllib.parse
+
+将中文 urllib.parse.quote("中文字符",encoding='GBK') 
+
+在调用urllib.request.urlopen(url)即可
+
+即 strurl='http://'localhost/test.php?parm='+urllib.parse.quote("我是中文",encoding='GBK')
+
+urllib.request.urlopen(strurl)</p></body></html>

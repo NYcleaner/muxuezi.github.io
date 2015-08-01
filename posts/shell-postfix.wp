@@ -1,0 +1,2 @@
+<html><body><p>有一批文件，以 .bak结尾，现在想把这些 .bak 统统去掉。
+rename     's/.bak$//'       *.bak</p></body></html>

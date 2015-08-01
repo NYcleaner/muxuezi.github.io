@@ -1,0 +1,19 @@
+<html><body><p>长见识了，也许是新方向，附加转html为矩阵的python
+
+<!-- TEASER_END -->
+
+<script src="https://gist.github.com/muxuezi/7adca6cfcb4f6b9e142a.js"></script>
+
+</p><div id="file-gistfile1-prolog-LC1" class="line"></div>
+
+<div class="line">转html为矩阵</div>
+
+<div class="line"><span class="keyword" style="font-weight: bold; color: blue;">from</span> bs4 <span class="keyword" style="font-weight: bold; color: blue;">import</span> BeautifulSoup
+
+soup = BeautifulSoup(<span class="builtins" style="color: #ff1493;">open</span>('./sudo.html').<span class="builtins" style="color: #ff1493;">read</span>())
+
+<span class="keyword" style="font-weight: bold; color: blue;">print</span> 'metabox(normal, L,'
+
+<span class="keyword" style="font-weight: bold; color: blue;">for</span> tr <span class="keyword" style="font-weight: bold; color: blue;">in</span> soup.findAll('tr'):
+
+<span class="keyword" style="font-weight: bold; color: blue;">print</span> ','.join(<span class="builtins" style="color: #ff1493;">map</span>(<span class="keyword" style="font-weight: bold; color: blue;">lambda</span> x:x.<span class="builtins" style="color: #ff1493;">input</span>.<span class="builtins" style="color: #ff1493;">get</span>('value') <span class="keyword" style="font-weight: bold; color: blue;">if</span> x.<span class="builtins" style="color: #ff1493;">input</span>.<span class="builtins" style="color: #ff1493;">get</span>('value') <span class="keyword" style="font-weight: bold; color: blue;">else</span> '_',tr.findAll('td')))+','</div></body></html>

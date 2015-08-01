@@ -1,0 +1,30 @@
+<html><body><ol>
+	<li>linux mint 15 install ruby 2.0
+<ul>
+	<li>sudo apt-get -y update</li>
+	<li>sudo apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev</li>
+	<li>cd /tmp</li>
+	<li>wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p0.tar.bz2</li>
+	<li>tar -xvjf ruby-2.0.0-p0.tar.bz2</li>
+	<li>cd ruby-2.0.0-p0/</li>
+	<li>./configure --prefix=/usr/local</li>
+	<li>make</li>
+	<li>sudo make install</li>
+</ul>
+
+</li>
+	<li> install sqlite3
+<ul>
+	<li>sudo apt-get install sqlite3 libsqlite3-dev</li>
+</ul>
+
+</li>
+	<li> install rails
+<ul>
+	<li>sudo apt-get install nodejs</li>
+	<li>sudo gem install rails</li>
+</ul>
+
+</li>
+
+</ol></body></html>

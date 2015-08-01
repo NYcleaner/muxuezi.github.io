@@ -1,0 +1,8 @@
+<html><body><p>要让第二组图片水平，需要在主题css（任何一个文件）添加
+.views-slideshow-controls-bottom .views-slideshow-pager-field-item .views-field-field-image{
+
+float: left; margin: 5px 19px 0 0; }
+
+重新启动该主题（切换到另一个主题，再换回来，就更新了）
+
+一天半时间...</p></body></html>

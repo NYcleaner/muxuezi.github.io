@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Swift)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/swift.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 01 Aug 2015 10:08:58 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Swift Programming Language EN</title><link>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;p&gt;One page Swift, updated at 2015-07-23 on &lt;a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/"&gt;eveloper.apple&lt;/a&gt;
+&lt;/p&gt;&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/the-swift-programming-language-en.html"&gt;Read more…&lt;/a&gt; (531 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Swift</category><guid>http://muxuezi.github.io/posts/the-swift-programming-language-en.html</guid><pubDate>Thu, 23 Jul 2015 02:44:10 GMT</pubDate></item><item><title>Swift CHS</title><link>http://muxuezi.github.io/posts/swift-chs.html</link><dc:creator>tj2</dc:creator><description>&lt;div&gt;&lt;!--
+.. title: Swift CHS
+.. slug: swift-chs
+.. date: 2014-08-18 14:20:46 UTC+08:00
+.. tags: Swift
+.. link:
+.. description:
+.. type: text
+--&gt;
+
+&lt;p&gt;Try highlight.js in &lt;a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/"&gt;Swift CHS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/swift-chs.html"&gt;Read more…&lt;/a&gt; (124 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Swift</category><guid>http://muxuezi.github.io/posts/swift-chs.html</guid><pubDate>Wed, 24 Jun 2015 05:44:10 GMT</pubDate></item><item><title>swift-codeblocks-syntax-highlight</title><link>http://muxuezi.github.io/posts/swift-codeblocks-syntax-highlight.html</link><dc:creator>tj2</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Everthing is Ok now, thanks &lt;a href="http://www.samypesse.fr/"&gt;Samy Pessé&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Lastest version at &lt;a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/"&gt;The Swift Programming Language 中文版&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;由于&lt;a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/"&gt;The Swift Programming Language 中文版&lt;/a&gt;不能swift语言高亮.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;Enjoy：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href="http://swift.coding.io/"&gt;Swift Codeblocks Syntax Highlight&lt;/a&gt; on &lt;a href="https://coding.net/u/tj2/p/swift/git"&gt;Coding&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href="http://muxuezi.gitbooks.io/swift-codeblocks/"&gt;Swift Codeblocks Syntax Highlight&lt;/a&gt; on &lt;a href="https://github.com/muxuezi/swift-codeblocks/"&gt;Gitbhub&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/swift-codeblocks-syntax-highlight.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Swift</category><category>ipython</category><guid>http://muxuezi.github.io/posts/swift-codeblocks-syntax-highlight.html</guid><pubDate>Wed, 24 Jun 2015 05:44:10 GMT</pubDate></item></channel></rss>

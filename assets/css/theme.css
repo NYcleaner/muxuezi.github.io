@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*
-	Copyright © 2014 Daniel Aleksandersen and others.
+	Copyright © 2014-2015 Daniel Aleksandersen and others.
 
 	Permission is hereby granted, free of charge, to any
 	person obtaining a copy of this software and associated
@@ -157,6 +157,7 @@ body {
 	content: "";
 }
 .postpromonav .pager {
+	clear: both;
 	height: 1em;
 }
 .postpromonav .tags li,
@@ -169,6 +170,14 @@ body {
 .postpromonav .pager .next:dir(rtl) {
 	float: left;
 }
+
+.postpromonav .pager .previous {
+	float: left;
+}
+.postpromonav .pager .previous:dir(rtl) {
+	float: right;
+}
+
 .metadata p {
 	display: inline;
 }
@@ -253,3 +262,26 @@ img {
 .codetable .linenos {
 	padding-right: 10px;
 }
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+}
+
+pre.code, code { white-space: pre; word-wrap: normal; overflow: auto; }

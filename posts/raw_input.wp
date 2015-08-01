@@ -1,0 +1,6 @@
+<html><body><p>#On windows
+len_in = raw_input(u"请设置下载位置n".encode('GBK')) 
+
+if len_in == '':print(u'设置完毕')
+
+ft = driver.find_element_by_id('downloadLocationPath')</p></body></html>

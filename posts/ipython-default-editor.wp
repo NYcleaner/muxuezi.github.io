@@ -1,0 +1,6 @@
+<html><body><p>%config TerminalInteractiveShell.editor = 'sublime_text'
+
+
+1.23 就是这么简单
+
+<del datetime="2014-01-24T06:56:01+00:00">1.24 这样设置不会永久生效</del>可以永久生效</p></body></html>
