@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>using-truncated-svd-to-reduce-dimensionality | 绿萝间</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="using-truncated-svd-to-reduce-dimensionality">
+<meta property="og:url" content="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/">
+<meta property="og:description" content="用截断奇异值分解降维¶
+
+
+
+
+
+
+
+
+截断奇异值分解（Truncated singular value decomposition，TSVD）是一种矩阵因式分解（factorization）技术，将矩阵$M$分解成$U$，$\Sigma$和$V$。它与PCA很像，只是SVD分解是在数据矩阵上进行，而PCA是在数据的协方差矩阵上进行。通常，SVD用于发现矩阵的主成份。
+
+
+
+
+
+
+
+
+
+Getti">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-27T14:59:09+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="scikit-learn cookbook">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">using-truncated-svd-to-reduce-dimensionality</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:59:09+08:00" itemprop="datePublished" title="2015-07-27 14:59">2015-07-27 14:59</time></a></p>
+                <p class="commentline">            <a href=".#disqus_thread" data-disqus-identifier="cache/posts/using-truncated-svd-to-reduce-dimensionality.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用截断奇异值分解降维">用截断奇异值分解降维<a class="anchor-link" href=".#%E7%94%A8%E6%88%AA%E6%96%AD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E9%99%8D%E7%BB%B4">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>截断奇异值分解（Truncated singular value decomposition，TSVD）是一种矩阵因式分解（factorization）技术，将矩阵$M$分解成$U$，$\Sigma$和$V$。它与PCA很像，只是SVD分解是在数据矩阵上进行，而PCA是在数据的协方差矩阵上进行。通常，SVD用于发现矩阵的主成份。</p>
+<!-- TEASER_END -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-ready">Getting ready<a class="anchor-link" href=".#Getting-ready">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TSVD与一般SVD不同的是它可以产生一个指定维度的分解矩阵。例如，有一个$n \times n$矩阵，通过SVD分解后仍然是一个$n \times n$矩阵，而TSVD可以生成指定维度的矩阵。这样就可以实现降维了。</p>
+<p>这里我们还用<code>iris</code>数据集来演示TSVD：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">iris_data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-do-it...">How to do it...<a class="anchor-link" href=".#How-to-do-it...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TSVD对象的用法和其他对象类似。首先导入需要的类，初始化，然后拟合：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">TruncatedSVD</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">iris_transformed</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">iris_data</span><span class="p">)</span>
+<span class="n">iris_data</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5.1,  3.5,  1.4,  0.2],
+       [ 4.9,  3. ,  1.4,  0.2],
+       [ 4.7,  3.2,  1.3,  0.2],
+       [ 4.6,  3.1,  1.5,  0.2],
+       [ 5. ,  3.6,  1.4,  0.2]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">iris_transformed</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5.91220352, -2.30344211],
+       [ 5.57207573, -1.97383104],
+       [ 5.4464847 , -2.09653267],
+       [ 5.43601924, -1.87168085],
+       [ 5.87506555, -2.32934799]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最终结果如下图所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iris_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">iris_transformed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"Truncated SVD, 2 Components"</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.text.Text at 0x8600be0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0AEUmE/wcl3iR19adhtgAAAABJRU5ErkJggg==">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-it-works...">How it works...<a class="anchor-link" href=".#How-it-works...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>现在我们演示了scikit-learn的<code>TruncatedSVD</code>模块，让我们看看只用<code>scipy</code>学习一些细节。</p>
+<p>首先，我们用<code>scipy</code>的<code>linalg</code>处理SVD：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">svd</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">D</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[1, 2],
+       [1, 3],
+       [1, 4]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+<span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>((3, 2), (2,), (2, 2))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们可以根据SVD的定义，用$U$，$S$和$V$还原矩阵$D$：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5.64015854,  0.        ],
+       [ 0.        ,  0.43429448]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">)),</span> <span class="n">V</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.,  2.],
+       [ 1.,  3.],
+       [ 1.,  4.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>TruncatedSVD</code>返回的矩阵是$U$和$S$的点积。如果我们想模拟TSVD，我们就去掉最新奇异值和对于$U$的列向量。例如，我们想要一个主成份，可以这样：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">new_S</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">new_U</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">new_U</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">new_S</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-2.20719466, -3.16170819, -4.11622173])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一般情况下，如果我们想要截断维度$t$，那么我们就去掉$N-t$个奇异值。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="There's-more...">There's more...<a class="anchor-link" href=".#There's-more...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>TruncatedSVD</code>还有一些细节需要注意。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="符号翻转（Sign-flipping）">符号翻转（Sign flipping）<a class="anchor-link" href=".#%E7%AC%A6%E5%8F%B7%E7%BF%BB%E8%BD%AC%EF%BC%88Sign-flipping%EF%BC%89">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>TruncatedSVD</code>有个“陷阱”。随着随机数生成器状态的变化，<code>TruncatedSVD</code>连续地拟合会改变输出的符合。为了避免这个问题，建议只用<code>TruncatedSVD</code>拟合一次，然后用其他变换。这正是管线命令的另一个用处。</p>
+<p>要避免这种情况，可以这样：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">tsvd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tsvd</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_data</span><span class="p">)</span>
+<span class="n">tsvd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">iris_data</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5.91220352, -2.30344211],
+       [ 5.57207573, -1.97383104],
+       [ 5.4464847 , -2.09653267],
+       [ 5.43601924, -1.87168085],
+       [ 5.87506555, -2.32934799]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="稀疏矩阵">稀疏矩阵<a class="anchor-link" href=".#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>TruncatedSVD</code>相比PDA的一个优势是<code>TruncatedSVD</code>可以操作PDA处理不了的矩阵。这是因为PCA必须计算协方差矩阵，需要在整个矩阵上操作，如果矩阵太大，计算资源可能会不够用。</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/chs/" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../../categories/machine-learning/" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">Python</a></li>
+            <li><a class="tag p-category" href="../../categories/scikit-learn-cookbook/" rel="tag">scikit-learn cookbook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../using-stochastic-gradient-descent-for-regression/" rel="prev" title="using-stochastic-gradient-descent-for-regression">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../working-with-categorical-variables/" rel="next" title="working-with-categorical-variables">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/",
+        disqus_title="using-truncated-svd-to-reduce-dimensionality",
+        disqus_identifier="cache/posts/using-truncated-svd-to-reduce-dimensionality.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4-from-linear-regression-to-logistic-regression | 绿萝间</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="4-from-linear-regression-to-logistic-regression">
+<meta property="og:url" content="http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression/">
+<meta property="og:description" content="从线性回归到逻辑回归¶
+
+
+
+
+
+
+
+
+在第2章，线性回归里面，我们介绍了一元线性回归，多元线性回归和多项式回归。这些模型都是广义线性回归模型的具体形式，广义线性回归是一种灵活的框架，比普通线性回归要求更少的假设。这一章，我们讨论广义线性回归模型的具体形式的另一种形式，逻辑回归（logistic regression）。
+
+
+
+
+
+
+
+
+
+和前面讨论的模型不同，逻辑回归是用来做分类任务的。分类任务">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-29T20:49:07+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">4-from-linear-regression-to-logistic-regression</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-06-29T20:49:07+08:00" itemprop="datePublished" title="2015-06-29 20:49">2015-06-29 20:49</time></a></p>
+                <p class="commentline">            <a href=".#disqus_thread" data-disqus-identifier="cache/posts/4-from-linear-regression-to-logistic-regression.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="从线性回归到逻辑回归">从线性回归到逻辑回归<a class="anchor-link" href=".#%E4%BB%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%88%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在第2章，线性回归里面，我们介绍了一元线性回归，多元线性回归和多项式回归。这些模型都是广义线性回归模型的具体形式，广义线性回归是一种灵活的框架，比普通线性回归要求更少的假设。这一章，我们讨论广义线性回归模型的具体形式的另一种形式，逻辑回归（logistic regression）。</p>
+<!-- TEASER_END-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>和前面讨论的模型不同，逻辑回归是用来做分类任务的。分类任务的目标是找一个函数，把观测值匹配到相关的类和标签上。学习算法必须用成对的特征向量和对应的标签来估计匹配函数的参数，从而实现更好的分类效果。在二元分类（binary classification）中，分类算法必须把一个实例配置两个类别。二元分类案例包括，预测患者是否患有某种疾病，音频中是否含有人声，杜克大学男子篮球队在NCAA比赛中第一场的输赢。多元分类中，分类算法需要为每个实例都分类一组标签。本章，我们会用逻辑回归来介绍一些分类算法问题，研究分类任务的效果评价，也会用到上一章学的特征抽取方法。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="逻辑回归处理二元分类">逻辑回归处理二元分类<a class="anchor-link" href=".#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%A4%84%E7%90%86%E4%BA%8C%E5%85%83%E5%88%86%E7%B1%BB">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>普通的线性回归假设响应变量呈正态分布，也称为高斯分布（Gaussian distribution ）或钟形曲线（bell curve）。正态分布数据是对称的，且均值，中位数和众数（mode）是一样的。很多自然现象都服从正态分布。比如，人类的身高就服从正态分布，姚明那样的高度极少，在99%之外了。</p>
+<p>在某些问题里，响应变量不是正态分布的。比如，掷一个硬币获取正反两面的概率分布是伯努力分布（Bernoulli distribution），又称两点分布或者0-1分布。表示一个事件发生的概率是$P$，不发生的概率是$1-P$，概率在<code>{0,1}</code>之间。线性回归假设解释变量值的变化会引起响应变量值的变化，如果响应变量的值是概率的，这条假设就不满足了。广义线性回归去掉了这条假设，用一个联连函数(link function)来描述解释变量与响应变量的关系。实际上，在第2章，线性回归里面，我们已经用了联连函数。普通线性回归作为广义线性回归的特例使用的是恒等联连函数(identity link function)，将解释变量的通过线性组合的方式来联接服从正态分布的响应变量。如果响应变量不服从正态分布，就要用另外一种联连函数了。</p>
+<p>在逻辑回归里，响应变量描述了类似于掷一个硬币结果为正面的概率。如果响应变量等于或超过了指定的临界值，预测结果就是正面，否则预测结果就是反面。响应变量是一个像线性回归中的解释变量构成的函数表示，称为逻辑函数（logistic function）。一个值在<code>{0,1}</code>之间的逻辑函数如下所示：</p>
+$$F(t)=\frac 1 {1+e^{-t}}$$<p>下面是$t$在<code>{-6,6}</code>的图形：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="k">import</span> <span class="n">FontProperties</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">FontProperties</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s">r"c:\windows\fonts\msyh.ttc"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'b-'</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在逻辑回归中，$t$是解释变量的线性组合，公式如下：</p>
+$$F(t)=\frac 1 {1+e^{-(\beta_0+\beta_x)}}$$<p>对数函数（logit function）是逻辑函数的逆运算：</p>
+$$g(x)=ln {\frac {F(x)} {1-F(x)}} = \beta_0+\beta_x$$<p>定义了逻辑回归的模型之后，我们用它来完成一个分类任务。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="垃圾邮件分类">垃圾邮件分类<a class="anchor-link" href=".#%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%E5%88%86%E7%B1%BB">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>经典的二元分类问题就是垃圾邮件分类（spam classification）。这里，我们分类垃圾短信。我们用第三章介绍的TF-IDF算法来抽取短信的特征向量，然后用逻辑回归分类。</p>
+<p>我们可以用<a href="http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection">UCI Machine Learning Repository</a>的短信垃圾分类数据集（SMS Spam Classification Data Set）。首先，我们还是用Pandas做一些描述性统计：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/SMSSpamCollection'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'含spam短信数量：'</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'spam'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'含ham短信数量：'</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'ham'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>      0                                                  1
+0   ham  Go until jurong point, crazy.. Available only ...
+1   ham                      Ok lar... Joking wif u oni...
+2  spam  Free entry in 2 a wkly comp to win FA Cup fina...
+3   ham  U dun say so early hor... U c already then say...
+4   ham  Nah I don't think he goes to usf, he lives aro...
+含spam短信数量： 747
+含ham短信数量： 4825
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每条信息的前面已经被打上了标签。共5574条短信里面，4827条是ham，747条是spam。ham短信用0标记，spam短信用1标记。观察数据会看到更多建模时需要的信息。下面的几条信息体现两种类型的特征：</p>
+<ul>
+<li>Spam: Free entry in 2 a wkly comp to win FA Cup final tkts 21st May</li>
+<li>Text FA to 87121 to receive entry question(std txt rate)T&amp;C's
+apply 08452810075over18's</li>
+<li>Spam: WINNER!! As a valued network customer you have been selected
+to receivea £900 prize reward! To claim call 09061701461. Claim code
+KL341. Valid 12 hours only.</li>
+<li>Ham: Sorry my roommates took forever, it ok if I come by now?</li>
+<li>Ham: Finished class where are you.</li>
+</ul>
+<p>让我们用<code>LogisticRegression</code>类来预测：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先，用pandas加载数据<code>.csv</code>文件，然后用<code>train_test_split</code>分成训练集（75%）和测试集（25%）：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/SMSSpamCollection'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然后，我们建一个<code>TfidfVectorizer</code>实例来计算TF-IDF权重：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_raw</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最后，我们建一个<code>LogisticRegression</code>实例来训练模型。和<code>LinearRegression</code>类似，<code>LogisticRegression</code>同样实现了<code>fit()</code>和<code>predict()</code>方法。最后把结果打印出来看看：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'预测类型：%s. 信息：%s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>预测类型：ham. 信息：Are u coming to the funeral home
+预测类型：ham. 信息：Love isn't a decision, it's a feeling. If we could decide who to love, then, life would be much simpler, but then less magical
+预测类型：ham. 信息：Dont think so. It turns off like randomlly within 5min of opening
+预测类型：spam. 信息：Hey happy birthday...
+预测类型：ham. 信息：None of that's happening til you get here though
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>分类模型的运行效果如何？有线性回归的度量方法在这里不太适用了。我们感兴趣的是分类是否正确（如第一章介绍的肿瘤预测问题），并不在乎它的决策范围。下面，我们来介绍二元分类的效果评估方法。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="二元分类效果评估方法">二元分类效果评估方法<a class="anchor-link" href=".#%E4%BA%8C%E5%85%83%E5%88%86%E7%B1%BB%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>二元分类的效果评估方法有很多，常见的包括第一章里介绍的肿瘤预测使用的准确率（accuracy），精确率（precision）和召回率（recall）三项指标，以及综合评价指标（F1 measure）， ROC AUC值（Receiver Operating Characteristic ROC，Area Under Curve，AUC）。这些指标评价的样本分类是真阳性（true positives），真阴性（true negatives），假阳性（false positives），假阴性（false negatives）。阳性和阴性指分类，真和假指预测的正确与否。</p>
+<p>在我们的垃圾短信分类里，真阳性是指分类器将一个垃圾短信分辨为spam类。真阴性是指分类器将一个正常短信分辨为ham类。假阳性是指分类器将一个正常短信分辨为spam类。假阴性是指分类器将一个垃圾短信分辨为ham类。混淆矩阵（Confusion matrix），也称列联表分析（Contingency table）可以用来描述真假与阴阳的关系。矩阵的行表示实际类型，列表示预测类型。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'混淆矩阵'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'实际类型'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'预测类型'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[4 1]
+ [2 3]]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="准确率">准确率<a class="anchor-link" href=".#%E5%87%86%E7%A1%AE%E7%8E%87">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>准确率是分类器预测正确性的评估指标。scikit-learn提供了<code>accuracy_score</code>来计算：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>LogisticRegression.score()</code>用来计算模型预测的准确率：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/sms.csv'</span><span class="p">)</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'message'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'label'</span><span class="p">])</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_raw</span><span class="p">)</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'准确率：'</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">scores</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>准确率： 0.958373205742 [ 0.96291866  0.95334928  0.95813397  0.96172249  0.95574163]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你的结果可能和这些数字不完全相同，毕竟交叉检验的训练集和测试集都是随机抽取的。准确率是分类器预测正确性的比例，但是并不能分辨出假阳性错误和假阴性错误。在有些问题里面，比如第一章的肿瘤预测问题中，假阴性与假阳性要严重得多，其他的问题里可能相反。另外，有时准确率并非一个有效的衡量指标，如果分类的比例在样本中严重失调。比如，分类器预测信用卡交易是否为虚假交易时，假阴性比假阳性更敏感。为了提高客户满意度，信用卡部门更倾向于对合法的交易进行风险检查，往往会忽略虚假交易。因为绝大部分交易都是合法的，这里准确率不是一个有效的衡量指标。经常预测出虚假交易的分类器可能有很高的准确率，但是实际情况可能并非如此。因此，分类器的预测效果还需要另外两个指标：精确率和召回率。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="精确率和召回率">精确率和召回率<a class="anchor-link" href=".#%E7%B2%BE%E7%A1%AE%E7%8E%87%E5%92%8C%E5%8F%AC%E5%9B%9E%E7%8E%87">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>第一章的肿瘤预测问题中精确率和召回率的定义我们已经介绍过。在本章的垃圾短信分类器中，精确率是指分类器预测出的垃圾短信中真的是垃圾短信的比例：</p>
+$$P = \frac {TP} {TP+FP}$$<p>召回率在医学领域也叫做灵敏度（sensitivity），在本例中是指所有真的垃圾短信被分类器正确找出来的比例。</p>
+$$R = \frac {TP} {TP+FN}$$<p>精确率和召回率各自含有的信息都很少，它们对分类器效果的观察角度不同。精确率和召回率都不能从表现差的一种分类器中区分出好的分类器。例如，假设一个测试集包括10个阳性和0个阴性结果。分类器即使将每一个样本都预测为阳性，其召回率都是1：</p>
+$$R = \frac {10} {10+0}=1$$<p>分类器如果将每一个样本都预测为阴性，或者只是预测出假阳性和真阴性，其召回率都是0。类似的，一个分类器如果只预测一个样本，结果为阳性，而且这个样本确实为阳性，那么这个分类器就是100%精确的了。</p>
+<p>scikit-learn结合真实类型数据，提供了一个函数来计算一组预测值的精确率和召回率。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/sms.csv'</span><span class="p">)</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'message'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'label'</span><span class="p">])</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_raw</span><span class="p">)</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">precisions</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'precision'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'精确率：'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">precisions</span><span class="p">),</span> <span class="n">precisions</span><span class="p">)</span>
+<span class="n">recalls</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'recall'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'召回率：'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">recalls</span><span class="p">),</span> <span class="n">recalls</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>精确率： 0.99217372134 [ 0.9875      0.98571429  1.          1.          0.98765432]
+召回率： 0.672121212121 [ 0.71171171  0.62162162  0.66363636  0.63636364  0.72727273]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们的分类器精确率99.2%，分类器预测出的垃圾短信中99.2%都是真的垃圾短信。召回率比较低67.2%，就是说真实的垃圾短信中，32.8%被当作正常短信了，没有被识别出来。这些数据会不断变化，因为训练集和测试集是随机抽取的。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="计算综合评价指标">计算综合评价指标<a class="anchor-link" href=".#%E8%AE%A1%E7%AE%97%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>综合评价指标（F1 measure）是精确率和召回率的调和均值（harmonic mean），或加权平均值，也称为F-measure或fF-score。</p>
+$$\frac 1 {F1} + \frac 1 {F1} = \frac 1 P + \frac 1 R $$<p>即</p>
+$$F1 = 2{\frac {PR} {P+R}}$$<p>综合评价指标平衡了精确率和召回率。一个二元分类模型，精确率和召回率为1，那么综合评价指标为1。如果精确率或召回率为0，那么综合评价指标为0。scikit-learn也提供了计算综合评价指标的函数。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">f1s</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'f1'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'综合评价指标：'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f1s</span><span class="p">),</span> <span class="n">f1s</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>综合评价指标： 0.800588878125 [ 0.82722513  0.76243094  0.79781421  0.77777778  0.83769634]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本例的综合评价指标是80%。由于精确率和召回率的差异比较小，所以综合评价指标的罚值也比较小。有时也会用F0.5和F2，表示精确率权重大于召回率，或召回率权重大于精确率。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ROC-AUC">ROC AUC<a class="anchor-link" href=".#ROC-AUC">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ROC曲线（Receiver Operating Characteristic，ROC curve）可以用来可视化分类器的效果。和准确率不同，ROC曲线对分类比例不平衡的数据集不敏感，ROC曲线显示的是对超过限定阈值的所有预测结果的分类器效果。ROC曲线画的是分类器的召回率与误警率（fall-out）的曲线。误警率也称假阳性率，是所有阴性样本中分类器识别为阳性的样本所占比例：</p>
+$$F = \frac {FP} {TN+FP}$$<p>AUC是ROC曲线下方的面积，它把ROC曲线变成一个值，表示分类器随机预测的效果。scikit-learn提供了计算ROC和AUC指标的函数</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/sms.csv'</span><span class="p">)</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'message'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'label'</span><span class="p">])</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_raw</span><span class="p">)</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">false_positive_rate</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">false_positive_rate</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Receiver Operating Characteristic'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">false_positive_rate</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'AUC = %0.2f'</span> <span class="o">%</span> <span class="n">roc_auc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'lower right'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'r--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Recall'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Fall-out'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0ARK5CYII=">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="网格搜索">网格搜索<a class="anchor-link" href=".#%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在第二章我们曾经提到过超参数，是需要手动调节的参数，模型无法学习。比如，在我们的垃圾短信分类模型中，超参数出现在TF-IDF中，用来移除太频繁和太稀缺单词的频率阈值，目前函数正则化的权重值。在scikit-learn里面，超参数是在模型建立时设置的。在前面的例子中，我们没有为<code>LogisticRegression()</code>设置参数，是因为用的都是默认值。但是有时候默认值不一定是最优的。网格搜索（Grid search）就是用来确定最优超参数的方法。其原理就是选取可能的参数不断运行模型获取最佳效果。网格搜索用的是穷举法，其缺点在于即使每个超参数的取值范围都很小，计算量也是巨大的。不过这是一个并行问题，参数与参数彼此独立，计算过程不需要同步，所有很多方法都可以解决这个问题。scikit-learn有<code>GridSearchCV()</code>函数解决这个问题：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">'vect'</span><span class="p">,</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s">'english'</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">'clf'</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+<span class="p">])</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'vect__max_df'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="s">'vect__stop_words'</span><span class="p">:</span> <span class="p">(</span><span class="s">'english'</span><span class="p">,</span> <span class="k">None</span><span class="p">),</span>
+    <span class="s">'vect__max_features'</span><span class="p">:</span> <span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="k">None</span><span class="p">),</span>
+    <span class="s">'vect__ngram_range'</span><span class="p">:</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="s">'vect__use_idf'</span><span class="p">:</span> <span class="p">(</span><span class="k">True</span><span class="p">,</span> <span class="k">False</span><span class="p">),</span>
+    <span class="s">'vect__norm'</span><span class="p">:</span> <span class="p">(</span><span class="s">'l1'</span><span class="p">,</span> <span class="s">'l2'</span><span class="p">),</span>
+    <span class="s">'clf__penalty'</span><span class="p">:</span> <span class="p">(</span><span class="s">'l1'</span><span class="p">,</span> <span class="s">'l2'</span><span class="p">),</span>
+    <span class="s">'clf__C'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/sms.csv'</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'message'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'label'</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'最佳效果：%0.3f'</span> <span class="o">%</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'最优参数组合：'</span><span class="p">)</span>
+<span class="n">best_parameters</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'</span><span class="se">\t</span><span class="s">%s: %r'</span> <span class="o">%</span> <span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]))</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'准确率：'</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'精确率：'</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'召回率：'</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.8s
+[Parallel(n_jobs=-1)]: Done  50 jobs       | elapsed:   10.1s
+[Parallel(n_jobs=-1)]: Done 200 jobs       | elapsed:   27.4s
+[Parallel(n_jobs=-1)]: Done 450 jobs       | elapsed:   54.2s
+[Parallel(n_jobs=-1)]: Done 800 jobs       | elapsed:  1.6min
+[Parallel(n_jobs=-1)]: Done 1250 jobs       | elapsed:  2.4min
+[Parallel(n_jobs=-1)]: Done 1800 jobs       | elapsed:  3.4min
+[Parallel(n_jobs=-1)]: Done 2450 jobs       | elapsed:  4.6min
+[Parallel(n_jobs=-1)]: Done 3200 jobs       | elapsed:  6.0min
+[Parallel(n_jobs=-1)]: Done 4050 jobs       | elapsed: 10.6min
+[Parallel(n_jobs=-1)]: Done 4608 out of 4608 | elapsed: 11.7min finished
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fitting 3 folds for each of 1536 candidates, totalling 4608 fits
+最佳效果：0.982
+最优参数组合：
+	clf__C: 10
+	clf__penalty: 'l2'
+	vect__max_df: 0.25
+	vect__max_features: 2500
+	vect__ngram_range: (1, 2)
+	vect__norm: 'l2'
+	vect__stop_words: None
+	vect__use_idf: True
+准确率： 0.989956958393
+精确率： 0.994252873563
+召回率： 0.930107526882
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>GridSearchCV()</code>函数的参数有待评估模型<code>pipeline</code>，超参数词典<code>parameters</code>和效果评价指标<code>scoring</code>。<code>n_jobs</code>是指并发进程最大数量，设置为<code>-1</code>表示使用所有CPU核心进程。在Python3.4中，可以写一个Python的脚本，让<code>fit()</code>函数可以在<code>main()</code>函数里调用，也可以在Python自带命令行,IPython命令行和IPython Notebook运行。经过网格计算后的超参数在训练集中取得了很好的效果。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="多类分类">多类分类<a class="anchor-link" href=".#%E5%A4%9A%E7%B1%BB%E5%88%86%E7%B1%BB">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>现实中有很多问题不只是分成两类，许多问题都需要分成多个类，成为多类分类问题（Multi-class classification）。比如听到一首歌的样曲之后，可以将其归入某一种音乐风格。这类风格就有许多种。scikit-learn用one-vs.-all或one-vs.-the-rest方法实现多类分类，就是把多类中的每个类都作为二元分类处理。分类器预测样本不同类型，将具有最大置信水平的类型作为样本类型。<code>LogisticRegression()</code>通过one-vs.-all策略支持多类分类。下面，我们用它来分析一个多类分类问题。</p>
+<p>假设你想看电影，而你又非常讨厌看太次的电影。所以有品位的你可以在看每部电影之前都会看一堆影评，不过你更讨厌看影评。那么下面我们就用好影评来给电影分类。</p>
+<p>本例中，我们利用烂番茄（Rotten Tomatoes）网站影评短语数据对电影进行评价。每个影评可以归入下面5个类项：不给力（negative），不太给力（somewhat negative），中等（neutral），有点给力（somewhat positive）, 给力（positive）。解释变量不会总是直白的语言，因为影评内容千差万别，有讽刺的，否定的，以及其他语义的表述，语义并不直白，这些都会让分类充满挑战。数据集可以从<a href="https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews">kaggle</a>上下载。首先，我们还是用Pandas简单探索一下：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="c"># 压缩节省空间</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s">'mlslpic/train.zip'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[30]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>PhraseId</th>
+      <th>SentenceId</th>
+      <th>Phrase</th>
+      <th>Sentiment</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>A series of escapades demonstrating the adage ...</td>
+      <td>1</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>A series of escapades demonstrating the adage ...</td>
+      <td>2</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>A series</td>
+      <td>2</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>A</td>
+      <td>2</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>5</td>
+      <td>1</td>
+      <td>series</td>
+      <td>2</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>PhraseId      156060
+SentenceId    156060
+Phrase        156060
+Sentiment     156060
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Sentiment</code>是响应变量，<code>0</code>是不给力（negative），<code>4</code>是给力（positive），其他以此类推。<code>Phrase</code>列是影评的内容。影评中每句话都被分割成一行。我们不需要考虑<code>PhraseId</code>列和<code>SentenceId</code>列。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">Phrase</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    A series of escapades demonstrating the adage ...
+1    A series of escapades demonstrating the adage ...
+2                                             A series
+3                                                    A
+4                                               series
+5    of escapades demonstrating the adage that what...
+6                                                   of
+7    escapades demonstrating the adage that what is...
+8                                            escapades
+9    demonstrating the adage that what is good for ...
+Name: Phrase, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">Sentiment</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[33]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>count    156060.000000
+mean          2.063578
+std           0.893832
+min           0.000000
+25%           2.000000
+50%           2.000000
+75%           3.000000
+max           4.000000
+Name: Sentiment, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">Sentiment</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[34]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    79582
+3    32927
+1    27273
+4     9206
+0     7072
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">Sentiment</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">Sentiment</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[35]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    0.509945
+3    0.210989
+1    0.174760
+4    0.058990
+0    0.045316
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以看出，近51%都是评价为<code>2</code>中等（neutral）的电影。可见，在这个问题里，准确率不是一个有信息量的评价指标，因为即使很烂的分类器预测出中等水平的结果，其准确率也是51%。<code>3</code>有点给力（somewhat positive）的电影占21%, <code>4</code>给力（positive）的电影占6%，共占27%。剩下的21%就是不给力（negative），不太给力（somewhat negative）的电影。用scikit-learn来训练分类器：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.logistic</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">'vect'</span><span class="p">,</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s">'english'</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">'clf'</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+<span class="p">])</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'vect__max_df'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s">'vect__ngram_range'</span><span class="p">:</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="s">'vect__use_idf'</span><span class="p">:</span> <span class="p">(</span><span class="k">True</span><span class="p">,</span> <span class="k">False</span><span class="p">),</span>
+    <span class="s">'clf__C'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s">'mlslpic/train.zip'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Phrase'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'Sentiment'</span><span class="p">]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'accuracy'</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'最佳效果：%0.3f'</span> <span class="o">%</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'最优参数组合：'</span><span class="p">)</span>
+<span class="n">best_parameters</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'</span><span class="se">\t</span><span class="s">%s: %r'</span> <span class="o">%</span> <span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[Parallel(n_jobs=3)]: Done   1 jobs       | elapsed:    4.6s
+[Parallel(n_jobs=3)]: Done  50 jobs       | elapsed:  1.8min
+[Parallel(n_jobs=3)]: Done  68 out of  72 | elapsed:  3.0min remaining:   10.6s
+[Parallel(n_jobs=3)]: Done  72 out of  72 | elapsed:  3.3min finished
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fitting 3 folds for each of 24 candidates, totalling 72 fits
+最佳效果：0.620
+最优参数组合：
+	clf__C: 10
+	vect__max_df: 0.25
+	vect__ngram_range: (1, 2)
+	vect__use_idf: False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="多类分类效果评估">多类分类效果评估<a class="anchor-link" href=".#%E5%A4%9A%E7%B1%BB%E5%88%86%E7%B1%BB%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>二元分类里，混淆矩阵可以用来可视化不同分类错误的数据。每种类型的精确率，召回率和综合评价指标（F1 score）可以计算，所有预测的准确率也可以计算。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">predictions</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'准确率：'</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'混淆矩阵：'</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'分类报告：'</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>准确率： 0.635024990388
+混淆矩阵： [[ 1178  1701   616    71     4]
+ [  990  5993  6030   563    30]
+ [  227  3231 32668  3520   143]
+ [   37   401  6642  8089  1305]
+ [    7    30   534  2397  1623]]
+分类报告：              precision    recall  f1-score   support
+
+          0       0.48      0.33      0.39      3570
+          1       0.53      0.44      0.48     13606
+          2       0.70      0.82      0.76     39789
+          3       0.55      0.49      0.52     16474
+          4       0.52      0.35      0.42      4591
+
+avg / total       0.62      0.64      0.62     78030
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们通过网格搜索获得了最佳参数组合，最终的分类器是通过对开始的分类器不断优化得到的。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="多标签分类和问题转换">多标签分类和问题转换<a class="anchor-link" href=".#%E5%A4%9A%E6%A0%87%E7%AD%BE%E5%88%86%E7%B1%BB%E5%92%8C%E9%97%AE%E9%A2%98%E8%BD%AC%E6%8D%A2">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>前面我们讨论了二元分类，多类分类，还有一种分类问题是多标签分类（multi-label classification）。每个样本可以拥有全部类型的一部分类型。这样的例子太普遍了，比如统计班上同学一周7天里哪天有空。每个同学都会在周一到周日这7天里，根据自己的情况分别打勾。再比如常见的博客文章分类标签，一篇文章一般都有好几个标签等等。多标签分类问题一般有两种解决方法。</p>
+<p>问题转化方法(Problem transformation)可以将多标签问题转化成单标签问题。 第一种转换方法是训练集里面每个样本通过幂运算转换成单标签。比如下面数据里面每篇文章都带有若干标签。</p>
+<p><img src="mlslpic/4.1%20multi-label.png" alt="multi-label"></p>
+<p>转换方法就是用幂运算将多个类合并成一个类，比如样本1有<code>Local</code>和<code>US</code>类，新建一个标签为<code>Local^US</code>类，这样多标签就变成单标签了。</p>
+<p><img src="mlslpic/4.2%20multi-label-power-trans.png" alt="multi-label-power-trans"></p>
+<p>这样原来5个标签现在变成了7个标签。这种幂运算虽然直观，但是并不实用，因为这样做多出来的标签只有一小部分样本会用到。而且，这些标签只能在训练集里面学习这些类似，在测试集中依然无法使用。</p>
+<p>另外一种问题转换方法就是每个标签都用二元分类处理。每个标签的分类器都预测样本是否属于该标签。我们的例子中需要5个二元分类器，第一个分类器预测样本是否应该被归入<code>Local</code>类，第二个分类器预测样本是否应该被归入<code>US</code>类，以此类推。预测最后一步就是把这些分类结果求并集，如下图所示。这个问题确保了单标签问题和多标签问题有同样的训练集，只是忽略了标签之间的关联关系。</p>
+<p><img src="mlslpic/4.3%20multi-label-binary-trans.png" alt="multi-label-binary-trans"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="多标签分类效果评估">多标签分类效果评估<a class="anchor-link" href=".#%E5%A4%9A%E6%A0%87%E7%AD%BE%E5%88%86%E7%B1%BB%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多标签分类效果评估与多标签分类效果评估方式不同。最常用的手段是汉明损失函数（Hamming loss）和杰卡德相似度（Jaccard similarity）。汉明损失函数表示错误标签的平均比例，是一个函数，当预测全部正确，即没有错误标签时，值为0。杰卡德相似度或杰卡德相指数（Jaccard index），是预测标签和真实标签的交集数量除以预测标签和真实标签的并集数量。其值在<code>{0,1}</code>之间，公式如下：</p>
+$$J(Predicted,True) = \frac {|Predicted \cap True|} {|Predicted \cup True|}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">hamming_loss</span><span class="p">,</span> <span class="n">jaccard_similarity_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hamming_loss</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hamming_loss</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hamming_loss</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.0
+0.25
+0.5
+1.0
+0.75
+0.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="总结">总结<a class="anchor-link" href=".#%E6%80%BB%E7%BB%93">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本章我们介绍了广义线性模型，是对普通线性回归中解释变量非正态分布情况的扩展。广义线性回归模型通过联接方程将解释变量和响应变量联接起来，和普通线性回归不同，这个方程可能是非线性的。我们重点介绍了逻辑联接方程，其图象是一种S曲线，对任意实数的返回值都在在<code>{0,1}</code>之间，如群体生长曲线。</p>
+<p>之后，我们介绍了逻辑回归，一种通过逻辑联接方程联接解释变量与呈伯努力分布的响应变量的关系。逻辑回归可用于解决二元分类问题，我们用它研究了典型的垃圾短信分类问题。紧接着我们介绍了多类分类问题，其类型空间超过两个，每个样本都有且仅有一种类型，我们用one-vs.-all策略研究了通过影评对电影分类的问题。最后，我们介绍了多标签分类，其类型空间超过两个，每个样本都有至少一种标签。介绍完广义线性模型的回归和分类问题，下一章我们就来介绍非线性模型的回归和分类问题——决策树。</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/chs/" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../../categories/machine-learning/" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../6-clustering-with-k-means/" rel="prev" title="6-clustering-with-k-means">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../7-dimensionality-reduction-with-pca/" rel="next" title="7-dimensionality-reduction-with-pca">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/4-from-linear-regression-to-logistic-regression/",
+        disqus_title="4-from-linear-regression-to-logistic-regression",
+        disqus_identifier="cache/posts/4-from-linear-regression-to-logistic-regression.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
