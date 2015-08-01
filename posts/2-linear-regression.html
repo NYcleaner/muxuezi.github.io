@@ -3,13 +3,20 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>2-linear-regression | 绿萝间</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>2-linear-regression | 绿萝间</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
+
+
+
+    
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -21,11 +28,19 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
-<meta property="og:site_name" content="绿萝间">
-<meta property="og:title" content="2-linear-regression">
-<meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
-<meta property="og:description" content="线性回归¶
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <meta name="author" content="tj2">
+        <meta property="og:site_name" content="绿萝间">
+    <meta property="og:title" content="2-linear-regression">
+    <meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
+    <meta property="og:description" content="线性回归¶
 
 
 
@@ -35,23 +50,31 @@ MathJax.Hub.Config({
 
 
 本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小化">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-06-24T13:43:36+08:00">
-<meta property="article:tag" content="CHS">
-<meta property="article:tag" content="ipython">
-<meta property="article:tag" content="Machine Learning">
-<meta property="article:tag" content="Python">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2015-06-24T13:43:36+08:00">
+           <meta property="article:tag" content="CHS">
+           <meta property="article:tag" content="ipython">
+           <meta property="article:tag" content="Machine Learning">
+           <meta property="article:tag" content="Python">
+
+    
+    
+
 </head>
 <body>
-    <section class="social"><ul>
-<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social">
+        <ul>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul></section><section class="page-content"><div class="content" rel="main">
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
     <div class="post">
         <h1 class="p-name entry-title" itemprop="headline name">2-linear-regression</h1>
 
@@ -73,7 +96,7 @@ MathJax.Hub.Config({
            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
         </ul>
-</div>
+        </div>
 
         </div>
         <div class="body">
@@ -116,11 +139,13 @@ MathJax.Hub.Config({
 <p>上一章我们介绍过在监督学习问题中用训练数据来估计模型参数。训练数据由解释变量的历史观测值和对应的响应变量构成。模型可以预测不在训练数据中的解释变量对应的响应变量的值。回归问题的目标是预测出响应变量的连续值。本章我们将学习一些线性回归模型，后面会介绍训练数据，建模和学习算法，以及对每个方法的效果评估。首先，我们从简单的一元线性回归问题开始。</p>
 <p>假设你想计算匹萨的价格。虽然看看菜单就知道了，不过也可以用机器学习方法建一个线性回归模型，通过分析匹萨的直径与价格的数据的线性关系，来预测任意直径匹萨的价格。我们先用scikit-learn写出回归模型，然后我们介绍模型的用法，以及将模型应用到具体问题中。假设我们查到了部分匹萨的直径与价格的数据，这就构成了训练数据，如下表所示：</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -718,12 +743,14 @@ $$\alpha = 12.9 - 0.9762931034482758 \times 11.2 = 1.9655172413793114$$<p>这样
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用学习算法对训练集进行估计，得出了模型的参数。如何评价模型在现实中的表现呢？现在让我们假设有另一组数据，作为测试集进行评估。</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
 <th>预测值（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -857,12 +884,14 @@ Y_n\\
 \end{bmatrix}
 $$<p>其中，$Y$是训练集的响应变量列向量，$\beta$是模型参数列向量。$X$称为设计矩阵，是$m \times n$维训练集的解释变量矩阵。$m$是训练集样本数量，$n$是解释变量个数。增加辅料的匹萨价格预测模型训练集如下表所示：</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -898,12 +927,14 @@ $$<p>其中，$Y$是训练集的响应变量列向量，$\beta$是模型参数�
 </table>
 <p>我们同时要升级测试集数据：</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1114,11 +1145,13 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上例中，我们假设解释变量和响应变量的关系是线性的。真实情况未必如此。下面我们用多项式回归，一种特殊的多元线性回归方法，增加了指数项（$x$的次数大于1）。现实世界中的曲线关系都是通过增加多项式实现的，其实现方式和多元线性回归类似。本例还用一个解释变量，匹萨直径。让我们用下面的数据对两种模型做个比较：</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1148,11 +1181,13 @@ R-squared: 0.77
 </tbody>
 </table>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1925,15 +1960,16 @@ $$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>可以用梯度下降法来找出
 </div>
 </div>
         </div>
-                <ul class="pager hidden-print">
-<li class="previous">
+                <ul class="pager">
+            <li class="previous">
                 <a href="kivy-ch4-chat-app.html" rel="prev" title="kivy-ch4-chat-app">Previous post</a>
             </li>
             <li class="next">
                 <a href="3-feature-extraction-and-preprocessing.html" rel="next" title="3-feature-extraction-and-preprocessing">Next post</a>
             </li>
         </ul>
-<div id="disqus_thread"></div>
+
+                            <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/2-linear-regression.html",
@@ -1947,21 +1983,24 @@ $$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>可以用梯度下降法来找出
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-                <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
-</div>
-                    <footer id="footer"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        
+    </div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-</div>
-    </section><script>
+
+        </div>
+    </section>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1970,7 +2009,13 @@ $$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>可以用梯度下降法来找出
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- Social buttons --><div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+</script>
+
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 <a class="addthis_button_more">Share</a>
 <ul>
 <li>
@@ -1987,7 +2032,11 @@ $$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>可以用梯度下降法来找出
 </li>
 </ul>
 </div>
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script><!-- End of social buttons --><script type="text/javascript">
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

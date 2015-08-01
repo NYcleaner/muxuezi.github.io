@@ -3,14 +3,21 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="description" content="Tao Junjie blog">
-<meta name="viewport" content="width=device-width">
-<title>绿萝间 (old posts, page 3) | 绿萝间</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="http://muxuezi.github.io/index-3.html">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Tao Junjie blog">
+    <meta name="viewport" content="width=device-width">
+    <title>绿萝间 (old posts, page 3) | 绿萝间</title>
+
+                <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://muxuezi.github.io/index-3.html">
+
+
+
+    
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -22,30 +29,43 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+    
+    <style>
     div.input_prompt {
       display: none;
     }
     </style>
+
 </head>
 <body>
-    <section class="social"><ul>
-<li><a href="index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social">
+        <ul>
+                    <li><a href="index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul></section><section class="page-content"><div class="content" rel="main">
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
         <div class="post">
-            <h1 class="title"><a href="posts/komodo-ubuntu.html">komodo-ubuntu</a></h1>
+            <h1 class="title"><a href="posts/python-gbk-link.html">python-gbk-link</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/komodo-ubuntu.html#disqus_thread" data-disqus-identifier="cache/posts/komodo-ubuntu.html">Comments</a>
+                                <a href="posts/python-gbk-link.html#disqus_thread" data-disqus-identifier="cache/posts/python-gbk-link.html">Comments</a>
 
 
                 </div>
@@ -55,26 +75,30 @@ MathJax.Hub.Config({
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>sudo add-apt-repository ppa:mystic-mirage/komodo-edit
-sudo apt-get update</p>
-<p>sudo apt-get install komodo-edit</p>
+<p>用urllib.request.urlopen(url) 打开有中文的网址的时候会报错
+解决方法：</p>
+<p>import urllib.parse</p>
+<p>将中文 urllib.parse.quote("中文字符",encoding='GBK') </p>
+<p>在调用urllib.request.urlopen(url)即可</p>
+<p>即 strurl='http://'localhost/test.php?parm='+urllib.parse.quote("我是中文",encoding='GBK')</p>
+<p>urllib.request.urlopen(strurl)</p>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/kindle3-ubuntu.html">kindle3-ubuntu</a></h1>
+            <h1 class="title"><a href="posts/urllib2-quote-gbk.html">urllib2-quote-gbk</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/kindle3-ubuntu.html#disqus_thread" data-disqus-identifier="cache/posts/kindle3-ubuntu.html">Comments</a>
+                                <a href="posts/urllib2-quote-gbk.html#disqus_thread" data-disqus-identifier="cache/posts/urllib2-quote-gbk.html">Comments</a>
 
 
                 </div>
@@ -84,34 +108,62 @@ sudo apt-get update</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>1.下载： 用安装包自己编译 k3flasher，再sudo chmod +x k3flasher，需要可执行权限，这步非常重要啊！
-2. 在windows下安装好ATK后，从c:Program FilesfreescaleAdvancedToolKit-STDimage目录下把mx35to2_mmc.bin拷到k3flasher同一个目录。</p>
+<p>import urllib2
+name = u'张宏科'</p>
+<p>school = u'北京交通大学'</p>
+<p>transfer = lambda temp : urllib2.quote(temp.encode('utf-8'))</p>
+<p>url = 'https://duckduckgo.com/?q=%s+%s&amp;t=lm' % (transfer(name),transfer(school))</p>
+<p></p>
+<pre style="color: #000000;">https://duckduckgo.com/?q=%E5%BC%A0%E5%AE%8F%E7%A7%91+%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6&amp;t=lm</pre>
+</div>
+            </div>
+        </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/wait.html">wait</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
+                </div>
+                <div class="stats">
+                                <a href="posts/wait.html#disqus_thread" data-disqus-identifier="cache/posts/wait.html">Comments</a>
+
+
+                </div>
+                        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
+           <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
+        </ul>
+        </div>
+
+            </div>
+            <div class="body">
+                <div>
+<p></p>
 <ol>
-<li>Ubuntu下使用方法很简单：</li>
+    <li>三位组成的数列有等差数列 : 6个球一共有1,107,568种组合，这是小学就会的；6个球中有任意四个至少一个成等差数列的很少，占总数5%；但是任意三个至少一个成等差数列的很多，占总数63%</li>
+    <li>新一期的号码分割更有可能出现在间隔中 : 如果按照从小到大排序，(1,2,3,4,5,6)是第一位，(28,29,30,31,32,33)是最后一位。目前出现的所有1377期中，相邻两个直接的间隔，就是位置之差。有这样的特点：最大间隔4586，最小间隔1。其中， 339个间隔超过1000，而且有碎片化的趋势，即新一期的号码分割更有可能出现在这些间隔中</li>
+    <li>Combination(6,3)频率是（0，1，2）：6个号码的任意三位组成的数列，Combination(6,3)共20个。如果按照重复率统计的话。新一期6个号码任意三位组成的数列出现的重复率不超过2，即这20个三位数列的频率是（0，1，2），即在以往所有出现过的6个号码任意三位组成的数列中，新一期6个号码任意三位组成的数列将出现的频率是：0次（没出现过）、1次（出现过1次）、2次（出现过2次，这类一般只有一个）</li>
+    <li>如果在这些超过1000的间隔里面，取出某个区间，重新筛选出无4阶等差、有3阶段等差、3阶段等差仅含（0，1，2），最后还有重复抽样的概率约束</li>
 </ol>
-<p>sudo ./k3flasher mx35to2_mmc.bin program kernel kernel3.3.bin</p>
-<p>sudo ./k3flasher mx35to2_mmc.bin program rootfs rootfs3.3.bin</p>
-<p>各种纠结，终于解决了</p>
-<p>wait ok</p>
-<p>只需USB线对Kindle 3修砖的小白教程</p>
-<p>http://bbs.xiaomi.cn/forum.php?mod=viewthread&amp;tid=8159110</p>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/jiaoyulu.html">jiaoyulu</a></h1>
+            <h1 class="title"><a href="posts/chm-html.html">chm-html</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/jiaoyulu.html#disqus_thread" data-disqus-identifier="cache/posts/jiaoyulu.html">Comments</a>
+                                <a href="posts/chm-html.html#disqus_thread" data-disqus-identifier="cache/posts/chm-html.html">Comments</a>
 
 
                 </div>
@@ -121,48 +173,26 @@ sudo apt-get update</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>习近平 一九九〇·七·十五
-中夜，读《人民呼唤焦裕禄》一文，是时霁月如银，文思萦系……</p>
-<p>魂飞万里，</p>
-<p>盼归来，</p>
-<p>此水此山此地。</p>
-<p>百姓谁不爱好官？</p>
-<p>把泪焦桐成雨。①</p>
-<p>生也沙丘，</p>
-<p>死也沙丘，</p>
-<p>父老生死系。②</p>
-<p>暮雪朝霜，</p>
-<p>毋改英雄意气！</p>
-<p>依然月明如昔，</p>
-<p>思君夜夜，</p>
-<p>肝胆长如洗。</p>
-<p>路漫漫其修远矣，</p>
-<p>两袖清风来去。</p>
-<p>为官一任，</p>
-<p>造福一方，</p>
-<p>遂了平生意。</p>
-<p>绿我涓滴，</p>
-<p>会它千倾澄碧。</p>
-<p>注：①焦裕禄当年为了防风固沙，帮助农民摆脱贫困，提倡种植泡桐。如今，兰考泡桐如海，焦裕禄当年亲手栽下的幼桐已长成合抱大树，人们亲切地叫它“焦桐”。</p>
-<p>②焦裕禄临终前说“我死后只有一个要求，要求党组织把我运回兰考，埋在沙丘上。活着我没有治好沙丘，死了也要看着你们把沙丘治好！”</p>
-<p>（原载一九九〇年七月十六日《福州晚报》一版）</p>
+<p>将.CHM文件反向转换成 .html 格式文件的方法：
+可以利用Windows自带的hh.exe文件来进行文件格式转换，语法为：</p>
+<p>hh -decompile 目标文件夹 源CHM文件名。</p>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/ipython-default-editor.html">ipython-default-editor</a></h1>
+            <h1 class="title"><a href="posts/git-ssh.html">git-ssh</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/ipython-default-editor.html#disqus_thread" data-disqus-identifier="cache/posts/ipython-default-editor.html">Comments</a>
+                                <a href="posts/git-ssh.html#disqus_thread" data-disqus-identifier="cache/posts/git-ssh.html">Comments</a>
 
 
                 </div>
@@ -172,26 +202,32 @@ sudo apt-get update</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>%config TerminalInteractiveShell.editor = 'sublime_text'</p>
-<p>1.23 就是这么简单</p>
-<p><del datetime="2014-01-24T06:56:01+00:00">1.24 这样设置不会永久生效</del>可以永久生效</p>
+<pre>通过ssh生成密钥
+ssh-keygen -t rsa -C "<em>your_email@example.com</em>"</pre>
+<pre>通过xclip复制
+
+sudo apt-get install xclip
+
+xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre>
+
+<p></p>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/hefei-eld-sister.html">hefei-eld-sister</a></h1>
+            <h1 class="title"><a href="posts/weizhuang.html">weizhuang</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/hefei-eld-sister.html#disqus_thread" data-disqus-identifier="cache/posts/hefei-eld-sister.html">Comments</a>
+                                <a href="posts/weizhuang.html#disqus_thread" data-disqus-identifier="cache/posts/weizhuang.html">Comments</a>
 
 
                 </div>
@@ -201,99 +237,20 @@ sudo apt-get update</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p></p>
-<p>合肥瑶海区当涂路与临泉路交叉口璟泰赢家广场8B栋1101室</p>
-</div>
-            </div>
         </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/grub4dos-for-ubuntu-on-disk.html">grub4dos-for-ubuntu-on-disk</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
-                <div class="stats">
-                                <a href="posts/grub4dos-for-ubuntu-on-disk.html#disqus_thread" data-disqus-identifier="cache/posts/grub4dos-for-ubuntu-on-disk.html">Comments</a>
-
-
-                </div>
-                        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
-           <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
-        </ul>
-</div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>http://blog.163.com/fuhaocn@126/blog/static/366650802011112010920932/
-1：ubuntu-9.04-desktop-i386.iso  </p>
-<p>2：grub.exe；grldr；menu.lst; initrd.lz；vmlinuz； 备注：ubuntu-9.04-desktop-i386.iso 是ubuntu系统ISO安装文件; initrd.lz，vmlinuz，两个文件可以到ubuntu-9.04-beta-desktop-i386.iso 里面的 casper 文件夹里面找到，然后解压到C：盘根目录下，也就是C：下； </p>
-<p>grub.exe，grldr 可以到网上下载，也可以在本文附件里下载, 将它们同样也放入C根目录下； menu.lst，要自己创建到C：下， 内容如下，复制进去，然后保存！</p>
-<p>title Install Ubuntu 9.04  </p>
-<p>root (hd0,0)  </p>
-<p>kernel /vmlinuz boot=casper iso-scan/filename=/ubuntu-9.04-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8</p>
-<p>initrd /initrd.lz  </p>
-<p>boot  </p>
-<p>3：把ubuntu-9.04-desktop-i386.iso里.disk文件夹里的文件解压到C：下；注意了，一定要去C盘看下.disk文件夹下的文件是不是还在.disk文件夹里，要是的话，就把它们提到C：下； </p>
-<p>4：去掉该文件的隐含系统只读属性 windows 下，开始－&gt;运行－&gt;cmd , 后输入 attrib -r -h -s c:boot.ini 或者直接右键点击boot.ini文件，把只读去掉 在WINXP下修改boot.ini，在boot.ini文件最后一行后回车，加入C:grldr="Install Ubuntu 9.04 desktop"</p>
-<p>5：重启电脑，然后选择Ubuntu启动项就可以了，然后就是进入到Ubuntu9.04桌面了，桌面上有个安装，打开它，然后有7步设置，搞到挂载的时候，我是遇到了无法挂载的情况， 我是这样解决的：同时按下Ctrl+Alt+F2,然后在：后输入  sudo umount -l /isodevice  输好后，然后回车，再同时按下 Ctrl+Alt+F7，回到安装界面，然后我就一路装下去了！然后就是设置用户名和密码，确认分区信息，完成后就开始安装了!</p>
-<p>这时可能出现的问题：安装ubuntn时出现：正在配置apt。一直82%不动。 解决办法：安装的时候不要配置网络，安装完成之后再配置网络，安装中拔掉网线。 我这里安装时间不到10分钟，重启再次进入Ubuntu 9.04，更新完软件包，也就是20多分钟，然后就OK了！  问题1：无法挂载的情况，我是这样解决的：同时按下Ctrl+Alt+F2,然后在：后输入 sudo umount -l /isodevice 输好后，然后回车，再同时按下 Ctrl+Alt+F7，回到安装界面，然后我就一路装下去了！然后就是设置用户名和密码，确认分区信息，完成后就开始安装了！我这里安装时间不到10分钟，重启再次进入Ubuntu 9.04，更新完软件包，也就是20多分钟，然后就OK了！  问题2：重启后不出现WINDOWS启动菜单 在端口里输入了 sudo gedit /boot/grub/menu.lst 然后输入密码，就打开了 menu.lst 文件， 然后在文件内容的最后加入如下内容：  title Windows xp root (hd0,0) makeactive chainloader +1  然后保存文件，重启！OK，启动菜单出来啦，双系统又并存啊！！</p>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/grub-ubuntuwin7.html">grub-ubuntuwin7</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
-                <div class="stats">
-                                <a href="posts/grub-ubuntuwin7.html#disqus_thread" data-disqus-identifier="cache/posts/grub-ubuntuwin7.html">Comments</a>
-
-
-                </div>
-                        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
-           <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p></p>
-<p>Ubuntu与Win7双系统，在重装Win7后会出现Ubuntu的Linux不能启动的情况，这是因为grub引导被覆盖了。
-   要修复grub需要一张Ubuntu的LiveCD（安装光盘），用LiveCD启动电脑，进入试用Ubuntu，进入之后打开终端，做如下几步：
-   1、输入sudo -i取得权限；
-   2、找到安装ubuntu的挂载点，我的 / 在sda9，/boot 在sda8里面，如果不清楚可以用命令 fdisk -l 来查看；
-   3、挂载分区分别输入命令：
-        mount /dev/sda9 /mnt                (mount跟sda9之后分别有一个空格）
-        mount /dev/sda8 /mnt/boot        (如果没有/boot分区可以省略这一步）
-   4、安装grub输入命令：
-        grub-install --root-directory=/mnt /dev/sda
-        (--跟/dev/sda之前分别有一个空格，sda指的是第一硬盘，如果想安装在第二硬盘里面就用sdb）
-         注：如果grub.cfg己丢失，或grub.cfg出现错误，需要重建的继续执行下面操作：
-               mount –bind /proc /mnt/proc
-               mount –bind /dev /mnt/dev
-               mount –bind /sys /mnt/sys
-               chroot /mnt update-grub
-               umount /mnt/sys
-               umount /mnt/dev
-               umount /mnt/proc
-               exit
-   5、重启电脑，进入熟悉的ubuntu
-   6、打开终端输入命令 sudo update-grub </p>
+<p>人人尽说江南好
+游人只合江南老</p>
+<p>春水碧于天</p>
+<p>画船听雨眠</p>
+<p>垆边人似月</p>
+<p>皓腕凝霜雪</p>
+<p>未老莫还乡</p>
+<p>还乡须断肠</p>
 </div>
             </div>
         </div>
@@ -302,7 +259,7 @@ sudo apt-get update</p>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
                                 <a href="posts/gogoc-infg.html#disqus_thread" data-disqus-identifier="cache/posts/gogoc-infg.html">Comments</a>
 
@@ -314,7 +271,7 @@ sudo apt-get update</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
@@ -336,13 +293,13 @@ ubuntu 13.10下，新建6to4隧道</p>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/git-ssh.html">git-ssh</a></h1>
+            <h1 class="title"><a href="posts/mint-15-upto-16.html">mint-15-upto-16</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/git-ssh.html#disqus_thread" data-disqus-identifier="cache/posts/git-ssh.html">Comments</a>
+                                <a href="posts/mint-15-upto-16.html#disqus_thread" data-disqus-identifier="cache/posts/mint-15-upto-16.html">Comments</a>
 
 
                 </div>
@@ -352,32 +309,30 @@ ubuntu 13.10下，新建6to4隧道</p>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<pre>通过ssh生成密钥
-ssh-keygen -t rsa -C "<em>your_email@example.com</em>"</pre>
-<pre>通过xclip复制
-
-sudo apt-get install xclip
-
-xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre>
-
-<p></p>
+<p>sudo sed -i 's/raring/saucy/' /etc/apt/sources.list
+sudo sed -i 's/olivia/petra/' /etc/apt/sources.list</p>
+<p>sudo sed -i 's/raring/saucy/' /etc/apt/sources.list.d/official-package-repositories.list</p>
+<p>sudo sed -i 's/olivia/petra/' /etc/apt/sources.list.d/official-package-repositories.list</p>
+<p>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</p>
+<p>sudo apt-get upgrade</p>
+<p>%%timeit about 2 hours</p>
 </div>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/git-error.html">git-error</a></h1>
+            <h1 class="title"><a href="posts/drupal-views_slideshow.html">drupal-views_slideshow</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
-</div>
+                </div>
                 <div class="stats">
-                                <a href="posts/git-error.html#disqus_thread" data-disqus-identifier="cache/posts/git-error.html">Comments</a>
+                                <a href="posts/drupal-views_slideshow.html#disqus_thread" data-disqus-identifier="cache/posts/drupal-views_slideshow.html">Comments</a>
 
 
                 </div>
@@ -387,40 +342,73 @@ xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre>
            <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
            <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
         </ul>
-</div>
+        </div>
 
             </div>
             <div class="body">
                 <div>
 <p></p>
-<p>1. $ git remote add origin git@github.com:muxuezi/testy.git</p>
-<p>错误提示：fatal: remote origin already exists.</p>
-<p>解决办法：</p>
-<p>$ git remote rm origin</p>
-<p>$ git remote add origin git@github.com:muxuezi/testy.git</p>
-<ol>
-<li>$ git push origin master</li>
-</ol>
-<p>错误提示：error:failed to push som refs to.......</p>
-<p>解决办法：</p>
-<p>$ git pull origin master //先把远程服务器github上面的文件拉先来，再push 上去。</p>
+<p>要让第二组图片水平，需要在主题css（任何一个文件）添加
+.views-slideshow-controls-bottom .views-slideshow-pager-field-item .views-field-field-image{</p>
+<p>float: left; margin: 5px 19px 0 0; }</p>
+<p>重新启动该主题（切换到另一个主题，再换回来，就更新了）</p>
+<p>一天半时间...</p>
 </div>
             </div>
         </div>
-            <nav class="postindexpager"><ul class="pager">
-<li class="previous">
+        <div class="post">
+            <h1 class="title"><a href="posts/c-pointer-right-left-rule.html">c-pointer-right-left-rule</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2010-01-01T13:44:27+08:00">2010-01-01 13:44</time>
+                </div>
+                <div class="stats">
+                                <a href="posts/c-pointer-right-left-rule.html#disqus_thread" data-disqus-identifier="cache/posts/c-pointer-right-left-rule.html">Comments</a>
+
+
+                </div>
+                        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/linux.html" rel="tag">Linux</a></li>
+           <li><a class="tag p-category" href="categories/wordpress.html" rel="tag">WordPress</a></li>
+        </ul>
+        </div>
+
+            </div>
+            <div class="body">
+                <div>
+<p></p>
+<p>此文纪念大学C语言，虽然没怎么用，再看K＆C，光彩依然<!--more--></p>
+<p class="more"><a href="posts/c-pointer-right-left-rule.html">Read more…</a></p>
+</div>
+            </div>
+        </div>
+            <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
                 <a href="index-4.html" rel="prev">Newer posts</a>
             </li>
             <li class="next">
                 <a href="index-2.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul>
+        </nav>
+
+                   <script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+    
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-</div>
-    </section><script>
+
+        </div>
+    </section>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -429,7 +417,13 @@ xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre>
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script><script src="assets/js/all-nocdn.js" type="text/javascript"></script><!-- Social buttons --><div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+</script>
+
+    
+                <script src="assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 <a class="addthis_button_more">Share</a>
 <ul>
 <li>
@@ -446,7 +440,11 @@ xclip -sel clip &lt; ~/.ssh/id_rsa.pub</pre>
 </li>
 </ul>
 </div>
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script><!-- End of social buttons --><script type="text/javascript">
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+        <script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
