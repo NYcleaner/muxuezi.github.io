@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>3-feature-extraction-and-preprocessing | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3-feature-extraction-and-preprocessing | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="3-feature-extraction-and-preprocessing">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html">
-    <meta property="og:description" content="特征提取与处理¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="3-feature-extraction-and-preprocessing">
+<meta property="og:url" content="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html">
+<meta property="og:description" content="特征提取与处理¶
 
 
 
@@ -69,59 +54,80 @@ MathJax.Hub.Config({
 
 
 
-
-许多机器学习问题都有分类的、标记的变量，不是连续的。例如，一个应用是用分类特征比">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-24T13:43:42+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+许多机器学习问题都有分类的、标记的变量，不是连续的。例如，一个应用是用分类特征比如工">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:42+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">3-feature-extraction-and-preprocessing</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-24T13:43:42+08:00">2015-06-24 13:43</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="3-feature-extraction-and-preprocessing.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="3-feature-extraction-and-preprocessing.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">3-feature-extraction-and-preprocessing</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-24T13:43:42+08:00" itemprop="datePublished" title="2015-06-24 13:43">2015-06-24 13:43</time></a></p>
+                <p class="commentline">            <a href="3-feature-extraction-and-preprocessing.html#disqus_thread" data-disqus-identifier="cache/posts/3-feature-extraction-and-preprocessing.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="3-feature-extraction-and-preprocessing.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -132,7 +138,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -153,7 +158,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -162,6 +166,7 @@ MathJax.Hub.Config({
 <p>许多机器学习问题都有分类的、标记的变量，不是连续的。例如，一个应用是用分类特征比如工作地点来预测工资水平。分类变量通常用独热编码（One-of-K or One-Hot Encoding），通过二进制数来表示每个解释变量的特征。</p>
 <p>例如，假设<code>city</code>变量有三个值：<code>New York</code>, <code>San Francisco</code>, <code>Chapel Hill</code>。独热编码方式就是用三位二进制数，每一位表示一个城市。</p>
 <p>scikit-learn里有<code>DictVectorizer</code>类可以用来表示分类特征：</p>
+
 </div>
 </div>
 </div>
@@ -169,21 +174,16 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">DictVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">DictVectorizer</span>
 <span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">DictVectorizer</span><span class="p">()</span>
 <span class="n">instances</span> <span class="o">=</span> <span class="p">[{</span><span class="s">'city'</span><span class="p">:</span> <span class="s">'New York'</span><span class="p">},{</span><span class="s">'city'</span><span class="p">:</span> <span class="s">'San Francisco'</span><span class="p">},</span> <span class="p">{</span><span class="s">'city'</span><span class="p">:</span> <span class="s">'Chapel Hill'</span><span class="p">}]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">onehot_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -192,15 +192,10 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[ 0.  1.  0.]
+<pre>[[ 0.  1.  0.]
  [ 0.  0.  1.]
  [ 1.  0.  0.]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -214,6 +209,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>会看到，编码的位置并不是与上面城市一一对应的。第一个<code>city</code>编码<code>New York</code>是<code>[ 0.  1.  0.]</code>，用第二个元素为<code>1</code>表示。相比用单独的数值来表示分类，这种方法看起来很直观。<code>New York</code>, <code>San Francisco</code>, <code>Chapel Hill</code>可以表示成<code>1</code>，<code>2</code>，<code>3</code>。数值的大小没有实际意义，城市并没有自然数顺序。</p>
+
 </div>
 </div>
 </div>
@@ -227,13 +223,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很多机器学习问题涉及自然语言处理（NLP），必然要处理文字信息。文字必须转换成可以量化的特征向量。下面我们就来介绍最常用的文字表示方法：词库模型（Bag-of-words model）。</p>
+
 </div>
 </div>
 </div>
@@ -247,7 +243,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -255,6 +250,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>词库模型是文字模型化的最常用方法。对于一个文档（document），忽略其词序和语法，句法，将其仅仅看做是一个词集合，或者说是词的一个组合，文档中每个词的出现都是独立的，不依赖于其他词是否出现，或者说当这篇文章的作者在任意一个位置选择一个词汇都不受前面句子的影响而独立选择的。词库模型可以看成是独热编码的一种扩展，它为每个单词设值一个特征值。词库模型依据是用类似单词的文章意思也差不多。词库模型可以通过有限的编码信息实现有效的文档分类和检索。</p>
 <p>一批文档的集合称为文集（corpus）。让我们用一个由两个文档组成的文集来演示词库模型：</p>
+
 </div>
 </div>
 </div>
@@ -262,15 +258,13 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'UNC played Duke in basketball'</span><span class="p">,</span>
     <span class="s">'Duke lost the basketball game'</span>
 <span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -283,6 +277,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>文集包括8个词：<code>UNC</code>, <code>played</code>, <code>Duke</code>, <code>in</code>, <code>basketball</code>, <code>lost</code>, <code>the</code>, <code>game</code>。文件的单词构成词汇表（vocabulary）。词库模型用文集的词汇表中每个单词的特征向量表示每个文档。我们的文集有8个单词，那么每个文档就是由一个包含8位元素的向量构成。构成特征向量的元素数量称为维度（dimension）。用一个词典（dictionary）来表示词汇表与特征向量索引的对应关系。</p>
 <p>在大多数词库模型中，特征向量的每一个元素是用二进制数表示单词是否在文档中。例如，第一个文档的第一个词是<code>UNC</code>，词汇表的第一个单词是<code>UNC</code>，因此特征向量的第一个元素就是<code>1</code>。词汇表的最后一个单词是<code>game</code>。第一个文档没有这个词，那么特征向量的最后一个元素就是<code>0</code>。<code>CountVectorizer</code>类会把文档全部转换成小写，然后将文档词块化（tokenize）。文档词块化是把句子分割成词块（token）或有意义的字母序列的过程。词块大多是单词，但是他们也可能是一些短语，如标点符号和词缀。<code>CountVectorizer</code>类通过正则表达式用空格分割句子，然后抽取长度大于等于2的字母序列。scikit-learn实现代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -290,8 +285,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'UNC played Duke in basketball'</span><span class="p">,</span>
     <span class="s">'Duke lost the basketball game'</span>
@@ -301,14 +296,9 @@ MathJax.Hub.Config({
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -317,15 +307,10 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[1 1 0 1 0 1 0 1]
+<pre>[[1 1 0 1 0 1 0 1]
  [1 1 1 0 1 0 1 0]]
 {'unc': 7, 'played': 5, 'game': 2, 'in': 3, 'basketball': 0, 'the': 6, 'duke': 1, 'lost': 4}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -339,6 +324,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们再增加一个文档到文集里：</p>
+
 </div>
 </div>
 </div>
@@ -346,8 +332,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'UNC played Duke in basketball'</span><span class="p">,</span>
     <span class="s">'Duke lost the basketball game'</span><span class="p">,</span>
     <span class="s">'I ate a sandwich'</span>
@@ -357,14 +343,9 @@ MathJax.Hub.Config({
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -373,16 +354,11 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[0 1 1 0 1 0 1 0 0 1]
+<pre>[[0 1 1 0 1 0 1 0 0 1]
  [0 1 1 1 0 1 0 0 1 0]
  [1 0 0 0 0 0 0 1 0 0]]
 {'unc': 9, 'played': 6, 'game': 3, 'in': 4, 'ate': 0, 'basketball': 1, 'the': 8, 'sandwich': 7, 'duke': 2, 'lost': 5}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -397,19 +373,18 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>通过<code>CountVectorizer</code>类可以得出上面的结果。词汇表里面有10个单词，但<code>a</code>不在词汇表里面，是因为<code>a</code>的长度不符合<code>CountVectorizer</code>类的要求。</p>
 <p>对比文档的特征向量，会发现前两个文档相比第三个文档更相似。如果用欧氏距离（Euclidean distance）计算它们的特征向量会比其与第三个文档距离更接近。两向量的欧氏距离就是两个向量欧氏范数（Euclidean norm）或L2范数差的绝对值：</p>
-<p>$$
+$$
 d = \begin{Vmatrix}
 x_0 - x_1 \\
 \end{Vmatrix}
-$$</p>
-<p>向量的欧氏范数是其元素平方和的平方根：</p>
-<p>$$
+$$<p>向量的欧氏范数是其元素平方和的平方根：</p>
+$$
 \begin{Vmatrix}
 x \\
 \end{Vmatrix}
 =\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}
-$$</p>
-<p>scikit-learn里面的<code>euclidean_distances</code>函数可以计算若干向量的距离，表示两个语义最相似的文档其向量在空间中也是最接近的。</p>
+$$<p>scikit-learn里面的<code>euclidean_distances</code>函数可以计算若干向量的距离，表示两个语义最相似的文档其向量在空间中也是最接近的。</p>
+
 </div>
 </div>
 </div>
@@ -417,22 +392,17 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]:</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">counts</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'文档{}与文档{}的距离{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">dist</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -441,15 +411,10 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-文档0与文档1的距离[[ 2.44948974]]
+<pre>文档0与文档1的距离[[ 2.44948974]]
 文档0与文档2的距离[[ 2.64575131]]
 文档1与文档2的距离[[ 2.64575131]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -465,6 +430,7 @@ $$</p>
 <p>如果我们用新闻报道内容做文集，词汇表就可以用成千上万个单词。每篇新闻的特征向量都会有成千上万个元素，很多元素都会是0。体育新闻不会包含财经新闻的术语，同样文化新闻也不会包含财经新闻的术语。有许多零元素的高维特征向量成为稀疏向量（sparse vectors）。</p>
 <p>用高维数据可以量化机器学习任务时会有一些问题，不只是出现在自然语言处理领域。第一个问题就是高维向量需要占用更大内存。NumPy提供了一些数据类型只显示稀疏向量的非零元素，可以有效处理这个问题。</p>
 <p>第二个问题就是著名的维度灾难（curse of dimensionality，Hughes effect），维度越多就要求更大的训练集数据保证模型能够充分学习。如果训练样本不够，那么算法就可以拟合过度导致归纳失败。下面，我们介绍一些降维的方法。在第7章，PCA降维里面，我们还会介绍用数值方法降维。</p>
+
 </div>
 </div>
 </div>
@@ -478,7 +444,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -486,6 +451,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>特征向量降维的一个基本方法是单词全部转换成小写。这是因为单词的大小写一般不会影响意思。而首字母大写的单词一般只是在句子的开头，而词库模型并不在乎单词的位置和语法。</p>
 <p>另一种方法是去掉文集常用词。这里词称为停用词（Stop-word），像<code>a</code>，<code>an</code>，<code>the</code>，助动词<code>do</code>，<code>be</code>，<code>will</code>，介词<code>on</code>，<code>around</code>，<code>beneath</code>等。停用词通常是构建文档意思的功能词汇，其字面意义并不体现。<code>CountVectorizer</code>类可以通过设置<code>stop_words</code>参数过滤停用词，默认是英语常用的停用词。</p>
+
 </div>
 </div>
 </div>
@@ -493,8 +459,8 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'UNC played Duke in basketball'</span><span class="p">,</span>
     <span class="s">'Duke lost the basketball game'</span><span class="p">,</span>
     <span class="s">'I ate a sandwich'</span>
@@ -504,14 +470,9 @@ $$</p>
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -520,16 +481,11 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[0 1 1 0 0 1 0 1]
+<pre>[[0 1 1 0 0 1 0 1]
  [0 1 1 1 1 0 0 0]
  [1 0 0 0 0 0 1 0]]
 {'unc': 7, 'played': 5, 'game': 3, 'ate': 0, 'basketball': 1, 'sandwich': 6, 'duke': 2, 'lost': 4}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -543,6 +499,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这样停用词就没有了，前两篇文档依然相比其与第三篇的内容更接近。</p>
+
 </div>
 </div>
 </div>
@@ -556,7 +513,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -564,6 +520,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>停用词去掉之后，可能还会剩下许多词，还有一种常用的方法就是词根还原（stemming ）与词形还原（lemmatization）。</p>
 <p>特征向量里面的单词很多都是一个词的不同形式，比如<code>jumping</code>和<code>jumps</code>都是<code>jump</code>的不同形式。词根还原与词形还原就是为了将单词从不同的时态、派生形式还原。</p>
+
 </div>
 </div>
 </div>
@@ -571,8 +528,8 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'He ate the sandwiches'</span><span class="p">,</span>
     <span class="s">'Every sandwich was eaten by him'</span>
@@ -582,14 +539,9 @@ $$</p>
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -598,15 +550,10 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[1 0 0 1]
+<pre>[[1 0 0 1]
  [0 1 1 0]]
 {'sandwich': 2, 'sandwiches': 3, 'ate': 0, 'eaten': 1}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -621,6 +568,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这两个文档意思差不多，但是其特征向量完全不同，因为单词的形式不同。两个单词都是有一个动词<code>eat</code>和一个<code>sandwich</code>，这些特征应该在向量中反映出来。词形还原就是用来处理可以表现单词意思的词元（lemma）或形态学的词根（morphological root）的过程。词元是单词在词典中查询该词的基本形式。词根还原与词形还原类似，但它不是生成单词的形态学的词根。而是把附加的词缀都去掉，构成一个词块，可能不是一个正常的单词。词形还原通常需要词法资料的支持，比如WordNet和单词词类（part of speech）。词根还原算法通常需要用规则产生词干（stem）并操作词块，不需要词法资源，也不在乎单词的意思。</p>
 <p>让我们分析一下单词<code>gathering</code>的词形还原：</p>
+
 </div>
 </div>
 </div>
@@ -628,15 +576,13 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'I am gathering ingredients for the sandwich.'</span><span class="p">,</span>
     <span class="s">'There were many wizards at the gathering.'</span>
 <span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -649,6 +595,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>第一句的<code>gathering</code>是动词，其词元是<code>gather</code>。后一句的<code>gathering</code>是名词，其词元是<code>gathering</code>。我们用Python的<a href="http://www.nltk.org/install.html">NLTK（Natural
 Language Tool Kit）</a>库来处理。</p>
+
 </div>
 </div>
 </div>
@@ -656,19 +603,14 @@ Language Tool Kit）</a>库来处理。</p>
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">nltk</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">nltk</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -677,9 +619,7 @@ Language Tool Kit）</a>库来处理。</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-showing info http://www.nltk.org/nltk_data/
-
+<pre>showing info http://www.nltk.org/nltk_data/
 </pre>
 </div>
 </div>
@@ -688,15 +628,10 @@ showing info http://www.nltk.org/nltk_data/
 <div class="prompt output_prompt">Out[8]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-True
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -709,6 +644,7 @@ True
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>NLTK的<code>WordNetLemmatizer</code>可以用<code>gathering</code>的词类确定词元。</p>
+
 </div>
 </div>
 </div>
@@ -716,21 +652,16 @@ True
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">nltk.stem.wordnet</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">nltk.stem.wordnet</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
 <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s">'gathering'</span><span class="p">,</span> <span class="s">'v'</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s">'gathering'</span><span class="p">,</span> <span class="s">'n'</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -739,14 +670,9 @@ True
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-gather
+<pre>gather
 gathering
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -760,6 +686,7 @@ gathering
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们把词形还原应用到之前的例子里：</p>
+
 </div>
 </div>
 </div>
@@ -767,8 +694,8 @@ gathering
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
 <span class="kn">from</span> <span class="nn">nltk.stem.wordnet</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
 <span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">pos_tag</span>
@@ -782,14 +709,9 @@ gathering
 <span class="k">print</span><span class="p">(</span><span class="s">'Stemmed:'</span><span class="p">,</span> <span class="p">[[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">)]</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -798,13 +720,8 @@ gathering
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Stemmed: [['He', 'ate', 'the', 'sandwich'], ['Everi', 'sandwich', 'wa', 'eaten', 'by', 'him']]
-
+<pre>Stemmed: [['He', 'ate', 'the', 'sandwich'], ['Everi', 'sandwich', 'wa', 'eaten', 'by', 'him']]
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -816,8 +733,8 @@ Stemmed: [['He', 'ate', 'the', 'sandwich'], ['Everi', 'sandwich', 'wa', 'eaten',
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'n'</span><span class="p">,</span> <span class="s">'v'</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">token</span>
@@ -827,14 +744,9 @@ Stemmed: [['He', 'ate', 'the', 'sandwich'], ['Everi', 'sandwich', 'wa', 'eaten',
 <span class="k">print</span><span class="p">(</span><span class="s">'Lemmatized:'</span><span class="p">,</span> <span class="p">[[</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">document</span><span class="p">]</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">tagged_corpus</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -843,13 +755,8 @@ Stemmed: [['He', 'ate', 'the', 'sandwich'], ['Everi', 'sandwich', 'wa', 'eaten',
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat', 'by', 'him']]
-
+<pre>Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat', 'by', 'him']]
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -863,6 +770,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>通过词根还原与词形还原可以有效降维，去掉不必要的单词形式，特征向量可以更有效的表示文档的意思。</p>
+
 </div>
 </div>
 </div>
@@ -876,7 +784,6 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -884,6 +791,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用词库模型构建了判断单词是个在文档中出现的特征向量。这些特征向量与单词的语法，顺序，频率无关。不过直觉告诉我们文档中单词的频率对文档的意思有重要作用。一个文档中某个词多次出现，相比只出现过一次的单词更能体现反映文档的意思。现在我们就将单词频率加入特征向量，然后介绍由词频引出的两个问题。</p>
 <p>我们用一个整数来代码单词的频率。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -891,22 +799,17 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="s">'The dog ate a sandwich, the wizard transfigured a sandwich, and I ate a sandwich'</span><span class="p">]</span>
 <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s">'english'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -915,14 +818,9 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[2 1 3 1 1]]
+<pre>[[2 1 3 1 1]]
 {'wizard': 4, 'transfigured': 3, 'sandwich': 2, 'dog': 1, 'ate': 0}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -937,16 +835,13 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>结果中第一行是单词的频率，<code>dog</code>频率为<code>1</code>，<code>sandwich</code>频率为<code>3</code>。注意和前面不同的是，<code>binary=True</code>没有了，因为<code>binary</code>默认是<code>False</code>，这样返回的是词汇表的词频，不是二进制结果<code>[1 1 1 1 1]</code>。这种单词频率构成的特征向量为文档的意思提供了更多的信息，但是在对比不同的文档时，需要考虑文档的长度。</p>
 <p>很多单词可能在两个文档的频率一样，但是两个文档的长度差别很大，一个文档比另一个文档长很多倍。scikit-learn的<code>TfdfTransformer</code>类可以解决这个问题，通过对词频（term frequency）特征向量归一化来实现不同文档向量的可比性。默认情况下，<code>TfdfTransformer</code>类用L2范数对特征向量归一化：</p>
-<p>$$tf(t,d)= \frac {f(t,d)+1} {\begin{Vmatrix}x\end{Vmatrix}}$$</p>
-<p>$f(t,d)$是第$d$个文档（document）第$t$个单词（term）的频率，$\begin{Vmatrix}x\end{Vmatrix}$是频率向量的L2范数。另外，还有对数词频调整方法（logarithmically scaled term frequencies），把词频调整到一个更小的范围，或者词频放大法（augmented term frequencies），适用于消除较长文档的差异。对数词频公式如下：</p>
-<p>$$tf(t,d)= log(f(t,d)+1)$$</p>
-<p><code>TfdfTransformer</code>类计算对数词频调整时，需要将参数<code>sublinear_tf</code>设置为<code>True</code>。词频放大公式如下：</p>
-<p>$$tf(t,d)= 0.5 + \frac {f(t,d)+1} {max f(w,d): w \in d}$$</p>
-<p>$max f(w,d): w \in d$是文档$d$中的最大词频。scikit-learn没有现成可用的词频放大公式，不过通过<code>CountVectorizer</code>可以轻松实现。</p>
+$$tf(t,d)= \frac {f(t,d)+1} {\begin{Vmatrix}x\end{Vmatrix}}$$<p>$f(t,d)$是第$d$个文档（document）第$t$个单词（term）的频率，$\begin{Vmatrix}x\end{Vmatrix}$是频率向量的L2范数。另外，还有对数词频调整方法（logarithmically scaled term frequencies），把词频调整到一个更小的范围，或者词频放大法（augmented term frequencies），适用于消除较长文档的差异。对数词频公式如下：</p>
+$$tf(t,d)= log(f(t,d)+1)$$<p><code>TfdfTransformer</code>类计算对数词频调整时，需要将参数<code>sublinear_tf</code>设置为<code>True</code>。词频放大公式如下：</p>
+$$tf(t,d)= 0.5 + \frac {f(t,d)+1} {max f(w,d): w \in d}$$<p>$max f(w,d): w \in d$是文档$d$中的最大词频。scikit-learn没有现成可用的词频放大公式，不过通过<code>CountVectorizer</code>可以轻松实现。</p>
 <p>归一化，对数调整词频和词频放大三支方法都消除文档不同大小对词频的影响。但是，另一个问题仍然存在，那就是特征向量里高频词的权重更大，即使这些词在文集内其他文档里面也经常出现。这些单词并没有突出代表单个文档的意思。比如，一个文集里大多数文档都是关于杜克大学篮球队的，那么高频词就是<code>basketball</code>，<code>Coach K</code>，<code>flop</code>。这些词可以被看成是该文集的停用词，因为它们太普遍对区分文档的意思没任何作用。逆向文件频率（inverse document frequency，IDF）就是用来度量文集中单词频率的。</p>
-<p>$$idf(t,D)= log(\frac N {1+|d \in D:t \in d|})$$</p>
-<p>其中，$N$是文集中文档数量，$d \in D:t \in d$表示包含单词$t$的文档数量。单词的TF-IDF值就是其频率与逆向文件频率的乘积。</p>
+$$idf(t,D)= log(\frac N {1+|d \in D:t \in d|})$$<p>其中，$N$是文集中文档数量，$d \in D:t \in d$表示包含单词$t$的文档数量。单词的TF-IDF值就是其频率与逆向文件频率的乘积。</p>
 <p><code>TfdfTransformer</code>类默认返回TF-IDF值，其参数<code>use_idf</code>默认为<code>True</code>。由于TF-IDF加权特征向量经常用来表示文本，所以scikit-learn提供了<code>TfidfVectorizer</code>类将<code>CountVectorizer</code>和<code>TfdfTransformer</code>类封装在一起。</p>
+
 </div>
 </div>
 </div>
@@ -954,8 +849,8 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'The dog ate a sandwich and I ate a sandwich'</span><span class="p">,</span>
     <span class="s">'The wizard transfigured a sandwich'</span>
@@ -965,14 +860,9 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -981,15 +871,10 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[ 0.75458397  0.37729199  0.53689271  0.          0.        ]
+<pre>[[ 0.75458397  0.37729199  0.53689271  0.          0.        ]
  [ 0.          0.          0.44943642  0.6316672   0.6316672 ]]
 {'wizard': 4, 'transfigured': 3, 'sandwich': 2, 'dog': 1, 'ate': 0}
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1003,6 +888,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>通过TF-IDF加权之后，我们会发现在文集中较常见的词，如<code>sandwich</code>被调整了。</p>
+
 </div>
 </div>
 </div>
@@ -1016,13 +902,13 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们是用包含文集所有词块的词典来完成文档词块与特征向量的映射的。这么做有两个缺点。首先是文集需要被调用两次。第一次是创建词典，第二次是创建文档的特征向量。另外，词典必须储存在内存里，如果文集特别大就会很耗内存。通过哈希表可以有效的解决这些问题。可以将词块用哈希函数来确定它在特征向量的索引位置，可以不创建词典，这称为哈希技巧（hashing trick）。scikit-learn提供了<code>HashingVectorizer</code>来实现这个技巧：</p>
+
 </div>
 </div>
 </div>
@@ -1030,21 +916,16 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="input">
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="s">'the'</span><span class="p">,</span> <span class="s">'ate'</span><span class="p">,</span> <span class="s">'bacon'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">]</span>
 <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1053,16 +934,11 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[-1.  0.  0.  0.  0.  0.]
+<pre>[[-1.  0.  0.  0.  0.  0.]
  [ 0.  0.  0.  1.  0.  0.]
  [ 0.  0.  0.  0. -1.  0.]
  [ 0.  1.  0.  0.  0.  0.]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1077,6 +953,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>哈希技巧是无固定状态的（stateless），，它把任意的数据块映射到固定数目的位置，并且保证相同的输入一定产生相同的输出，不同的输入尽可能产生不同的输出。它可以用并行，线上，流式传输创建特征向量，因为它初始化是不需要文集输入。<code>n_features</code>是一个可选参数，默认值是$2^{20}$，这里设置成<code>6</code>是为了演示。另外，注意有些单词频率是负数。由于Hash碰撞可能发生，所以<code>HashingVectorizer</code>用有符号哈希函数（signed hash function）。特征值和它的词块的哈希值带同样符号，如果<code>cats</code>出现过两次，被哈希成<code>-3</code>，文档特征向量的第四个元素要减去<code>2</code>。如果<code>dogs</code>出现过两次，被哈希成<code>3</code>，文档特征向量的第四个元素要加上<code>2</code>。</p>
 <p>用带符号哈希函数可以把词块发生哈希碰撞的概率相互抵消掉，信息损失比信息损失的同时出现信息冗余要好。哈希技巧的一个不足是模型的结果更难察看，由于哈希函数不能显示哪个词块映射到特征向量的哪个位置了。</p>
+
 </div>
 </div>
 </div>
@@ -1090,13 +967,13 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>计算机视觉是一门研究如何使机器“看”的科学，让计算机学会处理和理解图像。这门学问有时需要借助机器学习。本章介绍一些机器学习在计算机视觉领域应用的基础技术。</p>
+
 </div>
 </div>
 </div>
@@ -1110,7 +987,6 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1118,6 +994,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>数字图像通常是一张光栅图或像素图，将颜色映射到网格坐标里。一张图片可以看成是一个每个元素都是颜色值的矩阵。表示图像基本特征就是将矩阵每行连起来变成一个行向量。光学文字识别（Optical character recognition，OCR）是机器学习的经典问题。下面我们用这个技术来识别手写数字。</p>
 <p>scikit-learn的<code>digits</code>数字集包括至少1700种0-9的手写数字图像。每个图像都有8x8像像素构成。每个像素的值是0-16，白色是0，黑色是16。如下图所示：</p>
+
 </div>
 </div>
 </div>
@@ -1125,8 +1002,8 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="input">
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
@@ -1138,14 +1015,9 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1154,8 +1026,7 @@ Lemmatized: [['He', 'eat', 'the', 'sandwich'], ['Every', 'sandwich', 'be', 'eat'
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Digit: 0
+<pre>Digit: 0
 [[  0.   0.   5.  13.   9.   1.   0.   0.]
  [  0.   0.  13.  15.  10.  15.   5.   0.]
  [  0.   3.  15.   2.   0.  11.   8.   0.]
@@ -1164,7 +1035,6 @@ Digit: 0
  [  0.   4.  11.   0.   1.  12.   7.   0.]
  [  0.   2.  14.   5.  10.  12.   0.   0.]
  [  0.   0.   6.  13.  10.   0.   0.   0.]]
-
 </pre>
 </div>
 </div>
@@ -1183,15 +1053,13 @@ Digit: 0
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们将8x8矩阵转换成64维向量来创建一个特征向量：</p>
+
 </div>
 </div>
 </div>
@@ -1199,19 +1067,14 @@ Digit: 0
 <div class="input">
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Feature vector:</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1220,18 +1083,13 @@ Digit: 0
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Feature vector:
+<pre>Feature vector:
  [[  0.   0.   5.  13.   9.   1.   0.   0.   0.   0.  13.  15.  10.  15.
     5.   0.   0.   3.  15.   2.   0.  11.   8.   0.   0.   4.  12.   0.
     0.   8.   8.   0.   0.   5.   8.   0.   0.   9.   8.   0.   0.   4.
    11.   0.   1.  12.   7.   0.   0.   2.  14.   5.  10.  12.   0.   0.
     0.   0.   6.  13.  10.   0.   0.   0.]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1245,6 +1103,7 @@ Feature vector:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这样表示可以有效的处理一些基本任务，比如识别手写字母等。但是，记录每个像素的数值在大图像处理时不太好用。一个100x100像素的图像其灰度图产生的特征向量是10000维度，而1920x1080像素的图像是2073600。和TF-IDF特征向量不同，大部分图像都不是稀疏的。这种表示法的缺点不只是特征向量的维度灾难，还有就是某个位置的学习结果在经过对图像的放缩，旋转或变换之后可能就不对了，非常敏感，缺乏稳定性。另外，这种方法对图像的亮度也十分敏感。所以这种方法在处理照片和其他自然景色图像时不怎么有用。现代计算机视觉应用通常手工实现特征提取，或者用深度学习自动化解决无监督问题。后面我们会详细介绍。</p>
+
 </div>
 </div>
 </div>
@@ -1258,7 +1117,6 @@ Feature vector:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1266,6 +1124,7 @@ Feature vector:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面创建的特征矢量包含了图像的每个像素，既包含了图像特征的有用信息，也包含了一堆噪声。查看图像后，我们会发现所有的图像都有一个白边，这些像素是没用的。人们不需要观察物体的每个属性就可以很快的识别出很多物体。我们可以根据轮廓识别出汽车，并不需要观察后视镜，我们也可以通过一个鼻子或嘴巴判断图像是一个人。这些直觉就可以用来建立一种表示图像大多数信息属性的方法。这些有信息量的属性，称为兴趣点（points of interest），是由丰富的纹理包围，基本可以重建图像。边缘（edges）和角点（corners）是两种常用的兴趣点类型。边是像素快速变化的分界线（boundary），角是两条边的交集。我们用scikit-image库抽取下图的兴趣点：</p>
 <p><img src="mlslpic/3.1%20mandrill.png" alt="mandrill"></p>
+
 </div>
 </div>
 </div>
@@ -1273,8 +1132,8 @@ Feature vector:
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">corner_harris</span><span class="p">,</span> <span class="n">corner_peaks</span>
 <span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
@@ -1300,14 +1159,9 @@ Feature vector:
 <span class="n">show_corners</span><span class="p">(</span><span class="n">corners</span><span class="p">,</span> <span class="n">mandrill</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1327,15 +1181,13 @@ Feature vector:
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上图就是兴趣点的提取结果。图片的230400个像素中，466个兴趣点被提取。这种提取方式更紧凑，而且当图片的亮度发生统一变化时，这些兴趣点依然存在。</p>
+
 </div>
 </div>
 </div>
@@ -1349,7 +1201,6 @@ Feature vector:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1359,6 +1210,7 @@ Feature vector:
 <p>两种方法的具体理论解释在数字图像处理类的教材中都有介绍，感兴趣的同学可以研究。这样用<code>mahotas</code>库来应用SURF方法处理下面的图片。</p>
 <p><img src="mlslpic/3.2%20xiaobao.png" alt="xiaobao"></p>
 <p>和兴趣点抽取类似，抽取SURF只是机器学习中创建特征向量的第一步。训练集的每个实例都会抽取不同的SURF。第六章的，K-Means聚类，我们会介绍聚类方法抽取SURF来学习特征，可以作为一种图像分类方法。<code>mahotas</code>代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1366,8 +1218,8 @@ Feature vector:
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">mahotas</span> <span class="kn">as</span> <span class="nn">mh</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">mahotas</span> <span class="kn">as</span> <span class="nn">mh</span>
 <span class="kn">from</span> <span class="nn">mahotas.features</span> <span class="kn">import</span> <span class="n">surf</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'mlslpic/3.2 xiaobao.png'</span><span class="p">,</span> <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -1375,14 +1227,9 @@ Feature vector:
 <span class="k">print</span><span class="p">(</span><span class="s">'抽取了</span><span class="si">%s</span><span class="s">个SURF描述符'</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">surf</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1391,8 +1238,7 @@ Feature vector:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-第一个SURF描述符：
+<pre>第一个SURF描述符：
 [  1.15299134e+02   2.56185453e+02   3.51230841e+00   3.32786485e+02
    1.00000000e+00   1.75644866e+00  -2.94268692e-03   3.30736379e-03
    2.94268692e-03   3.30736379e-03  -2.58778609e-02   3.25587066e-02
@@ -1413,11 +1259,7 @@ Feature vector:
    1.02035696e-02   1.19729640e-02]
 
 抽取了588个SURF描述符
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1435,13 +1277,13 @@ Feature vector:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>许多评估方法在处理标准化数据集时可以获得更好的效果。标准化数据均值为<code>0</code>，单位方差(Unit Variance)。均值为<code>0</code>的解释变量是关于原点对称的，特征向量的单位方差表示其特征值全身统一单位，统一量级的数据。例如，假设特征向量由两个解释变量构成，第一个变量值范围<code>[0,1]</code>，第二个变量值范围<code>[0,1000000]</code>，这时就要把第二个变量的值调整为<code>[0,1]</code>，这样才能保证数据是单位方差。如果变量特征值的量级比其他特征值的方差还大，这个特征值就会主导学习算法的方向，导致其他变量的影响被忽略。有些机器学习算法会在数据不标准时引入很小的优化参数值。解释变量的值可以通过正态分布进行标准化，减去均值后除以标准差。scikit-learn的<code>scale</code>函数可以实现：</p>
+
 </div>
 </div>
 </div>
@@ -1449,8 +1291,8 @@ Feature vector:
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">13.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
@@ -1460,14 +1302,9 @@ Feature vector:
 <span class="k">print</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1476,15 +1313,10 @@ Feature vector:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[ 0.         -0.70710678 -1.38873015  0.52489066  0.59299945 -1.35873244]
+<pre>[[ 0.         -0.70710678 -1.38873015  0.52489066  0.59299945 -1.35873244]
  [ 0.         -0.70710678  0.46291005  0.87481777  0.81537425  1.01904933]
  [ 0.          1.41421356  0.9258201  -1.39970842 -1.4083737   0.33968311]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1502,7 +1334,6 @@ Feature vector:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1511,21 +1342,29 @@ Feature vector:
 <p>本章我们介绍了特征提取的方法的基础知识，将不同类型的数据转换成特征向量方便机器学习算法研究。首先，我们介绍了分类数据的独热编码方法，并用scikit-learn的<code>DictVectorizer</code>类实现。然后，介绍了许多机器学习问题中常见的文档特征向量。通过词库模型将文档转换成词块的频率构成的特征向量，用<code>CountVectorizer</code>类计算基本单词频次的二进制特征向量。最后，通过停用词过滤，词根还原，词形还原进一步优化特征向量，并加入TF-IDF权重调整文集常见词，消除文档长度对特征向量的影响。</p>
 <p>之后，我们介绍了图像特征提取的方法。首先，我们介绍了一个关于的手写数字识别的OCR问题，通过图像的像素矩阵扁平化来学习手写数字特征。这种方法非常耗费资源，于是我们引入兴趣点提取方法，通过SIFT和SURF进行优化。</p>
 <p>最后介绍了数据标准化的方法，确保解释变量的数据都是同一量级，均值为<code>0</code>的标准化数据。特征提取技术在后面的章节中会不断使用。下一章，我们把词库模型和多元线性回归方法结合来实现文档分类。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="2-linear-regression.html" rel="prev" title="2-linear-regression">Previous post</a>
             </li>
             <li class="next">
                 <a href="kivy-ch9.html" rel="next" title="kivy-ch9">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html",
@@ -1539,24 +1378,28 @@ Feature vector:
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1566,15 +1409,5 @@ Feature vector:
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

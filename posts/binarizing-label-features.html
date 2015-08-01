@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>binarizing-label-features | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/binarizing-label-features.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>binarizing-label-features | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/binarizing-label-features.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="binarizing-label-features">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/binarizing-label-features.html">
-    <meta property="og:description" content="标签特征二元化¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="binarizing-label-features">
+<meta property="og:url" content="http://muxuezi.github.io/posts/binarizing-label-features.html">
+<meta property="og:description" content="标签特征二元化¶
 
 
 
@@ -69,61 +54,81 @@ Getting ready¶
 
 
 
-
-处理分类变量还有另一种方法，不需要通过OneHotEncoder，我们可以用LabelBinarizer。这是一个阈值与分类变量组合的方法。">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-07-27T14:57:41+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-           <meta property="article:tag" content="scikit-learn cookbook">
-
-    
-    
-
+处理分类变量还有另一种方法，不需要通过OneHotEncoder，我们可以用LabelBinarizer。这是一个阈值与分类变量组合的方法。演示">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-27T14:57:41+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="scikit-learn cookbook">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">binarizing-label-features</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-07-27T14:57:41+08:00">2015-07-27 14:57</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="binarizing-label-features.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="binarizing-label-features.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">binarizing-label-features</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-           <li><a class="tag p-category" href="../categories/scikit-learn-cookbook.html" rel="tag">scikit-learn cookbook</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:57:41+08:00" itemprop="datePublished" title="2015-07-27 14:57">2015-07-27 14:57</time></a></p>
+                <p class="commentline">            <a href="binarizing-label-features.html#disqus_thread" data-disqus-identifier="cache/posts/binarizing-label-features.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="binarizing-label-features.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -134,7 +139,6 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -155,13 +159,13 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>处理分类变量还有另一种方法，不需要通过<code>OneHotEncoder</code>，我们可以用<code>LabelBinarizer</code>。这是一个阈值与分类变量组合的方法。演示其用法之前，让我们加载<code>iris</code>数据集：</p>
+
 </div>
 </div>
 </div>
@@ -169,14 +173,12 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> <span class="k">as</span> <span class="n">d</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span> <span class="k">as</span> <span class="n">d</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -192,13 +194,13 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>导入<code>LabelBinarizer()</code>创建一个对象：</p>
+
 </div>
 </div>
 </div>
@@ -206,13 +208,11 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelBinarizer</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">LabelBinarizer</span>
 <span class="n">label_binarizer</span> <span class="o">=</span> <span class="n">LabelBinarizer</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -224,6 +224,7 @@ Getting ready¶
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，将因变量的值转换成一个新的特征向量：</p>
+
 </div>
 </div>
 </div>
@@ -231,12 +232,10 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">new_target</span> <span class="o">=</span> <span class="n">label_binarizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">new_target</span> <span class="o">=</span> <span class="n">label_binarizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -248,6 +247,7 @@ Getting ready¶
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们看看<code>new_target</code>和<code>label_binarizer</code>对象的结果：</p>
+
 </div>
 </div>
 </div>
@@ -255,18 +255,13 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">new_target</span><span class="o">.</span><span class="n">shape</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">new_target</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -276,15 +271,10 @@ Getting ready¶
 <div class="prompt output_prompt">Out[4]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-(150, 3)
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>(150, 3)</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -295,18 +285,13 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">new_target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">new_target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -316,19 +301,14 @@ Getting ready¶
 <div class="prompt output_prompt">Out[5]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[1, 0, 0],
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[1, 0, 0],
        [1, 0, 0],
        [1, 0, 0],
        [1, 0, 0],
-       [1, 0, 0]])
-</pre>
+       [1, 0, 0]])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -339,18 +319,13 @@ array([[1, 0, 0],
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">new_target</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">new_target</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -360,19 +335,14 @@ array([[1, 0, 0],
 <div class="prompt output_prompt">Out[6]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[0, 0, 1],
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0, 0, 1],
        [0, 0, 1],
        [0, 0, 1],
        [0, 0, 1],
-       [0, 0, 1]])
-</pre>
+       [0, 0, 1]])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -383,18 +353,13 @@ array([[0, 0, 1],
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">label_binarizer</span><span class="o">.</span><span class="n">classes_</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">label_binarizer</span><span class="o">.</span><span class="n">classes_</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -404,15 +369,10 @@ array([[0, 0, 1],
 <div class="prompt output_prompt">Out[9]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([0, 1, 2])
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0, 1, 2])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -429,13 +389,13 @@ array([0, 1, 2])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>iris</code>的因变量基数为<code>3</code>，就是说有三种值。当<code>LabelBinarizer</code>将$N \times 1$向量转换成$N \times C$矩阵时，$C$就是$N \times 1$向量的基数。需要注意的是，当<code>label_binarizer</code>处理因变量之后，再转换基数以外的值都是<code>[0,0,0]</code>：</p>
+
 </div>
 </div>
 </div>
@@ -443,18 +403,13 @@ array([0, 1, 2])
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">label_binarizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">label_binarizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -464,15 +419,10 @@ array([0, 1, 2])
 <div class="prompt output_prompt">Out[15]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[0, 0, 0]])
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0, 0, 0]])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -489,13 +439,13 @@ array([[0, 0, 0]])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>0和1并不一定都是表示因变量中的阳性和阴性实例。例如，如果我们需要用<code>1000</code>表示阳性值，用<code>-1000</code>表示阴性值，我们可以用<code>label_binarizer</code>处理：</p>
+
 </div>
 </div>
 </div>
@@ -503,19 +453,14 @@ array([[0, 0, 0]])
 <div class="input">
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">label_binarizer</span> <span class="o">=</span> <span class="n">LabelBinarizer</span><span class="p">(</span><span class="n">neg_label</span><span class="o">=-</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">label_binarizer</span> <span class="o">=</span> <span class="n">LabelBinarizer</span><span class="p">(</span><span class="n">neg_label</span><span class="o">=-</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">label_binarizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -525,19 +470,14 @@ array([[0, 0, 0]])
 <div class="prompt output_prompt">Out[22]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1000, -1000, -1000],
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1000, -1000, -1000],
        [ 1000, -1000, -1000],
        [ 1000, -1000, -1000],
        [ 1000, -1000, -1000],
-       [ 1000, -1000, -1000]])
-</pre>
+       [ 1000, -1000, -1000]])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -552,21 +492,30 @@ array([[ 1000, -1000, -1000],
 <blockquote>
 <p>阳性和阴性值的唯一限制是，它们必须为整数。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+            <li><a class="tag p-category" href="../categories/scikit-learn-cookbook.html" rel="tag">scikit-learn cookbook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="1-premodel-workflow.html" rel="prev" title="1-premodel-workflow">Previous post</a>
             </li>
             <li class="next">
                 <a href="creating-binary-features-through-thresholding.html" rel="next" title="creating-binary-features-through-thresholding">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/binarizing-label-features.html",
@@ -580,24 +529,28 @@ array([[ 1000, -1000, -1000],
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -607,15 +560,5 @@ array([[ 1000, -1000, -1000],
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

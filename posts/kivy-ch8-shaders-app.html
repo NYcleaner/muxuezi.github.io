@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>kivy-ch8-shaders-app | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch8-shaders-app.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kivy-ch8-shaders-app | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch8-shaders-app.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="kivy-ch8-shaders-app">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch8-shaders-app.html">
-    <meta property="og:description" content="着色器app¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch8-shaders-app">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch8-shaders-app.html">
+<meta property="og:description" content="着色器app¶
 
 
 
@@ -51,58 +36,80 @@ MathJax.Hub.Config({
 
 
 恭喜你Hold到现在！最后两章我们准备讨论一些OpenGL的底层细节，与Kivy完全不同的内容，比如OpenGL着色器语言（OpenGL Shading Language，GLSL）。这个语言可以让我们轻松写出高性能的代码。
-我们将通过一个屏幕保护程序来介绍OpenGL的特性，然后做一个射击游戏（shoot-em-up game，shmup）app。本章的代码是准">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-24T13:43:08+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Kivy">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+我们将通过一个屏幕保护程序来介绍OpenGL的特性，然后做一个射击游戏（shoot-em-up game，shmup）app。本章的代码是准备">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:08+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">kivy-ch8-shaders-app</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-24T13:43:08+08:00">2015-06-24 13:43</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="kivy-ch8-shaders-app.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="kivy-ch8-shaders-app.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">kivy-ch8-shaders-app</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-24T13:43:08+08:00" itemprop="datePublished" title="2015-06-24 13:43">2015-06-24 13:43</time></a></p>
+                <p class="commentline">            <a href="kivy-ch8-shaders-app.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-ch8-shaders-app.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="kivy-ch8-shaders-app.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -113,7 +120,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -132,6 +138,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章会讨论很多复杂的问题，不过由于篇幅不能面面俱到，建议阅读OpenGL最新文档，因为OpenGL是一个标准，更新很快，新特性不断被加入，希望你在阅读的时候及时留意OpenGL相关的进展。</p>
 <p>首先要讨论的是高性能着色器方法，尽管和普通的Kivy代码差别不大，而且两者大部分都相互兼容，在很多部件中都可以互相替代。因此，这种方法主要是用GLSL实现于资源消耗很大、性能要求很高的部分，消除性能的瓶颈。</p>
+
 </div>
 </div>
 </div>
@@ -145,7 +152,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -153,6 +159,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在让我们简单介绍下OpenGL。OpenGL是一个底层的图像API，其标准被广泛采用。桌面系统和移动系统均支持（在移动系统上是OpenGL ES，<strong>Embedded Systems，嵌入式系统</strong>）。现代浏览器也支持OpenGL ES的一个分支版本，就是大名鼎鼎的WebGL。</p>
 <p>OpenGL的广泛采用使其具有良好的跨平台能力，尤其在视频游戏和图形编程方面。Kivy的跨平台着色器同样依赖于OpenGL。</p>
+
 </div>
 </div>
 </div>
@@ -166,7 +173,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -175,6 +181,7 @@ MathJax.Hub.Config({
 <p>OpenGL可以操纵基本的图形元素，如单个的点和屏幕上的每个像素。我们可以画三个点，然后构成一个三角形，计算每个像素的应该填充的颜色。你可能认为这种做法是非常麻烦的。这正是像kivy这样的高级图形框架出现的原因：它们都隐藏了OpenGL的管线（pipeline）的一堆细节，提供组件和布局来简化操作。复杂底层的管线功能如下图所示：</p>
 <p><img src="kbpic/8.1%20pipeline.png" alt="pipeline"></p>
 <p>这个复杂的图形包括以下四个方面：</p>
+
 </div>
 </div>
 </div>
@@ -196,6 +203,7 @@ MathJax.Hub.Config({
 <p>对应到现实中，我们讨论的，就是今天用2-16核CPU的电脑进行多任务、并行编程的个人电脑。一般的中档显卡，也有几千个GPU核心，可以并行处理更多的计算。</p>
 <p>每个任务都是独立运行的，不像一般程序里面的线程，着色器不能等待其他任务完成再运行，这样会出现阻塞且严重影响性能，除了使用管线命令的时候（就像前面提到的，先进行点着色器，再运行像素着色器）。这种限制在你刚刚接触GLSL的时候，可能有点难理解。</p>
 <p>这就是为什么有些算法可以在GPU上面非常高效。现代加密算法像<strong>bcrypt</strong>就是用来限制这种高并发性能的——通过限制暴力破解能力来保障安全性。</p>
+
 </div>
 </div>
 </div>
@@ -209,7 +217,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -224,6 +231,7 @@ MathJax.Hub.Config({
 </ul>
 <p>无论你是要Kivy部件还是用原始的OpenGL命令和GLSL着色器，两种方式的性能都是一样的。这是因为Kivy底层和OpenGL类似。</p>
 <p>也就是说，底层优化其实没多大必要，这就是由几个矩形构成的<em>Kivy Bird</em>游戏，可以直接通过高级接口实现的原因。基本上，我们可以在<em>Kivy Bird</em>里优化一两个部件，但是其性能很难被察觉。</p>
+
 </div>
 </div>
 </div>
@@ -237,7 +245,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -250,6 +257,7 @@ MathJax.Hub.Config({
 <li>把所有的图形组合到一起作为一个单独模型处理，这样可以减少API调用。批处理通常是很好的优化方法，因为它让OpenGL以并行方式更好的运行。</li>
 </ul>
 <p>在本章结束的时候我们会实现这些方法。</p>
+
 </div>
 </div>
 </div>
@@ -263,7 +271,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -271,35 +278,36 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>GLSL作为一门语言，与C语法类似，是一个静态强类型。如果你不熟悉C语言，下面是参考。C与Python不同，不在乎缩进，句末要用分号，逻辑代码块要用括号。</p>
 <p>GLSL同时支持C和C++的注释方式：</p>
-<pre><code class="language-C"><span class="comment">/* ANSI C-style comment */</span>
-<span class="comment">// C++ one-line comment</span>
-</code></pre>
+<div class="highlight"><pre><span class="cm">/* ANSI C-style comment */</span>
+<span class="c1">// C++ one-line comment</span>
+</pre></div>
 <p>变量声明方式为<code>[type] [name] [= optional value];</code>：</p>
-<pre><code class="language-C">float a; <span class="regexp">//</span> <span class="keyword">this</span> has <span class="literal">no</span> direct Python equivalent
-int b = <span class="number">1</span>;
-</code></pre>
+<div class="highlight"><pre><span class="kt">float</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// this has no direct Python equivalent</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
 <p>函数定义方式为<code>[type] [name] ([arguments]) { [body of function] }</code>：</p>
-<pre><code class="language-C"><span class="title">float</span> pow2(float x)
-{
-    <span class="title">return</span> x * x;
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">float</span> <span class="nf">pow2</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>控制结构形式为：</p>
-<pre><code class="language-C"><span class="function"><span class="title">if</span> <span class="params">(x &lt; <span class="number">9.0</span>)</span>
-{
-    <span class="title">x</span> = 9.0;
-}
-</span></code></pre>
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">9.0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mf">9.0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>差不多就这些了，即使没有学过C，你现在也可以读GLSL代码了。</p>
 <p>着色器代码的起点是<code>main()</code>函数。后面，我们把点着色器和像素着色器放在一个文件中，因此，在一个文件里面会有两个<code>main()</code>函数。其结构如下：</p>
-<pre><code class="language-C"><span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-    <span class="comment">// code</span>
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// code</span>
+<span class="p">}</span>
+</pre></div>
 <p>这里的<code>void</code>类型表示函数没有返回值，和Python的<code>NoneType</code>不一样，你不能把变量声明为<code>void</code>类型。这里的两个<code>main()</code>函数返回值和参数都被忽略了，所以写成<code>void main(void)</code>。着色器会根据需要把结果写到内部变量，<code>gl_Position</code>，<code>gl_FragColor</code>和其他变量里面，不需要返回数据结果，输入参数为空也是同理。</p>
 <p>GLSL类型系统完全反映了它的作用。不像C语言，它为点和矩阵准备了专门的类型，这些类型支持数学运算（所以你可以直接对矩阵变量进行乘法<code>mat1 * mat2</code>，多简单啊！C一个试试就知道C多麻烦了）。在计算机图形学里，矩阵计算不可或缺，后面会介绍。</p>
 <p>下面，我们就来写几个GLSL的例子。</p>
+
 </div>
 </div>
 </div>
@@ -313,13 +321,13 @@ int b = <span class="number">1</span>;
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先我们需要用Python代码实现窗口、加载着色器等等。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -327,17 +335,17 @@ int b = <span class="number">1</span>;
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.base</span> <span class="kn">import</span> <span class="n">EventLoop</span>
-<span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="kn">import</span> <span class="n">Mesh</span>
-<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="kn">import</span> <span class="n">RenderContext</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="k">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.base</span> <span class="k">import</span> <span class="n">EventLoop</span>
+<span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="k">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="k">import</span> <span class="n">RenderContext</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="k">import</span> <span class="n">Widget</span>
 
 <span class="k">class</span> <span class="nc">GlslDemo</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">Widget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">shader</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">'basic.glsl'</span>
         <span class="c"># Set up geometry here.</span>
         
@@ -350,8 +358,6 @@ int b = <span class="number">1</span>;
     <span class="n">GlslApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -365,6 +371,7 @@ int b = <span class="number">1</span>;
 <p>这么我们创建了一个部件<code>GlslDemo</code>；用来管理所有的渲染。<code>RenderContext</code>是<code>Canvas</code>的子类用来轻松替换着色器。<code>basic.glsl</code>文件包含点着色器和像素着色器，后面会实现。</p>
 <p>注意我们没用Kivy语言，因为没有布局要使用，所以这里不是<code>glsl.kv</code>文件，我们通过<code>GlslApp.build()</code>方法配置根部件。</p>
 <p><code>EventLoop.ensure_window()</code>是必须的，因为我们需要接入OpenGL特性，包括在运行<code>GlslDemo.__init__()</code>方法时，调用GLSL编译器。如果此时没有应用窗口（更重要的是，没有相关的OpenGL内容），程序就会崩溃。</p>
+
 </div>
 </div>
 </div>
@@ -378,7 +385,6 @@ int b = <span class="number">1</span>;
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -389,6 +395,7 @@ int b = <span class="number">1</span>;
 <p>Kivy更偏向于二维图形，所以在二维设计中不会强加任何限制。而OpenGL是源自三维图形，所以你可以用生动的模型来创建视频游戏，也可以结合Kivy的部件来创建UI。本书不做介绍，但是两者底层的机制是一样的。</p>
 </blockquote>
 <p>这里需要升级<code>GlslDemo</code>部件里的<code>__init__()</code>方法：</p>
+
 </div>
 </div>
 </div>
@@ -396,10 +403,10 @@ int b = <span class="number">1</span>;
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">Widget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">shader</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">'basic.glsl'</span>
     
     <span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span> <span class="c"># Step 1</span>
@@ -420,8 +427,6 @@ int b = <span class="number">1</span>;
             <span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">,</span> <span class="n">vertices</span><span class="o">=</span><span class="n">vertices</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -443,6 +448,7 @@ int b = <span class="number">1</span>;
 <blockquote>
 <p>这章提到了一个C语言概念，<code>array（数组）</code>——存放同类数据的连续内存区域。Python数据结构里也有，不过，Python通常用<code>tuple（元组）</code>或<code>list（列表）</code>。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -456,13 +462,13 @@ int b = <span class="number">1</span>;
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要理解OpenGL的索引（index），让我们举个例子。用前面代码里面的顶点，是按照<code>(x, y)</code>存放的：</p>
+
 </div>
 </div>
 </div>
@@ -470,8 +476,8 @@ int b = <span class="number">1</span>;
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">vertices</span> <span class="o">=</span> <span class="p">(</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">vertices</span> <span class="o">=</span> <span class="p">(</span>
     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
     <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
     <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>
@@ -479,8 +485,6 @@ int b = <span class="number">1</span>;
 <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -494,6 +498,7 @@ int b = <span class="number">1</span>;
 <p>一个索引就是顶点列表里面的顶点数据，原点是<code>(0, 0)</code>。如下图所示：</p>
 <p><img src="kbpic/8.2%20openglindex.png" alt="openglindex"></p>
 <p>现在顶点还没有连起来，所以显示出来就是一些点，而不是一个多边形。我们定义一个<code>indices</code>列表来组合它们。三个点两组构成两个三角形：</p>
+
 </div>
 </div>
 </div>
@@ -501,15 +506,13 @@ int b = <span class="number">1</span>;
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">indices</span> <span class="o">=</span> <span class="p">(</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">indices</span> <span class="o">=</span> <span class="p">(</span>
     <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="c"># 三个点构成一个三角形</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="c"># 另一个三角形</span>
 <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -526,6 +529,7 @@ int b = <span class="number">1</span>;
 <blockquote>
 <p>OpenGL数据结构内存优化方法中很少是专门用来减少RAM的——很多时候视频接口吞吐量是性能的瓶颈，所以优化的目标都是每帧传递更多的内容，而不是通过压缩数据来节省内存。这点自始至终没有改变过。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -539,7 +543,6 @@ int b = <span class="number">1</span>;
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -547,43 +550,44 @@ int b = <span class="number">1</span>;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们就来写可以在GPU上执行的GLSL代码，它和C语言一样快。</p>
 <p>Kviy要求点着色器和像素着色器代码在一个文件里，代码用<code>'---vertex'</code>和<code>'---fragment'</code>分割，<code>$HEADER$</code>语句由Kivy指定，这并非任何标准，只在这里用：</p>
-<pre><code class="language-C">---vertex
-@@<span class="number">0</span>@@
+<div class="highlight"><pre><span class="o">---</span><span class="n">vertex</span>
+<span class="err">$</span><span class="n">HEADER</span><span class="err">$</span>
 
-void main(void)
-{
-    // vertex shader
-    gl_Position = <span class="keyword">...</span>
-}
+<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// vertex shader</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="p">...</span>
+<span class="p">}</span>
 
----fragment
-@@<span class="number">1</span>@@
+<span class="o">---</span><span class="n">fragment</span>
+<span class="err">$</span><span class="n">HEADER</span><span class="err">$</span>
 
-void main(void)
-{
-    // fragment shader
-    gl_FragColor = <span class="keyword">...</span>
-}
-</code></pre>
+<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// fragment shader</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
 <p>为了节省篇幅，后面的代码会忽略这些样本代码，希望你看代码的时候记得它们是存在的。</p>
 <p><code>$HEADER$</code>宏变量是上下文相关的，表示不同类型的着色器。</p>
 <p>在点着色器里面，<code>$HEADER$</code>是下面代码：</p>
-<pre><code class="language-C"><span class="keyword">varying</span> <span class="keyword">vec4</span> frag_color;
-<span class="keyword">varying</span> <span class="keyword">vec2</span> tex_coord0;
-<span class="keyword">attribute</span> <span class="keyword">vec2</span> vPosition;
-<span class="keyword">attribute</span> <span class="keyword">vec2</span> vTexCoords0;
-<span class="keyword">uniform</span> <span class="keyword">mat4</span> modelview_mat;
-<span class="keyword">uniform</span> <span class="keyword">mat4</span> projection_mat;
-<span class="keyword">uniform</span> <span class="keyword">vec4</span> color;
-<span class="keyword">uniform</span> <span class="keyword">float</span> opacity;
-</code></pre>
+<div class="highlight"><pre><span class="n">varying</span> <span class="n">vec4</span> <span class="n">frag_color</span><span class="p">;</span>
+<span class="n">varying</span> <span class="n">vec2</span> <span class="n">tex_coord0</span><span class="p">;</span>
+<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">vPosition</span><span class="p">;</span>
+<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">vTexCoords0</span><span class="p">;</span>
+<span class="n">uniform</span> <span class="n">mat4</span> <span class="n">modelview_mat</span><span class="p">;</span>
+<span class="n">uniform</span> <span class="n">mat4</span> <span class="n">projection_mat</span><span class="p">;</span>
+<span class="n">uniform</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+<span class="n">uniform</span> <span class="kt">float</span> <span class="n">opacity</span><span class="p">;</span>
+</pre></div>
 <p>在像素着色器里面，<code>$HEADER$</code>是下面代码：</p>
-<pre><code class="language-C"><span class="keyword">varying</span> <span class="keyword">vec4</span> frag_color;
-<span class="keyword">varying</span> <span class="keyword">vec2</span> tex_coord0;
+<div class="highlight"><pre><span class="n">varying</span> <span class="n">vec4</span> <span class="n">frag_color</span><span class="p">;</span>
+<span class="n">varying</span> <span class="n">vec2</span> <span class="n">tex_coord0</span><span class="p">;</span>
 
-<span class="keyword">uniform</span> <span class="keyword">sampler2D</span> texture0;
-</code></pre>
+<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture0</span><span class="p">;</span>
+</pre></div>
 <p>有点啰嗦，以后的Kivy版本应该会简化它们。</p>
+
 </div>
 </div>
 </div>
@@ -597,7 +601,6 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -639,34 +642,34 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，让我们来写一个简单的着色器：</p>
-<pre><code class="language-C"><span class="title">void</span> main(void)
-{
-    <span class="title">vec4</span> pos = vec4(vPosition.xy, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>);
-    <span class="title">gl_Position</span> = projection_mat * modelview_mat * pos;
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vPosition</span><span class="p">.</span><span class="n">xy</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">projection_mat</span> <span class="o">*</span> <span class="n">modelview_mat</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>把每个点的坐标值转换成Kivy系统的坐标值，其原点在左下角。</p>
 <blockquote>
 <p>这里不演示坐标变换的细节，作为入门教程有点复杂。其实也没必要完全理解这些细节，或者读完整本书。
 如果你很感兴趣，可以去看看<a href="http://www.learnopengles.com/understanding-opengls-matrices/">OpenGL的坐标空间和矩阵用法</a></p>
 </blockquote>
 <p>最简单的像素着色器就是一个返回固定颜色的函数：</p>
-<pre><code class="language-C"><span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-    <span class="built_in">gl_FragColor</span> = <span class="keyword">vec4</span>(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">1.0</span>);
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 <p>这里为每个点返回一个RGBA颜色值<code>#FF007F</code>。</p>
 <p>如果你运行程序，你会看到输出结果如下图所示：</p>
 <p><img src="kbpic/8.4%20basicshaders.png" alt="basicshaders"></p>
 <p>聊胜于无，折腾这么久，终于有点儿成果了，下面我们调整一下看看变化。</p>
+
 </div>
 </div>
 </div>
@@ -680,7 +683,6 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -697,17 +699,18 @@ void main(void)
 <code>B</code>通道值等于<code>R</code>与<code>G</code>均值</li>
 </ul>
 <p>对应最简单像素着色器的算法如下：</p>
-<pre><code class="language-C"><span class="title">void</span> main(void)
-{
-    <span class="title">float</span> r = gl_FragCoord.x / <span class="number">255</span>.<span class="number">0</span>;
-    <span class="title">float</span> g = gl_FragCoord.y / <span class="number">255</span>.<span class="number">0</span>;
-    <span class="title">float</span> b = <span class="number">0</span>.<span class="number">5</span> * (r + g);
-    <span class="title">gl_FragColor</span> = vec4(r, g, b, <span class="number">1</span>.<span class="number">0</span>);
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">float</span> <span class="n">r</span> <span class="o">=</span> <span class="n">gl_FragCoord</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">g</span> <span class="o">=</span> <span class="n">gl_FragCoord</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span><span class="p">);</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 <p><code>gl_FragCoord</code>变量包括相对于应用窗口的像素坐标值（并非实际屏幕的坐标值）。这里除以<code>255.0</code>是为了简化计算，让所有的值都落在[0，1]区间内。</p>
 <p>效果图像如下：</p>
 <p><img src="kbpic/8.5%20computingcolor.png" alt="computingcolor"></p>
+
 </div>
 </div>
 </div>
@@ -721,13 +724,13 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>类似的彩色效果可以通过给点增加颜色数据来实现。因此，我们需要扩展点的数据格式，增加一个带颜色的属性<code>vColor</code>：</p>
+
 </div>
 </div>
 </div>
@@ -735,8 +738,8 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="n">b</span><span class="s">'vPosition'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span>
     <span class="p">(</span><span class="n">b</span><span class="s">'vColor'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span>
 <span class="p">)</span>
@@ -751,8 +754,6 @@ void main(void)
 <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -765,28 +766,29 @@ void main(void)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>更新之后，每个点都有5个维度，后面三个是RGB颜色值。对应的<code>vertices</code>也要做修改。</p>
 <p><code>vColor</code>属性是一个RGB颜色值，而点着色器用的是RGBA颜色，这里并没有每个点的alpha通道值，我们需要对点着色器做一些调整：</p>
-<pre><code class="language-C"><span class="title">attribute</span> vec3 vColor;
+<div class="highlight"><pre><span class="n">attribute</span> <span class="n">vec3</span> <span class="n">vColor</span><span class="p">;</span>
 
-<span class="title">void</span> main(void)
-{
-    <span class="title">frag_color</span> = vec4(vColor.rgb, <span class="number">1</span>.<span class="number">0</span>);
-    <span class="title">vec4</span> pos = vec4(vPosition.xy, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>);
-    <span class="title">gl_Position</span> = projection_mat * modelview_mat * pos;
-}
-</code></pre>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">frag_color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vColor</span><span class="p">.</span><span class="n">rgb</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vPosition</span><span class="p">.</span><span class="n">xy</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">projection_mat</span> <span class="o">*</span> <span class="n">modelview_mat</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <blockquote>
 <p>在GLSL中，<code>vColor.rgb</code>和<code>vPosition.xy</code>表示法叫混合（swizzling）。它们可以有效的获取矢量的一部分，类似于Python的切片（slice）。</p>
 <p>这里的<code>vColor.rgb</code>表示“取矢量的前三个值”，在Python里面就是<code>vColor[:3]</code>。还可以颠倒顺序，如<code>vColor.bgr</code>，甚至重复，如<code>vColor.ggg</code>（取三个<code>G</code>通道值），样式很灵活。</p>
 <p>同理，可以取矢量的四个值，如<code>.xyzw</code>，<code>.rgba</code>或<code>.stpq</code>。</p>
 </blockquote>
 <p>那么，像素着色器就很简单了：</p>
-<pre><code class="language-C"><span class="title">void</span> main(void)
-{
-    <span class="title">gl_FragColor</span> = frag_color;
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">frag_color</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>让点与点之间的颜色插值计算，就呈现平滑渐变的效果了，这就是OpenGL的工作方式，如下图所示：</p>
 <p><img src="kbpic/8.6%20passingcolor.png" alt="passingcolor"></p>
+
 </div>
 </div>
 </div>
@@ -800,13 +802,13 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面再给我们的矩形增加一些纹理。我们还要扩展点数据格式的定义，给每个点增加纹理坐标值：</p>
+
 </div>
 </div>
 </div>
@@ -814,8 +816,8 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="n">b</span><span class="s">'vPosition'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span>
     <span class="p">(</span><span class="n">b</span><span class="s">'vTexCoords0'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span>
 <span class="p">)</span>
@@ -828,8 +830,6 @@ void main(void)
 <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -842,6 +842,7 @@ void main(void)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>纹理坐标值通常都在[0,1]区间内，原点在左上角，这和Kivy的左下角原点是不同的。使用过程中，需要注意这个差别。</p>
 <p>下面是Python加载纹理并传递给渲染的过程：</p>
+
 </div>
 </div>
 </div>
@@ -849,8 +850,8 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="kn">import</span> <span class="n">Image</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="k">import</span> <span class="n">Image</span>
 
 <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="p">:</span>
     <span class="n">Mesh</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'triangles'</span><span class="p">,</span>
@@ -858,8 +859,6 @@ void main(void)
         <span class="n">texture</span><span class="o">=</span><span class="n">Image</span><span class="p">(</span><span class="s">'kivy.png'</span><span class="p">)</span><span class="o">.</span><span class="n">texture</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -873,23 +872,24 @@ void main(void)
 <p>这样就把当前文件夹内的<code>kivy.png</code>文件转换成纹理了。如下图所示：</p>
 <p><img src="kbpic/8.7%20texture.png" alt="texture"></p>
 <p>这和前面的着色器没啥不同。点着色器传递纹理的坐标值：</p>
-<pre><code class="language-C"><span class="title">void</span> main(void)
-{
-    <span class="title">tex_coord0</span> = vTexCoords0;
-    <span class="title">vec4</span> pos = vec4(vPosition.xy, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>);
-    <span class="title">gl_Position</span> = projection_mat * modelview_mat * pos;
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">tex_coord0</span> <span class="o">=</span> <span class="n">vTexCoords0</span><span class="p">;</span>
+    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vPosition</span><span class="p">.</span><span class="n">xy</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">projection_mat</span> <span class="o">*</span> <span class="n">modelview_mat</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>像素着色器用修改过的<code>tex_coord0</code>坐标值来装饰在<code>texture0</code>位置的纹理，于是返回对应的颜色：</p>
-<pre><code class="language-C"><span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-   <span class="built_in">gl_FragColor</span> = <span class="built_in">texture2D</span>(texture0, tex_coord0);
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture0</span><span class="p">,</span> <span class="n">tex_coord0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 <p>把代码放到一起就看可以到如下效果：</p>
 <p><img src="kbpic/8.8%20texturemapping.png" alt="texturemapping"></p>
 <p>通过着色器的实现经历，你可以去做一些相关程序了。如果有的地方不明白不用郁闷，GLSL确实比较复杂，系统的学习它得费一番功夫。</p>
 <p>但是，它可以让你更清楚底层的工作细节。即使你日常工作中没写过底层代码，你也可以掌握这些知识，以避免性能瓶颈，改善程序的架构。</p>
+
 </div>
 </div>
 </div>
@@ -903,7 +903,6 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -921,6 +920,7 @@ void main(void)
 </ol>
 <p>我们还会让星星的尺寸在飞行中不断变大。如下图所示：</p>
 <p><img src="kbpic/8.9%20screenshot.png" alt="screenshot"></p>
+
 </div>
 </div>
 </div>
@@ -934,13 +934,13 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>新应用类的架构借用前面章节的内容即可。这里同样不用Kivy语言描述部件层级，所以没有<code>starfield.kv</code>。Python代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -948,9 +948,9 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.base</span> <span class="kn">import</span> <span class="n">EventLoop</span>
-<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.base</span> <span class="k">import</span> <span class="n">EventLoop</span>
+<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="k">import</span> <span class="n">Clock</span>
 
 <span class="k">class</span> <span class="nc">StarfieldApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -961,8 +961,6 @@ void main(void)
         <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">update_glsl</span><span class="p">,</span><span class="mi">60</span> <span class="o">**</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -976,6 +974,7 @@ void main(void)
 <p>这里<code>build()</code>方法创建并返回根部件<code>Starfield</code>；它将控制所有的数学和渲染应用中的内容。</p>
 <p><code>on_start()</code>事件handler在程序启动后，让根部件通过<code>update_glsl()</code>方法实现每秒更新60次。</p>
 <p><code>Starfield</code>类还分成两部分：<code>__init__()</code>方法用来创建数据结构，<code>update_glsl()</code>方法呈现图像（计算每颗星的位置）并渲染星星。</p>
+
 </div>
 </div>
 </div>
@@ -989,13 +988,13 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>初始化代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1003,17 +1002,17 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="kn">import</span> <span class="n">RenderContext</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="k">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="k">import</span> <span class="n">RenderContext</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="k">import</span> <span class="n">Widget</span>
 
 <span class="n">NSTARS</span> <span class="o">=</span> <span class="mi">1000</span>
 
 <span class="k">class</span> <span class="nc">Starfield</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">Widget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">shader</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">'starfield.glsl'</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">vfmt</span> <span class="o">=</span> <span class="p">(</span>
@@ -1043,8 +1042,6 @@ void main(void)
         <span class="bp">self</span><span class="o">.</span><span class="n">stars</span> <span class="o">=</span> <span class="p">[</span><span class="n">Star</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NSTARS</span><span class="p">)]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1059,12 +1056,10 @@ void main(void)
 <p>和前面的例子不同，这次我们不在最后实现索引和点的数组。在初始化阶段我们就设置好，方便后面<code>update_glsl()</code>方法更新。</p>
 <p><code>vfmt</code>顶点格式包括四个属性，如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center"><strong>属性</strong></th>
 <th style="text-align:center"><strong>功能</strong></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center"><code>vCenter</code></td>
@@ -1088,6 +1083,7 @@ void main(void)
 <p><code>vertices</code>列表包含需要的数据；但它没有层次，不方便操作。这里就做了一个<code>Star</code>辅助类来实现，它把细节封装起来，在顶点数组外加了一个类，这样可以省不少事儿。</p>
 <p><code>Star</code>类还会持续跟踪不属于顶点数据格式的一些属性，极坐标（以中心为原点的<code>angle</code>角度和<code>distance</code>距离）和不断增大的<code>size</code>。</p>
 <p><code>Star</code>类定义如下：</p>
+
 </div>
 </div>
 </div>
@@ -1095,9 +1091,9 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">random</span>
 
 <span class="k">class</span> <span class="nc">Star</span><span class="p">:</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1115,8 +1111,6 @@ void main(void)
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.05</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1129,6 +1123,7 @@ void main(void)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>base_idx</code>是星星点数组的第一个顶点，还要加一个引用<code>sf</code>，方便<code>Starfield</code>实例连接<code>vertices</code>。</p>
 <p><code>reset()</code>调用之后把星星的属性复原。</p>
+
 </div>
 </div>
 </div>
@@ -1142,13 +1137,13 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>Starfield.update_glsl()</code>方式实现了星星运动的算法，被<code>on_start()</code>事件handler的Kivy时钟程序频繁调用。源代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1156,8 +1151,8 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="kn">import</span> <span class="n">Mesh</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="k">import</span> <span class="n">Mesh</span>
 
 <span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
     <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span>
@@ -1180,8 +1175,6 @@ void main(void)
              <span class="n">texture</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1195,6 +1188,7 @@ void main(void)
 <p>首先星星从屏幕中央产生之后，我们计算最大距离<code>max_distance</code>。然后，我们重复星星列表，让它们运动起来，然后不断放大。超出屏幕的星星被重置。</p>
 <p>函数的最后看着很熟悉，那是前面讲过的渲染技巧。调用<code>canvas.clear()</code>是必须的，但是每次调用都增加一个新的匹配（Mesh），极快的推送到显卡上进行处理。</p>
 <p>代码的最后内容是<code>Star.update()</code>方法。它更像星星的四个顶点，把新的坐标值写到<code>vertices</code>数值中：</p>
+
 </div>
 </div>
 </div>
@@ -1202,8 +1196,8 @@ void main(void)
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span>
                  <span class="bp">self</span><span class="o">.</span><span class="n">j</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="o">.</span><span class="n">vsize</span><span class="p">,</span>
                  <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="o">.</span><span class="n">vsize</span><span class="p">)</span>
@@ -1215,8 +1209,6 @@ void main(void)
         <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1229,6 +1221,7 @@ void main(void)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>iterate()</code>辅助函数用来提高代码可读性，看着有点多，其实读起来更方便。</p>
 <p>为了完成程序迭代，整个内存映射进程会把序列化每一帧里大量的对象作为一个重要目标来处理，这会提高性能。</p>
+
 </div>
 </div>
 </div>
@@ -1242,38 +1235,38 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>着色器代码和前面类似。点着色器代码：</p>
-<pre><code class="language-C"><span class="title">attribute</span> vec2 vCenter;
-<span class="title">attribute</span> float vScale;
+<div class="highlight"><pre><span class="n">attribute</span> <span class="n">vec2</span> <span class="n">vCenter</span><span class="p">;</span>
+<span class="n">attribute</span> <span class="kt">float</span> <span class="n">vScale</span><span class="p">;</span>
 
-<span class="title">void</span> main(void)
-{
-    <span class="title">tex_coord0</span> = vTexCoords0;
-    <span class="title">mat4</span> move_mat = mat4
-        (<span class="number">1</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, vCenter.x,
-        <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, vCenter.y,
-        <span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>,
-        <span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>);
-    <span class="title">vec4</span> pos = vec4(vPosition.xy * vScale, <span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>) * move_mat;
-    <span class="title">gl_Position</span> = projection_mat * modelview_mat * pos;
-}
-</code></pre>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">tex_coord0</span> <span class="o">=</span> <span class="n">vTexCoords0</span><span class="p">;</span>
+    <span class="n">mat4</span> <span class="n">move_mat</span> <span class="o">=</span> <span class="n">mat4</span>
+        <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">vCenter</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">vCenter</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vPosition</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">vScale</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">move_mat</span><span class="p">;</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">projection_mat</span> <span class="o">*</span> <span class="n">modelview_mat</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 <p>我们通过<code>vScale</code>因子与顶点坐标值相乘来等比例放大，然后用<code>vCenter</code>属性把它们变换成位置。<code>move_mat</code>矩阵是变换矩阵，线性代数里的一种放射变换方法。</p>
 <p>像素着色器代码：</p>
-<pre><code class="language-C"><span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-    <span class="built_in">gl_FragColor</span> = <span class="built_in">texture2D</span>(texture0, tex_coord0);
-}
-</code></pre>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture0</span><span class="p">,</span> <span class="n">tex_coord0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 <p>最终的效果如下图所示：</p>
 <p><img src="kbpic/8.10%20star.png" alt="star"></p>
 <p>这样，满天星app就完成了，感受一下穿越的乐趣吧。</p>
+
 </div>
 </div>
 </div>
@@ -1287,7 +1280,6 @@ void main(void)
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1298,21 +1290,29 @@ void main(void)
 <p>这章的例子只是一个简单教程，并不是能力测试。因为 GLSL非常难学，大量的书籍和在线教程都已经介绍过它，这里的内容不足以完整的介绍OpenGL的内容，若感兴趣可以看看。</p>
 <p>现在，我们算是入门了。下一章我们利用这章的代码来做一个更好玩的应用，一个酷炫的射击游戏。</p>
 <p><a href="kbpic/src/8_Starfield">源代码</a></p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="frequentism-and-bayesianism-chs-iii.html" rel="prev" title="frequentism-and-bayesianism-chs-iii">Previous post</a>
             </li>
             <li class="next">
                 <a href="kivy-perface.html" rel="next" title="kivy-perface">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch8-shaders-app.html",
@@ -1326,24 +1326,28 @@ void main(void)
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1353,15 +1357,5 @@ void main(void)
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

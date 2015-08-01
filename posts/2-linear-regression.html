@@ -3,44 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>2-linear-regression | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-linear-regression | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/2-linear-regression.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="2-linear-regression">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
-    <meta property="og:description" content="线性回归¶
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="2-linear-regression">
+<meta property="og:url" content="http://muxuezi.github.io/posts/2-linear-regression.html">
+<meta property="og:description" content="线性回归¶
 
 
 
@@ -49,59 +35,80 @@ MathJax.Hub.Config({
 
 
 
-
-本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-24T13:43:36+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+本章介绍用线性模型处理回归问题。从简单问题开始，先处理一个响应变量和一个解释变量的一元问题。然后，我们介绍多元线性回归问题（multiple linear regression），线性约束由多个解释变量构成。紧接着，我们介绍多项式回归分析（polynomial regression问题），一种具有非线性关系的多元线性回归问题。最后，我们介绍如果训练模型获取目标函数最小化">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:43:36+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">2-linear-regression</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-24T13:43:36+08:00">2015-06-24 13:43</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="2-linear-regression.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="2-linear-regression.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">2-linear-regression</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-24T13:43:36+08:00" itemprop="datePublished" title="2015-06-24 13:43">2015-06-24 13:43</time></a></p>
+                <p class="commentline">            <a href="2-linear-regression.html#disqus_thread" data-disqus-identifier="cache/posts/2-linear-regression.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="2-linear-regression.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -112,7 +119,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -133,7 +139,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -142,13 +147,11 @@ MathJax.Hub.Config({
 <p>上一章我们介绍过在监督学习问题中用训练数据来估计模型参数。训练数据由解释变量的历史观测值和对应的响应变量构成。模型可以预测不在训练数据中的解释变量对应的响应变量的值。回归问题的目标是预测出响应变量的连续值。本章我们将学习一些线性回归模型，后面会介绍训练数据，建模和学习算法，以及对每个方法的效果评估。首先，我们从简单的一元线性回归问题开始。</p>
 <p>假设你想计算匹萨的价格。虽然看看菜单就知道了，不过也可以用机器学习方法建一个线性回归模型，通过分析匹萨的直径与价格的数据的线性关系，来预测任意直径匹萨的价格。我们先用scikit-learn写出回归模型，然后我们介绍模型的用法，以及将模型应用到具体问题中。假设我们查到了部分匹萨的直径与价格的数据，这就构成了训练数据，如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -178,6 +181,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>我们可以用matplotlib画出图形：</p>
+
 </div>
 </div>
 </div>
@@ -185,15 +189,13 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="kn">import</span> <span class="n">FontProperties</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="k">import</span> <span class="n">FontProperties</span>
 <span class="n">font</span> <span class="o">=</span> <span class="n">FontProperties</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s">r"c:\windows\fonts\msyh.ttc"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -203,14 +205,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">runplt</span><span class="p">():</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">runplt</span><span class="p">():</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'匹萨价格与直径数据'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'直径（英寸）'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'价格（美元）'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">plt</span>
 
 <span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
@@ -220,14 +222,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -247,15 +244,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上图中，'x'轴表示匹萨直径，'y'轴表示匹萨价格。能够看出，匹萨价格与其直径正相关，这与我们的日常经验也比较吻合，自然是越大越贵。下面我们就用scikit-learn来构建模型。</p>
+
 </div>
 </div>
 </div>
@@ -263,22 +258,17 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="c"># 创建并拟合模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'预测一张12英寸匹萨价格：$</span><span class="si">%.2f</span><span class="s">'</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="mi">12</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'预测一张12英寸匹萨价格：$%.2f'</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="mi">12</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -287,13 +277,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-预测一张12英寸匹萨价格：$13.68
-
+<pre>预测一张12英寸匹萨价格：$13.68
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -309,8 +294,8 @@ MathJax.Hub.Config({
 <p>一元线性回归假设解释变量和响应变量之间存在线性关系；这个线性模型所构成的空间是一个超平面（hyperplane）。超平面是n维欧氏空间中余维度等于一的线性子空间，如平面中的直线、空间中的平面等，总比包含它的空间少一维。在一元线性回归中，一个维度是响应变量，另一个维度是解释变量，总共两维。因此，其超平面只有一维，就是一条线。</p>
 <p>上述代码中<code>sklearn.linear_model.LinearRegression</code>类是一个估计器（estimator）。估计器依据观测值来预测结果。在scikit-learn里面，所有的估计器都带有<code>fit()</code>和<code>predict()</code>方法。<code>fit()</code>用来分析模型参数，<code>predict()</code>是通过<code>fit()</code>算出的模型参数构成的模型，对解释变量进行预测获得的值。因为所有的估计器都有这两种方法，所有scikit-learn很容易实验不同的模型。</p>
 <p><code>LinearRegression</code>类的<code>fit()</code>方法学习下面的一元线性回归模型：</p>
-<p>$$y=\alpha+\beta x$$</p>
-<p>$y$表示响应变量的预测值，本例指匹萨价格预测值，$x$是解释变量，本例指匹萨直径。截距$\alpha$和相关系数$\beta$是线性回归模型最关心的事情。下图中的直线就是匹萨直径与价格的线性关系。用这个模型，你可以计算不同直径的价格，8英寸\$7.33，20英寸\$18.75。</p>
+$$y=\alpha+\beta x$$<p>$y$表示响应变量的预测值，本例指匹萨价格预测值，$x$是解释变量，本例指匹萨直径。截距$\alpha$和相关系数$\beta$是线性回归模型最关心的事情。下图中的直线就是匹萨直径与价格的线性关系。用这个模型，你可以计算不同直径的价格，8英寸\$7.33，20英寸\$18.75。</p>
+
 </div>
 </div>
 </div>
@@ -318,8 +303,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -330,14 +315,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -357,15 +337,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一元线性回归拟合模型的参数估计常用方法是普通最小二乘法（ordinary least squares ）或线性最小二乘法（linear least squares）。首先，我们定义出拟合成本函数，然后对参数进行数理统计。</p>
+
 </div>
 </div>
 </div>
@@ -379,13 +357,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下图是由若干参数生成的回归直线。如何判断哪一条直线才是最佳拟合呢？</p>
+
 </div>
 </div>
 </div>
@@ -393,8 +371,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">)</span>
 <span class="n">y3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">14.25</span><span class="p">,</span> <span class="mf">14.25</span><span class="p">,</span> <span class="mf">14.25</span><span class="p">,</span> <span class="mf">14.25</span><span class="p">]</span>
 <span class="n">y4</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mi">5</span>
@@ -408,14 +386,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -435,9 +408,6 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -445,6 +415,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>成本函数（cost function）也叫损失函数（loss function），用来定义模型与观测值的误差。模型预测的价格与训练集数据的差异称为残差（residuals）或训练误差（training errors）。后面我们会用模型计算测试集，那时模型预测的价格与测试集数据的差异称为预测误差（prediction errors）或训练误差（test errors）。</p>
 <p>模型的残差是训练样本点与线性回归模型的纵向距离，如下图所示：</p>
+
 </div>
 </div>
 </div>
@@ -452,8 +423,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -470,14 +441,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -497,18 +463,15 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们可以通过残差之和最小化实现最佳拟合，也就是说模型预测的值与训练集的数据最接近就是最佳拟合。对模型的拟合度进行评估的函数称为残差平方和（residual sum of squares）成本函数。就是让所有训练数据与模型的残差的平方之和最小化，如下所示：</p>
-<p>$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$</p>
-<p>其中，$y_i$是观测值，$f(x_i)$是预测值。</p>
+$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>其中，$y_i$是观测值，$f(x_i)$是预测值。</p>
 <p>残差平方和计算如下：</p>
+
 </div>
 </div>
 </div>
@@ -516,19 +479,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [74]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'残差平方和: </span><span class="si">%.2f</span><span class="s">'</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'残差平方和: %.2f'</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -537,13 +495,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-残差平方和: 1.75
-
+<pre>残差平方和: 1.75
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -557,6 +510,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了成本函数，就要使其最小化获得参数。</p>
+
 </div>
 </div>
 </div>
@@ -570,7 +524,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -578,8 +531,8 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>通过成本函数最小化获得参数，我们先求相关系数$\beta$。按照频率论的观点，我们首先需要计算$x$的方差和$x$与$y$的协方差。</p>
 <p>方差是用来衡量样本分散程度的。如果样本全部相等，那么方差为0。方差越小，表示样本越集中，反正则样本越分散。方差计算公式如下：</p>
-<p>$$var(x) = \frac {\sum_{i=1}^n (x_i - \bar x)^2} {n-1}$$</p>
-<p>其中，$\bar x$是直径$x$的均值，$x_i$的训练集的第$i$个直径样本，$n$是样本数量。计算如下：</p>
+$$var(x) = \frac {\sum_{i=1}^n (x_i - \bar x)^2} {n-1}$$<p>其中，$\bar x$是直径$x$的均值，$x_i$的训练集的第$i$个直径样本，$n$是样本数量。计算如下：</p>
+
 </div>
 </div>
 </div>
@@ -587,21 +540,16 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="c"># 如果是Python2，加from __future__ import division</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 如果是Python2，加from __future__ import division</span>
 <span class="n">xbar</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">18</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
 <span class="n">variance</span> <span class="o">=</span> <span class="p">((</span><span class="mi">6</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">14</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">18</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
-<span class="k">print</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -610,13 +558,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-23.2
-
+<pre>23.2
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -630,6 +573,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy里面有<code>var</code>方法可以直接计算方差，<code>ddof</code>参数是贝塞尔(无偏估计)校正系数（Bessel's correction），设置为1，可得样本方差无偏估计量。</p>
+
 </div>
 </div>
 </div>
@@ -637,18 +581,13 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [72]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -657,13 +596,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-23.2
-
+<pre>23.2
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -677,8 +611,8 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>协方差表示两个变量的总体的变化趋势。如果两个变量的变化趋势一致，也就是说如果其中一个大于自身的期望值，另外一个也大于自身的期望值，那么两个变量之间的协方差就是正值。 如果两个变量的变化趋势相反，即其中一个大于自身的期望值，另外一个却小于自身的期望值，那么两个变量之间的协方差就是负值。如果两个变量不相关，则协方差为0，变量线性无关不表示一定没有其他相关性。协方差公式如下：</p>
-<p>$$cov(x,y) = \frac {\sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)} {n-1}$$</p>
-<p>其中，$\bar x$是直径$x$的均值，$x_i$的训练集的第$i$个直径样本，$\bar y$是价格$y$的均值，$y_i$的训练集的第$i$个价格样本，$n$是样本数量。计算如下：</p>
+$$cov(x,y) = \frac {\sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)} {n-1}$$<p>其中，$\bar x$是直径$x$的均值，$x_i$的训练集的第$i$个直径样本，$\bar y$是价格$y$的均值，$y_i$的训练集的第$i$个价格样本，$n$是样本数量。计算如下：</p>
+
 </div>
 </div>
 </div>
@@ -686,21 +620,16 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [75]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">ybar</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">13</span> <span class="o">+</span> <span class="mf">17.5</span> <span class="o">+</span> <span class="mi">18</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">ybar</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">13</span> <span class="o">+</span> <span class="mf">17.5</span> <span class="o">+</span> <span class="mi">18</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
 <span class="n">cov</span> <span class="o">=</span> <span class="p">((</span><span class="mi">6</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">13</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">+</span>
 <span class="p">(</span><span class="mi">14</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">17.5</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">18</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">18</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -709,13 +638,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-22.65
-
+<pre>22.65
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -729,6 +653,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy里面有<code>cov</code>方法可以直接计算方差。</p>
+
 </div>
 </div>
 </div>
@@ -736,19 +661,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [76]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">,</span> <span class="mi">18</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">,</span> <span class="mi">18</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -757,13 +677,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-22.65
-
+<pre>22.65
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -777,13 +692,10 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在有了方差和协方差，就可以计算相关系统$\beta$了。</p>
-<p>$$\beta = \frac {cov(x,y)} {var(x)}$$</p>
-<p>$$\beta = \frac {22.65} {23.2} = 0.9762931034482758$$</p>
-<p>算出$\beta$后，我们就可以计算$\alpha$了：</p>
-<p>$$\alpha = \bar y - \beta {\bar x}$$</p>
-<p>将前面的数据带入公式就可以求出$\alpha$了：</p>
-<p>$$\alpha = 12.9 - 0.9762931034482758 \times 11.2 = 1.9655172413793114$$</p>
-<p>这样就通过最小化成本函数求出模型参数了。把匹萨直径带入方程就可以求出对应的价格了，如11英寸直径价格\$12.70，18英寸直径价格\$19.54。</p>
+$$\beta = \frac {cov(x,y)} {var(x)}$$$$\beta = \frac {22.65} {23.2} = 0.9762931034482758$$<p>算出$\beta$后，我们就可以计算$\alpha$了：</p>
+$$\alpha = \bar y - \beta {\bar x}$$<p>将前面的数据带入公式就可以求出$\alpha$了：</p>
+$$\alpha = 12.9 - 0.9762931034482758 \times 11.2 = 1.9655172413793114$$<p>这样就通过最小化成本函数求出模型参数了。把匹萨直径带入方程就可以求出对应的价格了，如11英寸直径价格\$12.70，18英寸直径价格\$19.54。</p>
+
 </div>
 </div>
 </div>
@@ -797,7 +709,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -805,14 +716,12 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用学习算法对训练集进行估计，得出了模型的参数。如何评价模型在现实中的表现呢？现在让我们假设有另一组数据，作为测试集进行评估。</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
 <th>预测值（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -848,6 +757,7 @@ MathJax.Hub.Config({
 </table>
 <p>有些度量方法可以用来评估预测效果，我们用R方（r-squared）评估匹萨价格预测的效果。R方也叫确定系数（coefficient of determination），表示模型对现实数据拟合的程度。计算R方的方法有几种。一元线性回归中R方等于皮尔逊积矩相关系数（Pearson product moment correlation coefficient或Pearson's r）的平方。</p>
 <p>这种方法计算的R方一定介于0～1之间的正数。其他计算方法，包括scikit-learn中的方法，不是用皮尔逊积矩相关系数的平方计算的，因此当模型拟合效果很差的时候R方会是负值。下面我们用scikit-learn方法来计算R方。</p>
+
 </div>
 </div>
 </div>
@@ -857,15 +767,11 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，我们需要计算样本总体平方和，$\bar y$是价格$y$的均值，$y_i$的训练集的第$i$个价格样本，$n$是样本数量。</p>
-<p>$$SS_{tot} = \sum_{i=1}^n (y_i - \bar y)^2$$</p>
-<p>$$SS_{tot} = (11 - 12.7)^2 + (8.5 - 12.7)^2 + \cdots +(11 - 12.7)^2$$ = 56.8</p>
+$$SS_{tot} = \sum_{i=1}^n (y_i - \bar y)^2$$$$SS_{tot} = (11 - 12.7)^2 + (8.5 - 12.7)^2 + \cdots +(11 - 12.7)^2$$<p>= 56.8</p>
 <p>然后，我们计算残差平方和，和前面的一样：</p>
-<p>$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$</p>
-<p>$$SS_{res} = (11 - 9.7759)^2 + (8.5 - 10.7522)^2 + \cdots + (11 - 13.6811)^2 = 19.19821359$$</p>
-<p>最后用下面的公式计算R方：</p>
-<p>$$R^2 = 1 - \frac {SS_{res}} {SS_{tot}}$$</p>
-<p>$$R^2 = 1 - \frac {19.19821359} {56.8} = 0.6620032818661972$$</p>
-<p>R方是0.6620说明测试集里面过半数的价格都可以通过模型解释。现在，让我们用scikit-learn来验证一下。<code>LinearRegression</code>的<code>score</code>方法可以计算R方：</p>
+$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$$$SS_{res} = (11 - 9.7759)^2 + (8.5 - 10.7522)^2 + \cdots + (11 - 13.6811)^2 = 19.19821359$$<p>最后用下面的公式计算R方：</p>
+$$R^2 = 1 - \frac {SS_{res}} {SS_{tot}}$$$$R^2 = 1 - \frac {19.19821359} {56.8} = 0.6620032818661972$$<p>R方是0.6620说明测试集里面过半数的价格都可以通过模型解释。现在，让我们用scikit-learn来验证一下。<code>LinearRegression</code>的<code>score</code>方法可以计算R方：</p>
+
 </div>
 </div>
 </div>
@@ -873,8 +779,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [86]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="c"># 测试集</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 测试集</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">]]</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -882,14 +788,9 @@ MathJax.Hub.Config({
 <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -899,15 +800,10 @@ MathJax.Hub.Config({
 <div class="prompt output_prompt">Out[86]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.66200528638545175
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>0.66200528638545175</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -924,7 +820,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -932,11 +827,9 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看出匹萨价格预测的模型R方值并不显著。如何改进呢？</p>
 <p>回顾一下自己的生活经验，匹萨的价格其实还会受到其他因素的影响。比如，匹萨的价格还与上面的辅料有关。让我们再为模型增加一个解释变量。用一元线性回归已经无法解决了，我们可以用更具一般性的模型来表示，即多元线性回归。</p>
-<p>$$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n$$</p>
-<p>写成矩阵形式如下：</p>
-<p>$$Y = X \beta$$</p>
-<p>一元线性回归可以写成如下形式：</p>
-<p>$$
+$$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n$$<p>写成矩阵形式如下：</p>
+$$Y = X \beta$$<p>一元线性回归可以写成如下形式：</p>
+$$
 \begin{bmatrix}
 Y_1\\
 Y_2\\
@@ -962,17 +855,14 @@ Y_n\\
 \alpha\\
 \beta\\
 \end{bmatrix}
-$$</p>
-<p>其中，$Y$是训练集的响应变量列向量，$\beta$是模型参数列向量。$X$称为设计矩阵，是$m \times n$维训练集的解释变量矩阵。$m$是训练集样本数量，$n$是解释变量个数。增加辅料的匹萨价格预测模型训练集如下表所示：</p>
+$$<p>其中，$Y$是训练集的响应变量列向量，$\beta$是模型参数列向量。$X$称为设计矩阵，是$m \times n$维训练集的解释变量矩阵。$m$是训练集样本数量，$n$是解释变量个数。增加辅料的匹萨价格预测模型训练集如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1008,14 +898,12 @@ $$</p>
 </table>
 <p>我们同时要升级测试集数据：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>辅料种类</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1050,10 +938,9 @@ $$</p>
 </tbody>
 </table>
 <p>我们的学习算法评估三个参数的值：两个相关因子和一个截距。$\beta$的求解方法可以通过矩阵运算来实现。</p>
-<p>$$Y = X \beta$$</p>
-<p>矩阵没有除法运算（详见线性代数相关内容），所以用矩阵的转置运算和逆运算来实现：</p>
-<p>$$\beta = (X^TX)^{-1}X^TY $$</p>
-<p>通过Numpy的矩阵操作就可以完成：</p>
+$$Y = X \beta$$<p>矩阵没有除法运算（详见线性代数相关内容），所以用矩阵的转置运算和逆运算来实现：</p>
+$$\beta = (X^TX)^{-1}X^TY $$<p>通过Numpy的矩阵操作就可以完成：</p>
+
 </div>
 </div>
 </div>
@@ -1061,22 +948,17 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">dot</span><span class="p">,</span> <span class="n">transpose</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">inv</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">dot</span><span class="p">,</span> <span class="n">transpose</span>
 <span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mf">17.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">]]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">inv</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">X</span><span class="p">)),</span> <span class="n">dot</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">inv</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">X</span><span class="p">)),</span> <span class="n">dot</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1085,15 +967,10 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[ 1.1875    ]
+<pre>[[ 1.1875    ]
  [ 1.01041667]
  [ 0.39583333]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1107,6 +984,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy也提供了最小二乘法函数来实现这一过程：</p>
+
 </div>
 </div>
 </div>
@@ -1114,19 +992,14 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">lstsq</span>
-<span class="k">print</span><span class="p">(</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">lstsq</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1135,15 +1008,10 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[ 1.1875    ]
+<pre>[[ 1.1875    ]
  [ 1.01041667]
  [ 0.39583333]]
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1157,6 +1025,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了参数，我们就来更新价格预测模型：</p>
+
 </div>
 </div>
 </div>
@@ -1164,8 +1033,8 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mf">17.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -1174,18 +1043,13 @@ $$</p>
 <span class="n">y_test</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">]]</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Predicted: </span><span class="si">%s</span><span class="s">, Target: </span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'R-squared: </span><span class="si">%.2f</span><span class="s">'</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'Predicted: %s, Target: %s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'R-squared: %.2f'</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1194,18 +1058,13 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Predicted: [ 10.06250019], Target: [11]
+<pre>Predicted: [ 10.06250019], Target: [11]
 Predicted: [ 10.28125019], Target: [8.5]
 Predicted: [ 13.09375019], Target: [15]
 Predicted: [ 18.14583353], Target: [18]
 Predicted: [ 13.31250019], Target: [11]
 R-squared: 0.77
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1219,6 +1078,7 @@ R-squared: 0.77
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>增加解释变量让模型拟合效果更好了。后面我们会论述一个问题：为什么只用一个测试集评估一个模型的效果是不准确的，如何通过将测试集数据分块的方法来测试，让模型的测试效果更可靠。不过现在我们可以认为，匹萨价格预测问题，多元回归确实比一元回归效果更好。假如解释变量和响应变量的关系不是线性的呢？下面我们来研究一个特别的多元线性回归的情况，可以用来构建非线性关系模型。</p>
+
 </div>
 </div>
 </div>
@@ -1232,7 +1092,6 @@ R-squared: 0.77
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1240,13 +1099,11 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上例中，我们假设解释变量和响应变量的关系是线性的。真实情况未必如此。下面我们用多项式回归，一种特殊的多元线性回归方法，增加了指数项（$x$的次数大于1）。现实世界中的曲线关系都是通过增加多项式实现的，其实现方式和多元线性回归类似。本例还用一个解释变量，匹萨直径。让我们用下面的数据对两种模型做个比较：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>训练样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1276,13 +1133,11 @@ R-squared: 0.77
 </tbody>
 </table>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>测试样本</th>
 <th>直径（英寸）</th>
 <th>价格（美元）</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td>1</td>
@@ -1307,8 +1162,8 @@ R-squared: 0.77
 </tbody>
 </table>
 <p>二次回归（Quadratic Regression），即回归方程有个二次项，公式如下：</p>
-<p>$$y = \alpha + \beta_1 x + \beta_2 x^2$$</p>
-<p>我们只用一个解释变量，但是模型有三项，通过第三项（二次项）来实现曲线关系。<code>PolynomialFeatures</code>转换器可以用来解决这个问题。代码如下：</p>
+$$y = \alpha + \beta_1 x + \beta_2 x^2$$<p>我们只用一个解释变量，但是模型有三项，通过第三项（二次项）来实现曲线关系。<code>PolynomialFeatures</code>转换器可以用来解决这个问题。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1316,10 +1171,10 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">PolynomialFeatures</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">]]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mf">17.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">]]</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">]]</span>
@@ -1339,22 +1194,17 @@ R-squared: 0.77
 <span class="n">xx_quadratic</span> <span class="o">=</span> <span class="n">quadratic_featurizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx_quadratic</span><span class="p">),</span> <span class="s">'r-'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_train_quadratic</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'一元线性回归 r-squared'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train_quadratic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'一元线性回归 r-squared'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1373,8 +1223,7 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[6], [8], [10], [14], [18]]
+<pre>[[6], [8], [10], [14], [18]]
 [[  1   6  36]
  [  1   8  64]
  [  1  10 100]
@@ -1387,11 +1236,7 @@ R-squared: 0.77
  [  1  16 256]]
 一元线性回归 r-squared 0.809726832467
 二次回归 r-squared 0.867544458591
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1405,6 +1250,7 @@ R-squared: 0.77
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>效果如上图所示，直线为一元线性回归（R方0.81），曲线为二次回归（R方0.87），其拟合效果更佳。还有三次回归，就是再增加一个立方项（$\beta_3 x^3$）。同样方法拟合，效果如下图所示：</p>
+
 </div>
 </div>
 </div>
@@ -1412,8 +1258,8 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">)</span>
 
 <span class="n">quadratic_featurizer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1432,20 +1278,15 @@ R-squared: 0.77
 <span class="n">xx_cubic</span> <span class="o">=</span> <span class="n">cubic_featurizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">regressor_cubic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx_cubic</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_train_cubic</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X_test_cubic</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'三次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_cubic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_cubic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train_cubic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test_cubic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'三次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_cubic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_cubic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1464,8 +1305,7 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[[   1    6   36  216]
+<pre>[[   1    6   36  216]
  [   1    8   64  512]
  [   1   10  100 1000]
  [   1   14  196 2744]
@@ -1476,11 +1316,7 @@ R-squared: 0.77
  [   1   16  256 4096]]
 二次回归 r-squared 0.867544458591
 三次回归 r-squared 0.835692454062
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1494,6 +1330,7 @@ R-squared: 0.77
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>从图中可以看出，三次回归经过的点更多，但是R方值却没有二次回归高。下面我们再看一个更高阶的，七次回归，效果如下图所示：</p>
+
 </div>
 </div>
 </div>
@@ -1501,8 +1338,8 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span> <span class="o">=</span> <span class="n">runplt</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">)</span>
 
 <span class="n">quadratic_featurizer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1521,18 +1358,13 @@ R-squared: 0.77
 <span class="n">xx_seventh</span> <span class="o">=</span> <span class="n">seventh_featurizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">regressor_seventh</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx_seventh</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'七次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_seventh</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_seventh</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'二次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_quadratic</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_quadratic</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'七次回归 r-squared'</span><span class="p">,</span> <span class="n">regressor_seventh</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_seventh</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1551,14 +1383,9 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-二次回归 r-squared 0.867544458591
+<pre>二次回归 r-squared 0.867544458591
 七次回归 r-squared 0.487942421984
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1572,6 +1399,7 @@ R-squared: 0.77
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看出，七次拟合的R方值更低，虽然其图形基本经过了所有的点。可以认为这是拟合过度（over-fitting）的情况。这种模型并没有从输入和输出中推导出一般的规律，而是记忆训练集的结果，这样在测试集的测试效果就不好了。</p>
+
 </div>
 </div>
 </div>
@@ -1585,7 +1413,6 @@ R-squared: 0.77
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1593,12 +1420,11 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>正则化（Regularization）是用来防止拟合过度的一堆方法。正则化向模型中增加信息，经常是一种对抗复杂性的手段。与奥卡姆剃刀原理（Occam's razor）所说的具有最少假设的论点是最好的观点类似。正则化就是用最简单的模型解释数据。</p>
 <p>scikit-learn提供了一些方法来使线性回归模型正则化。其中之一是岭回归(Ridge Regression，RR，也叫Tikhonov regularization)，通过放弃最小二乘法的无偏性，以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法。岭回归增加L2范数项（相关系数向量平方和的平方根）来调整成本函数（残差平方和）：</p>
-<p>$$RSS_{ridge} = \sum_{i=1}^n (y_i - x^T_i \beta)^2 + \lambda \sum_{j=1}^p \beta_j^2$$</p>
-<p>$\lambda$是调整成本函数的超参数（hyperparameter），不能自动处理，需要手动调整一种参数。$\lambda$增大，成本函数就变大。</p>
+$$RSS_{ridge} = \sum_{i=1}^n (y_i - x^T_i \beta)^2 + \lambda \sum_{j=1}^p \beta_j^2$$<p>$\lambda$是调整成本函数的超参数（hyperparameter），不能自动处理，需要手动调整一种参数。$\lambda$增大，成本函数就变大。</p>
 <p>scikit-learn也提供了最小收缩和选择算子(Least absolute shrinkage and selection operator, LASSO)，增加L1范数项（相关系数向量平方和的平方根）来调整成本函数（残差平方和）：</p>
-<p>$$RSS_{lasso} = \sum_{i=1}^n (y_i - x^T_i \beta)^2 + \lambda \sum_{j=1}^p \beta_j$$</p>
-<p>LASSO方法会产生稀疏参数，大多数相关系数会变成0，模型只会保留一小部分特征。而岭回归还是会保留大多数尽可能小的相关系数。当两个变量相关时，LASSO方法会让其中一个变量的相关系数会变成0，而岭回归是将两个系数同时缩小。</p>
+$$RSS_{lasso} = \sum_{i=1}^n (y_i - x^T_i \beta)^2 + \lambda \sum_{j=1}^p \beta_j$$<p>LASSO方法会产生稀疏参数，大多数相关系数会变成0，模型只会保留一小部分特征。而岭回归还是会保留大多数尽可能小的相关系数。当两个变量相关时，LASSO方法会让其中一个变量的相关系数会变成0，而岭回归是将两个系数同时缩小。</p>
 <p>scikit-learn还提供了弹性网（elastic net）正则化方法，通过线性组合L1和L2兼具LASSO和岭回归的内容。可以认为这两种方法是弹性网正则化的特例。</p>
+
 </div>
 </div>
 </div>
@@ -1612,7 +1438,6 @@ R-squared: 0.77
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1620,6 +1445,7 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们通过一个小例子介绍了线性回归模型。下面我们用一个现实的数据集来应用线性回归算法。假如你去参加聚会，想喝最好的红酒，可以让朋友推荐，不过你觉得他们也不靠谱。作为科学控，你带了pH试纸和一堆测量工具来测酒的理化性质，然后选一个最好的，周围的小伙伴都无语了，你亮瞎了世界。</p>
 <p>网上有相关的酒数据集可以参考，UCI机器学习项目的酒数据集收集了1599种酒的测试数据。收集完数据自然要用线性回归来研究一下，响应变量是0-10的整数值，我们也可以把这个问题看成是一个分类问题。不过本章还是把相应变量作为连续值来处理。</p>
+
 </div>
 </div>
 </div>
@@ -1633,7 +1459,6 @@ R-squared: 0.77
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1641,6 +1466,7 @@ R-squared: 0.77
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>scikit-learn作为机器学习系统，其探索数据的能力是不能与SPSS和R语言相媲美的。不过我们有Pandas库，可以方便的读取数据，完成描述性统计工作。我们通过描述性统计来设计模型。Pandas引入了R语言的dataframe，一种二维表格式异质（heterogeneous）数据结构。Pandas更多功能请见<a href="http://pandas.pydata.org">文档</a>，这里只用一部分功能，都很容易使用。</p>
 <p>首先，我们读取<code>.csv</code>文件生成dataframe：</p>
+
 </div>
 </div>
 </div>
@@ -1648,20 +1474,15 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/winequality-red.csv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">';'</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1670,12 +1491,11 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt output_prompt">Out[5]:</div>
 
-<div class="output_html rendered_html output_subarea output_pyout">
+<div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
+<thead><tr style="text-align: right;">
+<th></th>
       <th>fixed acidity</th>
       <th>volatile acidity</th>
       <th>citric acid</th>
@@ -1688,11 +1508,10 @@ R-squared: 0.77
       <th>sulphates</th>
       <th>alcohol</th>
       <th>quality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
       <td>7.4</td>
       <td>0.70</td>
       <td>0.00</td>
@@ -1706,8 +1525,8 @@ R-squared: 0.77
       <td>9.4</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>1</th>
+<tr>
+<th>1</th>
       <td>7.8</td>
       <td>0.88</td>
       <td>0.00</td>
@@ -1721,8 +1540,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>2</th>
+<tr>
+<th>2</th>
       <td>7.8</td>
       <td>0.76</td>
       <td>0.04</td>
@@ -1736,8 +1555,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>5</td>
     </tr>
-    <tr>
-      <th>3</th>
+<tr>
+<th>3</th>
       <td>11.2</td>
       <td>0.28</td>
       <td>0.56</td>
@@ -1751,8 +1570,8 @@ R-squared: 0.77
       <td>9.8</td>
       <td>6</td>
     </tr>
-    <tr>
-      <th>4</th>
+<tr>
+<th>4</th>
       <td>7.4</td>
       <td>0.70</td>
       <td>0.00</td>
@@ -1766,7 +1585,7 @@ R-squared: 0.77
       <td>9.4</td>
       <td>5</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 </div>
 </div>
@@ -1777,25 +1596,17 @@ R-squared: 0.77
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1804,12 +1615,11 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt output_prompt">Out[6]:</div>
 
-<div class="output_html rendered_html output_subarea output_pyout">
+<div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
+<thead><tr style="text-align: right;">
+<th></th>
       <th>fixed acidity</th>
       <th>volatile acidity</th>
       <th>citric acid</th>
@@ -1822,11 +1632,10 @@ R-squared: 0.77
       <th>sulphates</th>
       <th>alcohol</th>
       <th>quality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>count</th>
       <td>1599.000000</td>
       <td>1599.000000</td>
       <td>1599.000000</td>
@@ -1840,8 +1649,8 @@ R-squared: 0.77
       <td>1599.000000</td>
       <td>1599.000000</td>
     </tr>
-    <tr>
-      <th>mean</th>
+<tr>
+<th>mean</th>
       <td>8.319637</td>
       <td>0.527821</td>
       <td>0.270976</td>
@@ -1855,8 +1664,8 @@ R-squared: 0.77
       <td>10.422983</td>
       <td>5.636023</td>
     </tr>
-    <tr>
-      <th>std</th>
+<tr>
+<th>std</th>
       <td>1.741096</td>
       <td>0.179060</td>
       <td>0.194801</td>
@@ -1870,8 +1679,8 @@ R-squared: 0.77
       <td>1.065668</td>
       <td>0.807569</td>
     </tr>
-    <tr>
-      <th>min</th>
+<tr>
+<th>min</th>
       <td>4.600000</td>
       <td>0.120000</td>
       <td>0.000000</td>
@@ -1885,8 +1694,8 @@ R-squared: 0.77
       <td>8.400000</td>
       <td>3.000000</td>
     </tr>
-    <tr>
-      <th>25%</th>
+<tr>
+<th>25%</th>
       <td>7.100000</td>
       <td>0.390000</td>
       <td>0.090000</td>
@@ -1900,8 +1709,8 @@ R-squared: 0.77
       <td>9.500000</td>
       <td>5.000000</td>
     </tr>
-    <tr>
-      <th>50%</th>
+<tr>
+<th>50%</th>
       <td>7.900000</td>
       <td>0.520000</td>
       <td>0.260000</td>
@@ -1915,8 +1724,8 @@ R-squared: 0.77
       <td>10.200000</td>
       <td>6.000000</td>
     </tr>
-    <tr>
-      <th>75%</th>
+<tr>
+<th>75%</th>
       <td>9.200000</td>
       <td>0.640000</td>
       <td>0.420000</td>
@@ -1930,8 +1739,8 @@ R-squared: 0.77
       <td>11.100000</td>
       <td>6.000000</td>
     </tr>
-    <tr>
-      <th>max</th>
+<tr>
+<th>max</th>
       <td>15.900000</td>
       <td>1.580000</td>
       <td>1.000000</td>
@@ -1945,14 +1754,11 @@ R-squared: 0.77
       <td>14.900000</td>
       <td>8.000000</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 </div>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -1965,6 +1771,7 @@ R-squared: 0.77
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就这么简单，我们通过<code>Dataframe.describe()</code>方法获得了一堆描述性统计结果。<code>pd.read_csv()</code>读取<code>.csv</code>文件。下面我们在用matplotlib看看，获得更直观的认识：</p>
+
 </div>
 </div>
 </div>
@@ -1972,22 +1779,17 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'alcohol'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'quality'</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'alcohol'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'quality'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Alcohol'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Quality'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'酒精度（Alcohol）与品质（ Quality）'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2007,15 +1809,13 @@ R-squared: 0.77
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>散点图显示酒精度（Alcohol）与品质有比较弱的正相关特性，整体呈左下-右上趋势，也就是说酒精度较高的酒具有较高的品质。挥发性酸度（volatile acidity）与品质呈现负相关特性：</p>
+
 </div>
 </div>
 </div>
@@ -2023,22 +1823,17 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'volatile acidity'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'quality'</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'volatile acidity'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'quality'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Volatile Acidity'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Quality'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'挥发性酸度（volatile acidity）与品质（ Quality）'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2058,15 +1853,13 @@ R-squared: 0.77
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这些图都可以显示出响应变量与解释变量的相关性；让我们构建一个多元线性相关模型表述这些相关性。如何决定哪个变量应该在模型中？哪个可以不在？通过<code>Dataframe.corr()</code>计算两两的关联矩阵（correlation matrix）。关联矩阵进一步确认了酒精度与品质的正相关性，挥发性酸度与品质的负相关性。挥发性酸度越高，酒喝着就越向醋。总之，我们就假设好酒应该具有酒精度高、挥发性酸度低的特点，虽然这和品酒师的味觉可能不太一致。</p>
+
 </div>
 </div>
 </div>
@@ -2080,13 +1873,13 @@ R-squared: 0.77
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，我们把数据分成训练集和测试集，训练回归模型然后评估预测结果：</p>
+
 </div>
 </div>
 </div>
@@ -2094,11 +1887,11 @@ R-squared: 0.77
 <div class="input">
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mlslpic/winequality-red.csv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">';'</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'quality'</span><span class="p">]</span>
@@ -2106,17 +1899,12 @@ R-squared: 0.77
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_predictions</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'R-squared:'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'R-squared:'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2125,13 +1913,8 @@ R-squared: 0.77
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-R-squared: 0.382777530798
-
+<pre>R-squared: 0.382777530798
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2146,6 +1929,7 @@ R-squared: 0.382777530798
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>开始和前面类似，加载数据，然后通过<code>train_test_split</code>把数据集分成训练集和测试集。两个分区的数据比例都可以通过参数设置。默认情况下，25%的数据被分配给测试集。最后，我们训练模型并用测试集测试。</p>
 <p>R方值0.38表明38%的测试集数据都通过了测试。如果剩下的72%的数据被分到训练集，那效果就不一样了。我们可以用交叉检验的方法来实现一个更完善的效果评估。上一章我们介绍过这类方法，可以用来减少不同训练和测试数据集带来的变化。</p>
+
 </div>
 </div>
 </div>
@@ -2153,21 +1937,16 @@ R-squared: 0.382777530798
 <div class="input">
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2176,13 +1955,8 @@ R-squared: 0.382777530798
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-0.290041628842 [ 0.13200871  0.31858135  0.34955348  0.369145    0.2809196 ]
-
+<pre>0.290041628842 [ 0.13200871  0.31858135  0.34955348  0.369145    0.2809196 ]
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2197,6 +1971,7 @@ R-squared: 0.382777530798
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这里<code>cross_val_score</code>函数可以帮助我们轻松实现交叉检验功能。<code>cv</code>参数将数据集分成了5份。每个分区都会轮流作为测试集使用。<code>cross_val_score</code>函数返回模拟器<code>score</code>方法的结果。R方结果是在0.13到0.37之间，均值0.29，是模拟器模拟出的结果，相比单个训练/测试集的效果要好。</p>
 <p>让我们看看一些模型的预测品质与实际品质的图象显示结果：</p>
+
 </div>
 </div>
 </div>
@@ -2204,22 +1979,17 @@ R-squared: 0.382777530798
 <div class="input">
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predictions</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predictions</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'实际品质'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'预测品质'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'预测品质与实际品质'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2239,15 +2009,13 @@ R-squared: 0.382777530798
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>和假设一致，预测品质很少和实际品质完全一致。由于绝大多数训练数据都是一般品质的酒，所以这个模型更适合预测一般质量的酒。</p>
+
 </div>
 </div>
 </div>
@@ -2261,23 +2029,21 @@ R-squared: 0.382777530798
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面的内容都是通过最小化成本函数来计算参数的：</p>
-<p>$$\beta = (X^TX)^{-1}X^TY $$</p>
-<p>这里$X$是解释变量矩阵，当变量很多（上万个）的时候，$X^TX$计算量会非常大。另外，如果$X^TX$的行列式为0，即奇异矩阵，那么就无法求逆矩阵了。这里我们介绍另一种参数估计的方法，梯度下降法（gradient descent）。拟合的目标并没有变，我们还是用成本函数最小化来进行参数估计。</p>
+$$\beta = (X^TX)^{-1}X^TY $$<p>这里$X$是解释变量矩阵，当变量很多（上万个）的时候，$X^TX$计算量会非常大。另外，如果$X^TX$的行列式为0，即奇异矩阵，那么就无法求逆矩阵了。这里我们介绍另一种参数估计的方法，梯度下降法（gradient descent）。拟合的目标并没有变，我们还是用成本函数最小化来进行参数估计。</p>
 <p>梯度下降法被比喻成一种方法，一个人蒙着眼睛去找从山坡到溪谷最深处的路。他看不到地形图，所以只能沿着最陡峭的方向一步一步往前走。每一步的大小与地势陡峭的程度成正比。如果地势很陡峭，他就走一大步，因为他相信他仍在高出，还没有错过溪谷的最低点。如果地势比较平坦，他就走一小步。这时如果再走大步，可能会与最低点失之交臂。如果真那样，他就需要改变方向，重新朝着溪谷的最低点前进。他就这样一步一步的走啊走，直到有一个点走不动了，因为路是平的了，于是他卸下眼罩，已经到了谷底深处，小龙女在等他。</p>
 <p>通常，梯度下降算法是用来评估函数的局部最小值的。我们前面用的成本函数如下：</p>
-<p>$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$</p>
-<p>可以用梯度下降法来找出成本函数最小的模型参数值。梯度下降法会在每一步走完后，计算对应位置的导数，然后沿着梯度（变化最快的方向）相反的方向前进。总是垂直于等高线。</p>
+$$SS_{res} = \sum_{i=1}^n (y_i - f(x_i))^2$$<p>可以用梯度下降法来找出成本函数最小的模型参数值。梯度下降法会在每一步走完后，计算对应位置的导数，然后沿着梯度（变化最快的方向）相反的方向前进。总是垂直于等高线。</p>
 <p>需要注意的是，梯度下降法来找出成本函数的局部最小值。一个三维凸（convex）函数所有点构成的图行像一个碗。碗底就是唯一局部最小值。非凸函数可能有若干个局部最小值，也就是说整个图形看着像是有多个波峰和波谷。梯度下降法只能保证找到的是局部最小值，并非全局最小值。残差平方和构成的成本函数是凸函数，所以梯度下降法可以找到全局最小值。</p>
 <p>梯度下降法的一个重要超参数是步长（learning rate），用来控制蒙眼人步子的大小，就是下降幅度。如果步长足够小，那么成本函数每次迭代都会缩小，直到梯度下降法找到了最优参数为止。但是，步长缩小的过程中，计算的时间就会不断增加。如果步长太大，这个人可能会重复越过谷底，也就是梯度下降法可能在最优值附近摇摆不定。</p>
 <p>如果按照每次迭代后用于更新模型参数的训练样本数量划分，有两种梯度下降法。批量梯度下降（Batch gradient descent）每次迭代都用所有训练样本。随机梯度下降（Stochastic gradient descent，SGD）每次迭代都用一个训练样本，这个训练样本是随机选择的。当训练样本较多的时候，随机梯度下降法比批量梯度下降法更快找到最优参数。批量梯度下降法一个训练集只能产生一个结果。而SGD每次运行都会产生不同的结果。SGD也可能找不到最小值，因为升级权重的时候只用一个训练样本。它的近似值通常足够接近最小值，尤其是处理残差平方和这类凸函数的时候。</p>
 <p>下面我们用scikit-learn的<code>SGDRegressor</code>类来计算模型参数。它可以通过优化不同的成本函数来拟合线性模型，默认成本函数为残差平方和。本例中，我们用波士顿住房数据的13个解释变量来预测房屋价格：</p>
+
 </div>
 </div>
 </div>
@@ -2285,19 +2051,17 @@ R-squared: 0.382777530798
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">SGDRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -2309,6 +2073,7 @@ R-squared: 0.382777530798
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>scikit-learn加载数据集的方法很简单。首先我们用<code>train_test_split</code>分割训练集和测试集。</p>
+
 </div>
 </div>
 </div>
@@ -2316,8 +2081,8 @@ R-squared: 0.382777530798
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">X_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">X_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">y_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
@@ -2325,8 +2090,6 @@ R-squared: 0.382777530798
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -2338,6 +2101,7 @@ R-squared: 0.382777530798
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后用<code>StandardScaler</code>做归一化处理，后面会介绍。最后我们用交叉验证方法完成训练和测试：</p>
+
 </div>
 </div>
 </div>
@@ -2345,23 +2109,18 @@ R-squared: 0.382777530798
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">regressor</span> <span class="o">=</span> <span class="n">SGDRegressor</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'squared_loss'</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">regressor</span> <span class="o">=</span> <span class="n">SGDRegressor</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'squared_loss'</span><span class="p">)</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'交叉验证R方值:'</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'交叉验证R方均值:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'交叉验证R方值:'</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'交叉验证R方均值:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'测试集R方值:'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'测试集R方值:'</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -2370,15 +2129,10 @@ R-squared: 0.382777530798
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-交叉验证R方值: [ 0.64102297  0.65659839  0.80237287  0.67294193  0.57322387]
+<pre>交叉验证R方值: [ 0.64102297  0.65659839  0.80237287  0.67294193  0.57322387]
 交叉验证R方均值: 0.669232006274
 测试集R方值: 0.787333341357
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2396,7 +2150,6 @@ R-squared: 0.382777530798
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2404,21 +2157,29 @@ R-squared: 0.382777530798
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章我们介绍了三类线性回归模型。首先，通过匹萨价格预测的例子介绍了一元线性回归，一个解释变量和一个响应变量的线性拟合。然后，我们讨论了多元线性回归，具有更一般形式的若干解释变量和一个响应变量的问题。最后，我们讨论了多项式回归，一种特殊的多元线性模型，体系了解释变量和响应变量的非线性特征。这三种模型都是一般线性模型的具体形式，在第4章，从线性回归到逻辑回归（Logistic Regression）。</p>
 <p>我们将残差平方差最小化为目标来估计模型参数。首先，通过解析方法求解，我们介绍了梯度下降法，一种可以有效估计带许多解释变量的模型参数的优化方法。这章里的案例都很简单，很容易建模。下一章，我们介绍处理不同类型的解释变量的方法，包括分类数据、文字、图像。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="kivy-ch4-chat-app.html" rel="prev" title="kivy-ch4-chat-app">Previous post</a>
             </li>
             <li class="next">
                 <a href="3-feature-extraction-and-preprocessing.html" rel="next" title="3-feature-extraction-and-preprocessing">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/2-linear-regression.html",
@@ -2432,24 +2193,28 @@ R-squared: 0.382777530798
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -2459,15 +2224,5 @@ R-squared: 0.382777530798
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

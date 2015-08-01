@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (CHS)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/chs.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 01 Aug 2015 05:45:29 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>working-with-categorical-variables</title><link>http://muxuezi.github.io/posts/working-with-categorical-variables/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (CHS)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/chs.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 01 Aug 2015 06:24:51 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>working-with-categorical-variables</title><link>http://muxuezi.github.io/posts/working-with-categorical-variables.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -7,7 +7,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="分类变量处理"&gt;分类变量处理&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/working-with-categorical-variables/#%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="分类变量处理"&gt;分类变量处理&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/working-with-categorical-variables.html#%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -18,7 +18,7 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;分类变量是经常遇到的问题。一方面它们提供了信息；另一方面，它们可能是文本形式——纯文字或者与文字相关的整数——就像表格的索引一样。&lt;/p&gt;
 &lt;p&gt;因此，我们在建模的时候往往需要将这些变量量化，但是仅仅用简单的&lt;code&gt;id&lt;/code&gt;或者原来的形式是不行的。因为我们也需要避免在上一节里&lt;em&gt;通过阈值创建二元特征&lt;/em&gt;遇到的问题。如果我们把数据看成是连续的，那么也必须解释成连续的。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/working-with-categorical-variables/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/working-with-categorical-variables/</guid><pubDate>Mon, 27 Jul 2015 06:59:14 GMT</pubDate></item><item><title>using-truncated-svd-to-reduce-dimensionality</title><link>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/working-with-categorical-variables.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/working-with-categorical-variables.html</guid><pubDate>Mon, 27 Jul 2015 06:59:14 GMT</pubDate></item><item><title>using-truncated-svd-to-reduce-dimensionality</title><link>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -26,7 +26,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用截断奇异值分解降维"&gt;用截断奇异值分解降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/#%E7%94%A8%E6%88%AA%E6%96%AD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用截断奇异值分解降维"&gt;用截断奇异值分解降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality.html#%E7%94%A8%E6%88%AA%E6%96%AD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -36,7 +36,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;截断奇异值分解（Truncated singular value decomposition，TSVD）是一种矩阵因式分解（factorization）技术，将矩阵$M$分解成$U$，$\Sigma$和$V$。它与PCA很像，只是SVD分解是在数据矩阵上进行，而PCA是在数据的协方差矩阵上进行。通常，SVD用于发现矩阵的主成份。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality/</guid><pubDate>Mon, 27 Jul 2015 06:59:09 GMT</pubDate></item><item><title>using-stochastic-gradient-descent-for-regression</title><link>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-truncated-svd-to-reduce-dimensionality.html</guid><pubDate>Mon, 27 Jul 2015 06:59:09 GMT</pubDate></item><item><title>using-stochastic-gradient-descent-for-regression</title><link>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -44,7 +44,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用随机梯度下降处理回归"&gt;用随机梯度下降处理回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression/#%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用随机梯度下降处理回归"&gt;用随机梯度下降处理回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html#%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -54,7 +54,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;本主题将介绍随机梯度下降法（Stochastic Gradient Descent，SGD），我们将用它解决回归问题，后面我们还用它处理分类问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression/</guid><pubDate>Mon, 27 Jul 2015 06:59:03 GMT</pubDate></item><item><title>using-pipelines-for-multiple-preprocessing-steps</title><link>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html</guid><pubDate>Mon, 27 Jul 2015 06:59:03 GMT</pubDate></item><item><title>using-pipelines-for-multiple-preprocessing-steps</title><link>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -62,7 +62,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用管线命令处理多个步骤"&gt;用管线命令处理多个步骤&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps/#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E6%AD%A5%E9%AA%A4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用管线命令处理多个步骤"&gt;用管线命令处理多个步骤&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E6%AD%A5%E9%AA%A4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -72,7 +72,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;管线命令不经常用，但是很有用。它们可以把多个步骤组合成一个对象执行。这样可以更方便灵活地调节和控制整个模型的配置，而不只是一个一个步骤调节。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps/</guid><pubDate>Mon, 27 Jul 2015 06:58:57 GMT</pubDate></item><item><title>using-gaussian-processes-for-regression</title><link>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html</guid><pubDate>Mon, 27 Jul 2015 06:58:57 GMT</pubDate></item><item><title>using-gaussian-processes-for-regression</title><link>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -80,7 +80,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用正态随机过程处理回归"&gt;用正态随机过程处理回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression/#%E7%94%A8%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用正态随机过程处理回归"&gt;用正态随机过程处理回归&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html#%E7%94%A8%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -92,7 +92,7 @@
 &lt;p&gt;这个主题将介绍如何用正态随机过程（Gaussian process，GP）处理回归问题。在线性模型部分，我们曾经见过在变量间可能存在相关性时，如何用贝叶斯岭回归(Bayesian Ridge Regression)表示先验概率分布（prior）信息。&lt;/p&gt;
 &lt;p&gt;正态分布过程关心的是方程而不是均值。但是，如果我们假设一个正态分布的均值为0，那么我们需要确定协方差。&lt;/p&gt;
 &lt;p&gt;这样处理就与线性回归问题中先验概率分布可以用相关系数表示的情况类似。用GP处理的先验就可以用数据、样本数据间协方差构成函数表示，因此必须从数据中拟合得出。具体内容参考&lt;a href="http://www.gaussianprocess.org/"&gt;The Gaussian Processes Web Site&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression/</guid><pubDate>Mon, 27 Jul 2015 06:58:51 GMT</pubDate></item><item><title>using-factor-analytics-for-decomposition</title><link>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html</guid><pubDate>Mon, 27 Jul 2015 06:58:51 GMT</pubDate></item><item><title>using-factor-analytics-for-decomposition</title><link>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -100,7 +100,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用因子分析降维"&gt;用因子分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition/#%E7%94%A8%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用因子分析降维"&gt;用因子分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html#%E7%94%A8%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -111,7 +111,7 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;因子分析（factor analysis）是另一种降维方法。与PCA不同的是，因子分析有假设而PCA没有假设。因子分析的基本假设是有一些隐藏特征与数据集的特征相关。&lt;/p&gt;
 &lt;p&gt;这个主题将浓缩（boil down）样本数据集的显性特征，尝试像理解因变量一样地理解自变量之间的隐藏特征。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition/</guid><pubDate>Mon, 27 Jul 2015 06:58:45 GMT</pubDate></item><item><title>scaling-data-to-the-standard-normal</title><link>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</guid><pubDate>Mon, 27 Jul 2015 06:58:45 GMT</pubDate></item><item><title>scaling-data-to-the-standard-normal</title><link>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -119,7 +119,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="把数据调整为标准正态分布"&gt;把数据调整为标准正态分布&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal/#%E6%8A%8A%E6%95%B0%E6%8D%AE%E8%B0%83%E6%95%B4%E4%B8%BA%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="把数据调整为标准正态分布"&gt;把数据调整为标准正态分布&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html#%E6%8A%8A%E6%95%B0%E6%8D%AE%E8%B0%83%E6%95%B4%E4%B8%BA%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -129,7 +129,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;经常需要将数据标准化调整（scaling）为标准正态分布（standard normal）。标准正态分布算得上是统计学中最重要的分布了。如果你学过统计，Z值表（z-scores）应该不陌生。实际上，Z值表的作用就是把服从某种分布的特征转换成标准正态分布的Z值。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal/</guid><pubDate>Mon, 27 Jul 2015 06:58:39 GMT</pubDate></item><item><title>reducing-dimensionality-with-pca</title><link>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/scaling-data-to-the-standard-normal.html</guid><pubDate>Mon, 27 Jul 2015 06:58:39 GMT</pubDate></item><item><title>reducing-dimensionality-with-pca</title><link>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -137,7 +137,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用主成分分析降维"&gt;用主成分分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca/#%E7%94%A8%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用主成分分析降维"&gt;用主成分分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html#%E7%94%A8%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -147,7 +147,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;现在是时候升一级了！主成分分析（Principal component analysis，PCA）是本书介绍的第一个高级技术。到目前为止都是些简单的统计学知识，而PCA将统计学和线性代数组合起来实现降维，堪称简单模型的杀手锏。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca/</guid><pubDate>Mon, 27 Jul 2015 06:58:33 GMT</pubDate></item><item><title>putting-it-all-together-with-pipelines</title><link>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/reducing-dimensionality-with-pca.html</guid><pubDate>Mon, 27 Jul 2015 06:58:33 GMT</pubDate></item><item><title>putting-it-all-together-with-pipelines</title><link>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -155,7 +155,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用管线命令连接多个转换方法"&gt;用管线命令连接多个转换方法&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines/#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用管线命令连接多个转换方法"&gt;用管线命令连接多个转换方法&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -165,7 +165,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;下面，让我们用管线命令连接多个转换方法，来演示一个复杂点儿的例子。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines/</guid><pubDate>Mon, 27 Jul 2015 06:58:28 GMT</pubDate></item><item><title>kernel-pca-for-nonlinear-dimensionality-reduction</title><link>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction/</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/putting-it-all-together-with-pipelines.html</guid><pubDate>Mon, 27 Jul 2015 06:58:28 GMT</pubDate></item><item><title>kernel-pca-for-nonlinear-dimensionality-reduction</title><link>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -173,7 +173,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用核PCA实现非线性降维"&gt;用核PCA实现非线性降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction/#%E7%94%A8%E6%A0%B8PCA%E5%AE%9E%E7%8E%B0%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="用核PCA实现非线性降维"&gt;用核PCA实现非线性降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html#%E7%94%A8%E6%A0%B8PCA%E5%AE%9E%E7%8E%B0%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -183,4 +183,4 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;由于大多数统计方法最开始都是线性的，所以，想解决非线性问题，就需要做一些调整。PCA也是一种线性变换。本主题将首先介绍它的非线性形式，然后介绍如何降维。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction/</guid><pubDate>Mon, 27 Jul 2015 06:58:22 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/kernel-pca-for-nonlinear-dimensionality-reduction.html</guid><pubDate>Mon, 27 Jul 2015 06:58:22 GMT</pubDate></item></channel></rss>

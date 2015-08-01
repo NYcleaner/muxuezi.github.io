@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>creating-binary-features-through-thresholding | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>creating-binary-features-through-thresholding | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="creating-binary-features-through-thresholding">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html">
-    <meta property="og:description" content="用阈值创建二元特征¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="creating-binary-features-through-thresholding">
+<meta property="og:url" content="http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html">
+<meta property="og:description" content="用阈值创建二元特征¶
 
 
 
@@ -70,61 +55,81 @@ Getting ready¶
 
 
 
-
-通常建立二元特征是非常有用的方">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-07-27T14:57:47+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-           <meta property="article:tag" content="scikit-learn cookbook">
-
-    
-    
-
+通常建立二元特征是非常有用的方法，">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-27T14:57:47+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="scikit-learn cookbook">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">creating-binary-features-through-thresholding</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-07-27T14:57:47+08:00">2015-07-27 14:57</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="creating-binary-features-through-thresholding.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="creating-binary-features-through-thresholding.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">creating-binary-features-through-thresholding</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-           <li><a class="tag p-category" href="../categories/scikit-learn-cookbook.html" rel="tag">scikit-learn cookbook</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:57:47+08:00" itemprop="datePublished" title="2015-07-27 14:57">2015-07-27 14:57</time></a></p>
+                <p class="commentline">            <a href="creating-binary-features-through-thresholding.html#disqus_thread" data-disqus-identifier="cache/posts/creating-binary-features-through-thresholding.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="creating-binary-features-through-thresholding.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -135,7 +140,6 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -157,7 +161,6 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -165,6 +168,7 @@ Getting ready¶
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>通常建立二元特征是非常有用的方法，不过要格外小心。我们还是用<code>boston</code>数据集来学习如何创建二元特征。</p>
 <p>首先，加载<code>boston</code>数据集：</p>
+
 </div>
 </div>
 </div>
@@ -172,14 +176,12 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
 <span class="n">boston</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_boston</span><span class="p">()</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -195,7 +197,6 @@ Getting ready¶
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -217,6 +218,7 @@ Getting ready¶
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>boston</code>数据集的因变量是房子的价格中位数（单位：千美元）。这个数据集适合测试回归和其他连续型预测算法，但是假如现在我们想预测一座房子的价格是否高于总体均值。要解决这个问题，我们需要创建一个均值的阈值。如果一个值比均值大，则为<code>1</code>；否则，则为<code>0</code>：</p>
+
 </div>
 </div>
 </div>
@@ -224,20 +226,15 @@ Getting ready¶
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
 <span class="n">new_target</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">new_target</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -247,15 +244,10 @@ Getting ready¶
 <div class="prompt output_prompt">Out[6]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  0.,  1.,  1.,  1.])
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.,  0.,  1.,  1.,  1.])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -268,6 +260,7 @@ array([ 1.,  0.,  1.,  1.,  1.])
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很容易，让我们检查一下：</p>
+
 </div>
 </div>
 </div>
@@ -275,18 +268,13 @@ array([ 1.,  0.,  1.,  1.,  1.])
 <div class="input">
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -296,15 +284,10 @@ array([ 1.,  0.,  1.,  1.,  1.])
 <div class="prompt output_prompt">Out[22]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([1, 0, 1, 1, 1])
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 0, 1, 1, 1])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -317,6 +300,7 @@ array([1, 0, 1, 1, 1])
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>既然Numpy已经很简单了，为什么还要用scikit-learn的函数呢？管道命令，将在<em>用管道命令联接多个预处理步骤</em>一节中介绍，会解释这个问题；要用管道命令就要用<code>Binarizer</code>类：</p>
+
 </div>
 </div>
 </div>
@@ -324,20 +308,15 @@ array([1, 0, 1, 1, 1])
 <div class="input">
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="nb">bin</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">Binarizer</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="nb">bin</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">Binarizer</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="n">new_target</span> <span class="o">=</span> <span class="nb">bin</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 <span class="n">new_target</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -347,15 +326,10 @@ array([1, 0, 1, 1, 1])
 <div class="prompt output_prompt">Out[24]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  0.,  1.,  1.,  1.])
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.,  0.,  1.,  1.,  1.])</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -372,13 +346,13 @@ array([ 1.,  0.,  1.,  1.,  1.])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>方法看着非常简单；其实scikit-learn在底层创建一个检测层，如果被监测的值比阈值大就返回<code>Ture</code>。然后把满足条件的值更新为<code>1</code>，不满足条件的更新为<code>0</code>。</p>
+
 </div>
 </div>
 </div>
@@ -392,13 +366,13 @@ array([ 1.,  0.,  1.,  1.,  1.])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们再介绍一些稀疏矩阵和<code>fit</code>方法的知识。</p>
+
 </div>
 </div>
 </div>
@@ -412,13 +386,13 @@ array([ 1.,  0.,  1.,  1.,  1.])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>稀疏矩阵的<code>0</code>是不被存储的；这样可以节省很多空间。这就为<code>binarizer</code>造成了问题，需要指定阈值参数<code>threshold</code>不小于<code>0</code>来解决，如果<code>threshold</code>小于<code>0</code>就会出现错误：</p>
+
 </div>
 </div>
 </div>
@@ -426,20 +400,15 @@ array([ 1.,  0.,  1.,  1.,  1.])
 <div class="input">
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">coo</span>
 <span class="n">spar</span> <span class="o">=</span> <span class="n">coo</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <span class="n">preprocessing</span><span class="o">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">spar</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -447,7 +416,7 @@ array([ 1.,  0.,  1.,  1.,  1.])
 
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
+<div class="output_subarea output_text output_error">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">ValueError</span>                                Traceback (most recent call last)
@@ -471,9 +440,6 @@ array([ 1.,  0.,  1.,  1.,  1.])
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -485,28 +451,36 @@ array([ 1.,  0.,  1.,  1.,  1.])
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>binarizer</code>类里面有<code>fit</code>方法，但是它只是通用接口，并没有实际的拟合操作，仅返回对象。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+            <li><a class="tag p-category" href="../categories/scikit-learn-cookbook.html" rel="tag">scikit-learn cookbook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="binarizing-label-features.html" rel="prev" title="binarizing-label-features">Previous post</a>
             </li>
             <li class="next">
                 <a href="creating-sample-data-for-toy-analysis.html" rel="next" title="creating-sample-data-for-toy-analysis">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/creating-binary-features-through-thresholding.html",
@@ -520,24 +494,28 @@ array([ 1.,  0.,  1.,  1.,  1.])
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -547,15 +525,5 @@ array([ 1.,  0.,  1.,  1.,  1.])
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

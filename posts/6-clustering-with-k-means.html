@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>6-clustering-with-k-means | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/6-clustering-with-k-means.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6-clustering-with-k-means | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/6-clustering-with-k-means.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="6-clustering-with-k-means">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/6-clustering-with-k-means.html">
-    <meta property="og:description" content="K-Means聚类¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="6-clustering-with-k-means">
+<meta property="og:url" content="http://muxuezi.github.io/posts/6-clustering-with-k-means.html">
+<meta property="og:description" content="K-Means聚类¶
 
 
 
@@ -60,58 +45,80 @@ MathJax.Hub.Config({
 
 
 
-在第一章，机器学习基础中，">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-29T20:29:49+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+在第一章，机器学习基础中，我">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-29T20:29:49+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">6-clustering-with-k-means</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-29T20:29:49+08:00">2015-06-29 20:29</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="6-clustering-with-k-means.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="6-clustering-with-k-means.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">6-clustering-with-k-means</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-29T20:29:49+08:00" itemprop="datePublished" title="2015-06-29 20:29">2015-06-29 20:29</time></a></p>
+                <p class="commentline">            <a href="6-clustering-with-k-means.html#disqus_thread" data-disqus-identifier="cache/posts/6-clustering-with-k-means.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="6-clustering-with-k-means.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -122,7 +129,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -145,6 +151,7 @@ MathJax.Hub.Config({
 <p>也可能分成四组，如下图所示：</p>
 <p><img src="mlslpic/6.3%20fourcluster.png" alt="fourcluster"></p>
 <p>聚类通常用于探索数据集。社交网络可以用聚类算法识别社区，然后向没有加入社区的用户进行推荐。在生物学领域，聚类用于找出有相似模式的基因组。推荐系统有时也利用聚类算法向用户推荐产品和媒体资源。在市场调查中，聚类算法用来做用户分组。下面，我们就用K-Means聚类算法来为一个数据集聚类。</p>
+
 </div>
 </div>
 </div>
@@ -158,7 +165,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -166,16 +172,13 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由于具有出色的速度和良好的可扩展性，K-Means聚类算法算得上是最著名的聚类方法。K-Means算法是一个重复移动类中心点的过程，把类的中心点，也称重心（centroids），移动到其包含成员的平均位置，然后重新划分其内部成员。$K$是算法计算出的超参数，表示类的数量；K-Means可以自动分配样本到不同的类，但是不能决定究竟要分几个类。$K$必须是一个比训练集样本数小的正整数。有时，类的数量是由问题内容指定的。例如，一个鞋厂有三种新款式，它想知道每种新款式都有哪些潜在客户，于是它调研客户，然后从数据里找出三类。也有一些问题没有指定聚类的数量，最优的聚类数量是不确定的。后面我们会介绍一种启发式方法来估计最优聚类数量，称为肘部法则（Elbow Method）。</p>
 <p>K-Means的参数是类的重心位置和其内部观测值的位置。与广义线性模型和决策树类似，K-Means参数的最优解也是以成本函数最小化为目标。K-Means成本函数公式如下：</p>
-<p>$$J = \sum_{k=1}^k\sum_{i \in {C_k}}{|x_i-\mu_k|}^2$$</p>
-<p>$\mu_k$是第$k$个类的重心位置。成本函数是各个类畸变程度（distortions）之和。每个类的畸变程度等于该类重心与其内部成员位置距离的平方和。若类内部的成员彼此间越紧凑则类的畸变程度越小，反之，若类内部的成员彼此间越分散则类的畸变程度越大。求解成本函数最小化的参数就是一个重复配置每个类包含的观测值，并不断移动类重心的过程。首先，类的重心是随机确定的位置。实际上，重心位置等于随机选择的观测值的位置。每次迭代的时候，K-Means会把观测值分配到离它们最近的类，然后把重心移动到该类全部成员位置的平均值那里。让我们用如下表所示的训练数据来试验一下：</p>
+$$J = \sum_{k=1}^k\sum_{i \in {C_k}}{|x_i-\mu_k|}^2$$<p>$\mu_k$是第$k$个类的重心位置。成本函数是各个类畸变程度（distortions）之和。每个类的畸变程度等于该类重心与其内部成员位置距离的平方和。若类内部的成员彼此间越紧凑则类的畸变程度越小，反之，若类内部的成员彼此间越分散则类的畸变程度越大。求解成本函数最小化的参数就是一个重复配置每个类包含的观测值，并不断移动类重心的过程。首先，类的重心是随机确定的位置。实际上，重心位置等于随机选择的观测值的位置。每次迭代的时候，K-Means会把观测值分配到离它们最近的类，然后把重心移动到该类全部成员位置的平均值那里。让我们用如下表所示的训练数据来试验一下：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">样本</th>
 <th style="text-align:center">X0</th>
 <th style="text-align:center">X1</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -240,6 +243,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>上表有两个解释变量，每个样本有两个特征。画图如下所示：</p>
+
 </div>
 </div>
 </div>
@@ -247,15 +251,13 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="kn">import</span> <span class="n">FontProperties</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="k">import</span> <span class="n">FontProperties</span>
 <span class="n">font</span> <span class="o">=</span> <span class="n">FontProperties</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s">r"c:\windows\fonts\msyh.ttc"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -265,24 +267,19 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="s">'k.'</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -302,9 +299,6 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -312,8 +306,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>假设K-Means初始化时，将第一个类的重心设置在第5个样本，第二个类的重心设置在第11个样本.那么我们可以把每个实例与两个重心的距离都计算出来，将其分配到最近的类里面。计算结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">样本</th>
 <th style="text-align:center">X0</th>
 <th style="text-align:center">X1</th>
@@ -322,8 +315,7 @@ MathJax.Hub.Config({
 <th style="text-align:center">上次聚类结果</th>
 <th style="text-align:center">新聚类结果</th>
 <th style="text-align:center">是否改变</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -467,6 +459,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>新的重心位置和初始聚类结果如下图所示。第一类用X表示，第二类用点表示。重心位置用稍大的点突出显示。</p>
+
 </div>
 </div>
 </div>
@@ -474,29 +467,24 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [70]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 <span class="n">C2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">C1</span><span class="p">))</span>
 <span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C1</span><span class="p">]</span>
 <span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C2</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C2</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'第一次迭代后聚类结果'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span><span class="p">,</span> <span class="s">'rx'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span><span class="p">,</span> <span class="s">'g.'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="s">'rx'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">'g.'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -516,9 +504,6 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -526,8 +511,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在我们重新计算两个类的重心，把重心移动到新位置，并重新计算各个样本与新重心的距离，并根据距离远近为样本重新归类。结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">样本</th>
 <th style="text-align:center">X0</th>
 <th style="text-align:center">X1</th>
@@ -536,8 +520,7 @@ MathJax.Hub.Config({
 <th style="text-align:center">上次聚类结果</th>
 <th style="text-align:center">新聚类结果</th>
 <th style="text-align:center">是否改变</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -682,6 +665,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>画图结果如下：</p>
+
 </div>
 </div>
 </div>
@@ -689,29 +673,24 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 <span class="n">C2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">C1</span><span class="p">))</span>
 <span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C1</span><span class="p">]</span>
 <span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C2</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C2</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'第二次迭代后聚类结果'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span><span class="p">,</span> <span class="s">'rx'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span><span class="p">,</span> <span class="s">'g.'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">6.4</span><span class="p">,</span><span class="s">'rx'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">4.57</span><span class="p">,</span><span class="mf">4.14</span><span class="p">,</span><span class="s">'g.'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -731,9 +710,6 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -741,8 +717,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们再重复一次上面的做法，把重心移动到新位置，并重新计算各个样本与新重心的距离，并根据距离远近为样本重新归类。结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">样本</th>
 <th style="text-align:center">X0</th>
 <th style="text-align:center">X1</th>
@@ -751,8 +726,7 @@ MathJax.Hub.Config({
 <th style="text-align:center">上次聚类结果</th>
 <th style="text-align:center">新聚类结果</th>
 <th style="text-align:center">是否改变</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -897,6 +871,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>画图结果如下：</p>
+
 </div>
 </div>
 </div>
@@ -904,29 +879,24 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [76]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">C1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 <span class="n">C2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">C1</span><span class="p">))</span>
 <span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C1</span><span class="p">]</span>
 <span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">C2</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">C2</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'第三次迭代后聚类结果'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C1</span><span class="p">,</span> <span class="n">X1C1</span><span class="p">,</span> <span class="s">'rx'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0C2</span><span class="p">,</span> <span class="n">X1C2</span><span class="p">,</span> <span class="s">'g.'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">7.0</span><span class="p">,</span><span class="s">'rx'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.8</span><span class="p">,</span><span class="s">'g.'</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">12.0</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -946,15 +916,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>再重复上面的方法就会发现类的重心不变了，K-Means会在条件满足的时候停止重复聚类过程。通常，条件是前后两次迭代的成本函数值的差达到了限定值，或者是前后两次迭代的重心位置变化达到了限定值。如果这些停止条件足够小，K-Means就能找到最优解。不过这个最优解不一定是全局最优解。</p>
+
 </div>
 </div>
 </div>
@@ -968,7 +936,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -978,6 +945,7 @@ MathJax.Hub.Config({
 <p><img src="mlslpic/6.4%20clusterlocaloptima.png" alt="clusterlocaloptima"></p>
 <p>K-Means最终会得到一个局部最优解，如下图所示。这些类可能没有实际意义，而上面和下面两部分观测值可能是更有合理的聚类结果。为了避免局部最优解，K-Means通常初始时要重复运行十几次甚至上百次。每次重复时，它会随机的从不同的位置开始初始化。最后把最小的成本函数对应的重心位置作为初始化位置。</p>
 <p><img src="mlslpic/6.5%20clusterlocaloptima2.png" alt="clusterlocaloptima2"></p>
+
 </div>
 </div>
 </div>
@@ -991,13 +959,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果问题中没有指定$K$的值，可以通过肘部法则这一技术来估计聚类数量。肘部法则会把不同$K$值的成本函数值画出来。随着$K$值的增大，平均畸变程度会减小；每个类包含的样本数会减少，于是样本离其重心会更近。但是，随着$K$值继续增大，平均畸变程度的改善效果会不断减低。$K$值增大过程中，畸变程度的改善效果下降幅度最大的位置对应的$K$值就是肘部。下面让我们用肘部法则来确定最佳的$K$值。下图数据明显可分成两类：</p>
+
 </div>
 </div>
 </div>
@@ -1005,25 +973,20 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [103]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">cluster1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">cluster2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">cluster1</span><span class="p">,</span> <span class="n">cluster2</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="s">'k.'</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1043,15 +1006,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们计算$K$值从1到10对应的平均畸变程度：</p>
+
 </div>
 </div>
 </div>
@@ -1059,9 +1020,9 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [104]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="k">import</span> <span class="n">cdist</span>
 <span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">meandistortions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
@@ -1074,14 +1035,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'用肘部法则来确定最佳的K值'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1101,15 +1057,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>从图中可以看出，$K$值从1到2时，平均畸变程度变化最大。超过2以后，平均畸变程度变化显著降低。因此肘部就是$K=2$。下面我们再用肘部法则来确定3个类的最佳的K值：</p>
+
 </div>
 </div>
 </div>
@@ -1117,25 +1071,20 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [136]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="k">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="s">'k.'</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1155,16 +1104,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [137]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="k">import</span> <span class="n">cdist</span>
 <span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">meandistortions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
@@ -1177,14 +1123,9 @@ MathJax.Hub.Config({
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'用肘部法则来确定最佳的K值'</span><span class="p">,</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">);</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1204,15 +1145,13 @@ MathJax.Hub.Config({
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>从图中可以看出，$K$值从1到3时，平均畸变程度变化最大。超过3以后，平均畸变程度变化显著降低。因此肘部就是$K=3$。</p>
+
 </div>
 </div>
 </div>
@@ -1226,15 +1165,14 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们把机器学习定义为对系统的设计和学习，通过对经验数据的学习，将任务效果的不断改善作为一个度量标准。K-Means是一种非监督学习，没有标签和其他信息来比较聚类结果。但是，我们还是有一些指标可以评估算法的性能。我们已经介绍过类的畸变程度的度量方法。本节为将介绍另一种聚类算法效果评估方法称为轮廓系数（Silhouette Coefficient）。轮廓系数是类的密集与分散程度的评价指标。它会随着类的规模增大而增大。彼此相距很远，本身很密集的类，其轮廓系数较大，彼此集中，本身很大的类，其轮廓系数较小。轮廓系数是通过所有样本计算出来的，计算每个样本分数的均值，计算公式如下：</p>
-<p>$$s = \frac {ba} {max(a,b)}$$</p>
-<p>$a$是每一个类中样本彼此距离的均值，$b$是一个类中样本与其最近的那个类的所有样本的距离的均值。下面的例子运行四次K-Means，从一个数据集中分别创建2，3，4，8个类，然后分别计算它们的轮廓系数。</p>
+$$s = \frac {ba} {max(a,b)}$$<p>$a$是每一个类中样本彼此距离的均值，$b$是一个类中样本与其最近的那个类的所有样本的距离的均值。下面的例子运行四次K-Means，从一个数据集中分别创建2，3，4，8个类，然后分别计算它们的轮廓系数。</p>
+
 </div>
 </div>
 </div>
@@ -1242,10 +1180,10 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [134]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1268,17 +1206,12 @@ MathJax.Hub.Config({
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="n">markers</span><span class="p">[</span><span class="n">l</span><span class="p">],</span><span class="n">ls</span><span class="o">=</span><span class="s">'None'</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'K = </span><span class="si">%s</span><span class="s">, 轮廓系数 = </span><span class="si">%.03f</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeans_model</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span><span class="n">metric</span><span class="o">=</span><span class="s">'euclidean'</span><span class="p">)),</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'K = %s, 轮廓系数 = %.03f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeans_model</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span><span class="n">metric</span><span class="o">=</span><span class="s">'euclidean'</span><span class="p">)),</span><span class="n">fontproperties</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1287,10 +1220,8 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>
-d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeWarning: Mean of empty slice.
+<pre>d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeWarning: Mean of empty slice.
   warnings.warn("Mean of empty slice.", RuntimeWarning)
-
 </pre>
 </div>
 </div>
@@ -1309,15 +1240,13 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很显然，这个数据集包括三个类。在$K=3$的时候轮廓系数是最大的。在$K=8$的时候，每个类的样本不仅彼此很接近，而且与其他类的样本也非常接近，因此这时轮廓系数是最小的。</p>
+
 </div>
 </div>
 </div>
@@ -1331,13 +1260,13 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用聚类算法探索了结构化数据集。现在我们用它来解决一个新问题。图像量化（image quantization）是一种将图像中相似颜色替换成同样颜色的有损压缩方法。图像量化会减少图像的存储空间，由于表示不同颜色的字节减少了。下面的例子中，我们将用聚类方法从一张图片中找出包含图片大多数颜色的压缩颜色调色板（palette），然后我们用这个压缩颜色调色板重新生成图片。这个例子需要用<code>mahotas</code>图像处理库，可以通过<code>pip install mahotas</code>安装：</p>
+
 </div>
 </div>
 </div>
@@ -1345,15 +1274,13 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
-<span class="kn">import</span> <span class="nn">mahotas</span> <span class="kn">as</span> <span class="nn">mh</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">shuffle</span>
+<span class="kn">import</span> <span class="nn">mahotas</span> <span class="k">as</span> <span class="nn">mh</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1365,6 +1292,7 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，读入图片，然后将图片矩阵展开成一个行向量。</p>
+
 </div>
 </div>
 </div>
@@ -1372,15 +1300,13 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">original_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'mlslpic</span><span class="se">\6</span><span class="s">.6 tree.png'</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">original_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'mlslpic</span><span class="se">\6</span><span class="s">.6 tree.png'</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
 <span class="n">original_dimensions</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">original_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">original_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">image_flattened</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_img</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1392,6 +1318,7 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后我们用K-Means算法在随机选择1000个颜色样本中建立64个类。每个类都可能是压缩调色板中的一种颜色。</p>
+
 </div>
 </div>
 </div>
@@ -1399,20 +1326,15 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">image_array_sample</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">image_flattened</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:</span><span class="mi">1000</span><span class="p">]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">image_array_sample</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">image_flattened</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:</span><span class="mi">1000</span><span class="p">]</span>
 <span class="n">estimator</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">image_array_sample</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1422,17 +1344,12 @@ d:\programfiles\Miniconda3\lib\site-packages\numpy\core\_methods.py:59: RuntimeW
 <div class="prompt output_prompt">Out[10]:</div>
 
 
-<div class="output_text output_subarea output_pyout">
-<pre>
-KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
+<div class="output_text output_subarea output_execute_result">
+<pre>KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
     n_jobs=1, precompute_distances='auto', random_state=0, tol=0.0001,
-    verbose=0)
-</pre>
+    verbose=0)</pre>
 </div>
 
-</div>
-
-</div>
 </div>
 
 </div>
@@ -1445,6 +1362,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>之后，我们为原始图片的每个像素进行类的分配。</p>
+
 </div>
 </div>
 </div>
@@ -1452,12 +1370,10 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">cluster_assignments</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image_flattened</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">cluster_assignments</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image_flattened</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1469,6 +1385,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最后，我们建立通过压缩调色板和类分配结果创建压缩后的图片：</p>
+
 </div>
 </div>
 </div>
@@ -1476,8 +1393,8 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">compressed_palette</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">cluster_centers_</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">compressed_palette</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">cluster_centers_</span>
 <span class="n">compressed_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">compressed_palette</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">label_idx</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
@@ -1495,14 +1412,9 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -1522,9 +1434,6 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1535,7 +1444,6 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1544,6 +1452,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <p>在下面的例子中，我们将聚类和分类组合起来研究一个半监督学习问题。你将对不带标签的数据进行聚类，获得一些特征，然后用这些特征来建立一个监督方法分类器。</p>
 <p>假设你有一只猫和一条狗。再假设你买了一个智能手机，表面上看是用来给人打电话的，其实你只是用来给猫和狗拍照。你的照片拍得很棒，因此你觉得你的朋友和同事一定会喜欢它们。而你知道一部分人只想看猫的照片，一部分人只想看狗的照片，但是要把这些照片分类太麻烦了。下面我们就做一个半监督学习系统来分别猫和狗的照片。</p>
 <p>回想一下<em>第三章，特征抽取与处理</em>的内容，有一个原始的方法来给图片分类，是用图片的像素密度值或亮度值作为解释变量。和我们前面进行文本处理时的高维向量不同，图片的特征向量不是稀疏的。另外，这个方法对图片的亮度，尺寸，旋转的变化都十分敏感。在<em>第三章，特征抽取与处理</em>里面，我们还介绍了SIFT和SURF描述器，用来描述图片的兴趣点，这类方法对图片的亮度，尺寸，旋转变化都不敏感。在下面的例子中，我们将用聚类算法处理这些描述器来学习图片的特征。每个元素将被编码成从图片中抽取的，被分配到同一个类的描述器的数量。这种方法有时也称为视觉词袋（bag-of-features）表示法，由于这个类的集合与词袋模型里的词汇表类似。我们将使用<a href="https://www.kaggle.com/c/dogs-vs-cats/data">Kaggle's Dogs vs. Cats competition</a>里面的1000张猫图片和1000张狗图片数据。注意，图片有不同的尺寸；由于我们的特征向量不用像素表示，所有我们也不需要将所有图片都缩放成同样的尺寸。我们将训练其中60的图片，然后用剩下的40图片来测试：</p>
+
 </div>
 </div>
 </div>
@@ -1551,18 +1460,16 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">mahotas</span> <span class="kn">as</span> <span class="nn">mh</span>
-<span class="kn">from</span> <span class="nn">mahotas.features</span> <span class="kn">import</span> <span class="n">surf</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">mahotas</span> <span class="k">as</span> <span class="nn">mh</span>
+<span class="kn">from</span> <span class="nn">mahotas.features</span> <span class="k">import</span> <span class="n">surf</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">MiniBatchKMeans</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1574,6 +1481,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，我们加载图片，转换成灰度图，再抽取SURF描述器。SURF描述器与其他类似的特征相比，可以更快的被提取，但是从2000张图片中抽取描述器依然是很费时间的。</p>
+
 </div>
 </div>
 </div>
@@ -1581,8 +1489,8 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">all_instance_filenames</span> <span class="o">=</span> <span class="p">[]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">all_instance_filenames</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">all_instance_targets</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">'cats-and-dogs-img/*.jpg'</span><span class="p">):</span>
     <span class="n">target</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="s">'cat'</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">else</span> <span class="mi">0</span>
@@ -1591,8 +1499,8 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <span class="n">surf_features</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_instance_filenames</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Reading image:'</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'Reading image:'</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">as_grey</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
     <span class="n">surf_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surf</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">image</span><span class="p">)[:,</span> <span class="mi">5</span><span class="p">:])</span>
     
 <span class="n">train_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_instance_filenames</span><span class="p">)</span> <span class="o">*</span> <span class="o">.</span><span class="mi">60</span><span class="p">)</span>
@@ -1602,8 +1510,6 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">all_instance_targets</span><span class="p">[</span><span class="n">train_len</span><span class="p">:]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1615,6 +1521,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后我们把抽取的描述器分成300个类。用<code>MiniBatchKMeans</code>类实现，它是K-Means算法的变种，每次迭代都随机抽取样本。由于每次迭代它只计算这些被随机抽取的一小部分样本与重心的距离，因此<code>MiniBatchKMeans</code>可以更快的聚类，但是它的畸变程度会更大。实际上，计算结果差不多：</p>
+
 </div>
 </div>
 </div>
@@ -1622,15 +1529,13 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Clustering'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train_surf_features</span><span class="p">),</span> <span class="s">'features'</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Clustering'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train_surf_features</span><span class="p">),</span> <span class="s">'features'</span><span class="p">)</span>
 <span class="n">estimator</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">)</span>
 <span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_surf_features</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1642,6 +1547,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>之后我们为训练集和测试集构建特征向量。我们找出每一个SURF描述器的类，用Numpy的<code>binCount()</code>进行计数。下面的代码为每个样本生成一个300维的特征向量：</p>
+
 </div>
 </div>
 </div>
@@ -1649,8 +1555,8 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">X_train</span> <span class="o">=</span> <span class="p">[]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">X_train</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">surf_features</span><span class="p">[:</span><span class="n">train_len</span><span class="p">]:</span>
     <span class="n">clusters</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
@@ -1667,8 +1573,6 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
     <span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1680,6 +1584,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最后，我们在特征向量和目标上训练一个逻辑回归分类器，然后估计它的精确率，召回率和准确率：</p>
+
 </div>
 </div>
 </div>
@@ -1687,18 +1592,16 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">'l2'</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">'l2'</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Precision: '</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Recall: '</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy: '</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Precision: '</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Recall: '</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Accuracy: '</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1710,6 +1613,7 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>半监督学习系统仅仅使用像素密度作为特征向量，就获得了比逻辑回归分类器更好的精确率和召回率。而且，我们的特征向量只有300维，比100x100像素图片的10000维要小得多。</p>
+
 </div>
 </div>
 </div>
@@ -1723,7 +1627,6 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1731,21 +1634,29 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章，我们介绍了我们的第一个无监督学习方法：聚类。聚类是用来探索无标签数据的结构的。我们介绍了K-Means聚类算法，重复将样本分配的类里面，不断的更新类的重心位置。虽然K-Means是无监督学习方法，其效果依然是可以度量的；用畸变程度和轮廓系数可以评估聚类效果。我们用K-Means研究了两个问题。第一个问题是图像量化，一种用单一颜色表示一组相似颜色的图像压缩技术。我们还用K-Means研究了半监督图像分类问题的特征。</p>
 <p>下一章，我们将介绍另一种无监督学习任务——降维（dimensionality reduction）。和我们前面介绍过的半监督猫和狗图像分类问题类似，降维算法可以在尽量保留信息完整性的同时，降低解释变量集合的维度。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="5-nonlinear-classification-and-regression-with-decision-trees.html" rel="prev" title="5-nonlinear-classification-and-regression-with-decision-trees">Previous post</a>
             </li>
             <li class="next">
                 <a href="4-from-linear-regression-to-logistic-regression.html" rel="next" title="4-from-linear-regression-to-logistic-regression">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/6-clustering-with-k-means.html",
@@ -1759,24 +1670,28 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1786,15 +1701,5 @@ KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=64, n_init=10,
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

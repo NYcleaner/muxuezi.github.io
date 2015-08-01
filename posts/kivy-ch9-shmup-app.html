@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>kivy-ch9-shmup-app | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kivy-ch9-shmup-app | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="kivy-ch9-shmup-app">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html">
-    <meta property="og:description" content="射击app¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch9-shmup-app">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html">
+<meta property="og:description" content="射击app¶
 
 
 
@@ -64,58 +49,80 @@ MathJax.Hub.Config({
 做一个在屏幕上同时移动不同内容的游戏，需要大量的渲染来实现，在移动端（或多平台支持）也是如此。这一章我们就来做这些事情，上一章的知识和源代码已经带我们入了门。
 教学大纲如下：
 
-用Kivy的纹理图集（Texture atla">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-24T13:44:43+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Kivy">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+用Kivy的纹理图集（Texture atlas">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:44:43+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">kivy-ch9-shmup-app</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-24T13:44:43+08:00">2015-06-24 13:44</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="kivy-ch9-shmup-app.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="kivy-ch9-shmup-app.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">kivy-ch9-shmup-app</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-24T13:44:43+08:00" itemprop="datePublished" title="2015-06-24 13:44">2015-06-24 13:44</time></a></p>
+                <p class="commentline">            <a href="kivy-ch9-shmup-app.html#disqus_thread" data-disqus-identifier="cache/posts/kivy-ch9-shmup-app.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="kivy-ch9-shmup-app.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -126,7 +133,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -151,6 +157,7 @@ MathJax.Hub.Config({
 <li>实现二维射击游戏的——一个控件，鼠标和触摸屏，基本冲突发现子弹</li>
 </ul>
 <p>后面会涉及到大量细节，如果看不明白就运行一下文末的源代码。</p>
+
 </div>
 </div>
 </div>
@@ -159,7 +166,8 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-">项目的限制</h3>
+<h3 id="项目的限制">项目的限制<a class="anchor-link" href="kivy-ch9-shmup-app.html#%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%99%90%E5%88%B6">¶</a>
+</h3>
 <p>我们做的app比较简单，功能有限，至少有以下限制：</p>
 <ul>
 <li>为了简化，忽略了奖惩机制，2048里面也是这样</li>
@@ -167,6 +175,7 @@ MathJax.Hub.Config({
 <li>许多优化被忽略了，可以少写一些代码</li>
 </ul>
 <p>如果感兴趣可以自己做。下面我们来看一下Kivy的纹理处理相关内容，后面会用到。</p>
+
 </div>
 </div>
 </div>
@@ -175,7 +184,8 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-">纹理图集简介</h3>
+<h3 id="纹理图集简介">纹理图集简介<a class="anchor-link" href="kivy-ch9-shmup-app.html#%E7%BA%B9%E7%90%86%E5%9B%BE%E9%9B%86%E7%AE%80%E4%BB%8B">¶</a>
+</h3>
 <p>纹理图集（也叫sprite sheets）是一种应用开发中把图象组合成更大纹理的方法。与只是把一堆单个图象载入应用相比，这么做有些好处：</p>
 <ul>
 <li>应用打开更快，读一个大文件比读许多小文件要快。如果你有几百个这样的图片，用这种方法性能提升会很明显——网页上更是如此：图片太多会严重占用HTTP请求资源，在移动设备上这点更加明显</li>
@@ -192,6 +202,7 @@ MathJax.Hub.Config({
 <li>Kivy应用纹理图集的用法</li>
 </ul>
 <p>如果你已经掌握了相关内容，可以直接跳到<em>GLSL使用纹理图集</em>一节。</p>
+
 </div>
 </div>
 </div>
@@ -200,10 +211,11 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-">创建一个图集</h4>
+<h4 id="创建一个图集">创建一个图集<a class="anchor-link" href="kivy-ch9-shmup-app.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%9B%BE%E9%9B%86">¶</a>
+</h4>
 <p>和网页开发不同，那里没有标准工具处理这个任务，Kivy框架用一个命令行工具处理图集映射。</p>
-<pre><code class="language-bash">python –m kivy.atlas &lt;atlas_name&gt; &lt;texture_size&gt; &lt;images…&gt;
-</code></pre>
+<div class="highlight"><pre>python –m kivy.atlas &lt;atlas_name&gt; &lt;texture_size&gt; &lt;images…&gt;
+</pre></div>
 <p>在Mac系统上，把<code>python</code>替换成<code>kivy</code>，因为安装的时候<code>Kivy.app</code>会调用Python解释器。</p>
 <p>这样会创建至少两个文件，由所有的图像是否满足一个设定大小的纹理来决定。本章假设<code>texture_size</code>的值足够包含所有图像。</p>
 <p>所有输出文件都是<code>atlas_name</code>开头的参数：</p>
@@ -225,20 +237,19 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>.atlas</code>是JSON格式的文件，用来描述纹理映射的位置。</p>
-<pre><code class="language-json">{
-    "<span class="attribute">game-0.png</span>": <span class="value">{
-        "<span class="attribute">player</span>": <span class="value">[<span class="number">2</span>, <span class="number">170</span>, <span class="number">78</span>, <span class="number">84</span>]</span>,
-        "<span class="attribute">bullet</span>": <span class="value">[<span class="number">82</span>, <span class="number">184</span>, <span class="number">24</span>, <span class="number">16</span>]
-    }</span>
-}</span>
-</code></pre>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"game-0.png"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"player"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">84</span><span class="p">],</span>
+        <span class="nt">"bullet"</span><span class="p">:</span> <span class="p">[</span><span class="mi">82</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 <p>纹理的名称就是其源文件的文件名，没有后缀，<code>foo.png</code>就是<code>foo</code>。后面的数值对应的是<code>[x, y, width, height]</code>，所有值都是像素。</p>
 <p>组合纹理就是把一堆图片合并起来获得想要的内容，如下图所示。通常，为了利用空间会紧密排在一起。</p>
 <blockquote>
@@ -246,12 +257,13 @@ MathJax.Hub.Config({
 </blockquote>
 <p><img src="kbpic/9.2%20textureatlas.png" alt="textureatlas"></p>
 <p>在Kivy代码里面用图集的方法和<code>http</code>方式类似，<code>atlas://</code>后面跟图集的路径。如下所示：</p>
-<pre><code class="language-yaml">Image:
-    <span class="keyword">source</span>: <span class="string">'flags/Israel.png'</span>
-</code></pre>
-<pre><code class="language-yaml">Image:
-    source: 'atlas:<span class="comment">//flags/Israel'</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">Image</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="s">'flags/Israel.png'</span>
+</pre></div>
+<div class="highlight"><pre><span class="l-Scalar-Plain">Image</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="s">'atlas://flags/Israel'</span>
+</pre></div>
+
 </div>
 </div>
 </div>
@@ -265,7 +277,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -274,19 +285,20 @@ MathJax.Hub.Config({
 <p>要演示上面的方法，我们用前面用过的图标<code>icon_clock.png</code>和<code>icon_paint.png</code>来试试：</p>
 <p><img src="kbpic/9.3%20kivyatlas.png" alt="kivyatlas"></p>
 <p>要创建图集，我们用下面的命令：</p>
-<pre><code class="language-bash">kivy -m kivy.atlas icons 512 icon_clock.png icon_paint.png
-</code></pre>
+<div class="highlight"><pre>kivy -m kivy.atlas icons <span class="m">512</span> icon_clock.png icon_paint.png
+</pre></div>
 <p>如果不是Mac系统，用<code>python</code>命令。运行之后会出现如下提示：</p>
+
 <pre><code>[INFO] Kivy v1.9.1
 [INFO] [Atlas] create an 512x512 rgba image
 ('Atlas created at', 'icons.atlas')
-1 image have been created
-</code></pre>
+1 image have been created</code></pre>
 <p>之后就会出现两个文件<code>icons.atlas</code>和<code>icons-0.png</code>。</p>
 <blockquote>
 <p>现在可以删除源图片文件。不过最好还是保留，有可能后面更新图集的时候还会用到。</p>
 </blockquote>
 <p>图集准备好以后，我们来做一个简单的app。<code>basic.py</code>文件代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -294,8 +306,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="k">import</span> <span class="n">App</span>
 
 <span class="k">class</span> <span class="nc">BasicApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -304,8 +316,6 @@ MathJax.Hub.Config({
     <span class="n">BasicApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -317,17 +327,18 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<code>basic.kv</code>文件里面加载布局很简单：</p>
-<pre><code class="language-yaml"><span class="class">BoxLayout</span>:
-    <span class="method">orientation:</span> <span class="string">'horizontal'</span>
+<div class="highlight"><pre><span class="l-Scalar-Plain">BoxLayout</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">orientation</span><span class="p-Indicator">:</span> <span class="s">'horizontal'</span>
 
-    <span class="class">Image</span>:
-        <span class="method">source:</span> <span class="string">'atlas://icons/icon_clock'</span>
+    <span class="l-Scalar-Plain">Image</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="s">'atlas://icons/icon_clock'</span>
 
-    <span class="class">Image</span>:
-        <span class="method">source:</span> <span class="string">'atlas://icons/icon_paint'</span>
-</code></pre>
+    <span class="l-Scalar-Plain">Image</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="s">'atlas://icons/icon_paint'</span>
+</pre></div>
 <p>运行代码，效果如下图所示：</p>
 <p><img src="kbpic/9.4%20kivyatlaseasy.png" alt="kivyatlaseasy"></p>
+
 </div>
 </div>
 </div>
@@ -341,7 +352,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -349,6 +359,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Kivy对图集的支持非常简单，但是GLSL应用里面没这么容易。好在<code>.atlas</code>是JSON格式，所以我们可以用Python的<code>json</code>模块来处理。然后，我们可以将像素坐标值转换成OpenGL的UV坐标值。</p>
 <p>由于我们知道每个纹理的绝对尺寸，我们可以计算出每个图片组合的顶点与中心的相对位置。这样就可以实现对图集按照其原始形式进行渲染，保持等比例变化。</p>
+
 </div>
 </div>
 </div>
@@ -362,13 +373,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>每个图集都有很多数据，为了方便管理数据，我们需要一个数据结构：</p>
+
 </div>
 </div>
 </div>
@@ -376,14 +387,12 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 
 <span class="n">UVMapping</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">'UVMapping'</span><span class="p">,</span> <span class="s">'u0 v0 u1 v1 su sv'</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -395,6 +404,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个数据类型和C语言的结构体类似，和下面的代码差不多：</p>
+
 </div>
 </div>
 </div>
@@ -402,8 +412,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">UVMapping</span><span class="p">:</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">UVMapping</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">su</span><span class="p">,</span> <span class="n">sv</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u0</span> <span class="o">=</span> <span class="n">u0</span> <span class="c"># top left corner</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span> <span class="c"># ---</span>
@@ -413,8 +423,6 @@ MathJax.Hub.Config({
         <span class="bp">self</span><span class="o">.</span><span class="n">sv</span> <span class="o">=</span> <span class="n">sv</span> <span class="c"># equals to 0.5 * height</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -427,12 +435,10 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意，这些代码只是演示命名数组的原理，并不是完全相同。每个属性的定义如下：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">属性</th>
 <th style="text-align:center">定义</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center"><code>u0, v0</code></td>
@@ -453,6 +459,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>这样做让代码可读性更好，原来的<code>tup[3]</code>就可以用<code>tup.v1</code>表示。同时，<code>UVMapping</code>是元组类型，一种不可变的、内存结构合理的数据结构，可以通过索引连接所有属性。</p>
+
 </div>
 </div>
 </div>
@@ -466,13 +473,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，让我们写一个函数来描述图集加载的过程，包括处理JSON，确定坐标值等等。这个函数在程序的最后使用：</p>
+
 </div>
 </div>
 </div>
@@ -480,9 +487,9 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="kn">import</span> <span class="n">Image</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="k">import</span> <span class="n">Image</span>
 
 <span class="k">def</span> <span class="nf">load_atlas</span><span class="p">(</span><span class="n">atlas_name</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">atlas_name</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -504,8 +511,6 @@ MathJax.Hub.Config({
     <span class="k">return</span> <span class="n">tex</span><span class="p">,</span> <span class="n">uvmap</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -521,14 +526,15 @@ MathJax.Hub.Config({
 </blockquote>
 <p>因为坐标值是通过Kivy的坐标系统实现的，所有我们需要把纵坐标调整一下，用OpenGL的左上角为原点的坐标系统。否则，图集就会颠倒（不过，在我们的小游戏里面这不是什么大问题。这种bug可能要在代码里长期存在，虽然没被注意到，也没什么大碍）。</p>
 <p><code>load_atlas('icons.atlas')</code>函数返回的是<code>icons-0.png</code>加载的纹理，和图集里每个纹理的UV描述，类似下面的结果：</p>
-<pre><code class="language-bash">&gt;&gt;&gt; load_atlas(<span class="string">'icons.atlas'</span>)
+<div class="highlight"><pre>&gt;&gt;&gt; load_atlas<span class="o">(</span><span class="s1">'icons.atlas'</span><span class="o">)</span>
 
-(&lt;Texture size=(512, 512)...&gt;,
-{<span class="string">'icon_paint'</span>: UVMapping(u0=0.2578125, v0=0.00390625,
-                u1=0.5078125, v1=0.25390625,
-                su=64.0, sv=64.0),
-<span class="string">'icon_clock'</span>: UVMapping(...)})
-</code></pre>
+<span class="o">(</span>&lt;Texture <span class="nv">size</span><span class="o">=(</span>512, 512<span class="o">)</span>...&gt;,
+<span class="o">{</span><span class="s1">'icon_paint'</span>: UVMapping<span class="o">(</span><span class="nv">u0</span><span class="o">=</span>0.2578125, <span class="nv">v0</span><span class="o">=</span>0.00390625,
+                <span class="nv">u1</span><span class="o">=</span>0.5078125, <span class="nv">v1</span><span class="o">=</span>0.25390625,
+                <span class="nv">su</span><span class="o">=</span>64.0, <span class="nv">sv</span><span class="o">=</span>64.0<span class="o">)</span>,
+<span class="s1">'icon_clock'</span>: UVMapping<span class="o">(</span>...<span class="o">)})</span>
+</pre></div>
+
 </div>
 </div>
 </div>
@@ -538,6 +544,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了这个数据格式，我们就可以从纹理中挑出每个合并图形然后渲染到屏幕上，下面就来实现。</p>
+
 </div>
 </div>
 </div>
@@ -551,7 +558,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -559,6 +565,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>把上面的内容放到一起，我们用类似前面的GLSL纹理映射例子来实现一个新版本。</p>
 <p>这里的<code>tex_atlas.py</code>文件与上一章的内容类似。通过<code>load_atlas()</code>函数来生成订单数组：</p>
+
 </div>
 </div>
 </div>
@@ -566,16 +573,16 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="kn">import</span> <span class="n">Mesh</span>
-<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="kn">import</span> <span class="n">RenderContext</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.graphics</span> <span class="k">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span> <span class="nn">kivy.graphics.instructions</span> <span class="k">import</span> <span class="n">RenderContext</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="k">import</span> <span class="n">Widget</span>
 
 <span class="c"># ......</span>
 <span class="k">class</span> <span class="nc">GlslDemo</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">Widget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">shader</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">'tex_atlas.glsl'</span>
 
         <span class="n">fmt</span> <span class="o">=</span> <span class="p">(</span>
@@ -610,8 +617,6 @@ MathJax.Hub.Config({
                  <span class="n">texture</span><span class="o">=</span><span class="n">texture</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -634,31 +639,31 @@ MathJax.Hub.Config({
 </ul>
 <p>只有合并图片的位置（数组的前两个数值）不能从UV映射关系中找到，其他数值都可以从<code>load_atlas()</code>获得。</p>
 <p><code>tex_atlas.glsl</code>相关文件着色器代码如下：</p>
-<pre><code class="language-C">---vertex
-@@<span class="number">0</span>@@
+<div class="highlight"><pre><span class="o">---</span><span class="n">vertex</span>
+<span class="err">$</span><span class="n">HEADER</span><span class="err">$</span>
 
-<span class="keyword">attribute</span> <span class="keyword">vec2</span> vCenter;
+<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">vCenter</span><span class="p">;</span>
 
-<span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-    tex_coord0 = vTexCoords0;
-    <span class="keyword">mat4</span> move_mat = <span class="keyword">mat4</span>
-        (<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, vCenter.x,
-         <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, vCenter.y,
-         <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,
-         <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);
-    <span class="keyword">vec4</span> pos = <span class="keyword">vec4</span>(vPosition.xy, <span class="number">0.0</span>, <span class="number">1.0</span>) * move_mat;
-    <span class="built_in">gl_Position</span> = projection_mat * modelview_mat * pos;
-}
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">tex_coord0</span> <span class="o">=</span> <span class="n">vTexCoords0</span><span class="p">;</span>
+    <span class="n">mat4</span> <span class="n">move_mat</span> <span class="o">=</span> <span class="n">mat4</span>
+        <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">vCenter</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+         <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">vCenter</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+         <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+         <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">vPosition</span><span class="p">.</span><span class="n">xy</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">move_mat</span><span class="p">;</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">projection_mat</span> <span class="o">*</span> <span class="n">modelview_mat</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
 
----fragment
-@@<span class="number">1</span>@@
+<span class="o">---</span><span class="n">fragment</span>
+<span class="err">$</span><span class="n">HEADER</span><span class="err">$</span>
 
-<span class="keyword">void</span> main(<span class="keyword">void</span>)
-{
-    <span class="built_in">gl_FragColor</span> = <span class="built_in">texture2D</span>(texture0, tex_coord0);
-}
-</code></pre>
+<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture0</span><span class="p">,</span> <span class="n">tex_coord0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 <p>这里只有最简单的功能——定位和显示纹理。类似的着色器可以用在游戏最后，那时将增加一个控制相对大小的属性，<code>vScale</code>。</p>
 <blockquote>
 <p>如果你不理解这段代码，请看看上一章的内容。</p>
@@ -666,6 +671,7 @@ MathJax.Hub.Config({
 <p>最后运行程序的效果如下图所示：</p>
 <p><img src="kbpic/9.5%20atlasglsl.png" alt="atlasglsl"></p>
 <p>下面，我们来开发一个粒子系统作为整个游戏其他对象的基础。</p>
+
 </div>
 </div>
 </div>
@@ -679,7 +685,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -691,6 +696,7 @@ MathJax.Hub.Config({
 <p>值得一提的是，这里用的方法——每个粒子的四周用纹理渲染——并非底层渲染的最佳方案。但是，这么做非常直截了当，容易理解，而且与任何支持GLSL语言OpenGL的实现兼容。</p>
 <p>如果你打算更系统的学习OpenGL，你可能会用把纹理的四周渲染改为点渲染，或者类似的概念，这已经超出的本书的范围。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -704,7 +710,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -715,6 +720,7 @@ MathJax.Hub.Config({
 <p>粒子系统部件的实现和GLSL部件没什么不同，除了现在它是一个子类。<code>PSWidget</code>和<code>Particle</code>类都是抽象基类，也就是说，它们不能直接通过调用<code>PSWidget()</code>来实例化。</p>
 <p>增强这个现在有很多不同的方法。我们可以用Python标准模块<code>abc</code>来创建<code>true</code>抽象类（<code>abc</code>其实就是抽象类）。虽然这对Java程序员很有用，但是对Python程序员来说并不常用。</p>
 <p>为了简化，我们为所有需要改写的方法添加<code>NotImplementedError</code>异常处理。这使得基类没有元类和复杂的继承关系就不能使用，就像<code>abc</code>模块说明的那样。</p>
+
 </div>
 </div>
 </div>
@@ -728,13 +734,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面是<code>PSWidget</code>类代码：</p>
+
 </div>
 </div>
 </div>
@@ -742,15 +748,15 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">PSWidget</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">PSWidget</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
     <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">vertices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">particles</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">Widget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">RenderContext</span><span class="p">(</span><span class="n">use_parent_projection</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">shader</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">glsl</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">vfmt</span> <span class="o">=</span> <span class="p">(</span>
@@ -765,8 +771,6 @@ MathJax.Hub.Config({
         <span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uvmap</span> <span class="o">=</span> <span class="n">load_atlas</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atlas</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -779,6 +783,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这和前面的GLSL初始化类似，有一些属性尚未定义。<code>self.glsl</code>属性将加载着色器的文件名，<code>self.atlas</code>是纹理映射的文件名，被当作是纹理为渲染实例提供的唯一来源。</p>
 <p>这么我们还没有生成顶点数组：这件事留给子类去做。但是，我们应该提供一个简单的方式为派生类处理内部数据结构。因此，<code>make_particles</code>方法可以容易的加入大量类似粒子：</p>
+
 </div>
 </div>
 </div>
@@ -786,8 +791,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">make_particles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Cls</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">make_particles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Cls</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
     <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">)</span>
     <span class="n">uv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uvmap</span><span class="p">[</span><span class="n">Cls</span><span class="o">.</span><span class="n">tex_name</span><span class="p">]</span>
 
@@ -807,8 +812,6 @@ MathJax.Hub.Config({
         <span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -822,6 +825,7 @@ MathJax.Hub.Config({
 <p>这<code>Cls</code>类的质点数量（<code>num</code>），把它们增加到部件的<code>self.particles</code>列表，然后同时生成<code>self.vertices</code>。每个粒子类型应该显示一个<code>tex_name</code>属性，用来在UV映射中查找出正确的合并图片，这个数据结构由前面的图集（<code>PSWidget.uvmap</code>）派生出来。</p>
 <p>其实，这个辅助函数是可选的，但是很有用。部件的具体类的在渲染之前的初始化阶段调用这个函数。</p>
 <p>这个部件基类的最后部分就是渲染函数：</p>
+
 </div>
 </div>
 </div>
@@ -829,8 +833,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">:</span>
         <span class="n">p</span><span class="o">.</span><span class="n">advance</span><span class="p">(</span><span class="n">nap</span><span class="p">)</span>
         <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -843,8 +847,6 @@ MathJax.Hub.Config({
              <span class="n">texture</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -864,6 +866,7 @@ MathJax.Hub.Config({
 </ul>
 </blockquote>
 <p>这个方法更多的实现细节会在后面介绍。</p>
+
 </div>
 </div>
 </div>
@@ -878,13 +881,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面的代码就是Particle类，表示每个合并图片。源自满天星app的<code>Star</code>类，没有运动部分（后面的子类会实现）：</p>
+
 </div>
 </div>
 </div>
@@ -892,8 +895,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Particle</span><span class="p">:</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Particle</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span>
@@ -902,7 +905,7 @@ MathJax.Hub.Config({
         <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vsize</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">vsize</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base_i</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">vsize</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">created</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">created</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_i</span><span class="p">,</span>
@@ -911,15 +914,13 @@ MathJax.Hub.Config({
             <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -939,6 +940,7 @@ MathJax.Hub.Config({
 <p><code>reset()</code>方法里面的<code>created</code>参数。一些粒子系统在第一次生成的时候可能需要额外的（或不同的）初始化过程。前面也有过类似的情况，如满天星app里面，星星在屏幕的右手边生成。如果我们不考虑<em>已生成</em>状态，所有的星星都会出现的屏幕的最右侧，而且有同样的横坐标<code>x</code>，看起来就是一条直线。这样的结果肯定不是我们想要的，所以我们让通过将<code>created</code>变量设置成<code>True</code>使得星星的位置完全随机，这样就会看到漂亮的初始分布了。</p>
 <p>调用<code>reset()</code>方法意味着后面重生的粒子会比第一次生成的多很多，所以把<code>created</code>变量设置成<code>False</code>。</p>
 <p>现在基类的工作都完成了。后面你会看到，游戏的实现会变得很简单。下面我们就用粒子系统来创建游戏的角色。</p>
+
 </div>
 </div>
 </div>
@@ -952,13 +954,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们的app将用前面做好的模块来构建：根部件是<code>PSWidget</code>的子类叫<code>Game</code>，所有的游戏角色都由粒子系统<code>Particle</code>类派生出来。</p>
+
 </div>
 </div>
 </div>
@@ -966,9 +968,9 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.base</span> <span class="kn">import</span> <span class="n">EventLoop</span>
-<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.base</span> <span class="k">import</span> <span class="n">EventLoop</span>
+<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="k">import</span> <span class="n">Clock</span>
 
 <span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
     <span class="n">glsl</span> <span class="o">=</span> <span class="s">'game.glsl'</span>
@@ -988,8 +990,6 @@ MathJax.Hub.Config({
             <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">update_glsl</span><span class="p">,</span> <span class="mi">60</span> <span class="o">**</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1020,6 +1020,7 @@ MathJax.Hub.Config({
 </li>
 </ul>
 <p>上面的代码还没有在屏幕上显示出来，因为我们还没有生成顶点数组，下面我们来实现它们。</p>
+
 </div>
 </div>
 </div>
@@ -1033,7 +1034,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1042,6 +1042,7 @@ MathJax.Hub.Config({
 <p>现在我再建一个简单的星空。这次它从右向左运动，和前面的Kivy Bird游戏一样。</p>
 <p>要创建一个简单的平行视差效果，我们把星星分成三个平面，然后让它们有不同的速度。一个平面上的星星比较多也比较大，快速移动，另一个比较少慢速移动。一旦星星飞出屏幕就在左边的随机位置重生。</p>
 <p>下面我们来实现：</p>
+
 </div>
 </div>
 </div>
@@ -1049,14 +1050,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">random</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">random</span>
 
 <span class="k">class</span> <span class="nc">Star</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
     <span class="n">plane</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">tex_name</span> <span class="o">=</span> <span class="s">'star'</span>
 
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plane</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
@@ -1073,8 +1074,6 @@ MathJax.Hub.Config({
             <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1089,6 +1088,7 @@ MathJax.Hub.Config({
 <p>随机生成一个星星的位置和所属的平面，无论初始化（<code>created=True</code>）是否被调用。</p>
 <p><code>advance()</code>方法就是一旦星星飞出屏幕就重生。</p>
 <p>为了使用粒子系统，我们需要用<code>PSWidget</code>类的<code>make_particles()</code>方法来增加一些星星。在<code>Game.initialize()</code>里面：</p>
+
 </div>
 </div>
 </div>
@@ -1096,13 +1096,11 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Star</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1115,6 +1113,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面就可以看到效果图：</p>
 <p><img src="kbpic/9.6%20starfield.png" alt="starfield"></p>
+
 </div>
 </div>
 </div>
@@ -1128,7 +1127,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1136,6 +1134,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们只需要一个宇宙飞船（单人模式），用一个粒子就可以实现了。这么做是为了和后面的代码统一，这个对象的构建和其他对象没什么区别。</p>
 <p>飞船一直粘在鼠标位置，要实现这个效果，我们把鼠标的位置储存到<code>Game</code>属性里，用<code>player_x</code>和<code>player_y</code>来表示，然后把飞船图片加载到里面。代码如下所示：</p>
+
 </div>
 </div>
 </div>
@@ -1143,8 +1142,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.window</span> <span class="kn">import</span> <span class="n">Window</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">kivy.core.window</span> <span class="k">import</span> <span class="n">Window</span>
 
 <span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
@@ -1153,8 +1152,6 @@ MathJax.Hub.Config({
         <span class="n">PSWidget</span><span class="o">.</span><span class="n">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1166,6 +1163,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>由于飞船实在用户的控制之下，没有其他逻辑要实现，只要把图片移动到鼠标位置就可以了：</p>
+
 </div>
 </div>
 </div>
@@ -1173,19 +1171,17 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
     <span class="n">tex_name</span> <span class="o">=</span> <span class="s">'player'</span>
     
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_y</span>
         
     <span class="n">advance</span> <span class="o">=</span> <span class="n">reset</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1197,6 +1193,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你会发现<code>reset()</code>和<code>advance()</code>方法是一样的。还有飞船的初始化：</p>
+
 </div>
 </div>
 </div>
@@ -1204,14 +1201,12 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Star</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Player</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1224,6 +1219,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面就是效果图：</p>
 <p><img src="kbpic/9.7%20spaceship.png" alt="spaceship"></p>
+
 </div>
 </div>
 </div>
@@ -1237,7 +1233,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1250,6 +1245,7 @@ MathJax.Hub.Config({
 <li>最终粒子的尺寸会比原来小10%</li>
 </ol>
 <p>当有很多粒子来时，这个效果会很好看。不过截屏是看不出来了，你可以运行一下代码试试。代码如下所示：</p>
+
 </div>
 </div>
 </div>
@@ -1257,11 +1253,11 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Trail</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Trail</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
     <span class="n">tex_name</span> <span class="o">=</span> <span class="s">'trail'</span>
 
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_x</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_y</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
@@ -1278,8 +1274,6 @@ MathJax.Hub.Config({
             <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">120</span> <span class="o">*</span> <span class="n">nap</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1291,6 +1285,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>其实现方式很简单，用同样的<code>player_x</code>和<code>player_y</code>属性来决定飞船的位置。在初始化阶段，添加许多粒子来实现效果：</p>
+
 </div>
 </div>
 </div>
@@ -1298,15 +1293,13 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Star</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Trail</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Player</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1322,6 +1315,7 @@ MathJax.Hub.Config({
 <p>还有敌人和子弹两个粒子系统没有实现。和前面看到的角色不同，它们都是在某个时间立刻出现，而敌人和子弹不是立刻出现的，两者都需要等一个特定的事件发生，然后逐渐增加数量，发射一颗子弹或者生成一个敌人。</p>
 <p>但是，之前我们需要分配固定数量的粒子，因为顶点数组的增减会让代码变得复杂，这不是我们想要的。</p>
 <p>方法是给粒子增加一个新的布尔变量属性，决定粒子是否属于激活状态，然后激活需要的粒子。这个方法后面会提到。</p>
+
 </div>
 </div>
 </div>
@@ -1331,6 +1325,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>实现子弹</p>
+
 </div>
 </div>
 </div>
@@ -1340,6 +1335,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们想让飞船的大炮在我们单击鼠标或触摸屏幕的时候能够发射子弹。用<code>firing</code>属性就可以实现：</p>
+
 </div>
 </div>
 </div>
@@ -1347,21 +1343,19 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
-    <span class="n">firing</span> <span class="o">=</span> <span class="bp">False</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
+    <span class="n">firing</span> <span class="o">=</span> <span class="k">False</span>
     <span class="n">fire_delay</span> <span class="o">=</span> <span class="mi">0</span>
     
     <span class="k">def</span> <span class="nf">on_touch_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">touch</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">firing</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">firing</span> <span class="o">=</span> <span class="k">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fire_delay</span> <span class="o">=</span> <span class="mi">0</span>
         
     <span class="k">def</span> <span class="nf">on_touch_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">touch</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">firing</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">firing</span> <span class="o">=</span> <span class="k">False</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1373,6 +1367,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要在两次射击之间增加延迟，我们引入一个变量<code>fire_delay</code>。这个变量会按帧递减到0，然后一个新的子弹生成，<code>fire_delay</code>开始增大。在<code>firing</code>变量为<code>True</code>的时候循环：</p>
+
 </div>
 </div>
 </div>
@@ -1380,8 +1375,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">player_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player_y</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">mouse_pos</span>
     
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firing</span><span class="p">:</span>
@@ -1390,8 +1385,6 @@ MathJax.Hub.Config({
     <span class="n">PSWidget</span><span class="o">.</span><span class="n">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1403,6 +1396,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，让我们看看这个粒子的状态。开始的时候，所有的子弹都没激活（<code>active=False</code>），移出屏幕（坐标值<code>x=-100, y=-100</code>设置子弹位置，可以在渲染的时候不让它们出现）。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1410,19 +1404,17 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
-    <span class="n">active</span> <span class="o">=</span> <span class="bp">False</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="k">False</span>
     <span class="n">tex_name</span> <span class="o">=</span> <span class="s">'bullet'</span>
     
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="k">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1435,6 +1427,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>当遍历所有子弹之后，我们跳过那些没激活的子弹，保留<code>firing_delay</code>不是0的子弹。这时，我们激活一个子弹，然后把它放到玩家面前，启动<code>firing_delay</code>变量到倒计时。</p>
 <p>激活的子弹想星星一样移动，与星星方向相反。不像星星，子弹飞出屏幕后不会重生。它们回到不激活状态，从屏幕上消失。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1442,8 +1435,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">active</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">250</span> <span class="o">*</span> <span class="n">nap</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">width</span><span class="p">:</span>
@@ -1451,14 +1444,12 @@ MathJax.Hub.Config({
     
     <span class="k">elif</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">firing</span> <span class="ow">and</span> 
           <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">fire_delay</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="k">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_x</span> <span class="o">+</span> <span class="mi">40</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_y</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">fire_delay</span> <span class="o">+=</span> <span class="mf">0.3333</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1471,6 +1462,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>fire_delay</code>属性设置为1/3秒，子弹发射的频率是每秒三发（3 rounds per second，RPS）。效果如下图所示：</p>
 <p><img src="kbpic/9.9%20spaceshipguns.png" alt="spaceshipguns"></p>
+
 </div>
 </div>
 </div>
@@ -1484,13 +1476,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>敌人的概念和子弹类似，但是它们是连续出现的，我们不需要<code>firing</code>这样的标记，用一个<code>spawn_delay</code>就够了。代码实现如下：</p>
+
 </div>
 </div>
 </div>
@@ -1498,8 +1490,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">PSWidget</span><span class="p">):</span>
     <span class="n">spawn_delay</span> <span class="o">=</span> <span class="mi">1</span>
     
     <span class="k">def</span> <span class="nf">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
@@ -1512,8 +1504,6 @@ MathJax.Hub.Config({
         <span class="n">PSWidget</span><span class="o">.</span><span class="n">update_glsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1525,6 +1515,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在初始化阶段，我们创建了一个预定义数量的敌人，开始不激活。为了实现后面对子弹的碰撞检测，我们需要存储一个子弹列表（<code>Game.particles</code>）：</p>
+
 </div>
 </div>
 </div>
@@ -1532,8 +1523,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Star</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Trail</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">make_particles</span><span class="p">(</span><span class="n">Player</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1542,8 +1533,6 @@ MathJax.Hub.Config({
     <span class="bp">self</span><span class="o">.</span><span class="n">bullets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">:]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1556,6 +1545,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这些代码看着很复杂，因为这里涉及到很多不同的运动状态。为了固定<code>x</code>方向的速度，每个敌人还带一个随机垂直运动矢量<code>v</code>。当这样的粒子从屏幕边上的顶部到底部离开屏幕时，粒子的<code>v</code>属性不断改变，在屏幕上看到的是敌人又回到屏幕的效果。</p>
 <p>其他的规则与子弹类似：当敌人到达屏幕的底部，它重置然后消失再重生。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1563,14 +1553,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Enemy</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
-    <span class="n">active</span> <span class="o">=</span> <span class="bp">False</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">class</span> <span class="nc">Enemy</span><span class="p">(</span><span class="n">Particle</span><span class="p">):</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="k">False</span>
     <span class="n">tex_name</span> <span class="o">=</span> <span class="s">'ufo'</span>
     <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="k">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="k">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1595,15 +1585,13 @@ MathJax.Hub.Config({
                 <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">spawn_delay</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="k">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="mi">50</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">random</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">spawn_delay</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1635,13 +1623,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们还没实现的<code>Enemy</code>类的另一个有趣功能是<code>check_hit()</code>方法。有两种情况敌人会撞到：飞船和子弹。为了简化，我们设定玩家是无敌的，敌人碰到任何物体都会被消灭：</p>
+
 </div>
 </div>
 </div>
@@ -1649,11 +1637,11 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">check_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">check_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
                   <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">player_y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="k">True</span>
 
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">bullets</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">b</span><span class="o">.</span><span class="n">active</span><span class="p">:</span>
@@ -1661,11 +1649,9 @@ MathJax.Hub.Config({
 
         <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
             <span class="n">b</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="k">True</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -1679,6 +1665,7 @@ MathJax.Hub.Config({
 <p><code>math.hypot()</code>是计算两物体中心距离，我们假设所有的物体都以这个方法监测。不能用没激活的子弹碰撞（<code>if not b.active</code>），因为没激活的子弹在屏幕上是看不到的。因此，它们不会在屏幕上撞击任何物体。</p>
 <p>这样游戏就完成了。</p>
 <p><img src="kbpic/9.10%20fullgame.png" alt="fullgame"></p>
+
 </div>
 </div>
 </div>
@@ -1692,7 +1679,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1718,7 +1704,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1740,6 +1725,7 @@ MathJax.Hub.Config({
 <li>遇到问题请用搜索引擎。你遇到的问题别人也遇到过。</li>
 </ul>
 <p>总之，我们衷心希望你能喜欢这次旅程。</p>
+
 </div>
 </div>
 </div>
@@ -1749,21 +1735,29 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="kbpic/src/9_ShootEmUp/">源代码</a></p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="python-data-structures.html" rel="prev" title="python-data-structures">Previous post</a>
             </li>
             <li class="next">
                 <a href="ms-office-with-pywin32com.html" rel="next" title="ms-office-with-pywin32com">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch9-shmup-app.html",
@@ -1777,24 +1771,28 @@ MathJax.Hub.Config({
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1804,15 +1802,5 @@ MathJax.Hub.Config({
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

@@ -3,44 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>5-nonlinear-classification-and-regression-with-decision-trees | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-nonlinear-classification-and-regression-with-decision-trees | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="5-nonlinear-classification-and-regression-with-decision-trees">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html">
-    <meta property="og:description" content="决策树——非线性回归与分类¶
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="5-nonlinear-classification-and-regression-with-decision-trees">
+<meta property="og:url" content="http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html">
+<meta property="og:description" content="决策树——非线性回归与分类¶
 
 
 
@@ -49,59 +35,80 @@ MathJax.Hub.Config({
 
 
 
-
-前面几章，我们介绍的模型都是广义线性模型，基本方法都是通过联接方程构建解释变量与若干响应变量的关联关系。我们用多元线性回归解决回归问题，逻辑回归解决分类问题。本章我们要讨论一种简单的非线性模型，用来解决回归与分类问题，称为决策树（decision tree）。首先，我们将用决策树做一个广告屏蔽器，可以将网页中的广告内容屏蔽掉。之后，我们介绍集成学习（">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-06-29T20:29:22+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+前面几章，我们介绍的模型都是广义线性模型，基本方法都是通过联接方程构建解释变量与若干响应变量的关联关系。我们用多元线性回归解决回归问题，逻辑回归解决分类问题。本章我们要讨论一种简单的非线性模型，用来解决回归与分类问题，称为决策树（decision tree）。首先，我们将用决策树做一个广告屏蔽器，可以将网页中的广告内容屏蔽掉。之后，我们介绍集成学习（l">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-29T20:29:22+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">5-nonlinear-classification-and-regression-with-decision-trees</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-06-29T20:29:22+08:00">2015-06-29 20:29</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="5-nonlinear-classification-and-regression-with-decision-trees.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="5-nonlinear-classification-and-regression-with-decision-trees.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">5-nonlinear-classification-and-regression-with-decision-trees</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-06-29T20:29:22+08:00" itemprop="datePublished" title="2015-06-29 20:29">2015-06-29 20:29</time></a></p>
+                <p class="commentline">            <a href="5-nonlinear-classification-and-regression-with-decision-trees.html#disqus_thread" data-disqus-identifier="cache/posts/5-nonlinear-classification-and-regression-with-decision-trees.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="5-nonlinear-classification-and-regression-with-decision-trees.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -112,7 +119,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -133,7 +139,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -142,6 +147,7 @@ MathJax.Hub.Config({
 <p>决策树就是做出一个树状决策，就像猜猜看(Twenty Questions)的游戏。一个玩家（先知）选择一种常见物品，但是事先不能透露给其他玩家（提问者）。提问者最多问20个问题，而先知只能回答：是，否，可能三种答案。提问者的提问会根据先知的回答越来越具体，多个问题问完后，提问者的决策就形成了一颗决策树。决策树的分支由可以猜出响应变量值的最短的解释变量序列构成。因此，在猜猜看游戏中，提问者和先知对训练集的解释变量和响应变量都很了解，但是只有先知知道测试集的响应变量值。</p>
 <p>决策树通常是重复的将训练集解释变量分割成子集的过程，如下图所示。决策树的节点用方块表示，用来测试解释变量。每个节点向下的边表示不同决策产生结果。训练集的样本由决策结果分成不同的子集。例如，一个节点测试解释变量的值是否超过的限定值。如果没有超过，则进入该节点的右侧子节点；如果超过，则进入左侧子节点。子节点的运行原理和前面的一样，直到终止条件（stopping criterion）满足才停止。在分类任务中，包含在叶子节点中的样本响应变量的值的平均值作为响应变量的估计值。决策树建立之后，做决策的过程就是把测试样本放进决策树沿着边不断前进，直到一个叶子被触及才停止前进。</p>
 <p><img src="mlslpic/5.1%20decisiontree.png" alt="decisiontree"></p>
+
 </div>
 </div>
 </div>
@@ -155,7 +161,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -164,15 +169,13 @@ MathJax.Hub.Config({
 <p>我们用Ross Quinlan发明的ID3（Iterative Dichotomiser 3，迭代二叉树3代）算法创建决策树，ID3是最早用于决策树的算法之一。假设你有一些猫和狗的分类数据。但是不允许直接观察，你只能通过动物特征的描述去做决策。对每个动物，你都会获得关于“是否喜欢玩球（play fetch）”和“是否经常发脾气”，以及它最喜欢的食物三个问题的答案。</p>
 <p>要正确分出新动物的种类，决策树需要对每条边的解释变量进行检查。每条边的下一个节点由测试结果决定。例如，第一关节点可能问“是否喜欢玩球”，如果回答“YES”，则进入左节点，否则，如果回答“NO”，则进入右节点。以此类推，最后一条边会指向一个叶子节点，那就是答案。下表是14个节点的训练数据：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">训练数据</th>
 <th style="text-align:center">是否喜欢玩球</th>
 <th style="text-align:center">是否经常发脾气</th>
 <th style="text-align:center">最喜欢的食物</th>
 <th style="text-align:center">种类</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -275,6 +278,7 @@ MathJax.Hub.Config({
 </tbody>
 </table>
 <p>从数据中我们发现，猫比狗更容易发脾气。大多数狗玩球，而猫不爱玩。狗更喜欢狗粮和培根，而猫喜欢猫粮和培根。解释变量<code>是否喜欢玩球</code>和<code>是否经常发脾气</code>可以转换成二元特征值。解释变量<code>最喜欢的食物</code>可以转换成一个具有三个可能值的分类变量，可以用热独编码<code>[1,0,0]</code>，<code>[0,1,0]</code>，<code>[0,0,1]</code>表示，具体方法在第三章已经介绍过。通过上面的分析，我们可以构建模型的规则。例如，一个动物如果经常发脾气且喜欢吃猫粮那就是猫，如果喜欢玩球且爱吃培根就是狗。在这么小的训练集里，想手工逐条构建规则也是非常麻烦的事情。因此，下面我们来构建决策树。</p>
+
 </div>
 </div>
 </div>
@@ -288,7 +292,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -296,15 +299,12 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>和猜猜看一样，决策树也是通过对解释变量序列的逐条测试获取响应变量结果的。那么，哪个解释变量应该先测试？直觉观察会发现，解释变量集合包含所有猫或者所有狗的测试，比既包含猫又包含狗的解释变量集合的测试要好。如果子集成员种类不同，我们还是不能确定种类。我们还需要避免创建那种测试，把单独的一只猫或一条狗分离出去，这种做法类似于猜猜看问题中前几轮就问非常具体的问题。更一般的情形是，这些测试极少可以分出一个样本的种类，也不能降低分类不确定性。能够降低分类不确定性的测试通常都是最好的测试。我们通常用熵（entropy）来度量信息的不确定性。</p>
 <p>以比特（bits）为计量单位，熵量化了一个变量的不确定性。熵计算公式如下所示：</p>
-<p>$$H(X)=-\sum_{i=1}^n {P(x_i) \log_b{P(x_i)}}$$</p>
-<p>其中，$n$是样本的数量，$P(x_i)$是第$i$个样本的概率。$b$一般取$2$，$e$或$10$。因为对数函数中真数小于1则对数值为0，因此，公式前面加符号使熵为正数。</p>
+$$H(X)=-\sum_{i=1}^n {P(x_i) \log_b{P(x_i)}}$$<p>其中，$n$是样本的数量，$P(x_i)$是第$i$个样本的概率。$b$一般取$2$，$e$或$10$。因为对数函数中真数小于1则对数值为0，因此，公式前面加符号使熵为正数。</p>
 <p>例如，一个硬币投掷一次事件发生后一般有两种可能：正面或反面。正面朝上的概率是0.5，反面朝上的概率也是0.5。那么一个硬币投掷一次的结果这个变量的熵：</p>
-<p>$$H(X)=-(0.5 \log_2{0.5} + 0.5 \log_2{0.5})=1.0$$</p>
-<p>也就是说，两个等概率的可能值，正面和反面，只需要一个比特。如果是两个硬币投掷一次事件发生后一般有四种可能：正面正面，正面反面，反面反面，反面正面，每种可能的概率是0.25。其熵为：</p>
-<p>$$H(X)=-(0.25 \log_2{0.25} \times 4)=2.0$$</p>
-<p>如果硬币的两面相同，那么表示其可能值的变量熵为0比特，也就是说，结果是确定的，变量再也不会产生新信息量了。熵还可以用小数值表示。比如，一个不正常的硬币，其正反面的材质不同，一边重一边轻。导致其投掷后正面朝上的概率0.8，反面朝上概率0.2。那么其熵为：</p>
-<p>$$H(X)=-(0.8 \log_2{0.8} + 0.2 \log_2{0.2})=0.721928095$$</p>
-<p>一个不正常的硬币投掷后其结果的熵是一个小数。虽然两种结果都有可能，但是因为其中一种可能性更大，所有不确定性减小了。</p>
+$$H(X)=-(0.5 \log_2{0.5} + 0.5 \log_2{0.5})=1.0$$<p>也就是说，两个等概率的可能值，正面和反面，只需要一个比特。如果是两个硬币投掷一次事件发生后一般有四种可能：正面正面，正面反面，反面反面，反面正面，每种可能的概率是0.25。其熵为：</p>
+$$H(X)=-(0.25 \log_2{0.25} \times 4)=2.0$$<p>如果硬币的两面相同，那么表示其可能值的变量熵为0比特，也就是说，结果是确定的，变量再也不会产生新信息量了。熵还可以用小数值表示。比如，一个不正常的硬币，其正反面的材质不同，一边重一边轻。导致其投掷后正面朝上的概率0.8，反面朝上概率0.2。那么其熵为：</p>
+$$H(X)=-(0.8 \log_2{0.8} + 0.2 \log_2{0.2})=0.721928095$$<p>一个不正常的硬币投掷后其结果的熵是一个小数。虽然两种结果都有可能，但是因为其中一种可能性更大，所有不确定性减小了。</p>
+
 </div>
 </div>
 </div>
@@ -314,17 +314,15 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面让我们计算动物分类的熵。如果训练集数据中猫和狗数量是相等的，而且我们不知道动物的任何其他信息，那么决策的熵是1。这就像普通硬币的结果一样，非猫即狗，两种可能概率一样。但是，我们的训练数据里面，6条狗8只猫。如果我们不考虑其他信息，那么决策的熵就是：</p>
-<p>$$H(X)=-(\frac 6 {14} \log_2{\frac 6 {14}} + \frac 8 {14} \log_2{\frac 8 {14}})=0.985228136$$</p>
-<p>由于猫更多，所以不确定性要小一些。现在让我们找出对分类最有用的解释变量，也就是找出对熵降幅最大的解释变量。我们可以测试<code>是否喜欢玩球</code>这个解释变量，把测试分成两支，喜欢玩和不喜欢玩，其结果如下图所示：</p>
+$$H(X)=-(\frac 6 {14} \log_2{\frac 6 {14}} + \frac 8 {14} \log_2{\frac 8 {14}})=0.985228136$$<p>由于猫更多，所以不确定性要小一些。现在让我们找出对分类最有用的解释变量，也就是找出对熵降幅最大的解释变量。我们可以测试<code>是否喜欢玩球</code>这个解释变量，把测试分成两支，喜欢玩和不喜欢玩，其结果如下图所示：</p>
 <p><img src="mlslpic/5.2%20entropypalyfetch.png" alt="entropypalyfetch"></p>
 <p>决策树通常都是用流程图显示决策过程的。最上面的方框是根节点，包括所有要测试的解释变量。在根节点里我们还没有开始测试，所以变量的熵设为0.985228136。前面我们介绍过，将解释变量<code>是否喜欢玩球</code>转换成二元变量，左子节点用0表示，右子节点用1表示。左子节点包括7只猫和2条狗都是不喜欢玩球的数据。计算这时解释变量的熵：</p>
-<p>$$H(X)=-(\frac 7 {9} \log_2{\frac 7 {9}} + \frac 2 {9} \log_2{\frac 2 {9}})=0.764204507$$</p>
-<p>右子节点包括1只猫和4条狗都是喜欢玩球的数据。计算这时解释变量的熵：</p>
-<p>$$H(X)=-(\frac 1 {5} \log_2{\frac 1 {5}} + \frac 4 {5} \log_2{\frac 4 {5}})=0.721928095$$</p>
-<p>同理，我们也可以测试解释变量<code>是否经常发脾气</code>。不经常发脾气为左子节点，用0表示，经常发脾气为右子节点，用1表示。</p>
+$$H(X)=-(\frac 7 {9} \log_2{\frac 7 {9}} + \frac 2 {9} \log_2{\frac 2 {9}})=0.764204507$$<p>右子节点包括1只猫和4条狗都是喜欢玩球的数据。计算这时解释变量的熵：</p>
+$$H(X)=-(\frac 1 {5} \log_2{\frac 1 {5}} + \frac 4 {5} \log_2{\frac 4 {5}})=0.721928095$$<p>同理，我们也可以测试解释变量<code>是否经常发脾气</code>。不经常发脾气为左子节点，用0表示，经常发脾气为右子节点，用1表示。</p>
 <p><img src="mlslpic/5.3%20entropyisgrumpy.png" alt="entropyisgrumpy"></p>
 <p>也可以对解释变量<code>最喜欢的食物</code>。对每一种食物都可以按照前面的思路进行测试：</p>
 <p><img src="mlslpic/5.4%20entropycatfood.png" alt="entropycatfood"></p>
+
 </div>
 </div>
 </div>
@@ -338,13 +336,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>对解释变量<code>最喜欢的食物</code>的值是猫粮进行测试的结果是，右节点喜欢猫粮的动物中6只猫没有狗，其熵为0，而做节点2只猫6条狗，其熵为0.8113比特。我们如何评估哪一个变量最大程度的降低了分类的不确定性？子集熵的均值看起来像是一个合理的度量指标。本例中，猫粮测试这个子集熵的均值最小。直观上看，这条测试也更有效，因为我们可以用它识别出几乎是一半样本。但是，实际上这么做可能做导致决策局部最优值。例如，假设有一个子集的结果是两条狗没有猫，另一个子集的结果是4条狗8只猫。第一个子集的熵是0，而第二个子集的熵0.918。那么平均熵是0.459，但是第二个子集包含了绝大多数样本，而其熵接近1比特。</p>
+
 </div>
 </div>
 </div>
@@ -354,20 +352,17 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这就好像在猜猜看游戏中过早的问了太具体的问题，而我们的问题并没有消除许多可能性。因此，我们要用一种方法来合理度量熵的降幅，这个方法称为信息增益（information gain）。信息增益是父节点熵，用$H(T)$表示与其子节点熵的加权均值的差，计算公式如下：</p>
-<p>$$IG(T,a) = H(T)-\sum_{v \in {vals(s)}} {\frac {\{|x \in T | x_a = v\}|} {|T|} H(\{x \in T | x_a = v\})}$$</p>
-<p>其中，$x_a \in {vals(s)}$表示解释变量$a$的样本$x$。$\{|x \in T | x_a = v\}$表示解释变量$a$的值等于$v$样本数量。$H(\{x \in T | x_a = v\})$是解释变量$a$的值等于$v$样本熵。</p>
+$$IG(T,a) = H(T)-\sum_{v \in {vals(s)}} {\frac {\{|x \in T | x_a = v\}|} {|T|} H(\{x \in T | x_a = v\})}$$<p>其中，$x_a \in {vals(s)}$表示解释变量$a$的样本$x$。$\{|x \in T | x_a = v\}$表示解释变量$a$的值等于$v$样本数量。$H(\{x \in T | x_a = v\})$是解释变量$a$的值等于$v$样本熵。</p>
 <p>下表就是本例信息增益的计算结果。可以看出，猫粮测试是最佳选择，因为其信息增益最大。</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">测试</th>
 <th style="text-align:center">父节点熵</th>
 <th style="text-align:center">左子节点熵</th>
 <th style="text-align:center">右子节点熵</th>
 <th style="text-align:center">加权平均</th>
 <th style="text-align:center">信息增益</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">是否喜欢玩球？</td>
@@ -421,16 +416,14 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在让我们增加其他的节点到决策树中。一个子节点只包含猫，另一个子节点还有2只猫和6条狗，我们测试这个节点。同理，按照信息增益方法计算可以得到下表数据：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">测试</th>
 <th style="text-align:center">父节点熵</th>
 <th style="text-align:center">左子节点熵</th>
 <th style="text-align:center">右子节点熵</th>
 <th style="text-align:center">加权平均</th>
 <th style="text-align:center">信息增益</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">是否喜欢玩球？</td>
@@ -478,16 +471,14 @@ MathJax.Hub.Config({
 <p><img src="mlslpic/5.5%20infogainisgrumpy.png" alt="infogainisgrumpy"></p>
 <p>现在我们对剩下的解释变量进行信息增益计算，包括<code>是否喜欢玩球？</code>，<code>最喜欢的食物 = 狗粮</code>，<code>最喜欢的食物 = 培根</code>，这些解释变量测试的结果都是一个节点是一只猫或一条狗，另一个节点是剩下的动物。其信息增益计算结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">测试</th>
 <th style="text-align:center">父节点熵</th>
 <th style="text-align:center">左子节点熵</th>
 <th style="text-align:center">右子节点熵</th>
 <th style="text-align:center">加权平均</th>
 <th style="text-align:center">信息增益</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">是否喜欢玩球？</td>
@@ -519,15 +510,13 @@ MathJax.Hub.Config({
 <p><img src="mlslpic/5.6%20infogain.png" alt="infogain"></p>
 <p>让我们用下表的测试集数据对决策树进行测试：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">训练数据</th>
 <th style="text-align:center">是否喜欢玩球</th>
 <th style="text-align:center">是否经常发脾气</th>
 <th style="text-align:center">最喜欢的食物</th>
 <th style="text-align:center">种类</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -568,6 +557,7 @@ MathJax.Hub.Config({
 </table>
 <p>让我们来找第一个动物的类型，它喜欢玩球，不经常发脾气，喜欢培根。沿着决策树往下走，根节点测试不喜欢猫粮，因此进入左节点。又不经常发脾气，依然进入左节点，现在的叶子节点只有狗，因此这个动物种类是狗。其他动物也按照同样的方法去查找，第三个动物是一只猫，根节点测试不喜欢猫粮，进入左节点，然后经常发脾气，进入右节点，不喜欢玩球，进入左节点，喜欢狗粮，进入右节点，因此该动物是猫。</p>
 <p>这样我们就用ID3算法实现了一个决策树。还有很多算法也可以实现决策树，C4.5算法是ID3的改进版，可以用来处理连续的解释变量并考虑特征值丢失。C4.5算法可以修剪（prune）决策树，修剪是通过更少的叶节点来替换分支，以缩小决策树的规模。scikit-learn的决策树实现算法是CART（Classification and Regression Trees，分类与回归树）算法，CART也是一种支持修剪的学习算法。</p>
+
 </div>
 </div>
 </div>
@@ -581,18 +571,16 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面我们用最大信息增益建立决策树。还有一个启发式方法是基尼不纯度（Gini impurity），度量一个集合中每种类型的比例。基尼不纯度格式如下：</p>
-<p>$$Gini(t)=1-\sum_{i-1}^j {P(i|t)^2}$$</p>
-<p>其中，$j$是类型的数量，$t$是节点样本的子集，$P(i|t)$是从节点子集中选择一个类型$i$的概率。</p>
+$$Gini(t)=1-\sum_{i-1}^j {P(i|t)^2}$$<p>其中，$j$是类型的数量，$t$是节点样本的子集，$P(i|t)$是从节点子集中选择一个类型$i$的概率。</p>
 <p>可以看出，如果集合中只有一类，那么基尼不纯度值为0。和熵一样，当每个类型概率相同时，基尼不纯度最大。此时，基尼不纯度的最大值有类型的数量决定：</p>
-<p>$$Gini_{max}=1-\frac 1 n$$</p>
-<p>我们的例子有两种类型，所有基尼不纯度的最大值是0.5。scikit-learn研究决策树的算法，既支持信息增益，也支持基尼不纯度。到底用哪种方法并没有规定，实际上，它们产生的结果类似。一般的决策树都是两个都用，比较一下结果，哪个好用哪个。</p>
+$$Gini_{max}=1-\frac 1 n$$<p>我们的例子有两种类型，所有基尼不纯度的最大值是0.5。scikit-learn研究决策树的算法，既支持信息增益，也支持基尼不纯度。到底用哪种方法并没有规定，实际上，它们产生的结果类似。一般的决策树都是两个都用，比较一下结果，哪个好用哪个。</p>
+
 </div>
 </div>
 </div>
@@ -606,13 +594,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面让我们用scikit-learn的决策树来做一个广告屏蔽程序。这个程序可以预测出网页上的图片是广告还是正常内容。被确认是广告的图片通过调整CSS隐藏。我们用<a href="http://archive.ics.uci.edu/ml/datasets/Internet+Advertisements">互联网广告数据集（Internet Advertisements Data Set）</a>来实现分类器，里面包含了3279张图片。不过类型的比例并不协调，459幅广告图片，2820幅正常内容。决策树学习算法可以从比例并不协调的数据集中生成一个不平衡的决策树（biased tree）。在决定是否值得通过过抽样（over-sampling）和欠抽样（under-sampling）的方法平衡训练集之前，我们将用不相关的数据集对模型进行评估。本例的解释变量就是图片的尺寸，网址链接里的单词，以及图片标签周围的单词。响应变量就是图片的类型。解释变量已经被转换成特征向量了。前三个特征值表示宽度，高度，图像纵横比（aspect ratio）。剩下的特征是文本变量的二元频率值。下面，我们用网格搜索来确定决策树模型最大最优评价效果（F1 score）的超参数，然后把决策树用在测试集进行效果评估。</p>
+
 </div>
 </div>
 </div>
@@ -620,8 +608,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
@@ -642,8 +630,6 @@ MathJax.Hub.Config({
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="nb">list</span><span class="p">(</span><span class="n">explanatory_variable_columns</span><span class="p">)]</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -655,6 +641,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，我们读取数据文件，然后解释变量和响应变量分开。</p>
+
 </div>
 </div>
 </div>
@@ -662,13 +649,11 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">X</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s">' *\?'</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">X</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s">' *\?'</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -680,6 +665,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们把广告图片设为阳性类型，正文图片设为阴性类型。超过1/4的图片其宽带或高度的值不完整，用空白加问号（“ ?”）表示，我们用正则表达式替换为-1，方便计算。然后我们用交叉检验对训练集和测试集进行分割。</p>
+
 </div>
 </div>
 </div>
@@ -687,14 +673,12 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s">'clf'</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s">'entropy'</span><span class="p">))</span>
 <span class="p">])</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -706,6 +690,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们创建了pipeline和<code>DecisionTreeClassifier</code>类的实例，将<code>criterion</code>参数设置成<code>entropy</code>，这样表示使用信息增益启发式算法建立决策树。</p>
+
 </div>
 </div>
 </div>
@@ -713,16 +698,14 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'clf__max_depth'</span><span class="p">:</span> <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span>
     <span class="s">'clf__min_samples_split'</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
     <span class="s">'clf__min_samples_leaf'</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -734,6 +717,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后，我们确定网格搜索的参数范围。最后将<code>GridSearchCV</code>的搜索目标<code>scoring</code>设置为<code>f1</code>。</p>
+
 </div>
 </div>
 </div>
@@ -741,8 +725,8 @@ MathJax.Hub.Config({
 <div class="input">
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'f1'</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'f1'</span><span class="p">)</span>
 <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'最佳效果：</span><span class="si">%0.3f</span><span class="s">'</span> <span class="o">%</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'最优参数：'</span><span class="p">)</span>
@@ -754,14 +738,9 @@ MathJax.Hub.Config({
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -770,12 +749,10 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>
-[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:   20.3s
+<pre>[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:   20.3s
 [Parallel(n_jobs=-1)]: Done  50 jobs       | elapsed:   41.5s
 [Parallel(n_jobs=-1)]: Done  75 out of  81 | elapsed:   51.4s remaining:    4.0s
 [Parallel(n_jobs=-1)]: Done  81 out of  81 | elapsed:   53.1s finished
-
 </pre>
 </div>
 </div>
@@ -783,8 +760,7 @@ MathJax.Hub.Config({
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Fitting 3 folds for each of 27 candidates, totalling 81 fits
+<pre>Fitting 3 folds for each of 27 candidates, totalling 81 fits
 最佳效果：0.899
 最优参数：
 	clf__max_depth: 160
@@ -797,11 +773,7 @@ Fitting 3 folds for each of 27 candidates, totalling 81 fits
 
 avg / total       0.96      0.96      0.96       820
 
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -815,6 +787,7 @@ avg / total       0.96      0.96      0.96       820
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个分类器发现了测试集中90%的广告，真广告中有88%被模型发现了，你运行的数据结果可能会有不同。分类器的效果还可以，下面我们进一步改善模型的效果。</p>
+
 </div>
 </div>
 </div>
@@ -828,7 +801,6 @@ avg / total       0.96      0.96      0.96       820
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -836,6 +808,7 @@ avg / total       0.96      0.96      0.96       820
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>集成学习方法将一堆模型组合起来使用，比单个模型可以获取更好的效果。随机森林（random forest）是一种随机选取训练集解释变量的子集进行训练，获得一系列决策树的集合的方法。随机森林通常用其决策树集合里每个决策树的预测结果的均值或众数作为最终预测值。scikit-learn里的随机森林使用均值作为预测值。随机森林相比单一决策树，不太会受到拟合过度的影响，因为随机森林的每个决策树都看不到训练集的全貌，只是训练一部分解释变量数据，不会记忆训练集的全部噪声。</p>
 <p>下面我们用随机森林升级我们的广告屏蔽程序。把前面用的<code>DecisionTreeClassifier</code>替换成<code>RandomForestClassifier</code>就可以了。和前面一样，我们仍然用网格搜索来探索最优超参数。</p>
+
 </div>
 </div>
 </div>
@@ -843,8 +816,8 @@ avg / total       0.96      0.96      0.96       820
 <div class="input">
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
@@ -889,14 +862,9 @@ avg / total       0.96      0.96      0.96       820
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -905,13 +873,11 @@ avg / total       0.96      0.96      0.96       820
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>
-[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    3.4s
+<pre>[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    3.4s
 [Parallel(n_jobs=-1)]: Done  50 jobs       | elapsed:   24.0s
 [Parallel(n_jobs=-1)]: Done 200 jobs       | elapsed:  1.3min
 [Parallel(n_jobs=-1)]: Done 318 out of 324 | elapsed:  2.0min remaining:    2.1s
 [Parallel(n_jobs=-1)]: Done 324 out of 324 | elapsed:  2.0min finished
-
 </pre>
 </div>
 </div>
@@ -919,8 +885,7 @@ avg / total       0.96      0.96      0.96       820
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Fitting 3 folds for each of 108 candidates, totalling 324 fits
+<pre>Fitting 3 folds for each of 108 candidates, totalling 324 fits
 最佳效果：0.914
 最优参数：
 	clf__max_depth: 50
@@ -934,11 +899,7 @@ Fitting 3 folds for each of 108 candidates, totalling 324 fits
 
 avg / total       0.98      0.98      0.98       820
 
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -952,6 +913,7 @@ avg / total       0.98      0.98      0.98       820
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个分类器发现了测试集中91%的广告，各类指标相比单一决策树都有明显改善。精确率和召回率都提升到98%。</p>
+
 </div>
 </div>
 </div>
@@ -965,7 +927,6 @@ avg / total       0.98      0.98      0.98       820
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -974,6 +935,7 @@ avg / total       0.98      0.98      0.98       820
 <p>和前面几章介绍过的模型相比，决策树的用法更简单。首先，决策树对数据没有零均值，均方差的要求。而且可以容忍解释变量值的缺失，虽然现在的scikit-learn还没实现这一特点。决策树在训练的时候可以忽略与任务无关的解释变量。</p>
 <p>小型决策树很容易理解，而且可以通过scikit-learn的<code>tree</code>模块里的<code>export_graphviz</code>函数生成图形，可视化效果好。决策树的分支都有着逻辑上的联接关系，很容易通过流程图画出来。另外，决策树支持多输出任务，单一决策树可以用于多类分类，不需要使用one-versus-all策略。</p>
 <p>和前面介绍过的模型一样，决策树是一种积极学习方法（eager learner），必须在它们可以用于预测测试集任务时，先从训练集建立一个与后面的需求无关的模型，但是模型一旦建好它们可以很快的预测出结果。相反，有些算法是消极学习方法（lazy learners），像K最近邻（K-Nearest Neighbor，KNN）分类算法，它们必须等到有了训练集数据的预测需求，才会开始学习整个数据的特征。消极学习方法不需要花时间训练预测能力，但是比积极学习方法预测速度慢。</p>
+
 </div>
 </div>
 </div>
@@ -985,6 +947,7 @@ avg / total       0.98      0.98      0.98       820
 <p>决策树比我们之前介绍的算法更容易拟合过度，因为它们可以通过精确的描述每个训练样本的特征，构建出复杂的决策树，从而忽略了一般性的真实关联关系。有一些技术可以修正决策树的拟合过度。修剪就是一个常用的策略，将决策树里一些最高的子节点和叶子节点剪掉，但是目前scikit-learn还没有相应的实现。但是，类似的效果可以通过设置决策树最大深度，或者限定只有当决策树包含的训练样本数量超过限定值时才创建子节点。<code>DecisionTreeClassifier</code>和<code>DecisionTreeRegressor</code>类都有这样的参数可以设置。另外，随机森林决策树也可以消除拟合过度。</p>
 <p>像ID3这样的决策树学习算法是贪婪的（greedy）。它们充分的学习有时会深陷于局部最优的美梦，但是不能保证生成最优决策树。ID3通过选择解释变量序列进行测试。一个解释变量被选中是因为它比其他解释变量更大幅度的降低了不确定性。但是，有可能全局最优的决策并非局部最优。</p>
 <p>在我们的例子中，决策树的规模并不重要，因为我们可以获取所有节点。但是，在现实应用中，决策树的规模被修剪以及其他技术限制。而决策树经过修剪后的不同形状会产生不同的效果。实际上，由信息增益和基尼不纯度启发式方法计算出的局部最优决策通常都会生成一个可行的决策树。</p>
+
 </div>
 </div>
 </div>
@@ -998,28 +961,35 @@ avg / total       0.98      0.98      0.98       820
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章我们介绍了一个非线性模型——决策树，用来解决分类和回归问题。就像猜猜看游戏一样，决策树也是由一些了问题构成一个测试实例。决策树的一个分支在遇到显示响应变量值的叶子节点时停止。我们介绍了ID3算法，用来训练决策树，通过递归分割训练集，形成子集以减低响应变量的不确定性。我们还介绍了集成学习方法，通过将一系列模型组合起来达到更好的学习效果。最后，我们用随机森林方法对图片是广告还是网页正文进行了预测。下一章，我们将介绍第一种非监督学习方法：聚类。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="slott-2015074-2015-06-28-report.html" rel="prev" title="双色球2015074期(2015-06-28)数据分析报告">Previous post</a>
             </li>
             <li class="next">
                 <a href="6-clustering-with-k-means.html" rel="next" title="6-clustering-with-k-means">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html",
@@ -1033,24 +1003,28 @@ avg / total       0.98      0.98      0.98       820
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1060,15 +1034,5 @@ avg / total       0.98      0.98      0.98       820
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>

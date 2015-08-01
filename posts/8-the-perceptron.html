@@ -3,45 +3,30 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>8-the-perceptron | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/8-the-perceptron.html">
-
-
-
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8-the-perceptron | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/8-the-perceptron.html">
+<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-             },
-         displayAlign: 'center', // Change this to 'center' to center equations.
-         "HTML-CSS": {
-             styles: {'.MathJax_Display': {"margin": 0}}
-     }
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
 });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta property="og:site_name" content="绿萝间">
-    <meta property="og:title" content="8-the-perceptron">
-    <meta property="og:url" content="http://muxuezi.github.io/posts/8-the-perceptron.html">
-    <meta property="og:description" content="感知器¶
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="8-the-perceptron">
+<meta property="og:url" content="http://muxuezi.github.io/posts/8-the-perceptron.html">
+<meta property="og:description" content="感知器¶
 
 
 
@@ -60,58 +45,80 @@ MathJax.Hub.Config({
 
 
 
-感知器是Frank Rosenblatt在1957年就职于Cornell航空实验">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-07-08T09:13:39+08:00">
-           <meta property="article:tag" content="CHS">
-           <meta property="article:tag" content="Machine Learning">
-           <meta property="article:tag" content="Python">
-           <meta property="article:tag" content="ipython">
-
-    
-    
-
+感知器是Frank Rosenblatt在1957年就职于Cornell航空实验室">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-08T09:13:39+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-            <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
-            <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
-    <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">8-the-perceptron</h1>
+<!-- Menubar -->
 
-        <div class="meta">
-            <div class="authordate">
-                <time class="timeago" datetime="2015-07-08T09:13:39+08:00">2015-07-08 09:13</time>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="8-the-perceptron.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
             
-                      |  
-        <a href="8-the-perceptron.ipynb" id="sourcelink">Source</a>
-          |  
-        <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">8-the-perceptron</a></h1>
 
-            </div>
-                    <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
-           <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
-           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
-        </ul>
-        </div>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-07-08T09:13:39+08:00" itemprop="datePublished" title="2015-07-08 09:13">2015-07-08 09:13</time></a></p>
+                <p class="commentline">            <a href="8-the-perceptron.html#disqus_thread" data-disqus-identifier="cache/posts/8-the-perceptron.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="8-the-perceptron.ipynb" id="sourcelink">Source</a></p>
 
         </div>
-        <div class="body">
-            <div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -122,7 +129,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -143,6 +149,7 @@ MathJax.Hub.Config({
 <p>一个神经元可以看作是将一个或多个输入处理成一个输出的计算单元。一个感知器函数类似于一个神经元；它接受一个或多个输入，处理他们然后返回一个输出。咋看这样的模型，就像人脑千亿神经元的一个孤胆英雄，无用武之地。但是，有两个理由使得我们有必要介绍它。首先，神经元可以实时(online)，错误驱动(error-driven)的学习，神经元可以通过一一个的训练样本不断更新参数，而非一次性使用整套数据。实时学习可能有效的处理内存无法容纳的大数据。其次，理解感知器的工作原理是后两章算法学习的基础，包括支持向量机（support vector machines）和人工神经网络（artificial neural networks）。感知器通常用下面的图形表示：</p>
 <p><img src="mlslpic/8.2%20perceptrons.png" alt="perceptrons"></p>
 <p>$x_1$，$x_2$和$x_3$是输入单元。每个输入单元分别代表一个特征。感知器通常用另外一个输入单元代表一个常用误差项，但是这个输入单元在图形中通常被忽略了。中间的圆圈是一个计算单元，类似神经元的细胞核。连接输入单元和计算单元的边类似于树突。每条边是一个权重，或者是一个参数。参数容易解释，如果某个解释变量与阳性类型（positive class）相关，其权重为正，某个解释变量与阴性类型（negative class）相关，其权重为负。连接计算单元和输出单元的边类似轴突。</p>
+
 </div>
 </div>
 </div>
@@ -156,27 +163,24 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>感知器通过使用激励函数（activation function ）处理解释变量和模型参数的线性组合对样本分类，计算公式如下所示。解释变量和模型参数的线性组合有时也称为感知器的预激励（preactivation）。</p>
-<p>$$y=\phi(\sum_{i=1}^n{w_ix_i}+b)$$</p>
-<p>其中，$w_i$是模型参数，$b$是常误差项，$\phi()$是激励方程。常用的激励方程有几种。Rosenblatt最初的感知器用的是阶跃函数（Heaviside step function或unit step function）作为激励函数。函数公式如下所示：</p>
-<p>$$
+$$y=\phi(\sum_{i=1}^n{w_ix_i}+b)$$<p>其中，$w_i$是模型参数，$b$是常误差项，$\phi()$是激励方程。常用的激励方程有几种。Rosenblatt最初的感知器用的是阶跃函数（Heaviside step function或unit step function）作为激励函数。函数公式如下所示：</p>
+$$
 g(x)=
 \begin{Bmatrix}
 1, x&gt;0 \\
 0, x \le 0 \\
 \end{Bmatrix}
-$$</p>
-<p>如果加权解释变量的和加上常误差项之和大于0，则激励方程返回1，此时感知器就把样本归类为阳性。否则，激励方程返回0，感知器就把样本归类为阴性。阶跃函数图形如下所示：</p>
+$$<p>如果加权解释变量的和加上常误差项之和大于0，则激励方程返回1，此时感知器就把样本归类为阳性。否则，激励方程返回0，感知器就把样本归类为阴性。阶跃函数图形如下所示：</p>
 <p><img src="mlslpic/8.3%20step.png" alt="step"></p>
 <p>另一个常用的激励函数是逻辑S形（logistic sigmoid ）激励函数。这个激励函数的梯度分布可以更有效的计算，在处理后面的ANN算法时十分有效。其计算公式如下：</p>
-<p>$$g(x)= \frac 1 {1+e^{-x}}$$</p>
-<p>其中，$x$是加权输入的和。这个模型与第四章的逻辑方程类似，是解释变量值与模型参数的线性组合，与逻辑回归模型是一样的。虽然用逻辑S形激励函数的感知器与逻辑回归是一样的，但是要估计的参数不同。</p>
+$$g(x)= \frac 1 {1+e^{-x}}$$<p>其中，$x$是加权输入的和。这个模型与第四章的逻辑方程类似，是解释变量值与模型参数的线性组合，与逻辑回归模型是一样的。虽然用逻辑S形激励函数的感知器与逻辑回归是一样的，但是要估计的参数不同。</p>
+
 </div>
 </div>
 </div>
@@ -190,16 +194,15 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>感知器学习算法首先需要将权重设置为0或很小的随机数，然后预测训练样本的类型。感知器是一种错误驱动（error-driven）的学习算法。如果感知器是正确的，算法就继续处理下一个样本。如果感知器是错误的，算法就更新权重，重新预测。权重的更新规则如下：</p>
-<p>$$w_i(t+1) = w_i(t) + \alpha (d_j-y_j(t))x_{j,i},0 \le i \le n$$</p>
-<p>对每个训练样本来说，每个解释变量的参数值增加$\alpha (d_j-y_j(t))x_{j,i}$，$d_j$是样本$j$的真实类型，$y_j(t)$是样本$j$的预测类型，$x_{j,i}$是第$i$个样本$j$的解释变量的值，$\alpha$是控制学习速率的超参数。如果预测是正确的，$d_j-y_j(t)$等于0，$\alpha (d_j-y_j(t))x_{j,i}$也是0，此时，权重不更新。如预测是错误的，权重会按照学习速率，$d_j-y_j(t)$与解释变量值的乘积增加。</p>
+$$w_i(t+1) = w_i(t) + \alpha (d_j-y_j(t))x_{j,i},0 \le i \le n$$<p>对每个训练样本来说，每个解释变量的参数值增加$\alpha (d_j-y_j(t))x_{j,i}$，$d_j$是样本$j$的真实类型，$y_j(t)$是样本$j$的预测类型，$x_{j,i}$是第$i$个样本$j$的解释变量的值，$\alpha$是控制学习速率的超参数。如果预测是正确的，$d_j-y_j(t)$等于0，$\alpha (d_j-y_j(t))x_{j,i}$也是0，此时，权重不更新。如预测是错误的，权重会按照学习速率，$d_j-y_j(t)$与解释变量值的乘积增加。</p>
 <p>这里的更新规则与梯度下降法中的权重更新规则类似，都是朝着使样本得到正确分类更新，且更新的幅度是由学习速率控制的。每遍历一次训练样本称为完成了一世代（epoch）。如果学习完一世代后，所有的样本都分类正确，那么算法就会收敛（converge）。学习算法不能保证收敛；后面的章节，我们会介绍线性不可分数据集，是不可能收敛的。因此，学习算法还需要一个超参数，在算法终止前需要更新的最大世代数。</p>
+
 </div>
 </div>
 </div>
@@ -213,7 +216,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -221,14 +223,12 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们来解决一个分类案例。假设你想从一堆猫里分辨幼猫（kitten）和成年猫（adult cats）。数据集只有两个解释变量：用来睡觉的天数比例，闹脾气的天数比例。训练数据由下面四个样本构成：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">样本</th>
 <th style="text-align:center">用来睡觉的天数比例</th>
 <th style="text-align:center">闹脾气的天数比例</th>
 <th style="text-align:center">幼猫还是成年猫？</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
@@ -257,6 +257,7 @@ $$</p>
 </tbody>
 </table>
 <p>下面的散点图表面这些样本是可以线性分离的：</p>
+
 </div>
 </div>
 </div>
@@ -264,15 +265,13 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="kn">import</span> <span class="n">FontProperties</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="k">import</span> <span class="n">FontProperties</span>
 <span class="n">font</span> <span class="o">=</span> <span class="n">FontProperties</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s">r"c:\windows\fonts\msyh.ttc"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
@@ -282,8 +281,8 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
@@ -303,14 +302,9 @@ $$</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -330,9 +324,6 @@ $$</p>
 </div>
 
 </div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -341,8 +332,7 @@ $$</p>
 <p>我们的目标是训练一个感知器可以用两个解释变量分辨猫的类型。我们用阳性表示幼猫，用阴性表示成年猫。用感知网络图（preceding network diagram）可以呈现感知器训练的过程。</p>
 <p>我们的感知器有三个输入单元。$x_1$是常误差项，$x_2$和$x_3$是两个特征的输入项。我们的感知器的计算单元用一个阶跃函数表示。本例中，我们把最大的训练世代数设置为10；如果算法经过10世代没有收敛，就会停止返回当时的权重值。为了简化，我们把训练速率设置为1。首先，我们把所有的权重设置为0。第一代的训练结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">世代1</th>
 <th style="text-align:center"></th>
 <th style="text-align:center"></th>
@@ -350,8 +340,7 @@ $$</p>
 <th style="text-align:center"></th>
 <th></th>
 <th></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">样本</td>
@@ -405,8 +394,7 @@ $$</p>
 <p><img src="mlslpic/8.4%20epoch1.png" alt="epoch1"></p>
 <p>注意决策边界在整个世代中不断移动；在某个世代结束后由权重构成的决策边界不一定必然与前一世代产生同样的预测值。由于我们还没超过10个世代，所以我们还可以继续训练样本。第二世代的计算过程如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">世代2</th>
 <th style="text-align:center"></th>
 <th style="text-align:center"></th>
@@ -414,8 +402,7 @@ $$</p>
 <th style="text-align:center"></th>
 <th></th>
 <th></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">样本</td>
@@ -468,8 +455,7 @@ $$</p>
 <p><img src="mlslpic/8.5%20epoch2.png" alt="epoch2"></p>
 <p>这个世代结束是算法依然没有收敛，所有我们要继续训练。第3个世代的训练结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">世代3</th>
 <th style="text-align:center"></th>
 <th style="text-align:center"></th>
@@ -477,8 +463,7 @@ $$</p>
 <th style="text-align:center"></th>
 <th></th>
 <th></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">样本</td>
@@ -531,8 +516,7 @@ $$</p>
 <p><img src="mlslpic/8.6%20epoch3.png" alt="epoch3"></p>
 <p>感知器继续更新权重进行第4代和第5代的训练，仍然有预测错误的样本。直到第6代，所有的样本都预测正确了，此时算法达到了收敛状态。第6个世代的训练结果如下表所示：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">世代4</th>
 <th style="text-align:center"></th>
 <th style="text-align:center"></th>
@@ -540,8 +524,7 @@ $$</p>
 <th style="text-align:center"></th>
 <th></th>
 <th></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">样本</td>
@@ -592,6 +575,7 @@ $$</p>
 </table>
 <p>第6个世代的决策边界如下图所示：</p>
 <p><img src="mlslpic/8.7%20epoch6.png" alt="epoch6"></p>
+
 </div>
 </div>
 </div>
@@ -605,7 +589,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -613,6 +596,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>scikit-learn 提供了感知器功能。和我们用过的其他功能类似，<code>Perceptron</code>类的构造器接受超参数设置。<code>Perceptron</code>类有<code>fit_transform()</code>和<code>predict()</code>方法。<code>Perceptron</code>类还提供了<code>partial_fit()</code>方法，允许分类器训练流式数据（streaming data）并做出预测。</p>
 <p>在下面的例子中，我们训练一个感知器对20个新闻类别的数据集进行分类。这个数据集从20个网络新闻网站收集了近2万篇新闻。这个数据集经常用来进行文档分类和聚类实验；scikit-learn提供了下载和读取数据集的简便方法。我们将训练一个感知器识别三个新闻类别：<code>rec.sports.hockey</code>， <code>rec.sports.baseball</code>和<code>rec.auto</code>。scikit-learn的<code>Perceptron</code>也支持多类分类，使用<code>one versus all</code>策略为训练集中的每个类型训练分类器。我们将用TF-IDF加权词袋来表示新闻文档。<code>partial_fit()</code>方法可以连接<code>HashingVectorizer</code>在内存有限的情况下训练较大的流式数据：</p>
+
 </div>
 </div>
 </div>
@@ -620,11 +604,11 @@ $$</p>
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">classification_report</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Perceptron</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Perceptron</span>
 <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">'rec.sport.hockey'</span><span class="p">,</span> <span class="s">'rec.sport.baseball'</span><span class="p">,</span> <span class="s">'rec.autos'</span><span class="p">]</span>
 <span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">'train'</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="p">(</span><span class="s">'headers'</span><span class="p">,</span> <span class="s">'footers'</span><span class="p">,</span> <span class="s">'quotes'</span><span class="p">))</span>
 <span class="n">newsgroups_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">'test'</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="p">(</span><span class="s">'headers'</span><span class="p">,</span> <span class="s">'footers'</span><span class="p">,</span> <span class="s">'quotes'</span><span class="p">))</span>
@@ -636,17 +620,12 @@ $$</p>
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">eta0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">classifier</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
-  hide output</i>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper output_hidden">
-<div class="output">
 
 <div class="output_wrapper">
 <div class="output">
@@ -655,8 +634,7 @@ $$</p>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-             precision    recall  f1-score   support
+<pre>             precision    recall  f1-score   support
 
           0       0.85      0.92      0.89       396
           1       0.85      0.81      0.83       397
@@ -664,11 +642,7 @@ $$</p>
 
 avg / total       0.86      0.86      0.86      1192
 
-
 </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -682,6 +656,7 @@ avg / total       0.86      0.86      0.86      1192
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，我们用<code>fetch_20newsgroups()</code>下载并读取数据。和其他内建数据集一致，这个函数返回的对象包括<code>data</code>，<code>target</code>和<code>target_names</code>属性。我们还去掉了每篇文章的页眉，页脚和引用文献。保留那些让分类更容易的解释变量。我们用<code>TfidfVectorizer</code>生成TF-IDF矢量，训练感知器，然后用测试集评估效果。没有用网格搜索优化超参数，感知器的平均精确率，召回率和综合评价指标达到0.86。</p>
+
 </div>
 </div>
 </div>
@@ -695,7 +670,6 @@ avg / total       0.86      0.86      0.86      1192
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -706,6 +680,7 @@ avg / total       0.86      0.86      0.86      1192
 <p><img src="mlslpic/8.8%20xor.png" alt="xor"></p>
 <p>这种情况下，不可能用一条直线将圆圈和菱形分开。假设这四个样本都是定在板上的钉子，你用一条橡皮筋把两个阳性类型的样本连起来，再用另一条橡皮筋把两个阴性类型的样本连起来。这两条橡皮筋称为凸包（convex hull），或者包含一个集合内所有点的外壳，这个集合内任意两点的连线都在这个外壳的内部。相比低维空间，这种特征更可能在高维空间实现线性可分。例如，在使用词袋模型分类文本分类问题时，高维特征向量更容易实现线性可分。</p>
 <p>后面两章，我们将介绍处理线性不可分数据集的方法。第一个方法是核心化算法(kernelization)，将线性不可分数据集映射到高维空间变成线性可分数据集。核心化算法可以用在许多场合，包括感知器，但是最适合的场景是支持向量机，我们下一章将会介绍。支持向量机也提供了一些找超平面的技术，以最小的误差分离线性不可分数据集。第一个方法建立了一种感知器有向图，其模型称为人工神经网络，是一种通用函数近似器，我们将在本书的最后一章介绍它。</p>
+
 </div>
 </div>
 </div>
@@ -719,28 +694,35 @@ avg / total       0.86      0.86      0.86      1192
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章，我们介绍了感知器。源自神经元知识，感知器是一个二元分类线性模型。感知器将解释变量和权重的线性组合作为激励函数的输入，通过激励函数的结果预测样本的类型。带逻辑S形激励函数的感知器就和逻辑回归模型一样，只是感知器用一种实时的错误驱动算法计算权重参数。感知器可以有效的解决一下问题。和我们介绍过的其他线性模型一样，感知器并非通用函数近似器；它只能用一个超平面分类两种类型。有一些线性不可分数据集，不存在一个超平面来正确的区分所有样本。在后面的章节，我们将介绍两种处理线性不可分数据集的模型：支持向量机，将线性不可分数据集映射到高维空间变成线性可分数据集；人工神经网络，一种带感知器有向图的通用函数近似器。</p>
+
 </div>
 </div>
 </div>
-</div>
-        </div>
-                <ul class="pager">
-            <li class="previous">
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="slott-2015078-2015-07-07-report.html" rel="prev" title="双色球2015078期(2015-07-07)数据分析报告">Previous post</a>
             </li>
             <li class="next">
                 <a href="9-from-the-perceptron-to-support-vector-machines.html" rel="next" title="9-from-the-perceptron-to-support-vector-machines">Next post</a>
             </li>
-        </ul>
-
-                            <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/8-the-perceptron.html",
@@ -754,24 +736,28 @@ avg / total       0.86      0.86      0.86      1192
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
             
         </footer>
+</div>
+</div>
 
-        </div>
-    </section>
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -781,15 +767,5 @@ avg / total       0.86      0.86      0.86      1192
   ga('send', 'pageview');
 
 </script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
 </body>
 </html>
