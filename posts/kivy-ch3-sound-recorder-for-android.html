@@ -3,20 +3,13 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>kivy-ch3-sound-recorder-for-android | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html">
-
-
-
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>kivy-ch3-sound-recorder-for-android | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html">
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -28,19 +21,11 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta name="og:title" content="kivy-ch3-sound-recorder-for-android">
-    <meta name="og:url" content="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html">
-    <meta name="og:description" content="Android录音app¶
-
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch3-sound-recorder-for-android">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html">
+<meta property="og:description" content="Android录音app¶
 
 
 
@@ -60,28 +45,24 @@ MathJax.Hub.Config({
 
 
 
-另外一些平台相关的任务，像代码不能在其他系统上运">
-    <meta name="og:site_name" content="绿萝间">
-    <meta name="og:type" content="article">
-
-    
-    
-
+另外一些平台相关的任务，像代码不能在其他系统上运行">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:42:46+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
         <h1 class="p-name entry-title" itemprop="headline name">kivy-ch3-sound-recorder-for-android</h1>
 
@@ -99,11 +80,11 @@ MathJax.Hub.Config({
         <ul>
         Tags : 
            <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
            <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -118,7 +99,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -138,6 +118,7 @@ MathJax.Hub.Config({
 <p>另外一些平台相关的任务，像代码不能在其他系统上运行，是有很多原因造成的。还记得画图app的鼠标光标吗？代码要用Pygame封装的底层SDL光标功能，如果你熟悉SDL和Pygame那就很简单。因此，为了让app可以跨平台，我们要尽量避免在系统兼容性不好的代码；因为那样可能导致程序崩溃。</p>
 <p>然而，Kivy应用具有良好的平台兼容性——Mac，Windows，Linux，iOS，Android和Raspberry Pi——都没什么大问题。
 <img src="kbpic/3.1Kivysupportsplatforms.png" alt=""></p>
+
 </div>
 </div>
 </div>
@@ -167,7 +148,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -206,6 +186,7 @@ MathJax.Hub.Config({
 </ul>
 <p>从前面的比较中可以看出，Android有一堆功能，只要一部分被Python/Kivy支持。这无疑为你用Kivy开发Android应用留下了大量的自由想象空间。你会学到Python调用Android API的知识，可以让Kivy做任何事情。</p>
 <p>另一个优势就是，你可以编写全新的类去支持具体特定硬件的移动设备，包括虚拟现实app，支持的陀螺仪游戏，全景拍摄相机等等。</p>
+
 </div>
 </div>
 </div>
@@ -219,7 +200,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -232,6 +212,7 @@ MathJax.Hub.Config({
 <p>我们这里说Pyjnius是用来做Android开发的，其实也可以开发Java桌面应用。这是很有趣的，因为还有一个Java API的Python模块叫Jython，很慢而且不完整。Pyjnius可以让你直接使用CPython，再加上Numpy就可以让程序飞起来。
 总之，让你想通过Python用Java，考虑Pyjnius吧。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -245,7 +226,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -262,6 +242,7 @@ MathJax.Hub.Config({
 </ul>
 <p>下面这个截图就是Genymotion启动的模拟器，完全支持Kivy Launcher。
 <img src="kbpic/3.2AndroidGenymotion.png" alt="Genymotion"></p>
+
 </div>
 </div>
 </div>
@@ -275,7 +256,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -290,6 +270,7 @@ MathJax.Hub.Config({
 <li>格子可以根据需要变大，方便点击</li>
 </ul>
 <p>看起来非常简单吧。其实用Kivy实现起来也很简单。</p>
+
 </div>
 </div>
 </div>
@@ -303,22 +284,22 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在开始吧，首先做个按钮<code>Button</code>类，就像我们在之前的应用里做的,这里我们重用第二章画图app的按钮：</p>
-<pre><code class="language-yaml">&lt;<span class="class">Button</span>&gt;:
-    <span class="method">background_normal:</span> <span class="string">'button_normal.png'</span>
-    <span class="method">background_down:</span> <span class="string">'button_down.png'</span>
-    <span class="method">background_color:</span> <span class="class">C</span>(<span class="string">'#95A5A6'</span>)
-    <span class="method">font_size:</span> <span class="number">40</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">&lt;Button&gt;</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_normal</span><span class="p-Indicator">:</span> <span class="s">'button_normal.png'</span>
+    <span class="l-Scalar-Plain">background_down</span><span class="p-Indicator">:</span> <span class="s">'button_down.png'</span>
+    <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#95A5A6')</span>
+    <span class="l-Scalar-Plain">font_size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">40</span>
+</pre></div>
 <p>我们之前设计调色板时，把背景色成设置重白色。这里我们的<code>background_color</code>属性是一个底色，我们分配一个浅白色作为<code>background_color</code>。这次我们不要边框有颜色。</p>
 <p>之后就是按下按钮的颜色，<code>background_down</code>属性我们设置成25%透明白色。再在上面加上黑色，就可以获得一个深色的背景：
 <img src="kbpic/3.4backgroundcolor.png" alt="backgroundcolor"></p>
+
 </div>
 </div>
 </div>
@@ -332,7 +313,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -341,42 +321,43 @@ MathJax.Hub.Config({
 <p>布局有点小复杂。Kivy没有现成的Modern UI模板可用，我们要自己仿制一个<code>GridLayout</code>部件。它和<code>BoxLayout</code>部件类似，不过是二维的，所以没有<code>orientation: 'horizontal'</code>或<code>'vertical'</code>属性。</p>
 <p>如果没有其他需求，一个<code>GridLayout</code>部件就可以搞定，但是我们还想要不同尺寸的按钮。目前，<code>GridLayout</code>部件不支持通过网格的合并成更大的网格（HTML里面的<code>rowspan</code>和<code>colspan</code>属性更方便）。因此，我们换个思路，先用一个<code>GridLayout</code>部件作为根部件，用大网格，然后再在里面增加一个<code>GridLayout</code>部件，用小网格。</p>
 <p>因为Kivy可以完美支持嵌套布局，我们可以用下面的kv代码实现<code>recorder.kv</code>文件：</p>
-<pre><code class="language-yaml"><span class="comment">#:import C kivy.utils.get_color_from_hex</span>
+<div class="highlight"><pre><span class="c1">#:import C kivy.utils.get_color_from_hex</span>
 
-GridLayout:
-    padding: <span class="number">15</span>
+<span class="l-Scalar-Plain">GridLayout</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">padding</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">15</span>
 
-    Button:
-    background_color: C('<span class="comment">#3498DB')</span>
-    <span class="type">text</span>: 'aaa'
+    <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#3498DB')</span>
+    <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'aaa'</span>
 
-    GridLayout:
-        Button:
-        background_color: C('<span class="comment">#2ECC71')</span>
-        <span class="type">text</span>: 'bbb1'
+    <span class="l-Scalar-Plain">GridLayout</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#2ECC71')</span>
+        <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'bbb1'</span>
 
-        Button:
-        background_color: C('<span class="comment">#1ABC9C')</span>
-        <span class="type">text</span>: 'bbb2'
+        <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#1ABC9C')</span>
+        <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'bbb2'</span>
 
-        Button:
-        background_color: C('<span class="comment">#27AE60')</span>
-        <span class="type">text</span>: 'bbb3'
+        <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#27AE60')</span>
+        <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'bbb3'</span>
 
-        Button:
-        background_color: C('<span class="comment">#16A085')</span>
-        <span class="type">text</span>: 'bbb4'
+        <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#16A085')</span>
+        <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'bbb4'</span>
 
-    Button:
-    background_color: C('<span class="comment">#E74C3C')</span>
-    <span class="type">text</span>: 'ccc'
+    <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#E74C3C')</span>
+    <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'ccc'</span>
 
-    Button:
-    background_color: C('<span class="comment">#95A5A6')</span>
-    <span class="type">text</span>: 'ddd'
-</code></pre>
+    <span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#95A5A6')</span>
+    <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span> <span class="s">'ddd'</span>
+</pre></div>
 <p>翻翻前面的章节，把<code>main.py</code>也做出来就可以运行了，自己试试吧。注意类的名称是<code>RecorderApp</code>，kv文件名大写，再加<code>App</code>，不清楚参考第一章命名相关内容。</p>
 <p>注意嵌套的<code>GridLayout</code>部件是怎么和同级的大按钮放在一起的。如果你记得前面那个WP系统主平面，还得继续改进代码：四个小按钮和一个大按钮一样大。嵌套的<code>GridLayout</code>部件是这些小按钮的容器。</p>
+
 </div>
 </div>
 </div>
@@ -390,29 +371,28 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在外面的网格里，<code>padding</code>属性是为了让部件离屏幕的四边有一定边距。把其他<code>GridLayout</code>部件的可视化属性都放到一个类中：</p>
-<pre><code class="language-yaml">    &lt;<span class="class">GridLayout</span>&gt;:
-    <span class="method">cols:</span> <span class="number">2</span>
-    <span class="method">spacing:</span> <span class="number">10</span>
-    <span class="method">row_default_height:</span> 
-        (<span class="number">0.5</span> * (<span class="keyword">self</span>.width - <span class="keyword">self</span>.spacing[<span class="number">0</span>]) -
-        <span class="keyword">self</span>.padding[<span class="number">0</span>])
-    <span class="method">row_force_default:</span> <span class="class">True</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">&lt;GridLayout&gt;</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">cols</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+    <span class="l-Scalar-Plain">spacing</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">10</span>
+    <span class="l-Scalar-Plain">row_default_height</span><span class="p-Indicator">:</span> 
+        <span class="l-Scalar-Plain">(0.5 * (self.width - self.spacing[0]) -</span>
+        <span class="l-Scalar-Plain">self.padding[0])</span>
+    <span class="l-Scalar-Plain">row_force_default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">True</span>
+</pre></div>
 <blockquote>
 <p>要注意的是<code>padding</code>和<code>spacing</code>属性都是列表，不是数值。<code>spacing[0]</code>是水平间距，之后是垂直间距。但是，我们用一个数值初始化，就像前面的代码显示的；数值可以用在两个方向。</p>
 </blockquote>
 <p>嵌套网格由具有相同间距的两列组成，<code>row_default_height</code>属性是厚度：我们可以说，“让行高等于格子宽度”。但是下面我们手动计算想要的高度，0.5是因为有两列：</p>
-<p>$$行高 = 0.5 × (屏幕宽度 - 所有边距和间距)$$</p>
-<p>如果我们不这么做，网格里面的按钮就会垂直填充全部空间，这不是我们要的效果，尤其不是很多按钮的时候，每个就会显得巨大难看。另外，我们希望所有的按钮都是方块。</p>
+$$行高 = 0.5 × (屏幕宽度 - 所有边距和间距)$$<p>如果我们不这么做，网格里面的按钮就会垂直填充全部空间，这不是我们要的效果，尤其不是很多按钮的时候，每个就会显得巨大难看。另外，我们希望所有的按钮都是方块。</p>
 <p>下面就是之前代码设计的“Modern UI”界面：
 <img src="kbpic/3.5uidesign.png" alt="uidesign"></p>
+
 </div>
 </div>
 </div>
@@ -426,13 +406,13 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要做好看的应用UI，就得有图标，不只是按钮+文字。当然，我们可以在按钮上加图片，但是更好的办法是有图标字体——后面你会发现这种方法更具柔性。</p>
+
 </div>
 </div>
 </div>
@@ -446,7 +426,6 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -455,6 +434,7 @@ GridLayout:
 <p>图标字体本质上和普通字体一样，除了它们的符号与文字无关。比如，你输入“P”就可以获得Python的logo，而不是字母P；每个字都是与字母相对于的图标。</p>
 <p>使用图标字体的不足——用这些字体的代码很难读——因为文字-图标对应关系不太明显。这点可以通过常量来代替要输入符号。</p>
 <p>还有一些字体不使用英文字母，改用Unicode码与图标对应，比如<a href="http://en.wikipedia.org/wiki/Emoji">Emoji颜文字</a>。使用这类图标字体的前提是目标平台支持Unicode，这方面不是每个平台都ok，尤其是移动平台。我们这里的app只用ASCII码。</p>
+
 </div>
 </div>
 </div>
@@ -468,7 +448,6 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -486,6 +465,7 @@ GridLayout:
 <p>最棒的两个免费字体就是<a href="http://www.fontsquirrel.com">Font Squirrel</a>和<a href="https://www.google.com/fonts">Google Fonts</a>。不用介意这些网站的字体是用来做网页开发的，大多数字体都可以离线使用。
 最需要注意的是字体文件格式：Kivy只能支持True Type(<code>.ttf</code>)文件格式。好在大多数字体都是这个格式，即使不是也可以格式转换。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -499,7 +479,6 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -508,6 +487,7 @@ GridLayout:
 <p>我们的app使用由John Caserta设计的<a href="http://www.fontsquirrel.com/fonts/modern-pictograms">Modern Pictograms</a>免费字体。截图如下所示：
 <img src="kbpic/3.6ModernPictogramsiconfont.png" alt="ModernPictogramsiconfont"></p>
 <p>要把字体加入Kivy程序，我们可以用第一章时钟app的方法。这里，我们不这么做，因为图标字体字体风格完全不同。还是，通过字体名称连接字体，而不是用字体文件名（<code>modernpics.ttf</code>）连接。这样，你就可以重命名字体文件或者移动文件路径，而不用每次都通篇改一遍。在<code>main.py</code>写如下代码：</p>
+
 </div>
 </div>
 </div>
@@ -516,16 +496,7 @@ GridLayout:
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.core.text</span> <span class="kn">import</span> <span class="n">LabelBase</span>
-
-<span class="k">class</span> <span class="nc">RecorderApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">pass</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">LabelBase</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'Modern Pictograms'</span><span class="p">,</span>
-                       <span class="n">fn_regular</span><span class="o">=</span><span class="s">'modernpics.ttf'</span><span class="p">)</span>
-    <span class="n">RecorderApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -541,21 +512,21 @@ GridLayout:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这样<code>recorder.kv</code>文件就可以使用图标字体了。首先，我们把<code>Button</code>改进一下，方便后面改变字体。代码如下：</p>
-<pre><code class="language-yaml">&lt;<span class="class">Button</span>&gt;:
-    <span class="method">background_normal:</span> <span class="string">'button_normal.png'</span>
-    <span class="method">background_down:</span> <span class="string">'button_down.png'</span>
-    <span class="method">font_size:</span> <span class="number">24</span>
-    <span class="method">halign:</span> <span class="string">'center'</span>
-    <span class="method">markup:</span> <span class="class">True</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">&lt;Button&gt;</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_normal</span><span class="p-Indicator">:</span> <span class="s">'button_normal.png'</span>
+    <span class="l-Scalar-Plain">background_down</span><span class="p-Indicator">:</span> <span class="s">'button_down.png'</span>
+    <span class="l-Scalar-Plain">font_size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">24</span>
+    <span class="l-Scalar-Plain">halign</span><span class="p-Indicator">:</span> <span class="s">'center'</span>
+    <span class="l-Scalar-Plain">markup</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">True</span>
+</pre></div>
 <p><code>halign: 'center'</code>表示我们希望每行文字都在按钮的正中间。<code>markup: True</code>是必须的，因为我们后面自定义按钮需要这样。</p>
 <p>现在，我们来升级所有按钮。这是一个例子：</p>
-<pre><code class="language-yaml">Button:
-    background_color: C(<span class="comment">'#3498DB')</span>
-    text:
-        (<span class="comment">'[font=Modern Pictograms][size=120]'</span>
-        <span class="comment">'e[/size][/font]\nNew recording')</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#3498DB')</span>
+    <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">('[font=Modern Pictograms][size=120]'</span>
+        <span class="l-Scalar-Plain">'e[/size][/font]\nNew recording')</span>
+</pre></div>
 <p>通常不需要为Kivy文件字符串加括号，这么做是为了显示成多行，这和一行长串是一样的。</p>
 <p>注意在<code>[font][size]</code>表情里面的<code>'e'</code>，这就是图标代码。每个按钮用一个图标，改变一个图标就是替换<code>recorder.kv</code>文件里面的一个字母。具体对应关系可以在Modern Pictograms字体网站查询。</p>
 <blockquote>
@@ -573,6 +544,7 @@ GridLayout:
 <blockquote>
 <p>你可能想知道右上角的小绿图标是干嘛的。它们是为了给不同的设备设置不同的录音质量。另外三个按钮——录音，播放，删除——尚不足以呈现Modern UI的风格，因为它需要更丰富好玩的外观。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -586,7 +558,6 @@ GridLayout:
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -597,10 +568,10 @@ GridLayout:
 <img src="kbpic/3.8SDcard.png" alt="SDcard">
 当然启动Kivy Launcher，它就会扫描文件目录的完整路径，如果没SD卡还是能找到。</p>
 <p><code>android.txt</code>非常简单：</p>
+
 <pre><code>title=App Name
 author=Your Name
-orientation=portrait
-</code></pre>
+orientation=portrait</code></pre>
 <p><code>title</code>和<code>author</code>设置后会在程序列表显示出来。<code>orientation</code>可以是<code>portrait</code>（正常显示，高度&gt;宽度）和<code>landscape</code>（水平显示，宽度&gt;高度），由应用布局设计决定。</p>
 <p><code>icon.png</code>文件是可选的，如果没有就是空白图标。建议找个漂亮的，程序的第一印象就是图标。注意<code>icon.png</code>文件名不能改变，否则Kivy Launcher找不到启动位置。</p>
 <p>把之前做过的程序都放进去，你就会看到程序列表，如下所示：
@@ -609,6 +580,7 @@ orientation=portrait
 <p>如果不是这样，建议检查一下文件路径。</p>
 </blockquote>
 <p>现在就可打开程序了。这是在Android上测试Kivy程序最方便的办法——就是简单的复制文件。</p>
+
 </div>
 </div>
 </div>
@@ -622,7 +594,6 @@ orientation=portrait
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -648,6 +619,7 @@ orientation=portrait
 <p>Java类命名规则：
 通常类名里面的<code>'$'</code>符号表示内部类。这种方法有点无厘头，因为你可以声明一个相似的类不用后面跟任何东西——<code>'$'</code>在Java变量和类名称中是可用的，与JavaScript里面的没有太多不同。但这种奇葩的命名方法让人无语。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -661,28 +633,22 @@ orientation=portrait
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面的代码就是通过Pyjnius加载Java类：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">jnius</span> <span class="kn">import</span> <span class="n">autoclass</span>
-
-<span class="n">Environment</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.os.Environment'</span><span class="p">)</span>
-<span class="n">MediaRecorder</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.media.MediaRecorder'</span><span class="p">)</span>
-<span class="n">AudioSource</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.media.MediaRecorder$AudioSource'</span><span class="p">)</span>
-<span class="n">OutputFormat</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.media.MediaRecorder$OutputFormat'</span><span class="p">)</span>
-<span class="n">AudioEncoder</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.media.MediaRecorder$AudioEncoder'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -709,6 +675,7 @@ orientation=portrait
 <blockquote>
 <p>记得这些类的定义文档都是Java的，不是Python。你可以看看Google官方的<a href="http://developer.android.com/reference/packages.html">Android开发入门</a>，然后把Java反应成Python代码，看着很恐怖，多试试，其实很简单。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -722,17 +689,17 @@ orientation=portrait
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们演示一下Pyjnius这种混合语言使用API的过程。我们还可以通过Java检查SD卡是否已经挂载。</p>
-<pre><code class="language-java"><span class="keyword">import</span> android.os.Environment;
-String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-</code></pre>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">android.os.Environment</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+</pre></div>
 <p>翻译成Python就是：</p>
+
 </div>
 </div>
 </div>
@@ -741,8 +708,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">Environment</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.os.Environment'</span><span class="p">)</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="n">getExternalStorageDirectory</span><span class="p">()</span><span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -758,6 +724,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>两者是完全一样的。然后，我们可以通过log查看运行的结果。</p>
+
 </div>
 </div>
 </div>
@@ -766,8 +733,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="n">Logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'App: storage path == "</span><span class="si">%s</span><span class="s">"'</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -784,6 +750,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>调试信息会显示下面这行日志：</p>
 <p><strong>[INFO] App: storage path == "/storage/sdcard0"</strong></p>
+
 </div>
 </div>
 </div>
@@ -797,7 +764,6 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -807,6 +773,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <p>要看到日志，你可以在程序运行的时候到程序目录下（<code>/Kivy/Recorder</code>），里面会生成一个新的<code>.kivy</code>目录，这个目录里面有日志文件<code>.kivy/logs</code>。</p>
 <p>如果是用Android SDK运行模拟器，可以打开开发者模式的USB调试功能，然后用<code>adb logcat</code>查看所有日志，里面包括Kivy日志。如果你用Android Studio 或Eclipse等IDE，你可以用logcat对日志进行过滤处理。</p>
 <p>当调试程序出问题或应用不能启动的时候日志文件是很冗长的。Kivy还打印了各种关于运行环境的警告日志，像缺少库文件或功能，Python模块加载失败，或者其他提示。</p>
+
 </div>
 </div>
 </div>
@@ -820,7 +787,6 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -828,6 +794,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在让我们用Android的API来逐个实现app的功能。现在的代码就是把Android的API翻译成Python。如果你对原始的Java代码感兴趣，你可以去官方网站看<a href="http://developer.android.com/guide/topics/%0Amedia/audio-capture.html">文档</a>。</p>
 <p>下面的代码就是<code>MediaRecorder</code>对象初始化：</p>
+
 </div>
 </div>
 </div>
@@ -836,17 +803,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">storage_path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Environment</span><span class="o">.</span><span class="n">getExternalStorageDirectory</span><span class="p">()</span>
-                <span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/kivy_recording.3gp'</span><span class="p">)</span>
-
-<span class="n">recorder</span> <span class="o">=</span> <span class="n">MediaRecorder</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">init_recorder</span><span class="p">():</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">setAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="o">.</span><span class="n">MIC</span><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">setOutputFormat</span><span class="p">(</span><span class="n">OutputFormat</span><span class="o">.</span><span class="n">THREE_GPP</span><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">setAudioEncoder</span><span class="p">(</span><span class="n">AudioEncoder</span><span class="o">.</span><span class="n">AMR_NB</span><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">setOutputFile</span><span class="p">(</span><span class="n">storage_path</span><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -865,6 +822,7 @@ String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 <p>你可以自定义里面的属性。比如<code>AMR_NB</code>（<strong>自适应多速率，Adaptive Multi-Rate</strong>编解码器，用来做语音优化的，广泛用于GSM和其他移动网络的设备中）改成<code>AudioEncoder.AAC</code>（<strong>进阶音讯编码，Advanced Audio
 Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是很合适，因为手机的麦克风不只是录制音乐，还要录制你的声音。</p>
 <p>下面就是“开始/结束录音(Begin/End)”按钮部分代码。这部分代码和第一章时钟app的思路一样：</p>
+
 </div>
 </div>
 </div>
@@ -873,25 +831,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">RecorderApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="n">is_recording</span> <span class="o">=</span> <span class="bp">False</span>
-    
-    <span class="k">def</span> <span class="nf">begin_end_recording</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">is_recording</span><span class="p">):</span>
-            <span class="n">recorder</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-            <span class="n">recorder</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">is_recording</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">begin_end_recording</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                <span class="p">(</span><span class="s">'[font=Modern Pictograms][size=120]'</span>
-                 <span class="s">'e[/size][/font]</span><span class="se">\n</span><span class="s">Begin recording'</span><span class="p">)</span>
-            <span class="k">return</span>
-        
-        <span class="n">init_recorder</span><span class="p">()</span>
-        <span class="n">recorder</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_recording</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">begin_end_recording</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-            <span class="p">(</span><span class="s">'[font=Modern Pictograms][size=120]'</span>
-            <span class="s">'%[/size][/font]</span><span class="se">\n</span><span class="s">End recording'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -913,16 +853,17 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <li>升级按钮文字以反映当前状态。</li>
 </ol>
 <p>程序的最后一部分就是升级<code>recorder.kv</code>，我们要调整一下“开始/结束录音(Begin/End)”按钮代码来调用<code>begin_end_recording()</code>函数：</p>
-<pre><code class="language-yaml">    <span class="class">Button</span>:
-        <span class="method">id:</span> begin_end_recording
-        <span class="method">background_color:</span> <span class="class">C</span>(<span class="string">'#3498DB'</span>)
-        <span class="method">text:</span>
-            (<span class="string">'[font=Modern Pictograms][size=120]'</span>
-            <span class="string">'e[/size][/font]\nBegin recording'</span>)
-        <span class="method">on_press:</span> app.begin_end_recording()
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">Button</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">begin_end_recording</span>
+        <span class="l-Scalar-Plain">background_color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">C('#3498DB')</span>
+        <span class="l-Scalar-Plain">text</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">('[font=Modern Pictograms][size=120]'</span>
+            <span class="l-Scalar-Plain">'e[/size][/font]\nBegin recording')</span>
+        <span class="l-Scalar-Plain">on_press</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">app.begin_end_recording()</span>
+</pre></div>
 <p>这就搞定了。现在运行程序就可以向SD卡里录音了。不过在这之前请先看看下节内容。按钮的节目如下所示：</p>
 <p><img src="kbpic/3.10begainendbutton.png" alt="begainendbutton"></p>
+
 </div>
 </div>
 </div>
@@ -936,7 +877,6 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -946,14 +886,14 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <p>当然有很多方法解决这个问题。首先，最容易的就是重新编译Kivy Launcher源代码，让应用获取录音权限，<a href="https://github.com/mvasilkov/kivy_launcher_hack">最新版在这里</a>。</p>
 <p>在安装<code>.apk</code>文件之前，请卸载原来的版本。另外如果你感受一下Android反编译，也可以用<a href="https://code.google.com/p/android-apktool/">**apktool</a>直接反编译apk文件。步骤如下：</p>
 <ol>
-<li>下载Kivy Launcher的app文件<code>KivyLauncher.apk</code>，用apktool文件命令：<pre><code class="language-sh"> <span class="comment">apktool</span> <span class="comment">d</span> <span class="literal">-</span><span class="comment">b</span> <span class="literal">-</span><span class="comment">s</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">KivyLauncher</span>.<span class="comment">apk</span> <span class="comment">KivyLauncher
-</span></code></pre>
+<li>下载Kivy Launcher的app文件<code>KivyLauncher.apk</code>，用apktool文件命令：<div class="highlight"><pre>apktool d -b -s -d KivyLauncher.apk KivyLauncher
+</pre></div>
 </li>
-<li>向<code>AndroidManifest.xml</code>文件里增加权限：<pre><code class="language-xml"> <span class="tag">&lt;<span class="title">uses-permission</span> <span class="attribute">android:name</span>=<span class="value">"android.permission.RECORD_AUDIO"</span> /&gt;</span>
-</code></pre>
+<li>向<code>AndroidManifest.xml</code>文件里增加权限：<div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.RECORD_AUDIO"</span> <span class="nt">/&gt;</span>
+</pre></div>
 </li>
-<li>重新打包成<code>.apk</code>文件：<pre><code class="language-sh"> <span class="title">apktool</span> b KivyLauncher KivyLauncherWithChanges.apk
-</code></pre>
+<li>重新打包成<code>.apk</code>文件：<div class="highlight"><pre>apktool b KivyLauncher KivyLauncherWithChanges.apk
+</pre></div>
 </li>
 <li>用<code>jarsigner</code>工具为<code>.apk</code>文件签名。可以看看签名Android包的<a href="http://developer.android.com/tools/publishing/app-signing.%0Ahtml#signing-manually">官方文档</a>
 </li>
@@ -962,6 +902,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <blockquote>
 <p>你可以用同样的方法在通过Pyjnius为Python代码增加不同的权限。比如，要获得GPS API接入的权限，你的app就需要<code>android.permission.ACCESS_FINE_LOCATION</code>，其它Android设备权限可以看官方<a href="http://developer.android.com/%0Areference/android/Manifest.permission.html">文档</a>。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -975,13 +916,13 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>播放声音很简单，也不需要权限，对应的API也更简练。我们就要一个类<code>MediaPlayer</code>：</p>
+
 </div>
 </div>
 </div>
@@ -990,8 +931,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">MediaPlayer</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'android.media.MediaPlayer'</span><span class="p">)</span>
-<span class="n">player</span> <span class="o">=</span> <span class="n">MediaPlayer</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1007,6 +947,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>当用户按下播放(Play)按钮时，下面的代码就要运行。我们还为下一节的<em>删除文件</em>增加了<code>reset_player()</code>函数。代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1015,19 +956,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">reset_player</span><span class="p">():</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">isPlaying</span><span class="p">()):</span>
-        <span class="n">player</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-    <span class="n">player</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">restart_player</span><span class="p">():</span>
-    <span class="n">reset_player</span><span class="p">()</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">player</span><span class="o">.</span><span class="n">setDataSource</span><span class="p">(</span><span class="n">storage_path</span><span class="p">)</span>
-        <span class="n">player</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
-        <span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">player</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1046,6 +975,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <blockquote>
 <p>实际上这类代码应该一直放在<code>try ... catch</code>里面，因为不知道什么地方就会异常。比如文件格式不对，SD卡没插好，或是读取失败，涉及到IO的问题多了。最好的办法就是<em>小心驶得万年船（better safe than sorry）</em>。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -1059,13 +989,13 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最后一个功能是用<code>java.io.File</code>，和Android关系不大了，是Java标准库。Android官方文档也会包含Java核心类的解释，尽管Java比Android早几十年。代码很简单，就是最后一行：</p>
+
 </div>
 </div>
 </div>
@@ -1074,11 +1004,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">File</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s">'java.io.File'</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">RecorderApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">delete_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">reset_player</span><span class="p">()</span>
-        <span class="n">File</span><span class="p">(</span><span class="n">storage_path</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1100,6 +1026,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 还要注意这个函数在桌面系统上也可以运行，因为它与Android无关；你只要用Java和Pyjnius就可以了。</p>
 </blockquote>
 <p>现在UI和三个主要的功能都实现了，我们的app完成了。</p>
+
 </div>
 </div>
 </div>
@@ -1113,7 +1040,6 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1128,6 +1054,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <li>如果项目只在一个平台，如果有平台要求发生改变就很危险。被Google封杀比同时被AppStore和Google，以及其他市场封杀的风险大得多</li>
 </ul>
 <p>你可以好好想想，做一个适合你的app的决定。</p>
+
 </div>
 </div>
 </div>
@@ -1141,7 +1068,6 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1150,52 +1076,49 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 <p>总之，大胆模仿其他UI模式理念（包括布局，字体，配色等）。毕加索的名言，“杰出艺术家模仿，伟大艺术家盗窃”，这正是当今网页和应用开发的精髓。</p>
 <p>另外，微软用了“Modern UI”做了一堆应用，包括移动应用和桌面应用，并不是说这种设计模式就是好。众所周知，微软的操作系统才是这种设计模式被接受的基础。</p>
 <p>现在放下Java吧。下一章我们用Python大名鼎鼎的Twisted网络框架做一个简单的CS模式的聊天app。</p>
+
 </div>
 </div>
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
+                <ul class="pager hidden-print">
+<li class="previous">
                 <a href="python-parallel-system-tools-pp4e.html" rel="prev" title="python-parallel-system-tools-pp4e">Previous post</a>
             </li>
             <li class="next">
                 <a href="maximum-contiguous-subsequence.html" rel="next" title="maximum-contiguous-subsequence">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch3-sound-recorder-for-android.html",
         disqus_title="kivy-ch3-sound-recorder-for-android",
         disqus_identifier="cache/posts/kivy-ch3-sound-recorder-for-android.html",
         disqus_config = function () {
-            this.language = "";
+            this.language = "en";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-
-        </div>
-    </section>
-    <script>
+</div>
+    </section><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1204,13 +1127,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-<!-- Social buttons -->
-<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+</script><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- Social buttons --><div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 <a class="addthis_button_more">Share</a>
 <ul>
 <li>
@@ -1227,11 +1144,7 @@ Coding</strong>标准，类似于MP3的一种编码标准）。这么改不是�
 </li>
 </ul>
 </div>
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
-<!-- End of social buttons -->
-
-
-        <script type="text/javascript">
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script><!-- End of social buttons --><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

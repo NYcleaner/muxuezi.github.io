@@ -3,20 +3,13 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>7-dimensionality-reduction-with-pca | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html">
-
-
-
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>7-dimensionality-reduction-with-pca | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html">
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -28,18 +21,11 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta name="og:title" content="7-dimensionality-reduction-with-pca">
-    <meta name="og:url" content="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html">
-    <meta name="og:description" content="用PCA降维¶
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="7-dimensionality-reduction-with-pca">
+<meta property="og:url" content="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html">
+<meta property="og:description" content="用PCA降维¶
 
 
 
@@ -48,29 +34,24 @@ MathJax.Hub.Config({
 
 
 
-
-本章我们将介绍一种降维方法，PCA（Principal Component Analysis，主成分分析）。降维致力于解决三类问题。第一，降维可以缓解维度灾难问题。第二，降维可以在压缩数据的同时让信息损失最小化。第三，理解几百个维度的数据结构很困难，两三个维度的数据通过可视化更容易理解。下面，我们用PCA将一个高维数据降成二维，方便可视化，之后，我们建一个脸部识别">
-    <meta name="og:site_name" content="绿萝间">
-    <meta name="og:type" content="article">
-
-    
-    
-
+本章我们将介绍一种降维方法，PCA（Principal Component Analysis，主成分分析）。降维致力于解决三类问题。第一，降维可以缓解维度灾难问题。第二，降维可以在压缩数据的同时让信息损失最小化。第三，理解几百个维度的数据结构很困难，两三个维度的数据通过可视化更容易理解。下面，我们用PCA将一个高维数据降成二维，方便可视化，之后，我们建一个脸部识别系">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-02T09:38:42+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
         <h1 class="p-name entry-title" itemprop="headline name">7-dimensionality-reduction-with-pca</h1>
 
@@ -88,11 +69,11 @@ MathJax.Hub.Config({
         <ul>
         Tags : 
            <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -107,7 +88,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -128,7 +108,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -136,8 +115,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<em>第三章，特征提取与处理</em>里面，涉及高维特征向量的问题往往容易陷入维度灾难。随着数据集维度的增加，算法学习需要的样本数量呈指数级增加。有些应用中，遇到这样的大数据是非常不利的，而且从大数据集中学习需要更多的内存和处理能力。另外，随着维度的增加，数据的稀疏性会越来越高。在高维向量空间中探索同样的数据集比在同样稀疏的数据集中探索更加困难。</p>
 <p>主成分分析也称为卡尔胡宁-勒夫变换（Karhunen-Loeve Transform），是一种用于探索高维数据结构的技术。PCA通常用于高维数据集的探索与可视化。还可以用于数据压缩，数据预处理等。PCA可以把可能具有相关性的高维变量合成线性无关的低维变量，称为主成分（ principal components）。新的低维数据集会经可能的保留原始数据的变量。</p>
-<p>PCA将数据投射到一个低维子空间实现降维。例如，二维数据集降维就是把点投射成一条线，数据集的每个样本都可以用一个值表示，不需要两个值。三维数据集可以降成二维，就是把变量映射成一个平面。一般情况下，$n$维数据集可以通过映射降成$k$维子空间，其中$k&lt;n$。更专业的说法是，PCA可以用来找到一组表示子空间的矢量，这组矢量是映射数据的误差的平方和最小化的结果。</p>
-<p>假如你是一本养花工具宣传册的摄影师，你正在拍摄一个水壶。水壶是三维的，但是照片是二维的，为了更全面的把水壶展示给客户，你需要从不同角度拍几张图片。下图是你从四个方向拍的照片：</p>
+<p>PCA将数据投射到一个低维子空间实现降维。例如，二维数据集降维就是把点投射成一条线，数据集的每个样本都可以用一个值表示，不需要两个值。三维数据集可以降成二维，就是把变量映射成一个平面。一般情况下，$n$维数据集可以通过映射降成$k$维子空间，其中$k<n><p>假如你是一本养花工具宣传册的摄影师，你正在拍摄一个水壶。水壶是三维的，但是照片是二维的，为了更全面的把水壶展示给客户，你需要从不同角度拍几张图片。下图是你从四个方向拍的照片：</p>
 <p><img src="mlslpic/7.1%20wateringcan.png" alt="wateringcan"></p>
 <p>第一张图里水壶的背面可以看到，但是看不到前面。第二张图是拍前面，可以看到壶嘴，这张图可以提供了第一张图缺失的信息，但是壶把看不到了。从第三张俯视图里无法看出壶的高度。第四张图是你打算放进目录的，水壶的高度，顶部，壶嘴和壶把都清晰可见。</p>
 <p>PCA的设计理念与此类似，它可以将高维数据集映射到低维空间的同时，尽可能的保留更多变量。PCA旋转数据集与其主成分对齐，将最多的变量保留到第一主成分中。假设我们有下图所示的数据集：</p>
@@ -151,6 +129,8 @@ MathJax.Hub.Config({
 <p><img src="mlslpic/7.5%20threedimensional.png" alt="threedimensional"></p>
 <p>这些点可以通过旋转和变换使光盘完全变成二维的。现在这些点看着像一个椭圆，第三维上基本没有变量，可以被忽略。</p>
 <p>当数据集不同维度上的方差分布不均匀的时候，PCA最有用。如果是一个球壳行数据集，PCA不能有效的发挥作用，因为各个方向上的方差都相等；没有丢失大量的信息维度一个都不能忽略。</p>
+
+</n></p>
 </div>
 </div>
 </div>
@@ -164,13 +144,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在介绍PCA的运行步骤之前，有一些术语需要说明一下。</p>
+
 </div>
 </div>
 </div>
@@ -184,34 +164,28 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>方差（Variance）是度量一组数据分散的程度。方差是各个样本与样本均值的差的平方和的均值：</p>
-<p>$$s^2 = \frac {\sum_{i=1}^n {{(X_i-\bar X)}^2}} {n-1}$$</p>
-<p>协方差（Covariance）是度量两个变量的变动的同步程度，也就是度量两个变量线性相关性程度。如果两个变量的协方差为0，则统计学上认为二者线性无关。注意两个无关的变量并非完全独立，只是没有线性相关性而已。计算公式如下：</p>
-<p>$$cov(X,Y)=\frac {\sum_{i=1}^n {(X_i-\bar X)(X_i-\bar Y)}} {n-1}$$</p>
-<p>如果协方差不为0，如果大于0表示正相关，小于0表示负相关。当协方差大于0时，一个变量增大是另一个变量也会增大。当协方差小于0时，一个变量增大是另一个变量会减小。协方差矩阵（Covariance matrix）由数据集中两两变量的协方差组成。矩阵的第$(i,j)$个元素是数据集中第$i$和第$j$个元素的协方差。例如，三维数据的协方差矩阵如下所示：</p>
-<p>$$
+$$s^2 = \frac {\sum_{i=1}^n {{(X_i-\bar X)}^2}} {n-1}$$<p>协方差（Covariance）是度量两个变量的变动的同步程度，也就是度量两个变量线性相关性程度。如果两个变量的协方差为0，则统计学上认为二者线性无关。注意两个无关的变量并非完全独立，只是没有线性相关性而已。计算公式如下：</p>
+$$cov(X,Y)=\frac {\sum_{i=1}^n {(X_i-\bar X)(X_i-\bar Y)}} {n-1}$$<p>如果协方差不为0，如果大于0表示正相关，小于0表示负相关。当协方差大于0时，一个变量增大是另一个变量也会增大。当协方差小于0时，一个变量增大是另一个变量会减小。协方差矩阵（Covariance matrix）由数据集中两两变量的协方差组成。矩阵的第$(i,j)$个元素是数据集中第$i$和第$j$个元素的协方差。例如，三维数据的协方差矩阵如下所示：</p>
+$$
 C=
 \begin{bmatrix}
 cov(x_1,x_1) &amp; cov(x_1,x_2) &amp; cov(x_1,x_3)\\
 cov(x_2,x_1) &amp; cov(x_2,x_2) &amp; cov(x_2,x_3)\\
 cov(x_3,x_1) &amp; cov(x_3,x_2) &amp; cov(x_3,x_3)\\
 \end{bmatrix}
-$$</p>
-<p>让我们计算下表数据的协方差矩阵：</p>
+$$<p>让我们计算下表数据的协方差矩阵：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">X1</th>
 <th style="text-align:center">X2</th>
 <th style="text-align:center">X3</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">2</td>
@@ -236,20 +210,16 @@ $$</p>
 </tbody>
 </table>
 <p>三个变量的样本均值分别是2.125，0.075和-1.275。用Numpy计算协方差矩阵如下：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4</span><span class="p">],</span>
-    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">]]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -294,26 +264,22 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>向量是具有大小（magnitude）和方向（direction）的几何概念。特征向量（eigenvector）是一个矩阵的满足如下公式的非零向量：</p>
-<p>$$A \vec \nu = \lambda \vec \nu$$</p>
-<p>其中，$\vec \nu$是特征向量，$A$是方阵，$\lambda$是特征值。经过$A$变换之后，特征向量的方向保持不变，只是其大小发生了特征值倍数的变化。也就是说，一个特征向量左乘一个矩阵之后等于等比例放缩（scaling）特征向量。德语单词<em>eigen</em>的意思是<em>属于...或...专有（ belonging to or peculiar to）</em>；矩阵的特征向量是属于并描述数据集结构的向量。</p>
+$$A \vec \nu = \lambda \vec \nu$$<p>其中，$\vec \nu$是特征向量，$A$是方阵，$\lambda$是特征值。经过$A$变换之后，特征向量的方向保持不变，只是其大小发生了特征值倍数的变化。也就是说，一个特征向量左乘一个矩阵之后等于等比例放缩（scaling）特征向量。德语单词<em>eigen</em>的意思是<em>属于...或...专有（ belonging to or peculiar to）</em>；矩阵的特征向量是属于并描述数据集结构的向量。</p>
 <p>特征向量和特征值只能由方阵得出，且并非所有方阵都有特征向量和特征值。如果一个矩阵有特征向量和特征值，那么它的每个维度都有一对特征向量和特征值。矩阵的主成分是其协方差矩阵的特征向量，按照对应的特征值大小排序。最大的特征值就是第一主成分，第二大的特征值就是第二主成分，以此类推。</p>
 <p>让我们来计算下面矩阵的特征向量和特征值：</p>
-<p>$$A=
+$$A=
 \begin{bmatrix}
 1 &amp; -2 \\
 2 &amp; -3 \\
 \end{bmatrix}
-$$</p>
-<p>根据前面的公式$A$乘以特征向量，必然等于特征值乘以特征向量。我们建立特征方程求解：</p>
-<p>$$(A- \lambda I) \vec \nu=0$$</p>
-<p>$$|A-\lambda * I| = 
+$$<p>根据前面的公式$A$乘以特征向量，必然等于特征值乘以特征向量。我们建立特征方程求解：</p>
+$$(A- \lambda I) \vec \nu=0$$$$|A-\lambda * I| = 
 \begin{vmatrix}
 \begin{bmatrix}
 1 &amp; -2 \\
@@ -326,9 +292,8 @@ $$</p>
 \end{bmatrix}
 \end{vmatrix}
 = 0
-$$</p>
-<p>从特征方程可以看出，矩阵与单位矩阵和特征值乘积的矩阵行列式为0：</p>
-<p>$$
+$$<p>从特征方程可以看出，矩阵与单位矩阵和特征值乘积的矩阵行列式为0：</p>
+$$
 \begin{vmatrix}
 \begin{bmatrix}
 1-\lambda &amp; -2 \\
@@ -337,13 +302,10 @@ $$</p>
 \end{vmatrix}
 =(\lambda+1)(\lambda+1)
 = 0
-$$</p>
-<p>矩阵的两个特征值都等于-1。现在再用特征值来解特征向量。</p>
-<p>$$A \vec \nu = \lambda \vec \nu$$</p>
-<p>首先，我们用特征方程：</p>
-<p>$$(A- \lambda I) \vec \nu=0$$</p>
-<p>把数据带入：</p>
-<p>$$
+$$<p>矩阵的两个特征值都等于-1。现在再用特征值来解特征向量。</p>
+$$A \vec \nu = \lambda \vec \nu$$<p>首先，我们用特征方程：</p>
+$$(A- \lambda I) \vec \nu=0$$<p>把数据带入：</p>
+$$
 \begin{pmatrix}
 \begin{bmatrix}
 1 &amp; -2 \\
@@ -372,7 +334,7 @@ $$</p>
 \nu_{1,2} \\
 \end{bmatrix}
 =0
-$$</p>
+$$
 </div>
 </div>
 </div>
@@ -382,7 +344,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们把特征值代入方程：</p>
-<p>$$\begin{bmatrix}
+$$\begin{bmatrix}
 1-(-1) &amp; -2 \\
 2 &amp; -3-(-1) \\
 \end{bmatrix}
@@ -400,43 +362,39 @@ $$</p>
 \nu_{1,2} \\
 \end{bmatrix}
 =0
-$$</p>
-<p>可以重新整理成如下方程：</p>
+$$<p>可以重新整理成如下方程：</p>
 <p>\begin{Bmatrix}
-2\nu_{1,1} + -(2\nu_{1,2})=0 \\
-2\nu_{1,1} + -(2\nu_{1,2})=0 \\
+2\nu<em>{1,1} + -(2\nu</em>{1,2})=0 \
+2\nu<em>{1,1} + -(2\nu</em>{1,2})=0 \
 \end{Bmatrix}</p>
 <p>任何满足方程的非零向量都可以作为特征向量：
 $$
 \begin{bmatrix}
-1 &amp; -2 \\
-2 &amp; -3 \\
+1 &amp; -2 \
+2 &amp; -3 \
 \end{bmatrix}
 \begin{bmatrix}
+1 \
+1 \</p>
+<h2 id="\end{bmatrix}">\end{bmatrix}<a class="anchor-link" href="7-dimensionality-reduction-with-pca.html#%5Cend%7Bbmatrix%7D">¶</a>
+</h2>\begin{bmatrix}
 1 \\
 1 \\
-\end{bmatrix}
-=
+\end{bmatrix}<p>=
 \begin{bmatrix}
-1 \\
-1 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
--1 \\
--1 \\
+-1 \
+-1 \
 \end{bmatrix}
 $$</p>
 <p>PCA需要单位特征向量，也就是L2范数等于1的特征向量：</p>
-<p>$$
+$$
 \begin{Vmatrix}
 x \\
 \end{Vmatrix}
 =
 \sqrt {x_1^2 + x_2^2 + \dots + x_n^2}
-$$</p>
-<p>那么把前面的特征向量带入可得：</p>
-<p>$$
+$$<p>那么把前面的特征向量带入可得：</p>
+$$
 \begin{Vmatrix}
 \begin{bmatrix}
 1 \\
@@ -447,9 +405,8 @@ $$</p>
 \sqrt {1^2+1^2}
 =
 \sqrt 2
-$$</p>
-<p>于是单位特征向量是：</p>
-<p>$$
+$$<p>于是单位特征向量是：</p>
+$$
 \begin{bmatrix}
 1 \\
 1 \\
@@ -459,19 +416,17 @@ $$</p>
 0.70710678 \\
 0.70710678 \\
 \end{bmatrix}
-$$</p>
-<p>我们可以通过Numpy检验我们手算的特征向量。<code>eig</code>函数返回特征值和特征向量的元组：</p>
+$$<p>我们可以通过Numpy检验我们手算的特征向量。<code>eig</code>函数返回特征值和特征向量的元组：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="n">w</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'特征值：{}</span><span class="se">\n</span><span class="s">特征向量：{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -516,7 +471,6 @@ $$</p>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -524,12 +478,10 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们用PCA方法把下表二维数据降成一维：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">X1</th>
 <th style="text-align:center">X2</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">0.9</td>
@@ -575,12 +527,10 @@ $$</p>
 </table>
 <p>PCA第一步是用解释变量减去样本均值：</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:center">X1</th>
 <th style="text-align:center">X2</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center">0.9 - 1.17 = -0.27</td>
@@ -625,22 +575,20 @@ $$</p>
 </tbody>
 </table>
 <p>然后，我们计算数据的主成分。前面介绍过，矩阵的主成分是其协方差矩阵的特征向量，按照对应的特征值大小排序。主成分可以通过两种方法计算。第一种方法是计算数据协方差矩阵。因为协方差矩阵是方阵，所有我们可以用前面的方法计算特征值和特征向量。第二种方法是用数据矩阵的奇异值分解（singular value decomposition）来找协方差矩阵的特征向量和特征值的平方根。我们先介绍第一种方法，然后介绍scikit-learn的PCA实现，也就是第二种方法。上述数据集的解释变量协方差矩阵如下：</p>
-<p>$$
+$$
 C=
 \begin{bmatrix}
 0.6867777778 &amp; 0.6066666667 \\
 0.6066666667 &amp; 0.5977777778 \\
 \end{bmatrix}
-$$</p>
-<p>用前面介绍过的方法，特征值是1.250和0.034，单位特征向量是：</p>
-<p>$$
+$$<p>用前面介绍过的方法，特征值是1.250和0.034，单位特征向量是：</p>
+$$
 \begin{bmatrix}
 0.73251454 &amp; 0.68075138 \\
 0.68075138 &amp; 0.73251454 \\
 \end{bmatrix}
-$$</p>
-<p>下面我们把数据映射到主成分上。第一主成分是最大特征值对应的特征向量，因此我们要建一个转换矩阵，它的每一列都是主成分的特征向量。如果我们要把5维数据降成3维，那么我们就要用一个3维矩阵做转换矩阵。在本例中，我们将把我们的二维数据映射成一维，因此我们只需要用特征向量中的第一主成分。最后，我们用数据矩阵点乘转换矩阵。下面就是第一主成分映射的结果：</p>
-<p>$$
+$$<p>下面我们把数据映射到主成分上。第一主成分是最大特征值对应的特征向量，因此我们要建一个转换矩阵，它的每一列都是主成分的特征向量。如果我们要把5维数据降成3维，那么我们就要用一个3维矩阵做转换矩阵。在本例中，我们将把我们的二维数据映射成一维，因此我们只需要用特征向量中的第一主成分。最后，我们用数据矩阵点乘转换矩阵。下面就是第一主成分映射的结果：</p>
+$$
 \begin{bmatrix}
 -0.27 &amp; -0.3 \\
 1.23 &amp; 1.3 \\
@@ -670,30 +618,17 @@ $$</p>
  1.85922113 \\
 -0.04092339 \\
 \end{bmatrix}
-$$</p>
-<p>通过Numpy的<code>dot</code>函数计算如下：</p>
+$$<p>通过Numpy的<code>dot</code>函数计算如下：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">0.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span>
-<span class="p">[</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">],</span>
-<span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">0.67</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">0.87</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>
-<span class="p">[</span><span class="mf">0.63</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">0.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">],</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">0.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">],</span>
-<span class="p">[</span><span class="mf">1.33</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">],</span>
-<span class="p">[</span><span class="mf">0.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">]]</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.73251454</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.68075138</span><span class="p">]]</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -710,23 +645,7 @@ $$</p>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[-0.40200434],
-       [ 1.78596968],
-       [ 0.29427599],
-       [-0.08233391],
-       [-0.22883682],
-       [ 0.5295593 ],
-       [-0.96731071],
-       [-1.11381362],
-       [ 1.85922113],
-       [-0.04092339]])
-</pre>
-</div>
+<div class="prompt"></div>
 
 </div>
 
@@ -743,8 +662,8 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>许多PCA的实现方法，包括scikit-learn的实现方法都是用奇异值分解计算特征值和特征向量。SVD计算公式如下：</p>
-<p>$$X=U \sum {V^T}$$</p>
-<p>列向量$U$称为数据矩阵的左奇异值向量，$V$称为数据矩阵的右奇异值向量，$\sum$的对角线元素是它的奇异值。矩阵的奇异值向量和奇异值在一些信号处理和统计学中是十分有用的，我们只对它们与数据矩阵特征向量和特征值相关的内容感兴趣。具体来说，左奇异值向量就是协方差矩阵的特征向量，$\sum$的对角线元素是协方差矩阵的特征值的平方根。计算SVD超出本书范围，不过用SVD找特征向量的方法与通过协方差矩阵解析方法类似，详细内容见线性代数教程。</p>
+$$X=U \sum {V^T}$$<p>列向量$U$称为数据矩阵的左奇异值向量，$V$称为数据矩阵的右奇异值向量，$\sum$的对角线元素是它的奇异值。矩阵的奇异值向量和奇异值在一些信号处理和统计学中是十分有用的，我们只对它们与数据矩阵特征向量和特征值相关的内容感兴趣。具体来说，左奇异值向量就是协方差矩阵的特征向量，$\sum$的对角线元素是协方差矩阵的特征值的平方根。计算SVD超出本书范围，不过用SVD找特征向量的方法与通过协方差矩阵解析方法类似，详细内容见线性代数教程。</p>
+
 </div>
 </div>
 </div>
@@ -758,7 +677,6 @@ array([[-0.40200434],
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -766,18 +684,16 @@ array([[-0.40200434],
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>二维或三维数据更容易通过可视化发现模式。一个高维数据集是无法用图形表示的，但是我们可以通过降维方法把它降成二维或三维数据来可视化。</p>
 <p>Fisher1936年收集了三种鸢尾花分别50个样本数据（Iris Data）：Setosa、Virginica、Versicolour。解释变量是花瓣（petals）和萼片（sepals）长度和宽度的测量值，响应变量是花的种类。鸢尾花数据集经常用于分类模型测试，scikit-learn中也有。让我们把<code>iris</code>数据集降成方便可视化的二维数据：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -793,19 +709,16 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先，我们导入鸢尾花数据集和<code>PCA</code>估计器。<code>PCA</code>类把主成分的数量作为超参数，和其他估计器一样，<code>PCA</code>也用<code>fit_transform()</code>返回降维的数据矩阵：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">reduced_X</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -821,33 +734,16 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最后，我们把图形画出来：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">red_x</span><span class="p">,</span> <span class="n">red_y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-<span class="n">blue_x</span><span class="p">,</span> <span class="n">blue_y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-<span class="n">green_x</span><span class="p">,</span> <span class="n">green_y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">red_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">red_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">elif</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">blue_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">blue_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">green_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">green_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduced_X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">red_x</span><span class="p">,</span> <span class="n">red_y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">'x'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">blue_x</span><span class="p">,</span> <span class="n">blue_y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'b'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">'D'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">green_x</span><span class="p">,</span> <span class="n">green_y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'g'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">'.'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -868,7 +764,7 @@ array([[-0.40200434],
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AZw7rZAAAAABJRU5ErkJggg==">
+<img src="data:image/png;base64,">
 </div>
 
 </div>
@@ -886,6 +782,7 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>降维的数据如上图所示。每个数据集中三个类都用不同的符号标记。从这个二维数据图中可以明显看出，有一个类与其他两个重叠的类完全分离。这个结果可以帮助我们选择分类模型。</p>
+
 </div>
 </div>
 </div>
@@ -899,7 +796,6 @@ array([[-0.40200434],
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -907,26 +803,16 @@ array([[-0.40200434],
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在让我们用PCA来解决一个脸部识别问题。脸部识别是一个监督分类任务，用于从照片中认出某个人。本例中，我们用剑桥大学AT&amp;T实验室的<a href="http://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html">Our Database of Faces数据集</a>，这个数据集包含40个人每个人10张照片。这些照片是在不同的光照条件下拍摄的，每张照片的表情也不同。照片都是黑白的，尺寸为92 x 112像素。虽然这些图片都不大，但是每张图片的按像素强度排列的特征向量也有10304维。这些高维数据的训练可能需要很多样本才能避免拟合过度。而我们样本量并不大，所有我们用PCA计算一些主成分来表示这些照片。</p>
 <p>我们可以把照片的像素强度矩阵转换成向量，然后用所有的训练照片的向量建一个矩阵。每个照片都是数据集主成分的线性组合。在脸部识别理论中，这些主成分称为特征脸（eigenfaces）。特征脸可以看成是脸部的标准化组成部分。数据集中的每张脸都可以通过一些标准脸的组合生成出来，或者说是最重要的特征脸线性组合的近似值。</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">walk</span><span class="p">,</span> <span class="n">path</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">mahotas</span> <span class="kn">as</span> <span class="nn">mh</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -942,22 +828,16 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们把照片导入<code>Numpy</code>数组，然后把它们的像素矩阵转换成向量：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">for</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">dir_names</span><span class="p">,</span> <span class="n">file_names</span> <span class="ow">in</span> <span class="n">walk</span><span class="p">(</span><span class="s">'mlslpic/att-faces/'</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">fn</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s">'pgm'</span><span class="p">:</span>
-            <span class="n">image_filename</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_filename</span><span class="p">,</span> <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10304</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float32'</span><span class="p">)))</span>
-            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -973,16 +853,16 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后，我们用交叉检验建立训练集和测试集，在训练集上用<code>PCA：</code></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -998,20 +878,16 @@ array([[-0.40200434],
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们把所有样本降到150维，然后训练一个逻辑回归分类器。数据集包括40个类；scikit-learn底层会自动用one versus all策略创建二元分类器：</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">X_train_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">X_test_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'训练集数据的原始维度是：{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'PCA降维后训练集数据是：{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train_reduced</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">accuracies</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1051,18 +927,16 @@ PCA降维后训练集数据是：(300, 150)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最后，我们用交叉验证和测试集评估分类器的性能。分类器的平均综合评价指标（F1 score）是0.88，但是需要花费更多的时间训练，在更多训练实例的应用中可能会更慢。</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">'交叉验证准确率是：{}</span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">),</span> <span class="n">accuracies</span><span class="p">))</span>
-<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_reduced</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1150,59 +1024,55 @@ avg / total       0.93      0.88      0.88       100
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本章，我们介绍了降维问题。高维数据不能轻易可视化。估计器训练高维数据集时，也可能出现维度灾难。我们通过主成分分析法缓解这些问题，将可能解释变量具有相关性的高维数据集，通过将数据映射到一个低维子空间，降维成一个线性无关的低维数据集。我们用主成分分析将四维的鸢尾花数据集降成二维数据进行可视化，还建立了一个脸部识别系统。下一章，我们将回到监督学习方法，介绍一种分类算法——感知器（perceptron），本书的最后两章都是建立在感知器的基础上。</p>
+
 </div>
 </div>
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
+                <ul class="pager hidden-print">
+<li class="previous">
                 <a href="dlott-15075-2015-07-01-report.html" rel="prev" title="大乐透15075期(2015-07-01)数据分析报告">Previous post</a>
             </li>
             <li class="next">
                 <a href="slott-2015076-2015-07-02-report.html" rel="next" title="双色球2015076期(2015-07-02)数据分析报告">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html",
         disqus_title="7-dimensionality-reduction-with-pca",
         disqus_identifier="cache/posts/7-dimensionality-reduction-with-pca.html",
         disqus_config = function () {
-            this.language = "";
+            this.language = "en";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-
-        </div>
-    </section>
-    <script>
+</div>
+    </section><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1211,13 +1081,7 @@ avg / total       0.93      0.88      0.88       100
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-<!-- Social buttons -->
-<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+</script><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- Social buttons --><div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 <a class="addthis_button_more">Share</a>
 <ul>
 <li>
@@ -1234,11 +1098,7 @@ avg / total       0.93      0.88      0.88       100
 </li>
 </ul>
 </div>
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
-<!-- End of social buttons -->
-
-
-        <script type="text/javascript">
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script><!-- End of social buttons --><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

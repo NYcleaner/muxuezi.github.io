@@ -3,20 +3,13 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>kivy-ch7-flappy-bird-app | 绿萝间</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch7-flappy-bird-app.html">
-
-
-
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>kivy-ch7-flappy-bird-app | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/kivy-ch7-flappy-bird-app.html">
 <script type="text/javascript">
 MathJax.Hub.Config({
     tex2jax: {
@@ -28,19 +21,11 @@ MathJax.Hub.Config({
              styles: {'.MathJax_Display': {"margin": 0}}
      }
 });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
-        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="tj2">
-        <meta name="og:title" content="kivy-ch7-flappy-bird-app">
-    <meta name="og:url" content="http://muxuezi.github.io/posts/kivy-ch7-flappy-bird-app.html">
-    <meta name="og:description" content="飞翔的小鸟app¶
-
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="tj2">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="kivy-ch7-flappy-bird-app">
+<meta property="og:url" content="http://muxuezi.github.io/posts/kivy-ch7-flappy-bird-app.html">
+<meta property="og:description" content="飞翔的小鸟app¶
 
 
 
@@ -59,28 +44,24 @@ MathJax.Hub.Config({
 
 
 
-这是一款由越南独立开发者阮哈东（Dong Nguyen）2013年开发的手机游戏，短时间竟占领了全球各大App St">
-    <meta name="og:site_name" content="绿萝间">
-    <meta name="og:type" content="article">
-
-    
-    
-
+这是一款由越南独立开发者阮哈东（Dong Nguyen）2013年开发的手机游戏，短时间竟占领了全球各大App Sto">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-24T13:44:15+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Kivy">
+<meta property="article:tag" content="Python">
 </head>
 <body>
-    <section class="social">
-        <ul>
-                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="https://twitter.com/muxuezi" title="My Twitter"><i class="icon-twitter"></i></a></li>
             <li><a href="https://github.com/muxuezi" title="My Github"><i class="icon-github"></i></a></li>
 
-        </ul>
-    </section>
-    <section class="page-content">
-        <div class="content" rel="main">
+        </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
         <h1 class="p-name entry-title" itemprop="headline name">kivy-ch7-flappy-bird-app</h1>
 
@@ -98,11 +79,11 @@ MathJax.Hub.Config({
         <ul>
         Tags : 
            <li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
            <li><a class="tag p-category" href="../categories/kivy.html" rel="tag">Kivy</a></li>
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
-           <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
         </ul>
-        </div>
+</div>
 
         </div>
         <div class="body">
@@ -117,7 +98,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -146,6 +126,7 @@ MathJax.Hub.Config({
 <li>实现游戏的声音效果</li>
 </ul>
 <p>这个游戏没有获胜条件，最小的碰撞都会失败。在原版游戏中，玩家以分数高低论输赢。和上一章类似，如果感兴趣，记分板可以当作练习。</p>
+
 </div>
 </div>
 </div>
@@ -159,7 +140,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -177,6 +157,7 @@ MathJax.Hub.Config({
 <strong>游戏角色（小鸟）</strong>：小鸟一直往下掉，只能垂直飞翔。玩家点击屏幕，小鸟就向上飞。如果小鸟掉到地上，碰到天花板或管道，游戏都失败。</li>
 </ul>
 <p>这就是游戏的基本设计思路。</p>
+
 </div>
 </div>
 </div>
@@ -190,7 +171,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -205,27 +185,28 @@ MathJax.Hub.Config({
 <li>更有效的方法是创建一些静态多边形（一个是一层）占据整个屏幕，然后让花纹图案动起来。用一个平铺的花纹图案，这个方法可以流畅的实现动画效果，也省不少功夫——不需要重新定位背景上的对象。</li>
 </ul>
 <p>我们要第二种方法来实现，因为这更简单有效。首先让我们把<code>kivybird.kv</code>文件做出来：</p>
-<pre><code class="language-yaml">FloatLayout:
-    Background:
-        <span class="keyword">id</span>: background
-        canvas:
-            Rectangle:
-                pos: <span class="keyword">self</span><span class="variable">.pos</span>
-                size: (<span class="keyword">self</span><span class="variable">.width</span>, <span class="number">96</span>)
-                texture: <span class="keyword">self</span><span class="variable">.tx_floor</span>
-            Rectangle:
-                pos: (<span class="keyword">self</span><span class="variable">.x</span>, <span class="keyword">self</span><span class="variable">.y</span> + <span class="number">96</span>)
-                size: (<span class="keyword">self</span><span class="variable">.width</span>, <span class="number">64</span>)
-                texture: <span class="keyword">self</span><span class="variable">.tx_grass</span>
-            Rectangle:
-                pos: (<span class="keyword">self</span><span class="variable">.x</span>, <span class="keyword">self</span><span class="variable">.height</span> - <span class="number">144</span>)
-                size: (<span class="keyword">self</span><span class="variable">.width</span>, <span class="number">128</span>)
-                texture: <span class="keyword">self</span><span class="variable">.tx_cloud</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">FloatLayout</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">Background</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">background</span>
+        <span class="l-Scalar-Plain">canvas</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.pos</span>
+                <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.width, 96)</span>
+                <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_floor</span>
+            <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x, self.y + 96)</span>
+                <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.width, 64)</span>
+                <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_grass</span>
+            <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x, self.height - 144)</span>
+                <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.width, 128)</span>
+                <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_cloud</span>
+</pre></div>
 <blockquote>
 <p>这里的数字都是花纹的尺寸：96是地面高度，64是草的高度，144是云的高度。在实际开发中写这些代码很费劲，不过我们应该尽量简化代码，降低工作量。</p>
 </blockquote>
 <p>你会看到，这里没有移动的部分，就是三个矩形在屏幕的底部和顶部。动画效果需要花纹用<code>Background</code>类中带<code>tx_</code>的属性来实现，下面我们就是。</p>
+
 </div>
 </div>
 </div>
@@ -239,7 +220,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -247,6 +227,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>让我们建一个辅助函数来加载平铺的花纹，这个函数在后面经常用到，所以把它放在最上面。</p>
 <p>首先创建一个<code>Widget</code>类，作为自定义部件的基类，<code>main.py</code>中代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -255,14 +236,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.image</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
-
-<span class="k">class</span> <span class="nc">BaseWidget</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">load_tileable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="s">'</span><span class="si">%s</span><span class="s">.png'</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">texture</span>
-        <span class="n">t</span><span class="o">.</span><span class="n">wrap</span> <span class="o">=</span> <span class="s">'repeat'</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">'tx_</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -279,6 +253,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>创建辅助函数的语句就是<code>t.wrap = 'repeat'</code>。我们要把它应用到每一块花纹上。</p>
 <p>我们还需要储存新加载的花纹，用<code>tx_</code>加图片名称来命名。比如，<code>load_tileable('grass')</code>就会把<code>grass.png</code>加载到<code>self.tx_grass</code>属性。</p>
+
 </div>
 </div>
 </div>
@@ -292,13 +267,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在我们来实现<code>Background</code>部件：</p>
+
 </div>
 </div>
 </div>
@@ -307,17 +282,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.properties</span> <span class="kn">import</span> <span class="n">ObjectProperty</span>
-
-<span class="k">class</span> <span class="nc">Background</span><span class="p">(</span><span class="n">BaseWidget</span><span class="p">):</span>
-    <span class="n">tx_floor</span> <span class="o">=</span> <span class="n">ObjectProperty</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">tx_grass</span> <span class="o">=</span> <span class="n">ObjectProperty</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">tx_cloud</span> <span class="o">=</span> <span class="n">ObjectProperty</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Background</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">'floor'</span><span class="p">,</span> <span class="s">'grass'</span><span class="p">,</span> <span class="s">'cloud'</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_tileable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -334,6 +299,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果现在执行代码，你会看到花纹被拉伸填充矩形，这是因为还没有指定花纹的坐标。改变每块花纹的<code>uvsize</code>属性就可以了，这样就计算出覆盖多边形需要多少块花纹了。比如，<code>uvsize</code>设为<code>(2, 2)</code>表示填充一个矩形需要4块花纹。</p>
 <p>辅助函数可以用来设置<code>uvsize</code>的值，这样我们的花纹就不会变形了：</p>
+
 </div>
 </div>
 </div>
@@ -342,8 +308,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">set_background_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx</span><span class="p">):</span>
-    <span class="n">tx</span><span class="o">.</span><span class="n">uvsize</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="n">tx</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -362,6 +327,7 @@ MathJax.Hub.Config({
 <p>这里负坐标值表示花纹可以被切割。Kivy用这种效果来避免高成本的栅格操作，把负担转给GPU（显卡），这样处理起来更轻松。</p>
 </blockquote>
 <p>这个方法依赖于背景的宽度，所以每次<code>size</code>属性变化之后可以用<code>on_size()</code>调用一次。这样就可以在屏幕发生变化的时候保持<code>uvsize</code>属性及时更新了：</p>
+
 </div>
 </div>
 </div>
@@ -370,9 +336,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">on_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">tx</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tx_floor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tx_grass</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tx_cloud</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_size</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -389,6 +353,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在背景图案就变成这样了：
 <img src="kbpic/7.3%20texturebackground.png" alt="texturebackground"></p>
+
 </div>
 </div>
 </div>
@@ -402,13 +367,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面我们要让背景动起来。首先，我们要在<code>KivyBirdApp</code>类增加一个每秒60下的运动计时器：</p>
+
 </div>
 </div>
 </div>
@@ -417,16 +382,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
-
-<span class="k">class</span> <span class="nc">KivyBirdApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">background</span>
-        <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="mf">0.016</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nap</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -443,6 +399,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>update()</code>方法就是把控制传递给<code>Background</code>部件的<code>update()</code>。当我们需要更多移动的时候，我们再扩展这个方法。</p>
 <p>在<code>Background.update()</code>里面，我们改变花纹来模拟运动状态：</p>
+
 </div>
 </div>
 </div>
@@ -451,15 +408,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_background_uv</span><span class="p">(</span><span class="s">'tx_floor'</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nap</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_background_uv</span><span class="p">(</span><span class="s">'tx_grass'</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">nap</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_background_uv</span><span class="p">(</span><span class="s">'tx_cloud'</span><span class="p">,</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">nap</span><span class="p">)</span>
-    
-<span class="k">def</span> <span class="nf">set_background_uv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">uvpos</span> <span class="o">=</span> <span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">uvpos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">val</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">uvpos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -482,6 +431,7 @@ MathJax.Hub.Config({
 <p><code>kivybird.kv</code>的画布指令会监听这个变化并及时反馈，把花纹重新渲染出来，这样就会看到流畅的动画了。</p>
 <p><code>set_background_uv()</code>里面控制不同图层速度的因子是随意选择的，可以自定义。</p>
 <p>这样背景就完成了，下面我们来做管道。</p>
+
 </div>
 </div>
 </div>
@@ -495,7 +445,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -504,29 +453,29 @@ MathJax.Hub.Config({
 <p>管道分成两部分：高的和低的。中间会留出一个孔给小鸟飞过。每一部分都是有不同长度的管体和管头构成。</p>
 <p><img src="kbpic/7.4%20pipe.png" alt="pipe"></p>
 <p><code>kivybird.kv</code>文件里的布局部件给我们一个好起点：</p>
-<pre><code class="language-yaml">&lt;Pipe&gt;:
-    canvas:
-        Rectangle:
-            pos: (<span class="keyword">self</span><span class="variable">.x</span> + <span class="number">4</span>, <span class="keyword">self</span><span class="variable">.FLOOR</span>)
-            size: (<span class="number">56</span>, <span class="keyword">self</span><span class="variable">.lower_len</span>)
-            texture: <span class="keyword">self</span><span class="variable">.tx_pipe</span>
-            tex_coords: <span class="keyword">self</span><span class="variable">.lower_coords</span>
-        Rectangle:
-            pos: (<span class="keyword">self</span><span class="variable">.x</span>, <span class="keyword">self</span><span class="variable">.FLOOR</span> + <span class="keyword">self</span><span class="variable">.lower_len</span>)
-            size: (<span class="number">64</span>, <span class="keyword">self</span><span class="variable">.PCAP_HEIGHT</span>)
-            texture: <span class="keyword">self</span><span class="variable">.tx_pcap</span>
-        Rectangle:
-            pos: (<span class="keyword">self</span><span class="variable">.x</span> + <span class="number">4</span>, <span class="keyword">self</span><span class="variable">.upper_y</span>)
-            size: (<span class="number">56</span>, <span class="keyword">self</span><span class="variable">.upper_len</span>)
-            texture: <span class="keyword">self</span><span class="variable">.tx_pipe</span>
-            tex_coords: <span class="keyword">self</span><span class="variable">.upper_coords</span>
-        Rectangle:
-            pos: (<span class="keyword">self</span><span class="variable">.x</span>, <span class="keyword">self</span><span class="variable">.upper_y</span> - <span class="keyword">self</span><span class="variable">.PCAP_HEIGHT</span>)
-            size: (<span class="number">64</span>, <span class="keyword">self</span><span class="variable">.PCAP_HEIGHT</span>)
-            texture: <span class="keyword">self</span><span class="variable">.tx_pcap</span>
-    size_hint: (None, <span class="number">1</span>)
-    width: <span class="number">64</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">&lt;Pipe&gt;</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">canvas</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x + 4, self.FLOOR)</span>
+            <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(56, self.lower_len)</span>
+            <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_pipe</span>
+            <span class="l-Scalar-Plain">tex_coords</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.lower_coords</span>
+        <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x, self.FLOOR + self.lower_len)</span>
+            <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(64, self.PCAP_HEIGHT)</span>
+            <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_pcap</span>
+        <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x + 4, self.upper_y)</span>
+            <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(56, self.upper_len)</span>
+            <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_pipe</span>
+            <span class="l-Scalar-Plain">tex_coords</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.upper_coords</span>
+        <span class="l-Scalar-Plain">Rectangle</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pos</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(self.x, self.upper_y - self.PCAP_HEIGHT)</span>
+            <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(64, self.PCAP_HEIGHT)</span>
+            <span class="l-Scalar-Plain">texture</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">self.tx_pcap</span>
+    <span class="l-Scalar-Plain">size_hint</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(None, 1)</span>
+    <span class="l-Scalar-Plain">width</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">64</span>
+</pre></div>
 <p>其实很简单，就是把管道从下到上分成四个矩形：</p>
 <ul>
 <li>底部管体</li>
@@ -536,6 +485,7 @@ MathJax.Hub.Config({
 </ul>
 <p><img src="kbpic/7.5%20kvpipe.png" alt="kvpipe"></p>
 <p>与<code>Background</code>部件的实现过程类似，这些属性都要连接到部件图形显示算法的Python代码中。</p>
+
 </div>
 </div>
 </div>
@@ -549,13 +499,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>pipe</code>部件有趣的属性是：</p>
+
 </div>
 </div>
 </div>
@@ -564,24 +514,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.properties</span> <span class="kn">import</span> <span class="p">(</span><span class="n">AliasProperty</span><span class="p">,</span> 
-                             <span class="n">ListProperty</span><span class="p">,</span>
-                             <span class="n">NumericProperty</span><span class="p">,</span>
-                             <span class="n">ObjectProperty</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Pipe</span><span class="p">(</span><span class="n">BaseWidget</span><span class="p">):</span>
-    <span class="n">FLOOR</span> <span class="o">=</span> <span class="mi">96</span>
-    <span class="n">PCAP_HEIGHT</span> <span class="o">=</span> <span class="mi">26</span>
-    <span class="n">PIPE_GAP</span> <span class="o">=</span> <span class="mi">120</span>
-    <span class="n">tx_pipe</span> <span class="o">=</span> <span class="n">ObjectProperty</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">tx_pcap</span> <span class="o">=</span> <span class="n">ObjectProperty</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">ratio</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">lower_len</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">lower_coords</span> <span class="o">=</span> <span class="n">ListProperty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">upper_len</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">upper_coords</span> <span class="o">=</span> <span class="n">ListProperty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">upper_y</span> <span class="o">=</span> <span class="n">AliasProperty</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_len</span><span class="p">,</span>
-        <span class="bp">None</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="p">[</span><span class="s">'height'</span><span class="p">,</span> <span class="s">'upper_len'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -606,6 +539,7 @@ MathJax.Hub.Config({
 <code>PIPE_GAP</code>：留给小鸟飞过的小孔高度</li>
 </ul>
 <p>然后就是花纹的属性<code>tx_pipe</code>和<code>tx_pcap</code>。它们和那些在<code>Background</code>类里面花纹的用法一样</p>
+
 </div>
 </div>
 </div>
@@ -614,12 +548,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Pipe</span><span class="p">(</span><span class="n">BaseWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Pipe</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        
-        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">'pipe'</span><span class="p">,</span> <span class="s">'pcap'</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_tileable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -637,6 +566,7 @@ MathJax.Hub.Config({
 <p><code>ratio</code>属性定义空的位置：<code>0.5</code>表示出现在中间（默认值），<code>0</code>表示出现在屏幕底部（地上），<code>1</code>表示出现在屏幕顶部（天空）。</p>
 <p><code>upper_y</code>是减少输入次数的辅助函数，它是用来计算<code>height - upper_len</code>值的。</p>
 <p>还有两个重要的属性<code>lower_coords</code>和<code>upper_coords</code>，用来设置花纹的坐标。</p>
+
 </div>
 </div>
 </div>
@@ -650,7 +580,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -663,6 +592,7 @@ MathJax.Hub.Config({
 <blockquote>
 <p>花纹匹配通常用<code>u</code>和<code>v</code>，不用<code>x</code>和<code>y</code>。这样可以把几何位置与花纹坐标值区分开，经常容易混淆。</p>
 </blockquote>
+
 </div>
 </div>
 </div>
@@ -676,13 +606,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个主题看着有点混乱，让我们一点点来推进：我们要垂直固定管道上的砖块，只需要调整<code>tex_coords</code>的第5和第7个元素。另外，<code>tex_coords</code>的值和<code>uvsize</code>里面的值是一个意思。基于管道高度调整砖块的坐标如下所示：</p>
+
 </div>
 </div>
 </div>
@@ -691,9 +621,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">set_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="nb">len</span><span class="p">):</span>
-    <span class="nb">len</span> <span class="o">/=</span> <span class="mi">16</span> <span class="c"># height of the texture</span>
-    <span class="n">coords</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">)</span> <span class="c"># set the last 3 items</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -709,6 +637,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>然后就是用<code>ratio</code>和屏幕高度来计算管道的长度：</p>
+
 </div>
 </div>
 </div>
@@ -717,13 +646,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">on_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">pipes_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="p">(</span>
-        <span class="n">Pipe</span><span class="o">.</span><span class="n">FLOOR</span> <span class="o">+</span> <span class="n">Pipe</span><span class="o">.</span><span class="n">PIPE_GAP</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Pipe</span><span class="o">.</span><span class="n">PCAP_HEIGHT</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">lower_len</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">*</span> <span class="n">pipes_length</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">upper_len</span> <span class="o">=</span> <span class="n">pipes_length</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_len</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lower_coords</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_len</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upper_coords</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_len</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -739,6 +662,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这段<code>on_size()</code>代码用来使所有的属性与屏幕尺寸保持同步。要反映<code>ratio</code>的变化，需要这样：</p>
+
 </div>
 </div>
 </div>
@@ -747,7 +671,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_size</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -763,6 +687,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可能发现在代码中我们没改变这个属性。这是因为管道的整个生命周期将通过<code>KivyBirdApp</code>类来处理，马上你就会看到。</p>
+
 </div>
 </div>
 </div>
@@ -776,7 +701,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -785,6 +709,7 @@ MathJax.Hub.Config({
 <p>要创建一堆望不到头的管道森林，我们需要把它们摆满屏幕，用循环队列就可以实现。</p>
 <p>我们让两个管道的间距是半屏宽，这样可以给玩家充分的准备时间，这样屏幕上同时会出现最多3个管道。为了方便测量，我们需要做4个管道。</p>
 <p>实现代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -793,24 +718,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">KivyBirdApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="n">pipes</span> <span class="o">=</span> <span class="p">[]</span>
-    
-    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">width</span>
-        <span class="c"># ...</span>
-        
-    <span class="k">def</span> <span class="nf">spawn_pipes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipes</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">remove_widget</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-            
-        <span class="bp">self</span><span class="o">.</span><span class="n">pipes</span> <span class="o">=</span> <span class="p">[]</span>
-        
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">Pipe</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spacing</span> <span class="o">*</span> <span class="n">i</span><span class="p">))</span>
-            <span class="n">p</span><span class="o">.</span><span class="n">ratio</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pipes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -828,6 +736,7 @@ MathJax.Hub.Config({
 <p><code>pipes</code>列表的使用应该考虑实现细节。我们可以遍历子部件列表来连接管道，但是只是更好看一点儿。</p>
 <p><code>spawn_pipes()</code>方法开始部分的清除代码允许我们后面重启程序更方便。</p>
 <p>我们还用随机分布来控制<code>ratio</code>参数。这里用<code>[0.25, 0.75]</code>作为随机范围，而不是常用的<code>[0, 1]</code>，是为了让小孔生成的位置更容易一些。</p>
+
 </div>
 </div>
 </div>
@@ -841,13 +750,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>与背景图案通过改变<code>uvpos</code>属性模拟运动的方式不同，管道真正移动。更新<code>KivyBirdApp.update()</code>方法来实现管道的循环更新：</p>
+
 </div>
 </div>
 </div>
@@ -856,14 +765,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nap</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipes</span><span class="p">:</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">96</span> <span class="o">*</span> <span class="n">nap</span>
-        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">64</span><span class="p">:</span> <span class="c"># pipe gone off screen</span>
-            <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
-            <span class="n">p</span><span class="o">.</span><span class="n">ratio</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -881,6 +783,7 @@ MathJax.Hub.Config({
 <p>和之前的动画一样，<code>96</code>是随机的移动速度因子；因子越大速度越快。</p>
 <p>每个管道的<code>ratio</code>数值都是随机生成的，这样就为玩家创建一个新的管子。界面如下图所示：</p>
 <p><img src="kbpic/7.7%20movingpipes.png" alt="movingpipes"></p>
+
 </div>
 </div>
 </div>
@@ -894,7 +797,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -904,14 +806,15 @@ MathJax.Hub.Config({
 <img src="kbpic/7.8%20bird.png" alt="bird"></p>
 <p>这个很简单，直接用Kivy的<code>Image</code>部件（<code>kivy.uix.image.Image</code>）实现<code>Bird</code>类就行。</p>
 <p><code>kivybird.kv</code>文件里面，我们需要几个属性来处理小鸟图片：</p>
-<pre><code class="language-yaml"><span class="class">Bird</span>:
-    <span class="method">id:</span> bird
-    <span class="method">pos_hint:</span> {<span class="string">'center_x'</span>: <span class="number">0.3333</span>, <span class="string">'center_y'</span>: <span class="number">0.6</span>}
-    <span class="method">size:</span> (<span class="number">54</span>, <span class="number">54</span>)
-    <span class="method">size_hint:</span> (<span class="class">None</span>, <span class="class">None</span>)
-    <span class="method">source:</span> <span class="string">'bird.png'</span>
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">Bird</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bird</span>
+    <span class="l-Scalar-Plain">pos_hint</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="s">'center_x'</span><span class="p-Indicator">:</span> <span class="nv">0.3333</span><span class="p-Indicator">,</span> <span class="s">'center_y'</span><span class="p-Indicator">:</span> <span class="nv">0.6</span><span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(54, 54)</span>
+    <span class="l-Scalar-Plain">size_hint</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(None, None)</span>
+    <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="s">'bird.png'</span>
+</pre></div>
 <p>这是<code>Bird</code>类的Python实现：</p>
+
 </div>
 </div>
 </div>
@@ -920,10 +823,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.uix.image</span> <span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">ImageWidget</span>
-
-<span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">ImageWidget</span><span class="p">):</span>
-    <span class="k">pass</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -939,6 +839,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在实现细节之前，我们需要完成一些基础工作。</p>
+
 </div>
 </div>
 </div>
@@ -952,7 +853,6 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -965,6 +865,7 @@ MathJax.Hub.Config({
 <li>如果发生碰撞，游戏重回<code>playing = False</code>，每个物体都会静止下来，等待玩家重新启动，然后回到步骤2重新开始</li>
 </ol>
 <p>为了实现这些，我们需要获取玩家输入的内容，很容易做到，因为我们只关心事件是否发生，不关心在哪里发生，整个屏幕就是一个大的按钮。</p>
+
 </div>
 </div>
 </div>
@@ -978,13 +879,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面是实现代码：</p>
+
 </div>
 </div>
 </div>
@@ -993,22 +894,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.window</span> <span class="kn">import</span> <span class="n">Window</span><span class="p">,</span> <span class="n">Keyboard</span>
-<span class="k">class</span> <span class="nc">KivyBirdApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="n">playing</span> <span class="o">=</span> <span class="bp">False</span>
-    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># ...</span>
-        <span class="n">Window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">on_key_down</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_key_down</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">on_touch_down</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_action</span>
-        
-    <span class="k">def</span> <span class="nf">on_key_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">Keyboard</span><span class="o">.</span><span class="n">keycodes</span><span class="p">[</span><span class="s">'spacebar'</span><span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">user_action</span><span class="p">()</span>
-            
-    <span class="k">def</span> <span class="nf">user_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">playing</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">spawn_pipes</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">playing</span> <span class="o">=</span> <span class="bp">True</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1024,6 +910,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这就是用户输入处理方式：<code>on_key_down</code>事件处理键盘输入，检查玩家是否敲了空格键。<code>on_touch_down</code>事件处理其他事件。最后都调用<code>user_action()</code>方法，执行<code>spawn_pipes()</code>，并把<code>playing</code>设置成<code>True</code>。</p>
+
 </div>
 </div>
 </div>
@@ -1037,13 +924,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>紧接着，我们要实现重力让小鸟在一个方向上飞行。这里，我们引入<code>Bird.speed</code>属性和一个新常量——加速度。每一帧的速度矢量都向下增加，造成一种匀加速下降运行。如下面的代码所示：</p>
+
 </div>
 </div>
 </div>
@@ -1052,19 +939,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">ImageWidget</span><span class="p">):</span>
-    <span class="n">ACCEL_FALL</span> <span class="o">=</span> <span class="mf">0.25</span>
-    
-    <span class="n">speed</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">gravity_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="c"># Replace pos_hint with a value</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pos_hint</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">'center_y'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">height</span>
-        
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">-=</span> <span class="n">Bird</span><span class="o">.</span><span class="n">ACCEL_FALL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1080,6 +955,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>当<code>playing</code>变成<code>True</code>时，<code>gravity_on()</code>方法会被调用。把<code>self.bird.gravity_on(self.root.height)</code>插入到<code>KivyBirdApp.user_action()</code>方法中：</p>
+
 </div>
 </div>
 </div>
@@ -1088,10 +964,7 @@ MathJax.Hub.Config({
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">playing</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">gravity_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">spawn_pipes</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">playing</span> <span class="o">=</span> <span class="bp">True</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1109,11 +982,12 @@ MathJax.Hub.Config({
 <p>这个方法可以有效的重置鸟的初始位置，从<code>pos_hint</code>里面把<code>'center_y'</code>移除。</p>
 <blockquote>
 <p><code>self.bird</code>类似前面的<code>self.background</code>。下面的代码应该放在<code>KivyBirdApp.on_start()</code>里面：</p>
-<pre><code class="language-python">self.background = self.root.ids.background
-self.bird = self.root.ids.bird
-</code></pre>
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">background</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">bird</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">bird</span>
+</pre></div>
 </blockquote>
 <p>我们还得从<code>KivyBirdApp.update()</code>方法里面调用<code>Bird.update()</code>。这样做有个好处，可以在不玩游戏的时候为升级游戏对象加一个防护：</p>
+
 </div>
 </div>
 </div>
@@ -1122,13 +996,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nap</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">playing</span><span class="p">:</span>
-        <span class="k">return</span> <span class="c"># don't move bird or pipes</span>
-    
-    <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nap</span><span class="p">)</span>
-    <span class="c"># rest of the code omitted</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1145,6 +1013,7 @@ self.bird = self.root.ids.bird
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你会发现，任何时候<code>Background.update()</code>方法都可以被调用；其他方法都是必要的时候才调用。</p>
 <p>这里没有实现保持小鸟在空中的能力，下面会实现。</p>
+
 </div>
 </div>
 </div>
@@ -1158,13 +1027,13 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要让飞翔的小鸟跳着飞行也很简单。我们改写<code>Bird.speed</code>就行，把它设置一个正数值，当小鸟持续跌落的时候让它正常延迟。让我们在<code>Bird</code>类里面增加方法：</p>
+
 </div>
 </div>
 </div>
@@ -1173,10 +1042,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">ACCEL_JUMP</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span> <span class="nf">bump</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">Bird</span><span class="o">.</span><span class="n">ACCEL_JUMP</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1192,6 +1058,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>现在，我们需要在<code>KivyBirdApp.user_action()</code>方法的最后调用<code>self.bird.bump()</code>就可以了，只要重复点击屏幕或按空格键都可以保持在空中。</p>
+
 </div>
 </div>
 </div>
@@ -1205,7 +1072,6 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1213,6 +1079,7 @@ self.bird = self.root.ids.bird
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>旋转小鸟是为了让游戏更生动，当它飞行的时候，沿着它的飞行轨迹旋转，看着很生动。向上飞行的时候朝着右上角旋转，向下飞行的时候朝着左下角旋转。</p>
 <p>角度计算的方法如下：</p>
+
 </div>
 </div>
 </div>
@@ -1221,11 +1088,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">ImageWidget</span><span class="p">):</span>
-    <span class="n">speed</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="n">AliasProperty</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="mi">5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span>
-        <span class="bp">None</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="p">[</span><span class="s">'speed'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1242,21 +1105,22 @@ self.bird = self.root.ids.bird
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这里的速度因子<code>5</code>是随意设置的。</p>
 <p>现在，要让小鸟旋转起来，我们要在<code>kivybird.kv</code>里面加入：</p>
-<pre><code class="language-yaml">&lt;Bird&gt;:
-    <span class="transposed_variable">canvas.</span>before:
-        PushMatrix
-        Rotate:
-            <span class="built_in">angle</span>: <span class="transposed_variable">root.</span><span class="built_in">angle</span>
-            axis: (<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>)
-            origin: <span class="transposed_variable">root.</span>center
-    <span class="transposed_variable">canvas.</span>after:
-        PopMatrix
-</code></pre>
+<div class="highlight"><pre><span class="l-Scalar-Plain">&lt;Bird&gt;</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">canvas.before</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">PushMatrix</span>
+        <span class="l-Scalar-Plain">Rotate</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">angle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root.angle</span>
+            <span class="l-Scalar-Plain">axis</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">(0, 0, 1)</span>
+            <span class="l-Scalar-Plain">origin</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root.center</span>
+    <span class="l-Scalar-Plain">canvas.after</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">PopMatrix</span>
+</pre></div>
 <p>这个操作会改变OpenGL使用的局部坐标系统，影响后面所有的渲染。不要忘了保存（<code>PushMatrix</code>）和恢复（<code>PopMatrix</code>）坐标系统的状态，否则致命的错误可能会发生，导致整个画面变形。</p>
 <blockquote>
 <p>如果您遇到莫名的app渲染问题，看看OpenGL的底层指令。</p>
 </blockquote>
 <p>这样，小鸟就可以沿着既定的轨道飞行了。</p>
+
 </div>
 </div>
 </div>
@@ -1270,7 +1134,6 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1278,6 +1141,7 @@ self.bird = self.root.ids.bird
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这个游戏最重要的事情之一就是碰撞监测，当鸟碰到地板、天花板和管道都要结束游戏。</p>
 <p>用地面和屏幕高度与小鸟的高度<code>bird.y</code>对比，就可以轻松确认小鸟是否已经碰到。在<code>KivyBirdApp</code>实现如下：</p>
+
 </div>
 </div>
 </div>
@@ -1286,11 +1150,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">test_game_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="ow">or</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">return</span> <span class="bp">False</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1306,6 +1166,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>监测是否碰到管道有点困难。我们要分两步来监测：首先，我们用Kivy的<code>collide_widget()</code>方法来测试横坐标，然后检查纵坐标是否在合理的范围之内（管道上下两段的<code>lower_len</code>和<code>upper_len</code>属性）。<code>KivyBirdApp.test_game_over()</code>方法最终实现如下：</p>
+
 </div>
 </div>
 </div>
@@ -1314,24 +1175,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">test_game_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">screen_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">height</span>
-    
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="ow">or</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipes</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">collide_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="p">):</span>
-            <span class="k">continue</span>
-            
-        <span class="c"># The gap between pipes</span>
-        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">.</span><span class="n">lower_len</span> <span class="o">+</span> <span class="mi">116</span> <span class="ow">or</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bird</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="p">(</span>
-                <span class="n">p</span><span class="o">.</span><span class="n">upper_len</span> <span class="o">+</span> <span class="mi">75</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="bp">True</span>
-        
-    <span class="k">return</span> <span class="bp">False</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1347,6 +1191,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果监测失败就会返回<code>False</code>，游戏会结束。</p>
+
 </div>
 </div>
 </div>
@@ -1360,13 +1205,13 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>当碰撞发生是回发生什么呢？我们只要把<code>self.playing</code>改为<code>False</code>就行。监测结果可以在所有的计算完成后增加到<code>KivyBirdApp.update()</code>最后：</p>
+
 </div>
 </div>
 </div>
@@ -1375,10 +1220,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nap</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_game_over</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">playing</span> <span class="o">=</span> <span class="bp">False</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1396,6 +1238,7 @@ self.bird = self.root.ids.bird
 <p>这个状态要等用户重新开始游戏才会消失。写碰撞监测代码最给力的部分就是边玩边测试，就是可以同时出现不同的游戏失败状态：</p>
 <p><img src="kbpic/7.9%20gameover.png" alt="gameover"></p>
 <p>虽然游戏失败，效果还是很Q的。</p>
+
 </div>
 </div>
 </div>
@@ -1409,7 +1252,6 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1419,6 +1261,7 @@ self.bird = self.root.ids.bird
 <p>声效的最大问题都不是技术上的。创建高质量的声效不是简单的事儿，软件工程师毕竟没有音乐和声乐工程师专业。另外，很多应用实际上没用声效，所以声效通常是被忽略了。</p>
 <p>不过制作声效的简便工具还是不少的。<a href="www.bfxr.net">Bfxr</a>就是一个很棒的免费电子合成器。用法很简单，就是单击一些设置按钮配置好音效，然后点击<strong>Save to Disk</strong>保存到电脑上就行了，用Bfxr可以很轻松地为app创建声效。</p>
 <p><img src="kbpic/7.10%20bfxr.png" alt="bfxr"></p>
+
 </div>
 </div>
 </div>
@@ -1432,13 +1275,13 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在程序处理时，Kivy提供了声音播放的API：</p>
+
 </div>
 </div>
 </div>
@@ -1447,9 +1290,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">kivy.core.audio</span> <span class="kn">import</span> <span class="n">SoundLoader</span>
-<span class="n">snd</span> <span class="o">=</span> <span class="n">SoundLoader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'sound.wav'</span><span class="p">)</span>
-<span class="n">snd</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1472,6 +1313,7 @@ self.bird = self.root.ids.bird
 <li>为每个事件停止播放然后重启播放，还是有问题（可能引起延迟）</li>
 </ul>
 <p>要解决这个问题，我们需要创建一个<code>sound</code>对象的队列，这样每次调用<code>play()</code>就产生一个<code>Sound</code>对象。当队列结束时，我们可以从头开始。只要队列足够长，我们就可以完全不用担心<code>Sound</code>的限制了。实际上，长度为10就可以。实现代码如下：</p>
+
 </div>
 </div>
 </div>
@@ -1480,16 +1322,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">MultiAudio</span><span class="p">:</span>
-    <span class="n">_next</span> <span class="o">=</span> <span class="mi">0</span>
-    
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buf</span> <span class="o">=</span> <span class="p">[</span><span class="n">SoundLoader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
-        
-    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_next</span><span class="p">]</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_next</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_next</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buf</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1505,6 +1338,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用法如下：</p>
+
 </div>
 </div>
 </div>
@@ -1513,8 +1347,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">snd</span> <span class="o">=</span> <span class="n">MultiAudio</span><span class="p">(</span><span class="s">'sound.wav'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">snd</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1530,6 +1363,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面第二个参数就是队列的长度。看看我们是如何改写<code>Sound</code> API的<code>play()</code>方法的。这样在简单的程序里直接替换<code>Sound</code>就可以。</p>
+
 </div>
 </div>
 </div>
@@ -1543,7 +1377,6 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1552,6 +1385,7 @@ self.bird = self.root.ids.bird
 <p>下面让我们把声效添加到kivy Bird游戏里。</p>
 <p>有两个地方需要使用声音文件，一个是小鸟向上飞，一个是撞到东西。</p>
 <p>第一个事件，通过单击和切换来初始化，在速度快的时候重复很频繁，我们用一个队列。第二个事件，游戏结束，不会频繁的发生，所以就用一个<code>Sound</code>对象：</p>
+
 </div>
 </div>
 </div>
@@ -1560,8 +1394,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="n">snd_bump</span> <span class="o">=</span> <span class="n">MultiAudio</span><span class="p">(</span><span class="s">'bump.wav'</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">snd_game_over</span> <span class="o">=</span> <span class="n">SoundLoader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'game_over.wav'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1577,6 +1410,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>用前面加载过的<code>MultiAudio</code>类就行。剩下的事情就是把<code>play()</code>添加到适当的位置：</p>
+
 </div>
 </div>
 </div>
@@ -1585,12 +1419,7 @@ self.bird = self.root.ids.bird
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight"><pre><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_game_over</span><span class="p">():</span>
-    <span class="n">snd_game_over</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">playing</span> <span class="o">=</span> <span class="bp">False</span>
-    
-<span class="k">def</span> <span class="nf">user_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">snd_bump</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre> 
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -1606,6 +1435,7 @@ self.bird = self.root.ids.bird
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>这样，飞翔的小鸟就有声音了，希望你喜欢。</p>
+
 </div>
 </div>
 </div>
@@ -1619,7 +1449,6 @@ self.bird = self.root.ids.bird
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1630,52 +1459,49 @@ self.bird = self.root.ids.bird
 <p>Kivy的另一个令人惊奇也是反直觉的特点就是它的性能很好——虽然Python并不以性能著称。部分原因是因为Kivy底层系统是Cython写的，被编译成机器码，性能和C语言有一拼。另外，如果配置合适，显卡加速也可以用来保证动画流程运行。</p>
 <p>下一章我们将继续提供图形渲染性能。</p>
 <p><a href="kbpic/src/7_KivyBird">源代码</a></p>
+
 </div>
 </div>
 </div>
 </div>
         </div>
-                <ul class="pager">
-            <li class="previous">
+                <ul class="pager hidden-print">
+<li class="previous">
                 <a href="swift-codeblocks-syntax-highlight.html" rel="prev" title="swift-codeblocks-syntax-highlight">Previous post</a>
             </li>
             <li class="next">
                 <a href="introduction-to-julia.html" rel="next" title="introduction-to-julia">Next post</a>
             </li>
         </ul>
-
-                            <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tj2",
             disqus_url="http://muxuezi.github.io/posts/kivy-ch7-flappy-bird-app.html",
         disqus_title="kivy-ch7-flappy-bird-app",
         disqus_identifier="cache/posts/kivy-ch7-flappy-bird-app.html",
         disqus_config = function () {
-            this.language = "";
+            this.language = "en";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        
-    </div>
-                    <footer id="footer" role="contentinfo">
-            <p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});</script><script src="../assets/js/mathjax.js"></script>
+</div>
+                    <footer id="footer"><p>Contents © 2015         <a href="mailto:muxuezi@gmail.com">tj2</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
 <img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
         </footer>
-
-        </div>
-    </section>
-    <script>
+</div>
+    </section><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1684,13 +1510,7 @@ self.bird = self.root.ids.bird
   ga('create', 'UA-51330059-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-
-    
-                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-    
-<!-- Social buttons -->
-<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+</script><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- Social buttons --><div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 <a class="addthis_button_more">Share</a>
 <ul>
 <li>
@@ -1707,11 +1527,7 @@ self.bird = self.root.ids.bird
 </li>
 </ul>
 </div>
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
-<!-- End of social buttons -->
-
-
-        <script type="text/javascript">
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script><!-- End of social buttons --><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
