@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 01 Aug 2015 06:24:59 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015088期(2015-07-30)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 09 Aug 2015 13:09:01 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>"\n",</title><link>http://muxuezi.github.io/posts/doc-pyautogui.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="PyAutoGUI"&gt;PyAutoGUI&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/doc-pyautogui.html#PyAutoGUI"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;本教程译自大神&lt;a href="http://inventwithpython.com/"&gt;Al Sweigart&lt;/a&gt;的&lt;a href="https://pyautogui.readthedocs.org/"&gt;PyAutoGUI&lt;/a&gt;项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://selenium-python.readthedocs.org/"&gt;Selenium&lt;/a&gt;+Firefox记录，然后用Python写点代码运行&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.python-requests.org/en/latest/"&gt;request&lt;/a&gt;处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;没有&lt;a href="http://www.sikuli.org/"&gt;sikuli&lt;/a&gt;功能多，但是更简单，&lt;a href="http://cn.pycon.org/2015/"&gt;人生苦短，Python是岸&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;tl;dr&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/doc-pyautogui.html"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>http://muxuezi.github.io/posts/doc-pyautogui.html</guid><pubDate>Sat, 08 Aug 2015 16:00:00 GMT</pubDate></item><item><title>双色球2015088期(2015-07-30)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015088-2015-07-30-report.html</guid><pubDate>Fri, 31 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15087期(2015-07-29)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15087-2015-07-29-report.html</guid><pubDate>Thu, 30 Jul 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015087期(2015-07-28)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015087-2015-07-28-report.html</guid><pubDate>Wed, 29 Jul 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15086期(2015-07-27)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15086-2015-07-27-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
@@ -96,23 +120,4 @@
 &lt;p&gt;这个主题将介绍如何用正态随机过程（Gaussian process，GP）处理回归问题。在线性模型部分，我们曾经见过在变量间可能存在相关性时，如何用贝叶斯岭回归(Bayesian Ridge Regression)表示先验概率分布（prior）信息。&lt;/p&gt;
 &lt;p&gt;正态分布过程关心的是方程而不是均值。但是，如果我们假设一个正态分布的均值为0，那么我们需要确定协方差。&lt;/p&gt;
 &lt;p&gt;这样处理就与线性回归问题中先验概率分布可以用相关系数表示的情况类似。用GP处理的先验就可以用数据、样本数据间协方差构成函数表示，因此必须从数据中拟合得出。具体内容参考&lt;a href="http://www.gaussianprocess.org/"&gt;The Gaussian Processes Web Site&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html</guid><pubDate>Mon, 27 Jul 2015 06:58:51 GMT</pubDate></item><item><title>using-factor-analytics-for-decomposition</title><link>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="用因子分析降维"&gt;用因子分析降维&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html#%E7%94%A8%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90%E9%99%8D%E7%BB%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;因子分析（factor analysis）是另一种降维方法。与PCA不同的是，因子分析有假设而PCA没有假设。因子分析的基本假设是有一些隐藏特征与数据集的特征相关。&lt;/p&gt;
-&lt;p&gt;这个主题将浓缩（boil down）样本数据集的显性特征，尝试像理解因变量一样地理解自变量之间的隐藏特征。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</guid><pubDate>Mon, 27 Jul 2015 06:58:45 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-gaussian-processes-for-regression.html</guid><pubDate>Mon, 27 Jul 2015 06:58:51 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,2946 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"\n", | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/doc-pyautogui.html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content='"\n",'>
+<meta property="og:url" content="http://muxuezi.github.io/posts/doc-pyautogui.html">
+<meta property="og:description" content="PyAutoGUI¶
+
+
+
+
+
+
+
+
+本教程译自大神Al Sweigart的PyAutoGUI项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：
+
+Selenium+Firefox记录，然后用Python写点代码运行
+request处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器
+
+没有sikuli功能多，但是更简单，人生苦短，Python是岸。
+tl;d">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-08-09T00:00:00+08:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="doc-pyautogui.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">"\n",</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-08-09T00:00:00+08:00" itemprop="datePublished" title="2015-08-09 00:00">2015-08-09 00:00</time></a></p>
+                <p class="commentline">            <a href="doc-pyautogui.html#disqus_thread" data-disqus-identifier="cache/posts/doc-pyautogui.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="doc-pyautogui.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PyAutoGUI">PyAutoGUI<a class="anchor-link" href="doc-pyautogui.html#PyAutoGUI">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本教程译自大神<a href="http://inventwithpython.com/">Al Sweigart</a>的<a href="https://pyautogui.readthedocs.org/">PyAutoGUI</a>项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：</p>
+<ul>
+<li>
+<a href="https://selenium-python.readthedocs.org/">Selenium</a>+Firefox记录，然后用Python写点代码运行</li>
+<li>
+<a href="http://www.python-requests.org/en/latest/">request</a>处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器</li>
+</ul>
+<p>没有<a href="http://www.sikuli.org/">sikuli</a>功能多，但是更简单，<a href="http://cn.pycon.org/2015/">人生苦短，Python是岸</a>。</p>
+<p>tl;dr</p>
+<!-- TEASER_END -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.简介">1.简介<a class="anchor-link" href="doc-pyautogui.html#1.%E7%AE%80%E4%BB%8B">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.1-目的">1.1 目的<a class="anchor-link" href="doc-pyautogui.html#1.1-%E7%9B%AE%E7%9A%84">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持（Windows，OS X，Linux）。可以用<code>pip</code>安装，Github上有<a href="https://github.com/asweigart/pyautogui">源代码</a>。</p>
+<p>下面的代码让鼠标移到屏幕中央。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">screenWidth</span><span class="p">,</span> <span class="n">screenHeight</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI可以模拟鼠标的移动、点击、拖拽，键盘按键输入、按住操作，以及鼠标+键盘的热键同时按住等操作，可以说手能动的都可以。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2-例子">1.2 例子<a class="anchor-link" href="doc-pyautogui.html#1.2-%E4%BE%8B%E5%AD%90">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">screenWidth</span><span class="p">,</span> <span class="n">screenHeight</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">currentMouseX</span><span class="p">,</span> <span class="n">currentMouseY</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="c"># 鼠标向下移动10像素</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="k">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">doubleClick</span><span class="p">()</span>
+<span class="c"># 用缓动/渐变函数让鼠标2秒后移动到(500,500)位置</span>
+<span class="c"># use tweening/easing function to move mouse over 2 seconds.</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tween</span><span class="o">=</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInOutQuad</span><span class="p">)</span>
+<span class="c"># 在每次输入之间暂停0.25秒</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'esc'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">([</span><span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">])</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">distance</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="k">while</span> <span class="n">distance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c"># 向右</span>
+    <span class="n">distance</span> <span class="o">-=</span> <span class="mi">5</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c"># 向下</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">draIn</span> <span class="n">gRel</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c"># 向左</span>
+    <span class="n">distance</span> <span class="o">-=</span> <span class="mi">5</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c"># 向上</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.4-保护措施（Fail-Safes）">1.4 保护措施（Fail-Safes）<a class="anchor-link" href="doc-pyautogui.html#1.4-%E4%BF%9D%E6%8A%A4%E6%8E%AA%E6%96%BD%EF%BC%88Fail-Safes%EF%BC%89">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就像《魔法师的学徒》(Sorcerer’s Apprentice)会担水的扫帚，可以担水，却无力阻止水漫浴室。你的程序也可能会失控（即使是按照你的意思执行的），那时就需要中断。如果鼠标还在自动操作，就很难在程序窗口关闭它。</p>
+<p>为了能够及时中断，PyAutoGUI提供了一个保护措施。当<code>pyautogui.FAILSAFE = True</code>时，如果把鼠标光标在屏幕左上角，PyAutoGUI函数就会产生<code>pyautogui.FailSafeException</code>异常。如果失控了，需要中断PyAutoGUI函数，就把鼠标光标在屏幕左上角。要禁用这个特性，就把<code>FAILSAFE</code>设置成<code>False</code>：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">FAILSAFE</span> <span class="o">=</span> <span class="k">False</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>通过把<code>pyautogui.PAUSE</code>设置成<code>float</code>或<code>int</code>时间（秒），可以为所有的PyAutoGUI函数增加延迟。默认延迟时间是0.1秒。在函数循环执行的时候，这样做可以让PyAutoGUI运行的慢一点，非常有用。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>所有的PyAutoGUI函数在延迟完成前都处于阻塞状态（block）。（未来计划增加一个可选的非阻塞模式来调用函数。）</p>
+<p><strong>建议<code>PAUSE</code>和<code>FAILSAFE</code>一起使用。</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2-安装与依赖">2 安装与依赖<a class="anchor-link" href="doc-pyautogui.html#2-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BE%9D%E8%B5%96">¶</a>
+</h2>
+<p>PyAutoGUI支持Python 2.x和Python 3.x</p>
+<ul>
+<li>Windows：PyAutoGUI没有任何依赖，因为它用Python的<code>ctypes</code>模块所以不需要<code>pywin32</code>
+<pre><code>pip3 install pyautogui</code></pre>
+</li>
+<li>OS X：PyAutoGUI需要<a href="http://pythonhosted.org/pyobjc/install.html">PyObjC</a>运行AppKit和Quartz模块。这个模块在PyPI上的按住顺序是<code>pyobjc-core</code>和<code>pyobjc</code>
+<pre><code>sudo pip3 install pyobjc-core
+sudo pip3 install pyobjc
+sudo pip3 install pyautogui</code></pre>
+</li>
+<li>Linux：PyAutoGUI需要<code>python-xlib</code>（Python 2）、<code>python3-Xlib</code>（Python 3）
+<pre><code>sudo pip3 install python3-xlib
+sudo apt-get scrot
+sudo apt-get install python-tk
+sudo apt-get install python3-dev
+sudo pip3 install pyautogui</code></pre>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.速查表（小抄，Cheat-Sheet）">3.速查表（小抄，Cheat Sheet）<a class="anchor-link" href="doc-pyautogui.html#3.%E9%80%9F%E6%9F%A5%E8%A1%A8%EF%BC%88%E5%B0%8F%E6%8A%84%EF%BC%8CCheat-Sheet%EF%BC%89">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.1-常用函数">3.1 常用函数<a class="anchor-link" href="doc-pyautogui.html#3.1-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="c"># 当前鼠标的坐标</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(123, 372)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 当前屏幕的分辨率（宽度和高度）</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1920, 1080)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># (x,y)是否在屏幕上</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">244</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.2-保护措施">3.2 保护措施<a class="anchor-link" href="doc-pyautogui.html#3.2-%E4%BF%9D%E6%8A%A4%E6%8E%AA%E6%96%BD">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI函数增加延迟为2.5秒：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">2.5</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>当pyautogui.FAILSAFE = True时，如果把鼠标光标在屏幕左上角，PyAutoGUI函数就会产生pyautogui.FailSafeException异常。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">FAILSAFE</span> <span class="o">=</span> <span class="k">True</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.3-鼠标函数">3.3 鼠标函数<a class="anchor-link" href="doc-pyautogui.html#3.3-%E9%BC%A0%E6%A0%87%E5%87%BD%E6%95%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>坐标系的原点是左上角。X轴（水平）坐标向右增大，Y轴（竖直）坐标向下增大。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">num_seconds</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="c"># 用num_seconds秒的时间把光标移动到(x, y)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">num_seconds</span><span class="p">)</span>
+<span class="c"># 用num_seconds秒的时间把光标的X轴（水平）坐标移动xOffset，</span>
+<span class="c"># Y轴（竖直）坐标向下移动yOffset。</span>
+<span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">num_seconds</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>click()</code>函数就是让鼠标点击，默认是单击左键，参数可以设置：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">,</span> <span class="n">clicks</span><span class="o">=</span><span class="n">num_of_clicks</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">secs_between_clicks</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其中，<code>button</code>属性可以设置成<code>left</code>，<code>middle</code>和<code>right</code>。</p>
+<p>所有的点击都可以用这个函数，不过下面的函数可读性更好：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">rightClick</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">middleClick</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">doubleClick</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">tripleClick</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>scroll</code>函数控制鼠标滚轮的滚动，<code>amount_to_scroll</code>参数表示滚动的格数。正数则页面向上滚动，负数则向下滚动：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="n">amount_to_scroll</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每个按键按下和松开两个事件可以分开处理：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">moveToX</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">moveToY</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4-键盘函数">3.4 键盘函数<a class="anchor-link" href="doc-pyautogui.html#3.4-%E9%94%AE%E7%9B%98%E5%87%BD%E6%95%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>键盘上可以按的键都可以调用：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 每次键入的时间间隔</span>
+<span class="n">secs_between_keys</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">secs_between_keys</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多个键也可以：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'backspace'</span><span class="p">,</span> <span class="s">'enter'</span><span class="p">,</span> <span class="s">'f1'</span><span class="p">],</span> <span class="n">interval</span><span class="o">=</span><span class="n">secs_between_keys</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>按键名称列表：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">KEYBOARD_KEYS</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&amp;']</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>键盘的一些热键像<code>Ctrl-S</code>或<code>Ctrl-Shift-1</code>都可以用<code>hotkey()</code>函数来实现：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">)</span> <span class="c"># 全选</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">)</span> <span class="c"># 复制</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'v'</span><span class="p">)</span> <span class="c"># 粘贴</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每个按键的按下和松开也可以单独调用：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="n">key_name</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="n">key_name</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.5-消息弹窗函数">3.5 消息弹窗函数<a class="anchor-link" href="doc-pyautogui.html#3.5-%E6%B6%88%E6%81%AF%E5%BC%B9%E7%AA%97%E5%87%BD%E6%95%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你需要消息弹窗，通过单击OK暂停程序，或者向用户显示一些信息，消息弹窗函数就会有类似JavaScript的功能：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">alert</span><span class="p">(</span><span class="s">'这个消息弹窗是文字+OK按钮'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="s">'这个消息弹窗是文字+OK+Cancel按钮'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="s">'这个消息弹窗是让用户输入字符串，单击OK'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>''</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在<code>prompt()</code>函数中，如果用户什么都不输入，就会返回<code>None</code>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.6-截屏函数">3.6 截屏函数<a class="anchor-link" href="doc-pyautogui.html#3.6-%E6%88%AA%E5%B1%8F%E5%87%BD%E6%95%B0">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI用Pillow/PIL库实现图片相关的识别和操作。</p>
+<p>在Linux里面，你必须执行<code>sudo apt-get install scrot</code>来使用截屏特性。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 返回一个Pillow/PIL的Image对象</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s">'foo.png'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你有一个图片文件想在上面做点击操作，你可以用<code>locateOnScreen()</code>函数来定位：
+<img src="pyautogui/looks.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 返回(最左x坐标，最顶y坐标，宽度，高度)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">locateOnScreen</span><span class="p">(</span><span class="s">'pyautogui/looks.png'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0, 1040, 48, 40)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>locateAllOnScreen()</code>函数会寻找所有相似图片，返回一个生成器：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateAllOnScreen</span><span class="p">(</span><span class="s">'pyautogui/looks.png'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(0, 1040, 48, 40)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="nb">list</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">locateAllOnScreen</span><span class="p">(</span><span class="s">'pyautogui/looks.png'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(0, 1040, 48, 40)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>locateCenterOnScreen()</code>函数会返回图片在屏幕上的中心XY轴坐标值：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">locateCenterOnScreen</span><span class="p">(</span><span class="s">'pyautogui/looks.png'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(24, 1060)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果没找到图片会返回<code>None</code>。</p>
+<blockquote>
+<p>定位比较慢，一般得用1~2秒</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4-常用函数">4 常用函数<a class="anchor-link" href="doc-pyautogui.html#4-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<code>position()</code>：返回整数元组(x, y)，分别表示鼠标光标所在位置的XY轴坐标</li>
+<li>
+<code>size()</code>：返回显示器的尺寸整数元组(x, y)。未来将加入多屏支持</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5-鼠标控制函数">5 鼠标控制函数<a class="anchor-link" href="doc-pyautogui.html#5-%E9%BC%A0%E6%A0%87%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.1-屏幕与鼠标位置">5.1 屏幕与鼠标位置<a class="anchor-link" href="doc-pyautogui.html#5.1-%E5%B1%8F%E5%B9%95%E4%B8%8E%E9%BC%A0%E6%A0%87%E4%BD%8D%E7%BD%AE">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>屏幕位置使用X和Y轴的笛卡尔坐标系。原点<code>(0,0)</code>在左上角，分别向右、向下增大。</p>
+<p><img src="screen.png" alt=""></p>
+<p>如果屏幕像素是$1920 \times 1080$，那么右下角的坐标是<code>(1919, 1079)</code>。</p>
+<p>分辨率大小可以通过<code>size()</code>函数返回整数元组。光标的位置用<code>position()</code>返回。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1920, 1080)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(272, 688)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下面是Python 3版本的光标位置记录程序：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c">#! python 3</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Press Ctrl-C to quit'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="k">True</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+        <span class="n">positionStr</span> <span class="o">=</span> <span class="s">'X: {} Y: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">positionStr</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s">'</span><span class="se">\b</span><span class="s">'</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">positionStr</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python 2版本是：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c">#! python</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">'Press Ctrl-C to quit.'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="k">True</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+        <span class="n">positionStr</span> <span class="o">=</span> <span class="s">'X: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="s">' Y: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">positionStr</span><span class="p">,</span>
+        <span class="nb">print</span> <span class="s">'</span><span class="se">\b</span><span class="s">'</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">positionStr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要检查XY坐标是否在屏幕上，需要用<code>onScreen()</code>函数来检验，如果在屏幕上返回<code>True</code>：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2080</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">1919</span><span class="p">,</span> <span class="mi">1079</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.2-鼠标行为">5.2 鼠标行为<a class="anchor-link" href="doc-pyautogui.html#5.2-%E9%BC%A0%E6%A0%87%E8%A1%8C%E4%B8%BA">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>moveTo()</code>函数会把鼠标光标移动到指定的XY轴坐标处。如果传入<code>None</code>值，则表示使用当前光标的对象轴坐标值。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>     <span class="c"># 光标移动到(100, 200)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="k">None</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>   <span class="c"># 光标移动到(100, 500)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="k">None</span><span class="p">)</span>   <span class="c"># 光标移动到(600, 500)位置</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一般鼠标光标都是瞬间移动到指定的位置，如果你想让鼠标移动的慢点，可以设置持续时间：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>     <span class="c"># 用2秒把光标移动到(100, 200)位置</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>默认的持续时间<code>pyautogui.MINIMUM_DURATION</code>是0.1秒，如果你设置的时间比默认值还短，那么就会瞬间执行。</p>
+<p>如果你想让光标以当前位置为原点，进行相对移动，就用<code>pyautogui.moveRel()</code>函数。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="c">#把光标移动到(100, 200)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c">#向下移动50</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c">#向右移动30</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="k">None</span><span class="p">)</span>   <span class="c">#向右移动30</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.3-鼠标拖拽">5.3 鼠标拖拽<a class="anchor-link" href="doc-pyautogui.html#5.3-%E9%BC%A0%E6%A0%87%E6%8B%96%E6%8B%BD">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI的<code>dragTo()</code>和<code>dragRel()</code>函数与<code>moveTo()</code>和<code>moveRel()</code>函数类似。另外，他们有一个<code>button</code>参数可以设置成<code>left</code>，<code>middle</code>和<code>right</code>三个键。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 按住鼠标左键，把鼠标拖拽到(100, 200)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="c"># 按住鼠标左键，用2秒钟把鼠标拖拽到(300, 400)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="c"># 按住鼠标右键，用2秒钟把鼠标拖拽到(30,0)位置</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.4-缓动/渐变（Tween-/-Easing）函数">5.4 缓动/渐变（Tween / Easing）函数<a class="anchor-link" href="doc-pyautogui.html#5.4-%E7%BC%93%E5%8A%A8/%E6%B8%90%E5%8F%98%EF%BC%88Tween-/-Easing%EF%BC%89%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>缓动/渐变函数的作用是让光标的移动更炫。如果你不需要用到的话，你可以忽略这些。</p>
+<p>缓动/渐变函数可以改变光标移动过程的速度和方向。通常鼠标是匀速直线运动，这就是线性缓动/渐变函数。PyAutoGUI有30种缓动/渐变函数，可以通过<code>pyautogui.ease*?</code>查看。其中，<code>pyautogui.easeInQuad()</code>函数可以用于<code>moveTo()</code>，<code>moveRel()</code>，<code>dragTo()</code>和<code>dragRel()</code>函数，光标移动呈现先慢后快的效果，整个过程的时间还是和原来一样。而<code>pyautogui.easeOutQuad</code>函数的效果相反：光标开始移动很快，然后慢慢减速。<code>pyautogui.easeOutElastic</code>是弹簧效果，首先越过终点，然后再反弹回来。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 开始很慢，不断加速</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInQuad</span><span class="p">)</span>
+<span class="c"># 开始很快，不断减速</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeOutQuad</span><span class="p">)</span>
+<span class="c"># 开始和结束都快，中间比较慢</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInOutQuad</span><span class="p">)</span>
+<span class="c"># 一步一徘徊前进</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInBounce</span><span class="p">)</span>
+<span class="c"># 徘徊幅度更大，甚至超过起点和终点</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInElastic</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这些效果函数是模仿Al Sweigart的<a href="https://github.com/asweigart/pytweening">PyTweening</a>模块，可以直接使用，不需要额外安装。</p>
+<p>如果你想创建自己的效果，也可以定义一个函数，其参数是(0.0,1.0)，表示起点和终点，返回值是介于[0.0,1.0]之间的数。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.5-鼠标单击">5.5 鼠标单击<a class="anchor-link" href="doc-pyautogui.html#5.5-%E9%BC%A0%E6%A0%87%E5%8D%95%E5%87%BB">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>click()</code>函数模拟单击鼠标左键一次的行为。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果单机之前要先移动，可以把目标的XY坐标值传入函数：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 先移动到(100, 200)再单击</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以通过<code>button</code>参数设置<code>left</code>，<code>middle</code>和<code>right</code>三个键。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要做多次单击可以设置<code>clicks</code>参数，还有<code>interval</code>参数可以设置每次单击之间的时间间隔。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 双击左键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># 两次单击之间停留0.25秒</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="c"># 三击右键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>为了操作方便，PyAutoGUI提供了<code>doubleClick()</code>，<code>tripleClick()</code>和<code>rightClick()</code>来实现双击、三击和右击操作。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.6-鼠标按下和松开函数">5.6 鼠标按下和松开函数<a class="anchor-link" href="doc-pyautogui.html#5.6-%E9%BC%A0%E6%A0%87%E6%8C%89%E4%B8%8B%E5%92%8C%E6%9D%BE%E5%BC%80%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>mouseDown()</code>和<code>mouseUp()</code>函数可以实现鼠标按下和鼠标松开的操作。两者参数相同，有<code>x</code>，<code>y</code>和<code>button</code>。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 鼠标左键按下再松开</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">();</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">()</span> 
+<span class="c"># 按下鼠标右键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span> 
+<span class="c"># 移动到(100, 200)位置，然后松开鼠标右键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.7-滚轮滚动函数">5.7 滚轮滚动函数<a class="anchor-link" href="doc-pyautogui.html#5.7-%E6%BB%9A%E8%BD%AE%E6%BB%9A%E5%8A%A8%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>鼠标滚轮滚动可以用<code>scroll()</code>函数和<code>clicks</code>次数参数来模拟。不同平台上的<code>clicks</code>次数不太一样。还有<code>x</code>和<code>y</code>参数可以在滚动之前定位到(x, y)位置。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 向上滚动10格</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c"># 向下滚动10格</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="c"># 移动到(100, 100)位置再向上滚动10格</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在OS X和Linux平台上，PyAutoGUI还可以用<code>hscroll()</code>实现水平滚动。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 向右滚动10格</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hscroll</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c"># 向左滚动10格</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hscroll</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>scroll()</code>函数是<code>vscroll()</code>的一个包装（<code>wrapper</code>），执行竖直滚动。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6-键盘控制函数">6 键盘控制函数<a class="anchor-link" href="doc-pyautogui.html#6-%E9%94%AE%E7%9B%98%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.1-typewrite()输入函数">6.1 <code>typewrite()</code>输入函数<a class="anchor-link" href="doc-pyautogui.html#6.1-typewrite()%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>键盘控制的主要函数就是<code>typewrite()</code>。这个函数可以实现字符输入。要在两次输入间增加时间间隔，可以用<code>interval</code>参数。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 输入Hello world!</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">)</span>
+<span class="c"># 每次输入间隔0.25秒，输入Hello world!</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>typewrite()</code>函数只能用于单个字符键，不能按SHITF和F1这些功能键。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.2-press()，keyDown()和keyUp()函数">6.2 <code>press()</code>，<code>keyDown()</code>和<code>keyUp()</code>函数<a class="anchor-link" href="doc-pyautogui.html#6.2-press()%EF%BC%8CkeyDown()%E5%92%8CkeyUp()%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要按那些功能键，可以用<code>press()</code>函数把<code>pyautogui.KEYBOARD_KEYS</code>里面按键对应的字符串输入进去。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># ENTER键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'enter'</span><span class="p">)</span>
+<span class="c"># F1键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'f1'</span><span class="p">)</span>
+<span class="c"># 左方向键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>press()</code>函数其实是<code>keyDown()</code>和<code>keyUp()</code>函数的包装，模拟的按下然后松开两个动作。这两个函数可以单独调用。例如，按下<code>shift</code>键的同时按3次左方向键：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># 按下`shift`键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
+<span class="c"># 松开`shift`键</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>和<code>typewrite()</code>函数一样，可以用数组把一组键传入<code>press()</code>。例如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">([</span><span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">,</span> <span class="s">'left'</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.3-hotkey()函数">6.3 <code>hotkey()</code>函数<a class="anchor-link" href="doc-pyautogui.html#6.3-hotkey()%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>为了更高效的输入热键，PyAutoGUI提供了<code>hotkey()</code>函数来绑定若干按键：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'shift'</span><span class="p">,</span> <span class="s">'ese'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>等价于：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'esc'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'esc'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.4-KEYBOARD_KEYS">6.4 KEYBOARD_KEYS<a class="anchor-link" href="doc-pyautogui.html#6.4-KEYBOARD_KEYS">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下面就是<code>press()</code>，<code>keyDown()</code>，<code>keyUp()</code>和<code>hotkey()</code>函数可以输入的按键名称：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">KEYBOARD_KEYS</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&amp;', "'", '(', ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '&lt;', '=', '&gt;', '?', '@', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~', 'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace', 'browserback', 'browserfavorites', 'browserforward', 'browserhome', 'browserrefresh', 'browsersearch', 'browserstop', 'capslock', 'clear', 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal', 'del', 'delete', 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20', 'f21', 'f22', 'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'final', 'fn', 'hanguel', 'hangul', 'hanja', 'help', 'home', 'insert', 'junja', 'kana', 'kanji', 'launchapp1', 'launchapp2', 'launchmail', 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack', 'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9', 'numlock', 'pagedown', 'pageup', 'pause', 'pgdn', 'pgup', 'playpause', 'prevtrack', 'print', 'printscreen', 'prntscrn', 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select', 'separator', 'shift', 'shiftleft', 'shiftright', 'sleep', 'stop', 'subtract', 'tab', 'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen', 'command', 'option', 'optionleft', 'optionright']
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7-消息弹窗函数">7 消息弹窗函数<a class="anchor-link" href="doc-pyautogui.html#7-%E6%B6%88%E6%81%AF%E5%BC%B9%E7%AA%97%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI通过Tkinter实现了4种纯Python的消息弹窗函数，和JavaScript类似。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.1-alert()函数">7.1 alert()函数<a class="anchor-link" href="doc-pyautogui.html#7.1-alert()%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">alert</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'OK'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'OK'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回<code>button</code>的文字。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.2-The-confirm()-Function">7.2 The confirm() Function<a class="anchor-link" href="doc-pyautogui.html#7.2-The-confirm()-Function">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># OK和Cancel按钮的消息弹窗</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="p">[</span><span class="s">'OK'</span><span class="p">,</span> <span class="s">'Cancel'</span><span class="p">])</span>
+<span class="c"># 10个按键0-9的消息弹窗</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'0'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>显示一个简单的带文字、OK和Cancel按钮的消息弹窗，用户点击后返回被点击button的文字，支持自定义数字、文字的列表。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.3-The-prompt()-Function">7.3 The prompt() Function<a class="anchor-link" href="doc-pyautogui.html#7.3-The-prompt()-Function">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span> <span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以输入的消息弹窗，带OK和Cancel按钮。用户点击OK按钮返回输入的文字，点击Cancel按钮返回<code>None</code>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.4-The-password()-Function">7.4 The password() Function<a class="anchor-link" href="doc-pyautogui.html#7.4-The-password()-Function">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">password</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s">'*'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>样式同<code>prompt()</code>，用于输入密码，消息用<code>*</code>表示。带OK和Cancel按钮。用户点击OK按钮返回输入的文字，点击Cancel按钮返回<code>None</code>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8-截屏函数">8 截屏函数<a class="anchor-link" href="doc-pyautogui.html#8-%E6%88%AA%E5%B1%8F%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyAutoGUI可以截屏并保存为图片文件，然后定位这些截屏在屏幕上的位置。与<a href="http://www.sikuli.org/">sikuli</a>类似，把屏幕上的按键截取下来，然后定位，就可以执行点击等操作了。</p>
+<p>截屏功能需要安装Pillow模块。OS X用<code>screencapture</code>命令，是系统自带的。Linux用户用<code>scrot</code>命令，可以通过<code>sudo apt-get install scrot</code>安装。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.1-Ubuntu注意事项">8.1 Ubuntu注意事项<a class="anchor-link" href="doc-pyautogui.html#8.1-Ubuntu%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>由于Ubuntu上安装Pillow时缺少PNG和JPEG依赖，所以安装比较复杂，具体可以看<a href="http://conda.pydata.org/miniconda.html">Ubuntu论坛</a>。不过用<a href="http://conda.pydata.org/miniconda.html">miniconda</a>可以解决这些问题，如果Ubuntu或Mint上安装了miniconda，可以直接<code>conda install pillow</code>来安装。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.2-screenshot()函数">8.2 <code>screenshot()</code>函数<a class="anchor-link" href="doc-pyautogui.html#8.2-screenshot()%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>screenshot()</code>函数会返回<code>Image</code>对象（参考<a href="http://python-pillow.github.io/">Pillow或PIL模块文档</a>），也可以设置文件名：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">im1</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">im2</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s">'my_screenshot.png'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在一个$1920 \times 1080$的屏幕上，<code>screenshot()</code>函数要消耗100微秒——不快也不慢。</p>
+<p>如果你不需要截取整个屏幕，还有一个可选的<code>region</code>参数。你可以把截取区域的左上角XY坐标值和宽度、高度传入截取。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">im</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span> <span class="p">,</span><span class="mi">400</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.3-定位函数">8.3 定位函数<a class="anchor-link" href="doc-pyautogui.html#8.3-%E5%AE%9A%E4%BD%8D%E5%87%BD%E6%95%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以定位截图在屏幕上的坐标位置。比如，你需要在计算器里输入：
+<img src="pyautogui/calc.png" alt=""></p>
+<p>如果你不知道按钮的位置，就不能用<code>moveTo()</code>定位和<code>click()</code>点击。而且每次计算器的位置可能会变化，这时即使有来坐标也不好用了。但是如果你有要点击按钮的截图，比如数字<code>7</code>：
+<img src="pyautogui/calc7key.png" alt=""></p>
+<p>你可以调用<code>pyautogui.locateOnScreen('calc7key.png')</code>函数来获得<code>7</code>的屏幕坐标。返回的是一个元组<code>(top, left, width, height)</code>。这个元组可以用<code>pyautogui.center()</code>函数来获取截图屏幕的中心坐标。如果截图没找到，<code>pyautogui.locateOnScreen()</code>函数返回<code>None</code>：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">button7location</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateOnScreen</span><span class="p">(</span><span class="s">'pyautogui/calc7key.png'</span><span class="p">)</span>
+<span class="n">button7location</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1226, 546, 29, 28)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">button7x</span><span class="p">,</span> <span class="n">button7y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">button7location</span><span class="p">)</span>
+<span class="n">button7x</span><span class="p">,</span> <span class="n">button7y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1240, 560)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button7x</span><span class="p">,</span> <span class="n">button7y</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>locateCenterOnScreen()</code>等价于上面的前两布操作，直接获得截屏屏幕中心坐标：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateCenterOnScreen</span><span class="p">(</span><span class="s">'pyautogui/calc7key.png'</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在$1920 \times 1080$的屏幕上，定位函数需要1~2秒时间。对视频游戏（LOL、DOTA）来说就太慢了，但是上班干活还是绰绰有余。</p>
+<p>还是几个定位函数。都是从左上角原点开始向右向下搜索截图位置：</p>
+<ul>
+<li>locateOnScreen(image, grayscale=False)：返回找到的第一个截图<code>Image</code>对象在屏幕上的坐标<code>(left, top, width, height)</code>，如果没找到返回<code>None</code>
+</li>
+<li>locateCenterOnScreen(image, grayscale=False)：返回找到的第一个截图<code>Image</code>对象在屏幕上的中心坐标<code>(x, y)</code>，如果没找到返回<code>None</code>
+</li>
+<li>locateAllOnScreen(image, grayscale=False)：返回找到的所有相同截图<code>Image</code>对象在屏幕上的坐标<code>(left, top, width, height)</code>的生成器</li>
+<li>locate(needleImage, haystackImage, grayscale=False)：返回找到的第一个截图<code>Image</code>对象在<code>haystackImage</code>里面的坐标<code>(left, top, width, height)</code>，如果没找到返回<code>None</code>
+</li>
+<li>locateAll(needleImage, haystackImage, grayscale=False)：返回找到的所有相同截图<code>Image</code>对象在<code>haystackImage</code>里面的坐标<code>(left, top, width, height)</code>的生成器</li>
+</ul>
+<p>两个<code>locateAll*</code>函数都可以用<code>for</code>循环和<code>list()</code>输出：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateAllOnScreen</span><span class="p">(</span><span class="s">'pyautogui/calc7key.png'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(1227, 546, 29, 28)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="nb">list</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">locateAllOnScreen</span><span class="p">(</span><span class="s">'pyautogui/calc7key.png'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1227, 546, 29, 28)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="8.3.1-灰度值匹配">8.3.1 灰度值匹配<a class="anchor-link" href="doc-pyautogui.html#8.3.1-%E7%81%B0%E5%BA%A6%E5%80%BC%E5%8C%B9%E9%85%8D">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以把<code>grayscale</code>参数设置为<code>True</code>来加速定位（大约提升30%），默认为<code>False</code>。这种去色（desaturate）方法可以加速定位，但是也可能导致假阳性（false-positive）匹配：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">button7location</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateOnScreen</span><span class="p">(</span><span class="s">'pyautogui/calc7key.png'</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+<span class="n">button7location</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1227, 546, 29, 28)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="8.3.2-像素匹配">8.3.2 像素匹配<a class="anchor-link" href="doc-pyautogui.html#8.3.2-%E5%83%8F%E7%B4%A0%E5%8C%B9%E9%85%8D">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要获取截屏某个位置的RGB像素值，可以用<code>Image</code>对象的<code>getpixel()</code>方法：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">im</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(255, 255, 255)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>也可以用PyAutoGUI的<code>pixel()</code>函数，是之前调用的包装：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(255, 255, 255)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你只是要检验一下指定位置的像素值，可以用<code>pixelMatchesColor()</code>函数，把X、Y和RGB元组值穿入即可：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixelMatchesColor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixelMatchesColor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">245</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>tolerance</code>参数可以指定红、绿、蓝3种颜色误差范围：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixelMatchesColor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">245</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixelMatchesColor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">(</span><span class="mi">248</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">245</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">pyautogui</span><span class="o">.</span><span class="n">pixelMatchesColor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">245</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[ ]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="slott-2015088-2015-07-30-report.html" rel="prev" title="双色球2015088期(2015-07-30)数据分析报告">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/doc-pyautogui.html",
+        disqus_title="\"\\n\",",
+        disqus_identifier="cache/posts/doc-pyautogui.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
