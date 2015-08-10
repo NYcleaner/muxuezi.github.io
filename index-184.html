@@ -72,7 +72,235 @@ MathJax.Hub.Config({
         <div class="row">
             
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-factor-analytics-for-decomposition.html" class="u-url">using-factor-analytics-for-decomposition</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15087-2015-07-29-report.html" class="u-url">大乐透15087期(2015-07-29)数据分析报告</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/dlott-15087-2015-07-29-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-30T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-07-30 08:00</time></a></p>
+                <p class="commentline">            <a href="posts/dlott-15087-2015-07-29-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15087-2015-07-29-report.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>如有雷同，纯属巧合</p>
+<p class="more"><a href="posts/dlott-15087-2015-07-29-report.html">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015087-2015-07-28-report.html" class="u-url">双色球2015087期(2015-07-28)数据分析报告</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/slott-2015087-2015-07-28-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-29T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-07-29 08:00</time></a></p>
+                <p class="commentline">            <a href="posts/slott-2015087-2015-07-28-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015087-2015-07-28-report.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>如有雷同，纯属巧合</p>
+<p class="more"><a href="posts/slott-2015087-2015-07-28-report.html">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15086-2015-07-27-report.html" class="u-url">大乐透15086期(2015-07-27)数据分析报告</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/dlott-15086-2015-07-27-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-28T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-07-28 08:00</time></a></p>
+                <p class="commentline">            <a href="posts/dlott-15086-2015-07-27-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15086-2015-07-27-report.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>如有雷同，纯属巧合</p>
+<p class="more"><a href="posts/dlott-15086-2015-07-27-report.html">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/working-with-categorical-variables.html" class="u-url">working-with-categorical-variables</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/working-with-categorical-variables.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:59:14+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:59</time></a></p>
+                <p class="commentline">            <a href="posts/working-with-categorical-variables.html#disqus_thread" data-disqus-identifier="cache/posts/working-with-categorical-variables.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="分类变量处理">分类变量处理<a class="anchor-link" href="posts/working-with-categorical-variables.html#%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>分类变量是经常遇到的问题。一方面它们提供了信息；另一方面，它们可能是文本形式——纯文字或者与文字相关的整数——就像表格的索引一样。</p>
+<p>因此，我们在建模的时候往往需要将这些变量量化，但是仅仅用简单的<code>id</code>或者原来的形式是不行的。因为我们也需要避免在上一节里<em>通过阈值创建二元特征</em>遇到的问题。如果我们把数据看成是连续的，那么也必须解释成连续的。</p>
+<p class="more"><a href="posts/working-with-categorical-variables.html">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-truncated-svd-to-reduce-dimensionality.html" class="u-url">using-truncated-svd-to-reduce-dimensionality</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/using-truncated-svd-to-reduce-dimensionality.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:59:09+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:59</time></a></p>
+                <p class="commentline">            <a href="posts/using-truncated-svd-to-reduce-dimensionality.html#disqus_thread" data-disqus-identifier="cache/posts/using-truncated-svd-to-reduce-dimensionality.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用截断奇异值分解降维">用截断奇异值分解降维<a class="anchor-link" href="posts/using-truncated-svd-to-reduce-dimensionality.html#%E7%94%A8%E6%88%AA%E6%96%AD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E9%99%8D%E7%BB%B4">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>截断奇异值分解（Truncated singular value decomposition，TSVD）是一种矩阵因式分解（factorization）技术，将矩阵$M$分解成$U$，$\Sigma$和$V$。它与PCA很像，只是SVD分解是在数据矩阵上进行，而PCA是在数据的协方差矩阵上进行。通常，SVD用于发现矩阵的主成份。</p>
+<p class="more"><a href="posts/using-truncated-svd-to-reduce-dimensionality.html">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-stochastic-gradient-descent-for-regression.html" class="u-url">using-stochastic-gradient-descent-for-regression</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/using-stochastic-gradient-descent-for-regression.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:59:03+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:59</time></a></p>
+                <p class="commentline">            <a href="posts/using-stochastic-gradient-descent-for-regression.html#disqus_thread" data-disqus-identifier="cache/posts/using-stochastic-gradient-descent-for-regression.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用随机梯度下降处理回归">用随机梯度下降处理回归<a class="anchor-link" href="posts/using-stochastic-gradient-descent-for-regression.html#%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本主题将介绍随机梯度下降法（Stochastic Gradient Descent，SGD），我们将用它解决回归问题，后面我们还用它处理分类问题。</p>
+<p class="more"><a href="posts/using-stochastic-gradient-descent-for-regression.html">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-pipelines-for-multiple-preprocessing-steps.html" class="u-url">using-pipelines-for-multiple-preprocessing-steps</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/using-pipelines-for-multiple-preprocessing-steps.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:58:57+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:58</time></a></p>
+                <p class="commentline">            <a href="posts/using-pipelines-for-multiple-preprocessing-steps.html#disqus_thread" data-disqus-identifier="cache/posts/using-pipelines-for-multiple-preprocessing-steps.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用管线命令处理多个步骤">用管线命令处理多个步骤<a class="anchor-link" href="posts/using-pipelines-for-multiple-preprocessing-steps.html#%E7%94%A8%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E6%AD%A5%E9%AA%A4">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>管线命令不经常用，但是很有用。它们可以把多个步骤组合成一个对象执行。这样可以更方便灵活地调节和控制整个模型的配置，而不只是一个一个步骤调节。</p>
+<p class="more"><a href="posts/using-pipelines-for-multiple-preprocessing-steps.html">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-gaussian-processes-for-regression.html" class="u-url">using-gaussian-processes-for-regression</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="posts/using-gaussian-processes-for-regression.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:58:51+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:58</time></a></p>
+                <p class="commentline">            <a href="posts/using-gaussian-processes-for-regression.html#disqus_thread" data-disqus-identifier="cache/posts/using-gaussian-processes-for-regression.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用正态随机过程处理回归">用正态随机过程处理回归<a class="anchor-link" href="posts/using-gaussian-processes-for-regression.html#%E7%94%A8%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E5%A4%84%E7%90%86%E5%9B%9E%E5%BD%92">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这个主题将介绍如何用正态随机过程（Gaussian process，GP）处理回归问题。在线性模型部分，我们曾经见过在变量间可能存在相关性时，如何用贝叶斯岭回归(Bayesian Ridge Regression)表示先验概率分布（prior）信息。</p>
+<p>正态分布过程关心的是方程而不是均值。但是，如果我们假设一个正态分布的均值为0，那么我们需要确定协方差。</p>
+<p>这样处理就与线性回归问题中先验概率分布可以用相关系数表示的情况类似。用GP处理的先验就可以用数据、样本数据间协方差构成函数表示，因此必须从数据中拟合得出。具体内容参考<a href="http://www.gaussianprocess.org/">The Gaussian Processes Web Site</a>。</p>
+<p class="more"><a href="posts/using-gaussian-processes-for-regression.html">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-factor-analytics-for-decomposition.html" class="u-url">using-factor-analytics-for-decomposition</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
             <p class="dateline"><a href="posts/using-factor-analytics-for-decomposition.html" rel="bookmark"><time class="published dt-published" datetime="2015-07-27T14:58:45+08:00" itemprop="datePublished" title="Publication date">2015-07-27 14:58</time></a></p>
