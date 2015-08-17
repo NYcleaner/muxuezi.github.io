@@ -148,6 +148,41 @@ tl;d">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>2015-08-17：输入中文bug没有解决，目前的解决方案是Python 2.X环境下安装<a href="https://github.com/asweigart/pyperclip">pyperclip</a>和pyautogui，用复制粘贴来实现。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyperclip</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+
+<span class="c">#  PyAutoGUI中文输入需要用粘贴实现</span>
+<span class="c">#  Python 2版本的pyperclip提供中文复制</span>
+<span class="k">def</span> <span class="nf">paste</span><span class="p">(</span><span class="n">foo</span><span class="p">):</span>
+    <span class="n">pyperclip</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s">'ctrl'</span><span class="p">,</span> <span class="s">'v'</span><span class="p">)</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="s">u'学而时习之'</span>
+<span class="c">#  移动到文本框</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">paste</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.简介">1.简介<a class="anchor-link" href="doc-pyautogui.html#1.%E7%AE%80%E4%BB%8B">¶</a>
 </h2>
 </div>
@@ -219,13 +254,13 @@ tl;d">
 <span class="n">currentMouseX</span><span class="p">,</span> <span class="n">currentMouseY</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-<span class="c"># 鼠标向下移动10像素</span>
+<span class="c">#  鼠标向下移动10像素</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="k">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">doubleClick</span><span class="p">()</span>
-<span class="c"># 用缓动/渐变函数让鼠标2秒后移动到(500,500)位置</span>
-<span class="c"># use tweening/easing function to move mouse over 2 seconds.</span>
+<span class="c">#  用缓动/渐变函数让鼠标2秒后移动到(500,500)位置</span>
+<span class="c">#  use tweening/easing function to move mouse over 2 seconds.</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tween</span><span class="o">=</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInOutQuad</span><span class="p">)</span>
-<span class="c"># 在每次输入之间暂停0.25秒</span>
+<span class="c">#  在每次输入之间暂停0.25秒</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'esc'</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
@@ -384,7 +419,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pyautogui</span>
-<span class="c"># 当前鼠标的坐标</span>
+<span class="c">#  当前鼠标的坐标</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
 </pre></div>
 
@@ -415,7 +450,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 当前屏幕的分辨率（宽度和高度）</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  当前屏幕的分辨率（宽度和高度）</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 
@@ -446,7 +481,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># (x,y)是否在屏幕上</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  (x,y)是否在屏幕上</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">244</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -557,10 +592,10 @@ sudo pip3 install pyautogui</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">num_seconds</span> <span class="o">=</span> <span class="mf">1.2</span>
-<span class="c"># 用num_seconds秒的时间把光标移动到(x, y)位置</span>
+<span class="c">#  用num_seconds秒的时间把光标移动到(x, y)位置</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">num_seconds</span><span class="p">)</span>
-<span class="c"># 用num_seconds秒的时间把光标的X轴（水平）坐标移动xOffset，</span>
-<span class="c"># Y轴（竖直）坐标向下移动yOffset。</span>
+<span class="c">#  用num_seconds秒的时间把光标的X轴（水平）坐标移动xOffset，</span>
+<span class="c">#  Y轴（竖直）坐标向下移动yOffset。</span>
 <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">num_seconds</span><span class="p">)</span>
 </pre></div>
@@ -692,7 +727,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 每次键入的时间间隔</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  每次键入的时间间隔</span>
 <span class="n">secs_between_keys</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">secs_between_keys</span><span class="p">)</span>
 </pre></div>
@@ -902,7 +937,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 返回一个Pillow/PIL的Image对象</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  返回一个Pillow/PIL的Image对象</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s">'foo.png'</span><span class="p">)</span>
 </pre></div>
@@ -917,8 +952,7 @@ sudo pip3 install pyautogui</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如果你有一个图片文件想在上面做点击操作，你可以用<code>locateOnScreen()</code>函数来定位：
-<img src="pyautogui/looks.png" alt=""></p>
+<p>如果你有一个图片文件想在上面做点击操作，你可以用<code>locateOnScreen()</code>函数来定位。</p>
 
 </div>
 </div>
@@ -928,7 +962,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 返回(最左x坐标，最顶y坐标，宽度，高度)</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  返回(最左x坐标，最顶y坐标，宽度，高度)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateOnScreen</span><span class="p">(</span><span class="s">'pyautogui/looks.png'</span><span class="p">)</span>
 </pre></div>
 
@@ -1208,7 +1242,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c">#! python 3</span>
+<div class=" highlight hl-ipython3"><pre><span class="c"># ! python 3</span>
 <span class="kn">import</span> <span class="nn">pyautogui</span>
 <span class="nb">print</span><span class="p">(</span><span class="s">'Press Ctrl-C to quit'</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
@@ -1241,7 +1275,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c">#! python</span>
+<div class=" highlight hl-ipython3"><pre><span class="c"># ! python</span>
 <span class="kn">import</span> <span class="nn">pyautogui</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="nb">print</span><span class="p">(</span><span class="s">'Press Ctrl-C to quit.'</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
@@ -1531,11 +1565,11 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 按住鼠标左键，把鼠标拖拽到(100, 200)位置</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  按住鼠标左键，把鼠标拖拽到(100, 200)位置</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
-<span class="c"># 按住鼠标左键，用2秒钟把鼠标拖拽到(300, 400)位置</span>
+<span class="c">#  按住鼠标左键，用2秒钟把鼠标拖拽到(300, 400)位置</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
-<span class="c"># 按住鼠标右键，用2秒钟把鼠标拖拽到(30,0)位置</span>
+<span class="c">#  按住鼠标右键，用2秒钟把鼠标拖拽到(30,0)位置</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
 </pre></div>
 
@@ -1570,15 +1604,15 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 开始很慢，不断加速</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  开始很慢，不断加速</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInQuad</span><span class="p">)</span>
-<span class="c"># 开始很快，不断减速</span>
+<span class="c">#  开始很快，不断减速</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeOutQuad</span><span class="p">)</span>
-<span class="c"># 开始和结束都快，中间比较慢</span>
+<span class="c">#  开始和结束都快，中间比较慢</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInOutQuad</span><span class="p">)</span>
-<span class="c"># 一步一徘徊前进</span>
+<span class="c">#  一步一徘徊前进</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInBounce</span><span class="p">)</span>
-<span class="c"># 徘徊幅度更大，甚至超过起点和终点</span>
+<span class="c">#  徘徊幅度更大，甚至超过起点和终点</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">easeInElastic</span><span class="p">)</span>
 </pre></div>
 
@@ -1646,7 +1680,7 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 先移动到(100, 200)再单击</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  先移动到(100, 200)再单击</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
@@ -1693,11 +1727,11 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 双击左键</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  双击左键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="c"># 两次单击之间停留0.25秒</span>
+<span class="c">#  两次单击之间停留0.25秒</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="c"># 三击右键</span>
+<span class="c">#  三击右键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 </pre></div>
 
@@ -1741,11 +1775,11 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 鼠标左键按下再松开</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  鼠标左键按下再松开</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">();</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">()</span> 
-<span class="c"># 按下鼠标右键</span>
+<span class="c">#  按下鼠标右键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span> 
-<span class="c"># 移动到(100, 200)位置，然后松开鼠标右键</span>
+<span class="c">#  移动到(100, 200)位置，然后松开鼠标右键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> 
 </pre></div>
 
@@ -1779,11 +1813,11 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 向上滚动10格</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  向上滚动10格</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="c"># 向下滚动10格</span>
+<span class="c">#  向下滚动10格</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
-<span class="c"># 移动到(100, 100)位置再向上滚动10格</span>
+<span class="c">#  移动到(100, 100)位置再向上滚动10格</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
@@ -1807,9 +1841,9 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 向右滚动10格</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  向右滚动10格</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">hscroll</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="c"># 向左滚动10格</span>
+<span class="c">#  向左滚动10格</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">hscroll</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
@@ -1863,9 +1897,9 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 输入Hello world!</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  输入Hello world!</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">)</span>
-<span class="c"># 每次输入间隔0.25秒，输入Hello world!</span>
+<span class="c">#  每次输入间隔0.25秒，输入Hello world!</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 </pre></div>
 
@@ -1909,11 +1943,11 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># ENTER键</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  ENTER键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'enter'</span><span class="p">)</span>
-<span class="c"># F1键</span>
+<span class="c">#  F1键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'f1'</span><span class="p">)</span>
-<span class="c"># 左方向键</span>
+<span class="c">#  左方向键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
 </pre></div>
 
@@ -1937,12 +1971,12 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># 按下`shift`键</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  按下`shift`键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s">'left'</span><span class="p">)</span>
-<span class="c"># 松开`shift`键</span>
+<span class="c">#  松开`shift`键</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s">'shift'</span><span class="p">)</span>
 </pre></div>
 
@@ -2168,9 +2202,9 @@ sudo pip3 install pyautogui</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># OK和Cancel按钮的消息弹窗</span>
+<div class=" highlight hl-ipython3"><pre><span class="c">#  OK和Cancel按钮的消息弹窗</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="p">[</span><span class="s">'OK'</span><span class="p">,</span> <span class="s">'Cancel'</span><span class="p">])</span>
-<span class="c"># 10个按键0-9的消息弹窗</span>
+<span class="c">#  10个按键0-9的消息弹窗</span>
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 
