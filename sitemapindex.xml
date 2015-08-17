@@ -54,6 +54,10 @@
   <lastmod>2015-08-01T06:24:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>http://muxuezi.github.io/categories/scikit-learn-tutorial.xml</loc>
+  <lastmod>2015-08-17T07:56:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://muxuezi.github.io/categories/swift.xml</loc>
   <lastmod>2015-08-01T06:24:00Z</lastmod>
  </sitemap>
@@ -71,6 +75,6 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/sitemap.xml</loc>
-  <lastmod>2015-08-17T07:32:00Z</lastmod>
+  <lastmod>2015-08-17T07:57:00Z</lastmod>
  </sitemap>
 </sitemapindex>
