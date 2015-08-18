@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://muxuezi.github.io/categories/chs.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/frequentism.xml</loc>
@@ -19,7 +19,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/ipython.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/kivy.xml</loc>
@@ -35,7 +35,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/machine-learning.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/other.xml</loc>
@@ -47,11 +47,11 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/python.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/scikit-learn-cookbook.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/scikit-learn-tutorial.xml</loc>
@@ -71,10 +71,10 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/rss.xml</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/sitemap.xml</loc>
-  <lastmod>2015-08-18T05:02:00Z</lastmod>
+  <lastmod>2015-08-18T05:09:00Z</lastmod>
  </sitemap>
 </sitemapindex>
