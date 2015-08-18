@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://muxuezi.github.io/</loc>
-  <lastmod>2015-08-17T09:21:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/2010/</loc>
@@ -43,7 +43,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/chs.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/chs/</loc>
@@ -63,7 +63,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/ipython.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/ipython/</loc>
@@ -87,7 +87,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning/</loc>
@@ -107,7 +107,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/python.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/python/</loc>
@@ -115,7 +115,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/scikit-learn-cookbook.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/scikit-learn-cookbook/</loc>
@@ -511,7 +511,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-182.html</loc>
-  <lastmod>2015-08-17T09:18:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-183.html</loc>
@@ -523,7 +523,11 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-185.html</loc>
-  <lastmod>2015-08-17T09:18:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/index-186.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-19.html</loc>
@@ -911,7 +915,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/1-premodel-workflow.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/1-premodel-workflow/</loc>
@@ -940,6 +944,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/2-linear-regression/</loc>
   <lastmod>2015-08-01T05:45:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/2-working-with-linear-models.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</loc>
@@ -1112,6 +1120,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/didi-taxi.html</loc>
   <lastmod>2015-08-17T09:20:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/directly-applying-bayesian-ridge-regression.html</loc>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/dlott-10001-2010-01-02-report.html</loc>
@@ -4582,8 +4594,16 @@
   <lastmod>2015-08-17T09:19:00Z</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/evaluating-the-linear-regression-model.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/excel-field.html</loc>
   <lastmod>2015-08-17T09:20:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/fitting-a-line-through-data.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/frequentism-and-bayesianism-chs-ii.html</loc>
@@ -4852,6 +4872,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/office2010a-ey.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/outer-vga-debian.html</loc>
@@ -8431,7 +8455,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015095-2015-08-16-report.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
@@ -8450,6 +8474,10 @@
   <lastmod>2015-08-01T05:45:00Z</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/taking-a-more-fundamental-approach-to-regularization-with-lars.html</loc>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/tdlte-4g-card.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
  </url>
@@ -8464,6 +8492,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/urllib2-quote-gbk.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-boosting-to-learn-from-errors.html</loc>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/using-factor-analytics-for-decomposition.html</loc>
@@ -8482,12 +8514,24 @@
   <lastmod>2015-08-01T05:45:00Z</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/using-linear-methods-for-classification-logistic-regression.html</loc>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/using-pipelines-for-multiple-preprocessing-steps/</loc>
   <lastmod>2015-08-01T05:45:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-ridge-regression-to-overcome-linear-regression-shortfalls.html</loc>
+  <lastmod>2015-08-18T05:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/using-sparsity-to-regularize-models.html</loc>
+  <lastmod>2015-08-18T05:01:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/using-stochastic-gradient-descent-for-regression.html</loc>

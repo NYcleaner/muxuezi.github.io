@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>optimizing-the-ridge-regression-parameter | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="optimizing-the-ridge-regression-parameter">
+<meta property="og:url" content="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html">
+<meta property="og:description" content="优化岭回归参数¶
+
+
+
+
+
+
+
+
+当你使用岭回归模型进行建模时，需要考虑Ridge的alpha参数。
+例如，用OLS（普通最小二乘法）做回归也许可以显示两个变量之间的某些关系；但是，当alpha参数正则化之后，那些关系就会消失。做决策时，这些关系是否需要考虑就显得很重要了。
+
+
+
+
+
+
+
+
+
+Getting ready¶
+
+
+
+
+
+
+
+
+这是我们第一个进行模型参数优化的主题，通常用交叉检验（cro">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-08-18T12:57:47+08:00">
+<meta property="article:tag" content="CHS">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="scikit-learn cookbook">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="optimizing-the-ridge-regression-parameter.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">optimizing-the-ridge-regression-parameter</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-08-18T12:57:47+08:00" itemprop="datePublished" title="2015-08-18 12:57">2015-08-18 12:57</time></a></p>
+                <p class="commentline">            <a href="optimizing-the-ridge-regression-parameter.html#disqus_thread" data-disqus-identifier="cache/posts/optimizing-the-ridge-regression-parameter.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="optimizing-the-ridge-regression-parameter.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="优化岭回归参数">优化岭回归参数<a class="anchor-link" href="optimizing-the-ridge-regression-parameter.html#%E4%BC%98%E5%8C%96%E5%B2%AD%E5%9B%9E%E5%BD%92%E5%8F%82%E6%95%B0">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>当你使用岭回归模型进行建模时，需要考虑<code>Ridge</code>的<code>alpha</code>参数。</p>
+<p>例如，用OLS（普通最小二乘法）做回归也许可以显示两个变量之间的某些关系；但是，当<code>alpha</code>参数正则化之后，那些关系就会消失。做决策时，这些关系是否需要考虑就显得很重要了。</p>
+<!-- TEASER_END -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-ready">Getting ready<a class="anchor-link" href="optimizing-the-ridge-regression-parameter.html#Getting-ready">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这是我们第一个进行模型参数优化的主题，通常用交叉检验（cross validation）完成。在后面的主题中，还会有更简便的方式实现这些，但是这里我们一步一步来实现岭回归的优化。</p>
+<p>在scikit-learn里面，岭回归的$\Gamma$参数就是<code>RidgeRegression</code>的<code>alpha</code>参数；因此，问题就是最优的<code>alpha</code>参数是什么。首先我们建立回归数据集：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_regression</span>
+<span class="n">reg_data</span><span class="p">,</span> <span class="n">reg_target</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">effective_rank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-do-it...">How to do it...<a class="anchor-link" href="optimizing-the-ridge-regression-parameter.html#How-to-do-it...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在<code>linear_models</code>模块中，有一个对象叫<code>RidgeCV</code>，表示<strong>岭回归交叉检验（ridge cross-validation）</strong>。这个交叉检验类似于<strong>留一交叉验证法（leave-one-out cross-validation，LOOCV）</strong>。这种方法是指训练数据时留一个样本，测试的时候用这个未被训练过的样本：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">RidgeCV</span>
+<span class="n">rcv</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">]))</span>
+<span class="n">rcv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reg_data</span><span class="p">,</span> <span class="n">reg_target</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RidgeCV(alphas=array([ 0.1,  0.2,  0.3,  0.4]), cv=None, fit_intercept=True,
+    gcv_mode=None, normalize=False, scoring=None, store_cv_values=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>拟合模型之后，<code>alpha</code>参数就是最优参数：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">rcv</span><span class="o">.</span><span class="n">alpha_</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.10000000000000001</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这里，<code>0.1</code>是最优参数，我们还想看到<code>0.1</code>附近更精确的值：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">rcv</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">.</span><span class="mi">08</span><span class="p">,</span> <span class="o">.</span><span class="mi">09</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">11</span><span class="p">,</span> <span class="o">.</span><span class="mi">12</span><span class="p">]))</span>
+<span class="n">rcv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reg_data</span><span class="p">,</span> <span class="n">reg_target</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RidgeCV(alphas=array([ 0.08,  0.09,  0.1 ,  0.11,  0.12]), cv=None,
+    fit_intercept=True, gcv_mode=None, normalize=False, scoring=None,
+    store_cv_values=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">rcv</span><span class="o">.</span><span class="n">alpha_</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.080000000000000002</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>可以按照这个思路一直优化下去，这里只做演示，后面还是介绍更好的方法。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-it-works...">How it works...<a class="anchor-link" href="optimizing-the-ridge-regression-parameter.html#How-it-works...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面的演示很直接，但是我们介绍一下为什么这么做，以及哪个值才是最优的。在交叉检验的每一步里，模型的拟合效果都是用测试样本的误差表示。默认情况使用平方误差。更多细节见<code>There's more...</code>一节。</p>
+<p>我们可以让<code>RidgeCV</code>储存交叉检验的数据，这样就可以可视化整个过程：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">alphas_to_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">rcv3</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas_to_test</span><span class="p">,</span> <span class="n">store_cv_values</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+<span class="n">rcv3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reg_data</span><span class="p">,</span> <span class="n">reg_target</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RidgeCV(alphas=array([ 0.0001 ,  0.00112,  0.00214,  0.00316,  0.00417,  0.00519,
+        0.00621,  0.00723,  0.00825,  0.00927,  0.01028,  0.0113 ,
+        0.01232,  0.01334,  0.01436,  0.01538,  0.01639,  0.01741,
+        0.01843,  0.01945,  0.02047,  0.02149,  0.0225 ,  0.02352,
+        0.02454,  0.02556...4185,
+        0.04287,  0.04389,  0.04491,  0.04593,  0.04694,  0.04796,
+        0.04898,  0.05   ]),
+    cv=None, fit_intercept=True, gcv_mode=None, normalize=False,
+    scoring=None, store_cv_values=True)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你会看到，我们测试了0.0001到0.05区间中的50个点。由于我们把<code>store_cv_values</code>设置成<code>true</code>，我们可以看到每一个值对应的拟合效果：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">rcv3</span><span class="o">.</span><span class="n">cv_values_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(100, 50)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>通过100个样本的回归数据集，我们获得了50个不同的<code>alpha</code>值。我们可以看到50个误差值，最小的均值误差对应最优的<code>alpha</code>值：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">smallest_idx</span> <span class="o">=</span> <span class="n">rcv3</span><span class="o">.</span><span class="n">cv_values_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+<span class="n">alphas_to_test</span><span class="p">[</span><span class="n">smallest_idx</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.014357142857142857</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>此时问题转化成了“RidgeCV认可我们的选择吗？”可以再用下面的命令获取<code>alpha</code>值：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">rcv3</span><span class="o">.</span><span class="n">alpha_</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.014357142857142857</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>通过可视化图形可以更直观的显示出来。我们画出50个测试<code>alpha</code>值的图：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">r"Various values of $\alpha$"</span><span class="p">)</span>
+
+<span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">alphas_to_test</span><span class="p">[</span><span class="n">smallest_idx</span><span class="p">],</span> <span class="n">rcv3</span><span class="o">.</span><span class="n">cv_values_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="n">smallest_idx</span><span class="p">])</span>
+<span class="n">xytext</span> <span class="o">=</span> <span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="o">.</span><span class="mi">01</span><span class="p">,</span> <span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">r'Chosen $\alpha$'</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="n">xytext</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas_to_test</span><span class="p">,</span> <span class="n">rcv3</span><span class="o">.</span><span class="n">cv_values_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0Ao1i6dCkA77//PmeffTZ169alXr16nH322bz33nu0atWKyZMn079/f95//31233133nzzTWbOnEm7%0Adu1o06YNb731Fl988QVmVuz5C1qyZAkjR47kkksuoW/fvtxzzz3Mnj27XNc6b15owfncc+qgLulB%0AiU+kCEcccQQzZ84scludAi0+atSowbZt24Adzx52bHN3zIxf/OIXzJ49m5YtW3LHHXdw1113AXDp%0ApZcye/ZsZs+ezeLFi/njH/+Iuxd7/oJGjhxJz549AWjUqBEfffQRe+65505f58cfQ7du8PDD0Lnz%0ATh8ukpSU+ESK0LlzZ7Zs2cKwYcN2rJs3bx5ffvllscccf/zxjB8/nh9++IHvv/+e8ePHc/zxx7Ny%0A5Up23XVXevbsyU033cSsWbPo0qULY8eOZc2aMNrfunXrdqqqcuvWrfz85z8HYNOmTdSrV4/jjjtu%0Ap65x2TI46aTwXO/cc3fqUJGkpmmJRIrx0ksv0a9fPwYNGsSuu+7KQQcdxAMPPPCTatD8923atOG3%0Av/0tRx99NAB9+vThyCOP5PXXX+fmm29ml112oVatWjz66KM0b96cu+++m5NPPpm8vDxq1arFI488%0Awt57713s+Qvq06cPL7/8Ml9++SVmRseOHRk7diznnHNOma7t66/h17+GG2+E3/2uPHdHJHmpO4NI%0AAXl5eeyS4j22162DTp3g/PPhjjvijkZk56g7g0gCrV+/nho1avCXv/wl7lAqzYYN0LVreK53++1x%0ARyMSD5X4RAh97erXrw/Ali1bqF27dswRJd6mTSHhHX44PPIIlNBwVaTaSkSJT4lP0t6WLVvYdddd%0AgdBQpG7dujFHlHhbt4aZFvbcU+NvSnJT4hOpoG3btlGrVi0AvvvuO3bfffeYI0q8rVtDq80aNWDM%0AGKipJm2SxPSMT6QC8ltTAnzzzTcpm/TOOy+U8J57TklPBNSdQdKUu1OjRg0AVqxYUa7O39Vdbm5o%0AuekeSnop+NhSpFyU+CTtuPuOLgtLly5lv/32izmixMtPetu3w9ixSnoiBSnxSdrJb7yyZMkSDjzw%0AwJijSbzcXLjwwlDN+eKLSnoihSnxSVpp0qQJW7ZsYc6cOTRr1izucBIuNxcuugh++EETyYoUR4lP%0A0kbLli1ZsWIFH374IUceeWTc4SRcbi707Anff6+kJ1ISJT5JC5mZmcyfP58333yTDh06xB1Owm3e%0A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%0A+EREJK38P3zaaajIO8KTAAAAAElFTkSuQmCC">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="There's-more...">There's more...<a class="anchor-link" href="optimizing-the-ridge-regression-parameter.html#There's-more...">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果我们想用其他误差自定义评分函数，也是可以实现的。前面我们介绍过MAD误差，我们可以用它来评分。首先我们需要定义损失函数：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">MAD</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">prediction</span><span class="p">):</span>
+    <span class="n">absolute_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">prediction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">absolute_deviation</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>定义损失函数之后，我们用<code>sklearn</code>量度中的<code>make_scorer</code>函数来处理。这样做可以标准化自定义的函数，让scikit-learn对象可以使用它。另外，由于这是一个损失函数不是一个评分函数，是越低越好，所以要用<code>sklearn</code>来把最小化问题转化成最大化问题：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="n">MAD</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">make_scorer</span><span class="p">(</span><span class="n">MAD</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+<span class="n">rcv4</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas_to_test</span><span class="p">,</span> <span class="n">store_cv_values</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">MAD</span><span class="p">)</span>
+<span class="n">rcv4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reg_data</span><span class="p">,</span> <span class="n">reg_target</span><span class="p">)</span>
+<span class="n">smallest_idx</span> <span class="o">=</span> <span class="n">rcv4</span><span class="o">.</span><span class="n">cv_values_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+<span class="n">alphas_to_test</span><span class="p">[</span><span class="n">smallest_idx</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.050000000000000003</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/chs.html" rel="tag">CHS</a></li>
+            <li><a class="tag p-category" href="../categories/ipython.html" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../categories/machine-learning.html" rel="tag">Machine Learning</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+            <li><a class="tag p-category" href="../categories/scikit-learn-cookbook.html" rel="tag">scikit-learn cookbook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="fitting-a-line-through-data.html" rel="prev" title="fitting-a-line-through-data">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="taking-a-more-fundamental-approach-to-regularization-with-lars.html" rel="next" title="taking-a-more-fundamental-approach-to-regularization-with-lars">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html",
+        disqus_title="optimizing-the-ridge-regression-parameter",
+        disqus_identifier="cache/posts/optimizing-the-ridge-regression-parameter.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
