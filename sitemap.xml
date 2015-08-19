@@ -83,7 +83,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/lottery.html</loc>
-  <lastmod>2015-08-17T09:19:00Z</lastmod>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning.html</loc>
@@ -527,7 +527,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-186.html</loc>
-  <lastmod>2015-08-18T05:01:00Z</lastmod>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-19.html</loc>
@@ -947,7 +947,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/2-working-with-linear-models.html</loc>
-  <lastmod>2015-08-18T05:09:00Z</lastmod>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/3-feature-extraction-and-preprocessing.html</loc>
@@ -1123,7 +1123,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/directly-applying-bayesian-ridge-regression.html</loc>
-  <lastmod>2015-08-18T05:09:00Z</lastmod>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/dlott-10001-2010-01-02-report.html</loc>
@@ -4572,6 +4572,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/dlott-15094-2015-08-15-report.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/dlott-15095-2015-08-17-report.html</loc>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/doc-pyautogui.html</loc>
@@ -8455,7 +8459,11 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015095-2015-08-16-report.html</loc>
-  <lastmod>2015-08-18T05:09:00Z</lastmod>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</loc>
+  <lastmod>2015-08-19T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
