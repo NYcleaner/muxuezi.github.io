@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 19 Aug 2015 00:08:59 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015096期(2015-08-18)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Fri, 21 Aug 2015 00:09:00 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015097期(2015-08-20)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html</guid><pubDate>Fri, 21 Aug 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15096期(2015-08-19)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html</guid><pubDate>Thu, 20 Aug 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015096期(2015-08-18)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</guid><pubDate>Wed, 19 Aug 2015 00:00:00 GMT</pubDate></item><item><title>2-working-with-linear-models</title><link>http://muxuezi.github.io/posts/2-working-with-linear-models.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
@@ -142,40 +144,4 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;当你使用岭回归模型进行建模时，需要考虑&lt;code&gt;Ridge&lt;/code&gt;的&lt;code&gt;alpha&lt;/code&gt;参数。&lt;/p&gt;
 &lt;p&gt;例如，用OLS（普通最小二乘法）做回归也许可以显示两个变量之间的某些关系；但是，当&lt;code&gt;alpha&lt;/code&gt;参数正则化之后，那些关系就会消失。做决策时，这些关系是否需要考虑就显得很重要了。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item><item><title>fitting-a-line-through-data</title><link>http://muxuezi.github.io/posts/fitting-a-line-through-data.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="线性回归模型"&gt;线性回归模型&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/fitting-a-line-through-data.html#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;现在，我们来做一些建模！我们从最简单的线性回归（Linear regression）开始。线性回归是最早的也是最基本的模型——把数据拟合成一条直线。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/fitting-a-line-through-data.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/fitting-a-line-through-data.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item><item><title>evaluating-the-linear-regression-model</title><link>http://muxuezi.github.io/posts/evaluating-the-linear-regression-model.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="评估线性回归模型"&gt;评估线性回归模型&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/evaluating-the-linear-regression-model.html#%E8%AF%84%E4%BC%B0%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;在这个主题中，我们将介绍回归模型拟合数据的效果。上一个主题我们拟合了数据，但是并没太关注拟合的效果。每当拟合工作做完之后，我们应该问的第一个问题就是“拟合的效果如何？”本主题将回答这个问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/evaluating-the-linear-regression-model.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/evaluating-the-linear-regression-model.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item></channel></rss>
