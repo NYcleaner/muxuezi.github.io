@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Fri, 21 Aug 2015 00:09:00 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015097期(2015-08-20)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间</title><link>http://muxuezi.github.io/</link><description>Github Blog of tj2</description><atom:link href="http://muxuezi.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 24 Aug 2015 00:08:39 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>双色球2015098期(2015-08-23)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015098-2015-08-23-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015098-2015-08-23-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015098-2015-08-23-report.html</guid><pubDate>Mon, 24 Aug 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15097期(2015-08-22)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15097-2015-08-22-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15097-2015-08-22-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15097-2015-08-22-report.html</guid><pubDate>Sun, 23 Aug 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015097期(2015-08-20)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015097-2015-08-20-report.html</guid><pubDate>Fri, 21 Aug 2015 00:00:00 GMT</pubDate></item><item><title>大乐透15096期(2015-08-19)数据分析报告</title><link>http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/dlott-15096-2015-08-19-report.html</guid><pubDate>Thu, 20 Aug 2015 00:00:00 GMT</pubDate></item><item><title>双色球2015096期(2015-08-18)数据分析报告</title><link>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div&gt;&lt;p&gt;如有雷同，纯属巧合&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Lottery</category><guid>http://muxuezi.github.io/posts/slott-2015096-2015-08-18-report.html</guid><pubDate>Wed, 19 Aug 2015 00:00:00 GMT</pubDate></item><item><title>2-working-with-linear-models</title><link>http://muxuezi.github.io/posts/2-working-with-linear-models.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
@@ -107,41 +109,4 @@
 &lt;li&gt;每个学习算法准备率都不高，但是它们集成起来可以获得很好的准确率。&lt;/li&gt;
 &lt;li&gt;这些学习算法依次应用，也就是说每个学习算法都是在前一个学习算法的错误中学习&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-boosting-to-learn-from-errors.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-boosting-to-learn-from-errors.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item><item><title>taking-a-more-fundamental-approach-to-regularization-with-lars</title><link>http://muxuezi.github.io/posts/taking-a-more-fundamental-approach-to-regularization-with-lars.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="LARS正则化"&gt;LARS正则化&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/taking-a-more-fundamental-approach-to-regularization-with-lars.html#LARS%E6%AD%A3%E5%88%99%E5%8C%96"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;如果斯坦福大学的Bradley Efron, Trevor Hastie, Iain Johnstone和Robert Tibshirani没有发现它的话[1]，LARS(Least Angle Regression，最小角回归)可能有一天会被你想出来，它借用了&lt;a href="https://en.wikipedia.org/wiki/Gilbert_Strang"&gt;威廉·吉尔伯特·斯特朗（William Gilbert Strang）&lt;/a&gt;介绍过的高斯消元法（Gaussian elimination）的灵感。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/taking-a-more-fundamental-approach-to-regularization-with-lars.html"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/taking-a-more-fundamental-approach-to-regularization-with-lars.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item><item><title>optimizing-the-ridge-regression-parameter</title><link>http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="优化岭回归参数"&gt;优化岭回归参数&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html#%E4%BC%98%E5%8C%96%E5%B2%AD%E5%9B%9E%E5%BD%92%E5%8F%82%E6%95%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;当你使用岭回归模型进行建模时，需要考虑&lt;code&gt;Ridge&lt;/code&gt;的&lt;code&gt;alpha&lt;/code&gt;参数。&lt;/p&gt;
-&lt;p&gt;例如，用OLS（普通最小二乘法）做回归也许可以显示两个变量之间的某些关系；但是，当&lt;code&gt;alpha&lt;/code&gt;参数正则化之后，那些关系就会消失。做决策时，这些关系是否需要考虑就显得很重要了。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/optimizing-the-ridge-regression-parameter.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/using-boosting-to-learn-from-errors.html"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>Machine Learning</category><category>Python</category><category>scikit-learn cookbook</category><guid>http://muxuezi.github.io/posts/using-boosting-to-learn-from-errors.html</guid><pubDate>Tue, 18 Aug 2015 04:57:47 GMT</pubDate></item></channel></rss>
