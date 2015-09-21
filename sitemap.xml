@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://muxuezi.github.io/</loc>
-  <lastmod>2015-09-04T00:08:00Z</lastmod>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/2010/</loc>
@@ -83,7 +83,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/lottery.html</loc>
-  <lastmod>2015-09-14T00:09:00Z</lastmod>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning.html</loc>
@@ -535,7 +535,11 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-188.html</loc>
-  <lastmod>2015-09-14T00:09:00Z</lastmod>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/index-189.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-19.html</loc>
@@ -4630,6 +4634,14 @@
   <lastmod>2015-09-14T00:09:00Z</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/dlott-15108-2015-09-16-report.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/dlott-15109-2015-09-19-report.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/doc-pyautogui.html</loc>
   <lastmod>2015-08-17T09:19:00Z</lastmod>
  </url>
@@ -8559,7 +8571,19 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015107-2015-09-13-report.html</loc>
-  <lastmod>2015-09-14T00:09:00Z</lastmod>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015108-2015-09-15-report.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015109-2015-09-17-report.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015110-2015-09-20-report.html</loc>
+  <lastmod>2015-09-21T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
