@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (PyAutoGUI)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/pyautogui.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 17 Aug 2015 09:19:11 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Doc PyAutoGUI</title><link>http://muxuezi.github.io/posts/doc-pyautogui.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (PyAutoGUI)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/pyautogui.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 26 Sep 2015 02:14:59 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Doc PyAutoGUI</title><link>http://muxuezi.github.io/posts/doc-pyautogui.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -7,7 +7,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="PyAutoGUI"&gt;PyAutoGUI&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/doc-pyautogui.html#PyAutoGUI"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="PyAutoGUI——让所有GUI都自动化"&gt;PyAutoGUI——让所有GUI都自动化&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/doc-pyautogui.html#PyAutoGUI%E2%80%94%E2%80%94%E8%AE%A9%E6%89%80%E6%9C%89GUI%E9%83%BD%E8%87%AA%E5%8A%A8%E5%8C%96"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -18,9 +18,10 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;本教程译自大神&lt;a href="http://inventwithpython.com/"&gt;Al Sweigart&lt;/a&gt;的&lt;a href="https://pyautogui.readthedocs.org/"&gt;PyAutoGUI&lt;/a&gt;项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://selenium-python.readthedocs.org/"&gt;Selenium&lt;/a&gt;+Firefox记录，然后用Python写点代码运行&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.python-requests.org/en/latest/"&gt;request&lt;/a&gt;处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://selenium-python.readthedocs.org/"&gt;Selenium&lt;/a&gt;+Firefox记录（Chromedriver和Phantomjs也很给力，Phantomjs虽然是无头浏览器，但有时定位不准），然后用Python写单元测试&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.python-requests.org/en/latest/"&gt;request&lt;/a&gt;处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器，非常适合处理表单&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;没有&lt;a href="http://www.sikuli.org/"&gt;sikuli&lt;/a&gt;功能多，但是更简单，&lt;a href="http://cn.pycon.org/2015/"&gt;人生苦短，Python是岸&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;没有&lt;a href="http://www.sikuli.org/"&gt;sikuli&lt;/a&gt;功能多，但是Python让生活更简单，&lt;a href="http://cn.pycon.org/2015/"&gt;人生苦短，Python当歌&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;同时推荐一本Python网络数据采集（图灵社区取的名字^_^）的基础书籍&lt;a href="http://shop.oreilly.com/product/0636920034391.do"&gt;Ryan Mitchell的《Web Scraping with Python》&lt;/a&gt;，可以和PyAutoGUI结合使用。&lt;/p&gt;
 &lt;p&gt;tl;dr&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/doc-pyautogui.html"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>CHS</category><category>ipython</category><category>PyAutoGUI</category><category>Python</category><guid>http://muxuezi.github.io/posts/doc-pyautogui.html</guid><pubDate>Sun, 09 Aug 2015 13:20:14 GMT</pubDate></item></channel></rss>

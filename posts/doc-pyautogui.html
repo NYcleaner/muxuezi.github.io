@@ -26,7 +26,7 @@ MathJax.Hub.Config({
 <meta property="og:site_name" content="绿萝间">
 <meta property="og:title" content="Doc PyAutoGUI">
 <meta property="og:url" content="http://muxuezi.github.io/posts/doc-pyautogui.html">
-<meta property="og:description" content="PyAutoGUI¶
+<meta property="og:description" content="PyAutoGUI——让所有GUI都自动化¶
 
 
 
@@ -37,11 +37,8 @@ MathJax.Hub.Config({
 
 本教程译自大神Al Sweigart的PyAutoGUI项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：
 
-Selenium+Firefox记录，然后用Python写点代码运行
-request处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器
-
-没有sikuli功能多，但是更简单，人生苦短，Python是岸。
-tl;d">
+Selenium+Firefox记录（Chromedriver和Phantomjs也很给力，Phantomjs虽然是无头浏览器，但有时定位不准），然后用Python写单元测试
+request处理get/post请">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-08-09T21:20:14+08:00">
 <meta property="article:tag" content="CHS">
@@ -101,7 +98,9 @@ tl;d">
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Doc PyAutoGUI</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Tao Junjie
+            </span></p>
             <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-08-09T21:20:14+08:00" itemprop="datePublished" title="2015-08-09 21:20">2015-08-09 21:20</time></a></p>
                 <p class="commentline">            <a href="doc-pyautogui.html#disqus_thread" data-disqus-identifier="cache/posts/doc-pyautogui.html">Comments</a>
 
@@ -120,7 +119,7 @@ tl;d">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="PyAutoGUI">PyAutoGUI<a class="anchor-link" href="doc-pyautogui.html#PyAutoGUI">¶</a>
+<h2 id="PyAutoGUI——让所有GUI都自动化">PyAutoGUI——让所有GUI都自动化<a class="anchor-link" href="doc-pyautogui.html#PyAutoGUI%E2%80%94%E2%80%94%E8%AE%A9%E6%89%80%E6%9C%89GUI%E9%83%BD%E8%87%AA%E5%8A%A8%E5%8C%96">¶</a>
 </h2>
 </div>
 </div>
@@ -133,11 +132,12 @@ tl;d">
 <p>本教程译自大神<a href="http://inventwithpython.com/">Al Sweigart</a>的<a href="https://pyautogui.readthedocs.org/">PyAutoGUI</a>项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：</p>
 <ul>
 <li>
-<a href="https://selenium-python.readthedocs.org/">Selenium</a>+Firefox记录，然后用Python写点代码运行</li>
+<a href="https://selenium-python.readthedocs.org/">Selenium</a>+Firefox记录（Chromedriver和Phantomjs也很给力，Phantomjs虽然是无头浏览器，但有时定位不准），然后用Python写单元测试</li>
 <li>
-<a href="http://www.python-requests.org/en/latest/">request</a>处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器</li>
+<a href="http://www.python-requests.org/en/latest/">request</a>处理get/post请求写一堆代码自动化处理，都在后台运行，不用运行浏览器，非常适合处理表单</li>
 </ul>
-<p>没有<a href="http://www.sikuli.org/">sikuli</a>功能多，但是更简单，<a href="http://cn.pycon.org/2015/">人生苦短，Python是岸</a>。</p>
+<p>没有<a href="http://www.sikuli.org/">sikuli</a>功能多，但是Python让生活更简单，<a href="http://cn.pycon.org/2015/">人生苦短，Python当歌</a>。</p>
+<p>同时推荐一本Python网络数据采集（图灵社区取的名字^_^）的基础书籍<a href="http://shop.oreilly.com/product/0636920034391.do">Ryan Mitchell的《Web Scraping with Python》</a>，可以和PyAutoGUI结合使用。</p>
 <p>tl;dr</p>
 <!-- TEASER_END -->
 </div>
@@ -1160,7 +1160,6 @@ sudo pip3 install pyautogui</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>屏幕位置使用X和Y轴的笛卡尔坐标系。原点<code>(0,0)</code>在左上角，分别向右、向下增大。</p>
-<p><img src="screen.png" alt=""></p>
 <p>如果屏幕像素是$1920 \times 1080$，那么右下角的坐标是<code>(1919, 1079)</code>。</p>
 <p>分辨率大小可以通过<code>size()</code>函数返回整数元组。光标的位置用<code>position()</code>返回。例如：</p>
 
