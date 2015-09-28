@@ -5,13 +5,11 @@ article: http://ogp.me/ns/article#
 " lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Github Blog of tj2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>绿萝间 | 绿萝间</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="http://muxuezi.github.io/">
-<link rel="next" href="index-190.html" type="text/html">
+<title>4.Using the threading and concurrent.futures Modules | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -24,7 +22,23 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="4.Using the threading and concurrent.futures Modules">
+<meta property="og:url" content="http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html">
+<meta property="og:description" content="4.用threading和concurrent.futures模块¶在上一章，我们总结了并行思想可以解决的一些问题。这一章，我们将用Python的threading模块实现每个问题的解决方案。
+本章内容包括以下主题：
+
+线程的定义
+threading和_thread的选择
+用threading实现多请求的Fibonacci数列
+用concurrent.futures模块实现网络爬虫
+
+线程的定义¶">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-09-28T20:42:03+08:00">
+<meta property="article:tag" content="Parallel Programming with Python">
+<meta property="article:tag" content="Python">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -49,18 +63,23 @@ MathJax.Hub.Config({
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
 <li>
-<a href="archive.html">Archive</a>
+<a href="../archive.html">Archive</a>
                 </li>
 <li>
-<a href="categories/">Tags</a>
+<a href="../categories/">Tags</a>
                 </li>
 <li>
-<a href="rss.xml">RSS feed</a>
+<a href="../rss.xml">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="4using-the-threading-and-concurrentfutures-modules.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -70,17 +89,22 @@ MathJax.Hub.Config({
         <!--Body content-->
         <div class="row">
             
-<div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/4using-the-threading-and-concurrentfutures-modules.html" class="u-url">4.Using the threading and concurrent.futures Modules</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">4.Using the threading and concurrent.futures Modules</a></h1>
+
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/4using-the-threading-and-concurrentfutures-modules.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-28T20:42:03+08:00" itemprop="datePublished" title="Publication date">2015-09-28 20:42</time></a></p>
-                <p class="commentline">            <a href="posts/4using-the-threading-and-concurrentfutures-modules.html#disqus_thread" data-disqus-identifier="cache/posts/4using-the-threading-and-concurrentfutures-modules.html">Comments</a>
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Tao Junjie
+            </span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-09-28T20:42:03+08:00" itemprop="datePublished" title="2015-09-28 20:42">2015-09-28 20:42</time></a></p>
+                <p class="commentline">            <a href="4using-the-threading-and-concurrentfutures-modules.html#disqus_thread" data-disqus-identifier="cache/posts/4using-the-threading-and-concurrentfutures-modules.html">Comments</a>
 
 
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
+                    </p>
+<p class="sourceline"><a href="4using-the-threading-and-concurrentfutures-modules.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -89,7 +113,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.用threading和concurrent.futures模块">4.用<code>threading</code>和<code>concurrent.futures</code>模块<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#4.%E7%94%A8threading%E5%92%8Cconcurrent.futures%E6%A8%A1%E5%9D%97">¶</a>
+<h2 id="4.用threading和concurrent.futures模块">4.用<code>threading</code>和<code>concurrent.futures</code>模块<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#4.%E7%94%A8threading%E5%92%8Cconcurrent.futures%E6%A8%A1%E5%9D%97">¶</a>
 </h2>
 <p>在上一章，我们总结了并行思想可以解决的一些问题。这一章，我们将用Python的<code>threading</code>模块实现每个问题的解决方案。</p>
 <p>本章内容包括以下主题：</p>
@@ -100,11 +124,11 @@ MathJax.Hub.Config({
 <li>用<code>threading</code>实现多请求的Fibonacci数列</li>
 <li>用<code>concurrent.futures</code>模块实现网络爬虫</li>
 </ul>
-<h3 id="线程的定义">线程的定义<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89">¶</a>
+<h3 id="线程的定义">线程的定义<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89">¶</a>
 </h3>
 <p>线程（thread）是一个进程（process）中不同执行单元（execution line）。如果把一个程序比喻成蜂巢（hive），那么向蜂巢里收集花粉（pollen）这件事就是一个进程。这个收集花粉的进程是由若干只为了解决花粉不足问题的工蜂（worker bee）同时工作来完成。这些工蜂扮演的角色就是线程，在进程内部执行并共享资源以完成各自的任务。</p>
 <p>线程属于同一个进程并共享同一块内存。因此，开发者的任务就是控制和使用这块内存。</p>
-<h4 id="使用线程的优缺点">使用线程的优缺点<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">¶</a>
+<h4 id="使用线程的优缺点">使用线程的优缺点<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">¶</a>
 </h4>
 <p>使用线程之前，需要考虑线程具有的一些优缺点，而且线程与具体的编程语言和操作系统有密切关联。</p>
 <p>线程的优点主要有：</p>
@@ -121,7 +145,7 @@ MathJax.Hub.Config({
 <blockquote>
 <p>在Python程序语言里，由于GIL的存在，使用带有CPU限制的线程可能影响程序的性能。</p>
 </blockquote>
-<h4 id="线程类型">线程类型<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%B1%BB%E5%9E%8B">¶</a>
+<h4 id="线程类型">线程类型<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%B1%BB%E5%9E%8B">¶</a>
 </h4>
 <p>用两种线程：内核线程（kernel thread）与用户线程（user thread）。内核线程是由操作系统创建和管理的线程。线程上下文的切换（Context Switch），调度，和结束都是通过操作系统的内核管理的。而用户线程的所有状态是由开发者控制的。</p>
 <p>我们可以对比两者的优缺点。</p>
@@ -145,7 +169,7 @@ MathJax.Hub.Config({
 <li>一个进程内的所有用户线程只能与一个内核线程关联。因此，如果一个用户线程阻塞，其他用户线程都不能执行</li>
 <li>用户线程不运行在不同的CPU上</li>
 </ul>
-<h4 id="线程状态定义">线程状态定义<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89">¶</a>
+<h4 id="线程状态定义">线程状态定义<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89">¶</a>
 </h4>
 <p>线程生命周期中一共五个状态，如下所示：</p>
 <ul>
@@ -161,7 +185,7 @@ MathJax.Hub.Config({
 <strong>结束</strong>：这个阶段，释放执行时占用的资源，结束线程的生命周期</li>
 </ul>
 <h4 id="threading和_thread的选择">
-<code>threading</code>和<code>_thread</code>的选择<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#threading%E5%92%8C_thread%E7%9A%84%E9%80%89%E6%8B%A9">¶</a>
+<code>threading</code>和<code>_thread</code>的选择<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#threading%E5%92%8C_thread%E7%9A%84%E9%80%89%E6%8B%A9">¶</a>
 </h4>
 <p>Python标准库里提供了两个线程模块：<code>_thread</code>模块（这个Python模块提供了一个线程的底层API，具体文档见<em><code>https://docs.python.org/3.5/library/_thread.html#module-_thread</code></em>）和<code>threading</code>模块（这个Python模块提供了一个线程的高层API，具体文档见<em><code>https://docs.python.org/3.5/library/threading.html#module-threading</code></em>）。这个<code>threading</code>模块通过了比<code>_thread</code>模块更友好的接口，使用起来更方便。开发者根据自己口味选择。如果开发者觉得用线程的底层API更舒服，可以实现自己的线程池（thread pool），互斥锁和其他原始特征，那么他可以选择<code>_thread</code>模块。否则，还是用<code>threading</code>模块最方便。</p>
 
@@ -173,7 +197,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="用threading实现多请求的Fibonacci数列">用<code>threading</code>实现多请求的Fibonacci数列<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E7%94%A8threading%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84Fibonacci%E6%95%B0%E5%88%97">¶</a>
+<h3 id="用threading实现多请求的Fibonacci数列">用<code>threading</code>实现多请求的Fibonacci数列<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%94%A8threading%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84Fibonacci%E6%95%B0%E5%88%97">¶</a>
 </h3>
 <p>现在是时候回到现实。我们的任务是在Fibonacci数列有多个输入请求时并行的执行。处于教学的目的，我们把输入值设置成四个，每个输入值分配一个线程运行函数，让worker与要执行的任务（task）完美地一一对应。算法如下所示：</p>
 <ol>
@@ -412,7 +436,7 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>程序的执行结果如下图所示：
-<img src="posts/ppp/threading_fibonacci.png" alt="">
+<img src="ppp/threading_fibonacci.png" alt="">
 可以看出，一开始<code>fibonacci_task</code>线程被创建并初始化，紧接着进入等待状态。同时，<code>queue_task</code>被创建，然后生成<code>shared_queue</code>。最后，<code>queue_task</code>告诉<code>fibonacci_task</code>线程可以执行任务了。</p>
 <p>还会看到，<code>fibonacci_task</code>线程执行并不是自然顺序，每次运行线程执行顺序都会变化。这就是线程的特点：不确定性。</p>
 <p><a href="http://muxuezi.github.io/posts/ppp/ch4/parallel_fibonacci.py">源代码</a></p>
@@ -425,7 +449,7 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="用concurrent.futures模块并行抓取网页">用<code>concurrent.futures</code>模块并行抓取网页<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E7%94%A8concurrent.futures%E6%A8%A1%E5%9D%97%E5%B9%B6%E8%A1%8C%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5">¶</a>
+<h3 id="用concurrent.futures模块并行抓取网页">用<code>concurrent.futures</code>模块并行抓取网页<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%94%A8concurrent.futures%E6%A8%A1%E5%9D%97%E5%B9%B6%E8%A1%8C%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5">¶</a>
 </h3>
 <p>下面我们将用代码来实现一个并行网络爬虫。这里我们会用一个非常有意思的Python功能，<code>concurrent.futures</code>模块中的<code>ThreadPoolExecutor</code>。在前面的例子中，我们用非常原始的线程功能实现了<code>parallel_fibonacci.py</code>。而且我们是通过手工操作创建和初始化多个线程。在线程较多的项目中，这些做很难管理。通常，都会使用线程池解决线程的状态管理问题。线程池是一种用来保存若干线程的结构，在进程里使用之前创建。其目的是重用线程，这样可以避免重复创建线程——降低资源消耗。</p>
 <p>下面的内容基本和上一节一样，我们需要一个通过多个阶段来执行不同任务的算法，这些任务是彼此相关的。我们将演示并行网络爬虫的代码。</p>
@@ -598,10 +622,10 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们映射了一个临时字典<code>future_tasks</code>。里面包含了<code>submit</code>方法进行的函数预订，参数是<code>result_dict</code>的每个URL键。也就是说，我们用<code>future_tasks</code>为每个键创建了一个入口（entry）。映射之后，我们需通过<code>concurrent.futures.as_completed(fs, timeout=None)</code>方法来寻找<code>future_tasks</code>里入口，通过一个循环来获取前面函数预订的结果。这个调用会返回一个由<code>Future</code>对象实例组成的迭代器（iterator）。因此，我们可以迭代出每一个已经被处理好的预订结果。在<code>ThreadPoolExecutor</code>对象的最后，我们用<code>Future</code>对象<code>result()</code>方法获取抓取线程的结果。在这个例子的抓取阶段，<code>Future</code>对象返回的结果是元组。用这种方式我们获得的<code>future_tasks</code>最终结果如下图所示：
-<img src="posts/ppp/threading_webcrawler.png" alt="">
+<img src="ppp/threading_webcrawler.png" alt="">
 我们再一次看到线程池中的线程出现的顺序并不是自然顺序，这是由于线程具有不确定性。重要的是通过打印<code>result_dict</code>的项目来展示最终结果。</p>
 <p><a href="http://muxuezi.github.io/posts/ppp/ch4/parallel_web_crawler.py">源代码</a></p>
-<h3 id="本章小结">本章小结<a class="anchor-link" href="posts/4using-the-threading-and-concurrentfutures-modules.html#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93">¶</a>
+<h3 id="本章小结">本章小结<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93">¶</a>
 </h3>
 <p>在这一章里，我们重点介绍了线程的概念。我们通过<code>threading</code>和<code>concurrent.futures</code>模块实现了上一章里提到的两个问题。通过问题的解决展示了两个模块的原理和灵活性。</p>
 <p>下一章，我们将重点介绍如何用<code>multiprocessing</code>和<code>ProcessPoolExecutor</code>解决这两个问题。</p>
@@ -613,148 +637,35 @@ MathJax.Hub.Config({
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015113-2015-09-27-report.html" class="u-url">双色球2015113期(2015-09-27)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/slott-2015113-2015-09-27-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-28T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-28 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/slott-2015113-2015-09-27-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015113-2015-09-27-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015113-2015-09-27-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15112-2015-09-26-report.html" class="u-url">大乐透15112期(2015-09-26)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/dlott-15112-2015-09-26-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-27T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-27 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/dlott-15112-2015-09-26-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15112-2015-09-26-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15112-2015-09-26-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015112-2015-09-24-report.html" class="u-url">双色球2015112期(2015-09-24)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/slott-2015112-2015-09-24-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-25T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-25 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/slott-2015112-2015-09-24-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015112-2015-09-24-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015112-2015-09-24-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15111-2015-09-23-report.html" class="u-url">大乐透15111期(2015-09-23)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/dlott-15111-2015-09-23-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-24T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-24 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/dlott-15111-2015-09-23-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15111-2015-09-23-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15111-2015-09-23-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015111-2015-09-22-report.html" class="u-url">双色球2015111期(2015-09-22)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/slott-2015111-2015-09-22-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-23T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-23 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/slott-2015111-2015-09-22-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015111-2015-09-22-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015111-2015-09-22-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15110-2015-09-21-report.html" class="u-url">大乐透15110期(2015-09-21)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/dlott-15110-2015-09-21-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-22T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-22 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/dlott-15110-2015-09-21-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15110-2015-09-21-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15110-2015-09-21-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015110-2015-09-20-report.html" class="u-url">双色球2015110期(2015-09-20)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/slott-2015110-2015-09-20-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-21T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-21 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/slott-2015110-2015-09-20-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015110-2015-09-20-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015110-2015-09-20-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/dlott-15109-2015-09-19-report.html" class="u-url">大乐透15109期(2015-09-19)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/dlott-15109-2015-09-19-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-20T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-20 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/dlott-15109-2015-09-19-report.html#disqus_thread" data-disqus-identifier="cache/posts/dlott-15109-2015-09-19-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/dlott-15109-2015-09-19-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/slott-2015109-2015-09-17-report.html" class="u-url">双色球2015109期(2015-09-17)数据分析报告</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">Tao Junjie</span></p>
-            <p class="dateline"><a href="posts/slott-2015109-2015-09-17-report.html" rel="bookmark"><time class="published dt-published" datetime="2015-09-18T08:00:00+08:00" itemprop="datePublished" title="Publication date">2015-09-18 08:00</time></a></p>
-                <p class="commentline">            <a href="posts/slott-2015109-2015-09-17-report.html#disqus_thread" data-disqus-identifier="cache/posts/slott-2015109-2015-09-17-report.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>如有雷同，纯属巧合</p>
-<p class="more"><a href="posts/slott-2015109-2015-09-17-report.html">Read more…</a></p>
-</div>
-    </div>
-    </article>
-</div>
-        <nav class="postindexpager"><ul class="pager">
-<li class="next">
-                <a href="index-190.html" rel="next">Older posts</a>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/parallel-programming-with-python.html" rel="tag">Parallel Programming with Python</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="slott-2015113-2015-09-27-report.html" rel="prev" title="双色球2015113期(2015-09-27)数据分析报告">Previous post</a>
             </li>
-        </ul></nav><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html",
+        disqus_title="4.Using the threading and concurrent.futures Modules",
+        disqus_identifier="cache/posts/4using-the-threading-and-concurrentfutures-modules.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
         <!--End of body content-->
 
@@ -767,7 +678,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 
-            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
