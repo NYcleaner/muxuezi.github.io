@@ -34,7 +34,13 @@ threading和_thread的选择
 用threading实现多请求的Fibonacci数列
 用concurrent.futures模块实现网络爬虫
 
-线程的定义¶">
+
+
+
+
+
+
+">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-09-28T20:42:03+08:00">
 <meta property="article:tag" content="Parallel Programming with Python">
@@ -124,6 +130,15 @@ threading和_thread的选择
 <li>用<code>threading</code>实现多请求的Fibonacci数列</li>
 <li>用<code>concurrent.futures</code>模块实现网络爬虫</li>
 </ul>
+<!-- TEASER_END-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="线程的定义">线程的定义<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89">¶</a>
 </h3>
 <p>线程（thread）是一个进程（process）中不同执行单元（execution line）。如果把一个程序比喻成蜂巢（hive），那么向蜂巢里收集花粉（pollen）这件事就是一个进程。这个收集花粉的进程是由若干只为了解决花粉不足问题的工蜂（worker bee）同时工作来完成。这些工蜂扮演的角色就是线程，在进程内部执行并共享资源以完成各自的任务。</p>
@@ -436,7 +451,7 @@ threading和_thread的选择
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>程序的执行结果如下图所示：
-<img src="ppp/threading_fibonacci.png" alt="">
+<img src="http://muxuezi.github.io/posts/ppp/ch4/threading_fibonacci.png" alt="">
 可以看出，一开始<code>fibonacci_task</code>线程被创建并初始化，紧接着进入等待状态。同时，<code>queue_task</code>被创建，然后生成<code>shared_queue</code>。最后，<code>queue_task</code>告诉<code>fibonacci_task</code>线程可以执行任务了。</p>
 <p>还会看到，<code>fibonacci_task</code>线程执行并不是自然顺序，每次运行线程执行顺序都会变化。这就是线程的特点：不确定性。</p>
 <p><a href="http://muxuezi.github.io/posts/ppp/ch4/parallel_fibonacci.py">源代码</a></p>
@@ -622,7 +637,7 @@ threading和_thread的选择
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我们映射了一个临时字典<code>future_tasks</code>。里面包含了<code>submit</code>方法进行的函数预订，参数是<code>result_dict</code>的每个URL键。也就是说，我们用<code>future_tasks</code>为每个键创建了一个入口（entry）。映射之后，我们需通过<code>concurrent.futures.as_completed(fs, timeout=None)</code>方法来寻找<code>future_tasks</code>里入口，通过一个循环来获取前面函数预订的结果。这个调用会返回一个由<code>Future</code>对象实例组成的迭代器（iterator）。因此，我们可以迭代出每一个已经被处理好的预订结果。在<code>ThreadPoolExecutor</code>对象的最后，我们用<code>Future</code>对象<code>result()</code>方法获取抓取线程的结果。在这个例子的抓取阶段，<code>Future</code>对象返回的结果是元组。用这种方式我们获得的<code>future_tasks</code>最终结果如下图所示：
-<img src="ppp/threading_webcrawler.png" alt="">
+<img src="http://muxuezi.github.io/posts/ppp/ch4/threading_webcrawler.png" alt="">
 我们再一次看到线程池中的线程出现的顺序并不是自然顺序，这是由于线程具有不确定性。重要的是通过打印<code>result_dict</code>的项目来展示最终结果。</p>
 <p><a href="http://muxuezi.github.io/posts/ppp/ch4/parallel_web_crawler.py">源代码</a></p>
 <h3 id="本章小结">本章小结<a class="anchor-link" href="4using-the-threading-and-concurrentfutures-modules.html#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93">¶</a>
