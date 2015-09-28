@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://muxuezi.github.io/categories/chs.xml</loc>
-  <lastmod>2015-09-26T02:15:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/frequentism.xml</loc>
@@ -19,7 +19,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/ipython.xml</loc>
-  <lastmod>2015-09-26T02:15:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/kivy.xml</loc>
@@ -27,7 +27,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/linux.xml</loc>
-  <lastmod>2015-09-26T02:14:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/lottery.xml</loc>
@@ -39,11 +39,11 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/other.xml</loc>
-  <lastmod>2015-09-26T02:14:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/parallel-programming-with-python.xml</loc>
-  <lastmod>2015-09-28T13:27:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/pyautogui.xml</loc>
@@ -51,7 +51,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/python.xml</loc>
-  <lastmod>2015-09-28T13:27:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/scikit-learn-cookbook.xml</loc>
@@ -67,7 +67,7 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/categories/wordpress.xml</loc>
-  <lastmod>2015-09-26T02:14:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/galleries/rss.xml</loc>
@@ -79,6 +79,6 @@
  </sitemap>
  <sitemap>
   <loc>http://muxuezi.github.io/sitemap.xml</loc>
-  <lastmod>2015-09-28T13:27:00Z</lastmod>
+  <lastmod>2015-09-28T13:31:00Z</lastmod>
  </sitemap>
 </sitemapindex>
