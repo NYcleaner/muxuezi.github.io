@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Parallel Programming with Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/parallel-programming-with-python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 28 Sep 2015 13:31:32 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>4.Using the threading and concurrent.futures Modules</title><link>http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>绿萝间 (Parallel Programming with Python)</title><link>http://muxuezi.github.io/</link><description></description><atom:link href="http://muxuezi.github.io/categories/parallel-programming-with-python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Tue, 29 Sep 2015 12:56:08 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>5.Using Multiprocessing and ProcessPoolExecutor</title><link>http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用multiprocessing和ProcessPoolExecutor模块"&gt;用&lt;code&gt;multiprocessing&lt;/code&gt;和&lt;code&gt;ProcessPoolExecutor&lt;/code&gt;模块&lt;a class="anchor-link" href="http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html#%E7%94%A8multiprocessing%E5%92%8CProcessPoolExecutor%E6%A8%A1%E5%9D%97"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;上一章我们用&lt;code&gt;threading&lt;/code&gt;模块演示了两个例子。这一章我们将介绍&lt;code&gt;multiprocessing&lt;/code&gt;的用法，实现与&lt;code&gt;threading&lt;/code&gt;类似的接口。但是，我们将用进程范式。&lt;/p&gt;
+&lt;p&gt;本章内容包括以下主题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;理解进程的概念&lt;/li&gt;
+&lt;li&gt;理解多进程通信&lt;/li&gt;
+&lt;li&gt;用&lt;code&gt;multiprocessing&lt;/code&gt;实现多请求的Fibonacci数列&lt;/li&gt;
+&lt;li&gt;用&lt;code&gt;ProcessPoolExecutor&lt;/code&gt;实现并行网络爬虫&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Parallel Programming with Python</category><category>Python</category><guid>http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html</guid><pubDate>Tue, 29 Sep 2015 12:53:28 GMT</pubDate></item><item><title>4.Using the threading and concurrent.futures Modules</title><link>http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html</link><dc:creator>Tao Junjie</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;

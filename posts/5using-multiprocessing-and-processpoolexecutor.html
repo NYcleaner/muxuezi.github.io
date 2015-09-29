@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.Using Multiprocessing and ProcessPoolExecutor | 绿萝间</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tao Junjie">
+<meta property="og:site_name" content="绿萝间">
+<meta property="og:title" content="5.Using Multiprocessing and ProcessPoolExecutor">
+<meta property="og:url" content="http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html">
+<meta property="og:description" content="用multiprocessing和ProcessPoolExecutor模块¶上一章我们用threading模块演示了两个例子。这一章我们将介绍multiprocessing的用法，实现与threading类似的接口。但是，我们将用进程范式。
+本章内容包括以下主题：
+
+理解进程的概念
+理解多进程通信
+用multiprocessing实现多请求的Fibonacci数列
+用ProcessPoolExe">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-09-29T20:53:28+08:00">
+<meta property="article:tag" content="Parallel Programming with Python">
+<meta property="article:tag" content="Python">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://muxuezi.github.io/">
+
+                <span id="blog-title">绿萝间</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="5using-multiprocessing-and-processpoolexecutor.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">5.Using Multiprocessing and ProcessPoolExecutor</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Tao Junjie
+            </span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-09-29T20:53:28+08:00" itemprop="datePublished" title="2015-09-29 20:53">2015-09-29 20:53</time></a></p>
+                <p class="commentline">            <a href="5using-multiprocessing-and-processpoolexecutor.html#disqus_thread" data-disqus-identifier="cache/posts/5using-multiprocessing-and-processpoolexecutor.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="5using-multiprocessing-and-processpoolexecutor.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用multiprocessing和ProcessPoolExecutor模块">用<code>multiprocessing</code>和<code>ProcessPoolExecutor</code>模块<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%94%A8multiprocessing%E5%92%8CProcessPoolExecutor%E6%A8%A1%E5%9D%97">¶</a>
+</h2>
+<p>上一章我们用<code>threading</code>模块演示了两个例子。这一章我们将介绍<code>multiprocessing</code>的用法，实现与<code>threading</code>类似的接口。但是，我们将用进程范式。</p>
+<p>本章内容包括以下主题：</p>
+<ul>
+<li>理解进程的概念</li>
+<li>理解多进程通信</li>
+<li>用<code>multiprocessing</code>实现多请求的Fibonacci数列</li>
+<li>用<code>ProcessPoolExecutor</code>实现并行网络爬虫</li>
+</ul>
+<!-- TEASER_END-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="理解进程的概念">理解进程的概念<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%90%86%E8%A7%A3%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5">¶</a>
+</h3>
+<p>在操作系统中，<em>进程</em>是程序执行和相关资源的容器。所有与程序执行有关的资源都由进程管理——程序的数据区域，子进程，运行状态，还有与其他进程之间的通信。</p>
+<h4 id="理解进程模型">理解进程模型<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%90%86%E8%A7%A3%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B">¶</a>
+</h4>
+<p>进程离不开对资源和信息的控制与操作。操作系统有一个进程控制块（ Process Control Block，PCB），里面存储与进行有关的信息。例如，PCB会存储下面的信息：</p>
+<ul>
+<li>
+<strong>进程ID</strong>：是唯一的整数值（无符号），表示进程在操作系统中的识别号</li>
+<li>
+<strong>程序计数器（Program Counter，PC）</strong>：这包括下一个要被执行的程序指令的地址</li>
+<li>
+<strong>I/O信息</strong>：与进程相关的打开文件和设备列表</li>
+<li>
+<strong>内存配置</strong>：这里存储了进程和页表（tables of paging）使用和存储的内存空间</li>
+<li>
+<strong>CPU进程排序（CPU scheduling）</strong>：这里存储了进程优先级和蹒跚队列（staggering queues）的信息</li>
+<li>
+<strong>优先级</strong>：定义CPU执行的进程优先级</li>
+<li>
+<strong>当前状态</strong>：表示进程状态是就绪，等待或运行</li>
+<li>
+<strong>CPU注册表</strong>：存储栈指针和其他信息</li>
+</ul>
+<h5 id="进程状态定义">进程状态定义<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89">¶</a>
+</h5>
+<p>进程的生命周期有三种状态，如下所示：</p>
+<ul>
+<li>
+<strong>运行</strong>：进程正在使用CPU</li>
+<li>
+<strong>就绪</strong>：进程在队列中等待CPU调用</li>
+<li>
+<strong>等待</strong>：进行等待与任务执行相关的I/O操作完成</li>
+</ul>
+<h3 id="实现多进程通信">实现多进程通信<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1">¶</a>
+</h3>
+<p><a href="https://docs.python.org/3/library/multiprocessing.html"><code>multiprocessing</code>模块</a>允许两种方式实现进程间通信，均是通过信息传递实现的。如前面章节里介绍的，信息传递范式没有同步机制缺乏，数据通过复制在进程间交换。</p>
+<h4 id="使用multiprocessing.Pipe">使用<code>multiprocessing.Pipe</code><a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E4%BD%BF%E7%94%A8multiprocessing.Pipe">¶</a>
+</h4>
+<p>管道<code>pipe</code>是一种可以建立两个节点（endpoint）（两个进程）之间的通信的机制。这种创建通道（channel）的方式是为了实现进程间信息交换。</p>
+<blockquote>
+<p>Python官方文档推荐使用管道实现两个节点的通信，是因为管道不能同时安全地与第三个节点进行通信。</p>
+</blockquote>
+<p>们将实现一个能够创建两个进程的Python程序（生成消费模型），来演示<code>multiprocessing.Pipe</code>对象的用法，进程A和进程B。进程A随机发送1到10范围内的整数值给进程B，进程B把收到的整数值显示到屏幕上。现在，让我们来看看源代码。</p>
+<p>首先我们导入一些需要使用的模块，如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Pipe</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这里<code>os</code>模块可以让我们通过<a href="https://docs.python.org/3/library/os.html"><code>os.getpid()</code></a>获取进程的PID。这个<code>os.getpid()</code>返回的PID可以让整个例子变得透明可见。<code>producer_task</code>和<code>consumer_task</code>函数运行时，对应进程的PID都会显示出来。</p>
+<p>之后的代码中，我们定义生产者<code>producer_task</code>函数，首先通过<code>random.randint(1,10)</code>生成一串随机数。函数的关键点是调用了<code>conn.send(value)</code>，这是用主函数里的<code>Pipe</code>生成的连接对象，将作为函数的参数使用。<code>producer_task</code>函数代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">producer_task</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'Value [%d] sent by PID [%d]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>当<code>Pipe</code>对象使用<code>send</code>方法发生数据之后，不要忘了用<code>close()</code>方法。在连接的通道不再使用之后释放资源是非常重要的事情。</p>
+</blockquote>
+<p>消费者进程要做的事情很简单，就是把收到的信息打印到屏幕上，并显示进程的PID信息。为了从通信的通道中获取整数值，需要调用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Connection.recv"><code>conn.recv()</code></a>。<code>consumer_task</code>函数代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">consumer_task</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">'Value [%d] received by PID [%d]'</span> <span class="o">%</span> <span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>代码的最后一部分就是调用<code>Pipe()</code>对象创建两个进程表示生产者和消费者进程。之后，在用把<code>producer_task</code>和<code>consumer_task</code>函数分别发送到两个进程中。代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">producer_conn</span><span class="p">,</span> <span class="n">consumer_conn</span> <span class="o">=</span> <span class="n">Pipe</span><span class="p">()</span>
+    <span class="n">consumer</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer_task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">consumer_conn</span><span class="p">,))</span>
+    <span class="n">producer</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">producer_task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">producer_conn</span><span class="p">,))</span>
+
+    <span class="n">consumer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">producer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">consumer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="n">producer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>进程定义之后，再使用<code>start()</code>方法初始化执行，然后用<code>join()</code>方法使得主函数进程等待生产者和消费者进程执行完毕后再结束。</p>
+<p>运行<code>multiprocessing_pipe.py</code>程序，结果如下图所示：
+<img src="http://muxuezi.github.io/posts/ppp/ch5/multiprocessing_pipe.png" alt=""><a href="http://muxuezi.github.io/posts/ppp/ch5/multiprocessing_pipe.py">源代码</a></p>
+<h4 id="理解multiprocessing.Queue">理解<code>multiprocessing.Queue</code><a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%90%86%E8%A7%A3multiprocessing.Queue">¶</a>
+</h4>
+<p>上一节我们分析了管道的概念，通过创建通道来建立进程间的通信。现在，我们将分析如何高效地实现这种通信，这就要用到<code>multiprocessing</code>中的<code>Queue</code>对象。<code>multiprocessing.Queue</code>的接口与<code>queue.Queue</code>非常相似。但是，<code>multiprocessing.Queue</code>的内部实现机制不一样，有一个内部线程叫供给线程(feeder thread)，通过把队列的数据缓存传输数据到目标进程相关的管道中。<code>Pipe</code>和<code>Queue</code>对象机制都是有消息传递范式，用户不用考虑同步机制。</p>
+<blockquote>
+<p>虽然使用<code>multiprocessing.Queue</code>不用考虑同步机制，比如<code>Locks</code>互斥锁，但是这些机制在进程内部的缓存和管道之间进行通信的时候还是会用到。</p>
+</blockquote>
+<h3 id="用multiprocessing实现多请求的Fibonacci数列">用<code>multiprocessing</code>实现多请求的Fibonacci数列<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%94%A8multiprocessing%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84Fibonacci%E6%95%B0%E5%88%97">¶</a>
+</h3>
+<p>让我们用进程来替代线程实现多请求的Fibonacci数列。</p>
+<p><code>multiprocessing_fibonacci.py</code>代码用了<code>multiprocessing</code>模块，首先我们导入必要的模块，代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span><span class="p">,</span> <span class="n">current_process</span><span class="p">,</span> <span class="n">Manager</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这里导入的模块很多在上一章都用过，但是有几个模块需要说明一下：</p>
+<ul>
+<li>
+<code>cpu_count</code>：这个函数获取电脑的CPU的数量</li>
+<li>
+<code>current_process</code>：这个函数可以获取当前进程的信息，比如进程名称</li>
+<li>
+<a href="https://docs.python.org/3/library/multiprocessing.html"><code>Manager</code></a>：这个对象提供代理的形式在不同的进程之间共享Python对象。</li>
+</ul>
+<p>后面的代码，我们会看到第一个函数有点不一样：它是随机从1到20的整数中随机抽取15个数。这些值将作为键插入到<code>fibo_dict</code>，一个<code>Manager</code>对象生成的字典。</p>
+<blockquote>
+<p>虽然消息传递的方式更常用。但是，有时候，我们需要在不同进程之间共享一些数据，就像我们在<code>fibo_dict</code>字典里看到的一样。</p>
+</blockquote>
+<p><code>producer_task</code>函数代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">producer_task</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">fibo_dict</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">fibo_dict</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="k">None</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Producer [%s] putting value [%d] into queue.. "</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">current_process</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然后我们定义一个函数为<code>fibo_dict</code>中的每个键计算Fibonacci数列。和上一章线程函数最明显的不同就是这里把<code>fibo_dict</code>作为函数的参数使用。</p>
+<p><code>consumer_task</code>函数代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">consumer_task</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">fibo_dict</span><span class="p">):</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="k">True</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+            <span class="n">fibo_dict</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"consumer [%s] getting value [%d] from queue..."</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">current_process</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>继续看后面的代码，我们进入了主函数部分。这里定义了几个变量：</p>
+<ul>
+<li>
+<code>data_queue</code>：根据Python的标准可以安全处理进程的<code>multiprocessing.Queue</code>
+</li>
+<li>
+<code>number_of_cpus</code>：就是前面用过的<code>multiprocessing.cpu_count</code>函数</li>
+<li>
+<code>fibo_dict</code>：<code>Manager</code>对象生成的字典，进程的最终结果会插入到里面</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">data_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+    <span class="n">number_of_cpus</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
+    <span class="n">fibo_dict</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然后，我们新建一个<code>producer</code>对象，用<code>producer_task</code>函数处理<code>data_queue</code>中的随机数，代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre>    <span class="n">producer</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">producer_task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data_queue</span><span class="p">,</span> <span class="n">fibo_dict</span><span class="p">))</span>
+    <span class="n">producer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">producer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们会看到<code>Process</code>类初始化的签名与<code>threading</code>模块的<code>Thread</code>类的签名一样。它会接受由worker进程并行地执行目标函数，和函数对应的参数。然后，我们开启进程并调用<code>join()</code>函数，让主进程在<code>producer</code>进程执行完毕后再结束。</p>
+<p>后面的代码是定义一个<code>consumer_list</code>，里面保存一个已经初始化的消费者进程列表。创建这个列表的目的是为了在所有的worker进程启动后对这列进程调用<code>join()</code>函数。如果直接在循环体中对每个项目调用<code>join()</code>函数，那么可能只有第一个worker会执行任务，因为下一个迭代会被阻塞等待这个worker进程运行完毕，最终可能下一个worker进程永远不会执行。代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre>    <span class="n">consumer_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_cpus</span><span class="p">):</span>
+        <span class="n">consumer</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer_task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data_queue</span><span class="p">,</span> <span class="n">fibo_dict</span><span class="p">))</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">consumer_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consumer</span><span class="p">)</span>
+
+    <span class="p">[</span><span class="n">consumer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="k">for</span> <span class="n">consumer</span> <span class="ow">in</span> <span class="n">consumer_list</span><span class="p">]</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">fibo_dict</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>运行代码，<code>fibo_dict</code>的最终结果如下图所示：
+<img src="http://muxuezi.github.io/posts/ppp/ch5/multiprocessing_fibonacci.png" alt=""><a href="http://muxuezi.github.io/posts/ppp/ch5/multiprocessing_fibonacci.py">源代码</a></p>
+<h3 id="用ProcessPoolExecutor实现并行网络爬虫">用<code>ProcessPoolExecutor</code>实现并行网络爬虫<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E7%94%A8ProcessPoolExecutor%E5%AE%9E%E7%8E%B0%E5%B9%B6%E8%A1%8C%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB">¶</a>
+</h3>
+<p>就像<code>concurrent.futures</code>模块提供了<code>ThreadPoolExecutor</code>，也用创建和控制多进程的手段，那就是<code>ProcessPoolExecutor</code>类。<code>ProcessPoolExecutor</code>类，也是在<code>concurrent.futures</code>里面，将被用来实现我们并行网络爬虫。示例代码在<code>process_pool_executor_web_crawler.py</code>里面。</p>
+<p>这个代码导入的模块前面的例子类似，比如<code>requests</code>和<code>Manager</code>模块。与上一章多线程爬虫的例子些许不同是，我们用函数参数的形式发送任务数据；具体函数签名如下所示：</p>
+<p><code>group_urls_task</code>函数定义如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">group_urls_task</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">result_dict</span><span class="p">,</span> <span class="n">html_link_regex</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>crawl_task</code>函数定义如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">crawl_task</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">html_link_regex</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然我们再看一点儿有差异的代码。在主函数里面，我们定义了一个<code>Manager</code>类型，这样就可以共享队列，而不只是字段里的进程处理结果了。我们使用<code>Manager.Queue</code>对象来定义一个队列<code>urls</code>，存放需要被抓取的URL链接。<code>result_dict</code>字典，我们将用<code>Manager.dict()</code>对象，目的是要通过代理来管理字典。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://www.sina.com'</span><span class="p">)</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://cn.bing.com/'</span><span class="p">)</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://coding.net/'</span><span class="p">)</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://github.com/'</span><span class="p">)</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://mail.126.com/'</span><span class="p">)</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然后，我们定义一个正则表达式来过滤页面中的链接，获取电脑CPU的数量，代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre>    <span class="n">html_link_regex</span> <span class="o">=</span> \
+        <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">'&lt;a\s(?:.*?\s)*?href=[</span><span class="se">\'</span><span class="s">"](.*?)[</span><span class="se">\'</span><span class="s">"].*?&gt;'</span><span class="p">)</span>
+
+    <span class="n">number_of_cpus</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在最后一部分，我们会看到连续使用<code>concurrent.futures</code>模块的API。和我们在上一章里使用的<code>ThreadPoolExecutor</code>完全一样。但是，<code>ProcessPoolExecutor</code>通过内部机制的改变避开了GIL对CPU的限制，而且也不需要对代码做过多的调整。两个<code>ProcessPoolExecutor</code>的worker进程数量都等于电脑CPU的数量。第一个<code>ProcessPoolExecutor</code>把URL任务并行插入字典<code>result_dict</code>，并把对应的字典值设置为<code>None</code>。代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre>    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">number_of_cpus</span><span class="p">)</span> <span class="k">as</span> <span class="n">group_link_processes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">urls</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+            <span class="n">group_link_processes</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">group_urls_task</span><span class="p">,</span> <span class="n">urls</span><span class="p">,</span> <span class="n">result_dict</span><span class="p">,</span> <span class="n">html_link_regex</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>第二个<code>ProcessPoolExecutor</code>执行网页链接抓取。代码如下所示：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre>    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">number_of_cpus</span><span class="p">)</span> <span class="k">as</span> <span class="n">crawler_link_processes</span><span class="p">:</span>
+        <span class="n">future_tasks</span> <span class="o">=</span> <span class="p">{</span><span class="n">crawler_link_processes</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">crawl_task</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">html_link_regex</span><span class="p">):</span> <span class="n">url</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">result_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">future_tasks</span><span class="p">):</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>用<code>concurrent.futures</code>实现多线程范式到多进程会更简单。</p>
+</blockquote>
+<p>运行代码，结果如下图所示：
+<img src="http://muxuezi.github.io/posts/ppp/ch5/process_pool_executor_web_crawler.png" alt=""><a href="http://muxuezi.github.io/posts/ppp/ch5/process_pool_executor_web_crawler.py">源代码</a></p>
+<h3 id="本章小结">本章小结<a class="anchor-link" href="5using-multiprocessing-and-processpoolexecutor.html#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93">¶</a>
+</h3>
+<p>在这一章，我们介绍了进程的概念，并用多进程方法实现多请求的Fibonacci数列和并行网络爬虫。</p>
+<p>下一章，我们将用著名的<em>parallel python</em>模块研究多进程问题，这个模块不是Python自带的模块。我们将介绍进程间通信的概念，以及如果用管道实现进程间通信。</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/parallel-programming-with-python.html" rel="tag">Parallel Programming with Python</a></li>
+            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="4using-the-threading-and-concurrentfutures-modules.html" rel="prev" title="4.Using the threading and concurrent.futures Modules">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="tj2",
+            disqus_url="http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html",
+        disqus_title="5.Using Multiprocessing and ProcessPoolExecutor",
+        disqus_identifier="cache/posts/5using-multiprocessing-and-processpoolexecutor.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="tj2";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2015         <a href="mailto:muxuezi@gmail.com">Tao Junjie</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51330059-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
