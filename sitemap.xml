@@ -35,7 +35,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/archive.html</loc>
-  <lastmod>2015-09-29T12:55:00Z</lastmod>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/</loc>
@@ -83,7 +83,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/lottery.html</loc>
-  <lastmod>2015-09-28T00:08:00Z</lastmod>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning.html</loc>
@@ -551,7 +551,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-190.html</loc>
-  <lastmod>2015-09-29T12:55:00Z</lastmod>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-2.html</loc>
@@ -995,7 +995,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/4using-the-threading-and-concurrentfutures-modules.html</loc>
-  <lastmod>2015-09-29T12:56:00Z</lastmod>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/5-nonlinear-classification-and-regression-with-decision-trees.html</loc>
@@ -1007,7 +1007,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/5using-multiprocessing-and-processpoolexecutor.html</loc>
-  <lastmod>2015-09-29T12:56:00Z</lastmod>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/6-clustering-with-k-means.html</loc>
@@ -4668,6 +4668,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/dlott-15112-2015-09-26-report.html</loc>
   <lastmod>2015-09-28T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/dlott-15113-2015-09-28-report.html</loc>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/doc-pyautogui.html</loc>
@@ -8624,6 +8628,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015113-2015-09-27-report.html</loc>
   <lastmod>2015-09-28T13:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015114-2015-09-29-report.html</loc>
+  <lastmod>2015-09-30T00:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
