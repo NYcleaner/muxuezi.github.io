@@ -35,7 +35,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/archive.html</loc>
-  <lastmod>2015-10-02T00:09:00Z</lastmod>
+  <lastmod>2015-10-03T04:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/</loc>
@@ -103,7 +103,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/parallel-programming-with-python.html</loc>
-  <lastmod>2015-09-29T12:55:00Z</lastmod>
+  <lastmod>2015-10-03T04:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/pyautogui.html</loc>
@@ -111,7 +111,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/python.html</loc>
-  <lastmod>2015-09-29T12:55:00Z</lastmod>
+  <lastmod>2015-10-03T04:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/python/</loc>
@@ -551,7 +551,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-190.html</loc>
-  <lastmod>2015-10-02T00:09:00Z</lastmod>
+  <lastmod>2015-10-03T04:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-2.html</loc>
@@ -1016,6 +1016,10 @@
  <url>
   <loc>http://muxuezi.github.io/posts/6-clustering-with-k-means/</loc>
   <lastmod>2015-08-01T05:45:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/6utilizing-parallel-python.html</loc>
+  <lastmod>2015-10-03T04:47:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/7-dimensionality-reduction-with-pca.html</loc>
@@ -8639,7 +8643,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015115-2015-10-01-report.html</loc>
-  <lastmod>2015-10-02T00:10:00Z</lastmod>
+  <lastmod>2015-10-03T04:47:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
