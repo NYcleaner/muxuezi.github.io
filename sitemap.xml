@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://muxuezi.github.io/</loc>
-  <lastmod>2015-09-28T00:08:00Z</lastmod>
+  <lastmod>2015-10-07T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/2010/</loc>
@@ -35,7 +35,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/archive.html</loc>
-  <lastmod>2015-10-05T00:09:00Z</lastmod>
+  <lastmod>2015-10-07T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/</loc>
@@ -83,7 +83,7 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/lottery.html</loc>
-  <lastmod>2015-10-05T00:09:00Z</lastmod>
+  <lastmod>2015-10-07T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/categories/machine-learning.html</loc>
@@ -551,7 +551,11 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-190.html</loc>
-  <lastmod>2015-10-05T00:09:00Z</lastmod>
+  <lastmod>2015-10-07T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/index-191.html</loc>
+  <lastmod>2015-10-07T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/index-2.html</loc>
@@ -4686,6 +4690,10 @@
   <lastmod>2015-10-05T00:09:00Z</lastmod>
  </url>
  <url>
+  <loc>http://muxuezi.github.io/posts/dlott-15116-2015-10-05-report.html</loc>
+  <lastmod>2015-10-07T00:09:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://muxuezi.github.io/posts/doc-pyautogui.html</loc>
   <lastmod>2015-09-26T02:14:00Z</lastmod>
  </url>
@@ -8651,7 +8659,11 @@
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/slott-2015116-2015-10-04-report.html</loc>
-  <lastmod>2015-10-05T00:09:00Z</lastmod>
+  <lastmod>2015-10-07T00:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://muxuezi.github.io/posts/slott-2015117-2015-10-06-report.html</loc>
+  <lastmod>2015-10-07T00:09:00Z</lastmod>
  </url>
  <url>
   <loc>http://muxuezi.github.io/posts/sublime_text-package-control.html</loc>
